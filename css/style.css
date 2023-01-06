@@ -3758,6 +3758,79 @@ h6 {
     height: 100px;
     width: 140px; } }
 /*---------------------------------------------------- */
+
+/*-----------BLOG SECTION---------------------*/
+
+
+
+
+@media only screen and (max-width: 1700px) {
+  .blog-card{
+    padding-left: 17%;
+    padding-bottom: 3%;
+  }
+  .blog-card-image{
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .blog-card{
+    padding-left: 20%;
+    padding-bottom: 3%;
+  }
+  .blog-card-image{
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .blog-card{
+    padding-left: 16%;
+    padding-bottom: 3%;
+  }
+  .blog-card-image{
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width:992px) {
+  .blog-card{
+    padding-left: 10%;
+    padding-bottom: 3%;
+  }
+  .blog-card-image{
+    width: 35rem;
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .blog-card{
+    padding-left: 5%;
+    padding-bottom: 3%;
+  }
+  .blog-card-image{
+    width: 30rem;
+  }
+}
+
+@media only screen and (max-width:576px) {
+  .blog-card{
+    padding-left: 3%;
+    padding-bottom: 3%;
+  }
+  .blog-card-image{
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
 /*----------------------------------------------------*/
 /* Footer Area css
 ============================================================================================ */
