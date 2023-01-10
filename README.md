@@ -1,6 +1,21 @@
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen?logo=github)](CODE_OF_CONDUCT.md)
-[![Slack](.github/slack.svg)](https://join.slack.com/t/keploy/shared_invite/zt-12rfbvc01-o54cOG0X1G6eVJTuI_orSA)
-[![License](.github/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+<h1 align="center"> Welcome to website of Keploy 👋 </h1>
+
+<p style="text-align:center;" align="center">
+  <img align="center" src="https://avatars.githubusercontent.com/u/92252339?s=200&v=4" height="20%" width="20%" />
+</p>
+
+<p align="center">
+
+  <a href="CODE_OF_CONDUCT.md" alt="Contributions welcome">
+    <img src="https://img.shields.io/badge/Contributions-Welcome-brightgreen?logo=github" /></a>
+  
+  <a href="https://join.slack.com/t/keploy/shared_invite/zt-12rfbvc01-o54cOG0X1G6eVJTuI_orSA" alt="Slack">
+    <img src=".github/slack.svg" /></a>
+  
+<a href="https://opensource.org/licenses/Apache-2.0" alt="licenses">
+    <img src=".github/License-Apache_2.0-blue.svg" /></a>
+
+</p>
 
 # Keploy
 [Keploy](https://keploy.io) is a no-code testing platform that generates tests from API calls.
