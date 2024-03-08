@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Disallow: /docs.keploy.io/
+Disallow: /community.keploy.io/
+Disallow: /blog.keploy.io/
+Disallow: /telemetry.keploy.io/
+Disallow: /student.keploy.io/
+Sitemap: https://www.keploy.io/sitemap.xml

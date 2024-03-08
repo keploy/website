@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/blog",
+      "destination": "https://blog-website-phi-eight.vercel.app/blog"
+    },
+    {
+      "source": "/blog/:slug*",
+      "destination": "https://blog-website-phi-eight.vercel.app/blog/:slug*"
+    }
+  ]
+}
