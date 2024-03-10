@@ -16,11 +16,9 @@ export default function CountingNumbers({
   interval?: number;
   duration?: number;
 }) {
-
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(3000);
   const [number, setNumber] = useState(start);
-
 
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
@@ -57,8 +55,9 @@ export default function CountingNumbers({
     fetchStarsCount();
   }, [starsCount]); // Include starsCount as a dependency
 
-
-  let increment = Math.floor(Math.abs(start - starsCount) / (duration / interval));
+  let increment = Math.floor(
+    Math.abs(start - starsCount) / (duration / interval)
+  );
   if (increment === 0) {
     increment = 1;
   }
@@ -99,11 +98,9 @@ export default function CountingNumbers({
     }
   }, [isInView]);
 
-
-
   return (
     <p className={className} ref={ref}>
-      {Intl.NumberFormat().format(number)}
+      {Intl.NumberFormat().format(starsCount)}
     </p>
   );
 }
