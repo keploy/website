@@ -1,17 +1,135 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect } from "react";
-import { Transition } from "@headlessui/react";
-import Image from "next/image";
-import FeaturesBg from "@/public/images/record-tc4155904b397e0fbc1237.gif";
-import TestDeduplication from "@/public/images/record-replaye538dde2a6e078f1b5a5.gif";
-import NativeIntegration from "@/public/images/replay-tc31305e1d2286fe485b27.gif";
-import FeaturesElement from "@/public/images/features-element.png";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import deDuplication from "@/public/images/CaptureAndReplayV2.json";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
-import CopyButton from "@/public/images/icons8-copy-96.png";
-import ClipboardJS from "clipboard";
+import React, { useState, useRef, useEffect } from 'react';
+import { Transition } from '@headlessui/react';
+import Image from 'next/image';
+import FeaturesBg from '@/public/images/record-tc4155904b397e0fbc1237.gif';
+import TestDeduplication from '@/public/images/record-replaye538dde2a6e078f1b5a5.gif';
+import NativeIntegration from '@/public/images/replay-tc31305e1d2286fe485b27.gif';
+import FeaturesElement from '@/public/images/features-element.png';
+import testAndStubsGen from '@/public/images/TestGenHighlighted.json';
+import deDuplication from '@/public/images/CaptureAndReplayV2.json';
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import CopyButton from '@/public/images/icons8-copy-96.png';
+import ClipboardJS from 'clipboard';
+
+import gsap from 'gsap'; // <-- import GSAP
+import { useGSAP } from '@gsap/react'; // <-- import the hook
+import { ScrollTrigger } from 'gsap/all';
+import _ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
+
+const TestAndStubGenerationImage = () => {
+  const codeRef = useRef<HTMLDivElement>(null);
+
+  const copyButtonRef = useRef<HTMLButtonElement>(null);
+  return (
+    <div className="inline-flex flex-col imageToShow" id="img-1">
+      {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
+      <div className=" mb-14">
+        <Player
+          autoplay
+          loop
+          src={testAndStubsGen}
+          className="w-full"
+          // style={{ height: "500px", width: "500px" }}
+          keepLastFrame={true}
+        >
+          <Controls
+            visible={false}
+            buttons={['play', 'repeat', 'frame', 'debug']}
+          />
+        </Player>
+      </div>
+
+      {/* <div
+        ref={codeRef}
+        className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
+      >
+        <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
+          <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
+            <code>
+              $ curl -O
+              https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh &&
+              source keploy.sh
+            </code>
+          </pre>
+        </div>
+        <div className="absolute right-3 bottom-2">
+          <button
+            ref={copyButtonRef}
+            onClick={() =>
+              navigator.clipboard.writeText(
+                'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
+              )
+            }
+            className="ml-2"
+          >
+            <Image src={CopyButton} alt="Copy" className="w-6 h-6" />
+          </button>
+        </div>
+      </div> */}
+    </div>
+  );
+};
+
+const TestDuplicationImage = () => {
+  const codeRef = useRef<HTMLDivElement>(null);
+
+  const copyButtonRef = useRef<HTMLButtonElement>(null);
+  return (
+    <>
+      <div
+        className="flex flex-col justify-between top-24 imageToShow"
+        id="img-2"
+      >
+        {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
+        {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
+        <Player
+          autoplay
+          loop
+          src={deDuplication}
+          // style={{ height: "500px", width: "500px" }}
+          keepLastFrame={true}
+        >
+          <Controls
+            visible={false}
+            buttons={['play', 'repeat', 'frame', 'debug']}
+          />
+        </Player>
+      </div>
+
+      {/* <div
+        ref={codeRef}
+        className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
+      >
+        <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
+          <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
+            <code>
+              $ curl -O
+              https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh &&
+              source keploy.sh
+            </code>
+          </pre>
+        </div>
+        <div className="absolute right-3 bottom-2">
+          <button
+            ref={copyButtonRef}
+            onClick={() =>
+              navigator.clipboard.writeText(
+                'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
+              )
+            }
+            className="ml-2"
+          >
+            <Image src={CopyButton} alt="Copy" className="w-6 h-6" />
+          </button>
+        </div>
+      </div> */}
+    </>
+  );
+};
 
 export default function Features() {
   const [tab, setTab] = useState<number>(1);
@@ -19,43 +137,143 @@ export default function Features() {
   const tabs = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLDivElement>(null);
   const copyButtonRef = useRef<HTMLButtonElement>(null);
+  const container = useRef(null);
 
   const heightFix = () => {
     if (tabs.current && tabs.current.parentElement)
       tabs.current.parentElement.style.height = `${tabs.current.clientHeight}px`;
   };
 
-  useEffect(() => {
-    heightFix();
+  // useEffect(() => {
+  //   heightFix();
 
-    const clipboard = new ClipboardJS(copyButtonRef.current!, {
-      target: () => codeRef.current!,
-    });
+  //   const clipboard = new ClipboardJS(copyButtonRef.current!, {
+  //     target: () => codeRef.current!,
+  //   });
 
-    clipboard.on("success", (e) => {
-      // You can customize the success behavior here (e.g., show a notification).
-      console.log("Copied to clipboard:", e.text);
-    });
+  //   clipboard.on('success', (e) => {
+  //     // You can customize the success behavior here (e.g., show a notification).
+  //     console.log('Copied to clipboard:', e.text);
+  //   });
 
-    return () => {
-      clipboard.destroy();
-    };
-  }, []);
+  //   return () => {
+  //     clipboard.destroy();
+  //   };
+  // }, []);
+
+  useGSAP(
+    () => {
+      const details = gsap.utils.toArray('.detail');
+
+      const images: any = gsap.utils.toArray('.imageToShow');
+
+      ScrollTrigger.create({
+        trigger: '.content-container',
+        start: 'top top',
+        end: 'bottom bottom',
+        pin: '.right-content',
+      });
+
+      details.forEach((detail: any, index) => {
+        ScrollTrigger.create({
+          trigger: detail,
+          start: 'middle top',
+          end: 'middle bottom',
+          onUpdate: () => [
+            images.forEach((image: any, i: number) => {
+              if (i === index) {
+                gsap.to(image, {
+                  opacity: 1,
+                });
+              } else {
+                gsap.to(image, {
+                  opacity: 0,
+                });
+              }
+            }),
+          ],
+        });
+      });
+    },
+    { scope: container }
+  );
+
+  if (true) {
+    return (
+      <section ref={container} className="relative ">
+        <div className="grid max-w-6xl grid-cols-2 gap-16 mx-auto mb-16 content-container">
+          <div className="[&>*]:h-screen">
+            <div
+              className="flex items-center detail"
+              data-marker-content="img-1"
+            >
+              <div className="h-min">
+                <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300 ">
+                  Test and Stubs Generation div
+                </div>
+                <div className="text-gray-600">
+                  Record and replay complex, distributed API flows as mocks and
+                  stubs. It's like time machine for tests!
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center detail">
+              <div className="h-min">
+                <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
+                  Test Deduplication
+                </div>
+                <div className="text-gray-600">
+                  Automatically detect and remove duplicate tests, ideal for
+                  scenarios recorded in live-environments.
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center detail">
+              <div className="h-min">
+                <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
+                  Native Integration
+                </div>
+                <div className="text-gray-600">
+                  Merge Keploy tests with testing libraries(JUnit, go-test,
+                  py-test, jest) for combined test coverage.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center [&>*]:absolute relative  justify-center h-screen right-content">
+            <TestAndStubGenerationImage />
+            <TestDuplicationImage />
+            <div className="inline-flex flex-col imageToShow">
+              <Image
+                className="w-full h-auto mx-auto rounded md:max-w-none"
+                src={NativeIntegration}
+                width={400}
+                height="462"
+                alt="Features bg"
+              />
+              {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
+              {/*<div className="absolute left-0 w-full text-left transform md:max-w-none animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="relative mb-20 ">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div
-        className="absolute inset-0 bg-neutral-100 pointer-events-none mb-16"
+        className="absolute inset-0 mb-16 pointer-events-none bg-neutral-100"
         aria-hidden="true"
       />
-      <div className="absolute left-0 right-0 m-auto w-px p-px h-20 bg-gray-200 transform -translate-y-1/2" />
+      <div className="absolute left-0 right-0 w-px h-20 p-px m-auto transform -translate-y-1/2 bg-gray-200" />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-6xl px-4 mx-auto sm:px-6">
         <div className="pt-12 md:pt-20">
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h2 mb-4 text-secondary-300">
+          <div className="max-w-3xl pb-12 mx-auto text-center md:pb-16">
+            <h1 className="mb-4 h2 text-secondary-300">
               Keploy for developers
             </h1>
             <p className="text-xl text-gray-600">
@@ -65,14 +283,14 @@ export default function Features() {
           </div>
 
           {/* Section content */}
-          <div className="md:grid md:grid-cols-12 md:gap-6 pb-3 md:pb-10 sm:pb-3">
+          <div className="pb-3 md:grid md:grid-cols-12 md:gap-6 md:pb-10 sm:pb-3">
             {/* Content */}
             <div
-              className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6"
+              className="max-w-xl mx-auto md:max-w-none md:w-full md:col-span-7 lg:col-span-6 md:mt-6"
               data-aos="fade-right"
             >
-              <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
-                <h3 className="h3 text-secondary-300 mb-3">
+              <div className="mb-8 md:pr-4 lg:pr-12 xl:pr-16">
+                <h3 className="mb-3 h3 text-secondary-300">
                   Give your teams the tool they need to move faster
                 </h3>
                 <p className="text-xl text-gray-600">
@@ -86,8 +304,8 @@ export default function Features() {
                 <a
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3  transition duration-300 hover:shadow-lg ${
                     tab !== 1
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg "
-                      : "bg-gray-200 border-transparent shadow-lg "
+                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg '
+                      : 'bg-gray-200 border-transparent shadow-lg '
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -96,7 +314,7 @@ export default function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-secondary-300 ">
+                    <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300 ">
                       Test and Stubs Generation
                     </div>
                     <div className="text-gray-600">
@@ -104,7 +322,7 @@ export default function Features() {
                       and stubs. It's like time machine for tests!
                     </div>
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
                     <svg
                       className="w-3 h-3 fill-primary-300 "
                       viewBox="0 0 12 12"
@@ -117,8 +335,8 @@ export default function Features() {
                 <a
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 2
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-gray-200 border-transparent shadow-lg"
+                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
+                      : 'bg-gray-200 border-transparent shadow-lg'
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -127,7 +345,7 @@ export default function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-secondary-300">
+                    <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
                       Test Deduplication
                     </div>
                     <div className="text-gray-600">
@@ -135,7 +353,7 @@ export default function Features() {
                       scenarios recorded in live-environments.
                     </div>
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
                     <svg
                       className="w-3 h-3 fill-primary-300"
                       viewBox="0 0 12 12"
@@ -151,8 +369,8 @@ export default function Features() {
                 <a
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 3
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-gray-200 border-transparent shadow-lg"
+                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
+                      : 'bg-gray-200 border-transparent shadow-lg'
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -161,7 +379,7 @@ export default function Features() {
                   }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1 text-secondary-300">
+                    <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
                       Native Integration
                     </div>
                     <div className="text-gray-600">
@@ -169,7 +387,7 @@ export default function Features() {
                       py-test, jest) for combined test coverage.
                     </div>
                   </div>
-                  <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+                  <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
                     <svg
                       className="w-3 h-3 fill-primary-300"
                       viewBox="0 0 12 12"
@@ -186,7 +404,7 @@ export default function Features() {
             </div>
 
             {/* Tabs items */}
-            <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-5 lg:col-span-6 mb-8 md:mb-0 md:order-1 flex items-center justify-center">
+            <div className="flex items-center justify-center max-w-xl mx-auto mb-8 md:max-w-none md:w-full md:col-span-5 lg:col-span-6 md:mb-0 md:order-1">
               <div className="transition-all">
                 <div
                   className="relative flex flex-col text-center lg:text-right"
@@ -208,7 +426,7 @@ export default function Features() {
                     unmount={false}
                   >
                     <div className="relative inline-flex flex-col ">
-                      {/* <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
+                      {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       <div className=" mb-14">
                         <Player
                           autoplay
@@ -220,17 +438,17 @@ export default function Features() {
                         >
                           <Controls
                             visible={false}
-                            buttons={["play", "repeat", "frame", "debug"]}
+                            buttons={['play', 'repeat', 'frame', 'debug']}
                           />
                         </Player>
                       </div>
 
                       <div
                         ref={codeRef}
-                        className="absolute bottom-0 text-left overflow-hidden flex items-center animate-float w-full"
+                        className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
                       >
-                        <div className="bg-gray-900 p-3 rounded-md flex-grow w-7/12 overflow-clip">
-                          <pre className="text-green-300 text-xs md:text-sm lg:text-base w-11/12 truncate">
+                        <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
+                          <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
                             <code>
                               $ curl -O
                               https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
@@ -243,7 +461,7 @@ export default function Features() {
                             ref={copyButtonRef}
                             onClick={() =>
                               navigator.clipboard.writeText(
-                                "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"
+                                'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
                               )
                             }
                             className="ml-2"
@@ -273,8 +491,8 @@ export default function Features() {
                     unmount={false}
                   >
                     <div className="flex flex-col justify-between">
-                      {/* <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
-                      {/*<Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
+                      {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
+                      {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
                       <Player
                         autoplay
                         loop
@@ -284,38 +502,38 @@ export default function Features() {
                       >
                         <Controls
                           visible={false}
-                          buttons={["play", "repeat", "frame", "debug"]}
+                          buttons={['play', 'repeat', 'frame', 'debug']}
                         />
                       </Player>
                     </div>
 
                     <div
-                        ref={codeRef}
-                        className="absolute bottom-0 text-left overflow-hidden flex items-center animate-float w-full"
+                      ref={codeRef}
+                      className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
                     >
-                      <div className="bg-gray-900 p-3 rounded-md flex-grow w-7/12 overflow-clip">
-                          <pre className="text-green-300 text-xs md:text-sm lg:text-base w-11/12 truncate">
-                            <code>
-                              $ curl -O
-                              https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
-                              && source keploy.sh
-                            </code>
-                          </pre>
+                      <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
+                        <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
+                          <code>
+                            $ curl -O
+                            https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
+                            && source keploy.sh
+                          </code>
+                        </pre>
                       </div>
                       <div className="absolute right-3 bottom-2">
                         <button
-                            ref={copyButtonRef}
-                            onClick={() =>
-                                navigator.clipboard.writeText(
-                                    "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"
-                                )
-                            }
-                            className="ml-2"
+                          ref={copyButtonRef}
+                          onClick={() =>
+                            navigator.clipboard.writeText(
+                              'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
+                            )
+                          }
+                          className="ml-2"
                         >
                           <Image
-                              src={CopyButton}
-                              alt="Copy"
-                              className="w-6 h-6"
+                            src={CopyButton}
+                            alt="Copy"
+                            className="w-6 h-6"
                           />
                         </button>
                       </div>
@@ -337,40 +555,38 @@ export default function Features() {
                   >
                     <div className="relative inline-flex flex-col">
                       <Image
-                        className="md:max-w-none mx-auto rounded"
+                        className="mx-auto rounded md:max-w-none"
                         src={NativeIntegration}
                         width={500}
                         height="462"
                         alt="Features bg"
                       />
-                      {/*<Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-                      {/*<div className="md:max-w-none absolute w-full left-0 text-left transform animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
+                      {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
+                      {/*<div className="absolute left-0 w-full text-left transform md:max-w-none animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
                     </div>
                   </Transition>
                 </div>
               </div>
             </div>
           </div>
-
-
         </div>
         <div
-            className=" max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
-            data-aos="zoom-y-out"
-            data-aos-delay="300"
+          className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
+          data-aos="zoom-y-out"
+          data-aos-delay="300"
         >
           <div>
             <a
-                className="btn text-secondary-300 bg-primary-300 hover:font-semibold w-full mb-4 sm:w-auto sm:mb-0"
-                href="https://keploy.io/docs"
+              className="w-full mb-4 btn text-secondary-300 bg-primary-300 hover:font-semibold sm:w-auto sm:mb-0"
+              href="https://keploy.io/docs"
             >
-              Documentation{" "}
+              Documentation{' '}
             </a>
           </div>
           <div>
             <a
-                className="btn text-white bg-secondary-300 hover:font-semibold w-full sm:w-auto sm:ml-4"
-                href="https://forms.gle/jGBbyRyh9H7AKXZX6"
+              className="w-full text-white btn bg-secondary-300 hover:font-semibold sm:w-auto sm:ml-4"
+              href="https://forms.gle/jGBbyRyh9H7AKXZX6"
             >
               Join Waitlist
             </a>
