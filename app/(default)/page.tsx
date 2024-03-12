@@ -12,11 +12,13 @@ import Testimonials from '@/components/testimonials'
 import Newsletter from '@/components/newsletter'
 import Language from "@/components/language";
 import Community from "@/components/community";
+import Installation from "@/components/installation";
 
 export default function Home() {
   return (
     <>
         <Hero />
+        <Installation/>
         <ProblemBlocks />
         <Features />
         <Community/>
