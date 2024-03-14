@@ -22,7 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TestAndStubGenerationImage = () => {
   return (
-    <div className="inline-flex flex-col imageToShow" id="img-1">
+    <div className="inline-flex flex-col w-full imageToShow" id="img-1">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       <div className=" mb-14">
         <Player
@@ -89,7 +89,7 @@ const CopyCode = () => {
     <>
       <div
         ref={codeRef}
-        className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
+        className="bottom-0 flex items-center w-full mb-8 overflow-hidden text-left md:absolute animate-float"
       >
         <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
           <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
@@ -183,7 +183,7 @@ export default function Features() {
   return (
     <>
       <section className="md:hidden">
-        <div className="px-4 mb-24">
+        <div className="px-4 mb-24 ">
           <div className="flex flex-col items-center mt-16 mb-16 text-center ">
             <h1 className="mb-4 text-4xl font-bold leading-[1.5] md:text-5xl text-secondary-300">
               Keploy for developers
