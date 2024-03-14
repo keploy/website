@@ -128,8 +128,8 @@ export default function Header() {
                 <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
               </a>
             </div>
-            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdj9q7dyRh3D7ZzRExHLWRRkNPOnLnFfrbKqSwqH3Ur4HzP4g/viewform" className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3">
-              <span>Join Waitlist</span>
+            <Link href="https://calendar.app.google/8Ncpff4QnAhpVnYd8" target="_blank" className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3">
+              <span>Book Cloud Demo</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
               {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
               {/*</svg>*/}
