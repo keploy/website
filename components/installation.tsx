@@ -41,7 +41,7 @@ const Installation = () => {
         {/* Section header */}
         <div className="text-center pb-10 md:pb-10">
           <h1
-            className="lg:text-3xl text-3xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 "
+            className="lg:text-3xl text-3xl text-secondary-400 font-extrabold leading-tighter tracking-tighter mb-4 "
             data-aos="zoom-y-out"
           >
             Getting Started
@@ -64,8 +64,8 @@ const Installation = () => {
             1. Installing
           </h1>
           <div className="flex flex-row gap-5">
-            <div className="bg-slate-700 p-4 rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-slate-200 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-gray-900 p-4 rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
+              <code className=" text-green-300 flex-grow sm:text-sm lg:text-base">
                 {" "}
                 curl -O
                 https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
@@ -83,7 +83,7 @@ const Installation = () => {
                 className="cursor-pointer ml-2"
               />
               {checkedIndex == 0 ? (
-                <div className=" text-slate-50 ml-1">copied</div>
+                <div className=" text-green-300 ml-1">copied</div>
               ) : (
                 <div></div>
               )}
@@ -98,8 +98,8 @@ const Installation = () => {
             2. Record
           </h1>
           <div className="flex flex-row gap-5">
-            <div className="bg-slate-700 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-slate-200 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
+              <code className=" text-green-300 flex-grow sm:text-sm lg:text-base">
                 {" "}
                 keploy record -c 'go run main.go'
               </code>
@@ -115,7 +115,7 @@ const Installation = () => {
                 className="cursor-pointer ml-2"
               />
               {checkedIndex == 1 ? (
-                <div className=" text-slate-50 ml-1">copied</div>
+                <div className=" text-green-300 ml-1">copied</div>
               ) : (
                 <div></div>
               )}
@@ -127,8 +127,8 @@ const Installation = () => {
             3. Test
           </h1>
           <div className="flex flex-row gap-5">
-            <div className="bg-slate-700 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-slate-200 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
+              <code className=" text-green-300 flex-grow sm:text-sm lg:text-base">
                 {" "}
                 keploy test -c 'go run main.go' --delay 10
               </code>
@@ -144,7 +144,7 @@ const Installation = () => {
                 className="cursor-pointer ml-2"
               />
               {checkedIndex == 2 ? (
-                <div className=" text-slate-50 ml-1">copied</div>
+                <div className=" text-green-300 ml-1">copied</div>
               ) : (
                 <div></div>
               )}
