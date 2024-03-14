@@ -258,8 +258,8 @@ export default function Features() {
         </div>
       </section>
       <section ref={container} className="relative hidden md:block">
-        <div className="max-w-3xl pb-12 mx-auto mt-20 text-center md:pb-6">
-          <h1 className="mb-4 text-5xl font-bold text-secondary-300">
+        <div className="max-w-3xl mx-auto mt-16 text-center ">
+          <h1 className="mb-2 text-5xl font-bold text-secondary-300">
             Keploy for developers
           </h1>
           <p className="text-xl text-gray-600">
@@ -267,8 +267,8 @@ export default function Features() {
             automated tests
           </p>
         </div>
-        <div className="grid max-w-6xl grid-cols-2 gap-16 mx-auto mb-16 content-container">
-          <div className="[&>*]:h-screen">
+        <div className="grid max-w-6xl grid-cols-2 gap-16 mx-auto mb-16 -mt-12 content-container">
+          <div className="[&>*]:h-screen ">
             <div
               className="flex items-center detail"
               data-marker-content="img-1"
