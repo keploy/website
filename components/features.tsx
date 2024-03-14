@@ -159,7 +159,7 @@ export default function Features() {
       details.forEach((detail: any, index) => {
         ScrollTrigger.create({
           trigger: detail,
-          start: 'middle 60%',
+          start: 'middle middle',
           end: 'middle -20%',
           onUpdate: () => [
             images.forEach((image: any, i: number) => {
