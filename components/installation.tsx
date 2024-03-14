@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 const Installation = () => {
   const [checkedIndex, setCheckedIndex] = useState<number | null>(null);
 
@@ -10,22 +10,27 @@ const Installation = () => {
     switch (index) {
       case 0:
         codeToCopy =
-          "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source";
+          "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh";
         break;
       case 1:
-        codeToCopy = "keploy record -c 'go run main.go'";
+        codeToCopy = "keploy record -c 'CMD_TO_RUN_APP'";
         break;
       case 2:
-        codeToCopy = "keploy test -c 'go run main.go' --delay 10";
+        codeToCopy = "keploy test -c 'CMD_TO_RUN_APP' --delay 10";
         break;
       default:
         break;
     }
 
     if (codeToCopy !== "") {
-      navigator.clipboard.writeText(codeToCopy).catch((error) => {
-        console.error("Error copying code to clipboard: ", error);
-      });
+      navigator.clipboard
+        .writeText(codeToCopy)
+        .then(() => {
+          console.log("Code copied to clipboard");
+        })
+        .catch((error) => {
+          console.error("Error copying code to clipboard: ", error);
+        });
     }
 
     setCheckedIndex(index);
@@ -35,9 +40,9 @@ const Installation = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-10 ">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 ">
       {/* Hero content */}
-      <div className="pt-30 pb-12 md:pt-30 md:pb-20 rounded-lg p-10 gap-16">
+      <div className="pt-30 pb-12 md:pt-30 md:pb-20 border border-slate-300 rounded-lg p-10 gap-16">
         {/* Section header */}
         <div className="text-center pb-10 md:pb-10">
           <h1
@@ -51,25 +56,46 @@ const Installation = () => {
             className="lg:text-2xl text-2xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 "
             data-aos="zoom-y-out"
           >
-            Start Recording Test cases with code-less integration
+            Available on
             <br />
           </h1>
         </div>
+        {/* <div className="max-w-3xl mx-auto flex flex-row justify-between gap-1">
+            <Image
+            priority
+            src={"/images/windows.png"}
+            height={50}
+            width={50}
+            alt="Working on windows"
+            />
+            <Image
+            priority
+            src={"/images/linux.png"}
+            height={50}
+            width={50}
+            alt="Working on windows"
+            />
+            <Image
+            priority
+            src={"/images/macos.png"}
+            height={50}
+            width={50}
+            alt="Working on windows"
+            />
 
-        <div
-          className="max-w-4xl mx-auto pb-12 md:pb-16 "
-          data-aos="zoom-y-out"
-        >
-          <h1 className="text-2xl text-secondary-300 font-semibold leading-tighter tracking-tighter mb-4 ">
+           
+        </div> */}
+        <div className="max-w-4xl mx-auto pb-12 md:pb-16">
+          <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
             1. Installing
           </h1>
-          <div className="flex flex-row gap-5">
-            <div className="bg-slate-700 p-4 rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-slate-200 flex-grow sm:text-sm lg:text-base">
+          <div className="flex flex-row gap-3">
+            <div className="bg-slate-700 p-4  rounded-lg flex flex-row">
+              <code className=" text-slate-200">
                 {" "}
                 curl -O
                 https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
-                && source
+                &amp;&amp; source keploy.sh
               </code>
               <Image
                 priority
@@ -79,29 +105,20 @@ const Installation = () => {
                 height={25}
                 width={25}
                 onClick={() => handleclick(0)}
-                alt="copy icon"
-                className="cursor-pointer ml-2"
+                alt="Follow us on Twitter"
               />
-              {checkedIndex == 0 ? (
-                <div className=" text-slate-50 ml-1">copied</div>
-              ) : (
-                <div></div>
-              )}
             </div>
           </div>
         </div>
-        <div
-          className="max-w-4xl mx-auto pb-12 md:pb-16 "
-          data-aos="zoom-y-out"
-        >
+        <div className="max-w-4xl mx-auto pb-12 md:pb-16">
           <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
             2. Record
           </h1>
           <div className="flex flex-row gap-5">
-            <div className="bg-slate-700 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-slate-200 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-slate-700 p-4  rounded-lg flex flex-row items-center flex-grow">
+              <code className=" text-slate-200 flex-grow">
                 {" "}
-                keploy record -c 'go run main.go'
+                keploy record -c "CMD_TO_RUN_APP"
               </code>
               <Image
                 priority
@@ -112,25 +129,20 @@ const Installation = () => {
                 width={25}
                 onClick={() => handleclick(1)}
                 alt="Copy Icon"
-                className="cursor-pointer ml-2"
+                className="cursor-pointer"
               />
-              {checkedIndex == 1 ? (
-                <div className=" text-slate-50 ml-1">copied</div>
-              ) : (
-                <div></div>
-              )}
             </div>
           </div>
         </div>
-        <div className="max-w-4xl mx-auto pb-12 md:pb-16" data-aos="zoom-y-out">
+        <div className="max-w-4xl mx-auto pb-12 md:pb-16">
           <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
             3. Test
           </h1>
           <div className="flex flex-row gap-5">
-            <div className="bg-slate-700 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-slate-200 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-slate-700 p-4  rounded-lg flex flex-row items-center flex-grow">
+              <code className=" text-slate-200 flex-grow">
                 {" "}
-                keploy test -c 'go run main.go' --delay 10
+                keploy test -c "CMD_TO_RUN_APP" --delay 10
               </code>
               <Image
                 priority
@@ -141,21 +153,12 @@ const Installation = () => {
                 width={25}
                 onClick={() => handleclick(2)}
                 alt="Copy Icon"
-                className="cursor-pointer ml-2"
+                className="cursor-pointer"
               />
-              {checkedIndex == 2 ? (
-                <div className=" text-slate-50 ml-1">copied</div>
-              ) : (
-                <div></div>
-              )}
             </div>
           </div>
         </div>
-        <Link href="http://keploy.io/docs/">
-          <p className="text-center text-gray-700 hover:underline">
-            Explore More on Docs
-          </p>
-        </Link>
+        <p className="text-center text-gray-500">Let The Testing Begin</p>
       </div>
     </div>
   );

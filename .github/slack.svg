@@ -1,7 +1,7 @@
 <svg width="58.7" height="20" viewBox="0 0 587 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="slack">
   <title>slack</title>
   <linearGradient id="a" x2="0" y2="100%">
-    <stop offset="0" stop-opacity=".1" stopColor="#EEE"/>
+    <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
   <mask id="m"><rect width="587" height="200" rx="30" fill="#FFF"/></mask>

@@ -18,10 +18,10 @@ export default function Home() {
   return (
     <>
         <Hero />
+        <Installation/>
         <ProblemBlocks />
         <Features />
         <Community/>
-        <Installation/>
         <Testimonials />
         <Language />
         <Newsletter />
