@@ -370,9 +370,9 @@ export default function Features() {
           <div>
             <a
                 className="btn text-white bg-secondary-300 hover:font-semibold w-full sm:w-auto sm:ml-4"
-                href="https://forms.gle/jGBbyRyh9H7AKXZX6"
+                href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
             >
-              Join Waitlist
+              Book Cloud Demo
             </a>
           </div>
         </div>
