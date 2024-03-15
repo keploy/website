@@ -55,13 +55,16 @@ function SocialLinkCard({
       style={showExtraStyle ? { ...style } : {}}
       className={`${
         showExtraStyle ? "circle" : "w-3/4 mx-auto mb-5"
-      } z-10 bg-white shadow-md rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start`}
+      } z-10 bg-white shadow-md rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start group transition duration-300`}
     >
       <div className="text-center w-12 h-12 sm:mr-2">
         <Image src={SvgIcon} alt={platformName} />
       </div>
       <div className="mt-2 ml-2">
-        <h2 className="text-lg font-semibold sm:text-md">{platformName}</h2>
+        <h2 className="text-lg font-semibold sm:text-md w-fit">
+          {platformName}
+          <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-primary-100"></span>
+        </h2>
         <p className="text-gray-600 mt-1F md:text-sm">{description}</p>
       </div>
     </a>
@@ -103,7 +106,7 @@ export default function Community() {
   ];
 
   // Define the number of circles you want to render
-    const totalCircles = cardsData.length;
+  const totalCircles = cardsData.length;
 
   // You can adjust this width as per your requirement or dynamically based on the parent component's state
   const containerWidth = 600;
