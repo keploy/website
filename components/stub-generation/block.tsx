@@ -40,8 +40,19 @@ export default function ProblemBlocks() {
           <div className=" w-full text-center pb-6 md:pb-10">
           <h1 className="h1 mb-4 text-secondary-300 whitespace-nowrap">Smart generation - Enhanced development</h1>
           <div className="flex justify-center w-full">
-          <h3 className="h3 text-xl text-gray-600">  &nbsp; ❌ &nbsp; &nbsp; Employ &nbsp; &nbsp; ❌ &nbsp;  </h3>
-
+          <h3 className="h3 text-xl text-gray-600 flex justify-center items-center">
+  <span className="inline-block transform rotate-180">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+    </svg>
+  </span>
+  &nbsp; Employ &nbsp;
+  <span className="inline-block transform rotate-180">
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+    </svg>
+  </span>
+</h3>
           </div>
           </div>
 

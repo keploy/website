@@ -6,10 +6,9 @@ export default function Features() {
           
           {/* Section Heading */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-orange-500">Key Features of Our Tool</h2> {/* Use orange for the heading */}
-            <p className="text-xl mt-4">
-              Transforming interactions into realistic, diverse, and customizable stubs for precise testing.
-            </p>
+            <h2 className="text-2xl text-center  text-accent-200 mb-4">Transforming interactions into realistic, diverse, and customizable stubs for precise testing</h2> {/* Use orange for the heading */}
+            <p className="text-3xl font-bold text-orange-500">
+            With Keploy's stub generation, eliminate            </p>
           </div>
           
           {/* Grid of features */}
@@ -31,14 +30,27 @@ export default function Features() {
   }
 
 
+//   const TextBlock = (props: { heading: string, subHeading: string }) => {
+//     return (
+//       <div className="flex flex-col items-center justify-center bg-white text-black p-6 hover:border-orange-500 border border-transparent shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto max-w-xs">
+//         <div className="mb-8">
+//           <div className="flex items-center justify-center w-16 h-16 rounded-full bg-black border-2 border-white">
+//             {/* icon placeholder */}
+//           </div>
+//         </div>
+//         <h4 className="text-xl text-center font-bold leading-snug tracking-tight mb-1">{props.heading}</h4>
+//         <p className="text-gray-600 text-center">{props.subHeading}</p>
+//       </div>
+//     );
+//   };
   const TextBlock = (props: { heading: string, subHeading: string }) => {
+    // Add Tailwind classes for gradient on hover
     return (
-      <div className="flex flex-col items-center justify-center bg-white text-black p-6 hover:border-orange-500 border border-transparent shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto max-w-xs">
+      <div className="flex flex-col items-center justify-center bg-white text-black p-6 hover:border border-transparent shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto max-w-xs hover:bg-gradient-to-r from-orange-100 via-orange-100 to-orange-200">
         <div className="mb-8">
-          <div className="flex items-center justify-center w-16 h-16 rounded-full bg-black border-2 border-white">
+        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-black border-2 border-white">
             {/* icon placeholder */}
-          </div>
-        </div>
+          </div>        </div>
         <h4 className="text-xl text-center font-bold leading-snug tracking-tight mb-1">{props.heading}</h4>
         <p className="text-gray-600 text-center">{props.subHeading}</p>
       </div>
