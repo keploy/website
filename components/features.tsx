@@ -22,9 +22,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TestAndStubGenerationImage = () => {
   return (
-    <div className="inline-flex flex-col w-full imageToShow" id="img-1">
+    <div
+      className="inline-flex flex-col w-full imageToShow top-[30vh]"
+      id="img-1"
+    >
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
-      <div className=" mb-14">
+      <div className=" mb-2 h-[50%]">
         <Player
           autoplay
           loop
@@ -46,10 +49,16 @@ const TestAndStubGenerationImage = () => {
 
 const TestDuplicationImage = () => {
   return (
-    <div className="h-[90%] top-22 imageToShow" id="img-2">
+    <div className="relaive top-[30vh] imageToShow w-full" id="img-2">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-      <Player autoplay loop src={deDuplication} keepLastFrame={true}>
+      <Player
+        autoplay
+        loop
+        src={deDuplication}
+        keepLastFrame={true}
+        className="h-[60vh]"
+      >
         <Controls
           visible={false}
           buttons={['play', 'repeat', 'frame', 'debug']}
@@ -89,7 +98,7 @@ const CopyCode = () => {
     <>
       <div
         ref={codeRef}
-        className="bottom-0 flex items-center w-full mb-8 overflow-hidden text-left md:absolute animate-float"
+        className="bottom-0 flex items-center w-full mb-8 overflow-hidden text-left md:mb-0 animate-float"
       >
         <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
           <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
@@ -155,6 +164,12 @@ export default function Features() {
         end: 'bottom bottom',
         pin: '.right-content',
       });
+      ScrollTrigger.create({
+        trigger: '.content-container',
+        start: 'top top',
+        end: 'bottom bottom',
+        pin: '.heading-text',
+      });
 
       details.forEach((detail: any, index) => {
         ScrollTrigger.create({
@@ -182,7 +197,7 @@ export default function Features() {
 
   return (
     <>
-      <section className="md:hidden">
+      {/* <section className="md:hidden">
         <div className="px-4 mb-24 ">
           <div className="flex flex-col items-center mt-16 mb-16 text-center ">
             <h1 className="mb-4 text-4xl font-bold leading-[1.5] md:text-5xl text-secondary-300">
@@ -252,13 +267,11 @@ export default function Features() {
               height="462"
               alt="Features bg"
             />
-            {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-            {/*<div className="absolute left-0 w-full text-left transform md:max-w-none animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
           </div>
         </div>
-      </section>
+      </section> */}
       <section ref={container} className="relative hidden md:block">
-        <div className="max-w-3xl mx-auto mt-16 text-center ">
+        <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
             Keploy for developers
           </h1>
@@ -267,7 +280,7 @@ export default function Features() {
             automated tests
           </p>
         </div>
-        <div className="grid max-w-6xl grid-cols-2 gap-16 mx-auto mb-16 -mt-12 content-container">
+        <div className="relative grid max-w-6xl grid-cols-2 gap-16 mx-auto mb-16 -mt-12 content-container">
           <div className="[&>*]:h-screen ">
             <div
               className="flex items-center detail"
