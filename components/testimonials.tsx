@@ -5,7 +5,6 @@ import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useState } from "react";
-
 const testimonialData = [
   {
     image1: MarutiLogo,

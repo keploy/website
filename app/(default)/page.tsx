@@ -12,6 +12,7 @@ import Testimonials from '@/components/testimonials'
 import Newsletter from '@/components/newsletter'
 import Language from "@/components/language";
 import Community from "@/components/community";
+import TwitterTestimonials from "@/components/TwitterTestimonials";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Features />
         <Community/>
         <Testimonials />
+        <TwitterTestimonials/>
         <Language />
         <Newsletter />
 
