@@ -13,13 +13,17 @@ import Testimonials from '@/components/testimonials'
 import Newsletter from '@/components/newsletter'
 import Language from "@/components/language";
 import Community from "@/components/community";
-
+import SocialLinks from "@/components/stub-generation/community"
 export default function Home() {
   return (
     <>
         <Hero />
         <ProblemBlocks />
         <Features />
+        <SocialLinks/>
+        <Language />
+        <Newsletter />
+        <Footer />
         {/* <Community/> */}
         {/* 
         <Community/>

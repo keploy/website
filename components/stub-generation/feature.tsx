@@ -1,15 +1,33 @@
 export default function Features() {
     return (
-      <section className="bg-white text-gray-900 py-20 px-4 sm:px-6"> {/* Set the background to white and text to gray/black */}
+      <section className="bg-neutral-100 text-gray-900 py-20 px-4 sm:px-6"> {/* Set the background to white and text to gray/black */}
         {/* Container to center content and padding */}
         <div className="container mx-auto px-4">
           
           {/* Section Heading */}
           <div className="text-center mb-12">
             <h2 className="text-2xl text-center  text-accent-200 mb-4">Transforming interactions into realistic, diverse, and customizable stubs for precise testing</h2> {/* Use orange for the heading */}
-            <p className="text-3xl font-bold text-orange-500">
-            With Keploy's stub generation, eliminate            </p>
+            <h2 className="h2 font-bold text-secondary-300">
+              With Keploy's stub generation{" "}
+              <span className="relative inline-block pl-1 border-l-2 border-primary-400" data-aos="fade-right" data-aos-delay="200">{" "}
+                <span
+                    className="absolute inset-0 bg-gradient-to-r from-primary-300 to-primary-50 opacity-50"
+                    aria-hidden="true"
+                />
+                <span className="relative text-orange-500 " data-aos="fade-in" data-aos-delay="500">eliminate&nbsp;</span></span>
+            </h2>
           </div>
+          {/* <div className="max-w-3xl mx-auto text-center ">
+            <h2 className="text-3xl text-secondary-300">
+              Replicate data from{" "}
+              <span className="relative inline-block pl-1 border-l-2 border-primary-400" data-aos="fade-right" data-aos-delay="200">{" "}
+                <span
+                    className="absolute inset-0 bg-gradient-to-r from-primary-300 to-primary-50 opacity-50"
+                    aria-hidden="true"
+                />
+                <span className="relative text-accent-100 " data-aos="fade-in" data-aos-delay="500">any source &nbsp;</span></span>
+            </h2>
+          </div> */}
           
           {/* Grid of features */}
           <div className="flex flex-col flex-wrap justify-center">
@@ -46,7 +64,7 @@ export default function Features() {
   const TextBlock = (props: { heading: string, subHeading: string }) => {
     // Add Tailwind classes for gradient on hover
     return (
-      <div className="flex flex-col items-center justify-center bg-white text-black p-6 hover:border border-transparent shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto max-w-xs hover:bg-gradient-to-r from-orange-100 via-orange-100 to-orange-200">
+      <div className="flex flex-col items-center justify-center bg-neutral-100 text-black p-6 hover:border border-transparent shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto max-w-xs hover:bg-gradient-to-r from-orange-100 via-orange-100 to-orange-200">
         <div className="mb-8">
         <div className="flex items-center justify-center w-16 h-16 rounded-full bg-black border-2 border-white">
             {/* icon placeholder */}
@@ -80,7 +98,7 @@ const blocksData = [
   },
   {
     title: 'Scalability Testing Difficulties',
-    icon: 'scalabilityTestingIcon', // Replace with your actual icon component or path
+    icon: 'scalabilityTestingIcon',
     description: 'Simplifies scalability testing by automatically stubbing system performance under various loads.'
   }
 ];
