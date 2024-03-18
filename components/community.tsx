@@ -8,11 +8,31 @@ import SlackSvg from "@/public/images/social/slack.svg";
 import YoutubeSvg from "@/public/images/social/youtube.svg";
 import LinkedinSvg from "@/public/images/social/linkedin.svg";
 
+type cardSurrondStyle = {
+  transform: string;
+};
+
+type CardProps = {
+  link: string;
+  svgIcon: string;
+  platformName: string;
+  description: string;
+  style?: cardSurrondStyle;
+  showExtraStyle?: boolean;
+};
+
+type CardData = {
+  link: string;
+  svgIcon: string;
+  platformName: string;
+  description: string;
+};
+
 const createCircleStyles = (
   totalCircles: number,
   index: number,
   containerWidth: number
-) => {
+) : cardSurrondStyle => {
   const angle = 360 - 90;
   const dangle = 360 / totalCircles;
   const currentAngle = angle + dangle * index;
@@ -23,25 +43,9 @@ const createCircleStyles = (
   };
 };
 
-type CardProps = {
-  link: string;
-  SvgIcon: any;
-  platformName: string;
-  description: string;
-  style?: any;
-  showExtraStyle?: boolean;
-};
-
-type CardData = {
-  link: string;
-  svgIcon: any;
-  platformName: string;
-  description: string;
-};
-
 function SocialLinkCard({
   link,
-  SvgIcon,
+  svgIcon,
   platformName,
   description,
   style,
@@ -58,7 +62,7 @@ function SocialLinkCard({
       } z-10 bg-white shadow-md rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start group transition duration-300`}
     >
       <div className="text-center w-12 h-12 sm:mr-2">
-        <Image src={SvgIcon} alt={platformName} />
+        <Image src={svgIcon} alt={platformName} />
       </div>
       <div className="mt-2 ml-2">
         <h2 className="text-lg font-semibold sm:text-md w-fit">
@@ -115,7 +119,7 @@ export default function Community() {
     <SocialLinkCard
       key={index}
       link={cardsData[index].link}
-      SvgIcon={cardsData[index].svgIcon}
+      svgIcon={cardsData[index].svgIcon}
       platformName={cardsData[index].platformName}
       description={cardsData[index].description}
       style={createCircleStyles(totalCircles, index, containerWidth)}
@@ -127,7 +131,7 @@ export default function Community() {
     <SocialLinkCard
       key={index}
       link={cardsData[index].link}
-      SvgIcon={cardsData[index].svgIcon}
+      svgIcon={cardsData[index].svgIcon}
       platformName={cardsData[index].platformName}
       description={cardsData[index].description}
     />
