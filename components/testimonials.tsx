@@ -98,7 +98,6 @@ export default function Testimonials() {
           start: 'top-=500 top',
           end: 'bottom bottom',
           scrub: 3,
-          markers: true,
         },
         opacity: 1,
         duration: 3,
