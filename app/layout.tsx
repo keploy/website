@@ -4,7 +4,7 @@ import {Inter} from 'next/font/google'
 
 import Header from '@/components/ui/header'
 import React from 'react';
-
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -62,12 +62,15 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
         </head>
         <meta name="keywords" content={metadata.keywords} />
         <meta name="description" content={metadata.description} />
+
         <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
+        <AppRouterCacheProvider>
         <div className="flex flex-col  overflow-hidden supports-[overflow:clip]:overflow-clip">
             <Header />
             {children}
             {/*<Banner />*/}
         </div>
+        </AppRouterCacheProvider>
         </body>
         </html>
     )

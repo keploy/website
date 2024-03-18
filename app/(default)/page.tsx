@@ -20,8 +20,8 @@ export default function Home() {
         <Hero />
         <ProblemBlocks />
         <Features />
-        <Community/>
         <Installation/>
+        <Community/>
         <Testimonials />
         <Language />
         <Newsletter />

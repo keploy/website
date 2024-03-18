@@ -2,8 +2,41 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
 const Installation = () => {
   const [checkedIndex, setCheckedIndex] = useState<number | null>(null);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const action = (
+    <React.Fragment>
+      <Button color="success" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+      </IconButton>
+    </React.Fragment>
+  );
 
   const handleclick = (index: number) => {
     let codeToCopy = "";
@@ -28,6 +61,8 @@ const Installation = () => {
       });
     }
 
+    setOpen(true);
+
     setCheckedIndex(index);
     setTimeout(() => {
       setCheckedIndex(null);
@@ -40,17 +75,11 @@ const Installation = () => {
       <div className="pt-30 pb-12 md:pt-30 md:pb-20 rounded-lg p-10 gap-16">
         {/* Section header */}
         <div className="text-center pb-10 md:pb-10">
-          <h1
-            className="lg:text-3xl text-3xl text-secondary-400 font-extrabold leading-tighter tracking-tighter mb-4 "
-            data-aos="zoom-y-out"
-          >
+          <h1 className="h2 mb-4 text-secondary-300" data-aos="zoom-y-out">
             Getting Started
             <br />
           </h1>
-          <h1
-            className="lg:text-2xl text-2xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 "
-            data-aos="zoom-y-out"
-          >
+          <h1 className="text-xl text-gray-600" data-aos="zoom-y-out">
             Start Recording Test cases with code-less integration
             <br />
           </h1>
@@ -82,11 +111,7 @@ const Installation = () => {
                 alt="copy icon"
                 className="cursor-pointer ml-2"
               />
-              {checkedIndex == 0 ? (
-                <div className=" text-green-300 ml-1">copied</div>
-              ) : (
-                <div></div>
-              )}
+              
             </div>
           </div>
         </div>
@@ -114,11 +139,7 @@ const Installation = () => {
                 alt="Copy Icon"
                 className="cursor-pointer ml-2"
               />
-              {checkedIndex == 1 ? (
-                <div className=" text-green-300 ml-1">copied</div>
-              ) : (
-                <div></div>
-              )}
+             
             </div>
           </div>
         </div>
@@ -143,19 +164,25 @@ const Installation = () => {
                 alt="Copy Icon"
                 className="cursor-pointer ml-2"
               />
-              {checkedIndex == 2 ? (
-                <div className=" text-green-300 ml-1">copied</div>
-              ) : (
-                <div></div>
-              )}
+             
             </div>
           </div>
         </div>
-        <Link href="http://keploy.io/docs/">
-          <p className="text-center text-gray-700 hover:underline">
-            Explore More on Docs
-          </p>
-        </Link>
+        <div className="flex justify-center">
+          <a
+            className="btn text-secondary-300 bg-primary-300 hover:font-semibold w-full mb-4 sm:w-auto sm:mb-0"
+            href="https://keploy.io/docs"
+          >
+            Explore more on Docs{" "}
+          </a>
+        </div>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message="Copied to Clipboard"
+          action={action}
+        />
       </div>
     </div>
   );
