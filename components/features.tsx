@@ -279,15 +279,6 @@ export default function Features() {
               alt="Features bg"
             />
           </div>
-          <div className="mt-16 text-center">
-            <h2 className="mb-2 text-3xl font-bold leading-7 text-secondary-300">
-              Give your teams the tool they need to move faster
-            </h2>
-            <p className="text-gray-600 text-md">
-              Accelerate development with streamlined testing, capturing network
-              calls, automating scenarios, and seamless tool integration.
-            </p>
-          </div>
         </div>
       </section>
       <section ref={container} className="relative hidden md:block">
@@ -372,15 +363,6 @@ export default function Features() {
               {/*<div className="absolute left-0 w-full text-left transform md:max-w-none animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
             </div>
           </div>
-        </div>
-        <div className="max-w-6xl mx-auto mb-24 -mt-24 text-center">
-          <h2 className="mb-2 text-4xl font-bold text-secondary-300">
-            Give your teams the tool they need to move faster
-          </h2>
-          <p className="text-lg text-gray-600">
-            Accelerate development with streamlined testing, capturing network
-            calls, automating scenarios, and seamless tool integration.
-          </p>
         </div>
       </section>
     </>
