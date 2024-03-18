@@ -137,7 +137,7 @@ const TextSection = ({
   description: string;
 }) => {
   return (
-    <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0">
+    <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0 text-details">
       <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mb-4 bg-white rounded-full ">
         {svg}
       </div>
@@ -164,6 +164,7 @@ export default function Features() {
         end: 'bottom bottom',
         pin: '.right-content',
       });
+
       ScrollTrigger.create({
         trigger: '.content-container',
         start: 'top top',
@@ -172,6 +173,16 @@ export default function Features() {
       });
 
       details.forEach((detail: any, index) => {
+        gsap.to(detail, {
+          scrollTrigger: {
+            trigger: detail,
+            start: '20% middle',
+            end: 'middle middle',
+            scrub: 1,
+          },
+          opacity: 0,
+        });
+
         ScrollTrigger.create({
           trigger: detail,
           start: 'middle middle',
@@ -197,7 +208,7 @@ export default function Features() {
 
   return (
     <>
-      {/* <section className="md:hidden">
+      <section className="md:hidden">
         <div className="px-4 mb-24 ">
           <div className="flex flex-col items-center mt-16 mb-16 text-center ">
             <h1 className="mb-4 text-4xl font-bold leading-[1.5] md:text-5xl text-secondary-300">
@@ -268,8 +279,17 @@ export default function Features() {
               alt="Features bg"
             />
           </div>
+          <div className="mt-16 text-center">
+            <h2 className="mb-2 text-3xl font-bold leading-7 text-secondary-300">
+              Give your teams the tool they need to move faster
+            </h2>
+            <p className="text-gray-600 text-md">
+              Accelerate development with streamlined testing, capturing network
+              calls, automating scenarios, and seamless tool integration.
+            </p>
+          </div>
         </div>
-      </section> */}
+      </section>
       <section ref={container} className="relative hidden md:block">
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
@@ -340,7 +360,7 @@ export default function Features() {
           <div className="flex items-center [&>*]:absolute relative  justify-center h-screen right-content">
             <TestAndStubGenerationImage />
             <TestDuplicationImage />
-            <div className="inline-flex flex-col imageToShow">
+            <div className="inline-flex flex-col imageToShow top-[30vh]">
               <Image
                 className="w-full h-auto mx-auto rounded md:max-w-none"
                 src={NativeIntegration}
@@ -352,6 +372,15 @@ export default function Features() {
               {/*<div className="absolute left-0 w-full text-left transform md:max-w-none animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
             </div>
           </div>
+        </div>
+        <div className="max-w-6xl mx-auto mb-24 -mt-24 text-center">
+          <h2 className="mb-2 text-4xl font-bold text-secondary-300">
+            Give your teams the tool they need to move faster
+          </h2>
+          <p className="text-lg text-gray-600">
+            Accelerate development with streamlined testing, capturing network
+            calls, automating scenarios, and seamless tool integration.
+          </p>
         </div>
       </section>
     </>
