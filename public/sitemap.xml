@@ -593,15 +593,6 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/docs/1.0.0/server/server-installation/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/server/sdk-installation/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
 <url>
   <loc>https://keploy.io/docs/1.0.0/concepts/what-is-keploy/</loc>
   <lastmod>2024-03-13T14:02:16+00:00</lastmod>
@@ -2853,21 +2844,6 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/what-are-keploy-features/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/what-is-keploy-sdk/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/what-are-keploy-sdk-modes/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://keploy.io/docs/1.0.0/operation/</loc>
   <lastmod>2024-03-13T14:02:16+00:00</lastmod>
   <priority>0.64</priority>
@@ -2893,57 +2869,12 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/general-glossary/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/devtools/sdk-contrib-guide/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://keploy.io/docs/1.0.0/go/supported-frameworks/</loc>
   <lastmod>2024-03-13T14:02:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/acceptance-testing/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/agile-unit-testing/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/behaviour-driven-development/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/beta-testing/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/black-box-testing/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/code-coverage/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/End-to-end-testing/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/functional-testing/</loc>
   <lastmod>2024-03-13T14:02:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
@@ -2978,27 +2909,7 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/unit-test-automation/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/unit-testing/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/reference/glossary/white-box-testing/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://keploy.io/docs/1.0.0/operation/web-ui-operations/</loc>
-  <lastmod>2024-03-13T14:02:16+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/1.0.0/concepts/</loc>
   <lastmod>2024-03-13T14:02:16+00:00</lastmod>
   <priority>0.64</priority>
 </url>
