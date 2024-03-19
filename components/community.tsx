@@ -1,10 +1,10 @@
-import Image from "next/image";
-import CommunityBunny from "@/public/images/community-bunny.png";
-import React from "react";
+import Image from 'next/image';
+import CommunityBunny from '@/public/images/community-bunny.png';
+import React from 'react';
 
 export default function Community() {
   return (
-    <section className="relative">
+    <section className="relative xl:-mt-[20vh]">
       <div className="max-w-3xl mx-auto text-center ">
         <h2 className="h2 text-secondary-300 ">
           🐰 Join the Keploy community ✨
@@ -19,14 +19,14 @@ export default function Community() {
           objectFit="contain"
         /> */}
 
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between py-12 md:py-20">
-          <div className="flex flex-col md:flex-1 items-center md:items-end space-y-4 md:space-y-4  w-9/12">
+        <div className="relative z-10 flex flex-col items-center justify-between py-12 md:flex-row md:py-20">
+          <div className="flex flex-col items-center w-9/12 space-y-4 md:flex-1 md:items-end md:space-y-4">
             {/* Left Side Cards */}
             <a
               href="https://twitter.com/Keployio"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white shadow-md w-full xl:w-1/2 md:w-3/4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+              className="flex items-center justify-start w-full p-4 bg-white border rounded-lg shadow-md xl:w-1/2 md:w-3/4 border-accent-500 hover:shadow-xl"
             >
               <div className="text-center">
                 <svg
@@ -45,7 +45,7 @@ export default function Community() {
               </div>
               <div className="mt-2 ml-2">
                 <h2 className="text-lg font-semibold sm:text-md">Twitter</h2>
-                <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+                <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                   Let's talk about regression testing!
                 </p>
               </div>
@@ -55,7 +55,7 @@ export default function Community() {
               href="https://github.com/keploy/keploy"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white shadow-md w-full xl:w-1/2 md:w-3/4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+              className="flex items-center justify-start w-full p-4 bg-white border rounded-lg shadow-md xl:w-1/2 md:w-3/4 border-accent-500 hover:shadow-xl"
             >
               <div className="text-center">
                 <svg
@@ -76,7 +76,7 @@ export default function Community() {
               </div>
               <div className="mt-2 ml-2">
                 <h2 className="text-lg font-semibold sm:text-md">Github</h2>
-                <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+                <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                   Contribute code to Keploy or report a bug
                 </p>
               </div>
@@ -85,7 +85,7 @@ export default function Community() {
               href="https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A"
               target="_blank"
               rel="noopener noreferrer"
-              className="md:hidden bg-white shadow-md w-full xl:w-1/2 md:w-3/4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+              className="flex items-center justify-start w-full p-4 bg-white border rounded-lg shadow-md md:hidden xl:w-1/2 md:w-3/4 border-accent-500 hover:shadow-xl"
             >
               <div className="text-center">
                 <svg
@@ -94,7 +94,7 @@ export default function Community() {
                   viewBox="0 0 32 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-12 h-12   sm:mr-2"
+                  className="w-12 h-12 sm:mr-2"
                 >
                   <path
                     d="M6.583 20.522a3.28 3.28 0 1 1-3.28-3.28h3.28v3.28ZM8.227 20.522a3.28 3.28 0 0 1 6.559 0v8.197a3.28 3.28 0 1 1-6.56 0v-8.197Z"
@@ -116,22 +116,22 @@ export default function Community() {
               </div>
               <div className="mt-2 ml-2">
                 <h2 className="text-lg font-semibold sm:text-md">Slack</h2>
-                <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+                <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                   Connect and chat with other Keploy users
                 </p>
               </div>
             </a>
           </div>
 
-          <div className="hidden md:flex md:flex-1 flex-col items-center justify-end">
-            <div className="hidden md:flex md:flex-1 items-center justify-center bg-cover">
-              <Image src={CommunityBunny} alt="Image"/>
+          <div className="flex-col items-center justify-end hidden md:flex md:flex-1">
+            <div className="items-center justify-center hidden bg-cover md:flex md:flex-1">
+              <Image src={CommunityBunny} alt="Image" />
             </div>
             <a
               href="https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white shadow-md w-full xl:w-1/2 md:w-3/4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+              className="flex items-center justify-start w-full p-4 bg-white border rounded-lg shadow-md xl:w-1/2 md:w-3/4 border-accent-500 hover:shadow-xl"
             >
               <div className="text-center">
                 <svg
@@ -140,7 +140,7 @@ export default function Community() {
                   viewBox="0 0 32 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-12 h-12   sm:mr-2"
+                  className="w-12 h-12 sm:mr-2"
                 >
                   <path
                     d="M6.583 20.522a3.28 3.28 0 1 1-3.28-3.28h3.28v3.28ZM8.227 20.522a3.28 3.28 0 0 1 6.559 0v8.197a3.28 3.28 0 1 1-6.56 0v-8.197Z"
@@ -162,20 +162,20 @@ export default function Community() {
               </div>
               <div className="mt-2 ml-2">
                 <h2 className="text-lg font-semibold sm:text-md">Slack</h2>
-                <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+                <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                   Connect and chat with other Keploy users
                 </p>
               </div>
             </a>
           </div>
 
-          <div className="flex flex-col md:flex-1 items-center md:items-start space-y-4 md:space-y-4 mt-4 md:mt-0 w-9/12">
+          <div className="flex flex-col items-center w-9/12 mt-4 space-y-4 md:flex-1 md:items-start md:space-y-4 md:mt-0">
             {/* Right Side Cards */}
             <a
               href="https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white shadow-md w-full xl:w-1/2 md:w-3/4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+              className="flex items-center justify-start w-full p-4 bg-white border rounded-lg shadow-md xl:w-1/2 md:w-3/4 border-accent-500 hover:shadow-xl"
             >
               <div className="text-center">
                 <svg
@@ -184,7 +184,7 @@ export default function Community() {
                   viewBox="0 0 32 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-12 h-12   sm:mr-2"
+                  className="w-12 h-12 sm:mr-2"
                 >
                   <path
                     d="m16.7 27.165-6.561-.117c-2.125-.041-4.255.04-6.338-.382-3.168-.632-3.393-3.73-3.628-6.328A43.327 43.327 0 0 1 .586 9.345C.93 7.312 2.288 6.1 4.386 5.967c7.084-.479 14.215-.423 21.283-.198.746.02 1.498.132 2.234.26 3.634.62 3.722 4.13 3.957 7.086a39.213 39.213 0 0 1-.313 8.95c-.36 2.456-1.05 4.514-3.957 4.713-3.644.26-7.204.468-10.858.402 0-.015-.021-.015-.031-.015Z"
@@ -198,7 +198,7 @@ export default function Community() {
               </div>
               <div className="mt-2 ml-2">
                 <h2 className="text-lg font-semibold sm:text-md">Youtube</h2>
-                <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+                <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                   Learn with Keploy team and community videos
                 </p>
               </div>
@@ -208,7 +208,7 @@ export default function Community() {
               href="https://www.linkedin.com/company/74471957"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white shadow-md w-full xl:w-1/2 md:w-3/4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+              className="flex items-center justify-start w-full p-4 bg-white border rounded-lg shadow-md xl:w-1/2 md:w-3/4 border-accent-500 hover:shadow-xl"
             >
               <div className="text-center">
                 <svg
@@ -217,7 +217,7 @@ export default function Community() {
                   viewBox="0 0 32 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-12 h-12   sm:mr-2"
+                  className="w-12 h-12 sm:mr-2"
                 >
                   <g clipPath="url(#linkedin_inline_svg__a)">
                     <path
@@ -238,8 +238,8 @@ export default function Community() {
               </div>
               <div className="mt-2 ml-2">
                 <h2 className="text-lg font-semibold sm:text-md">LinkedIn</h2>
-                <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
-                  {" "}
+                <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
+                  {' '}
                   Follow us and connect with other Keploy engineers!
                 </p>
               </div>
@@ -247,16 +247,15 @@ export default function Community() {
           </div>
         </div>
 
-
-        {/* <div className="relative grid grid-cols-12 grid-rows-6 gap-12 h-screen">
-          <div className="hidden md:flex absolute left-0 right-0 -z-10 place-content-center bg-cover">
+        {/* <div className="relative grid h-screen grid-cols-12 grid-rows-6 gap-12">
+          <div className="absolute left-0 right-0 hidden bg-cover md:flex -z-10 place-content-center">
             <Image src={CommunityBunny} alt="Image" className="max-w-3xl"></Image>
           </div>
           <a
             href="https://twitter.com/Keployio"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white shadow-md w-full col-start-6 col-end-8 row-start-1 row-end-2 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+            className="flex items-center justify-start w-full col-start-6 col-end-8 row-start-1 row-end-2 p-4 bg-white border rounded-lg shadow-md border-accent-500 hover:shadow-xl"
           >
             <div className="text-center">
               <svg
@@ -275,7 +274,7 @@ export default function Community() {
             </div>
             <div className="mt-2 ml-2">
               <h2 className="text-lg font-semibold sm:text-md">Lu.ma</h2>
-              <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+              <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                 Let's talk about regression testing!
               </p>
             </div>
@@ -285,7 +284,7 @@ export default function Community() {
             href="https://twitter.com/Keployio"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white shadow-md w-full col-start-3 col-end-5 row-start-2 row-end-3 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+            className="flex items-center justify-start w-full col-start-3 col-end-5 row-start-2 row-end-3 p-4 bg-white border rounded-lg shadow-md border-accent-500 hover:shadow-xl"
           >
             <div className="text-center">
               <svg
@@ -304,7 +303,7 @@ export default function Community() {
             </div>
             <div className="mt-2 ml-2">
               <h2 className="text-lg font-semibold sm:text-md">Twitter</h2>
-              <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+              <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                 Let's talk about regression testing!
               </p>
             </div>
@@ -314,7 +313,7 @@ export default function Community() {
             href="https://github.com/keploy/keploy"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white shadow-md w-full col-start-4 col-end-6 row-start-3 row-end-4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+            className="flex items-center justify-start w-full col-start-4 col-end-6 row-start-3 row-end-4 p-4 bg-white border rounded-lg shadow-md border-accent-500 hover:shadow-xl"
           >
             <div className="text-center">
               <svg
@@ -335,7 +334,7 @@ export default function Community() {
             </div>
             <div className="mt-2 ml-2">
               <h2 className="text-lg font-semibold sm:text-md">Github</h2>
-              <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+              <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                 Contribute code to Keploy or report a bug
               </p>
             </div>
@@ -344,7 +343,7 @@ export default function Community() {
             href="https://join.slack.com/t/keploy/shared_invite/zt-12rfbvc01-o54cOG0X1G6eVJTuI_orSA"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white shadow-md w-full col-start-4 col-end-6 row-start-3 row-end-4 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+            className="flex items-center justify-start w-full col-start-4 col-end-6 row-start-3 row-end-4 p-4 bg-white border rounded-lg shadow-md border-accent-500 hover:shadow-xl"
           >
             <div className="text-center">
               <svg
@@ -353,7 +352,7 @@ export default function Community() {
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-12 h-12   sm:mr-2"
+                className="w-12 h-12 sm:mr-2"
               >
                 <path
                   d="M6.583 20.522a3.28 3.28 0 1 1-3.28-3.28h3.28v3.28ZM8.227 20.522a3.28 3.28 0 0 1 6.559 0v8.197a3.28 3.28 0 1 1-6.56 0v-8.197Z"
@@ -375,7 +374,7 @@ export default function Community() {
             </div>
             <div className="mt-2 ml-2">
               <h2 className="text-lg font-semibold sm:text-md">Slack</h2>
-              <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+              <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                 Connect and chat with other Keploy users
               </p>
             </div>
@@ -384,7 +383,7 @@ export default function Community() {
             href="https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white shadow-md w-full col-start-9 col-end-11 row-start-1 row-end-2 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+            className="flex items-center justify-start w-full col-start-9 col-end-11 row-start-1 row-end-2 p-4 bg-white border rounded-lg shadow-md border-accent-500 hover:shadow-xl"
           >
             <div className="text-center">
               <svg
@@ -393,7 +392,7 @@ export default function Community() {
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-12 h-12   sm:mr-2"
+                className="w-12 h-12 sm:mr-2"
               >
                 <path
                   d="m16.7 27.165-6.561-.117c-2.125-.041-4.255.04-6.338-.382-3.168-.632-3.393-3.73-3.628-6.328A43.327 43.327 0 0 1 .586 9.345C.93 7.312 2.288 6.1 4.386 5.967c7.084-.479 14.215-.423 21.283-.198.746.02 1.498.132 2.234.26 3.634.62 3.722 4.13 3.957 7.086a39.213 39.213 0 0 1-.313 8.95c-.36 2.456-1.05 4.514-3.957 4.713-3.644.26-7.204.468-10.858.402 0-.015-.021-.015-.031-.015Z"
@@ -407,7 +406,7 @@ export default function Community() {
             </div>
             <div className="mt-2 ml-2">
               <h2 className="text-lg font-semibold sm:text-md">Youtube</h2>
-              <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+              <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                 Learn with Keploy team and community videos
               </p>
             </div>
@@ -417,7 +416,7 @@ export default function Community() {
             href="https://www.linkedin.com/company/74471957"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-white shadow-md w-full col-start-9 col-end-11 row-start-2 row-end-3 rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start"
+            className="flex items-center justify-start w-full col-start-9 col-end-11 row-start-2 row-end-3 p-4 bg-white border rounded-lg shadow-md border-accent-500 hover:shadow-xl"
           >
             <div className="text-center">
               <svg
@@ -426,7 +425,7 @@ export default function Community() {
                 viewBox="0 0 32 32"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-12 h-12   sm:mr-2"
+                className="w-12 h-12 sm:mr-2"
               >
                 <g clipPath="url(#linkedin_inline_svg__a)">
                   <path
@@ -447,7 +446,7 @@ export default function Community() {
             </div>gitgit
             <div className="mt-2 ml-2">
               <h2 className="text-lg font-semibold sm:text-md">LinkedIn</h2>
-              <p className="text-gray-600 mt-1 md:text-sm sm:text-sm ">
+              <p className="mt-1 text-gray-600 md:text-sm sm:text-sm ">
                 {" "}
                 Follow us and connect with other Keploy engineers!
               </p>
