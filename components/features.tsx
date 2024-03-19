@@ -17,6 +17,7 @@ import gsap from 'gsap'; // <-- import GSAP
 import { useGSAP } from '@gsap/react'; // <-- import the hook
 import { ScrollTrigger } from 'gsap/all';
 import _ScrollTrigger from 'gsap/ScrollTrigger';
+import FeaturesMobileView from './FeatureMoblieView';
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
@@ -160,8 +161,6 @@ export default function Features() {
         start: 'top top',
         end: 'bottom bottom',
         pin: '.right-content',
-
-        markers: true,
       });
 
       ScrollTrigger.create({
@@ -207,80 +206,8 @@ export default function Features() {
 
   return (
     <>
-      <section className="md:hidden">
-        <div className="px-4 mb-24 ">
-          <div className="flex flex-col items-center mt-16 mb-16 text-center ">
-            <h1 className="mb-4 text-4xl font-bold leading-[1.5] md:text-5xl text-secondary-300">
-              Keploy for developers
-            </h1>
-            <p className="text-lg text-gray-600 md:text-xl">
-              simplified testing, capturing network interactions and generating
-              automated tests
-            </p>
-          </div>
-          <TextSection
-            svg={
-              <svg
-                className="w-6 h-6 fill-primary-300 "
-                viewBox="0 0 12 12"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
-              </svg>
-            }
-            heading={' Test and Stubs Generation'}
-            description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
-          />
-
-          <TestAndStubGenerationImage />
-          <TextSection
-            svg={
-              <svg
-                className="w-6 h-6 fill-primary-300"
-                viewBox="0 0 12 12"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z"
-                  fillRule="nonzero"
-                />
-              </svg>
-            }
-            heading={'Test Deduplication'}
-            description="Automatically detect and remove duplicate tests, ideal for scenarios recorded in live-environments."
-          />
-
-          <TestDuplicationImage />
-
-          <TextSection
-            svg={
-              <svg
-                className="w-6 h-6 fill-primary-300"
-                viewBox="0 0 12 12"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11.334 8.06a.5.5 0 00-.421-.237 6.023 6.023 0 01-5.905-6c0-.41.042-.82.125-1.221a.5.5 0 00-.614-.586 6 6 0 106.832 8.529.5.5 0 00-.017-.485z"
-                  fillRule="nonzero"
-                />
-              </svg>
-            }
-            heading={'Native Integration'}
-            description="Merge Keploy tests with testing libraries(JUnit, go-test, py-test, jest) for combined test coverage."
-          />
-
-          <div className="inline-flex flex-col imageToShow">
-            <Image
-              className="w-full h-auto mx-auto rounded md:max-w-none"
-              src={NativeIntegration}
-              width={400}
-              height="462"
-              alt="Features bg"
-            />
-          </div>
-        </div>
-      </section>
-      <section ref={container} className="relative hidden md:block">
+      <FeaturesMobileView />
+      <section ref={container} className="relative hidden lg:block">
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
             Keploy for developers
