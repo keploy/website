@@ -22,10 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TestAndStubGenerationImage = () => {
   return (
-    <div
-      className="inline-flex flex-col w-full imageToShow top-[30vh]"
-      id="img-1"
-    >
+    <div className="inline-flex flex-col w-full imageToShow " id="img-1">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       <div className=" mb-2 h-[50%]">
         <Player
@@ -49,7 +46,7 @@ const TestAndStubGenerationImage = () => {
 
 const TestDuplicationImage = () => {
   return (
-    <div className="relaive top-[30vh] imageToShow w-full" id="img-2">
+    <div className="w-full relaive imageToShow" id="img-2">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
       <Player
@@ -163,6 +160,8 @@ export default function Features() {
         start: 'top top',
         end: 'bottom bottom',
         pin: '.right-content',
+
+        markers: true,
       });
 
       ScrollTrigger.create({
@@ -176,7 +175,7 @@ export default function Features() {
         gsap.to(detail, {
           scrollTrigger: {
             trigger: detail,
-            start: '20% middle',
+            start: 'top-=400 middle',
             end: 'middle middle',
             scrub: 1,
           },
@@ -185,7 +184,7 @@ export default function Features() {
 
         ScrollTrigger.create({
           trigger: detail,
-          start: 'middle middle',
+          start: 'top-=600 middle',
           end: 'middle -20%',
           onUpdate: () => [
             images.forEach((image: any, i: number) => {
@@ -291,8 +290,8 @@ export default function Features() {
             automated tests
           </p>
         </div>
-        <div className="relative grid max-w-6xl grid-cols-2 gap-16 mx-auto mb-16 -mt-12 content-container">
-          <div className="[&>*]:h-screen ">
+        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh]  mx-auto  content-container">
+          <div className=" space-y-[50vh]  ">
             <div
               className="flex items-center detail"
               data-marker-content="img-1"
@@ -348,10 +347,10 @@ export default function Features() {
               />
             </div>
           </div>
-          <div className="flex items-center [&>*]:absolute relative  justify-center h-screen right-content">
+          <div className="flex items-center [&>*]:absolute relative  justify-center h-min [&>*]:top-0 right-content">
             <TestAndStubGenerationImage />
             <TestDuplicationImage />
-            <div className="inline-flex flex-col imageToShow top-[30vh]">
+            <div className="bottom-0 inline-flex flex-col imageToShow">
               <Image
                 className="w-full h-auto mx-auto rounded md:max-w-none"
                 src={NativeIntegration}
