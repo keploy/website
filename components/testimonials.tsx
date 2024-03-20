@@ -77,7 +77,7 @@ const Testimonial = ({
 
         <span className="quote-character opacity-[0.2]">"</span>
       </p>
-      <div className="flex items-center gap-4 px-4 py-4 mt-8 text-sm text-white rounded-sm md:text-xl bg-gradient-to-r from-indigo-500">
+      <div className="flex items-center gap-4 px-4 py-4 mt-8 text-sm text-white rounded-lg md:text-xl bg-gradient-to-r from-secondary-500">
         <Image src={image} alt="logo" className="w-auto h-4" />
         <p className="font-bold">
           {author} <span className="text-lg md:text-2xl">/</span> {company}
