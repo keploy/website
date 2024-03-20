@@ -95,12 +95,12 @@ export default function Testimonials() {
       gsap.to('.quote-character', {
         scrollTrigger: {
           trigger: '.quote-container',
-          start: 'top-=500 top',
-          end: 'bottom bottom',
+          start: 'top bottom',
+          end: 'bottom+=500 bottom',
           scrub: 3,
         },
         opacity: 1,
-        duration: 3,
+        duration: 1,
         stagger: 1,
       });
     },
