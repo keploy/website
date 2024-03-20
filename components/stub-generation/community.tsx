@@ -152,9 +152,9 @@ const socialLinks: SocialLink[] = [
 ];
 
 const SocialCloud: React.FC = () => {
-    const [value,setValue] = useState("")
+    const [value,setValue] = useState("Where Code Meets Community!")
   return (
-    <>
+    <section className='bg-neutral-100 '>
         <div className="max-w-3xl mx-auto text-center ">
         <h2 className="h2 text-secondary-300 ">
           🐰 Join the Keploy community ✨
@@ -178,9 +178,9 @@ const SocialCloud: React.FC = () => {
       ))}
 
     </div>
-    <p className='text-center text-2xl text-accent-200 mb-4'>{value}</p>
+    <p className='text-center text-xl text-gray-700 mb-4'>{value}</p>
 
-    </>
+    </section>
 
   );
 };

@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Hero() {
   return (
-    <section className="relative bg-white text-gray-800 overflow-hidden"> {/* Added overflow-hidden for background illustration */}
+    <section className="relative bg-neutral-100  text-gray-800 overflow-hidden"> {/* Added overflow-hidden for background illustration */}
 
       {/* Background illustration here (assuming you add this in your full code) */}
       
