@@ -204,6 +204,9 @@ module.exports = {
             zIndex: {
                 '-1': '-1',
             },
+            variants: {
+                width: ["responsive", "hover", "focus"]
+            },
         },
     },
     plugins: [
