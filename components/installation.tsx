@@ -1,18 +1,18 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import IconButton from "@mui/material/IconButton";
+import CopyButton from "@/public/images/icons8-copy-96.png";
+import SvgIcon from "@mui/material/SvgIcon";
+import { IconButton as MuiButton } from "@mui/material";
+import { red } from "@mui/material/colors";
+
 const Installation = () => {
   const [checkedIndex, setCheckedIndex] = useState<number | null>(null);
   const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    
-  };
-
+  
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
@@ -25,16 +25,9 @@ const Installation = () => {
   };
   const action = (
     <React.Fragment>
-      <Button color="success" size="small" onClick={handleClose}>
-        UNDO
-      </Button>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-      </IconButton>
+      <MuiButton color={"success"} onClick={handleClose}>
+        <SvgIcon component={CloseRoundedIcon} inheritViewBox />
+      </MuiButton>
     </React.Fragment>
   );
 
@@ -46,10 +39,10 @@ const Installation = () => {
           "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source";
         break;
       case 1:
-        codeToCopy = "keploy record -c 'go run main.go'";
+        codeToCopy = "keploy record -c CMD_TO_RUN_APP";
         break;
       case 2:
-        codeToCopy = "keploy test -c 'go run main.go' --delay 10";
+        codeToCopy = "keploy test -c CMD_TO_RUN_APP --delay 10";
         break;
       default:
         break;
@@ -89,12 +82,16 @@ const Installation = () => {
           className="max-w-4xl mx-auto pb-12 md:pb-16 "
           data-aos="zoom-y-out"
         >
-          <h1 className="text-2xl text-secondary-300 font-semibold leading-tighter tracking-tighter mb-4 ">
-            1. Installing
+          <h1 className="text-2xl text-secondary-300 font-semibold leading-tighter tracking-tighter mb-2 ">
+            1. Installing 📥
           </h1>
+          <p className=" text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
+            Integrate Keploy by installing the open-source agent locally. No
+            code-changes required.
+          </p>
           <div className="flex flex-row gap-5">
-            <div className="bg-gray-900 p-4 rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-green-300 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-gray-900 p-4 rounded-lg flex flex-row items-center flex-grow overflow-clip">
+              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate">
                 {" "}
                 curl -O
                 https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
@@ -102,69 +99,71 @@ const Installation = () => {
               </code>
               <Image
                 priority
-                src={
-                  checkedIndex === 0 ? "/images/tick.svg" : "/images/copy.svg"
-                }
+                src={checkedIndex === 0 ? "/images/tick.svg" : CopyButton}
                 height={25}
                 width={25}
                 onClick={() => handleclick(0)}
                 alt="copy icon"
                 className="cursor-pointer ml-2"
               />
-              
             </div>
           </div>
         </div>
         <div
-          className="max-w-4xl mx-auto pb-12 md:pb-16 "
+          className="max-w-4xl mx-auto pb-9 md:pb-16 "
           data-aos="zoom-y-out"
         >
           <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
-            2. Record
+            2. Record 🎬
           </h1>
+          <p className=" text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
+            Start your app with keploy to convert API calls as tests and mocks/stubs. Make some API calls to your app.
+          </p>
+
           <div className="flex flex-row gap-5">
-            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-green-300 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-clip">
+              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate">
                 {" "}
-                keploy record -c 'go run main.go'
+                keploy record -c CMD_TO_RUN_APP
               </code>
               <Image
                 priority
-                src={
-                  checkedIndex === 1 ? "/images/tick.svg" : "/images/copy.svg"
-                }
+                src={checkedIndex === 1 ? "/images/tick.svg" : CopyButton}
                 height={25}
                 width={25}
                 onClick={() => handleclick(1)}
                 alt="Copy Icon"
                 className="cursor-pointer ml-2"
               />
-             
             </div>
           </div>
+            <p className=" text-gray-600 mb-0 mt-2 text-xs md:text-sm lg:text-base">
+              `CMD_TO_RUN_APP` is the command to start you app. Say,<code className="text-gray-800">`python main.py`</code> or <code className="text-gray-800">`npm start`</code> or <code className="text-gray-800">`java -jar xyz.jar`</code> or<code className="text-gray-800">`go run main.go`</code> 
+          </p>
         </div>
         <div className="max-w-4xl mx-auto pb-12 md:pb-16" data-aos="zoom-y-out">
           <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
-            3. Test
+            3. Test 🧪
           </h1>
+          <p className=" text-gray-700 mb-2 mt-1 text-xs md:text-sm lg:text-base">
+            Shut down Database,Redis,Kafka, other services. Keploy don't need those during test. 
+          </p>
+
           <div className="flex flex-row gap-5">
-            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
-              <code className=" text-green-300 flex-grow sm:text-sm lg:text-base">
+            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-clip">
+              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate">
                 {" "}
-                keploy test -c 'go run main.go' --delay 10
+                keploy test -c CMD_TO_RUN_APP --delay 10
               </code>
               <Image
                 priority
-                src={
-                  checkedIndex === 2 ? "/images/tick.svg" : "/images/copy.svg"
-                }
+                src={checkedIndex === 2 ? "/images/tick.svg" : CopyButton}
                 height={25}
                 width={25}
                 onClick={() => handleclick(2)}
                 alt="Copy Icon"
                 className="cursor-pointer ml-2"
               />
-             
             </div>
           </div>
         </div>
@@ -173,15 +172,21 @@ const Installation = () => {
             className="btn text-secondary-300 bg-primary-300 hover:font-semibold w-full mb-4 sm:w-auto sm:mb-0"
             href="https://keploy.io/docs"
           >
-            Explore more on Docs{" "}
+            Explore Test Coverage Guide{" "}
           </a>
         </div>
         <Snackbar
           open={open}
-          autoHideDuration={6000}
+          autoHideDuration={3000}
           onClose={handleClose}
           message="Copied to Clipboard"
           action={action}
+          ContentProps={{
+            sx:{
+              background:"black",
+              color:"#86EFAC"
+            }
+          }}
         />
       </div>
     </div>
