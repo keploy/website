@@ -1,0 +1,17 @@
+/* when you add new card to the community circle graph, you can change the styles here for small adjustment*/
+.ciclegraph:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 2px * 2);
+  height: calc(100% - 2px * 2);
+}
+
+.ciclegraph .circle {
+  position: absolute;
+  top: 50%; /* adjust this value to shift cards vertically */
+  left: calc(50% - 100px); /* adjust this value to shift cards horizontally */
+  margin: calc(-100px / 2);
+  width: 250px;
+}
