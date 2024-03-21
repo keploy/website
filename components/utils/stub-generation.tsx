@@ -45,22 +45,22 @@ export const DependencyWaitTimeIcon = () => (
   export const EarlyDetectionIcon = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">    <path d="M12 9v6l3 3m4-12v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9" />    <path d="M6 6l12-4v4H6z" />  </svg>);
   export const MdiLightningBolt = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M13 2L3 14h9l-1 8 9-12h-9l1-8z" />  </svg>);
   export const FluentPuzzleCubePiece20Filled = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <rect x="3" y="3" width="6" height="6" rx="1" />    <rect x="15" y="3" width="6" height="6" rx="1" />    <rect x="3" y="15" width="6" height="6" rx="1" />    <rect x="15" y="15" width="6" height="6" rx="1" />  </svg>);
-  export const CollaborationHandshakeIcon = () => (
+  export const CollaborationIcon = () => (
     <svg
       className="w-16 h-16 p-1 -mt-1 mb-2"
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="#FF914D"
-      strokeWidth="1.5"
+      fill="#FF914D"
+      stroke="currentColor"
+      strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M8 13v-1a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v1" />
-      <path d="M16 16l1 1c1.5 1.5 2 3 0 6-1 1-3.5 1-5 0l-1-1" />
-      <path d="M16 16l-5-5" />
-      <path d="M8 11l-5 5" />
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+      <path d="M16 8l-4 4-4-4" />
+      <path d="M12 16V8" />
     </svg>
-  );export const RiCheckboxMultipleLine = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M3 17l6-6-4-4V7l4 4 6-6" />    <circle cx="17" cy="17" r="3" />  </svg>);
+  );
+  export const RiCheckboxMultipleLine = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M3 17l6-6-4-4V7l4 4 6-6" />    <circle cx="17" cy="17" r="3" />  </svg>);
   export const StreamlineBrowserCheck = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <polyline points="3 7 9 7 12 3 21 3 21 21 3 21 3 7" />    <path d="M9 15l2 2 4-4" />  </svg>);
   export const PsPiggyBankCoins = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M20 16V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2z" />    <circle cx="12" cy="16" r="1" />    <path d="M8 20a2 2 0 0 0 2-2" />    <path d="M16 20a2 2 0 0 1-2-2" />  </svg>);
   export const MaterialSymbolsLightEarlyOnOutline = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M12 9v6l3 3m4-12v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9" />    <path d="M6 6l12-4v4H6z" />  </svg>);
@@ -257,7 +257,7 @@ export const socialLinks: SocialLink[] = [
     {
       title: "Improved Collaboration",
       description: "Promotes collaboration between teams by allowing them to work independently on different components.",
-      SvgComponent: CollaborationHandshakeIcon,
+      SvgComponent: CollaborationIcon,
     },
     {
       title: "Comprehensive Testing Scenarios",
