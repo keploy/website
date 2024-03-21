@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.0",
     "@headlessui/react": "^1.7.14",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@types/node": "^20.2.5",
