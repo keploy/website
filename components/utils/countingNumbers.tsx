@@ -1,7 +1,51 @@
-"use client";
-
-import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+
+// Custom hook for fetching data
+function useStarsCount() {
+  const [starsCount, setStarsCount] = useState<number>(3000);
+
+  useEffect(() => {
+    const fetchStarsCount = async () => {
+      try {
+        const response = await fetch(
+          "https://api.github.com/repos/keploy/keploy"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setStarsCount(data.stargazers_count);
+        } else {
+          console.error("Failed to fetch stars count", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching stars count:", error);
+      }
+    };
+
+    fetchStarsCount();
+  }, []);
+
+  return starsCount;
+}
+
+// Custom hook for counting animation
+function useCountAnimation(start: number, target: number, duration: number) {
+  const [number, setNumber] = useState(start);
+  const increment = Math.floor(Math.abs(start - target) / (duration / 10));
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (number < target) {
+        setNumber((num) => Math.min(num + increment, target));
+      } else if (number > target) {
+        setNumber((num) => Math.max(num - increment, target));
+      }
+    }, 10);
+
+    return () => clearInterval(timer);
+  }, [number, target, increment]);
+
+  return number;
+}
 
 export default function CountingNumbers({
   className,
@@ -17,90 +61,23 @@ export default function CountingNumbers({
   duration?: number;
 }) {
   const [top, setTop] = useState<boolean>(true);
-  const [starsCount, setStarsCount] = useState<number>(3000);
-  const [number, setNumber] = useState(start);
-
-  // detect whether user has scrolled the page down by 10px
-  const scrollHandler = () => {
-    window.pageYOffset > 10 ? setTop(false) : setTop(true);
-  };
+  const starsCount = useStarsCount();
+  const number = useCountAnimation(start, starsCount, duration);
+  const ref = useRef(null);
 
   useEffect(() => {
+    const scrollHandler = () => {
+      window.pageYOffset > 10 ? setTop(false) : setTop(true);
+    };
+
     scrollHandler();
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-  }, [top]);
-
-  let value: number;
-
-  useEffect(() => {
-    const fetchStarsCount = async () => {
-      try {
-        const response = await fetch(
-          "https://api.github.com/repos/keploy/keploy"
-        );
-        if (response.ok) {
-          const data = await response.json();
-          // Use setStarsCount to update the state
-          setStarsCount(data.stargazers_count);
-          console.log(data.stargazers_count);
-        } else {
-          console.error("Failed to fetch stars count", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching stars count:", error);
-      }
-    };
-
-    fetchStarsCount();
-  }, [starsCount]); // Include starsCount as a dependency
-
-  let increment = Math.floor(
-    Math.abs(start - starsCount) / (duration / interval)
-  );
-  if (increment === 0) {
-    increment = 1;
-  }
-  const ref = useRef(null);
-  const isInView = useInView(ref);
-
-  useEffect(() => {
-    if (isInView) {
-      let timer = setInterval(() => {
-        if (reverse) {
-          if (number > starsCount) {
-            setNumber((num) => {
-              let newstarsCount = num - increment;
-              if (newstarsCount < starsCount) {
-                newstarsCount = starsCount;
-                if (timer) clearInterval(timer);
-              }
-              return newstarsCount;
-            });
-          } else if (timer) {
-            clearInterval(timer);
-          }
-        } else {
-          if (number < starsCount) {
-            setNumber((num) => {
-              let newstarsCount = num + increment;
-              if (newstarsCount > starsCount) {
-                newstarsCount = starsCount;
-                if (timer) clearInterval(timer);
-              }
-              return newstarsCount;
-            });
-          } else if (timer) {
-            clearInterval(timer);
-          }
-        }
-      }, interval);
-    }
-  }, [isInView]);
+  }, []);
 
   return (
     <p className={className} ref={ref}>
-      {Intl.NumberFormat().format(starsCount)}
+      {Intl.NumberFormat().format(number)}
     </p>
   );
 }
