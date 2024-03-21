@@ -45,7 +45,7 @@ export default function Features() {
           {props.icon}
           </div>
         </div>
-        <h4 className="text-xl text-center font-bold leading-snug tracking-tight mb-1">{props.heading}</h4>
+        <h4 className="text-xl text-center text-accent-200 font-bold leading-snug tracking-tight mb-1">{props.heading}</h4>
         <p className="text-gray-600 text-center">{props.subHeading}</p>
       </div>
     );
