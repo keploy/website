@@ -38,9 +38,34 @@ export const DependencyWaitTimeIcon = () => (
     </svg>
   );
 
+  export const FasterDevIcon = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M13 2L3 14h9l-1 8 9-12h-9l1-8z" />  </svg>);
+  export const IsolationIcon = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <rect x="3" y="3" width="6" height="6" rx="1" />    <rect x="15" y="3" width="6" height="6" rx="1" />    <rect x="3" y="15" width="6" height="6" rx="1" />    <rect x="15" y="15" width="6" height="6" rx="1" />  </svg>);
+  export const TestingScenariosIcon = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">    <path d="M3 17l6-6-4-4V7l4 4 6-6" />    <circle cx="17" cy="17" r="3" />  </svg>);
+  export const CostEffectivenessIcon = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">    <path d="M12 1v22M5 7h14M3 14h18M8 11l1 1 3-3M16 16l-1 1-3-3" />  </svg>);
+  export const EarlyDetectionIcon = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">    <path d="M12 9v6l3 3m4-12v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9" />    <path d="M6 6l12-4v4H6z" />  </svg>);
+  export const MdiLightningBolt = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M13 2L3 14h9l-1 8 9-12h-9l1-8z" />  </svg>);
+  export const FluentPuzzleCubePiece20Filled = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <rect x="3" y="3" width="6" height="6" rx="1" />    <rect x="15" y="3" width="6" height="6" rx="1" />    <rect x="3" y="15" width="6" height="6" rx="1" />    <rect x="15" y="15" width="6" height="6" rx="1" />  </svg>);
+  export const CollaborationHandshakeIcon = () => (
+    <svg
+      className="w-16 h-16 p-1 -mt-1 mb-2"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#FF914D"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M8 13v-1a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v1" />
+      <path d="M16 16l1 1c1.5 1.5 2 3 0 6-1 1-3.5 1-5 0l-1-1" />
+      <path d="M16 16l-5-5" />
+      <path d="M8 11l-5 5" />
+    </svg>
+  );export const RiCheckboxMultipleLine = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M3 17l6-6-4-4V7l4 4 6-6" />    <circle cx="17" cy="17" r="3" />  </svg>);
+  export const StreamlineBrowserCheck = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <polyline points="3 7 9 7 12 3 21 3 21 21 3 21 3 7" />    <path d="M9 15l2 2 4-4" />  </svg>);
+  export const PsPiggyBankCoins = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M20 16V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2z" />    <circle cx="12" cy="16" r="1" />    <path d="M8 20a2 2 0 0 0 2-2" />    <path d="M16 20a2 2 0 0 1-2-2" />  </svg>);
+  export const MaterialSymbolsLightEarlyOnOutline = () => (  <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 24 24" fill="#FF914D" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">    <path d="M12 9v6l3 3m4-12v12a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9" />    <path d="M6 6l12-4v4H6z" />  </svg>);
 
-
-export const blocksData = [
+export const featuresData = [
     {
       title: 'Dependency Wait Time',
       icon:<DependencyWaitTimeIcon />,
@@ -216,3 +241,38 @@ export const socialLinks: SocialLink[] = [
           description:'Follow us and connect with other Keploy engineers!'
         },
   ];
+
+
+  export const blocksData = [
+    {
+      title: "Faster Development and Testing",
+      description: "Enables teams to validate components without waiting for the entire system to be implemented.",
+      SvgComponent: MdiLightningBolt,
+    },
+    {
+      title: "Isolation of Components",
+      description: "Ensure that each part of the system can be tested without relying on the complete system.",
+      SvgComponent: FluentPuzzleCubePiece20Filled,
+    },
+    {
+      title: "Improved Collaboration",
+      description: "Promotes collaboration between teams by allowing them to work independently on different components.",
+      SvgComponent: CollaborationHandshakeIcon,
+    },
+    {
+      title: "Comprehensive Testing Scenarios",
+      description: "Simulate various scenarios helping testers assess different system responses and identify potential issues before deployment.",
+      SvgComponent: StreamlineBrowserCheck,
+    },
+    {
+      title: "Cost-Effectiveness",
+      description: "Less time and effort required to create and maintain compared to fully functional services.",
+      SvgComponent: PsPiggyBankCoins,
+    },
+    {
+      title: "Early Detection of Issues",
+      description: "Allows teams to identify and address problems in the early stages of development, reducing the likelihood of costly fixes later in the process.",
+      SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+    },
+  ];
+  

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { blocksData } from "../utils/stub-generation";
+import { featuresData } from "../utils/stub-generation";
 
 export default function Features() {
     return (
@@ -22,13 +22,13 @@ export default function Features() {
           {/* Grid of features */}
           <div className="flex flex-col flex-wrap justify-center">
           <div className="flex flex-col sm:flex-row justify-center">
-        {blocksData.slice(0, 3).map((block, index) => (
-          <TextBlock key={index} heading={block.title} subHeading={block.description} icon={block.icon} />
+        {featuresData.slice(0, 3).map((feature, index) => (
+          <TextBlock key={index} heading={feature.title} subHeading={feature.description} icon={feature.icon} />
         ))}
       </div>
       <div className="flex flex-col sm:flex-row justify-center">
-        {blocksData.slice(3, 5).map((block, index) => (
-          <TextBlock key={index} heading={block.title} subHeading={block.description} icon={block.icon}  />
+        {featuresData.slice(3, 5).map((feature, index) => (
+          <TextBlock key={index} heading={feature.title} subHeading={feature.description} icon={feature.icon}  />
         ))}
       </div>
     </div>
