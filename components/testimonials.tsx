@@ -70,7 +70,6 @@ const Testimonial = ({
           scrub: 1,
           start: "top bottom",
           end: "bottom+=100 bottom",
-          markers: true,
         },
         opacity: 1,
         stagger: 1,
@@ -82,7 +81,7 @@ const Testimonial = ({
 
   return (
     <div ref={container} className="px-4">
-      <p className="text-lg text-white md:text-2xl quote-container">
+      <p className="text-lg md:text-2xl quote-container">
         <span className="quote-character opacity-[0.2]">"</span>
         {content.split("").map((character, index) => {
           if (character) {
@@ -96,11 +95,13 @@ const Testimonial = ({
 
         <span className="quote-character opacity-[0.2]">"</span>
       </p>
-      <div className="flex items-center gap-4 px-4 py-4 mt-8 text-sm text-white rounded-lg md:text-xl bg-gradient-to-r from-secondary-500">
+      <div className="relative flex items-center gap-4 px-4 py-4 mt-8 text-sm rounded-lg md:text-xl ">
         <Image src={image} alt="logo" className="w-auto h-4" />
         <p className="font-bold">
           {author} <span className="text-lg md:text-2xl">/</span> {company}
         </p>
+
+        <div className="absolute top-0 bottom-0 left-0 w-1/2 rounded-md bg-gradient-to-r from-primary-200 -z-1"></div>
       </div>
     </div>
   );
@@ -109,8 +110,8 @@ export default function Testimonials() {
   const [index, setIndex] = useState(0);
 
   return (
-    <section className="relative py-24 bg-gradient-to-tr from-secondary-400 to-secondary-100">
-      <div className="flex flex-col max-w-6xl gap-16 mx-auto">
+    <section className="relative py-24">
+      <div className="flex flex-col max-w-6xl gap-16 mx-auto ">
         {testimonialDataMobile.map((testimonial, index) => (
           <Testimonial
             key={index}
