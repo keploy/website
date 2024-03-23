@@ -39,7 +39,7 @@ const Testimonial = ({
 
   return (
     <div ref={container} className="max-w-6xl px-4 mx-auto my-16">
-      <p className="text-lg md:text-2xl quote-container">
+      <p className="text-lg md:text-2xl quote-container text-secondary-300">
         <span className="quote-character opacity-[0.2]">"</span>
         {content.split("").map((character, index) => {
           if (character) {
@@ -55,7 +55,7 @@ const Testimonial = ({
       </p>
       <div className="relative flex items-center gap-4 px-4 py-4 mt-8 text-sm rounded-lg md:text-xl ">
         <Image src={image} alt="logo" className="w-auto h-4" />
-        <p className="font-bold">
+        <p className="font-bold text-accent-200">
           {author} <span className="text-lg md:text-2xl">/</span> {company}
         </p>
 
