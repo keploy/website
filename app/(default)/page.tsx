@@ -1,15 +1,14 @@
 import Footer from "@/components/ui/footer";
 
 export const metadata = {
-  title: "Keploy - Open Source Stubs and API Test Generator for Developer",
-  description:
-    "Keploy is AI based test case and stubs/mocks generator for e2e testing. 90% test coverage in minutes with open source testing tool",
-};
+  title: 'Keploy - Open Source Stubs and API Test Generator for Developer',
+  description: 'Keploy is AI based test case and stubs/mocks generator for e2e testing. 90% test coverage in minutes with open source testing tool',
+}
 
-import Hero from "@/components/hero";
-import Features from "@/components/features";
-import ProblemBlocks from "@/components/problem-blocks";
-import Newsletter from "@/components/newsletter";
+import Hero from '@/components/hero'
+import Features from '@/components/features'
+import ProblemBlocks from '@/components/problem-blocks'
+import Newsletter from '@/components/newsletter'
 import Language from "@/components/language";
 import Community from "@/components/community";
 
@@ -38,26 +37,29 @@ const testimonialData = [
 export default function Home() {
   return (
     <>
-      <Hero />
-      <ProblemBlocks />
-      <Features />
-      <Testimonial
-        content={testimonialData[0].content}
-        author={testimonialData[0].author}
-        company={testimonialData[0].company}
-        image={testimonialData[0].image}
-      />
-      <Community />
-      <Testimonial
-        content={testimonialData[1].content}
-        author={testimonialData[1].author}
-        company={testimonialData[1].company}
-        image={testimonialData[1].image}
-      />
-      <Language />
-      <Newsletter />
+        <Hero />
+        <ProblemBlocks />
+        <Features />
+        <Community/>
+  
+        <Testimonial
+          content={testimonialData[0].content}
+          author={testimonialData[0].author}
+          company={testimonialData[0].company}
+          image={testimonialData[0].image}
+        />
+        <Community />
+        <Testimonial
+          content={testimonialData[1].content}
+          author={testimonialData[1].author}
+          company={testimonialData[1].company}
+          image={testimonialData[1].image}
+        />
+        <Language />
+        <Newsletter />
 
-      <Footer />
+        <Footer />
     </>
-  );
+  )
 }
+
