@@ -26,8 +26,8 @@ const Testimonial = ({
         scrollTrigger: {
           trigger: ".quote-container",
           scrub: 1,
-          start: "top+=100 bottom",
-          end: "bottom+=100 bottom",
+          start: "top+=200 bottom",
+          end: "bottom+=300 bottom",
         },
         opacity: 1,
         stagger: 1,
@@ -37,7 +37,7 @@ const Testimonial = ({
         scrollTrigger: {
           trigger: ".gradient-container",
           scrub: 1,
-          start: "top+=100 bottom",
+          start: "bottom+=20 bottom",
           end: "bottom+=300 bottom",
         },
         width: "100%",
@@ -69,7 +69,7 @@ const Testimonial = ({
           {author} <span className="text-lg md:text-2xl">/</span> {company}
         </p>
 
-        <div className="absolute top-0 bottom-0 left-0 w-0 rounded-md bg-primary-200 -z-1 gradient-container"></div>
+        <div className="absolute top-0 bottom-0 left-0 w-0 rounded-md bg-gradient-to-r from-primary-200 -z-1 gradient-container"></div>
       </div>
     </div>
   );
