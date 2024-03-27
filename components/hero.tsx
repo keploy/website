@@ -1,9 +1,17 @@
 import VideoThumb from '@/public/images/demo-thumbnail.png'
 import ModalVideo from '@/components/modal-video'
-import Image from "next/image";
-import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg";
 import React from "react";
-import CopyButton from './utils/copyButton';
+import Image from 'next/image';
+import Pixis from "@/public/images/users/pixis.png"
+import InstaAstro from "@/public/images/users/InstaAstro-Logo.svg"
+import Amazon from "@/public/images/users/Amazon-Logo.png"
+import Reliance from "@/public/images/users/reliance-retail-logo.png"
+import Whatfix from "@/public/images/users/Whatfix_Logo_RGB_Color.png"
+import MarutiSuzuki from "@/public/images/users/Logo_for_Maruti_Suzuki.svg"
+import Nutanix from "@/public/images/users/Nutanix_Logo.svg"
+import LambdaTest from "@/public/images/users/LambdaTest-320-180.png"
+import LeadSquare from "@/public/images/users/leadsquare.png"
+import Edureka from "@/public/images/users/edureka_logo.png"
 
 export default function Hero() {
   return (
@@ -84,66 +92,144 @@ export default function Hero() {
           <div className="relative inline-flex flex-nowrap no-scrollbar ">
             <div className="py-4 md:py-12 animate-marquee whitespace-nowrap flex items-center w-max">
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w- md:w-40" src="/images/users/pixis.png" alt="Pixis Testimonial" />
+                <Image 
+                  className="relative w-32 md:w- md:w-40" 
+                  src={Pixis} 
+                  alt="Pixis Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/InstaAstro-Logo.svg" alt="Instaastro Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={InstaAstro} 
+                  alt="Instaastro Testimonial" 
+                />
               </span>
               <span className="mx-2 flex-none">
-                <img className="relative w-32  md:pt-2 md:w-40" src="/images/users/Amazon-Logo.png" alt="Amazon" />
+                <Image 
+                  className="relative w-32  md:pt-2 md:w-40" 
+                  src={Amazon}
+                  alt="Amazon" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:pb-3  md:w-40" src="/images/users/reliance-retail-logo.png" alt="Reliance Testimonial" />
+                <Image 
+                  className="relative w-32 md:pb-3  md:w-40" 
+                  src={Reliance}
+                  alt="Reliance Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/Whatfix_Logo_RGB_Color.png" alt="Whatfix Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={Whatfix}
+                  alt="Whatfix Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/Logo_for_Maruti_Suzuki.svg" alt="Pixis Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={MarutiSuzuki}
+                  alt="Maruti Suzuki Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/Nutanix_Logo.svg" alt="Pixis Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={Nutanix}
+                  alt="Nutanix Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/LambdaTest-320-180.png" alt="Lambdatest Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={LambdaTest}
+                  alt="Lambdatest Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/leadsquare.png" alt="Leadsquare Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={LeadSquare}
+                  alt="Leadsquare Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/edureka_logo.png" alt="Edureka Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={Edureka}
+                  alt="Edureka Testimonial" 
+                />
               </span>
             </div>
             <div className="py-4 md:py-12 animate-marquee whitespace-nowrap flex items-center w-max" aria-hidden="true">
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w- md:w-40" src="/images/users/pixis.png" alt="Pixis Testimonial" />
+                <Image 
+                  className="relative w-32 md:w- md:w-40" 
+                  src={Pixis}
+                  alt="Pixis Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/InstaAstro-Logo.svg" alt="Instaastro Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={InstaAstro}
+                  alt="Instaastro Testimonial" 
+                />
               </span>
               <span className="mx-2 flex-none">
-                <img className="relative w-32  md:pt-2 md:w-40" src="/images/users/Amazon-Logo.png" alt="Amazon" />
+                <Image 
+                  className="relative w-32  md:pt-2 md:w-40" 
+                  src={Amazon}
+                  alt="Amazon" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:pb-3  md:w-40" src="/images/users/reliance-retail-logo.png" alt="Reliance Testimonial" />
+                <Image 
+                  className="relative w-32 md:pb-3  md:w-40" 
+                  src={Reliance}
+                  alt="Reliance Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/Whatfix_Logo_RGB_Color.png" alt="Whatfix Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={Whatfix}
+                  alt="Whatfix Testimonial" />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/Logo_for_Maruti_Suzuki.svg" alt="Pixis Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={MarutiSuzuki}
+                  alt="Maruti Suzuki Testimonial" />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/Nutanix_Logo.svg" alt="Pixis Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={Nutanix}
+                  alt="Nutanix Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/LambdaTest-320-180.png" alt="Lambdatest Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={LambdaTest}
+                  alt="Lambdatest Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/leadsquare.png" alt="Leadsquare Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={LeadSquare}
+                  alt="Leadsquare Testimonial" 
+                />
               </span>
               <span className="mx-4 flex-none">
-                <img className="relative w-32 md:w-40" src="/images/users/edureka_logo.png" alt="Edureka Testimonial" />
+                <Image 
+                  className="relative w-32 md:w-40" 
+                  src={Edureka}
+                  alt="Edureka Testimonial" 
+                />
               </span>
             </div>
           </div>
