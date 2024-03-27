@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Transition } from '@headlessui/react';
-import Image from 'next/image';
-import FeaturesBg from '@/public/images/record-tc4155904b397e0fbc1237.gif';
-import TestDeduplication from '@/public/images/record-replaye538dde2a6e078f1b5a5.gif';
-import NativeIntegration from '@/public/images/replay-tc31305e1d2286fe485b27.gif';
-import FeaturesElement from '@/public/images/features-element.png';
-import testAndStubsGen from '@/public/images/TestGenHighlighted.json';
-import deDuplication from '@/public/images/CaptureAndReplayV2.json';
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
-import CopyButton from '@/public/images/icons8-copy-96.png';
-import ClipboardJS from 'clipboard';
+import React, { useState, useRef, useEffect } from "react";
+import { Transition } from "@headlessui/react";
+import Image from "next/image";
+import FeaturesBg from "@/public/images/record-tc4155904b397e0fbc1237.gif";
+import TestDeduplication from "@/public/images/record-replaye538dde2a6e078f1b5a5.gif";
+import NativeIntegration from "@/public/images/replay-tc31305e1d2286fe485b27.gif";
+import FeaturesElement from "@/public/images/features-element.png";
+import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
+import deDuplication from "@/public/images/CaptureAndReplayV2.json";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import CopyButton from "@/public/images/icons8-copy-96.png";
+import ClipboardJS from "clipboard";
 
-import gsap from 'gsap'; // <-- import GSAP
-import { useGSAP } from '@gsap/react'; // <-- import the hook
-import { ScrollTrigger } from 'gsap/all';
-import _ScrollTrigger from 'gsap/ScrollTrigger';
-import FeaturesMobileView from './FeatureMoblieView';
+import gsap from "gsap"; // <-- import GSAP
+import { useGSAP } from "@gsap/react"; // <-- import the hook
+import { ScrollTrigger } from "gsap/all";
+import _ScrollTrigger from "gsap/ScrollTrigger";
+import FeaturesMobileView from "./FeatureMoblieView";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +36,7 @@ const TestAndStubGenerationImage = () => {
         >
           <Controls
             visible={false}
-            buttons={['play', 'repeat', 'frame', 'debug']}
+            buttons={["play", "repeat", "frame", "debug"]}
           />
         </Player>
       </div>
@@ -59,7 +59,7 @@ const TestDuplicationImage = () => {
       >
         <Controls
           visible={false}
-          buttons={['play', 'repeat', 'frame', 'debug']}
+          buttons={["play", "repeat", "frame", "debug"]}
         />
       </Player>
       <CopyCode />
@@ -82,9 +82,9 @@ const CopyCode = () => {
       target: () => codeRef.current!,
     });
 
-    clipboard.on('success', (e) => {
+    clipboard.on("success", (e) => {
       // You can customize the success behavior here (e.g., show a notification).
-      console.log('Copied to clipboard:', e.text);
+      console.log("Copied to clipboard:", e.text);
     });
 
     return () => {
@@ -112,7 +112,7 @@ const CopyCode = () => {
             ref={copyButtonRef}
             onClick={() =>
               navigator.clipboard.writeText(
-                'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
+                "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"
               )
             }
             className="ml-2"
@@ -152,53 +152,54 @@ export default function Features() {
 
   useGSAP(
     () => {
-      const details = gsap.utils.toArray('.detail');
+      const details: any = gsap.utils.toArray(".detail");
 
-      const images: any = gsap.utils.toArray('.imageToShow');
+      const images: any = gsap.utils.toArray(".imageToShow");
+
+      gsap.set(images[1], { opacity: 0 });
 
       ScrollTrigger.create({
-        trigger: '.content-container',
-        start: 'top top',
-        end: 'bottom bottom',
-        pin: '.right-content',
+        trigger: ".content-container",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".right-content",
       });
 
       ScrollTrigger.create({
-        trigger: '.content-container',
-        start: 'top top',
-        end: 'bottom bottom',
-        pin: '.heading-text',
+        trigger: ".content-container",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".heading-text",
       });
 
-      details.forEach((detail: any, index) => {
+      details.forEach((detail: any) => {
         gsap.to(detail, {
           scrollTrigger: {
             trigger: detail,
-            start: 'top-=400 middle',
-            end: 'middle middle',
+            start: "center center",
             scrub: 1,
           },
           opacity: 0,
         });
+      });
 
-        ScrollTrigger.create({
-          trigger: detail,
-          start: 'top-=600 middle',
-          end: 'middle -20%',
-          onUpdate: () => [
-            images.forEach((image: any, i: number) => {
-              if (i === index) {
-                gsap.to(image, {
-                  opacity: 1,
-                });
-              } else {
-                gsap.to(image, {
-                  opacity: 0,
-                });
-              }
-            }),
-          ],
-        });
+      gsap.to(images[0], {
+        scrollTrigger: {
+          trigger: details[1],
+          start: "center center",
+          end: "center center",
+          scrub: 1,
+        },
+        opacity: 0,
+      });
+      gsap.to(images[1], {
+        scrollTrigger: {
+          trigger: details[1],
+          start: "center center",
+          end: "center center",
+          scrub: 1,
+        },
+        opacity: 1,
       });
     },
     { scope: container }
@@ -218,7 +219,7 @@ export default function Features() {
           </p>
         </div>
         <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh]  mx-auto  content-container">
-          <div className=" space-y-[50vh]  ">
+          <div className="mt-20 space-y-[50vh]  ">
             <div
               className="flex items-center detail"
               data-marker-content="img-1"
@@ -233,7 +234,7 @@ export default function Features() {
                     <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
                   </svg>
                 }
-                heading={' Test and Stubs Generation'}
+                heading={" Test and Stubs Generation"}
                 description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
               />
             </div>
@@ -251,7 +252,7 @@ export default function Features() {
                     />
                   </svg>
                 }
-                heading={'Test Deduplication'}
+                heading={"Test Deduplication"}
                 description="Automatically detect and remove duplicate tests, ideal for scenarios recorded in live-environments."
               />
             </div>
@@ -269,7 +270,7 @@ export default function Features() {
                     />
                   </svg>
                 }
-                heading={'Native Integration'}
+                heading={"Native Integration"}
                 description="Merge Keploy tests with testing libraries(JUnit, go-test, py-test, jest) for combined test coverage."
               />
             </div>
@@ -277,17 +278,6 @@ export default function Features() {
           <div className="flex items-center [&>*]:absolute relative  justify-center h-min [&>*]:top-0 right-content">
             <TestAndStubGenerationImage />
             <TestDuplicationImage />
-            <div className="bottom-0 inline-flex flex-col imageToShow">
-              <Image
-                className="w-full h-auto mx-auto rounded md:max-w-none"
-                src={NativeIntegration}
-                width={400}
-                height="462"
-                alt="Features bg"
-              />
-              {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-              {/*<div className="absolute left-0 w-full text-left transform md:max-w-none animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
-            </div>
           </div>
         </div>
       </section>

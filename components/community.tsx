@@ -1,12 +1,12 @@
-import React from 'react';
-import './community.css';
-import Image from 'next/image';
-import CommunityBunny from '@/public/images/community-bunny.png';
-import GithubSvg from '@/public/images/social/github.svg';
-import TwitterSvg from '@/public/images/social/twitter.svg';
-import SlackSvg from '@/public/images/social/slack.svg';
-import YoutubeSvg from '@/public/images/social/youtube.svg';
-import LinkedinSvg from '@/public/images/social/linkedin.svg';
+import React from "react";
+import "./community.css";
+import Image from "next/image";
+import CommunityBunny from "@/public/images/community-bunny.png";
+import GithubSvg from "@/public/images/social/github.svg";
+import TwitterSvg from "@/public/images/social/twitter.svg";
+import SlackSvg from "@/public/images/social/slack.svg";
+import YoutubeSvg from "@/public/images/social/youtube.svg";
+import LinkedinSvg from "@/public/images/social/linkedin.svg";
 
 type cardSurrondStyle = {
   transform: string;
@@ -58,7 +58,7 @@ function SocialLinkCard({
       rel="noopener noreferrer"
       style={showExtraStyle ? { ...style } : {}}
       className={`${
-        showExtraStyle ? 'circle' : 'w-3/4 mx-auto mb-5'
+        showExtraStyle ? "circle" : "w-3/4 mx-auto mb-5"
       } z-10 bg-white shadow-md rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start group transition duration-300`}
     >
       <div className="w-12 h-12 text-center sm:mr-2">
@@ -78,34 +78,34 @@ function SocialLinkCard({
 export default function Community() {
   const cardsData: CardData[] = [
     {
-      link: 'https://twitter.com/Keployio',
+      link: "https://twitter.com/Keployio",
       svgIcon: TwitterSvg,
-      platformName: 'Twitter',
+      platformName: "Twitter",
       description: "Let's talk about regression testing!",
     },
     {
-      link: 'https://github.com/keploy/keploy',
+      link: "https://github.com/keploy/keploy",
       svgIcon: GithubSvg,
-      platformName: 'Github',
-      description: 'Contribute code to Keploy or report a bug',
+      platformName: "Github",
+      description: "Contribute code to Keploy or report a bug",
     },
     {
-      link: 'https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A',
+      link: "https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A",
       svgIcon: SlackSvg,
-      platformName: 'Slack',
-      description: 'Connect and chat with other Keploy users',
+      platformName: "Slack",
+      description: "Connect and chat with other Keploy users",
     },
     {
-      link: 'https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg',
+      link: "https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg",
       svgIcon: YoutubeSvg,
-      platformName: 'Youtube',
-      description: 'Learn with Keploy team and community videos',
+      platformName: "Youtube",
+      description: "Learn with Keploy team and community videos",
     },
     {
-      link: 'https://www.linkedin.com/company/74471957',
+      link: "https://www.linkedin.com/company/74471957",
       svgIcon: LinkedinSvg,
-      platformName: 'Linkedin',
-      description: 'Follow us and connect with other Keploy engineers!',
+      platformName: "Linkedin",
+      description: "Follow us and connect with other Keploy engineers!",
     },
   ];
 
@@ -138,7 +138,7 @@ export default function Community() {
   ));
 
   return (
-    <section className="relative py-8 xl:-mt-[20vh]">
+    <section className="relative py-8 ">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="h2 text-secondary-300">
           🐰 Join the Keploy community ✨
