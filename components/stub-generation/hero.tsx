@@ -2,6 +2,8 @@ import VideoThumb from '@/public/images/demo-thumbnail.png';
 import ModalVideo from '@/components/modal-video';
 import Image from "next/image";
 import React from "react";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 
 export default function Hero() {
   return (
@@ -16,7 +18,7 @@ export default function Hero() {
           <div className="flex flex-wrap justify-center items-center gap-16 ">
             <div className="md:flex-1">
               <div className="text-left">
-                <h1 className="text-5xl lg:text-6xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-24">
+                <h1 className="text-5xl lg:text-5.5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-24">
                   Effortless Stub Generation
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-200"> for Comprehensive Test Coverage!</span>
                 </h1>
@@ -26,14 +28,20 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="md:flex-1 flex justify-center">
-              <Image
-                src={VideoThumb}
-                width={768}
-                height={432}
-                alt="Keploy Demo video"
-                className="shadow-lg"
-              />
+            <div className="md:flex-1 ">
+                        <Player
+                          autoplay
+                          loop
+                          src={testAndStubsGen}
+                          className="w-full"
+                          // style={{ height: "500px", width: "370px" }}
+                          keepLastFrame={true}
+                        >
+                          <Controls
+                            visible={false}
+                            buttons={["play", "repeat", "frame", "debug"]}
+                          />
+                        </Player>
             </div>
 
           </div>
