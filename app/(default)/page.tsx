@@ -8,11 +8,31 @@ export const metadata = {
 import Hero from '@/components/hero'
 import Features from '@/components/features'
 import ProblemBlocks from '@/components/problem-blocks'
-import Testimonials from '@/components/testimonials'
 import Newsletter from '@/components/newsletter'
 import Language from "@/components/language";
 import Community from "@/components/community";
-import TwitterTestimonials from "@/components/TwitterTestimonials";
+
+import MarutiLogo from "@/public/images/users/Logo_for_Maruti_Suzuki.svg";
+import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
+import { Testimonial } from "@/components/testimonial";
+
+const testimonialData = [
+  {
+    image: MarutiLogo,
+    content:
+      "Our recent collaboration with Keploy was truly remarkable. Keploy team provided exceptional support and remained highly proactive throughout the entire experience. Keploy platform has added business value to Maruti Suzuki.",
+    author: "Executive Member",
+    company: "@Maruti Suzuki",
+  },
+  {
+    image: NutanixLogo,
+    content:
+      "Makes it easy to unit test my complex systems with realistic test data.",
+    author: "Staff Engineer",
+    company: "@Nutanix",
+  },
+  // Add more testimonials as needed
+];
 
 export default function Home() {
   return (
@@ -20,9 +40,20 @@ export default function Home() {
         <Hero />
         <ProblemBlocks />
         <Features />
-        <Community/>
-        <Testimonials />
-        <TwitterTestimonials/>
+  
+        <Testimonial
+          content={testimonialData[0].content}
+          author={testimonialData[0].author}
+          company={testimonialData[0].company}
+          image={testimonialData[0].image}
+        />
+        <Community />
+        <Testimonial
+          content={testimonialData[1].content}
+          author={testimonialData[1].author}
+          company={testimonialData[1].company}
+          image={testimonialData[1].image}
+        />
         <Language />
         <Newsletter />
 
