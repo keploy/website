@@ -32,7 +32,7 @@ const createCircleStyles = (
   totalCircles: number,
   index: number,
   containerWidth: number
-) : cardSurrondStyle => {
+): cardSurrondStyle => {
   const angle = 360 - 90;
   const dangle = 360 / totalCircles;
   const currentAngle = angle + dangle * index;
@@ -61,7 +61,7 @@ function SocialLinkCard({
         showExtraStyle ? "circle" : "w-3/4 mx-auto mb-5"
       } z-10 bg-white shadow-md rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start group transition duration-300`}
     >
-      <div className="text-center w-12 h-12 sm:mr-2">
+      <div className="w-12 h-12 text-center sm:mr-2">
         <Image src={svgIcon} alt={platformName} />
       </div>
       <div className="mt-2 ml-2">
@@ -138,7 +138,7 @@ export default function Community() {
   ));
 
   return (
-    <section className="relative py-8">
+    <section className="relative py-8 ">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="h2 text-secondary-300">
           🐰 Join the Keploy community ✨
@@ -151,7 +151,7 @@ export default function Community() {
           <Image
             src={CommunityBunny}
             alt="Image"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white"
+            className="absolute -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2"
           />
         </div>
         <div className="md:hidden">

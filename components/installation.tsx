@@ -12,7 +12,7 @@ import { red } from "@mui/material/colors";
 const Installation = () => {
   const [checkedIndex, setCheckedIndex] = useState<number | null>(null);
   const [open, setOpen] = React.useState(false);
-  
+
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
@@ -109,15 +109,13 @@ const Installation = () => {
             </div>
           </div>
         </div>
-        <div
-          className="max-w-4xl mx-auto pb-9 md:pb-16 "
-          data-aos="zoom-y-out"
-        >
+        <div className="max-w-4xl mx-auto pb-9 md:pb-16 " data-aos="zoom-y-out">
           <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
             2. Record 🎬
           </h1>
           <p className=" text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
-            Start your app with keploy to convert API calls as tests and mocks/stubs. Make some API calls to your app.
+            Start your app with keploy to convert API calls as tests and
+            mocks/stubs. Make some API calls to your app.
           </p>
 
           <div className="flex flex-row gap-5">
@@ -137,8 +135,23 @@ const Installation = () => {
               />
             </div>
           </div>
-            <p className=" text-gray-600 mb-0 mt-2 text-xs md:text-sm lg:text-base">
-              `CMD_TO_RUN_APP` is the command to start you app. Say,<code className="text-gray-800">`python main.py`</code> or <code className="text-gray-800">`npm start`</code> or <code className="text-gray-800">`java -jar xyz.jar`</code> or<code className="text-gray-800">`go run main.go`</code> 
+          <p className=" text-gray-700 mb-0 mt-2 text-xs md:text-sm lg:text-base leading-6">
+            <code className="text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">CMD_TO_RUN_APP</code> is the command to start you app. Say,
+            <code className="text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">
+              python main.py
+            </code>{" "}
+            or{" "}
+            <code className="text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">
+              npm start
+            </code>{" "}
+            or{" "}
+            <code className="text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">
+              java -jar xyz.jar
+            </code>{" "}
+            or
+            <code className="text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">
+              go run main.go
+            </code>
           </p>
         </div>
         <div className="max-w-4xl mx-auto pb-12 md:pb-16" data-aos="zoom-y-out">
@@ -146,7 +159,8 @@ const Installation = () => {
             3. Test 🧪
           </h1>
           <p className=" text-gray-700 mb-2 mt-1 text-xs md:text-sm lg:text-base">
-            Shut down Database,Redis,Kafka, other services. Keploy don't need those during test. 
+            Shut down Database,Redis,Kafka, other services. Keploy don't need
+            those during test.
           </p>
 
           <div className="flex flex-row gap-5">
@@ -169,25 +183,28 @@ const Installation = () => {
         </div>
         <div className="flex justify-center">
           <a
-            className="btn text-secondary-300 bg-primary-300 hover:font-semibold w-full mb-4 sm:w-auto sm:mb-0"
+            className="btn text-secondary-300 text-center bg-primary-300 text-xs md:text-sm lg:text-base hover:font-semibold w-full mb-4 sm:w-auto sm:mb-0"
             href="https://keploy.io/docs"
           >
             Explore Test Coverage Guide{" "}
           </a>
         </div>
-        <Snackbar
-          open={open}
-          autoHideDuration={3000}
-          onClose={handleClose}
-          message="Copied to Clipboard"
-          action={action}
-          ContentProps={{
-            sx:{
-              background:"black",
-              color:"#86EFAC"
-            }
-          }}
-        />
+        <div className=" max-w-sm">
+          <Snackbar
+            open={open}
+            autoHideDuration={2000}
+            onClose={handleClose}
+            message="Copied to Clipboard"
+            action={action}
+            ContentProps={{
+              sx: {
+                background: "black",
+                color: "#86EFAC",
+                maxWidth: "250px",
+              },
+            }}
+          />
+        </div>
       </div>
     </div>
   );
