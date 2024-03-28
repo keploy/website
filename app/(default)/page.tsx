@@ -41,8 +41,6 @@ export default function Home() {
         <Hero />
         <ProblemBlocks />
         <Features />
-        <Installation/>
-        <Community/>
   
         <Testimonial
           content={testimonialData[0].content}
