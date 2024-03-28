@@ -3,7 +3,7 @@ import { featuresData } from "../utils/stub-generation";
 
 export default function Features() {
   return (
-    <section className="bg-neutral-100 text-gray-900 py-20 px-4 sm:px-6">
+    <section className="bg-neutral-100 text-gray-900 pt-20 px-4 sm:px-6">
       <div className="container mx-auto px-4">
 
         {/* Section Heading */}

@@ -31,7 +31,7 @@ export default function Banner() {
               </div>
             </div>
 
-            <div className="absolute right-0 bottom-0 ">
+            <div className="absolute right-0 bottom-0 hidden md:block ">
               <Image src={BannerBunny} alt="Image" />
             </div>
           </div>
