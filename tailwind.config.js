@@ -180,7 +180,8 @@ module.exports = {
                 '90': '0.9',
             },
             scale: {
-                '98': '.98'
+                '98': '.98',
+                '101': '1.01'
             },
             animation: {
                 float: 'float 3s ease-in-out infinite',

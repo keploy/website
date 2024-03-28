@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import Tweet from "./tweets";
 const tweets = [
   {
@@ -110,52 +111,94 @@ const tweets = [
       "Looks amazing. I hear about eBPF a lot, but I don't know what it is. The automated testing tool “Keploy” using eBPF is amazing",
   },
 ];
-const TwitterTestimonials = () => { 
+const TwitterTestimonials = () => {
+  const [isMobile,setIsMobile] = useState(false);
+  useEffect(()=>{
+    const handleSize=()=>{
+      setIsMobile(window.innerWidth>=1023);
+    }
+    handleSize();
+    window.addEventListener("resize",handleSize);
+    return()=>{
+      window.removeEventListener("resize",handleSize)
+    }
+  },[]) 
   return (
     <>
       <div className="relative mt-20">
         <div className=" relative mt-2 mb-8 z-10 max-w-5xl mx-auto flex flex-col justify-center">
           <h3 className=" text-center h2 text-secondary-300">
-            Thoughts from Our Community
+          We love when users talk about Keploy..
           </h3>
-          <div className="flex flex-row max-lg:flex-col mt-10">
-            <div className="flex flex-col">
-              {tweets.slice(0, 4).map((tweet, index) => (
-                <Tweet
-                  key={index}
-                  avatar={tweet.avatar}
-                  name={tweet.name}
-                  id={tweet.id}
-                  post={tweet.post}
-                  content={tweet.content}
-                />
-              ))}
-            </div>
-            <div className="flex flex-col">
-              {tweets.slice(4, 8).map((tweet, index) => (
-                <Tweet
-                  key={index}
-                  avatar={tweet.avatar}
-                  name={tweet.name}
-                  id={tweet.id}
-                  post={tweet.post}
-                  content={tweet.content}
-                />
-              ))}
-            </div>
-            <div className="flex flex-col">
-              {tweets.slice(8, 12).map((tweet, index) => (
-                <Tweet
-                  key={index}
-                  avatar={tweet.avatar}
-                  name={tweet.name}
-                  id={tweet.id}
-                  post={tweet.post}
-                  content={tweet.content}
-                />
-              ))}
-            </div>
-          </div>
+          {isMobile ? (
+             <div className="flex flex-row max-lg:flex-col mt-10">
+             <div className="flex flex-col">
+               {tweets.slice(0, 4).map((tweet, index) => (
+                 <Tweet
+                   key={index}
+                   avatar={tweet.avatar}
+                   name={tweet.name}
+                   id={tweet.id}
+                   post={tweet.post}
+                   content={tweet.content}
+                 />
+               ))}
+             </div>
+             <div className="flex flex-col">
+               {tweets.slice(4, 8).map((tweet, index) => (
+                 <Tweet
+                   key={index}
+                   avatar={tweet.avatar}
+                   name={tweet.name}
+                   id={tweet.id}
+                   post={tweet.post}
+                   content={tweet.content}
+                 />
+               ))}
+             </div>
+             <div className="flex flex-col">
+               {tweets.slice(8, 12).map((tweet, index) => (
+                 <Tweet
+                   key={index}
+                   avatar={tweet.avatar}
+                   name={tweet.name}
+                   id={tweet.id}
+                   post={tweet.post}
+                   content={tweet.content}
+                 />
+               ))}
+             </div>
+           </div>
+          ):(
+            <div className="flex flex-row max-lg:flex-col mt-10 mx-10">
+             <div className="flex flex-col">
+               {tweets.slice(0, 4).map((tweet, index) => (
+                 <Tweet
+                   key={index}
+                   avatar={tweet.avatar}
+                   name={tweet.name}
+                   id={tweet.id}
+                   post={tweet.post}
+                   content={tweet.content}
+                 />
+               ))}
+             </div>
+             <div className="flex flex-col">
+               {tweets.slice(4, 6).map((tweet, index) => (
+                 <Tweet
+                   key={index}
+                   avatar={tweet.avatar}
+                   name={tweet.name}
+                   id={tweet.id}
+                   post={tweet.post}
+                   content={tweet.content}
+                 />
+               ))}
+             </div>
+   
+           </div>
+          )}
+         
         </div>
       </div>
     </>
