@@ -11,6 +11,7 @@ import ProblemBlocks from '@/components/problem-blocks'
 import Newsletter from '@/components/newsletter'
 import Language from "@/components/language";
 import Community from "@/components/community";
+import Installation from "@/components/installation";
 
 import MarutiLogo from "@/public/images/users/Logo_for_Maruti_Suzuki.svg";
 import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
