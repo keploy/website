@@ -1,0 +1,61 @@
+.social-cloud {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:2em 0;
+    position: relative;
+
+  }
+  
+  .social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+  }
+  
+  .social-link:hover {
+    transform: scale(1.2);
+  }
+  
+  .link-1 {
+    height: 120px;
+    width: 120px;
+
+  }
+  
+  .link-2 {
+    height: 160px;
+    width: 160px;
+  }
+  
+  .link-3 {
+    height: 200px;
+    width: 200px;
+  }
+  
+  .link-4 {
+    height: 160px;
+    width: 160px;
+  }
+  
+  .link-5 {
+    height: 120px;
+    width: 120px;
+  }
+  @media (max-width: 640px) {
+    .social-link, .link-1, .link-2, .link-3, .link-4, .link-5 {
+      height: 60px; 
+      width: 60px;  
+      margin-left: 10px; 
+    }
+    .social-link p {
+        display: none;
+    }
+}
