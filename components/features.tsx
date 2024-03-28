@@ -156,6 +156,70 @@ export default function Features() {
 
       const images: any = gsap.utils.toArray(".imageToShow");
 
+
+                    <div
+                        ref={codeRef}
+                        className="absolute bottom-0 text-left overflow-hidden flex items-center animate-float w-full"
+                    >
+                      <div className="bg-gray-900 p-3 rounded-md flex-grow w-7/12 overflow-clip">
+                          <pre className="text-green-300 text-xs md:text-sm lg:text-base w-11/12 truncate">
+                            <code>
+                              $ curl -O
+                              https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
+                              && source keploy.sh
+                            </code>
+                          </pre>
+                      </div>
+                      <div className="absolute right-3 bottom-2">
+                        <button
+                            ref={copyButtonRef}
+                            onClick={() =>
+                                navigator.clipboard.writeText(
+                                    "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"
+                                )
+                            }
+                            className="ml-2"
+                        >
+                          <Image
+                              src={CopyButton}
+                              alt="Copy"
+                              className="w-6 h-6"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  </Transition>
+                  {/* Item 3 */}
+                  <Transition
+                    show={tab === 3}
+                    appear={true}
+                    className="w-full"
+                    enter="transition ease-in-out duration-700 transform order-first"
+                    enterFrom="opacity-0 translate-y-16"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in-out duration-300 transform absolute"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 -translate-y-16"
+                    beforeEnter={() => heightFix()}
+                    unmount={false}
+                  >
+                    <div className="relative inline-flex flex-col">
+                      <Image
+                        className="mx-auto rounded"
+                        src={NativeIntegration}
+                        width={500}
+                        height="462"
+                        alt="Features bg"
+                      />
+                      {/*<Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
+                      {/*<div className="md:max-w-none absolute w-full left-0 text-left transform animate-float" style={{ top: '100%' }}><CopyButton codeToCopy={"curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"} /></div>*/}
+                    </div>
+                  </Transition>
+                </div>
+              </div>
+            </div>
+          </div>
+        
       gsap.set(images[1], { opacity: 0 });
 
       ScrollTrigger.create({
@@ -171,6 +235,7 @@ export default function Features() {
         end: "bottom bottom",
         pin: ".heading-text",
       });
+
 
       details.forEach((detail: any) => {
         gsap.to(detail, {
