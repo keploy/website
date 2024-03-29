@@ -125,7 +125,7 @@ const TwitterTestimonials = () => {
   },[]) 
   return (
     <>
-      <div className="relative mt-20">
+      <div className="relative mt-20 mb-20">
         <div className=" relative mt-2 mb-8 z-10 max-w-5xl mx-auto flex flex-col justify-center">
           <h3 className=" text-center h2 text-secondary-300">
           We love when users talk about Keploy..
