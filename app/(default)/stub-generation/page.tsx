@@ -22,13 +22,13 @@ export default function Home() {
           image={testimonialData[1].image}
         />
         <SocialLinks/>
-        <Language />
         <Testimonial
           content={testimonialData[0].content}
           author={testimonialData[0].author}
           company={testimonialData[0].company}
           image={testimonialData[0].image}
         />
+        <Language />
         <Banner />
         <Footer />
     </>

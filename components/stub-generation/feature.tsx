@@ -3,17 +3,17 @@ import { featuresData } from "../utils/stub-generation";
 
 export default function Features() {
   return (
-    <section className="bg-neutral-100 text-gray-900 pt-20 px-4 sm:px-6">
+    <section className="bg-neutral-100 text-gray-900 pt-12 px-4 mb-20 sm:px-6">
       <div className="container mx-auto px-4">
 
         {/* Section Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl text-center  text-accent-200 mb-4">Transforming interactions into realistic, diverse, and customizable stubs for precise testing</h2>
+          <h2 className="text-xl text-center text-gray-600 pb-12 md:mt-12">Transforming interactions into realistic, diverse, and customizable stubs for precise testing</h2>
           <h2 className="h2 font-bold text-secondary-300">
             With Keploy's stub generation{" "}
-            <span className="relative inline-block pl-1 border-l-2 border-primary-400" data-aos="fade-right" data-aos-delay="200">{" "}
+            <span className="relative inline-block pl-1 border-l-2 border-primary-400 mt-3" data-aos="fade-right" data-aos-delay="200">{" "}
               <span
-                className="absolute inset-0 bg-gradient-to-r from-primary-300 to-primary-50 opacity-50"
+                className="absolute inset-0 bg-gradient-to-r from-primary-300 to-primary-50 opacity-50 "
                 aria-hidden="true"
               />
               <span className="relative text-orange-500 " data-aos="fade-in" data-aos-delay="500">eliminate&nbsp;</span></span>

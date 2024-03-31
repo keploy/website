@@ -9,13 +9,25 @@ export default function Hero() {
   return (
     <section className="relative bg-neutral-100  text-gray-800 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-20 md:pt-32 pb-5 md:pt-40">
+        <div className="pt-32 pb-5 md:pt-40">
           <div >
-            <p className="text-xl md:text-2xl text-center  text-accent-200 mb-4 md:mb-20">
+            <p className="text-2xl text-center  text-accent-200 mb-4 md:mb-20">
               Transforming User Scenarios into Reliable Test Data Instantly!
             </p>
           </div>
-          <div className="flex flex-wrap justify-center items-start gap-16 md:flex-row-reverse ">
+          <div className="flex flex-wrap justify-center items-start md:gap-8 md:flex-row ">
+          <div className="md:flex-1">
+              <div className="text-center md:text-left">
+                <h1 className="text-4xl md:text-5.5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 md:mb-24 ">
+                  Effortless Stub Generation
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200"> for Comprehensive Test Coverage!</span>
+                </h1>
+                
+                <p className="text-xl text-accent-200 mb-8">
+                  Seamlessly Convert User Interactions into Precise Test Cases and Data Stubs 🚀
+                </p>
+              </div>
+            </div>
           <div className="md:flex-1 ">
               <Player
                 autoplay
@@ -31,17 +43,7 @@ export default function Hero() {
                 />
               </Player>
             </div>
-            <div className="md:flex-1">
-              <div className="text-center md:text-left">
-                <h1 className="text-3xl md:text-5.5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-24">
-                  Effortless Stub Generation
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-200"> for Comprehensive Test Coverage!</span>
-                </h1>
-                <p className="text-xl text-gray-700 mb-8">
-                  Seamlessly Convert User Interactions into Precise Test Cases and Data Stubs 🚀
-                </p>
-              </div>
-            </div>
+         
 
           </div>
         </div>

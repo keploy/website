@@ -25,13 +25,13 @@ export default function Banner() {
                     </a>
                   </div>
                   <div>
-                    <a className="btn text-white bg-secondary-300 hover:text-primary-300 w-full border-white sm:w-auto sm:ml-4" href="https://www.github.com/keploy/keploy">Try Locally</a>
+                    <a className="btn text-white bg-secondary-300 hover:text-primary-300 w-full border-white sm:w-auto sm:ml-4 sm:mt-4 lg:mt-0" href="https://www.github.com/keploy/keploy">Try Locally</a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="absolute right-0 bottom-0 hidden md:block ">
+            <div className="absolute right-0 bottom-0 hidden lg:block ">
               <Image src={BannerBunny} alt="Image" />
             </div>
           </div>
