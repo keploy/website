@@ -16,7 +16,7 @@ import Installation from "@/components/installation";
 import MarutiLogo from "@/public/images/users/Logo_for_Maruti_Suzuki.svg";
 import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
 import { Testimonial } from "@/components/testimonial";
-
+import TwitterTestimonials from "@/components/TwitterTestimonials";
 const testimonialData = [
   {
     image: MarutiLogo,
@@ -56,10 +56,9 @@ export default function Home() {
           image={testimonialData[1].image}
         />
         <Language />
+        <TwitterTestimonials/>
         <Newsletter />
-
         <Footer />
     </>
   )
 }
-
