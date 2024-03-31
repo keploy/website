@@ -13,6 +13,7 @@ import Language from "@/components/language";
 import Community from "@/components/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
+import TwitterTestimonials from "@/components/TwitterTestimonials";
 
 export default function Home() {
   return (
@@ -35,10 +36,9 @@ export default function Home() {
           image={testimonialData[1].image}
         />
         <Language />
+        <TwitterTestimonials/>
         <Newsletter />
-
         <Footer />
     </>
   )
 }
-

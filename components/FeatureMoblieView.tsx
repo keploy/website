@@ -65,7 +65,7 @@ export default function FeaturesMobileView() {
           </div>
 
           {/* Section content */}
-          <div className="pb-3 md:grid md:grid-cols-12 md:gap-6 md:pb-10 sm:pb-3">
+          <div className="pb-3 pt-5 md:grid md:grid-cols-12 md:gap-6 md:pb-10 sm:pb-3">
             {/* Content */}
             <div
               className="max-w-xl mx-auto md:max-w-none md:w-full md:col-span-7 lg:col-span-6 md:mt-6"
