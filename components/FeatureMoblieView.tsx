@@ -12,7 +12,7 @@ import deDuplication from '@/public/images/CaptureAndReplayV2.json';
 import { Player, Controls } from '@lottiefiles/react-lottie-player';
 import CopyButton from '@/public/images/icons8-copy-96.png';
 import ClipboardJS from 'clipboard';
-
+import Link from 'next/link';
 export default function FeaturesMobileView() {
   const [tab, setTab] = useState<number>(1);
 
@@ -83,18 +83,21 @@ export default function FeaturesMobileView() {
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0 ">
-                <a
+                <div
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3  transition duration-300 hover:shadow-lg ${
                     tab !== 1
                       ? 'bg-white shadow-md border-gray-200 hover:shadow-lg '
                       : 'bg-gray-200 border-transparent shadow-lg '
                   }`}
-                  href="#0"
                   onClick={(e) => {
                     e.preventDefault();
                     setTab(1);
                   }}
                 >
+                  <div className="flex flex-col">
+
+                    <div className="flex items-center">
+
                   <div>
                     <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300 ">
                       Test and Stubs Generation
@@ -113,7 +116,13 @@ export default function FeaturesMobileView() {
                       <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
                     </svg>
                   </div>
-                </a>
+                    </div>
+                    <div>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/stub-generation">Explore More</Link>
+                    </div>
+                  </div>
+
+                </div>
                 <a
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 2
@@ -337,7 +346,7 @@ export default function FeaturesMobileView() {
                   >
                     <div className="relative inline-flex flex-col">
                       <Image
-                        className="mx-auto rounded md:max-w-none"
+                        className="mx-auto rounded"
                         src={NativeIntegration}
                         width={500}
                         height="462"

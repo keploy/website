@@ -12,7 +12,7 @@ import deDuplication from "@/public/images/CaptureAndReplayV2.json";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import CopyButton from "@/public/images/icons8-copy-96.png";
 import ClipboardJS from "clipboard";
-
+import Link from "next/link";
 import gsap from "gsap"; // <-- import GSAP
 import { useGSAP } from "@gsap/react"; // <-- import the hook
 import { ScrollTrigger } from "gsap/all";
@@ -129,10 +129,12 @@ const TextSection = ({
   svg,
   heading,
   description,
+  btnDescription
 }: {
   svg: any;
   heading: string;
   description: string;
+  btnDescription?:string;
 }) => {
   return (
     <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0 text-details">
@@ -143,6 +145,9 @@ const TextSection = ({
         {heading}
       </div>
       <div className="text-gray-600 md:text-lg">{description}</div>
+      {btnDescription && <div>
+        <Link className="btn mt-8 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/stub-generation">{btnDescription}</Link>
+      </div>}
     </div>
   );
 };
@@ -236,6 +241,7 @@ export default function Features() {
                 }
                 heading={" Test and Stubs Generation"}
                 description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
+                btnDescription="Explore More"
               />
             </div>
             <div className="flex items-center detail">
