@@ -48,6 +48,7 @@ export default function Home() {
           company={testimonialData[0].company}
           image={testimonialData[0].image}
         />
+        <Installation/>
         <Community />
         <Testimonial
           content={testimonialData[1].content}
