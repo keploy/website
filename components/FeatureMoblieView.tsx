@@ -346,7 +346,7 @@ export default function FeaturesMobileView() {
                   >
                     <div className="relative inline-flex flex-col">
                       <Image
-                        className="mx-auto rounded md:max-w-none"
+                        className="mx-auto rounded"
                         src={NativeIntegration}
                         width={500}
                         height="462"
