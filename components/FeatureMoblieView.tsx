@@ -17,7 +17,7 @@ const LottiePlayer = dynamic(()=>import("./LottiePlayer"),{ssr:false})
 const TextNotify=( {showCopy }: { showCopy: boolean })=>{
   return(
     <>
-      <p className='font-bold absolute bottom-14 mt-2 text-secondry-300'>Try Keploy Locally </p>
+      <p className='font-bold absolute bottom-14 mt-2 text-gradient-300'>Try Keploy Locally </p>
       <Transition
         show={showCopy}
         className='text-white bg-primary-300 text-sm  absolute z-50 bottom-14 px-2 text-center py-1 rounded font-semibold right-0 before:bg-primary-300 before:w-2 before:h-2 before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:rotate-45'
@@ -225,7 +225,7 @@ export default function FeaturesMobileView() {
 
             {/* Tabs items */}
             <div className="flex items-center justify-center max-w-xl mx-auto mb-8 md:max-w-none md:w-full md:col-span-5 lg:col-span-6 md:mb-0 md:order-1">
-              <div className="transition-all">
+              <div className="transition-all md:w-full">
                 <div
                   className="relative flex flex-col text-center lg:text-right h-full"
                   data-aos="zoom-y-out"
@@ -304,7 +304,22 @@ export default function FeaturesMobileView() {
                     <div className="flex flex-col justify-between">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
+<<<<<<< HEAD
                       <LottiePlayer VideoPath={deDuplication}/>
+=======
+                      <Player
+                        autoplay
+                        loop
+                        src={deDuplication}
+                        style={{ height: "50vh", width: "90%" }}
+                        keepLastFrame={true}
+                      >
+                        <Controls
+                          visible={false}
+                          buttons={['play', 'repeat', 'frame', 'debug']}
+                        />
+                      </Player>
+>>>>>>> 76e44fb ( fix breaking issue in medium size device)
                     </div>
 
                     <TextNotify showCopy={showCopy} />
