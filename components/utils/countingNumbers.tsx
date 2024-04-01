@@ -3,6 +3,11 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
+const formatStars = (num:number)=>Intl.NumberFormat('en-US', {
+  notation: "compact",
+  maximumFractionDigits: 1
+}).format(num);
+
 export default function CountingNumbers({
   className,
   reverse = false,
@@ -18,7 +23,7 @@ export default function CountingNumbers({
 }) {
 
   const [top, setTop] = useState<boolean>(true);
-  const [starsCount, setStarsCount] = useState<number>(3000);
+  const [starsCount, setStarsCount] = useState<number>(3300);
   const [number, setNumber] = useState(start);
 
 
@@ -103,7 +108,7 @@ export default function CountingNumbers({
 
   return (
     <p className={className} ref={ref}>
-      {Intl.NumberFormat().format(number)}
+      {formatStars(number)}
     </p>
   );
 }

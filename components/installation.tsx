@@ -82,7 +82,7 @@ const Installation = () => {
           className="max-w-4xl mx-auto pb-12 md:pb-16 "
           data-aos="zoom-y-out"
         >
-          <h1 className="text-2xl text-secondary-300 font-semibold leading-tighter tracking-tighter mb-2 ">
+          <h1 className="text-2xl text-secondary-300 font-semibold leading-tighter tracking-tighter mb-4 ">
             1. Installing 📥
           </h1>
           <p className=" text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
