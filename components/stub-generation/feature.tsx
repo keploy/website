@@ -20,13 +20,13 @@ export default function Features() {
           </h2>
         </div>
         {/* Grid of features */}
-        <div className="flex flex-col flex-wrap justify-center">
-          <div className="flex flex-col sm:flex-row justify-center">
+        <div className="flex flex-col flex-wrap justify-center gap-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
             {featuresData.slice(0, 3).map((feature, index) => (
               <TextBlock key={index} heading={feature.title} subHeading={feature.description} icon={feature.icon} />
             ))}
           </div>
-          <div className="flex flex-col sm:flex-row justify-center">
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
             {featuresData.slice(3, 5).map((feature, index) => (
               <TextBlock key={index} heading={feature.title} subHeading={feature.description} icon={feature.icon} />
             ))}
