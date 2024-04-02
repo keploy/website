@@ -8,16 +8,16 @@ export default function Logo() {
               <title>Keploy Logo</title>
               <defs>
                   <linearGradient id="linearGradient-1" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#FAD961" />
-                      <stop offset="100%" stop-color="#F76B1C" />
+                      <stop offset="0%" stopColor="#FAD961" />
+                      <stop offset="100%" stopColor="#F76B1C" />
                   </linearGradient>
                   <linearGradient id="linearGradient-2" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#FAD961" />
-                      <stop offset="100%" stop-color="#F76B1C" />
+                      <stop offset="0%" stopColor="#FAD961" />
+                      <stop offset="100%" stopColor="#F76B1C" />
                   </linearGradient>
               </defs>
-              <g id="Material-Design-Stickersheet" fill="none" fill-rule="evenodd">
-                  <g id="Group-42" fill-rule="nonzero">
+              <g id="Material-Design-Stickersheet" fill="none" fillRule="evenodd">
+                  <g id="Group-42" fillRule="nonzero">
                       <g id="Group">
                           <g transform="translate(69.445132, 31.465016) scale(-1, 1) rotate(-180) translate(-69.445132, -31.465016) translate(29.753349, 0)">
                               <path id="Path" fill="url(#linearGradient-1)" d="M79.3835657,0 C66.1582528,20.5033 24.3789726,80.6340984 2.84521939,57.858588 C-2.49031097,52.2160621 0.129493916,44.7577397 6.95619149,36.7900083 C28.0689831,31.8664064 55.5347335,18.7041415 79.3835657,0" />

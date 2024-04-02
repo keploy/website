@@ -11,6 +11,10 @@ import ProblemBlocks from '@/components/problem-blocks'
 import Newsletter from '@/components/newsletter'
 import Language from "@/components/language";
 import Community from "@/components/community";
+import Installation from "@/components/installation";
+
+import MarutiLogo from "@/public/images/users/Logo_for_Maruti_Suzuki.svg";
+import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import TwitterTestimonials from "@/components/TwitterTestimonials";
@@ -28,6 +32,7 @@ export default function Home() {
           company={testimonialData[0].company}
           image={testimonialData[0].image}
         />
+        <Installation/>
         <Community />
         <Testimonial
           content={testimonialData[1].content}
