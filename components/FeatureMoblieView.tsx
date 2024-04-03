@@ -9,10 +9,11 @@ import NativeIntegration from '@/public/images/replay-tc31305e1d2286fe485b27.gif
 import FeaturesElement from '@/public/images/features-element.png';
 import testAndStubsGen from '@/public/images/TestGenHighlighted.json';
 import deDuplication from '@/public/images/CaptureAndReplayV2.json';
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
 import CopyButton from '@/public/images/icons8-copy-96.png';
 import ClipboardJS from 'clipboard';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const LottiePlayer = dynamic(()=>import("./LottiePlayer"),{ssr:false}) 
 export default function FeaturesMobileView() {
   const [tab, setTab] = useState<number>(1);
 
@@ -219,19 +220,7 @@ export default function FeaturesMobileView() {
                     <div className="relative inline-flex flex-col ">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       <div className=" mb-14">
-                        <Player
-                          autoplay
-                          loop
-                          src={testAndStubsGen}
-                          className="w-full"
-                          // style={{ height: "500px", width: "500px" }}
-                          keepLastFrame={true}
-                        >
-                          <Controls
-                            visible={false}
-                            buttons={['play', 'repeat', 'frame', 'debug']}
-                          />
-                        </Player>
+                        <LottiePlayer VideoPath={testAndStubsGen}/>
                       </div>
 
                       <div
@@ -284,18 +273,8 @@ export default function FeaturesMobileView() {
                     <div className="flex flex-col justify-between">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-                      <Player
-                        autoplay
-                        loop
-                        src={deDuplication}
-                        // style={{ height: "500px", width: "500px" }}
-                        keepLastFrame={true}
-                      >
-                        <Controls
-                          visible={false}
-                          buttons={['play', 'repeat', 'frame', 'debug']}
-                        />
-                      </Player>
+                     
+                      <LottiePlayer VideoPath={deDuplication}/>
                     </div>
 
                     <div

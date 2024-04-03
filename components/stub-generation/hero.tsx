@@ -5,6 +5,8 @@ import React from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { TrustedBy } from '../trustedBy';
+import dynamic from 'next/dynamic';
+const LottiePlayer =  dynamic(()=> import("../LottiePlayer"),{ssr:false})
 export default function Hero() {
   return (
     <section className="relative bg-neutral-100 text-gray-800 overflow-hidden">
@@ -45,19 +47,7 @@ export default function Hero() {
               </div>
             </div>
           <div className="md:flex-1 ">
-              <Player
-                autoplay
-                loop
-                src={testAndStubsGen}
-                className="w-full"
-                // style={{ height: "500px", width: "370px" }}
-                keepLastFrame={true}
-              >
-                <Controls
-                  visible={false}
-                  buttons={["play", "repeat", "frame", "debug"]}
-                />
-              </Player>
+             <LottiePlayer VideoPath={testAndStubsGen}/>
             </div>
          
 
