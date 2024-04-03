@@ -7,6 +7,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            width: {
+                '90vw': '90vw',
+            },
             colors: {
                 // Brand Palette
                 // Primary headings, primary buttons, main elements
