@@ -18,6 +18,8 @@ import { useGSAP } from "@gsap/react"; // <-- import the hook
 import { ScrollTrigger } from "gsap/all";
 import _ScrollTrigger from "gsap/ScrollTrigger";
 import FeaturesMobileView from "./FeatureMoblieView";
+import dynamic from "next/dynamic";
+const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,19 +28,7 @@ const TestAndStubGenerationImage = () => {
     <div className="inline-flex flex-col w-full imageToShow " id="img-1">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       <div className=" mb-2 h-[50%]">
-        <Player
-          autoplay
-          loop
-          src={testAndStubsGen}
-          className="w-full"
-          // style={{ height: "500px", width: "500px" }}
-          keepLastFrame={true}
-        >
-          <Controls
-            visible={false}
-            buttons={["play", "repeat", "frame", "debug"]}
-          />
-        </Player>
+        <LottiePlayer VideoPath={testAndStubsGen} />
       </div>
       <CopyCode />
     </div>
@@ -47,21 +37,10 @@ const TestAndStubGenerationImage = () => {
 
 const TestDuplicationImage = () => {
   return (
-    <div className="w-full relaive imageToShow" id="img-2">
+    <div className="w-full relative imageToShow" id="img-2">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-      <Player
-        autoplay
-        loop
-        src={deDuplication}
-        keepLastFrame={true}
-        className="h-[60vh]"
-      >
-        <Controls
-          visible={false}
-          buttons={["play", "repeat", "frame", "debug"]}
-        />
-      </Player>
+      <LottiePlayer VideoPath={deDuplication} className="h-[60vh]" />
       <CopyCode />
     </div>
   );
@@ -129,12 +108,12 @@ const TextSection = ({
   svg,
   heading,
   description,
-  btnDescription
+  btnDescription,
 }: {
   svg: any;
   heading: string;
   description: string;
-  btnDescription?:string;
+  btnDescription?: string;
 }) => {
   return (
     <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0 text-details">
@@ -145,9 +124,16 @@ const TextSection = ({
         {heading}
       </div>
       <div className="text-gray-600 md:text-lg">{description}</div>
-      {btnDescription && <div>
-        <Link className="btn mt-8 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/stub-generation">{btnDescription}</Link>
-      </div>}
+      {btnDescription && (
+        <div>
+          <Link
+            className="btn mt-8 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
+            href="/stub-generation"
+          >
+            {btnDescription}
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
