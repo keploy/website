@@ -307,23 +307,8 @@ export default function FeaturesMobileView() {
                     <div className="flex flex-col justify-between">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-<<<<<<< HEAD
                       <LottiePlayer VideoPath={deDuplication}/>
-=======
-                      <Player
-                        autoplay
-                        loop
-                        src={deDuplication}
-                        style={{ height: height }}
-                        className='md:w-11/12 w-[90vw] '
-                        keepLastFrame={true}
-                      >
-                        <Controls
-                          visible={false}
-                          buttons={['play', 'repeat', 'frame', 'debug']}
-                        />
-                      </Player>
->>>>>>> 76e44fb ( fix breaking issue in medium size device)
+
                     </div>
 
                     <TextNotify showCopy={showCopy} />
