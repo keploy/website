@@ -502,7 +502,7 @@ export default function Language() {
           </div>
 
           {/* Items */}
-          <div className="grid max-w-sm grid-cols-6 gap-7 mx-auto md:max-w-4xl md:grid-cols-6 place-content-center">
+          <div className="grid max-w-sm grid-cols-6 gap-4 mx-auto md:max-w-4xl md:grid-cols-6 place-content-center">
             {/* Item */}
             <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
               <svg
@@ -644,6 +644,7 @@ export default function Language() {
                 alt="C# Logo"
                 width={150} // Set the width of the image
                 height={80} // Set the height of the image
+                className="mb-2"
               />
             </div>
             <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
@@ -651,7 +652,8 @@ export default function Language() {
                 src="/images/frameworks/rust.svg" // Assuming the image file extension is .jpg
                 alt="C# Logo"
                 width={150} // Set the width of the image
-                height={80} // Set the height of the image
+                height={80} // Set the height of the image  
+                className="mb-5"
               />
             </div>
           </div>
