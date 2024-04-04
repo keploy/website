@@ -25,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TestAndStubGenerationImage = () => {
   return (
-    <div className="inline-flex flex-col w-full imageToShow " id="img-1">
+    <div className="inline-flex flex-col relative z-50 w-full imageToShow " id="img-1">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       <div className=" mb-2 h-[50%]">
         <LottiePlayer VideoPath={testAndStubsGen} />
@@ -49,11 +49,23 @@ const TestDuplicationImage = () => {
 const CopyCode = () => {
   const codeRef = useRef<HTMLDivElement>(null);
 
+  const[showCopy,setCopy]=useState(false)
+
   const copyButtonRef = useRef<HTMLButtonElement>(null);
   // const heightFix = () => {
   //   if (tabs.current && tabs.current.parentElement)
   //     tabs.current.parentElement.style.height = `${tabs.current.clientHeight}px`;
   // };
+
+  useEffect(()=>{
+    if(showCopy){
+      setTimeout(()=>{
+        setCopy(false)
+      },1000)
+    }
+  },[showCopy])
+
+
   useEffect(() => {
     // heightFix();
 
@@ -63,6 +75,7 @@ const CopyCode = () => {
 
     clipboard.on("success", (e) => {
       // You can customize the success behavior here (e.g., show a notification).
+      setCopy(true)
       console.log("Copied to clipboard:", e.text);
     });
 
@@ -73,9 +86,23 @@ const CopyCode = () => {
 
   return (
     <>
+      <p className='font-bold text-secondry-300'>Try Keploy Locally </p>
+      <Transition
+        show={showCopy}
+        className='text-white bg-primary-300 text-sm  absolute z-50 bottom-14 px-2 text-center py-1 rounded font-semibold right-0 before:bg-primary-300 before:w-2 before:h-2 before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:rotate-45'
+        enter="transition ease-in-out duration-100 transform order-first"
+        enterFrom="opacity-0 translate-y-0"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-in-out duration-200 transform absolute"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 -translate-y-16"
+      >
+        Copied
+      </Transition>
+
       <div
         ref={codeRef}
-        className="bottom-0 flex items-center w-full mb-8 overflow-hidden text-left md:mb-0 animate-float"
+        className="bottom-0 flex items-center w-full mb-8 mt-2 overflow-hidden text-left md:mb-0 animate-float"
       >
         <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
           <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
@@ -182,6 +209,7 @@ export default function Features() {
           scrub: 1,
         },
         opacity: 0,
+        zIndex:1,
       });
       gsap.to(images[1], {
         scrollTrigger: {
@@ -191,6 +219,7 @@ export default function Features() {
           scrub: 1,
         },
         opacity: 1,
+        zIndex:20,
       });
     },
     { scope: container }

@@ -14,6 +14,25 @@ import ClipboardJS from 'clipboard';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 const LottiePlayer = dynamic(()=>import("./LottiePlayer"),{ssr:false}) 
+const TextNotify=( {showCopy }: { showCopy: boolean })=>{
+  return(
+    <>
+      <p className='font-bold absolute bottom-14 mt-2 text-secondry-300'>Try Keploy Locally </p>
+      <Transition
+        show={showCopy}
+        className='text-white bg-primary-300 text-sm  absolute z-50 bottom-14 px-2 text-center py-1 rounded font-semibold right-0 before:bg-primary-300 before:w-2 before:h-2 before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:rotate-45'
+        enter="transition ease-in-out duration-700 transform order-first"
+        enterFrom="opacity-0 translate-y-0"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-in-out duration-300 transform absolute"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 -translate-y-16"
+      >
+        Copied
+      </Transition>
+    </>
+  )
+}
 export default function FeaturesMobileView() {
   const [tab, setTab] = useState<number>(1);
 
@@ -21,9 +40,17 @@ export default function FeaturesMobileView() {
   const codeRef = useRef<HTMLDivElement>(null);
   const copyButtonRef = useRef<HTMLButtonElement>(null);
 
+
+  const[showCopy,setCopy]=useState(false)
+  useEffect(()=>{
+    if(showCopy){
+      setTimeout(()=>setCopy(false),1000)
+    }
+  },[showCopy])
+
   const heightFix = () => {
     if (tabs.current && tabs.current.parentElement)
-      tabs.current.parentElement.style.height = `${tabs.current.clientHeight}px`;
+      tabs.current.parentElement.style.height = `${tabs.current.clientHeight + 20}px`;
   };
 
   useEffect(() => {
@@ -35,6 +62,7 @@ export default function FeaturesMobileView() {
 
     clipboard.on('success', (e) => {
       // You can customize the success behavior here (e.g., show a notification).
+      setCopy(true)
       console.log('Copied to clipboard:', e.text);
     });
 
@@ -199,7 +227,7 @@ export default function FeaturesMobileView() {
             <div className="flex items-center justify-center max-w-xl mx-auto mb-8 md:max-w-none md:w-full md:col-span-5 lg:col-span-6 md:mb-0 md:order-1">
               <div className="transition-all">
                 <div
-                  className="relative flex flex-col text-center lg:text-right"
+                  className="relative flex flex-col text-center lg:text-right h-full"
                   data-aos="zoom-y-out"
                   ref={tabs}
                 >
@@ -207,7 +235,7 @@ export default function FeaturesMobileView() {
                   <Transition
                     show={tab === 1}
                     appear={true}
-                    className="w-full"
+                    className="w-full h-full"
                     enter="transition ease-in-out duration-700 transform order-first"
                     enterFrom="opacity-0 translate-y-16"
                     enterTo="opacity-100 translate-y-0"
@@ -217,12 +245,13 @@ export default function FeaturesMobileView() {
                     beforeEnter={() => heightFix()}
                     unmount={false}
                   >
-                    <div className="relative inline-flex flex-col ">
+                    <div className="relative inline-flex flex-col h-full">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       <div className=" mb-14">
                         <LottiePlayer VideoPath={testAndStubsGen}/>
                       </div>
 
+                      <TextNotify showCopy={showCopy}/>
                       <div
                         ref={codeRef}
                         className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
@@ -239,10 +268,12 @@ export default function FeaturesMobileView() {
                         <div className="absolute right-3 bottom-2">
                           <button
                             ref={copyButtonRef}
-                            onClick={() =>
-                              navigator.clipboard.writeText(
-                                'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
-                              )
+                            onClick={() =>{
+                              navigator.clipboard.writeText('curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh')
+                              .then(()=>{
+                                setCopy(true)
+                              })
+                            }
                             }
                             className="ml-2"
                           >
@@ -273,9 +304,10 @@ export default function FeaturesMobileView() {
                     <div className="flex flex-col justify-between">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-                     
                       <LottiePlayer VideoPath={deDuplication}/>
                     </div>
+
+                    <TextNotify showCopy={showCopy} />
 
                     <div
                       ref={codeRef}
@@ -313,7 +345,7 @@ export default function FeaturesMobileView() {
                   <Transition
                     show={tab === 3}
                     appear={true}
-                    className="w-full"
+                    className="w-full mt-2"
                     enter="transition ease-in-out duration-700 transform order-first"
                     enterFrom="opacity-0 translate-y-16"
                     enterTo="opacity-100 translate-y-0"
