@@ -3,8 +3,8 @@ name: Deployment Workflow
 on:
   push:
     branches:
-      - creatingGithubActions
-
+      - main
+   
 jobs:
   deploy:
     runs-on: ubuntu-latest
