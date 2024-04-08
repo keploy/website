@@ -640,19 +640,19 @@ export default function Language() {
             </div>
             <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
               <Image
-                src="/images/frameworks/csharp.svg" // Assuming the image file extension is .jpg
+                src="/images/frameworks/csharp.svg" 
                 alt="C# Logo"
-                width={150} // Set the width of the image
-                height={80} // Set the height of the image
+                width={150} 
+                height={80} 
                 className="mb-2"
               />
             </div>
             <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
               <Image
-                src="/images/frameworks/rust.svg" // Assuming the image file extension is .jpg
+                src="/images/frameworks/rust.svg" 
                 alt="C# Logo"
-                width={150} // Set the width of the image
-                height={80} // Set the height of the image  
+                width={150} 
+                height={80}   
                 className="mb-5"
               />
             </div>
