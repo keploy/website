@@ -1,6 +1,6 @@
-import TestimonialImage from '@/public/images/users/Nutanix_Logo.svg';
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Language() {
   return (
@@ -51,13 +51,13 @@ export default function Language() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center ">
             <h2 className="h2 text-secondary-300">
-              Replicate data from{' '}
+              Replicate data from{" "}
               <span
                 className="relative inline-block pl-1 border-l-2 border-primary-400"
                 data-aos="fade-right"
                 data-aos-delay="200"
               >
-                {' '}
+                {" "}
                 <span
                   className="absolute inset-0 opacity-50 bg-gradient-to-r from-primary-300 to-primary-50"
                   aria-hidden="true"
@@ -502,7 +502,7 @@ export default function Language() {
           </div>
 
           {/* Items */}
-          <div className="grid max-w-sm grid-cols-4 gap-2 mx-auto md:max-w-4xl md:grid-cols-4">
+          <div className="grid max-w-sm grid-cols-6 gap-4 mx-auto md:max-w-4xl md:grid-cols-6 place-content-center">
             {/* Item */}
             <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
               <svg
@@ -638,8 +638,25 @@ export default function Language() {
                 />
               </svg>
             </div>
+            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+              <Image
+                src="/images/frameworks/csharp.svg" 
+                alt="C# Logo"
+                width={150} 
+                height={80} 
+                className="mb-2"
+              />
+            </div>
+            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+              <Image
+                src="/images/frameworks/rust.svg" 
+                alt="C# Logo"
+                width={150} 
+                height={80}   
+                className="mb-5"
+              />
+            </div>
           </div>
-
           {/* Testimonials */}
           {/* <div className="max-w-3xl mx-auto mt-20 " data-aos="zoom-y-out">
             <div className="relative flex items-start transition duration-300 border-2 border-gray-200 rounded rounded-lg bg-gradient-to-r from-neutral-100 to-neutral-300 hover:shadow-xl"> */}
