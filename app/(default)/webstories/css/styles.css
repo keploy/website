@@ -1,0 +1,13 @@
+@keyframes growAnimation {
+    from {
+      max-height: 0;
+    }
+    to {
+      max-height: 1000px; /* You can adjust this value based on your content height */
+    }
+  }
+  
+  .animate-grow {
+    animation: growAnimation 2s ease-out forwards; /* Increased duration to 2s */
+  }
+  
