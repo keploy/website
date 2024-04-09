@@ -1,13 +1,15 @@
 @keyframes growAnimation {
-    from {
-      max-height: 0;
-    }
-    to {
-      max-height: 1000px; /* You can adjust this value based on your content height */
-    }
+  from {
+    max-height: 50;
+    opacity: 0;
   }
-  
-  .animate-grow {
-    animation: growAnimation 2s ease-out forwards; /* Increased duration to 2s */
+  to {
+    max-height: 100; /* You can adjust this value based on your content height */
+    opacity: 1;
   }
-  
+}
+
+.animate-grow {
+  animation: growAnimation 1s ease-out forwards;
+  transform-origin: top; /* Add transform-origin to keep the animation at the top */
+}

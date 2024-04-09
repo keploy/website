@@ -23,23 +23,23 @@ const Stories = ({
   return (
     <>
       <div
-        className="relative h-full drop-shadow-md rounded-xl m-auto"
+        className="relative h-full drop-shadow-md rounded-xl m-auto border border-slate-200"
         style={{
           backgroundImage: `url(${Story.imageUrl})`,
           backgroundSize: "cover",
         }}
       >
-        <div className="flex flex-row h-5 drop-shadow-xl shadow-blue-600">
+        <div className="flex flex-row h-5">
           {lines.map((line, key) => (
             <hr
               className={`h-1 w-full mx-1 mt-2 rounded border border-slate-300 ${
-                Stack[Stack.length - 1] >= line ? "bg-slate-100" : "bg-slate-300"
+                Stack[Stack.length - 1] >= line ? "bg-orange-600" : "bg-orange-200"
               }`}
               key={key}
             />
           ))}
         </div>
-        <div className={`absolute bottom-0 animate-grow `}>
+        <div className={`absolute -z-10 bottom-0 animate-grow `}>
           <div className="bg-black opacity-70 p-8 rounded-xl">
             <h1 className="text-2xl text-slate-50">{Story.text}</h1>
             <p className="text-slate-50">

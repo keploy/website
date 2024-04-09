@@ -1,13 +1,33 @@
 import React from "react";
 import Container from "@/components/webstories/container";
 import StoriesCards from "@/components/webstories/StoriesCards";
-import gsa from "@/public/images/gsa.png"
+import bunny from "@/public/images/community-bunny.png";
+
 const page = () => {
   const dummyData = [
     {
-      Image:"../../public/images/gsa.png",
+      Image: bunny,
       CardDescription:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ad autem fugiat ipsam eligendi repudiandae sed dolore est, laudantium esse quae veritatis excepturi amet deserunt nisi sapiente non? Veniam, quae!",
+      Slug: "/web-Storie-1",
+    },
+    {
+      Image: bunny,
+      CardDescription:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ad autem fugiat ipsam eligendi repudiandae sed dolore est, laudantium esse quae veritatis excepturi amet deserunt nisi sapiente non? Veniam, quae!",
+      Slug: "/web-Storie-2",
+    },
+    {
+      Image: bunny,
+      CardDescription:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ad autem fugiat ipsam eligendi repudiandae sed dolore est, laudantium esse quae veritatis excepturi amet deserunt nisi sapiente non? Veniam, quae!",
+      Slug: "/web-Storie-3",
+    },
+    {
+      Image: bunny,
+      CardDescription:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ad autem fugiat ipsam eligendi repudiandae sed dolore est, laudantium esse quae veritatis excepturi amet deserunt nisi sapiente non? Veniam, quae!",
+      Slug: "/web-Storie-4",
     },
   ];
 

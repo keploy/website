@@ -48,7 +48,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
   };
 
   const currentStory = data[currentStoryIndex];
-  console.log(stack)
+
   return (
     <div>
       <div className="flex flex-row h-screen  gap-10 justify-center backdrop-blur overflow-hidden ">

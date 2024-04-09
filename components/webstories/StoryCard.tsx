@@ -1,17 +1,30 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 type StoryCardProps = {
-    imagesrc: string;
-    CardDescription: string;
+  imagesrc: string;
+  CardDescription: string;
+  slug:string;
 };
 
-const StoryCard = ({ imagesrc, CardDescription }: StoryCardProps) => {
-    return (
-        <div className='flex flex-col'>
-            <Image src={imagesrc} alt={CardDescription} height={100} width={100} />
-            <p>{CardDescription}</p>
-        </div>
-    );
+const StoryCard = ({ imagesrc, CardDescription , slug }: StoryCardProps) => {
+    console.log(slug + "asdasdasdas")
+  return (
+    <div className="flex flex-col items-center justify-center border border-slate-200 bg-gray-100 rounded-md mx-auto w-11/12 hover:scale-101 duration-150">
+        <Link href={`/webstories/${slug}`}>
+      <Image
+        src={imagesrc}
+        alt={CardDescription}
+        width="0"
+        height="0"
+        sizes="100vw"
+        />
+      <div className="p-3 border border-slate-200">
+        <p>{CardDescription}</p>
+      </div>
+        </Link>
+    </div>
+  );
 };
 
 export default StoryCard;
