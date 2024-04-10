@@ -14,13 +14,13 @@ import ClipboardJS from 'clipboard';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 const LottiePlayer = dynamic(()=>import("./LottiePlayer"),{ssr:false}) 
-const TextNotify=( {showCopy }: { showCopy: boolean })=>{
+const TextNotify=( {showCopy,bottom }: { showCopy: boolean ,bottom:string })=>{
   return(
     <>
-      <p className='font-bold absolute bottom-14 mt-2 text-secondary-300'>Try Keploy Locally </p>
+      <p className={`font-bold absolute  mt-2 text-secondary-300 ${bottom}`}>Try Keploy Locally </p>
       <Transition
         show={showCopy}
-        className='text-white bg-primary-300 text-sm  absolute z-50 bottom-14 px-2 text-center py-1 rounded font-semibold right-0 before:bg-primary-300 before:w-2 before:h-2 before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:rotate-45'
+        className={`text-white bg-primary-300 text-sm  absolute z-50 ${bottom} px-2 text-center py-1 rounded font-semibold right-0 before:bg-primary-300 before:w-2 before:h-2 before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:rotate-45`}
         enter="transition ease-in-out duration-700 transform order-first"
         enterFrom="opacity-0 translate-y-0"
         enterTo="opacity-100 translate-y-0"
@@ -230,34 +230,34 @@ export default function FeaturesMobileView() {
             <div className="flex items-center justify-center max-w-xl mx-auto mb-8 md:max-w-none md:w-full md:col-span-5 lg:col-span-6 md:mb-0 md:order-1">
               <div className="transition-all md:w-full">
                 <div
-                  className="relative flex flex-col text-center lg:text-right h-full"
+                  className="relative flex flex-col text-center lg:text-right "
                   data-aos="zoom-y-out"
-                  ref={tabs}
+                  // ref={tabs}
                 >
                   {/* Item 1 */}
                   <Transition
                     show={tab === 1}
                     appear={true}
-                    className="w-full h-full"
+                    className="w-full md:mt-52 "
                     enter="transition ease-in-out duration-700 transform order-first"
                     enterFrom="opacity-0 translate-y-16"
                     enterTo="opacity-100 translate-y-0"
                     leave="transition ease-in-out duration-300 transform absolute"
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 -translate-y-16"
-                    beforeEnter={() => heightFix()}
+                    // beforeEnter={() => heightFix()}
                     unmount={false}
                   >
-                    <div className="relative inline-flex flex-col h-full">
+                    <div className="relative inline-flex flex-col ">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
-                      <div className=" mb-14">
+                      <div className=" mb-14 mt-2">
                         <LottiePlayer VideoPath={testAndStubsGen}/>
                       </div>
-
-                      <TextNotify showCopy={showCopy}/>
+                      
+                      <TextNotify showCopy={showCopy} bottom='bottom-10'/>
                       <div
                         ref={codeRef}
-                        className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
+                        className="absolute -bottom-2 flex items-center w-full overflow-hidden text-left animate-float"
                       >
                         <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
                           <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
@@ -294,7 +294,7 @@ export default function FeaturesMobileView() {
                   <Transition
                     show={tab === 2}
                     appear={true}
-                    className="w-full "
+                    className="w-full relative md:mt-52 "
                     enter="transition ease-in-out duration-700 transform order-first"
                     enterFrom="opacity-0 translate-y-16"
                     enterTo="opacity-100 translate-y-0"
@@ -304,20 +304,20 @@ export default function FeaturesMobileView() {
                     beforeEnter={() => heightFix()}
                     unmount={false}
                   >
-                    <div className="flex flex-col justify-between">
+                    <div className="flex flex-col justify-between mb-4">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-                      <LottiePlayer VideoPath={deDuplication}/>
+                      <LottiePlayer VideoPath={deDuplication} />
 
                     </div>
 
-                    <TextNotify showCopy={showCopy} />
+                    <TextNotify showCopy={showCopy} bottom='bottom-12'/>
 
                     <div
                       ref={codeRef}
-                      className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
+                      className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float "
                     >
-                      <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
+                      <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip ">
                         <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
                           <code>
                             $ curl -O

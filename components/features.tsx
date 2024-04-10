@@ -86,7 +86,7 @@ const CopyCode = () => {
 
   return (
     <>
-      <p className='font-bold text-secondry-300'>Try Keploy Locally </p>
+      <p className='font-bold text-secondary-300'>Try Keploy Locally </p>
       <Transition
         show={showCopy}
         className='text-white bg-primary-300 text-sm  absolute z-50 bottom-14 px-2 text-center py-1 rounded font-semibold right-0 before:bg-primary-300 before:w-2 before:h-2 before:absolute before:-bottom-1 before:left-1/2 before:-translate-x-1/2 before:rotate-45'
