@@ -16,9 +16,6 @@ const StoryCard = ({ imagesrc, CardDescription, slug , categories }: StoryCardPr
         <Image
           src={imagesrc}
           alt={CardDescription}
-          width="0"
-          height="0"
-          sizes="100vw"
         />
         <div className="p-3 ">
           <p>{CardDescription}</p>
