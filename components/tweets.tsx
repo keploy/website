@@ -23,10 +23,12 @@ const Tweets = ({
       >
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row gap-2 items-center">
-            <img
+            <Image
               src={avatar}
+              width={48}
+              height={48}
               alt="profile_image"
-              className="rounded-full h-12"
+              className="rounded-full h-12 aspect-square"
             />
             <div className="flex flex-col justify-center">
               <div className="font-bold">{name}</div>
