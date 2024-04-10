@@ -8,12 +8,7 @@ const inter = Inter({
   display: 'swap'
 })
 
-const architects_daughter = Architects_Daughter({
-  subsets: ['latin'],
-  variable: '--font-architects-daughter',
-  weight: '400',
-  display: 'swap'
-})
+
 
 export const metadata = {
   title: 'Create Next App',
@@ -28,8 +23,8 @@ export default function RootLayout({
   return (
       <html lang="en">
       <title>WebStories</title>
-      <body>
-      <div className="flex flex-col min-h-screen overflow-hidden">
+      <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
+      <div className={`flex flex-col min-h-screen overflow-hidden  bg-neutral-100`}>
         <Header/>
         {children}
       </div>

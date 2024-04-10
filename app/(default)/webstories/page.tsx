@@ -4,7 +4,6 @@ import StoriesCards from "@/components/webstories/StoriesCards";
 import { DummyData } from "./data"; // Import DummyData from data file
 
 const page = () => {
-  // Map DummyData to extract the required properties
   const Data = DummyData.map((item) => ({
     CardImage: item.CardImage,
     CardDescription: item.CardDescription,

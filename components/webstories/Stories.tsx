@@ -4,6 +4,7 @@ import { faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 type StoriesProps = {
   imageUrl: string;
+  Heading:string;
   text: string;
   swipeText?: string;
   swipeLink?: string;
@@ -39,14 +40,11 @@ const Stories = ({
             />
           ))}
         </div>
-        <div className={`absolute  bottom-0 animate-grow `}>
+        <div className={`absolute w-full bottom-0 animate-grow `}>
           <div className="bg-orange-500 opacity-70 p-8 rounded-xl">
-            <h1 className="text-2xl text-slate-50">{Story.text}</h1>
+            <h1 className="text-2xl text-slate-50">{Story.Heading}</h1>
             <p className="text-slate-50">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-              inventore eum praesentium quos aspernatur! Sunt itaque praesentium
-              mollitia culpa nisi eum accusantium qui sequi a veniam. Nostrum
-              itaque ullam nobis!
+            {Story.text}
             </p>
           </div>
           {Story.swipeLink && Story.swipeText && (
