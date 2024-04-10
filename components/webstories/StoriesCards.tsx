@@ -1,10 +1,10 @@
 "use client"
-import React, { useRef, useState } from 'react';
-import StoryCard from './StoryCard';
-import { StaticImageData } from 'next/image';
-import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
-import SearchBar from './components/SearchBar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useRef, useState } from "react";
+import StoryCard from "./StoryCard";
+import { StaticImageData } from "next/image";
+import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import SearchBar from "./components/SearchBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type StoriesCardProps = {
   CardImage: string | StaticImageData;
@@ -19,26 +19,25 @@ type StoriesCardsProps = {
 
 const StoriesCards = ({ data }: StoriesCardsProps) => {
   const [searchBarOpen, setSearchBarOpen] = useState(true);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 
   const AlternativeBar = () => {
     setSearchBarOpen(!searchBarOpen);
-  };
+  };  
 
   const filteredData = data.filter((card) => {
-    return card.Category.some((category) =>
-      category.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    console.log(card.CardDescription);
+    return card.CardDescription.toLowerCase().includes(searchValue.toLowerCase());
   });
-
+  
   return (
     <>
-      <h1 className="lg:text-5xl text-4xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4  text-center ">
+      <h1 className="lg:text-5xl text-4xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4 text-center">
         Keploy Web-Stories
       </h1>
       <p className="text-center text-gray-500">
@@ -71,7 +70,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
       </h1>
       <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 lg:gap-x-8 gap-y-5 md:gap-y-5 mb-16 mt-5">
         {filteredData.map((card, index) => (
-          <div key={index}>
+          <div key={index} className="">
             <StoryCard
               imagesrc={card.CardImage}
               CardDescription={card.CardDescription}
