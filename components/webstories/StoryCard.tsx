@@ -1,14 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { StaticImageData } from "next/image";
 type StoryCardProps = {
-  imagesrc: string;
+  imagesrc: string | StaticImageData;
   CardDescription: string;
   slug:string;
 };
 
 const StoryCard = ({ imagesrc, CardDescription , slug }: StoryCardProps) => {
-    console.log(slug + "asdasdasdas")
   return (
     <div className="flex flex-col items-center justify-center border border-slate-200 bg-gray-100 rounded-md mx-auto w-11/12 hover:scale-101 duration-150">
         <Link href={`/webstories/${slug}`}>

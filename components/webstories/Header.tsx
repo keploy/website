@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 
 import Link from "next/link";
-import Logo from "./logo";
-import MobileMenu from "./mobile-menu";
+import Logo from "../ui/logo";
+import Dropdown from "@/components/utils/dropdown";
+import MobileMenu from "../ui/mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 
 export default function Header() {
@@ -30,21 +31,12 @@ export default function Header() {
         );
         if (response.ok) {
           const data = await response.json();
-          // Convert starsCount to 1-digit decimal with 'K'
           let stars = data.stargazers_count;
-          // let roundedStars = Math.round(data.stargazers_count / 50) * 50;
-          // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
           setStarsCount(stars);
         } else {
-          // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
-          // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-          // setStarsCount(formattedStars);
           console.error("Failed to fetch stars count", response.statusText);
         }
       } catch (error) {
-        // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
-        // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-        // setStarsCount(formattedStars);
         console.error("Error fetching stars count:", error);
       }
     };
@@ -89,10 +81,10 @@ export default function Header() {
               <li>
                 <Link
                   target="_blank"
-                  href="https://keploy.io/blog/community"
+                  href="/webstories"
                   className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Guest Posts
+                  Web-Stories
                 </Link>
               </li>
             </ul>

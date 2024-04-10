@@ -1,7 +1,8 @@
 import React from "react";
 import StoryCard from "./StoryCard";
+import { StaticImageData } from "next/image";
 type StoriesCardProps = {
-  Image: string;
+  CardImage: string | StaticImageData;
   CardDescription: string;
   Slug:string;
 };
@@ -19,7 +20,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
           return (
             <div key={index}>
               <StoryCard
-                imagesrc={card.Image}
+                imagesrc={card.CardImage}
                 CardDescription={card.CardDescription}
                 slug={card.Slug}
               />

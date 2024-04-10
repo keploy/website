@@ -20,7 +20,7 @@ type WebStoriesProps = {
 
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
-  const [stack, setStack] = useState<number[]>([]);
+  const [stack, setStack] = useState<number[]>([0]);
 
   const handlePrev = () => {
     if (currentStoryIndex !== 0) {
@@ -51,19 +51,20 @@ const WebStories = ({ data }: WebStoriesProps) => {
 
   return (
     <div>
-      <div className="flex flex-row h-screen  gap-10 justify-center backdrop-blur overflow-hidden ">
+      <div className="flex flex-row h-screen mt-5  gap-10 justify-center backdrop-blur overflow-hidden ">
         <button
           onClick={handlePrev}
-          className={`bg-slate-300 w-10 h-10 rounded-full border border-solid my-auto ${
+          className={`bg-gradient-300 text-gradient-200 w-10 h-10 rounded-full border border-solid my-auto ${
             currentStoryIndex === 0
-              ? "disabled:bg-gray-900 disabled:text-orange-500 cursor-not-allowed"
+              ? "disabled:bg-orange-600 disabled:text-orange-200 cursor-not-allowed"
               : ""
           }`}
           disabled={currentStoryIndex === 0}
+           
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
-        <div key={currentStoryIndex} className="sm:basis-7/12 md:basis-5/12 lg:basis-3/12 self-center h-5/6">
+        <div key={currentStoryIndex} className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6">
           <Stories
             Story={currentStory}
             totalLen={data.length}
@@ -72,11 +73,12 @@ const WebStories = ({ data }: WebStoriesProps) => {
         </div>
         <button
           onClick={handleNext}
-          className={`bg-slate-300 w-10 h-10 rounded-full border border-solid my-auto ${
+          className={`bg-gradient-300 text-gradient-200 w-10 h-10 rounded-full border border-solid my-auto ${
             currentStoryIndex === data.length-1
-              ? "disabled:bg-gray-900 disabled:text-yellow-500 cursor-not-allowed"
+              ? "disabled:bg-orange-600 disabled:text-orange-200 cursor-not-allowed"
               : ""
           }`}
+          disabled={currentStoryIndex===data.length-1}
         >
           <FontAwesomeIcon icon={faChevronRight} />
         </button>

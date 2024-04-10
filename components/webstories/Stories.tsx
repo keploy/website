@@ -39,8 +39,8 @@ const Stories = ({
             />
           ))}
         </div>
-        <div className={`absolute -z-10 bottom-0 animate-grow `}>
-          <div className="bg-black opacity-70 p-8 rounded-xl">
+        <div className={`absolute  bottom-0 animate-grow `}>
+          <div className="bg-orange-500 opacity-70 p-8 rounded-xl">
             <h1 className="text-2xl text-slate-50">{Story.text}</h1>
             <p className="text-slate-50">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
