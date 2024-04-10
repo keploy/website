@@ -7,15 +7,14 @@ export interface Question {
 
 interface FAQProps {
   questions: Question[];
-  answerTag:string
 }
 
-const FAQ: React.FC<FAQProps> = ({ questions,answerTag }) => {
+const FAQ: React.FC<FAQProps> = ({ questions }) => {
   return (
     <>
       {questions.map((question, index) => (
         <div key={index}>
-          <Accordion tag={answerTag} title={question.title}>{question.answer}</Accordion>
+          <Accordion title={question.title}>{question.answer}</Accordion>
         </div>
       ))}
     </>
