@@ -8,8 +8,8 @@ const page = () => {
     CardImage: item.CardImage,
     CardDescription: item.CardDescription,
     Slug: item.Slug,
+    Category: item.Categories,
   }));
-
   return (
     <>
       <Container>

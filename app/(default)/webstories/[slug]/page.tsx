@@ -9,7 +9,7 @@ const Index = () => {
   const storyData = DummyData.find((item) => item.Slug === slug)?.Story;
 
   if (!storyData) {
-    return <div>Story not found!</div>;
+    return <div className="m-auto">Story not found!</div>;
   }
 
   return (

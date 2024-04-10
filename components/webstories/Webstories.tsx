@@ -9,6 +9,7 @@ import Stories from "./Stories";
 
 type WebStoryItem = {
   imageUrl: string;
+  Heading:string;
   text: string;
   swipeText?: string;
   swipeLink?: string;
