@@ -159,7 +159,7 @@ const Installation = () => {
             3. Test 🧪
           </h1>
           <p className=" text-gray-700 mb-2 mt-1 text-xs md:text-sm lg:text-base">
-            Shut down Database,Redis,Kafka, other services. Keploy don't need
+            Shut down Database , Redis , Kafka and other services. Keploy don't need
             those during test.
           </p>
 
