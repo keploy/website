@@ -14,7 +14,7 @@ const FAQ: React.FC<FAQProps> = ({ questions }) => {
     <>
       {questions.map((question, index) => (
         <div key={index}>
-          <Accordion title={question.title}>{question.answer}</Accordion>
+          <Accordion tag="div" title={question.title}>{question.answer}</Accordion>
         </div>
       ))}
     </>
