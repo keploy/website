@@ -8,6 +8,7 @@ import CopyButton from "@/public/images/icons8-copy-96.png";
 import SvgIcon from "@mui/material/SvgIcon";
 import { IconButton as MuiButton } from "@mui/material";
 import { red } from "@mui/material/colors";
+import Link from "next/link";
 
 const Installation = () => {
   const [checkedIndex, setCheckedIndex] = useState<number | null>(null);
@@ -182,12 +183,12 @@ const Installation = () => {
           </div>
         </div>
         <div className="flex justify-center">
-          <a
+          <Link
             className="btn text-secondary-300 text-center bg-primary-300 text-xs md:text-sm lg:text-base hover:font-semibold w-full mb-4 sm:w-auto sm:mb-0"
             href="https://keploy.io/docs"
           >
             Explore Test Coverage Guide{" "}
-          </a>
+          </Link>
         </div>
         <div className=" max-w-sm">
           <Snackbar

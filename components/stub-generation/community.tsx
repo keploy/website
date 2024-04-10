@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import twitterIcon from './assets/images/twitter-icon.png';
 import "./community.css"
 import { socialLinks } from '../utils/stub-generation';
+import Link from 'next/link';
 
 const SocialCloud: React.FC = () => {
   const [value, setValue] = useState("Where Code Meets Community!")
@@ -14,7 +15,7 @@ const SocialCloud: React.FC = () => {
       </div>
       <div className="social-cloud" >
         {socialLinks.map((link, index) => (
-          <a
+          <Link
             key={index}
             href={link.href}
             target="_blank"
@@ -25,7 +26,7 @@ const SocialCloud: React.FC = () => {
             onMouseLeave={() => setValue(" Where Code Meets Community!")}
           >
             {link.icon}
-          </a>
+          </Link>
 
         ))}
 

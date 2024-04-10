@@ -7,6 +7,7 @@ import TwitterSvg from "@/public/images/social/twitter.svg";
 import SlackSvg from "@/public/images/social/slack.svg";
 import YoutubeSvg from "@/public/images/social/youtube.svg";
 import LinkedinSvg from "@/public/images/social/linkedin.svg";
+import Link from "next/link";
 
 type cardSurrondStyle = {
   transform: string;
@@ -52,7 +53,7 @@ function SocialLinkCard({
   showExtraStyle,
 }: CardProps) {
   return (
-    <a
+    <Link
       href={link}
       target="_blank"
       rel="noopener noreferrer"
@@ -71,7 +72,7 @@ function SocialLinkCard({
         </h2>
         <p className="text-gray-600 mt-1F md:text-sm">{description}</p>
       </div>
-    </a>
+    </Link>
   );
 }
 

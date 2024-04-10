@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { blocksData } from "../utils/stub-generation";
 const Item = (props: { title: string, description: string, SvgComponent: Function }) => {
   return (
@@ -40,7 +41,7 @@ export default function ProblemBlocks() {
             ))}
           </div>
           <div className="flex justify-center md:justify-center gap-4 mt-4">
-            <a className="btn text-secondary-300 bg-primary-300 hover:text-white" href="https://www.github.com/keploy/keploy">Try Keploy</a>
+            <Link className="btn text-secondary-300 bg-primary-300 hover:text-white" href="https://www.github.com/keploy/keploy">Try Keploy</Link>
           </div>
         </div>
       </div>

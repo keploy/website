@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import BannerBunny from "@/public/images/banner-bunny.png";
+import Link from "next/link";
 
 export default function Banner() {
   return (
@@ -21,11 +22,11 @@ export default function Banner() {
                 </p>
                 <div className="flex flex-col lg:flex-row items-center" data-aos="zoom-y-out" data-aos-delay="300">
                   <div>
-                    <a className="btn text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="https://calendar.app.google/8Ncpff4QnAhpVnYd8">Book Cloud Demo
-                    </a>
+                    <Link className="btn text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="https://calendar.app.google/8Ncpff4QnAhpVnYd8">Book Cloud Demo
+                    </Link>
                   </div>
                   <div>
-                    <a className="btn text-white bg-secondary-300 hover:text-primary-300 w-full border-white sm:w-auto sm:ml-4 sm:mt-4 lg:mt-0" href="https://www.github.com/keploy/keploy">Try Locally</a>
+                    <Link className="btn text-white bg-secondary-300 hover:text-primary-300 w-full border-white sm:w-auto sm:ml-4 sm:mt-4 lg:mt-0" href="https://www.github.com/keploy/keploy">Try Locally</Link>
                   </div>
                 </div>
               </div>
