@@ -11,13 +11,15 @@ interface FAQProps {
 
 const FAQ: React.FC<FAQProps> = ({ questions }) => {
   return (
-    <>
-      {questions.map((question, index) => (
-        <div key={index}>
+    <div className="max-w-6xl mx-auto px-8 pb-12">
+    <h3 className=" text-center h2 px-10 text-secondary-300 mb-10">
+          Frequently Asked Questions
+          </h3>      {questions.map((question, index) => (
+        <div key={index} >
           <Accordion tag="div" title={question.title}>{question.answer}</Accordion>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
