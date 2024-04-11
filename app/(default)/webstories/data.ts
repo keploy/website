@@ -59,15 +59,11 @@ export const DummyData = [
         imageUrl: "https://example.com/image3.jpg",
         Heading: "Story 2",
         text:"this is text-2",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
       },
       {
         imageUrl: "https://example.com/image3.jpg",
         Heading: "Story 2",
         text:"this is text-2",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
       },
       {
         imageUrl: "https://example.com/image3.jpg",

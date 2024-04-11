@@ -9,7 +9,7 @@ import Stories from "./Stories";
 
 type WebStoryItem = {
   imageUrl: string;
-  Heading:string;
+  Heading: string;
   text: string;
   swipeText?: string;
   swipeLink?: string;
@@ -53,6 +53,14 @@ const WebStories = ({ data }: WebStoriesProps) => {
     setStack([0]);
   };
 
+  // const handleKeyDown = (event) => {
+  //   if (event.key === "ArrowRight") {
+  //     handleNext();
+  //   } else if (event.key === "ArrowLeft") {
+  //     handlePrev();
+  //   }
+  // };
+
   const currentStory = data[currentStoryIndex];
 
   return (
@@ -70,8 +78,10 @@ const WebStories = ({ data }: WebStoriesProps) => {
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <div
+          tabIndex={0}
           key={currentStoryIndex}
-          className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6"
+          className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6 overflow-y-hidden"
+          onClick={handleNext}
         >
           <Stories Story={currentStory} totalLen={data.length} Stack={stack} />
         </div>

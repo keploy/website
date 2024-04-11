@@ -3,6 +3,7 @@ import React from "react";
 import WebStories from "@/components/webstories/Webstories";
 import { DummyData } from "../data";
 import { useParams } from "next/navigation";
+import Head from "next/head";
 
 const Index = () => {
   const slug = useParams().slug; 
@@ -13,9 +14,14 @@ const Index = () => {
   }
 
   return (
+    <>
+    <Head>
+      <title>{slug}</title>
+    </Head>
     <div>
       <WebStories data={storyData} />
     </div>
+    </>
   );
 };
 

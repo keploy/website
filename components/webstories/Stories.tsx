@@ -24,16 +24,17 @@ const Stories = ({
   return (
     <>
       <div
-        className="relative h-full drop-shadow-md rounded-xl  border border-slate-200"
+        className="relative h-full drop-shadow-md rounded-xl  border border-slate-200 "
         style={{
           backgroundImage: `url(${Story.imageUrl})`,
           backgroundSize: "cover",
         }}
+
       >
         <div className="flex flex-row h-5">
           {lines.map((line, key) => (
             <hr
-              className={`h-1 w-full mx-1.5 mt-2  rounded border border-slate-300 ${
+              className={`h-1 w-full mx-1.5 mt-2  rounded border pointer-events-none border-slate-300 ${
                 Stack[Stack.length - 1] >= line
                   ? "bg-orange-600"
                   : "bg-orange-200"
