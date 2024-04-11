@@ -9,16 +9,16 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/stub-generation";
-import { featuresData } from "@/components/utils/stub-generation";
+import { blocksData } from "@/components/utils/native-integration";
+import { featuresData } from "@/components/utils/native-integration";
 import BannerBunny from "@/public/images/banner-bunny.png";
 
 const heroData = {
-  titleTop: "Effortless Stub Generation",
-  titleBottom: "for Comprehensive Test Coverage!",
-  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
+  titleTop: "Maximizing Efficiency and ",
+  titleBottom: "Seamlessness with Native Integration.!",
+  subtitleTop: "Integrate Keploy with dev-setup to generate automated tests and data-mocks in 2 mins!",
   subtitleBottom:
-    "Seamlessly Convert User Interactions into Precise Test Cases and Data Stubs 🚀",
+    "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -28,7 +28,7 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: " With Keploy's stub generation",
+  title: "With Keploy's Native Integration",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
   highlightTitle: "eliminate",

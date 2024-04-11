@@ -1,9 +1,4 @@
-import VideoThumb from "@/public/images/demo-thumbnail.png";
-import ModalVideo from "@/components/modal-video";
-import Image from "next/image";
 import React from "react";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { TrustedBy } from "../trustedBy";
 import dynamic from "next/dynamic";
 interface HeroProps {

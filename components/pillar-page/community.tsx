@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import twitterIcon from './assets/images/twitter-icon.png';
-import "./community.css"
+import "../../app/css/community.css"
 import { socialLinks } from '../utils/stub-generation';
 
 const SocialCloud: React.FC = () => {
