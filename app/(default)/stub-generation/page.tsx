@@ -9,10 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/stub-generation";
-import { featuresData } from "@/components/utils/stub-generation";
+import { blocksData } from "@/components/utils/common";
+import { featuresData,faqQuestions } from "@/components/utils/stub-generation";
 import BannerBunny from "@/public/images/banner-bunny.png";
-
+import FAQ from "@/components/pillar-page/faq";
 const heroData = {
   titleTop: "Effortless Stub Generation",
   titleBottom: "for Comprehensive Test Coverage!",
@@ -87,6 +87,7 @@ export default function Home() {
         btnTextRight={BannerData.btnTextRight}
         bannerImage={BannerData.bannerImage}
       />
+      <FAQ questions={faqQuestions} />
       <Footer />
     </>
   );

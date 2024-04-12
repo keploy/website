@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-
+import Link from "next/link";
 export default function Features(props: {
   title: string;
   subtitle: string;
@@ -8,6 +8,8 @@ export default function Features(props: {
     title: string;
     description: string;
     icon: ReactElement;
+    additionalCta?:string;
+    additionalCtaLink?:string;
   }>;
 }) {
   return (
@@ -51,6 +53,8 @@ export default function Features(props: {
                 heading={feature.title}
                 subHeading={feature.description}
                 icon={feature.icon}
+                additionalCta={feature.additionalCta}
+                additionalCtaLink={feature.additionalCtaLink}
               />
             ))}
           </div>
@@ -61,6 +65,8 @@ export default function Features(props: {
                 heading={feature.title}
                 subHeading={feature.description}
                 icon={feature.icon}
+                additionalCta={feature.additionalCta}
+                additionalCtaLink={feature.additionalCtaLink}
               />
             ))}
           </div>
@@ -74,6 +80,8 @@ const TextBlock = (props: {
   heading: string;
   subHeading: string;
   icon: ReactElement;
+  additionalCta?:string;
+  additionalCtaLink?:string
 }) => {
   return (
     <div className="flex flex-col items-center justify-center bg-neutral-100 text-black p-4 border-transparent shadow-md transition-shadow duration-200 w-auto max-w-xs hover:bg-gradient-to-r from-orange-100 via-orange-100 to-orange-200">
@@ -86,6 +94,9 @@ const TextBlock = (props: {
         {props.heading}
       </h4>
       <p className="text-gray-600 text-center">{props.subHeading}</p>
+      {
+        props.additionalCta && props.additionalCtaLink && <Link className="mt-2 text-center" href={props.additionalCtaLink}><span className="text-center underline text-gray italic">{props.additionalCta}</span></Link>
+      }
     </div>
   );
 };

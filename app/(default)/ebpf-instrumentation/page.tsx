@@ -10,15 +10,15 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/native-integration";
+import { featuresData , faqQuestions} from "@/components/utils/ebpf-instrumentation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 const heroData = {
-  titleTop: "Maximizing Efficiency and ",
-  titleBottom: "Seamlessness with Native Integration!",
-  subtitleTop: "Integrate Keploy with dev-setup to generate automated tests and data-mocks in 2 mins!",
+  titleTop: "Accelerate automated test ",
+  titleBottom: "development with eBPF !",
+  subtitleTop: "With Keploy, you can record-and-generate automated tests and data-mocks in 2 mins",
   subtitleBottom:
-    "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
+    "Rapidly scale your automated test coverage with a zero-code platform that works out of the box. 🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -28,7 +28,7 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Native Integration",
+  title: "With Keploy's DeDuplication",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
   highlightTitle: "eliminate",
