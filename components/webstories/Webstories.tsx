@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -21,28 +21,22 @@ type WebStoriesProps = {
 
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
-  const [stack, setStack] = useState<number[]>([0]);
+  const storyContainerRef = useRef<HTMLDivElement>(null); // Ref for the div
+
+  useEffect(() => {
+    // Focus on the div when the component mounts
+    if (storyContainerRef.current) {
+      storyContainerRef.current.focus();
+    }
+  }, []); // Empty dependency array means this effect runs only once on mount
 
   const handlePrev = () => {
-    if (currentStoryIndex !== 0) {
-      const updatedStack = stack.slice(0, -1);
-      setStack(updatedStack);
-    } else {
-      setStack([]);
-    }
     setCurrentStoryIndex((prevIndex) =>
       prevIndex === 0 ? data.length - 1 : prevIndex - 1
     );
   };
 
   const handleNext = () => {
-    if (currentStoryIndex !== data.length - 1) {
-      const updatedStack = [...stack, currentStoryIndex + 1];
-      setStack(updatedStack);
-    } else {
-      const updatedStack = [...stack, 0];
-      setStack(updatedStack);
-    }
     setCurrentStoryIndex((prevIndex) =>
       prevIndex === data.length - 1 ? 0 : prevIndex + 1
     );
@@ -50,23 +44,22 @@ const WebStories = ({ data }: WebStoriesProps) => {
 
   const handleReplay = () => {
     setCurrentStoryIndex(0);
-    setStack([0]);
   };
 
-  // const handleKeyDown = (event) => {
-  //   if (event.key === "ArrowRight") {
-  //     handleNext();
-  //   } else if (event.key === "ArrowLeft") {
-  //     handlePrev();
-  //   }
-  // };
+    const handleKeyDown = (event) => {
+    if (event.key === "ArrowRight") {
+      handleNext();
+    } else if (event.key === "ArrowLeft") {
+      handlePrev();
+    }
+  };
 
   const currentStory = data[currentStoryIndex];
 
   return (
     <div>
       <div
-        className="relative flex flex-row h-screen gap-10 justify-center overflow-clip"
+        className="relative flex flex-row h-screen gap-10 justify-center"
         style={{
           backgroundImage: `url(${currentStory.imageUrl})`,
           backgroundSize: "cover",
@@ -85,11 +78,18 @@ const WebStories = ({ data }: WebStoriesProps) => {
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <div
+          ref={storyContainerRef} // Attach the ref to the div
           key={currentStoryIndex}
           className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6"
           onClick={handleNext}
+          onKeyDown={handleKeyDown}
+          tabIndex={0} // Ensure the div is focusable
         >
-          <Stories Story={currentStory} totalLen={data.length} Stack={stack} currentIndex={currentStoryIndex} />
+          <Stories
+            Story={currentStory}
+            totalLen={data.length}
+            currentIndex={currentStoryIndex}
+          />
         </div>
         {currentStoryIndex === data.length - 1 ? (
           <button

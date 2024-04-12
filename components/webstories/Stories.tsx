@@ -15,18 +15,12 @@ const Stories = ({
   Story,
   totalLen,
   currentIndex,
-  Stack,
 }: {
   Story: StoriesProps;
   totalLen: number;
   currentIndex:number;
-  Stack: number[];
 }) => {
   const lines = Array.from({ length: totalLen }, (_, i) => i);
-  // console.log(currentIndex);
-  // console.log(Stack)
-  console.log(lines)
-  console.log(Stack[Stack.length -1]);
   return (
     <>
       <div
@@ -40,7 +34,7 @@ const Stories = ({
           {lines.map((line, key) => (
             <hr
               className={`h-1 w-full mx-1.5 mt-2 rounded border pointer-events-none border-slate-300 ${
-                line <= Stack[Stack.length - 1]
+                line <= currentIndex
                   ? (currentIndex == line ? ("loader border-slate-300"):("bg-gradient-200"))
                   : "bg-orange-200"
               }`}
