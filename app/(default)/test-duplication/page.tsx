@@ -79,6 +79,7 @@ export default function Home() {
         image={testimonialData[0].image}
       />
       <Language />
+      <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}
         subtitle={BannerData.subtitle}
@@ -87,7 +88,6 @@ export default function Home() {
         btnTextRight={BannerData.btnTextRight}
         bannerImage={BannerData.bannerImage}
       />
-      <FAQ questions={faqQuestions} />
       <Footer />
     </>
   );
