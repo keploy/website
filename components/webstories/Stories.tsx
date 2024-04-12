@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+
 type StoriesProps = {
   imageUrl: string;
   Heading: string;
@@ -13,38 +14,43 @@ type StoriesProps = {
 const Stories = ({
   Story,
   totalLen,
+  currentIndex,
   Stack,
 }: {
   Story: StoriesProps;
   totalLen: number;
+  currentIndex:number;
   Stack: number[];
 }) => {
   const lines = Array.from({ length: totalLen }, (_, i) => i);
-
+  // console.log(currentIndex);
+  // console.log(Stack)
+  console.log(lines)
+  console.log(Stack[Stack.length -1]);
   return (
     <>
       <div
-        className="relative h-full drop-shadow-md rounded-xl  border border-slate-200 "
+        className="relative h-full mt-10 rounded-xl z-30"
         style={{
           backgroundImage: `url(${Story.imageUrl})`,
           backgroundSize: "cover",
         }}
-
       >
         <div className="flex flex-row h-5">
           {lines.map((line, key) => (
             <hr
-              className={`h-1 w-full mx-1.5 mt-2  rounded border pointer-events-none border-slate-300 ${
-                Stack[Stack.length - 1] >= line
-                  ? "bg-orange-600"
+              className={`h-1 w-full mx-1.5 mt-2 rounded border pointer-events-none border-slate-300 ${
+                line <= Stack[Stack.length - 1]
+                  ? (currentIndex == line ? ("loader border-slate-300"):("bg-gradient-200"))
                   : "bg-orange-200"
               }`}
               key={key}
             />
+            
           ))}
         </div>
         <div className={`absolute w-full bottom-0 animate-grow `}>
-          <div className="bg-orange-500 opacity-70 p-8 rounded-xl">
+          <div className="bg-black opacity-50 p-8 rounded-xl">
             <h1 className="text-2xl text-slate-50">{Story.Heading}</h1>
             <p className="text-slate-50">{Story.text}</p>
           </div>
@@ -67,7 +73,7 @@ const Stories = ({
             </Link>
           )}
         </div>
-      </div>
+        </div>
     </>
   );
 };

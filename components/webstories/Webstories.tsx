@@ -65,12 +65,19 @@ const WebStories = ({ data }: WebStoriesProps) => {
 
   return (
     <div>
-      <div className="flex flex-row h-screen mt-5 gap-10 justify-center backdrop-blur overflow-hidden ">
+      <div
+        className="relative flex flex-row h-screen gap-10 justify-center overflow-clip"
+        style={{
+          backgroundImage: `url(${currentStory.imageUrl})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="absolute inset-0 backdrop-filter backdrop-blur-3xl" />
         <button
           onClick={handlePrev}
-          className={`bg-gradient-300 text-gradient-200 w-10 h-10 rounded-full border border-solid my-auto ${
+          className={`relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
             currentStoryIndex === 0
-              ? "disabled:bg-orange-600 disabled:text-orange-200 cursor-not-allowed"
+              ? "disabled:bg-secondary-300 disabled:text-white opacity-30 cursor-not-allowed"
               : ""
           }`}
           disabled={currentStoryIndex === 0}
@@ -78,25 +85,23 @@ const WebStories = ({ data }: WebStoriesProps) => {
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <div
-          tabIndex={0}
           key={currentStoryIndex}
-          className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6 overflow-y-hidden"
+          className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6"
           onClick={handleNext}
         >
-          <Stories Story={currentStory} totalLen={data.length} Stack={stack} />
+          <Stories Story={currentStory} totalLen={data.length} Stack={stack} currentIndex={currentStoryIndex} />
         </div>
-
         {currentStoryIndex === data.length - 1 ? (
           <button
             onClick={handleReplay}
-            className="bg-gradient-300 text-gradient-200 w-10 h-10 rounded-full border border-solid my-auto"
+            className="relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto"
           >
             <FontAwesomeIcon icon={faRedoAlt} />
           </button>
         ) : (
           <button
             onClick={handleNext}
-            className={`bg-gradient-300 text-gradient-200 w-10 h-10 rounded-full border border-solid my-auto ${
+            className={`relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
               currentStoryIndex === data.length - 1
                 ? "disabled:bg-orange-600 disabled:text-orange-200 cursor-not-allowed"
                 : ""

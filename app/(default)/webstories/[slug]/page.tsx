@@ -18,7 +18,7 @@ const Index = () => {
     <Head>
       <title>{slug}</title>
     </Head>
-    <div>
+    <div className="overflow-hidden">
       <WebStories data={storyData} />
     </div>
     </>

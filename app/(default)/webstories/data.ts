@@ -56,7 +56,7 @@ export const DummyData = [
     Slug: "webstory-2",
     Story: [
       {
-        imageUrl: "https://example.com/image3.jpg",
+        imageUrl: "https://wallpapercave.com/wp/wp2836008.jpg",
         Heading: "Story 2",
         text:"this is text-2",
       },

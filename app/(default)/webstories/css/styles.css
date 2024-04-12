@@ -1,20 +1,46 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
 /* Additional styles */
 
 @keyframes growAnimation {
-  from {
-    max-height: 50;
+  0% {
     opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
   }
-  to {
-    max-height: 100; /* You can adjust this value based on your content height */
+  100% {
     opacity: 1;
+    transform: scaleY(1);
+    transform-origin: bottom;
   }
 }
 
 .animate-grow {
-  animation: growAnimation 1s ease-out forwards;
-  transform-origin: top; /* Add transform-origin to keep the animation at the top */
+  animation: growAnimation 0.3s ease-out forwards;
+}
+
+.loader {
+  display: block;
+  position: relative;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden; 
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: #E35134;
+  animation: 0.5s prog ease-in forwards;
+}
+
+@keyframes prog {
+  to {
+    width: 100%;
+  }
 }
