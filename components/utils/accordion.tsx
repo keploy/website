@@ -39,7 +39,7 @@ export default function Accordion({
       </button>
       <div
         ref={accordion}
-        className="text-gray-600 overflow-hidden transition-all duration-300 ease-in-out"
+        className="text-gray-600 overflow-hidden transition-all duration-300 ease-in-out ml-12"
         style={accordionOpen ? { maxHeight: accordion.current?.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: 0 }}
       >
         <p className="pb-5">{children}</p>
