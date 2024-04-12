@@ -227,15 +227,7 @@ export default function FeaturesMobileView() {
                         ref={codeRef}
                         className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
                       >
-                        <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
-                          <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
-                            <code>
-                              $ curl -O
-                              https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
-                              && source keploy.sh
-                            </code>
-                          </pre>
-                        </div>
+                       
                         <div className="absolute right-3 bottom-2">
                           <button
                             ref={copyButtonRef}
@@ -281,15 +273,7 @@ export default function FeaturesMobileView() {
                       ref={codeRef}
                       className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
                     >
-                      <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
-                        <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
-                          <code>
-                            $ curl -O
-                            https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
-                            && source keploy.sh
-                          </code>
-                        </pre>
-                      </div>
+                     
                       <div className="absolute right-3 bottom-2">
                         <button
                           ref={copyButtonRef}
