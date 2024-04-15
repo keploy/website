@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.terminal {
+    height: 33.5vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+    background-color: #393131;
+    color: #c4c4c4;
+    font-size: 14px;
+    line-height: 1.42;
+    font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier,
+      monospace;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    
+  }
+  
+  .terminal__line {
+    line-height: 2;
+    white-space: pre-wrap;
+  }
+  
+  .terminal__prompt {
+    display: flex;
+    align-items: center;
+  }
+  
+  .terminal__prompt__label {
+    flex: 0 0 auto;
+    color: #ffffff;
+    
+  }
+  
+  .terminal__prompt__input {
+    flex: 1;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    color: white;
+    
+  }
+  
+  .terminal__prompt__input input {
+    flex: 1;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.42;
+    font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier,
+      monospace;
+      
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  
+    background-color: #151515;
+    color: white;
+    zoom: 1;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: #282121;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(104, 99, 99, 0.5); /* Adjust the alpha value (0.5) to make it less transparent */
+  border-radius: 5px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
