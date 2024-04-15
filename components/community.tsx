@@ -1,5 +1,5 @@
 import React from "react";
-import "./community.css";
+import "../app/css/community.css";
 import Image from "next/image";
 import CommunityBunny from "@/public/images/community-bunny.png";
 import GithubSvg from "@/public/images/social/github.svg";
