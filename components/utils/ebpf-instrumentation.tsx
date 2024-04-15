@@ -38,34 +38,152 @@ export const DependencyWaitTimeIcon = () => (
     </svg>
   );
 
-
+  export const MdiLightningBolt = () => (
+    <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fillRule="evenodd">
+        <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
+        <g strokeWidth="2" transform="translate(18, 18)">
+          <path
+            className="stroke-current text-primary-500"
+            d="M14 4L4 18h9l-1 8 9-12h-9l1-8z"
+          />
+        </g>
+      </g>
+    </svg>
+  );
+  
+  export const FluentPuzzleCubePiece20Filled = () => (
+    <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fillRule="evenodd">
+        <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
+        <g strokeWidth="2" transform="translate(14, 14)">
+          <rect className="stroke-current text-primary-500" x="4" y="4" width="8" height="8" rx="1" />
+          <rect className="stroke-current text-secondary-300" x="19" y="4" width="8" height="8" rx="1" />
+          <rect className="stroke-current text-primary-500" x="4" y="19" width="8" height="8" rx="1" />
+          <rect className="stroke-current text-primary-500" x="19" y="19" width="8" height="8" rx="1" />
+        </g>
+      </g>
+    </svg>
+  );
+  
+  
+  export const CollaborationIcon = () => (
+    <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fillRule="evenodd">
+        <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
+        <g strokeWidth="2">
+          <path
+            className="stroke-current text-primary-500"
+            d="M32 8C19.6 8 8 19.6 8 32s11.6 24 24 24 24-11.6 24-24S44.4 8 32 8z"
+          />
+          <path className="stroke-current text-secondary-300" d="M40 24l-8 8-8-8" />
+          <path className="stroke-current text-secondary-300" d="M32 40V24" />
+        </g>
+      </g>
+    </svg>
+  );
+  
+  export const StreamlineBrowserCheck = () => (
+    <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fillRule="evenodd">
+        <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
+        <g strokeWidth="2">
+          <polyline
+            className="stroke-current text-primary-500"
+            points="12 24 24 24 32 16 52 16 52 48 12 48 12 24"
+          />
+          <path className="stroke-current text-secondary-300" d="M24 40l4 4 8-8" />
+        </g>
+      </g>
+    </svg>
+  );
+  
+  export const PsPiggyBankCoins = () => (
+    <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fillRule="evenodd">
+        <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
+        <g strokeWidth="2">
+          <path
+            className="stroke-current text-primary-500"
+            d="M48 40V24a4 4 0 0 0-4-4H20a4 4 0 0 0-4 4v16a4 4 0 0 0 4 4h24a4 4 0 0 0 4-4z"
+          />
+          <circle className="stroke-current text-primary-500" cx="32" cy="40" r="2" />
+          <path className="stroke-current text-primary-500" d="M24 48a4 4 0 0 0 4-4" />
+          <path className="stroke-current text-primary-500" d="M40 48a4 4 0 0 1-4-4" />
+        </g>
+      </g>
+    </svg>
+  );
+  
+  export const MaterialSymbolsLightEarlyOnOutline = () => (
+    <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" fillRule="evenodd">
+        <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
+        <g strokeWidth="2">
+          <path
+            className="stroke-current text-secondary-300"
+            d="M32 28v12l6 6m8-24v24a6 6 0 0 1-6 6H24a6 6 0 0 1-6-6V28"
+          />
+          <path
+            className="stroke-current text-primary-500"
+            d="M20 20l24-8v8H20z"
+          />
+        </g>
+      </g>
+    </svg>
+  );
 export const featuresData = [
     {
-      title: 'Generate test cases by codeless integration',
+      title: 'Developer Friendly, zero learning curve',
       icon:<DependencyWaitTimeIcon />,
-      description: 'Generate test cases by codeless integration',
-      additionalCta:"Try Keploy.",
-      additionalCtaLink:'/'
+      description: 'Keploy can dynamically generate test cases by recording and replaying your interactions without integrating any code or complex setup within 2 mins.'
     },
     {
-      title: 'Automated tests in simple yaml',
+      title: 'Seamless Test Generation',
+      icon:<ManualStubCreationIcon />,
+      description: 'eBPF instrumentation enables Keploy to effortlessly record and generate automated tests and data-mocks within a mere 2 minutes, streamlining the testing process.'
+    },
+    {
+      title: 'Codeless Integration',
       icon: <DataVariabilityConcernsIcon />,
-      description: 'Get test cases for all languages and frameworks by eliminating the need for complex coding knowledge.',
-      additionalCta:"Learn more how Language agnostic feature works",
-      additionalCtaLink:"/"
+      description: 'With eBPF, Keploy dynamically generates test cases without the need for integrating any code into the application, simplifying the testing workflow for developers.'
+    },
+    {
+      title: 'Continuous Improvement',
+      icon:<ScalabilityTestingDifficultiesIcon />,
+      description: 'Continuously enhance testing strategies and streamline the development lifecycle, ensuring the delivery of high-quality software with speed and efficiency.'
+    },
+    {
+      title: 'Language and Framework Agnostic',
+      icon:<ErrorHandlingChallengesIcon />,
+      description: 'Generate test cases for all languages and frameworks, eliminating the need for complex coding knowledge and ensuring compatibility with diverse development environments.'
+    },
+    {
+      title: 'Comprehensive Test Coverage',
+      icon:<ManualStubCreationIcon />,
+      description: 'Leveraging eBPF, Keploy ensures comprehensive test coverage by capturing and replaying interactions, facilitating thorough testing across different scenarios and use cases.'
     }
   ];
+
   export const faqQuestions =[
     {
-      title: "What is Codeless integration?",
+      title: "What does language agnostic support mean?",
       answer:
-        "Native integration refers to the seamless connection of one system or application with another, typically utilizing the built-in features or interfaces provided by those systems. Keploy is designed to natively support Docker/Kubernetes environments. This means to generate/record tests, you will need to install Docker and run your application on it.",
+        "Keploy works at a kernel and network level, enabling support for various protocol versions such as HTTP, TLS, GRPC, Mongo, MySQL, Redis, and more. Once added, these protocols will be universally supported across all languages, runtimes, or drivers/packages."
     },
     {
-      title: "How keploy is language agnostic?",
+      title: "How does Keploy enable test case generation without code integration?",
       answer:
-        "You can merge tests generated by Keploy with your existing unit-test whether they are pyTest or Jest using language based SDK in your test file.",
+        "Keploy utilizes eBPF to dynamically generate test cases by recording and replaying interactions, eliminating the need for integrating any code into the application."
     },
+    {
+      title: "How does Keploy simplify test automation across different languages and frameworks?",
+      answer:
+        "Keploy simplifies test automation by providing automated tests in simple YAML format, eliminating the need for complex coding knowledge and enabling teams to obtain test cases for all languages and frameworks effortlessly."
+    },
+    {
+      title: "How does eBPF instrumentation helps in enhancing test case generation with Keploy?",
+      answer:
+        "With eBPF, Keploy dynamically records and replays interactions, allowing for the rapid generation of test cases without any intrusive code changes, thereby accelerating the testing process."
+    }
   ]
-
-  

@@ -10,7 +10,7 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/native-integration";
+import { featuresData,faqQuestions } from "@/components/utils/ebpf-instrumentation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 const heroData = {
