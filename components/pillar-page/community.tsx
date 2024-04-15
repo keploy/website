@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import twitterIcon from './assets/images/twitter-icon.png';
-import "./community.css"
-import { socialLinks } from '../utils/stub-generation';
+import "../../app/css/community.css"
+import { socialLinks } from '../utils/common';
 
 const SocialCloud: React.FC = () => {
   const [value, setValue] = useState("Where Code Meets Community!")
