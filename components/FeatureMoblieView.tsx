@@ -19,7 +19,6 @@ export default function FeaturesMobileView() {
 
   const tabs = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLDivElement>(null);
-  const copyButtonRef = useRef<HTMLButtonElement>(null);
 
   const heightFix = () => {
     if (tabs.current && tabs.current.parentElement)
@@ -28,19 +27,6 @@ export default function FeaturesMobileView() {
 
   useEffect(() => {
     heightFix();
-
-    const clipboard = new ClipboardJS(copyButtonRef.current!, {
-      target: () => codeRef.current!,
-    });
-
-    clipboard.on('success', (e) => {
-      // You can customize the success behavior here (e.g., show a notification).
-      console.log('Copied to clipboard:', e.text);
-    });
-
-    return () => {
-      clipboard.destroy();
-    };
   }, []);
 
   return (
@@ -228,23 +214,7 @@ export default function FeaturesMobileView() {
                         className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
                       >
                        
-                        <div className="absolute right-3 bottom-2">
-                          <button
-                            ref={copyButtonRef}
-                            onClick={() =>
-                              navigator.clipboard.writeText(
-                                'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
-                              )
-                            }
-                            className="ml-2"
-                          >
-                            <Image
-                              src={CopyButton}
-                              alt="Copy"
-                              className="w-6 h-6"
-                            />
-                          </button>
-                        </div>
+                        
                       </div>
                     </div>
                   </Transition>
@@ -274,23 +244,7 @@ export default function FeaturesMobileView() {
                       className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
                     >
                      
-                      <div className="absolute right-3 bottom-2">
-                        <button
-                          ref={copyButtonRef}
-                          onClick={() =>
-                            navigator.clipboard.writeText(
-                              'curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh'
-                            )
-                          }
-                          className="ml-2"
-                        >
-                          <Image
-                            src={CopyButton}
-                            alt="Copy"
-                            className="w-6 h-6"
-                          />
-                        </button>
-                      </div>
+                      
                     </div>
                   </Transition>
                   {/* Item 3 */}
