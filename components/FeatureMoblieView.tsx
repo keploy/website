@@ -18,7 +18,6 @@ export default function FeaturesMobileView() {
   const [tab, setTab] = useState<number>(1);
 
   const tabs = useRef<HTMLDivElement>(null);
-  const codeRef = useRef<HTMLDivElement>(null);
 
   const heightFix = () => {
     if (tabs.current && tabs.current.parentElement)
@@ -208,14 +207,6 @@ export default function FeaturesMobileView() {
                       <div className=" mb-14">
                         <LottiePlayer VideoPath={testAndStubsGen}/>
                       </div>
-
-                      <div
-                        ref={codeRef}
-                        className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
-                      >
-                       
-                        
-                      </div>
                     </div>
                   </Transition>
                   {/* Item 2 */}
@@ -237,14 +228,6 @@ export default function FeaturesMobileView() {
                       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
                      
                       <LottiePlayer VideoPath={deDuplication}/>
-                    </div>
-
-                    <div
-                      ref={codeRef}
-                      className="absolute bottom-0 flex items-center w-full overflow-hidden text-left animate-float"
-                    >
-                     
-                      
                     </div>
                   </Transition>
                   {/* Item 3 */}
