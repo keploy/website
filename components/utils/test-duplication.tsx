@@ -134,46 +134,50 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Dependency Wait Time',
-      icon:<DependencyWaitTimeIcon />,
-      description: 'Eliminates waiting for dependent components, allowing parallel work and accelerating the development process.'
-    },
-    {
-      title: 'Manual Stub Creation',
-      icon:<ManualStubCreationIcon />,
-      description: 'Removes the laborious task of manually creating stubs, saving significant time and effort in the testing process.'
-    },
-    {
-      title: 'Data Variability Concerns',
-      icon: <DataVariabilityConcernsIcon />,
-      description: 'Provides diverse and dynamic data sets automatically, removing concerns about generating varied inputs for testing scenarios.'
-    },
-    {
-      title: 'Error Handling Challenges',
+      title: 'Eliminate redundancy',
       icon:<ErrorHandlingChallengesIcon />,
-      description: 'Streamlines testing of error responses and edge cases, ensuring robust error handling mechanisms without extensive manual testing.'
+      description: 'Achieve test optimization though by removing test redundancy, which causes unnecessary overhead, maintenance, and clutter in your test case suite.',
     },
     {
-      title: 'Scalability Testing Difficulties',
-      icon:<ScalabilityTestingDifficultiesIcon />,
-      description: 'Simplifies scalability testing by automatically stubbing system performance under various loads.'
+      title: 'Unique Test Scenarios',
+      icon:<ManualStubCreationIcon />,
+      description: 'AI enables to autogenerate all the edge case scenarios testcases by reading Schema and PRD files for your application.'
+    },
+    {
+      title: 'Remove Unnecessary Testcases',
+      icon: <DataVariabilityConcernsIcon />,
+      description: 'Find and Remove duplicate testcases from your test suites, making the suite more lighter and faster to execute.'
+    },
+    {
+      title: 'Prioritize User Experience',
+      icon: <ScalabilityTestingDifficultiesIcon />,
+      description: 'Prioritize essential testing requirements to ensure efficient and effective testing procedures for optimal performance.'
+    },
+    {
+      title: 'Enhance Efficiency',
+      icon: <DependencyWaitTimeIcon />,
+      description: 'Boost productivity by optimizing testing processes and improving effectiveness through streamlined procedures and focused attention on critical aspects of the testing phase'
     }
   ];
-  export const faqQuestions =[
+
+export const faqQuestions =[
     {
-      title: "How does Keploy aid in testing efficiency?",
-      answer:
-        "It generates realistic stubs, eliminates dependency wait time, and simplifies scalability testing.",
+      title: "Why is avoiding test duplication considered beneficial in software testing?",
+      answer:"Avoiding test duplication is beneficial because it reduces redundancy, saving time and effort by focusing resources on unique test cases. It enhances maintainability by preventing inconsistencies and ensures accurate testing coverage across different scenarios." 
     },
     {
-      title: "What's a key advantage of isolating components for testing?",
-      answer:
-        "Isolating components allows testing without relying on the complete system, enabling more efficient validation and identification of potential issues.",
+      title: "Does eliminating test duplication contribute to improving testing processes ?",
+      answer:"Removing test duplication streamlines testing efforts, and allow teams to allocate resources more efficiently and prioritize critical test cases. It enhances clarity and reduces confusion by ensuring that each test serves a unique purpose, improving the overall effectiveness of the testing process" 
     },
     {
-      title: "What issue does stub generation with Keploy address?",
+      title: "What are the potential drawbacks of having duplicated tests in software testing?",
+      answer:"Having duplicated tests can lead to inefficiencies, as resources are wasted on redundant test cases that do not provide additional value. It can also result in confusion and inconsistency, as overlapping tests may produce conflicting results or redundant feedback."    
+    },
+    {
+      title: "What strategies can be employed to ensure no test duplication occurs in software testing?",
       answer:
-        "Keploy's stub generation addresses dependency wait time and data variability concerns by providing realistic stubs, eliminating the need to wait for dependent components and ensuring diverse testing scenarios.",
-    }
+        "Employing strategies such as code reviews, test case management tools, and regular team communication can help identify and eliminate duplicated tests. Additionally, establishing clear guidelines and standards for writing and maintaining tests can prevent duplication and promote a more efficient testing process.",
+    },
   ]
 
+  
