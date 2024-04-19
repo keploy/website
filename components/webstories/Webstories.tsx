@@ -21,15 +21,8 @@ type WebStoriesProps = {
 
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
-  const storyContainerRef = useRef<HTMLDivElement>(null); // Ref for the div
-
-  useEffect(() => {
-    // Focus on the div when the component mounts
-    if (storyContainerRef.current) {
-      storyContainerRef.current.focus();
-    }
-  }, []); // Empty dependency array means this effect runs only once on mount
-
+  
+  
   const handlePrev = () => {
     setCurrentStoryIndex((prevIndex) =>
       prevIndex === 0 ? data.length - 1 : prevIndex - 1
@@ -46,7 +39,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
     setCurrentStoryIndex(0);
   };
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event:React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "ArrowRight") {
       handleNext();
     } else if (event.key === "ArrowLeft") {
@@ -59,9 +52,9 @@ const WebStories = ({ data }: WebStoriesProps) => {
   return (
     <div>
       <div
-        className="relative flex flex-row h-screen gap-10 justify-center"
+        className="relative flex flex-row h-screen gap-10 justify-center cursor-pointer"
       >
-        <div className="absolute inset-0 backdrop-filter backdrop-blur-3xl" />
+        <div className="absolute inset-0 backdrop-filter backdrop-blur-3xl cursor-pointer" />
         <button
           onClick={handlePrev}
           className={`relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
@@ -74,10 +67,9 @@ const WebStories = ({ data }: WebStoriesProps) => {
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <div
-          ref={storyContainerRef} // Attach the ref to the div
           key={currentStoryIndex}
-          className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6"
-          onClick={handleNext}
+          className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6 cursor-pointer"
+          
           onKeyDown={handleKeyDown}
           tabIndex={0} // Ensure the div is focusable
         >
@@ -104,7 +96,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
             }`}
             disabled={currentStoryIndex === data.length - 1}
           >
-            <FontAwesomeIcon icon={faChevronRight} />
+            <FontAwesomeIcon icon={faChevronRight}  />
           </button>
         )}
       </div>

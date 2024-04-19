@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faArrowUp, faPaperPlane } from "@fortawesome/free-solid-svg-icons"; // Added faShareAlt icon
 import Link from "next/link";
-
+import CustomizedDialogs from "./ShareComponent";
 type StoriesProps = {
   imageUrl: string;
   Heading: string;
@@ -40,8 +40,13 @@ const Stories = ({
               }`}
               key={key}
             />
-            
           ))}
+        </div>
+        <div className="flex flex-row justify-end">
+          {/* Empty div for the share button */}
+          <div className="cursor-pointer mx-5 scale-125">
+          <CustomizedDialogs/>
+          </div>
         </div>
         <div className={`absolute w-full bottom-0 animate-grow `}>
           <div className="bg-secondary-300 opacity-60 p-8 rounded-xl">
@@ -55,7 +60,6 @@ const Stories = ({
                   icon={faArrowUp}
                   className="text-orange-200 mr-1 animate-bounce"
                 />
-
                 <p className="bg-gradient-300 p-2 rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
                   <FontAwesomeIcon
                     icon={faLink}
@@ -67,7 +71,7 @@ const Stories = ({
             </Link>
           )}
         </div>
-        </div>
+      </div>
     </>
   );
 };
