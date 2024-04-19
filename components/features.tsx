@@ -109,11 +109,13 @@ const TextSection = ({
   heading,
   description,
   btnDescription,
+  btnLink,
 }: {
   svg: any;
   heading: string;
   description: string;
   btnDescription?: string;
+  btnLink?: any;
 }) => {
   return (
     <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0 text-details">
@@ -128,7 +130,7 @@ const TextSection = ({
         <div>
           <Link
             className="btn mt-8 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
-            href="/stub-generation"
+            href={btnLink}
           >
             {btnDescription}
           </Link>
@@ -228,6 +230,7 @@ export default function Features() {
                 heading={" Test and Stubs Generation"}
                 description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
                 btnDescription="Explore More"
+                btnLink="/stub-generation"
               />
             </div>
             <div className="flex items-center detail">
@@ -246,6 +249,8 @@ export default function Features() {
                 }
                 heading={"Test Deduplication"}
                 description="Automatically detect and remove duplicate tests, ideal for scenarios recorded in live-environments."
+                btnDescription="Explore More"
+                btnLink="/test-duplication"
               />
             </div>
             <div className="flex items-center detail">
@@ -264,6 +269,8 @@ export default function Features() {
                 }
                 heading={"Native Integration"}
                 description="Merge Keploy tests with testing libraries(JUnit, go-test, py-test, jest) for combined test coverage."
+                btnDescription="Explore More"
+                btnLink="/native-integration"
               />
             </div>
           </div>

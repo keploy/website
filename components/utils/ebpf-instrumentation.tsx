@@ -134,46 +134,56 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Dependency Wait Time',
+      title: 'Developer Friendly, zero learning curve',
       icon:<DependencyWaitTimeIcon />,
-      description: 'Eliminates waiting for dependent components, allowing parallel work and accelerating the development process.'
+      description: 'Keploy can dynamically generate test cases by recording and replaying your interactions without integrating any code or complex setup within 2 mins.'
     },
     {
-      title: 'Manual Stub Creation',
+      title: 'Seamless Test Generation',
       icon:<ManualStubCreationIcon />,
-      description: 'Removes the laborious task of manually creating stubs, saving significant time and effort in the testing process.'
+      description: 'eBPF instrumentation enables Keploy to effortlessly record and generate automated tests and data-mocks within a mere 2 minutes, streamlining the testing process.'
     },
     {
-      title: 'Data Variability Concerns',
+      title: 'Codeless Integration',
       icon: <DataVariabilityConcernsIcon />,
-      description: 'Provides diverse and dynamic data sets automatically, removing concerns about generating varied inputs for testing scenarios.'
+      description: 'With eBPF, Keploy dynamically generates test cases without the need for integrating any code into the application, simplifying the testing workflow for developers.'
     },
     {
-      title: 'Error Handling Challenges',
-      icon:<ErrorHandlingChallengesIcon />,
-      description: 'Streamlines testing of error responses and edge cases, ensuring robust error handling mechanisms without extensive manual testing.'
-    },
-    {
-      title: 'Scalability Testing Difficulties',
+      title: 'Continuous Improvement',
       icon:<ScalabilityTestingDifficultiesIcon />,
-      description: 'Simplifies scalability testing by automatically stubbing system performance under various loads.'
+      description: 'Continuously enhance testing strategies and streamline the development lifecycle, ensuring the delivery of high-quality software with speed and efficiency.'
+    },
+    {
+      title: 'Language and Framework Agnostic',
+      icon:<ErrorHandlingChallengesIcon />,
+      description: 'Generate test cases for all languages and frameworks, eliminating the need for complex coding knowledge and ensuring compatibility with diverse development environments.'
+    },
+    {
+      title: 'Comprehensive Test Coverage',
+      icon:<ManualStubCreationIcon />,
+      description: 'Leveraging eBPF, Keploy ensures comprehensive test coverage by capturing and replaying interactions, facilitating thorough testing across different scenarios and use cases.'
     }
   ];
+
   export const faqQuestions =[
     {
-      title: "How does Keploy aid in testing efficiency?",
+      title: "What does language agnostic support mean?",
       answer:
-        "It generates realistic stubs, eliminates dependency wait time, and simplifies scalability testing.",
+        "Keploy works at a kernel and network level, enabling support for various protocol versions such as HTTP, TLS, GRPC, Mongo, MySQL, Redis, and more. Once added, these protocols will be universally supported across all languages, runtimes, or drivers/packages."
     },
     {
-      title: "What's a key advantage of isolating components for testing?",
+      title: "How does Keploy enable test case generation without code integration?",
       answer:
-        "Isolating components allows testing without relying on the complete system, enabling more efficient validation and identification of potential issues.",
+        "Keploy utilizes eBPF to dynamically generate test cases by recording and replaying interactions, eliminating the need for integrating any code into the application."
     },
     {
-      title: "What issue does stub generation with Keploy address?",
+      title: "How does Keploy simplify test automation across different languages and frameworks?",
       answer:
-        "Keploy's stub generation addresses dependency wait time and data variability concerns by providing realistic stubs, eliminating the need to wait for dependent components and ensuring diverse testing scenarios.",
+        "Keploy simplifies test automation by providing automated tests in simple YAML format, eliminating the need for complex coding knowledge and enabling teams to obtain test cases for all languages and frameworks effortlessly."
+    },
+    {
+      title: "How does eBPF instrumentation helps in enhancing test case generation with Keploy?",
+      answer:
+        "With eBPF, Keploy dynamically records and replays interactions, allowing for the rapid generation of test cases without any intrusive code changes, thereby accelerating the testing process."
     }
   ]
-
