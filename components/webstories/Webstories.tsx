@@ -60,10 +60,6 @@ const WebStories = ({ data }: WebStoriesProps) => {
     <div>
       <div
         className="relative flex flex-row h-screen gap-10 justify-center"
-        style={{
-          backgroundImage: `url(${currentStory.imageUrl})`,
-          backgroundSize: "cover",
-        }}
       >
         <div className="absolute inset-0 backdrop-filter backdrop-blur-3xl" />
         <button

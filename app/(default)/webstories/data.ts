@@ -61,12 +61,12 @@ export const DummyData = [
         text:"this is text-2",
       },
       {
-        imageUrl: "https://example.com/image3.jpg",
+        imageUrl: "https://wallpapercave.com/wp/wp2836008.jpg",
         Heading: "Story 2",
         text:"this is text-2",
       },
       {
-        imageUrl: "https://example.com/image3.jpg",
+        imageUrl: "https://wallpapercave.com/wp/wp2836008.jpg",
         Heading: "Story 2",
         text:"this is text-2",
         swipeText: "Swipe to read more",
