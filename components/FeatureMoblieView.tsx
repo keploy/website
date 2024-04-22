@@ -3,14 +3,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 import Image from 'next/image';
-import FeaturesBg from '@/public/images/record-tc4155904b397e0fbc1237.gif';
-import TestDeduplication from '@/public/images/record-replaye538dde2a6e078f1b5a5.gif';
 import NativeIntegration from '@/public/images/replay-tc31305e1d2286fe485b27.gif';
-import FeaturesElement from '@/public/images/features-element.png';
 import testAndStubsGen from '@/public/images/TestGenHighlighted.json';
 import deDuplication from '@/public/images/CaptureAndReplayV2.json';
-import CopyButton from '@/public/images/icons8-copy-96.png';
-import ClipboardJS from 'clipboard';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 const LottiePlayer = dynamic(()=>import("./LottiePlayer"),{ssr:false}) 
