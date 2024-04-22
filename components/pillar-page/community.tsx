@@ -12,7 +12,7 @@ const SocialCloud: React.FC = () => {
           🐰 Join the Keploy community ✨
         </h2>
       </div>
-      <div className="social-cloud" >
+      <div className="social-cloud md:gap-2 lg:gap-2 sm:gap-0" >
         {socialLinks.map((link, index) => (
           <a
             key={index}
