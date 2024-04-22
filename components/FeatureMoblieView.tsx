@@ -125,12 +125,11 @@ export default function FeaturesMobileView() {
 
                 </div>
                 <div
-                  className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
+                  className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3  transition duration-300 hover:shadow-lg ${
                     tab !== 2
-                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
-                      : 'bg-gray-200 border-transparent shadow-lg'
+                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg '
+                      : 'bg-gray-200 border-transparent shadow-lg '
                   }`}
-                  href="#0"
                   onClick={(e) => {
                     e.preventDefault();
                     setTab(2);
@@ -168,13 +167,12 @@ export default function FeaturesMobileView() {
                     </div>
                 </div>
                 </div>
-                <a
+                <div
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 3
                       ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
                       : 'bg-gray-200 border-transparent shadow-lg'
                   }`}
-                  href="#0"
                   onClick={(e) => {
                     e.preventDefault();
                     setTab(3);
@@ -201,7 +199,10 @@ export default function FeaturesMobileView() {
                       />
                     </svg>
                   </div>
-                </a>
+                </div>
+                <div>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/native-integration">Explore More</Link>
+                    </div>
               </div>
             </div>
 
