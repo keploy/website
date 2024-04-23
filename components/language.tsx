@@ -100,7 +100,7 @@ export default function Language() {
               <div className="flex items-center py-12 animate-marquee whitespace-nowrap w-max">
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={ApacheClient}
                     width={106}
                     height={100}
@@ -109,7 +109,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Chi}
                     width={106}
                     height={100}
@@ -118,7 +118,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Dynamo}
                     width={106}
                     height={100}
@@ -127,7 +127,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Echo}
                     width={106}
                     height={100}
@@ -136,7 +136,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Elastic}
                     width={106}
                     height={100}
@@ -145,7 +145,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Express}
                     width={106}
                     height={100}
@@ -154,7 +154,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Gin}
                     width={106}
                     height={100}
@@ -163,7 +163,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={GoogleMaps}
                     width={106}
                     height={100}
@@ -172,7 +172,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Gorilla}
                     width={106}
                     height={100}
@@ -181,7 +181,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Grpc}
                     width={106}
                     height={100}
@@ -190,7 +190,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={H2db}
                     width={106}
                     height={100}
@@ -199,7 +199,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={MariaDB}
                     width={106}
                     height={100}
@@ -208,7 +208,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Mongo}
                     width={106}
                     height={100}
@@ -217,7 +217,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={NetHttp}
                     width={106}
                     height={100}
@@ -226,7 +226,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Octokit}
                     width={106}
                     height={100}
@@ -235,7 +235,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={OkHttp}
                     width={106}
                     height={100}
@@ -244,7 +244,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={OracleDB}
                     width={106}
                     height={100}
@@ -253,7 +253,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Postgres}
                     width={106}
                     height={100}
@@ -262,7 +262,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Redis}
                     width={106}
                     height={100}
@@ -271,7 +271,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={S3}
                     width={106}
                     height={100}
@@ -280,7 +280,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={SpringBoot}
                     width={106}
                     height={100}
@@ -289,7 +289,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Sql}
                     width={106}
                     height={100}
@@ -298,7 +298,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={WebGo}
                     width={106}
                     height={100}
@@ -309,7 +309,7 @@ export default function Language() {
               <div className="flex items-center py-12 animate-marquee whitespace-nowrap w-max">
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={ApacheClient}
                     width={106}
                     height={100}
@@ -318,7 +318,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Chi}
                     width={106}
                     height={100}
@@ -327,7 +327,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Dynamo}
                     width={106}
                     height={100}
@@ -336,7 +336,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Echo}
                     width={106}
                     height={100}
@@ -345,7 +345,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Elastic}
                     width={106}
                     height={100}
@@ -354,7 +354,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Express}
                     width={106}
                     height={100}
@@ -363,7 +363,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Gin}
                     width={106}
                     height={100}
@@ -372,7 +372,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={GoogleMaps}
                     width={106}
                     height={100}
@@ -381,7 +381,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Gorilla}
                     width={106}
                     height={100}
@@ -390,7 +390,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Grpc}
                     width={106}
                     height={100}
@@ -399,7 +399,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={H2db}
                     width={106}
                     height={100}
@@ -408,7 +408,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={MariaDB}
                     width={106}
                     height={100}
@@ -417,7 +417,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Mongo}
                     width={106}
                     height={100}
@@ -426,7 +426,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={NetHttp}
                     width={106}
                     height={100}
@@ -435,7 +435,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Octokit}
                     width={106}
                     height={100}
@@ -444,7 +444,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={OkHttp}
                     width={106}
                     height={100}
@@ -453,7 +453,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={OracleDB}
                     width={106}
                     height={100}
@@ -462,7 +462,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Postgres}
                     width={106}
                     height={100}
@@ -471,7 +471,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Redis}
                     width={106}
                     height={100}
@@ -480,7 +480,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={S3}
                     width={106}
                     height={100}
@@ -489,7 +489,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={SpringBoot}
                     width={106}
                     height={100}
@@ -498,7 +498,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={Sql}
                     width={106}
                     height={100}
@@ -507,7 +507,7 @@ export default function Language() {
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110"
+                    className="relative transition-transform hover:scale-110 h-auto w-auto"
                     src={WebGo}
                     width={106}
                     height={100}
