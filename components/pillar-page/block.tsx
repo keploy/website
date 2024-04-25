@@ -65,7 +65,7 @@ export default function ProblemBlocks(props: {
             <div className="flex justify-center md:justify-center gap-4">
               <a
                 className="btn text-secondary-300 bg-primary-300 hover:text-white"
-                href="https://www.github.com/keploy/keploy"
+                href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
               >
                 {props.btnText}
               </a>
