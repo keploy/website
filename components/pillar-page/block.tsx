@@ -71,7 +71,7 @@ export default function ProblemBlocks(props: {
              className="flex justify-center md:justify-center gap-4 mt-8">
               <a
                 className="btn text-secondary-300 bg-primary-300 hover:text-white"
-                href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
+                // href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
               > {/* Add FORM LINK*/}
                 {props.btnText}
               </a>
