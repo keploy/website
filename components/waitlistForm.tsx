@@ -87,7 +87,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
       .catch((err) => console.log(err));
   };
 
-  const isSubscribeDisabled = (): boolean => {
+  const isSubmitDisabled = (): boolean => {
     return Boolean(loading || Object.values(formData).some((value) => value.trim() === ""));
   };
 
@@ -253,19 +253,17 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   />
                 </div>
 
-                {/* Repeat for other fields */}
                 <button
                   className={`btn text-secondary-300 bg-primary-300 w-full mb-4 sm:mb-0 px-2 py-3 rounded text-base font-bold border-1 border-transparent text-white shadow mt-2 ${
-                    isSubscribeDisabled()
+                    isSubmitDisabled()
                       ? "opacity-50 cursor-not-allowed"
                       : "hover:bg-primary-500"
                   }`}
                   type="submit"
-                  disabled={isSubscribeDisabled()}
+                  disabled={isSubmitDisabled()}
                 >
                   {loading ? <Loader /> : "Join"}
                 </button>
-                {/* {subscribed && <p className="text-sm text-green-800 text-center font-semibold mt-3">Thanks for subscribing!</p>} */}
               </form>
             ) : (
               <div className="sm:max-w-6xl sm:min-w-96">
