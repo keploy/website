@@ -15,7 +15,7 @@ import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 const heroData = {
   titleTop: "Effortless Stub Generation",
-  titleBottom: "for Comprehensive Test Coverage!",
+  titleBottom: " for Comprehensive Test Coverage!",
   subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
   subtitleBottom:
     "Seamlessly Convert User Interactions into Precise Test Cases and Data Stubs 🚀",
@@ -24,7 +24,7 @@ const heroData = {
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",
-  btnText: "Try Keploy",
+  btnText: "Join Waitlist",
   blocksData: blocksData,
 };
 const FeaturesData = {

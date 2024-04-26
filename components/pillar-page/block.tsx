@@ -1,5 +1,7 @@
 import arrowsSvg from "@/public/images/arrows.svg";
 import Image from "next/image";
+import { useState } from "react";
+import FormModal from "../waitlistForm";
 const Item = (props: {
   title: string;
   description: string;
@@ -26,6 +28,7 @@ export default function ProblemBlocks(props: {
     SvgComponent: Function;
   }>;
 }) {
+  const [isFormOpen, setFormOpen] = useState(false);
   return (
     <section className="relative">
       <div
@@ -62,7 +65,10 @@ export default function ProblemBlocks(props: {
             ))}
           </div>
           {props.btnText && (
-            <div className="flex justify-center md:justify-center gap-4">
+            <div onClick={()=>{
+              if (props.btnText=="Join Waitlist") setFormOpen(true)
+              }}
+             className="flex justify-center md:justify-center gap-4 mt-8">
               <a
                 className="btn text-secondary-300 bg-primary-300 hover:text-white"
                 href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
@@ -71,8 +77,9 @@ export default function ProblemBlocks(props: {
               </a>
             </div>
           )}
-        </div>
+        </div>   
       </div>
+      <FormModal isOpen={isFormOpen} onClose={() => setFormOpen(false)} />
     </section>
   );
 }

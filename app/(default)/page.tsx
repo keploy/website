@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
         <Hero />
-        <ProblemBlocks />
+        {/* <ProblemBlocks /> */}
         <Features />
   
         <Testimonial

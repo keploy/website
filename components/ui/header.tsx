@@ -8,10 +8,41 @@ import Dropdown from "@/components/utils/dropdown";
 import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
-
+import UpIcon from "@/public/images/up-chevron.svg"
+import Image from "next/image";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(0);
+  const [isPillarPageDropdownVisible, setIsPillarPageDropdownVisible] = useState(false);
+  const PillarPages=[{
+    pagelink:"/stub-generation",
+    pageName:"Test and Stubs Generation"
+  },{
+    pagelink:"/test-duplication",
+    pageName:"Test Deduplication"
+  },{
+    pagelink:"/native-integrationn",
+    pageName:"Native-Integration"
+  },{
+    pagelink:"/ebpf-instrumentation",
+    pageName:"Ebpf-Instrumentation"
+  }
+]
+const navbarDropdownData = [
+{
+  heading:"Pillar Pages",
+  links:[...PillarPages]
+}
+]
+  // Function to show the dropdown
+  const showPillarPageDropdown = () => {
+    setIsPillarPageDropdownVisible(true);
+  };
+
+  // Function to hide the dropdown
+  const hidePillarPageDropdown = () => {
+    setIsPillarPageDropdownVisible(false);
+  };
 
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
@@ -56,7 +87,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed w-full z-30 bg-neutral-100 md:bg-opacity-90 transition duration-300 ease-in-out ${
+      className={`fixed w-full z-30 bg-neutral-100 transition duration-300 ease-in-out ${
         !top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""
       }`}
     >
@@ -97,6 +128,15 @@ export default function Header() {
                   Guest Posts
                 </Link>
               </li>
+              <div
+                onMouseEnter={showPillarPageDropdown}
+                className="flex items-center px-5 py-3 transition duration-150 ease-in-out cursor-pointer"
+              >
+                <div className="font-medium text-gray-600 hover:text-primary-300 mr-2">
+                  Pillar Page
+                </div>
+                {/* <Image src={UpIcon} alt="up Icon" /> */}
+              </div>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
@@ -139,6 +179,37 @@ export default function Header() {
           <MobileMenu starsCount={starsCount} />
         </div>
       </div>
+      {isPillarPageDropdownVisible && (
+        <div
+          onMouseLeave={hidePillarPageDropdown}
+          className="absolute w-full left-0 top-full bg-neutral-100 border border-t-2 pt-4 pb-8"
+        >
+          <div className="max-w-6xl mx-auto px-5 sm:px-6">
+            <div className="flex items-center justify-between">
+              {navbarDropdownData.map((lists) => (
+                <div>
+                  <span className="font-bold text-secondary-300 uppercase px-5 py-3 flex items-center transition duration-150 ease-in-out">
+                    {lists.heading}
+                  </span>
+                  <ul>
+                    {lists.links.map((list) => (
+                      <li>
+                        <Link
+                          target="_blank"
+                          href={list.pagelink}
+                          className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                        >
+                          {list.pageName}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

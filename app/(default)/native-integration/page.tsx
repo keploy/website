@@ -24,7 +24,7 @@ const heroData = {
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",
-  btnText: "Try Keploy",
+  btnText: "Join Waitlist",
   blocksData: blocksData,
 };
 const FeaturesData = {

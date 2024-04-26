@@ -1,6 +1,6 @@
 import MarutiLogo from "@/public/images/users/Logo_for_Maruti_Suzuki.svg";
 import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
-import WednesdayLogo from "@/public/images/users/Wednesday_Logo.svg";
+import WednesdayLogo from "@/public/images/users/Wednesday_logo.svg";
 
 export const testimonialData = [
   {
