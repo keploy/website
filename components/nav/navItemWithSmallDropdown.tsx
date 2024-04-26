@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Link from "next/link";
-import UpIcon from "@/public/images/up-chevron.svg"
-import DownIcon from "@/public/images/down-chevron.svg"
+import {UpIcon} from "./UpIcon"
+import DownIcon from "./DownIcon"
 import Image from "next/image";
 
 export interface NavItemWithSmallDropdownProps {
@@ -39,11 +39,14 @@ export default function NavItemWithSmallDropdown({heading,dropdownData}:NavItemW
                 <div className="font-medium mr-2">
                   Resources
                 </div>
-                <Image onClick={toggleDropdown} src={ openDropdown ? UpIcon : DownIcon} alt="up or down icon" height={12} width={12} />
-                </div>
+                <div onClick={toggleDropdown} className="pt-1.5">
+        {openDropdown ? <UpIcon className="text-current" /> : <DownIcon className="text-current" />}
+      </div></div>
                 {openDropdown && (
                   <div
-                    className="absolute top-full mt-1 bg-neutral-100 pb-8 z-10"
+                    className="absolute top-full bg-neutral-100 pb-8 z-10"
+                    // onMouseLeave={hideDropdown}
+
                   >
                     <div>
                       <div className="flex items-center justify-between">
