@@ -8,41 +8,34 @@ import Dropdown from "@/components/utils/dropdown";
 import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
-import UpIcon from "@/public/images/up-chevron.svg"
-import Image from "next/image";
+import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(0);
-  const [isPillarPageDropdownVisible, setIsPillarPageDropdownVisible] = useState(false);
-  const PillarPages=[{
-    pagelink:"/stub-generation",
-    pageName:"Test and Stubs Generation"
-  },{
-    pagelink:"/test-duplication",
-    pageName:"Test Deduplication"
-  },{
-    pagelink:"/native-integrationn",
-    pageName:"Native-Integration"
-  },{
-    pagelink:"/ebpf-instrumentation",
-    pageName:"Ebpf-Instrumentation"
-  }
-]
-const navbarDropdownData = [
-{
-  heading:"Pillar Pages",
-  links:[...PillarPages]
-}
-]
-  // Function to show the dropdown
-  const showPillarPageDropdown = () => {
-    setIsPillarPageDropdownVisible(true);
-  };
+  const PillarPages: DropdowndataInterface[] = [
+    {
+      heading: "Pillar Pages",
+      links: [
+        {
+          pagelink: "/stub-generation",
+          pageName: "Test and Stubs Generation"
+        },
+        {
+          pagelink: "/test-duplication",
+          pageName: "Test Deduplication"
+        },
+        {
+          pagelink: "/native-integration",
+          pageName: "Native Integration" 
+        },
+        {
+          pagelink: "/ebpf-instrumentation",
+          pageName: "eBPF Instrumentation"
+        }
+      ]
+    }
+  ];
 
-  // Function to hide the dropdown
-  const hidePillarPageDropdown = () => {
-    setIsPillarPageDropdownVisible(false);
-  };
 
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
@@ -128,15 +121,7 @@ const navbarDropdownData = [
                   Guest Posts
                 </Link>
               </li>
-              <div
-                onMouseEnter={showPillarPageDropdown}
-                className="flex items-center px-5 py-3 transition duration-150 ease-in-out cursor-pointer"
-              >
-                <div className="font-medium text-gray-600 hover:text-primary-300 mr-2">
-                  Pillar Page
-                </div>
-                {/* <Image src={UpIcon} alt="up Icon" /> */}
-              </div>
+              <NavItemWithSmallDropdown heading="Resources" dropdownData={PillarPages} />
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
@@ -165,10 +150,17 @@ const navbarDropdownData = [
                   {" "}
                   |
                 </span>
-                <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
+                <span className="text-base flex gap-1">
+                  {" "}
+                  ⭐️ <CountingNumbers className="" />
+                </span>
               </a>
             </div>
-            <Link href="https://calendar.app.google/8Ncpff4QnAhpVnYd8" target="_blank" className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3">
+            <Link
+              href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
+              target="_blank"
+              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3"
+            >
               <span>Book Cloud Demo</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
               {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
@@ -179,37 +171,6 @@ const navbarDropdownData = [
           <MobileMenu starsCount={starsCount} />
         </div>
       </div>
-      {isPillarPageDropdownVisible && (
-        <div
-          onMouseLeave={hidePillarPageDropdown}
-          className="absolute w-full left-0 top-full bg-neutral-100 border border-t-2 pt-4 pb-8"
-        >
-          <div className="max-w-6xl mx-auto px-5 sm:px-6">
-            <div className="flex items-center justify-between">
-              {navbarDropdownData.map((lists) => (
-                <div>
-                  <span className="font-bold text-secondary-300 uppercase px-5 py-3 flex items-center transition duration-150 ease-in-out">
-                    {lists.heading}
-                  </span>
-                  <ul>
-                    {lists.links.map((list) => (
-                      <li>
-                        <Link
-                          target="_blank"
-                          href={list.pagelink}
-                          className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                        >
-                          {list.pageName}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
