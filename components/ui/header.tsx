@@ -121,7 +121,13 @@ export default function Header() {
                   Guest Posts
                 </Link>
               </li>
-              <NavItemWithSmallDropdown heading="Resources" dropdownData={PillarPages} />
+              <div className="px-5">
+                {" "}
+                <NavItemWithSmallDropdown
+                  heading="Resources"
+                  dropdownData={PillarPages}
+                />
+              </div>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">

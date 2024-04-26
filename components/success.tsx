@@ -10,7 +10,7 @@ interface SuccessProps {
 
 const Success: React.FC<SuccessProps> = ({ heading, subHeading, ctaText, ctaClickFunction }) => {
   return (
-    <div className="w-full h-full flex flex-col justify-between items-center p-4">
+    <div className="w-full h-full shadow-lg sm:shadow-none  flex flex-col justify-between items-center p-4">
       <Image src={CommunityBunny} alt='success' height={144} width={144} />
       <div className="text-center mt-8">
         <h1 className="text-xl font-bold">{heading}</h1>

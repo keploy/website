@@ -64,14 +64,13 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
     data.append("language", formData.language);
     data.append("currentMethod", formData.currentMethod);
     data.append("dependencies", formData.dependencies);
-    // return
     fetch(scriptUrl, {
       method: "POST",
       body: data,
     })
       .then((res) => {
-        console.log("SUCCESSFULLY SUBMITTED");
         setLoading(false);
+        setSuccess(true)
       })
       .catch((err) => console.log(err));
   };
@@ -84,9 +83,9 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
     <>
       {isOpen && (
         <div className="fixed overflow-hidden	 inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg flex justify-center items-center z-99999 ">
-          <div className="sm:max-h-fit flex flex-col bg-neutral-100 rounded-lg sm:p-8 justify-center w-full h-full sm:h-fit sm:mx-3/4 mt-16 sm:mt-10 shadow-md border-b-primary-300 border-b-2">
+          <div className="sm:max-h-fit flex flex-col bg-neutral-100 rounded-lg p-8 justify-center w-full h-full sm:h-fit sm:mx-3/4 mt-16 sm:mt-10 shadow-md border-b-primary-300 border-b-2">
             <div
-              className="hidden sm:flex justify-end cursor-pointer"
+              className=" flex justify-end cursor-pointer"
               onClick={() => onClose()}
             >
               <Image src={CloseIcon} alt="close icon" height={32} width={32} />
@@ -96,7 +95,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
               onSubmit={(e) => handleSubmit(e)}
               ref={formRef}
             >
-              <div className="flex flex-row gap-4">
+              <div className="flex flex-col md:flex-row  gap-4">
                 {" "}
                 <div className="flex flex-col">
                   <label
@@ -136,7 +135,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   )}
                 </div>
               </div>
-              <div className="flex flex-row gap-4">
+              <div className="flex flex-col md:flex-row  gap-4">
                 <div className="flex flex-col">
                   <label
                     htmlFor="companyAndRole "
