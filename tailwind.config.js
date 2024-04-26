@@ -205,6 +205,7 @@ module.exports = {
             },
             zIndex: {
                 '-1': '-1',
+                '99999':'99999'
             },
             variants: {
                 width: ["responsive", "hover", "focus"]

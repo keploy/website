@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { ChangeEvent } from "react";
 import CloseIcon from "@/public/images/cross-icon.svg";
+import Success from "./success";
 interface FormData {
   name: string;
   email: string;
@@ -26,6 +27,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
     dependencies: "",
   });
   const [loading, setLoading] = useState<Boolean>(true);
+  const [success,setSuccess] = useState<Boolean>(false)
   const [emailError, setEmailError] = useState("");
   const formRef = useRef(null);
 
@@ -81,15 +83,15 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg flex justify-center items-center ">
-          <div className="flex flex-col bg-neutral-100 rounded-lg p-8 w-full mx-3/4 shadow-md border-b-primary-300 border-b-2">
+        <div className="fixed overflow-hidden	 inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg flex justify-center items-center z-99999 ">
+          <div className="sm:max-h-fit flex flex-col bg-neutral-100 rounded-lg sm:p-8 justify-center w-full h-full sm:h-fit sm:mx-3/4 mt-16 sm:mt-10 shadow-md border-b-primary-300 border-b-2">
             <div
-              className="flex justify-end cursor-pointer"
+              className="hidden sm:flex justify-end cursor-pointer"
               onClick={() => onClose()}
             >
               <Image src={CloseIcon} alt="close icon" height={32} width={32} />
             </div>
-            <form
+            {!success ? (<form
               className="flex flex-col gap-y-4 text-sm text-white"
               onSubmit={(e) => handleSubmit(e)}
               ref={formRef}
@@ -106,7 +108,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   <input
                     type="text"
                     name="name"
-                    className="rounded text-black  px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="rounded text-black px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Fullname"
@@ -196,7 +198,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                 <input
                   type="text"
                   name="currentMethod"
-                  className="rounded text-black  px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="rounded text-black px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   value={formData.currentMethod}
                   onChange={handleChange}
                   placeholder="Company Name"
@@ -233,7 +235,11 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                 Join
               </button>
               {/* {subscribed && <p className="text-sm text-green-800 text-center font-semibold mt-3">Thanks for subscribing!</p>} */}
-            </form>
+            </form>):(
+            <div className="max-w-6xl min-w-96">
+            <Success heading="Welcome Aboard!" subHeading="Thank you for joining our waitlist. We'll keep you posted with updates." ctaText="Okay" ctaClickFunction={onClose} />
+            </div>
+            )}
           </div>
         </div>
       )}

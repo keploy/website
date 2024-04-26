@@ -23,3 +23,7 @@
 .no-scrollbar::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
+
+button{
+    cursor: pointer !important;
+}
