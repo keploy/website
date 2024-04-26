@@ -2,7 +2,8 @@ import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { ChangeEvent } from "react";
 import CloseIcon from "@/public/images/cross-icon.svg";
-import Success from "./success";
+import Success from "@/components/success";
+import Loader from "@/components/utils/loader";
 interface FormData {
   name: string;
   email: string;
@@ -26,8 +27,8 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
     currentMethod: "",
     dependencies: "",
   });
-  const [loading, setLoading] = useState<Boolean>(true);
-  const [success,setSuccess] = useState<Boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
+  const [success,setSuccess] = useState<boolean>(false)
   const [emailError, setEmailError] = useState("");
   const formRef = useRef(null);
 
@@ -45,6 +46,17 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
+  const resetFormData =()=>{
+    setFormData({
+      name: "",
+      email: "",
+      companyAndRole: "",
+      linkedInProfile: "",
+      language: "",
+      currentMethod: "",
+      dependencies: "",
+    })
+  }
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!isValidEmail(formData.email)) {
@@ -76,14 +88,14 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
   };
 
   const isSubscribeDisabled = (): boolean => {
-    return Object.values(formData).some((value) => value.trim() === "");
+    return Boolean(loading || Object.values(formData).some((value) => value.trim() === ""));
   };
 
   return (
     <>
       {isOpen && (
         <div className="fixed overflow-hidden	 inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg flex justify-center items-center z-99999 ">
-          <div className="sm:max-h-fit flex flex-col bg-neutral-100 rounded-lg p-8 justify-center w-full h-full sm:h-fit sm:mx-3/4 mt-16 sm:mt-10 shadow-md border-b-primary-300 border-b-2">
+          <div className="sm:max-h-fit flex flex-col bg-neutral-100 rounded-lg p-8 justify-center w-full h-full sm:h-fit sm:mx-3/4 mt-24 sm:mt-10 shadow-md border-b-primary-300 border-b-2">
             <div
               className=" flex justify-end cursor-pointer"
               onClick={() => onClose()}
@@ -91,7 +103,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
               <Image src={CloseIcon} alt="close icon" height={32} width={32} />
             </div>
             {!success ? (<form
-              className="flex flex-col gap-y-4 text-sm text-white"
+              className="flex flex-col gap-y-4 text-sm py-8 px-1 sm:p-0 text-white overflow-auto no-scrollbar"
               onSubmit={(e) => handleSubmit(e)}
               ref={formRef}
             >
@@ -111,6 +123,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Fullname"
+                    disabled={loading}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -127,6 +140,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Email"
+                    disabled={loading}
                   />
                   {emailError && (
                     <p className="text-sm text-red-500 ml-4 font-semibold mt-3">
@@ -150,6 +164,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                     value={formData.companyAndRole}
                     onChange={handleChange}
                     placeholder="Company Name"
+                    disabled={loading}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -166,6 +181,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                     value={formData.linkedInProfile}
                     onChange={handleChange}
                     placeholder="Profile Link"
+                    disabled={loading}
                   />
                 </div>
               </div>
@@ -184,6 +200,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   value={formData.language}
                   onChange={handleChange}
                   placeholder="java, go, etc"
+                  disabled={loading}
                 />
               </div>
               <div className="flex flex-col">
@@ -201,6 +218,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   value={formData.currentMethod}
                   onChange={handleChange}
                   placeholder="Company Name"
+                  disabled={loading}
                 />
               </div>
               <div className="flex flex-col">
@@ -218,6 +236,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   value={formData.dependencies}
                   onChange={(e) => handleChange(e)}
                   placeholder="List all the dependencies of your application"
+                  disabled={loading}
                 />
               </div>
 
@@ -231,12 +250,16 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                 type="submit"
                 disabled={isSubscribeDisabled()}
               >
-                Join
+                { loading ? <Loader /> : "Join"}
               </button>
               {/* {subscribed && <p className="text-sm text-green-800 text-center font-semibold mt-3">Thanks for subscribing!</p>} */}
             </form>):(
             <div className="max-w-6xl min-w-96">
-            <Success heading="Welcome Aboard!" subHeading="Thank you for joining our waitlist. We'll keep you posted with updates." ctaText="Okay" ctaClickFunction={onClose} />
+            <Success heading="Welcome Aboard!" subHeading="Thank you for joining our waitlist. We'll keep you posted with updates." ctaText="Okay" ctaClickFunction={()=>{
+              resetFormData()
+              setSuccess(false)
+              onClose()
+            }} />
             </div>
             )}
           </div>
