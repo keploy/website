@@ -13,7 +13,7 @@ const Success: React.FC<SuccessProps> = ({ heading, subHeading, ctaText, ctaClic
     <div className="w-full h-full shadow-lg sm:shadow-none  flex flex-col justify-between items-center p-4">
       <Image src={CommunityBunny} alt='success' height={144} width={144} />
       <div className="text-center mt-8">
-        <h1 className="text-xl font-bold">{heading}</h1>
+        <h1 className="text-xl text-secondary-300 font-bold">{heading}</h1>
         <p className="text-lg mt-4">{subHeading}</p>
       </div>
       <button

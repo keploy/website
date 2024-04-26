@@ -112,6 +112,13 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                 onSubmit={(e) => handleSubmit(e)}
                 ref={formRef}
               >
+                <h1
+                  className="h2 mb-4 text-secondary-300 text-center"
+                  data-aos="zoom-y-out"
+                >
+                  Get on the List
+                  <br />
+                </h1>
                 <div className="flex flex-col md:flex-row  gap-4">
                   {" "}
                   <div className="flex flex-col">
