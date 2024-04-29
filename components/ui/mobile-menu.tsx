@@ -7,32 +7,10 @@ import CountingNumbers from "../utils/countingNumbers";
 import Image from "next/image";
 import { UpIcon } from "../nav/UpIcon";
 import DownIcon from "../nav/DownIcon";
+import { PillarPages } from "../utils/resources";
 interface MobileMenuProps {
   starsCount: number;
 }
-const PillarPages = [
-  {
-    heading: "Pillar Pages",
-    links: [
-      {
-        pagelink: "/stub-generation",
-        pageName: "Test and Stubs Generation"
-      },
-      {
-        pagelink: "/test-duplication",
-        pageName: "Test Deduplication"
-      },
-      {
-        pagelink: "/native-integration",
-        pageName: "Native Integration" 
-      },
-      {
-        pagelink: "/ebpf-instrumentation",
-        pageName: "eBPF Instrumentation"
-      }
-    ]
-  }
-];
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
