@@ -14,7 +14,7 @@ export default function Header() {
   const [starsCount, setStarsCount] = useState<number>(0);
   const PillarPages: DropdowndataInterface[] = [
     {
-      heading: "Pillar Pages",
+      heading: "Use Cases",
       links: [
         {
           pagelink: "/stub-generation",

@@ -44,10 +44,7 @@ export default function NavItemWithSmallDropdown({heading,dropdownData}:NavItemW
       </div></div>
                 {openDropdown && (
                   <div
-                    className="absolute top-full bg-neutral-100 pb-8 z-10"
-                    // onMouseLeave={hideDropdown}
-
-                  >
+                    className="absolute top-full bg-[#eeeded] pb-8 z-10"                  >
                     <div>
                       <div className="flex items-center justify-between">
                         {dropdownData.map((lists) => (
