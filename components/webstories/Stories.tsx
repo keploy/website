@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faArrowUp, faPaperPlane } from "@fortawesome/free-solid-svg-icons"; // Added faShareAlt icon
+import {
+  faLink,
+  faArrowUp,
+  faPaperPlane,
+} from "@fortawesome/free-solid-svg-icons"; // Added faShareAlt icon
 import Link from "next/link";
 import CustomizedDialogs from "./ShareComponent";
+import Image, { StaticImageData } from "next/image";
+import dynamic from "next/dynamic";
+const LottiePlayer = dynamic(()=>import("./LottiePlayerWebStories"),{ssr:false}) 
+
 type StoriesProps = {
-  imageUrl: string;
+  imageUrl: string | StaticImageData;
   Heading: string;
   text: string;
   swipeText?: string;
   swipeLink?: string;
+  image: Boolean;
 };
 
 const Stories = ({
@@ -18,34 +27,44 @@ const Stories = ({
 }: {
   Story: StoriesProps;
   totalLen: number;
-  currentIndex:number;
+  currentIndex: number;
 }) => {
+  console.log(Story.imageUrl);
   const lines = Array.from({ length: totalLen }, (_, i) => i);
   return (
     <>
-      <div
-        className="relative h-full mt-10 rounded-xl z-30"
-        style={{
-          backgroundImage: `url(${Story.imageUrl})`,
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="flex flex-row h-5">
+      <div className="relative h-full mt-10 rounded-xl z-30 border border-slate-900">
+        {Story.image ? (
+          <Image
+            src={Story.imageUrl}
+            layout="fill"
+            alt="image"
+            objectFit="cover"
+            className="relative h-full w-full rounded-xl "
+          />
+        ) : (
+            <LottiePlayer VideoPath={Story.imageUrl}/>
+        )}
+
+        <div className="absolute w-full flex flex-row h-5 ">
           {lines.map((line, key) => (
             <hr
-              className={`h-1 w-full mx-1.5 mt-2 rounded border pointer-events-none border-slate-300 ${
+              className={`h-1 w-full mx-1.5 mt-2 rounded border pointer-events-none ${
                 line <= currentIndex
-                  ? (currentIndex == line ? ("loader border-slate-300"):("bg-primary-300"))
+                  ? currentIndex == line
+                    ? "loader border-slate-300"
+                    : "bg-primary-300"
                   : "bg-slate-100"
               }`}
               key={key}
             />
           ))}
         </div>
+
         <div className="flex flex-row justify-end">
           {/* Empty div for the share button */}
-          <div className="cursor-pointer mx-5 scale-125">
-          <CustomizedDialogs/>
+          <div className="cursor-pointer mx-5 mt-5 scale-125">
+            <CustomizedDialogs />
           </div>
         </div>
         <div className={`absolute w-full bottom-0 animate-grow `}>

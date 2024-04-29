@@ -12,7 +12,7 @@ type StoryCardProps = {
 const StoryCard = ({ imagesrc, CardDescription, slug , categories }: StoryCardProps) => {
   return (
     <div className="flex flex-col items-center justify-center border border-gray-300 bg-gray-100 rounded-md mx-auto  hover:shadow-lg hover:shadow-gray-500 duration-150">
-      <Link href={`/webstories/${slug}`}>
+      <Link target="_blank" href={`/webstories/${slug}`}>
         <Image
           src={imagesrc}
           alt={CardDescription}

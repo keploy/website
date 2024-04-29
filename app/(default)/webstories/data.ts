@@ -1,5 +1,6 @@
 import BunnyImage from "@/public/images/community-bunny.png";
-
+import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
+import thumbNail from "@/public/images/demo-thumbnail-bg.png"
 export const DummyData = [
   {
     CardImage: BunnyImage,
@@ -7,15 +8,15 @@ export const DummyData = [
     Slug: "webstory-1",
     Story: [
       {
-        imageUrl:
-          "https://i.pinimg.com/originals/df/6d/9b/df6d9b173e3e4b0521d5134548f3e4a5.jpg",
+        imageUrl: thumbNail,
         Heading: "Story 1",
-        text:"this is text-1",
+        text: "this is text-1",
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story1",
+        image: true,
       },
     ],
-    Categories:["cat-1","cat2"]
+    Categories: ["cat-1", "cat2"],
   },
   {
     CardImage: BunnyImage,
@@ -23,16 +24,15 @@ export const DummyData = [
     Slug: "webstory-1",
     Story: [
       {
-        imageUrl:
-          "https://i.pinimg.com/originals/df/6d/9b/df6d9b173e3e4b0521d5134548f3e4a5.jpg",
+        imageUrl: BunnyImage,
         Heading: "Story 1",
-        text:"this is text-1",
+        text: "this is text-1",
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story1",
-        
+        image: true,
       },
     ],
-    Categories:["cat-1","cat2"]
+    Categories: ["cat-1", "cat2"],
   },
   {
     CardImage: BunnyImage,
@@ -40,15 +40,15 @@ export const DummyData = [
     Slug: "webstory-1",
     Story: [
       {
-        imageUrl:
-          "https://i.pinimg.com/originals/df/6d/9b/df6d9b173e3e4b0521d5134548f3e4a5.jpg",
+        imageUrl:BunnyImage,
         Heading: "Story 1",
-        text:"this is text-1",
+        text: "this is text-1",
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story1",
+        image: true,
       },
     ],
-    Categories:["cat-2","cat3"]
+    Categories: ["cat-2", "cat3"],
   },
   {
     CardImage: BunnyImage,
@@ -56,24 +56,27 @@ export const DummyData = [
     Slug: "webstory-2",
     Story: [
       {
-        imageUrl: "https://wallpapercave.com/wp/wp2836008.jpg",
+        imageUrl: thumbNail,
         Heading: "Story 2",
-        text:"this is text-2",
+        text: "this is text-2",
+        image: true,
       },
       {
-        imageUrl: "https://wallpapercave.com/wp/wp2836008.jpg",
+        imageUrl: testAndStubsGen,
         Heading: "Story 2",
-        text:"this is text-2",
+        text: "this is text-2",
+        image: false,
       },
       {
-        imageUrl: "https://wallpapercave.com/wp/wp2836008.jpg",
+        imageUrl: thumbNail,
         Heading: "Story 2",
-        text:"this is text-2",
+        text: "this is text-2",
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story3",
-      }
+        image: true,
+      },
     ],
-    Categories:["cat-3","cat1"]
+    Categories: ["cat-3", "cat1"],
   },
   {
     CardImage: BunnyImage,
@@ -81,13 +84,14 @@ export const DummyData = [
     Slug: "webstory-3",
     Story: [
       {
-        imageUrl: "https://example.com/image3.jpg",
+        imageUrl: BunnyImage,
         Heading: "Story 3",
-        text:"this is text-3",
+        text: "this is text-3",
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story3",
+        image: true,
       },
     ],
-    Categories:["cat-3","cat4"]
+    Categories: ["cat-3", "cat4"],
   },
 ];
