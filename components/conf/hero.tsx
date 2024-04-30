@@ -1,5 +1,6 @@
 import VideoThumb from '@/public/images/conf/gittogether.png'
 import ModalVideo from '@/components/modal-video'
+import Link from 'next/link'
 
 export default function Hero() {
   return (
@@ -58,39 +59,39 @@ export default function Hero() {
 
 
               <div data-aos="fade-up " data-aos-delay="400">
-                <a className="btn rounded-lg text-white bg-secondary-300 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0" target="_blank" href="https://forms.gle/9ABV4QosARLBB8Vc7">Register
+                <Link className="btn rounded-lg text-white bg-secondary-300 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0" target="_blank" href="https://forms.gle/9ABV4QosARLBB8Vc7">Register
                   <svg className=" ml-3 w-3 h-3 shrink-0 fill-current" viewBox="0 0 23 23">
                           <path d=  "M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z" />
                         </svg>
 
-                </a>
+                </Link>
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
-                <a className="btn rounded-lg text-white border-primary-400 border-1 bg-transparent hover:text-primary-300 w-full sm:w-auto sm:ml-4" target="_blank"  href="https://forms.gle/iwZRL4UD2Pw1redaA">Submit CFP</a>
+                <Link className="btn rounded-lg text-white border-primary-400 border-1 bg-transparent hover:text-primary-300 w-full sm:w-auto sm:ml-4" target="_blank"  href="https://forms.gle/iwZRL4UD2Pw1redaA">Submit CFP</Link>
               </div>
             </div>
 
             <div className=" mt-3 mb-5 md:bottom-8 md:left-12 z-60 sm:max-w-none sm:flex sm:justify-center">
               <div className="text-slate-50 text-sm p-3 md:rounded ">
                 <div className='text-slate-500 inline-flex'>
-                  <a className="text-lg font-semibold hover:underline text-slate-50" href="https://forms.gle/9ABV4QosARLBB8Vc7" target="_blank" rel="noreferrer">
+                  <Link className="text-lg font-semibold hover:underline text-slate-50" href="https://forms.gle/9ABV4QosARLBB8Vc7" target="_blank" rel="noreferrer">
                     {/*<span className="hidden sm:inline"> */}
                       29 February 2024
                     {/*</span>*/}
-                  </a>
+                  </Link>
                   <span className="text-lg font-semibold italic px-1.5"> at </span>
-                  <a className="text-lg font-semibold hover:underline text-primary-300 justify-center " href="https://maps.app.goo.gl/jo9zKhjDAgMqE92m6" target="_blank" rel="noreferrer">
-                    Google RMZ, Bengaluru</a>
+                  <Link className="text-lg font-semibold hover:underline text-primary-300 justify-center " href="https://maps.app.goo.gl/jo9zKhjDAgMqE92m6" target="_blank" rel="noreferrer">
+                    Google RMZ, Bengaluru</Link>
                 </div>
 
-                {/*<a className="font-medium hover:underline text-slate-50" href="https://maps.app.goo.gl/jo9zKhjDAgMqE92m6" target="_blank" rel="noreferrer">*/}
+                {/*<Link className="font-medium hover:underline text-slate-50" href="https://maps.app.goo.gl/jo9zKhjDAgMqE92m6" target="_blank" rel="noreferrer">*/}
                 {/*  <button className="text-slate-500 hover:text-slate-400 pl-2 ml-3 border-l border-gray-700" >*/}
                 {/*    <span className="sr-only">Location</span>*/}
                 {/*    <svg className="w-5 h-5 shrink-0 fill-current" viewBox="0 0 23 23">*/}
                 {/*      <path d= "M18 8c0-3.31-2.69-6-6-6S6 4.69 6 8c0 4.5 6 11 6 11s6-6.5 6-11zm-8 0c0-1.1.9-2 2-2s2 .9 2 2-.89 2-2 2c-1.1 0-2-.9-2-2zM5 20v2h14v-2H5z" />*/}
                 {/*    </svg>*/}
                 {/*  </button>*/}
-                {/*</a>*/}
+                {/*</Link>*/}
               </div>
             </div>
 

@@ -124,7 +124,7 @@ export default function FeaturesMobileView() {
                   </div>
 
                 </div>
-                <a
+                <Link
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 2
                       ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
@@ -166,8 +166,8 @@ export default function FeaturesMobileView() {
                       <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/test-duplication">Explore More</Link>
                     </div>
                 </div>
-                </a>
-                <a
+                </Link>
+                <Link
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 3
                       ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
@@ -200,7 +200,7 @@ export default function FeaturesMobileView() {
                       />
                     </svg>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -355,20 +355,20 @@ export default function FeaturesMobileView() {
           data-aos-delay="300"
         >
           <div>
-            <a
+            <Link
               className="w-full mb-4 btn text-secondary-300 bg-primary-300 hover:font-semibold sm:w-auto sm:mb-0"
               href="https://keploy.io/docs"
             >
               Documentation{' '}
-            </a>
+            </Link>
           </div>
           <div>
-            <a
+            <Link
               className="w-full text-white btn bg-secondary-300 hover:font-semibold sm:w-auto sm:ml-4"
               href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
             >
               Book Cloud Demo
-            </a>
+            </Link>
           </div>
         </div>
       </div>

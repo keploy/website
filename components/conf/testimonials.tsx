@@ -24,6 +24,7 @@ import LNspeaker from '@/public/images/conf/Leon Nues Speaker.jpg'
 
 import Comingsoon from '@/public/images/conf/coming-soon-mystery-retail-concept-vector-13969461.jpg'
 import React from "react";
+import Link from 'next/link'
 
 export default function Testimonials() {
   return (
@@ -46,14 +47,14 @@ export default function Testimonials() {
               <div>
                 <div className="relative inline-flex flex-col mb-4">
 
-                  <a href="https://opensource.google/" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="https://opensource.google/" title="Go to Google" target="_blank" rel="noopener">
                 <Image decoding="async" width="393"
                    height="129"
                    src={GoogleImage}
                    className="logo text-center"
                    alt="Google logo"
                    loading="lazy"/>
-              </a>
+              </Link>
                 </div>
               </div>
             </div>
@@ -67,14 +68,14 @@ export default function Testimonials() {
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4 max-h-fit ">
-                  <a href="https://www.meetup.com/ministry-of-testing-bengaluru/" title="Go to MoT" target="_blank" rel="noopener">
+                  <Link href="https://www.meetup.com/ministry-of-testing-bengaluru/" title="Go to MoT" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={MoTImage}
                            className="logo text-center"
                            alt="MoT logo"
                            loading="lazy"/>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -82,84 +83,84 @@ export default function Testimonials() {
               <div>
                 <div className="relative inline-flex flex-col mb-4 h-4/5">
 
-                  <a href="https://keploy.io" title="Go to Keploy" target="_blank" rel="noopener">
+                  <Link href="https://keploy.io" title="Go to Keploy" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={Keploy}
                            className="logo text-center h-4/5"
                            alt="Keploy logo"
                            loading="lazy"/>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <a href="https://community.cncf.io/noida/" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="https://community.cncf.io/noida/" title="Go to Google" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={CNCFImage}
                            className="logo text-center"
                            alt="CNCF logo"
                            loading="lazy"/>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <a href="" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="" title="Go to Google" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={ReactPlay}
                            className="logo text-center"
                            alt="ReactPlay logo"
                            loading="lazy"/>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div className="text-center">
                 <div className="relative inline-flex flex-col mb-4 max-h-fit text-center ">
-                  <a href="" title="Go to MoT" target="_blank" rel="noopener">
+                  <Link href="" title="Go to MoT" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={FU}
                            className="logo w-auto  max-h-fit"
                            alt="MoT logo"
                            loading="lazy"/>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <a href="" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="" title="Go to Google" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={Docker}
                            className="logo text-center"
                            alt="Docker"
                            loading="lazy"/>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <a href="" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="" title="Go to Google" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={LTSponsor}
                            className="logo text-center"
                            alt="Lambdatest"
                            loading="lazy"/>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -167,28 +168,28 @@ export default function Testimonials() {
             {/*  <div>*/}
             {/*    <div className="relative inline-flex flex-col mb-4 ">*/}
 
-            {/*      <a href="https://keploy.io" title="Go to Keploy" target="_blank" rel="noopener">*/}
+            {/*      <Link href="https://keploy.io" title="Go to Keploy" target="_blank" rel="noopener">*/}
             {/*        <Image decoding="async" width="393"*/}
             {/*               height="129"*/}
             {/*               src={Keploy}*/}
             {/*               className="logo text-center h-4/5"*/}
             {/*               alt="Keploy logo"*/}
             {/*               loading="lazy"/>*/}
-            {/*      </a>*/}
+            {/*      </Link>*/}
             {/*    </div>*/}
             {/*  </div>*/}
             {/*</div>*/}
             {/*<div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">*/}
             {/*  <div>*/}
             {/*    <div className="relative inline-flex flex-col mb-4  justify-center">*/}
-            {/*      <a href="https://community.cncf.io/noida/" title="Go to Google" target="_blank" rel="noopener">*/}
+            {/*      <Link href="https://community.cncf.io/noida/" title="Go to Google" target="_blank" rel="noopener">*/}
             {/*        <Image decoding="async" width="393"*/}
             {/*               height="129"*/}
             {/*               src={CNCFImage}*/}
             {/*               className="logo text-center"*/}
             {/*               alt="CNCF logo"*/}
             {/*               loading="lazy"/>*/}
-            {/*      </a>*/}
+            {/*      </Link>*/}
             {/*    </div>*/}
             {/*  </div>*/}
             {/*</div>*/}
@@ -214,7 +215,7 @@ export default function Testimonials() {
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
                 <cite className="text-gray-200 not-italic">Stephanie Taylor</cite> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/stephaniertaylor/"> Program Manager at Google for (GSoC)</a>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/stephaniertaylor/"> Program Manager at Google for (GSoC)</Link>
               </div>
             </div>
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
@@ -224,8 +225,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/kunal-deo-2893806"  className="text-gray-200 not-italic">Kunal Deo</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/kunal-deo-2893806"> Lead Customer Engineer - AI, Google</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/kunal-deo-2893806"  className="text-gray-200 not-italic">Kunal Deo</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/kunal-deo-2893806"> Lead Customer Engineer - AI, Google</Link>
               </div>
             </div>
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
@@ -235,8 +236,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/slayerjain/"  className="text-gray-200 not-italic">Shubham Jain</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/slayerjain/"> Co-Founder, Keploy</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/slayerjain/"  className="text-gray-200 not-italic">Shubham Jain</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/slayerjain/"> Co-Founder, Keploy</Link>
               </div>
             </div>
 
@@ -247,8 +248,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/polymorphicrobin/"  className="text-gray-200 not-italic">Robin Gupta</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/polymorphicrobin/">Vice President - Engineering/AppliedAI, Provar</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/polymorphicrobin/"  className="text-gray-200 not-italic">Robin Gupta</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/polymorphicrobin/">Vice President - Engineering/AppliedAI, Provar</Link>
               </div>
             </div>
 
@@ -259,8 +260,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/adityaoberai1/"  className="text-gray-200 not-italic">Aditya Oberai</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/adityaoberai1/"> Developer Advocate, Appwrite</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/adityaoberai1/"  className="text-gray-200 not-italic">Aditya Oberai</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/adityaoberai1/"> Developer Advocate, Appwrite</Link>
               </div>
             </div>
 
@@ -271,8 +272,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/haimantika-mitra/"  className="text-gray-200 not-italic">Haimantika Mitra</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/haimantika-mitra/">Developer Advocate, Hashnode</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/haimantika-mitra/"  className="text-gray-200 not-italic">Haimantika Mitra</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/haimantika-mitra/">Developer Advocate, Hashnode</Link>
               </div>
             </div>
 
@@ -283,8 +284,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/tapasadhikary/"  className="text-gray-200 not-italic">Tapas Adhikary</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/tapasadhikary/">Co-Founder, CreoWis Technologies</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/tapasadhikary/"  className="text-gray-200 not-italic">Tapas Adhikary</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/tapasadhikary/">Co-Founder, CreoWis Technologies</Link>
               </div>
             </div>
 
@@ -295,8 +296,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/guneshpatil/"  className="text-gray-200 not-italic">Gunesh Patil</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/guneshpatil/">Senior Tech Lead, Ushur Inc</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/guneshpatil/"  className="text-gray-200 not-italic">Gunesh Patil</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/guneshpatil/">Senior Tech Lead, Ushur Inc</Link>
               </div>
             </div>
 
@@ -307,8 +308,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/sangambiradar/"  className="text-gray-200 not-italic">Sangam Biradar</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/sangambiradar/">Open Source Contributor</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/sangambiradar/"  className="text-gray-200 not-italic">Sangam Biradar</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/sangambiradar/">Open Source Contributor</Link>
               </div>
             </div>
 
@@ -319,8 +320,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/mvkaran"  className="text-gray-200 not-italic">Karan M.V.</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/mvkaran/">Sr DevRel Manager, GitHub</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/mvkaran"  className="text-gray-200 not-italic">Karan M.V.</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/mvkaran/">Sr DevRel Manager, GitHub</Link>
               </div>
             </div>
 
@@ -331,8 +332,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/hrittikhere"  className="text-gray-200 not-italic">Hrittik Roy</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/hrittikhere">Platform Advocate, Loft Labs</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/hrittikhere"  className="text-gray-200 not-italic">Hrittik Roy</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/hrittikhere">Platform Advocate, Loft Labs</Link>
               </div>
             </div>
 
@@ -343,8 +344,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://www.linkedin.com/in/megha-kadur/"  className="text-gray-200 not-italic">Megha Kadur</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/megha-kadur/">Senior Software Engineer, Barracuda Networks</a>
+                <Link target="_blank" href="https://www.linkedin.com/in/megha-kadur/"  className="text-gray-200 not-italic">Megha Kadur</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/megha-kadur/">Senior Software Engineer, Barracuda Networks</Link>
               </div>
             </div>
 
@@ -355,8 +356,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://linkedin.com/in/leon-nunes"  className="text-gray-200 not-italic">Leon Nunes</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://linkedin.com/in/leon-nunes">Customer Success Engineer, Solo.io</a>
+                <Link target="_blank" href="https://linkedin.com/in/leon-nunes"  className="text-gray-200 not-italic">Leon Nunes</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://linkedin.com/in/leon-nunes">Customer Success Engineer, Solo.io</Link>
               </div>
             </div>
             {/* <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
@@ -366,8 +367,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSclnnqTRA4x_YhG67eLNOK3LO4-ttqobbMZ5gbUclGNQDvmCg/viewform"  className="text-gray-200 not-italic">Talk about your Open-source Journey</a> <br/>
-                <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSclnnqTRA4x_YhG67eLNOK3LO4-ttqobbMZ5gbUclGNQDvmCg/viewform"> Submit CFP Now</a>
+                <Link target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSclnnqTRA4x_YhG67eLNOK3LO4-ttqobbMZ5gbUclGNQDvmCg/viewform"  className="text-gray-200 not-italic">Talk about your Open-source Journey</Link> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSclnnqTRA4x_YhG67eLNOK3LO4-ttqobbMZ5gbUclGNQDvmCg/viewform"> Submit CFP Now</Link>
               </div>
             </div> */}
 
@@ -383,7 +384,7 @@ export default function Testimonials() {
             {/*  </div>*/}
             {/*  <blockquote className="text-lg text-gray-400 grow">— Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I've had Open PRO for about 24 hours now and I honestly don't know how I functioned without it before.</blockquote>*/}
             {/*  <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">*/}
-            {/*    <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</a>*/}
+            {/*    <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</Link>*/}
             {/*  </div>*/}
             {/*</div>*/}
 
@@ -399,7 +400,7 @@ export default function Testimonials() {
             {/*  </div>*/}
             {/*  <blockquote className="text-lg text-gray-400 grow">— Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I've had Open PRO for about 24 hours now and I honestly don't know how I functioned without it before.</blockquote>*/}
             {/*  <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">*/}
-            {/*    <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</a>*/}
+            {/*    <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">UX Board</Link>*/}
             {/*  </div>*/}
             {/*</div>*/}
 
