@@ -97,7 +97,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
           <ul className="px-5 py-2">
             <li>
               <div className="border border-primary-400 rounded overflow-hidden p-2 border-opacity-25 sm:border-opacity-100">
-                <a
+                <Link
                   className="flex items-center ml-4 mt-2 gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-300"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -118,14 +118,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
                     />
                   </svg>
                   <span className="text-gradient-500 opacity-30 hover:text-primary-500">
-                    {" "}
-                    |
-                  </span>
-                  <span className="text-base flex gap-1">
-                    {" "}
-                    ⭐️ <CountingNumbers start={starsCount} className="" />
-                  </span>
-                </a>
+                  {" "}
+                  |
+                </span>
+                  <span className="text-base flex gap-1"> ⭐️ <CountingNumbers start={starsCount} className="" /></span>
+                </Link>
               </div>
               {/*<Link href="/privacy-policy" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Github</Link>*/}
             </li>

@@ -2,6 +2,7 @@
 
 import {useState} from "react";
 import { websiteContactUrl } from "@/services/constants";
+import Link from "next/link";
 export const subscribeMutation = (formData: { email: string, message: string }) => {
   if (websiteContactUrl) {
     return fetch(websiteContactUrl, {
@@ -98,7 +99,7 @@ export default function Newsletter() {
                       <input value={email}
                              onChange={(e) => setEmail(e.target.value)}
                              type="email" className="form-input w-full appearance-none bg-neutral-100 border border-secondary-500 focus:border-secondary-400 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-secondary-300 placeholder-secondary-100" placeholder="Your email…" aria-label="Your email…" />
-                      <a className="btn text-secondary-300 bg-primary-300 hover:bg-primary-400 shadow" href="#0"  onClick={handleSubscribe} >Subscribe</a>
+                      <Link className="btn text-secondary-300 bg-primary-300 hover:bg-primary-400 shadow" href="#0"  onClick={handleSubscribe} >Subscribe</Link>
                     </div> }
                     {/* Success message */}
                     {subscribed && <p className="text-sm text-gray-400 mt-3">Thanks for subscribing!</p>}
