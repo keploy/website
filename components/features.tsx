@@ -1,17 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { Transition } from "@headlessui/react";
-import Image from "next/image";
-import FeaturesBg from "@/public/images/record-tc4155904b397e0fbc1237.gif";
-import TestDeduplication from "@/public/images/record-replaye538dde2a6e078f1b5a5.gif";
-import NativeIntegration from "@/public/images/replay-tc31305e1d2286fe485b27.gif";
-import FeaturesElement from "@/public/images/features-element.png";
+import React, {useRef} from "react";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import deDuplication from "@/public/images/CaptureAndReplayV2.json";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
-import CopyButton from "@/public/images/icons8-copy-96.png";
-import ClipboardJS from "clipboard";
 import Link from "next/link";
 import gsap from "gsap"; // <-- import GSAP
 import { useGSAP } from "@gsap/react"; // <-- import the hook
@@ -30,7 +21,7 @@ const TestAndStubGenerationImage = () => {
       <div className=" mb-2 h-[50%]">
         <LottiePlayer VideoPath={testAndStubsGen} />
       </div>
-      <CopyCode />
+      
     </div>
   );
 };
@@ -41,68 +32,18 @@ const TestDuplicationImage = () => {
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
       <LottiePlayer VideoPath={deDuplication} className="h-[60vh]" />
-      <CopyCode />
     </div>
   );
 };
 
-const CopyCode = () => {
-  const codeRef = useRef<HTMLDivElement>(null);
 
-  const copyButtonRef = useRef<HTMLButtonElement>(null);
+
+  
   // const heightFix = () => {
   //   if (tabs.current && tabs.current.parentElement)
   //     tabs.current.parentElement.style.height = `${tabs.current.clientHeight}px`;
   // };
-  useEffect(() => {
-    // heightFix();
-
-    const clipboard = new ClipboardJS(copyButtonRef.current!, {
-      target: () => codeRef.current!,
-    });
-
-    clipboard.on("success", (e) => {
-      // You can customize the success behavior here (e.g., show a notification).
-      console.log("Copied to clipboard:", e.text);
-    });
-
-    return () => {
-      clipboard.destroy();
-    };
-  }, []);
-
-  return (
-    <>
-      <div
-        ref={codeRef}
-        className="bottom-0 flex items-center w-full mb-8 overflow-hidden text-left md:mb-0 animate-float"
-      >
-        <div className="flex-grow w-7/12 p-3 bg-gray-900 rounded-md overflow-clip">
-          <pre className="w-11/12 text-xs text-green-300 truncate md:text-sm lg:text-base">
-            <code>
-              $ curl -O
-              https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh &&
-              source keploy.sh
-            </code>
-          </pre>
-        </div>
-        <div className="absolute right-3 bottom-2">
-          <button
-            ref={copyButtonRef}
-            onClick={() =>
-              navigator.clipboard.writeText(
-                "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source keploy.sh"
-              )
-            }
-            className="ml-2"
-          >
-            <Image src={CopyButton} alt="Copy" className="w-6 h-6" />
-          </button>
-        </div>
-      </div>
-    </>
-  );
-};
+  
 
 const TextSection = ({
   svg,
