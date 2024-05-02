@@ -116,7 +116,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   className="h2 mb-4 text-secondary-300 text-center"
                   data-aos="zoom-y-out"
                 >
-                  Get on the List
+                  Join the Waitlist
                   <br />
                 </h1>
                 <div className="flex flex-col md:flex-row  gap-4">
@@ -126,7 +126,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                       htmlFor="name "
                       className="text-secondary-300 font-bold pb-2 text-base"
                     >
-                      Fullname<span className="text-red-700">*</span>
+                      Full Name<span className="text-red-700">*</span>
                     </label>
                     <input
                       type="text"
@@ -134,7 +134,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                       className="rounded text-black px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Fullname"
+                      placeholder="Full Name"
                       disabled={loading}
                     />
                   </div>
@@ -246,6 +246,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                   <textarea
                     name="dependencies"
                     className="rounded text-black  px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    style={{resize: "none" }}
                     value={formData.dependencies}
                     onChange={(e) => handleChange(e)}
                     placeholder="List all the dependencies of your application"
@@ -269,7 +270,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
               <div className="sm:max-w-6xl sm:min-w-96">
                 <Success
                   heading="Welcome Aboard!"
-                  subHeading="Thank you for joining our waitlist. We'll keep you posted with updates."
+                  subHeading="Thank you for joining our waitlist. We'll get in touch with you shortly."
                   ctaText="Okay"
                   ctaClickFunction={() => {
                     resetFormData();

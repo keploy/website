@@ -50,7 +50,7 @@ export default function NavItemWithSmallDropdown({heading,dropdownData}:NavItemW
                         {dropdownData.map((lists) => (
                           <div key={lists.heading}>
                             {" "}
-                            <span className="font-bold text-secondary-300 uppercase px-5 py-3 flex items-center transition duration-150 ease-in-out">
+                            <span className="font-bold text-secondary-300 uppercase px-3 py-3 flex items-center transition duration-150 ease-in-out">
                               {lists.heading}
                             </span>
                             <ul>
