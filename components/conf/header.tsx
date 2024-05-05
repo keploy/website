@@ -108,7 +108,7 @@ export default function Header() {
 
           {/*    /!* /!*<li className="ml-auto">*!/*/}
           {/*    /!*  <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 ">*!/*/}
-          {/*    /!*    <a className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"*!/*/}
+          {/*    /!*    <Link className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"*!/*/}
           {/*    /!*       target="_blank" rel="noopener noreferrer" aria-label="Keploy Github Repo"*!/*/}
           {/*    /!*       data-radix-collection-item="" href="https://www.github.com/keploy/keploy">*!/*/}
           {/*    /!*      <svg className="h-5 w-5" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">*!/*/}
@@ -116,7 +116,7 @@ export default function Header() {
           {/*    /!*        <path d="M8 .2C3.6.2 0 3.8 0 8c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V14c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" fill="currentColor" fillRule="evenodd"/>*!/*/}
           {/*    /!*      </svg>*!/*/}
           {/*    /!*    <span className="text-gradient-500 opacity-30 hover:text-primary-500"> |</span><span className="text-base"> ⭐️ {starsCount}</span>*!/*/}
-          {/*    /!*    </a>*!/*/}
+          {/*    /!*    </Link>*!/*/}
           {/*    /!*  </div>*!/*/}
           {/*    /!*</li>*!/*/}
           {/*    /!*<li>*!/*/}
@@ -131,7 +131,7 @@ export default function Header() {
           {/*</nav>*/}
           <div className="header-btn-container flex-1 justify-end hidden lg:flex">
             {/*<div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 ">*/}
-            {/*  <a*/}
+            {/*  <Link*/}
             {/*    className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"*/}
             {/*    target="_blank"*/}
             {/*    rel="noopener noreferrer"*/}
@@ -156,18 +156,18 @@ export default function Header() {
             {/*      |*/}
             {/*    </span>*/}
             {/*    <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>*/}
-            {/*  </a>*/}
+            {/*  </Link>*/}
             {/*</div>*/}
 
             <div data-aos="fade-up " data-aos-delay="400">
-              <a className="ml-3 btn rounded-lg border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0" target="_blank" href="https://forms.gle/iwZRL4UD2Pw1redaA">Submit CFP
+              <Link className="ml-3 btn rounded-lg border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0" target="_blank" href="https://forms.gle/iwZRL4UD2Pw1redaA">Submit CFP
                 <svg className=" ml-3 w-3 h-3 shrink-0 fill-current" viewBox="0 0 23 23">
                   <path d=  "M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z" />
                 </svg>
-              </a>
+              </Link>
             </div>
             <div data-aos="fade-up " data-aos-delay="400">
-              <a className="ml-3 btn rounded-lg text-white bg-secondary-300 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0 whitespace-pre " target="_blank" href="https://forms.gle/9ABV4QosARLBB8Vc7">Register  🔥</a>
+              <Link className="ml-3 btn rounded-lg text-white bg-secondary-300 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0 whitespace-pre " target="_blank" href="https://forms.gle/9ABV4QosARLBB8Vc7">Register  🔥</Link>
             </div>
 
           </div>

@@ -99,7 +99,7 @@ export default function Header() {
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
             <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 ">
-              <a
+              <Link
                 className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -124,7 +124,7 @@ export default function Header() {
                   |
                 </span>
                 <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
-              </a>
+              </Link>
             </div>
             <Link href="https://calendar.app.google/8Ncpff4QnAhpVnYd8" target="_blank" className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3">
               <span>Book Cloud Demo</span>
