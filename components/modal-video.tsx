@@ -36,7 +36,7 @@ export default function ModalVideo({
       <div>
         <div className="relative flex justify-center mb-8" data-aos="zoom-y-out" data-aos-delay="450">
           <div className="flex flex-col justify-center">
-            <Image className='rounded-lg' src={thumb} width={thumbWidth} height={thumbHeight} alt={thumbAlt} />
+            <Image className='rounded-lg h-auto w-auto' src={thumb} width={thumbWidth} height={thumbHeight} alt={thumbAlt} />
             {/*<svg*/}
             {/*    onMouseEnter={() => setIsHovered(true)}*/}
             {/*    onMouseLeave={() => setIsHovered(false)}*/}

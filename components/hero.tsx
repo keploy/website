@@ -5,6 +5,7 @@ import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg";
 import React from "react";
 import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
+import Link from 'next/link';
 export default function Hero() {
   return (
     <section className="relative">
@@ -44,10 +45,10 @@ export default function Hero() {
               </p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                 <div>
-                  <a className="btn text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="https://calendar.app.google/8Ncpff4QnAhpVnYd8">Book Cloud Demo</a>
+                  <Link className="btn text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="https://calendar.app.google/8Ncpff4QnAhpVnYd8">Book Cloud Demo</Link>
                 </div>
                 <div>
-                  <a className="btn text-white bg-secondary-300 hover:text-primary-300 w-full sm:w-auto sm:ml-4" href="https://www.github.com/keploy/keploy">Try Locally</a>
+                  <Link className="btn text-white bg-secondary-300 hover:text-primary-300 w-full sm:w-auto sm:ml-4" href="https://www.github.com/keploy/keploy">Try Locally</Link>
                 </div>
               </div>
               {/* <div className="code">

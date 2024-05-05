@@ -1,3 +1,5 @@
+import arrowsSvg from "@/public/images/arrows.svg";
+import Image from "next/image";
 const Item = (props: {
   title: string;
   description: string;
@@ -42,9 +44,12 @@ export default function ProblemBlocks(props: {
               <h3 className="h3 text-xl text-gray-600 flex justify-center items-center">
                 &nbsp; {props.subtitle} &nbsp;
               </h3>
-            </div>
+            </div> 
           </div>
-
+          <div className="flex flex-row justify-center gap-40 text-gray-600 mb-7">
+            <Image src={arrowsSvg} alt="arrows" width={10} height={10} />
+            <Image src={arrowsSvg} alt="arrows" width={10} height={10} />
+          </div>
           {/* Items */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
             {props.blocksData.map((block, index) => (
@@ -57,7 +62,7 @@ export default function ProblemBlocks(props: {
             ))}
           </div>
           {props.btnText && (
-            <div className="flex justify-center md:justify-center gap-4 mt-4">
+            <div className="flex justify-center md:justify-center gap-4">
               <a
                 className="btn text-secondary-300 bg-primary-300 hover:text-white"
                 href="https://www.github.com/keploy/keploy"

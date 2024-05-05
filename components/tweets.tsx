@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import XImage from "@/public/images/x-twitter.svg";
+import Link from "next/link";
 const Tweets = ({
   avatar,
   name,
@@ -16,17 +17,19 @@ const Tweets = ({
 }) => {
   return (
     <>
-      <a
+      <Link
         className="bg-gray-100 border p-6 rounded-md lg:hover:shadow-md transition m-1 hover:scale-101"
         href={post}
         target="_blank"
       >
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row gap-2 items-center">
-            <img
+            <Image
               src={avatar}
+              width={48}
+              height={48}
               alt="profile_image"
-              className="rounded-full h-12"
+              className="rounded-full h-12 aspect-square"
             />
             <div className="flex flex-col justify-center">
               <div className="font-bold">{name}</div>
@@ -41,7 +44,7 @@ const Tweets = ({
           />
         </div>
         <div className="pt-2">{content}</div>
-      </a>
+      </Link>
     </>
   );
 };
