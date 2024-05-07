@@ -159,6 +159,8 @@ export default function FeaturesMobileView() {
                     setTab(3);
                   }}
                 >
+                <div className="flex flex-col">
+                  <div className="flex items-center">
                   <div>
                     <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
                       Native Integration
@@ -180,6 +182,11 @@ export default function FeaturesMobileView() {
                       />
                     </svg>
                   </div>
+                  </div>
+                  <div>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/native-integration">Explore More</Link>
+                  </div>
+                </div>
                 </Link>
               </div>
             </div>

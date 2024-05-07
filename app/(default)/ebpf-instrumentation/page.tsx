@@ -24,7 +24,7 @@ const heroData = {
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",
-  btnText: "Try Keploy",
+  btnText: "Join Waitlist",
   blocksData: blocksData,
 };
 const FeaturesData = {
@@ -79,6 +79,12 @@ export default function Home() {
         image={testimonialData[0].image}
       />
       <Language />
+      <Testimonial
+          content={testimonialData[2].content}
+          author={testimonialData[2].author}
+          company={testimonialData[2].company}
+          image={testimonialData[2].image}
+        />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}
