@@ -31,7 +31,6 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
   };  
 
   const filteredData = data.filter((card) => {
-    console.log(card.CardDescription);
     return card.CardDescription.toLowerCase().includes(searchValue.toLowerCase());
   });
   

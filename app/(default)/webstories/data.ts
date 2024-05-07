@@ -1,6 +1,6 @@
 import BunnyImage from "@/public/images/community-bunny.png";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import thumbNail from "@/public/images/demo-thumbnail-bg.png"
+import thumbNail from "@/public/images/demo-thumbnail-bg.png";
 export const DummyData = [
   {
     CardImage: BunnyImage,
@@ -40,7 +40,7 @@ export const DummyData = [
     Slug: "webstory-1",
     Story: [
       {
-        imageUrl:BunnyImage,
+        imageUrl: BunnyImage,
         Heading: "Story 1",
         text: "this is text-1",
         swipeText: "Swipe to read more",
@@ -62,10 +62,70 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: testAndStubsGen,
+        imageUrl: BunnyImage,
         Heading: "Story 2",
         text: "this is text-2",
-        image: false,
+        image: true,
+      },
+      {
+        imageUrl: thumbNail,
+        Heading: "Story 2",
+        text: "this is text-2",
+        swipeText: "Swipe to read more",
+        swipeLink: "https://example.com/story3",
+        image: true,
+      },
+      {
+        imageUrl: BunnyImage,
+        Heading: "Story 2",
+        text: "this is text-2",
+        image: true,
+      },
+      {
+        imageUrl: BunnyImage,
+        Heading: "Story 2",
+        text: "this is text-2",
+        image: true,
+      },
+      {
+        imageUrl: thumbNail,
+        Heading: "Story 2",
+        text: "this is text-2",
+        swipeText: "Swipe to read more",
+        swipeLink: "https://example.com/story3",
+        image: true,
+      },
+      {
+        imageUrl: thumbNail,
+        Heading: "Story 2",
+        text: "this is text-2",
+        swipeText: "Swipe to read more",
+        swipeLink: "https://example.com/story3",
+        image: true,
+      },
+      {
+        imageUrl: thumbNail,
+        Heading: "Story 2",
+        text: "this is text-2",
+        swipeText: "Swipe to read more",
+        swipeLink: "https://example.com/story3",
+        image: true,
+      },
+      {
+        imageUrl: thumbNail,
+        Heading: "Story 2",
+        text: "this is text-2",
+        swipeText: "Swipe to read more",
+        swipeLink: "https://example.com/story3",
+        image: true,
+      },
+      {
+        imageUrl: thumbNail,
+        Heading: "Story 2",
+        text: "this is text-2",
+        swipeText: "Swipe to read more",
+        swipeLink: "https://example.com/story3",
+        image: true,
       },
       {
         imageUrl: thumbNail,

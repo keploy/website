@@ -18,10 +18,10 @@ type WebStoryItem = {
 };
 
 type WebStoriesProps = {
-  data: WebStoryItem[];
+  data: WebStoryItem[],
 };
 
-const WebStories = ({ data }: WebStoriesProps) => {
+const WebStories = ({ data  }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
 
   const handlePrev = () => {
@@ -47,7 +47,6 @@ const WebStories = ({ data }: WebStoriesProps) => {
       handlePrev();
     }
   };
-  console.log(data);
   const currentStory = data[currentStoryIndex];
 
   return (
@@ -75,6 +74,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
             Story={currentStory}
             totalLen={data.length}
             currentIndex={currentStoryIndex}
+            
           />
         </div>
         {currentStoryIndex === data.length - 1 ? (

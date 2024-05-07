@@ -9,6 +9,7 @@ import Link from "next/link";
 import CustomizedDialogs from "./ShareComponent";
 import Image, { StaticImageData } from "next/image";
 import dynamic from "next/dynamic";
+import { NextRouter } from "next/router";
 const LottiePlayer = dynamic(()=>import("./LottiePlayerWebStories"),{ssr:false}) 
 
 type StoriesProps = {
@@ -29,11 +30,10 @@ const Stories = ({
   totalLen: number;
   currentIndex: number;
 }) => {
-  console.log(Story.imageUrl);
   const lines = Array.from({ length: totalLen }, (_, i) => i);
   return (
     <>
-      <div className="relative h-full mt-10 rounded-xl z-30 border border-slate-900">
+      <div className="relative h-full mt-10 rounded-xl z-30 border border-gray-200">
         {Story.image ? (
           <Image
             src={Story.imageUrl}
@@ -46,10 +46,10 @@ const Stories = ({
             <LottiePlayer VideoPath={Story.imageUrl}/>
         )}
 
-        <div className="absolute w-full flex flex-row h-5 ">
+        <div className="absolute w-full flex flex-row h-5 gap-1 ">
           {lines.map((line, key) => (
             <hr
-              className={`h-1 w-full mx-1.5 mt-2 rounded border pointer-events-none ${
+              className={`h-1 w-full ${key==totalLen-1 ? "mr-1":""} ${key==0 ? "ml-1":""}  mt-2 rounded border pointer-events-none ${
                 line <= currentIndex
                   ? currentIndex == line
                     ? "loader border-slate-300"
@@ -64,7 +64,7 @@ const Stories = ({
         <div className="flex flex-row justify-end">
           {/* Empty div for the share button */}
           <div className="cursor-pointer mx-5 mt-5 scale-125">
-            <CustomizedDialogs />
+            <CustomizedDialogs  />
           </div>
         </div>
         <div className={`absolute w-full bottom-0 animate-grow `}>

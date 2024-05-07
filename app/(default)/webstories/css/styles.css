@@ -36,7 +36,7 @@
   height: 100%;
   width: 0;
   background: #FF914D;
-  animation: 0.5s prog ease-in forwards;
+  animation: 0.2s prog ease-in forwards;
 }
 
 @keyframes prog {
