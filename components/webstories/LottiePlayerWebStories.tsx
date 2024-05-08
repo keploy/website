@@ -14,7 +14,7 @@ const LottiePlayer = ({
         loop
         src={VideoPath}
         keepLastFrame={true}
-        background="cover"
+        className=" h-full"
         
       >
         <Controls
@@ -22,6 +22,7 @@ const LottiePlayer = ({
           buttons={["play", "repeat", "frame", "debug"]}
         />
       </Player>
+      
     </div>
   );
 };

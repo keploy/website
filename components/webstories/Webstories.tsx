@@ -26,17 +26,22 @@ type WebStoriesProps = {
 
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+  const [next,setNext] = useState(false);
+  
 
   const handlePrev = () => {
     setCurrentStoryIndex((prevIndex) =>
       prevIndex === 0 ? data.length - 1 : prevIndex - 1
     );
+
+    setNext(false);
   };
 
   const handleNext = () => {
     setCurrentStoryIndex((prevIndex) =>
       prevIndex === data.length - 1 ? 0 : prevIndex + 1
     );
+    setNext(true);
   };
 
   const handleReplay = () => {
@@ -77,6 +82,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
             Story={currentStory}
             totalLen={data.length}
             currentIndex={currentStoryIndex}
+            Next={next}
           />
         </div>
         {currentStoryIndex === data.length - 1 ? (

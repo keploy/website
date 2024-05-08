@@ -10,7 +10,7 @@ import CustomizedDialogs from "./ShareComponent";
 import Image, { StaticImageData } from "next/image";
 import dynamic from "next/dynamic";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-
+import { useState } from "react";
 type TestAndStubsGenType = typeof testAndStubsGen;
 
 const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
@@ -30,32 +30,61 @@ const Stories = ({
   Story,
   totalLen,
   currentIndex,
+  Next,
 }: {
   Story: StoriesProps;
   totalLen: number;
   currentIndex: number;
+  Next: Boolean;
 }) => {
   const lines = Array.from({ length: totalLen }, (_, i) => i);
-
   return (
     <>
       <div className="relative h-full mt-10 rounded-xl  z-30 border border-gray-200">
         <div className="absolute flex flex-row w-full justify-end z-30">
           <div className="absolute z-10 w-full flex flex-row h-5 gap-1 ">
-            {lines.map((line, key) => (
-              <hr
-                className={`h-1 w-full ${key == totalLen - 1 ? "mr-1" : ""} ${
-                  key == 0 ? "ml-1" : ""
-                }  mt-2 rounded border pointer-events-none ${
-                  line <= currentIndex
-                    ? currentIndex == line
-                      ? "loader bg-slate-300"
-                      : "bg-primary-300"
-                    : "bg-slate-300"
-                }`}
-                key={key}
-              />
-            ))}
+            {lines.map((line, key) => {
+              let isCurrentLine;
+              if (Next) {
+                isCurrentLine = line === currentIndex;
+              } else {
+                isCurrentLine = line === currentIndex + 1;
+              }
+              const isLastLine = key === totalLen - 1;
+              const isFirstLine = key === 0;
+              let lineClass = "";
+
+              if (Next) {
+                if (line <= currentIndex) {
+                  if (isCurrentLine) {
+                    lineClass = "loader bg-slate-300";
+                  } else {
+                    lineClass = "bg-primary-300";
+                  }
+                } else {
+                  lineClass = "bg-slate-300";
+                }
+              } else {
+                if (line <= currentIndex + 1) {
+                  if (isCurrentLine) {
+                    lineClass = "loaderBack bg-slate-300";
+                  } else {
+                    lineClass = "bg-primary-300";
+                  }
+                } else {
+                  lineClass = "bg-slate-300";
+                }
+              }
+
+              return (
+                <hr
+                  className={`h-1 w-full ${isLastLine ? "mr-1" : ""} ${
+                    isFirstLine ? "ml-1" : ""
+                  } mt-2 rounded border pointer-events-none ${lineClass}`}
+                  key={key}
+                />
+              );
+            })}
           </div>
           <div className="cursor-pointer mx-5 mt-5 z-10 scale-125">
             <CustomizedDialogs />
@@ -75,7 +104,7 @@ const Stories = ({
         ) : (
           <LottiePlayer
             VideoPath={Story.imageUrl}
-            className="object-fill flex flex-col justify-center  h-full w-full rounded-xl"
+            className="  flex flex-col h-full w-full rounded-xl"
           />
         )}
         <div className="flex flex-row justify-end"></div>

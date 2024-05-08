@@ -67,9 +67,9 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
       <h1 className="lg:text-3xl text-2xl text-secondary-300 font-bold leading-tighter tracking-tighter my-4 mb-5">
         Latest Web-Stories
       </h1>
-      <div className=" w-full grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 lg:gap-x-8 gap-y-5 md:gap-y-5 mb-16 mt-5">
+      <div className=" w-full grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 lg:gap-x-8 gap-y-5 md:gap-y-10 mb-16 mt-5">
         {filteredData.map((card, key) => (
-          <div key={key} >
+          <div key={key} className=" row-span-10" >
             <StoryCard
               imagesrc={card.CardImage}
               CardDescription={card.CardDescription}
