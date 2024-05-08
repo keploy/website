@@ -7,9 +7,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Stories from "./Stories";
 import { StaticImageData } from "next/image";
+import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
+
+type TestAndStubsGenType = typeof testAndStubsGen;
 
 type WebStoryItem = {
-  imageUrl: string|StaticImageData;
+  imageUrl: string | StaticImageData | TestAndStubsGenType ;
   Heading: string;
   text: string;
   swipeText?: string;
@@ -18,10 +21,10 @@ type WebStoryItem = {
 };
 
 type WebStoriesProps = {
-  data: WebStoryItem[],
+  data: WebStoryItem[];
 };
 
-const WebStories = ({ data  }: WebStoriesProps) => {
+const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
 
   const handlePrev = () => {
@@ -74,7 +77,6 @@ const WebStories = ({ data  }: WebStoriesProps) => {
             Story={currentStory}
             totalLen={data.length}
             currentIndex={currentStoryIndex}
-            
           />
         </div>
         {currentStoryIndex === data.length - 1 ? (

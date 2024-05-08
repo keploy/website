@@ -1,6 +1,7 @@
 import BunnyImage from "@/public/images/community-bunny.png";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import thumbNail from "@/public/images/demo-thumbnail-bg.png";
+
 export const DummyData = [
   {
     CardImage: BunnyImage,
@@ -56,21 +57,21 @@ export const DummyData = [
     Slug: "webstory-2",
     Story: [
       {
-        imageUrl: thumbNail,
+        imageUrl: testAndStubsGen,
         Heading: "Story 2",
-        text: "this is text-2",
-        image: true,
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+        image: false,
       },
       {
         imageUrl: BunnyImage,
         Heading: "Story 2",
-        text: "this is text-2",
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
         image: true,
       },
       {
         imageUrl: thumbNail,
         Heading: "Story 2",
-        text: "this is text-2",
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story3",
         image: true,
@@ -78,7 +79,7 @@ export const DummyData = [
       {
         imageUrl: BunnyImage,
         Heading: "Story 2",
-        text: "this is text-2",
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
         image: true,
       },
       {

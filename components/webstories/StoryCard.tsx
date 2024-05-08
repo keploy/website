@@ -10,8 +10,9 @@ type StoryCardProps = {
 };
 
 const StoryCard = ({ imagesrc, CardDescription, slug , categories }: StoryCardProps) => {
+  const key = `${slug}-${categories.join("-")}`;
   return (
-    <div className="flex flex-col items-center justify-center border border-gray-300 bg-gray-100 rounded-md mx-auto  hover:shadow-lg hover:shadow-gray-500 duration-150">
+    <div key={key} className="flex flex-col items-center justify-center border border-gray-300 bg-gray-100 rounded-md mx-auto  hover:shadow-lg hover:shadow-gray-500 duration-150">
       <Link target="_blank" href={`/webstories/${slug}`}>
         <Image
           src={imagesrc}

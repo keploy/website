@@ -8,14 +8,14 @@ const LottiePlayer = ({
   className?: string;
 }) => {
   return (
-    <div
-      className="absolute h-full my-auto"
-    >
+    <div className={`${className}`}>
       <Player
         autoplay
         loop
         src={VideoPath}
         keepLastFrame={true}
+        background="cover"
+        
       >
         <Controls
           visible={false}

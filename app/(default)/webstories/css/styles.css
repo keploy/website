@@ -17,7 +17,7 @@
 }
 
 .animate-grow {
-  animation: growAnimation 0.3s ease-out forwards;
+  animation: growAnimation 0.2s ease-out forwards;
 }
 
 .loader {
