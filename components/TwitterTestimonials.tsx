@@ -4,6 +4,24 @@ import Tweet from "./tweets";
 const tweets = [
   {
     avatar:
+        "https://pbs.twimg.com/profile_images/1653250498127089665/x5RJbLq5_400x400.jpg",
+    name: "きょん/kyong",
+    id: "kyongshiii06",
+    post: "https://x.com/kyongshiii06/status/1753030333128495470?s=20",
+    content:
+        "I tried keploy, it was amazing. Just wrap and start docker, and then just hit the API with curl or the client and you'll be able to test more and more. This is the golden test.",
+  },
+  {
+    avatar:
+        "https://pbs.twimg.com/profile_images/1741543460115812352/8x4aAI9k_400x400.jpg",
+    name: "Shivam Sourav Jha",
+    id: "ShivamSouravJha",
+    post: "https://x.com/ShivamSouravJha/status/1747517726749286713?s=20",
+    content:
+        "Why do I like keploy so much? Literally I see many tools and so hard to integrate. I mean update VScode , use the sdk , make this change make that change. With Keploy, don't worry buddy just run your application, we will literally do everything for you. You need to 0 efforts.",
+  },
+  {
+    avatar:
       "https://pbs.twimg.com/profile_images/837573171427487744/IGQLsM55_400x400.jpg",
     name: "やまもと@視力2.0",
     id: "yamamoto_febc",
@@ -13,39 +31,12 @@ const tweets = [
   },
   {
     avatar:
-      "https://pbs.twimg.com/profile_images/1653250498127089665/x5RJbLq5_400x400.jpg",
-    name: "きょん/kyong",
-    id: "kyongshiii06",
-    post: "https://x.com/kyongshiii06/status/1753030333128495470?s=20",
-    content:
-      "I tried keploy, but it was amazing. Just wrap and start docker, and then just hit the API with curl or the client and you'll be able to test more and more. This is the golden test.",
-  },
-  {
-    avatar:
-      "https://pbs.twimg.com/profile_images/1741543460115812352/8x4aAI9k_400x400.jpg",
-    name: "Shivam Sourav Jha",
-    id: "ShivamSouravJha",
-    post: "https://x.com/ShivamSouravJha/status/1747517726749286713?s=20",
-    content:
-      "Why do I like keploy so much? Literally I see many tools and so hard to integrate. I mean update VScode , use the sdk , make this change make that change. With Keploy, don't worry buddy just run your application, we will literally do everything for you. You need to 0 efforts.",
-  },
-  {
-    avatar:
-      "https://pbs.twimg.com/profile_images/1653250498127089665/x5RJbLq5_400x400.jpg",
-    name: "きょん/kyong",
-    id: "kyongshiii06",
-    post: "https://x.com/kyongshiii06/status/1746532217336250821?s=20",
-    content:
-      "Keploy can record and replay complex, distributed API flows as mocks and stubs. It's like having a time machine for your tests—saving you tons of time.",
-  },
-  {
-    avatar:
       "https://pbs.twimg.com/profile_images/1422864637532332033/mC1Nx0vj_400x400.jpg",
     name: "matsuu@充電期間",
     id: "matsuu",
     post: "https://x.com/matsuu/status/1747448928575099236?s=20",
     content:
-      "Based on the communication trace information that can be obtained using eBPF, it is possible to generate a test and a stub server to be used when executing the test.” / “The automated testing tool “Keploy” using eBPF is amazing.",
+      "Based on the communication trace information that can be obtained using eBPF, it is possible to generate a test and a stub server to be used when executing the test.",
   },
   {
     avatar:
@@ -54,7 +45,7 @@ const tweets = [
     id: "AndooBomber",
     post: "https://x.com/AndooBomber/status/1747663021747691808?s=20",
     content:
-      "I tried Keploy, but it might be a god tool. The automated testing tool “Keploy” using eBPF is amazing",
+      "I tried Keploy, good tool.",
   },
   {
     avatar:
@@ -72,7 +63,16 @@ const tweets = [
     id: "mugi_uno",
     post: "https://x.com/mugi_uno/status/1745726154924003502?s=20",
     content:
-      "I want to try this. I think the problem with mock data is that it is difficult to maintain, so if it makes it easier, I think it would be a good idea. The automated testing tool “Keploy” using eBPF is amazing",
+      "I think the problem with mock data is that it is difficult to maintain, so if it makes it easier, I think it would be a good idea. The automated testing tool “Keploy” using eBPF is amazing",
+  },
+  {
+    avatar:
+        "https://pbs.twimg.com/profile_images/1653250498127089665/x5RJbLq5_400x400.jpg",
+    name: "きょん/kyong",
+    id: "kyongshiii06",
+    post: "https://x.com/kyongshiii06/status/1746532217336250821?s=20",
+    content:
+        "Keploy can record and replay complex, distributed API flows as mocks and stubs. It's like having a time machine for your tests—saving you tons of time.",
   },
   {
     avatar:
@@ -81,7 +81,7 @@ const tweets = [
     id: "Seipann11",
     post: "https://x.com/Seipann11/status/1755989987039064103?s=20",
     content:
-      "Keploy is seriously amazing, a genius Indian is crushing issues at lightning speed.",
+      "Keploy is seriously amazing, a genius tool crushing issues at lightning speed.",
   },
   {
     avatar:
@@ -108,7 +108,7 @@ const tweets = [
     id: "ymnk_8752",
     post: "https://x.com/ymnk_8752/status/1745458928698450057?s=20",
     content:
-      "Looks amazing. I hear about eBPF a lot, but I don't know what it is. The automated testing tool “Keploy” using eBPF is amazing",
+      "It is amazing! I hear about eBPF a lot, but I don't know what it is.",
   },
 ];
 const TwitterTestimonials = () => {
