@@ -12,7 +12,7 @@ import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from 
 import { PillarPages } from "../utils/resources";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
-  const [starsCount, setStarsCount] = useState<number>(0);
+  const [starsCount, setStarsCount] = useState<number>(1000);
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
     window.pageYOffset > 10 ? setTop(false) : setTop(true);
