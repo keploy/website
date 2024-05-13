@@ -1,23 +1,22 @@
-import VideoThumb from '@/public/images/conf/gittogether.png'
-import ModalVideo from '@/components/modal-video'
-import Link from 'next/link'
 
+import HeroImage from '@/public/images/conferenceHeader.png'
+import Image from "next/image";
+import Link from 'next/link'
 export default function Hero() {
   return (
     <section>
       <div className=" max-w-6xl mx-auto px-4 sm:px-6 relative">
-
         <div className="absolute left-0 bottom-0 -ml-20 lg:block pointer-events-none" aria-hidden="true" data-aos="fade-up" data-aos-delay="400">
 
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 700 700" width="1300" height="500" opacity="1"><defs><radialGradient id="ffflux-gradient">
-            <stop offset="0%" stopColor="#015533"/>
-            <stop offset="100%" stopColor="#191919"/>
+            <stop offset="0%" stopColor="#015533" />
+            <stop offset="100%" stopColor="#191919" />
           </radialGradient>
             <filter id="ffflux-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feTurbulence type="fractalNoise" baseFrequency="0.007 0.006" numOctaves="2" seed="307" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"/>
-            <feGaussianBlur stdDeviation="74 77" x="0%" y="0%" width="100%" height="100%" in="turbulence" edgeMode="duplicate" result="blur"/>
-            <feBlend mode="hard-light" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" in2="blur" result="blend"/>
-          </filter></defs><rect width="700" height="700" fill="url(#ffflux-gradient)" filter="url(#ffflux-filter)"/></svg>
+              <feTurbulence type="fractalNoise" baseFrequency="0.007 0.006" numOctaves="2" seed="307" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence" />
+              <feGaussianBlur stdDeviation="74 77" x="0%" y="0%" width="100%" height="100%" in="turbulence" edgeMode="duplicate" result="blur" />
+              <feBlend mode="hard-light" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" in2="blur" result="blend" />
+            </filter></defs><rect width="700" height="700" fill="url(#ffflux-gradient)" filter="url(#ffflux-filter)" /></svg>
 
         </div>
 
@@ -35,18 +34,11 @@ export default function Hero() {
         </div>
 
 
+
+
         {/* Hero content */}
         <div className="relative pt-32 pb-10 md:pt-56 md:pb-16">
-          {/*<p className="text-xl text-gray-400 mt-16 mb-8" data-aos="fade-up" data-aos-delay="200">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>*/}
-
-          <ModalVideo
-              thumb={VideoThumb}
-              thumbWidth={1024}
-              thumbHeight={576}
-              thumbAlt="Modal video thumbnail"
-              video="/videos/video.mp4"
-              videoWidth={1920}
-              videoHeight={1080} />
+          <Image src={HeroImage} alt="Image" />
           {/* Section header */}
           <div className="max-w-6xl mx-auto text-center pb-12 md:pb-16">
 
@@ -55,19 +47,16 @@ export default function Hero() {
             <h3 className="h3 mb-16 whitespace-pre font-architects-daughter text-primary-400" data-aos="fade-up">Share, Learn, Innovate</h3>
 
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
-
-
-
               <div data-aos="fade-up " data-aos-delay="400">
                 <Link className="btn rounded-lg text-white bg-secondary-300 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0" target="_blank" href="https://forms.gle/9ABV4QosARLBB8Vc7">Register
                   <svg className=" ml-3 w-3 h-3 shrink-0 fill-current" viewBox="0 0 23 23">
-                          <path d=  "M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z" />
-                        </svg>
+                    <path d="M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z" />
+                  </svg>
 
                 </Link>
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
-                <Link className="btn rounded-lg text-white border-primary-400 border-1 bg-transparent hover:text-primary-300 w-full sm:w-auto sm:ml-4" target="_blank"  href="https://forms.gle/iwZRL4UD2Pw1redaA">Submit CFP</Link>
+                <Link className="btn rounded-lg text-white border-primary-400 border-1 bg-transparent hover:text-primary-300 w-full sm:w-auto sm:ml-4" target="_blank" href="https://forms.gle/iwZRL4UD2Pw1redaA">Submit CFP</Link>
               </div>
             </div>
 
@@ -76,7 +65,7 @@ export default function Hero() {
                 <div className='text-slate-500 inline-flex'>
                   <Link className="text-lg font-semibold hover:underline text-slate-50" href="https://forms.gle/9ABV4QosARLBB8Vc7" target="_blank" rel="noreferrer">
                     {/*<span className="hidden sm:inline"> */}
-                      29 February 2024
+                    29 February 2024
                     {/*</span>*/}
                   </Link>
                   <span className="text-lg font-semibold italic px-1.5"> at </span>
@@ -98,7 +87,6 @@ export default function Hero() {
           </div>
 
         </div>
-
       </div>
     </section>
   )
