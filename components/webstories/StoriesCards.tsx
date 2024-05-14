@@ -20,13 +20,13 @@ type StoriesCardsProps = {
 const StoriesCards = ({ data }: StoriesCardsProps) => {
   const [searchBarOpen, setSearchBarOpen] = useState(true);
   const [searchValue, setSearchValue] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
-
+  
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 
   const AlternativeBar = () => {
+    setSearchValue("");
     setSearchBarOpen(!searchBarOpen);
   };  
 
@@ -53,7 +53,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
           </button>
         ) : (
           <>
-            <SearchBar ref={inputRef} onChange={handleInputChange} />
+            <SearchBar  onChange={handleInputChange} />
             <button onClick={AlternativeBar} className="ml-2">
               <FontAwesomeIcon
                 icon={faTimes}

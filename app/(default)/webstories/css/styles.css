@@ -20,7 +20,8 @@
   animation: growAnimation 0.2s ease-out forwards;
 }
 
-.loader {
+.loader,
+.loaderBack {
   display: block;
   position: relative;
   height: 4px;
@@ -29,7 +30,8 @@
   overflow: hidden; 
 }
 
-.loader:after {
+.loader:after,
+.loaderBack:after {
   content: "";
   position: absolute;
   left: 0;
@@ -37,6 +39,12 @@
   height: 100%;
   background: #FF914D;
   animation: 5s prog ease-in forwards;
+  animation-play-state: running;
+}
+
+.loader.paused:after,
+.loaderBack.paused:after {
+  animation-play-state: paused;
 }
 
 @keyframes prog {
@@ -48,40 +56,20 @@
   }
 }
 
-.loaderBack {
-  display: block;
-  position: relative;
-  height: 4px;
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden; 
-}
-.loaderBack:after {
-  content: "";
-  position: absolute;
-  left: 0; /* Changed left: 0 to right: 0 */
-  top: 0;
-  height: 100%;
-  width: 100%; /* Changed width: 0 to width: 100% */
-  background: #FF914D;
-  animation: 0.2s progBack ease-out forwards; /* Changed ease-in to ease-out and animation name to progBack */
-}
-
 @keyframes progBack {
-  from { /* Changed from 0% to 100% and to 0% */
+  from {
     width: 100%;
   }
-  to { /* Changed to 100% */
+  to {
     width: 0;
   }
 }
 
-.lf-player-container{
+.lf-player-container {
   display: flex;
-  /* background-color: #FF914D; */
   height: 100%;
 }
 
-#lottie{
+#lottie {
   height: 100%;
 }

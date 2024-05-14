@@ -1,11 +1,10 @@
 import React from 'react';
 
 type SearchBarProps = {
-  ref: React.RefObject<HTMLInputElement>;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const SearchBar = ({ ref, onChange }: SearchBarProps) => {
+const SearchBar = ({  onChange }: SearchBarProps) => {
   return (
     <div className="w-full mx-auto">
       <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white gap-2 overflow-hidden">
@@ -27,7 +26,6 @@ const SearchBar = ({ ref, onChange }: SearchBarProps) => {
         </div>
 
         <input
-          ref={ref}
           className="peer h-full w-full border-none focus:outline-none border border-r-0 text-sm pr-2 appearance-none border-transparent"
           type="text"
           id="search"

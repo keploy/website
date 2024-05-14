@@ -27,15 +27,47 @@ type WebStoriesProps = {
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentStoryIndex !== data.length - 1) {
-        handleNext();
-      }
-    }, 5100);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [paused, setPaused] = useState<Boolean>(false);
+  const remainingTimeRef = useRef(5100);
+  const startTimestampRef = useRef<number | null>(null);
 
-    return () => clearInterval(interval);
+  const Pausing = (pause: Boolean) => {
+    if (pause) {
+      setPaused(true);
+      stopTimer();
+    } else {
+      setPaused(false);
+      resumeTimer();
+    }
+  };
+
+  const startTimer = (duration: number) => {
+    startTimestampRef.current = Date.now();
+    intervalRef.current = setTimeout(() => {
+      handleNext();
+      remainingTimeRef.current = 5100;
+      startTimer(5100);
+    }, duration);
+  };
+
+  const stopTimer = () => {
+    if (intervalRef.current) {
+      clearTimeout(intervalRef.current);
+      intervalRef.current = null;
+      const elapsedTime = Date.now() - (startTimestampRef.current ?? 0);
+      remainingTimeRef.current -= elapsedTime;
+    }
+  };
+
+  const resumeTimer = () => {
+    startTimer(remainingTimeRef.current);
+  };
+
+  useEffect(() => {
+    startTimer(5100);
+    console.log(paused);
+    return () => stopTimer();
   }, [currentStoryIndex]);
 
   const handlePrev = () => {
@@ -90,7 +122,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
           key={currentStoryIndex}
           className=" flex flex-col h-5/6  mt-8  basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center cursor-pointer"
           onKeyDown={handleKeyDown}
-          tabIndex={0} // Ensure the div is focusable
+          // tabIndex={0} // Ensure the div is focusable
           style={{ height: "90%" }}
         >
           <Stories
@@ -98,6 +130,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
             totalLen={data.length}
             currentIndex={currentStoryIndex}
             Next={next}
+            paused={Pausing}
           />
 
           <p
