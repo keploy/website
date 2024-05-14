@@ -28,18 +28,21 @@
   border-radius: 10px;
   overflow: hidden; 
 }
+
 .loader:after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
-  width: 0;
   background: #FF914D;
-  animation: 0.2s prog ease-in forwards;
+  animation: 5s prog ease-in forwards;
 }
 
 @keyframes prog {
+  from {
+    width: 0%;
+  }
   to {
     width: 100%;
   }

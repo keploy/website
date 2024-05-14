@@ -1,9 +1,8 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLink,
   faArrowUp,
-  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons"; // Added faShareAlt icon
 import Link from "next/link";
 import CustomizedDialogs from "./ShareComponent";
@@ -19,8 +18,8 @@ const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
 
 type StoriesProps = {
   imageUrl: string | StaticImageData | TestAndStubsGenType;
-  Heading: string;
-  text: string;
+  Heading?: string;
+  text?: string;
   swipeText?: string;
   swipeLink?: string;
   image: Boolean;
@@ -37,10 +36,21 @@ const Stories = ({
   currentIndex: number;
   Next: Boolean;
 }) => {
+  const [contentAvailable, setContentAvailable] = useState<Boolean>(false);
   const lines = Array.from({ length: totalLen }, (_, i) => i);
+
+  useEffect(() => {
+    if (Story.Heading && Story.text) {
+      setContentAvailable(true);
+    } else {
+      setContentAvailable(false);
+    }
+    console.log("rendered");
+  }, [Story]);
+
   return (
     <>
-      <div className="relative h-full mt-10 rounded-xl  z-30 border border-gray-200">
+      <div className="relative  h-full mt-10 rounded-xl  z-30 border  border-gray-300">
         <div className="absolute flex flex-row w-full justify-end z-30">
           <div className="absolute z-10 w-full flex flex-row h-5 gap-1 ">
             {lines.map((line, key) => {
@@ -57,22 +67,22 @@ const Stories = ({
               if (Next) {
                 if (line <= currentIndex) {
                   if (isCurrentLine) {
-                    lineClass = "loader bg-slate-300";
+                    lineClass = "loader bg-slate-100 ";
                   } else {
-                    lineClass = "bg-primary-300";
+                    lineClass = "bg-primary-300 ";
                   }
                 } else {
-                  lineClass = "bg-slate-300";
+                  lineClass = "bg-slate-100";
                 }
               } else {
                 if (line <= currentIndex + 1) {
                   if (isCurrentLine) {
-                    lineClass = "loaderBack bg-slate-300";
+                    lineClass = "loaderBack bg-slate-100";
                   } else {
-                    lineClass = "bg-primary-300";
+                    lineClass = "bg-primary-300 ";
                   }
                 } else {
-                  lineClass = "bg-slate-300";
+                  lineClass = "bg-slate-100";
                 }
               }
 
@@ -80,13 +90,13 @@ const Stories = ({
                 <hr
                   className={`h-1 w-full ${isLastLine ? "mr-1" : ""} ${
                     isFirstLine ? "ml-1" : ""
-                  } mt-2 rounded border pointer-events-none ${lineClass}`}
+                  } mt-2 rounded  pointer-events-none ${lineClass}`}
                   key={key}
                 />
               );
             })}
           </div>
-          <div className="cursor-pointer mx-5 mt-5 z-10 scale-125">
+          <div className="cursor-pointer mx-5 mt-5 z-10 scale-125 ">
             <CustomizedDialogs />
           </div>
         </div>
@@ -109,16 +119,25 @@ const Stories = ({
         )}
         <div className="flex flex-row justify-end"></div>
         <div className={`absolute w-full bottom-0 animate-grow `}>
-          <div className="bg-secondary-300 opacity-60 p-8 rounded-b-xl rounded-t-sm">
-            <h1 className="text-2xl text-slate-50">{Story.Heading}</h1>
-            <p className="text-slate-50">{Story.text}</p>
-          </div>
+          {Story.Heading && Story.text && (
+            <div className="bg-secondary-300 opacity-80 p-8 rounded-b-xl rounded-t-sm">
+              <h1 className="text-2xl text-slate-50 font-bold mb-3">
+                {Story.Heading}
+              </h1>
+              <p className="text-slate-50">{Story.text}</p>
+            </div>
+          )}
+
           {Story.swipeLink && Story.swipeText && (
             <Link href={Story.swipeLink}>
-              <div className="absolute inset-x-0 bottom-10 opacity-25 hover:opacity-100 duration-300 flex flex-col justify-center items-center">
+              <div
+                className={`absolute inset-x-0 bottom-10 ${
+                  contentAvailable ? "opacity-25" : "opacity-100"
+                }  hover:opacity-100 duration-300 flex flex-col justify-center items-center`}
+              >
                 <FontAwesomeIcon
                   icon={faArrowUp}
-                  className="text-orange-200 mr-1 animate-bounce"
+                  className="text-orange-400 mr-1 animate-bounce text-"
                 />
                 <p className="bg-gradient-300 p-2 rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
                   <FontAwesomeIcon
@@ -136,4 +155,4 @@ const Stories = ({
   );
 };
 
-export default Stories;
+export default memo(Stories);

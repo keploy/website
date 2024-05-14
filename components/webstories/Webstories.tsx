@@ -6,15 +6,15 @@ import {
   faRedoAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Stories from "./Stories";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 
 type TestAndStubsGenType = typeof testAndStubsGen;
 
 type WebStoryItem = {
-  imageUrl: string | StaticImageData | TestAndStubsGenType ;
-  Heading: string;
-  text: string;
+  imageUrl: string | StaticImageData | TestAndStubsGenType;
+  Heading?: string;
+  text?: string;
   swipeText?: string;
   swipeLink?: string;
   image: Boolean;
@@ -26,8 +26,17 @@ type WebStoriesProps = {
 
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
-  const [next,setNext] = useState(false);
+  const [next, setNext] = useState(false);
   
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentStoryIndex !== data.length - 1) {
+        handleNext();
+      }
+    }, 5100);
+
+    return () => clearInterval(interval);
+  }, [currentStoryIndex]);
 
   const handlePrev = () => {
     setCurrentStoryIndex((prevIndex) =>
@@ -56,11 +65,16 @@ const WebStories = ({ data }: WebStoriesProps) => {
     }
   };
   const currentStory = data[currentStoryIndex];
-
   return (
     <div>
-      <div className="relative flex flex-row h-screen gap-10 justify-center cursor-pointer">
-        <div className="absolute inset-0 backdrop-filter backdrop-blur-3xl cursor-pointer" />
+      <div className="flex flex-row h-screen gap-10 justify-center cursor-pointer">
+        <Image
+          src={currentStory.imageUrl as string}
+          layout="fill"
+          alt="image"
+          objectFit="cover"
+          className="h-full w-full opacity-30  blur-lg rounded-xl"
+        />
         <button
           onClick={handlePrev}
           className={`relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
@@ -74,9 +88,10 @@ const WebStories = ({ data }: WebStoriesProps) => {
         </button>
         <div
           key={currentStoryIndex}
-          className="basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center h-5/6 cursor-pointer"
+          className=" flex flex-col h-5/6  mt-8  basis-4/5 md:basis-7/12 lg:basis-4/12 xl:basis-3/12 self-center cursor-pointer"
           onKeyDown={handleKeyDown}
           tabIndex={0} // Ensure the div is focusable
+          style={{ height: "90%" }}
         >
           <Stories
             Story={currentStory}
@@ -84,6 +99,15 @@ const WebStories = ({ data }: WebStoriesProps) => {
             currentIndex={currentStoryIndex}
             Next={next}
           />
+
+          <p
+            className={` ${
+              currentStoryIndex == data.length - 1 ? "opacity-100" : "opacity-0"
+            }  mt-5 content-end text-sm  text-center text-slate-600`}
+          >
+            If you like Keploy, give it a star on GitHub and follow us on
+            Twitter ❤️
+          </p>
         </div>
         {currentStoryIndex === data.length - 1 ? (
           <button
