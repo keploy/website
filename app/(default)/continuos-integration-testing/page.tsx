@@ -14,11 +14,11 @@ import { featuresData,faqQuestions } from "@/components/utils/record-replay";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 const heroData = {
-  titleTop: "Effortlessly streamline ",
-  titleBottom: "testing process with Record and Replay feature.",
-  subtitleTop: "Eliminate the need for complex setup or coding knowledge for testing!",
+  titleTop: "Streamline CI Testing ",
+  titleBottom: "with Keploy Integration",
+  subtitleTop: "Eliminate the need for complex setup in CI for testing!",
   subtitleBottom:
-    "Simply record interactions and replay them to generate dynamic test cases.🚀",
+    "Make testing in CI hassle-free with Keploy's seamless CI integration!🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
