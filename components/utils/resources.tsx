@@ -4,7 +4,7 @@ export const PillarPages = [
       links: [
         {
           pagelink: "/stub-generation",
-          pageName: "Data Stubs Generation"
+          pageName: "Test Data Generation"
         },
         {
           pagelink: "/test-duplication",
@@ -15,8 +15,8 @@ export const PillarPages = [
           pageName: "Native Integration" 
         },
         {
-          pagelink: "/ebpf-instrumentation",
-          pageName: "eBPF Instrumentation"
+          pagelink: "/continuos-integration-testing",
+          pageName: "CI Testing"
         },
         {
           pagelink: "/record-replay",

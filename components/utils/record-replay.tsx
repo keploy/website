@@ -55,41 +55,41 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Intuitive Recording Interface',
+      title: 'Integration with CI Tools',
       icon:<DependencyWaitTimeIcon />,
-      description: 'A user-friendly recording interface, to easily capture interactions with the application.Simply start Keploy to record and begin creating test scenarios effortlessly.',
+      description: 'Integrate Keploy testsuite effortlessly with popular CI tools such as GitHub, GitLab, Jenkins etc.. in your workflow.',
     },
     {
-      title: 'Dynamic Test Case Generation',
+      title: 'Jest Continuos Integration',
       icon: <ManualStubCreationIcon />,
-      description: "With Keploy's Record and Replay feature, recorded interactions are automatically translated into test cases.",
+      description: "Seamlessly integrate Keploy with Jest for automated testing workflows, ensuring compatibility with popular testing frameworks.",
     },
     {
-      title: 'Error Debugging and Analysis',
+      title: 'No Environment Setup',
       icon: <ScalabilityTestingDifficultiesIcon />,
-      description: "Quickly identify and resolve issues with Keploy's built-in error analysis. Pinpoint errors in the playback process, and streamline the troubleshooting process for faster resolution of issues.",
+      description: "Eliminate the hassle of setting up testing environments when using Keploy in your CI pipeline.",
     },
     {
-      title: 'Cross-Platform Compatibility',
+      title: 'Faster Development Workflow',
       icon: <DataVariabilityConcernsIcon />,
-      description: "Keploy's Record and Replay feature seamlessly integrates with a wide range of platforms and environments",
+      description: "Improve your development workflow, ensuring reliable and high-quality software delivery, with quick and informative feedback with Keploy's capabilities.",
     },
     {
-      title: 'Customizable Options',
+      title: 'Scalable Testing Infrastructure',
       icon: <ErrorHandlingChallengesIcon />,
-      description: "Tailor the settings to suit your testing needs with Keploy's customizable options. Identify noise, add filters, adjust application startup time with custom configuration options.",
+      description: "Scale your testing infrastructure effortlessly with Keploy's parallel test execution capabilities in CI/CD pipeline.",
     },
     {
-      title: 'Collaborative Environment',
+      title: 'Continuous Testing in DevOps',
       icon: <CollaborationIcon />,
-      description: "Share recorded test cases, collaborate on test scripts, and leverage collective insights to drive continuous improvement in testing practices.",
+      description: "Enhance your DevOps practices with continuous integration and testing with Keploy, ensuring consistent software quality throughout the development lifecycle.",
     }
   ];
   export const faqQuestions =[
     {
-        title: "How does Keploy's Record and Replay feature work?",
+        title: "How to integrate Keploy with continuous integration (CI) tools like GitHub and Jenkins?",
         answer:
-        "Keploy uses eBPF instrumentation for Record and Replay, which enables keploy to record interactions with an application and then replay them to generate test cases automatically. It captures user actions and translates them into dynamic test scenarios, streamlining the testing process without the need for manual scripting or coding."
+        "Keploy can be added with popular CI tools like GitHub, GitLab, Jenkins, and others, as the auto generated test and mocks are in YAMl, allowing developers to incorporate continuous testing into their existing CI pipelines effortlessly."
     },
     {
         title: " Is Keploy compatible with different operating systems and platforms?",
@@ -97,23 +97,23 @@ export const featuresData = [
         "Yes, Keploy seamlessly integrates with a wide range of platforms and environments, offering cross-platform compatibility. Whether you're working on Windows, macOS, or Linux, Keploy ensures consistency and efficiency in your testing processes across diverse operating systems."
     },
     {
-        title: "How does Keploy help in error debugging and analysis?",
+        title: "Does Keploy require setting up testing environments separately in CI pipelines?",
         answer:
-        "Keploy includes built-in error analysis tools that enable users to quickly identify and resolve issues within their applications. By providing detailed insights into errors encountered during testing, Keploy empowers teams to efficiently debug and troubleshoot problems, ensuring the reliability and stability of their software."
+        "No, with Keploy, there's no need to configure testing environments separately in CI pipelines. Keploy streamlines the testing process by eliminating the need for manual environment setup, saving time and resources."
     },
     {
-        title: "Can I customize replay settings according to my testing requirements?",
+        title: "How does Keploy enhance DevOps practices with continuous testing?",
         answer:
-        "Yes, Keploy offers customizable replay options to tailor the testing process to your specific needs. You can adjust settings such as noise identification, apply filters, and modify application startup time, allowing for greater control and precision in your testing procedures."
+        "Keploy promotes streamlined DevOps practices by facilitating continuous integration and testing, ensuring consistent software quality throughout the development lifecycle."
     },
     {
-        title: "Is Keploy suitable for collaborative testing environments?",
+        title: "Does Keploy accelerate feedback loops in continuous integration testing?",
         answer:
         "Keploy provides a collaborative testing environment where teams can share recorded test cases, collaborate on test scripts, and leverage collective insights to enhance testing practices. This collaborative approach fosters teamwork, knowledge sharing, and continuous improvement in software testing processes."
     },
     {
         title: "Does Keploy require extensive training to use its features?",
         answer:
-        " Keploy features an intuitive recording interface that makes it easy for users to capture interactions with applications and create test scenarios effortlessly. With its user-friendly design and automated processes, Keploy minimizes the need for extensive training or coding knowledge, enabling teams to streamline their testing processes quickly and efficiently."
+        "Yes, Keploy helps developer's to incorporate continuous integration testing seamlessly into their workflows, promoting faster feedback loops and more efficient software delivery.",
     },
 ]
