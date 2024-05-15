@@ -6,6 +6,7 @@ import React from "react";
 import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
+import APItext from "@/public/images/apiText.png"
 export default function Hero() {
   return (
     <section className="relative">
@@ -37,8 +38,35 @@ export default function Hero() {
             <p className="text-2xl text-accent-200 mb-4 " data-aos="zoom-y-out" data-aos-delay="150">
               5 minutes to 90% test coverage!
             </p>
-            <h1 className="lg:text-6xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 " data-aos="zoom-y-out"> AI Generated Tests<br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200"> that actually work!</span></h1>
+            <h1
+              className="lg:text-6xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 md:mt-16 lg:mt-24"
+              data-aos="zoom-y-out"
+            >
+              {" "}
+              {"AI Generated "}
+              <span
+                className="absolute hidden md:inline font-pencil font-light pt-2 text-green-900"
+                style={{
+                  top: "0.8em",
+                  transform: "rotate(-10deg)",
+                }}
+              >
+                ^
+                <span
+                  className="absolute lg:bottom-44 bottom-28 -left-2 hidden md:inline font-pencil font-light text-3xl lg:text-5xl text-green-900"
+                  style={{
+                    transform: "rotate(-5deg)",
+                  }}
+                >
+                  API
+                </span>
+              </span> 
+              Tests
+              <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
+                that actually work!
+              </span>
+            </h1>
             <div className="max-w-3xl mx-auto">
               <p className="text-xl lg:text-center text-center text-accent-200 mb-8" data-aos="zoom-y-out" data-aos-delay="150">
                 <b>Open Source</b> Platform for converting API calls to Test Cases with Data Mocks
@@ -66,7 +94,7 @@ export default function Hero() {
             thumbWidth={768}
             thumbHeight={432}
             thumbAlt="Keploy Demo video"
-            video="https://www.youtube.com/embed/5BDJaWMCuu0"
+            video="https://www.youtube.com/embed/gvWvpqWM48s?si=SGmGYubvbfO9YDe7"
             videoWidth={768}
             videoHeight={432} />
         </div>
