@@ -139,41 +139,51 @@ export const featuresData = [
       description: 'Eliminates waiting for dependent components, allowing parallel work and accelerating the development process.'
     },
     {
-      title: 'Manual Stub Creation',
+      title: 'Dynamic TestData Generation',
       icon:<ManualStubCreationIcon />,
-      description: 'Removes the laborious task of manually creating stubs, saving significant time and effort in the testing process.'
+      description: 'Eliminate the task of manually creating brittle stubs, and generate diverse and realistic test data sets effortlessly saving significant time and effort.'
     },
     {
-      title: 'Data Variability Concerns',
+      title: 'Database Support',
       icon: <DataVariabilityConcernsIcon />,
-      description: 'Provides diverse and dynamic data sets automatically, removing concerns about generating varied inputs for testing scenarios.'
+      description: 'Easily generate mock data for various database systems such as DynamoDB, Mongo, SQL, Redis etc.'
     },
     {
-      title: 'Error Handling Challenges',
+      title: 'Automate Testing with Mocks',
       icon:<ErrorHandlingChallengesIcon />,
-      description: 'Streamlines testing of error responses and edge cases, ensuring robust error handling mechanisms without extensive manual testing.'
+      description: 'Utilize auto generated mocks to simulate dependencies, simplifying and accelerating test creation processes.'
     },
     {
-      title: 'Scalability Testing Difficulties',
+      title: 'Intuitive Test Data Management',
       icon:<ScalabilityTestingDifficultiesIcon />,
-      description: 'Simplifies scalability testing by automatically stubbing system performance under various loads.'
+      description: 'Simplify the creation and maintenance of test data with YAML format, and tailor the test data to specific testing scenarios and requirements.'
+    },
+    {
+      title: 'API Endpoint Mocking',
+      icon:<ScalabilityTestingDifficultiesIcon />,
+      description: 'Generate mock data for API endpoints to facilitate testing of backend services and integrations like Twilio, S3, Google Maps etc..'
     }
   ];
   export const faqQuestions =[
     {
-      title: "How does Keploy aid in testing efficiency?",
+      title: "How does Keploy simplify test creation through dependency simulation?",
       answer:
-        "It generates realistic stubs, eliminates dependency wait time, and simplifies scalability testing.",
+        "By leveraging auto generated mocks to simulate dependencies, Keploy accelerates test creation processes, enabling developers to focus on building robust and reliable software applications.",
     },
     {
-      title: "What's a key advantage of isolating components for testing?",
+      title: "Does Keploy support mocking API endpoints for backend testing?",
       answer:
-        "Isolating components allows testing without relying on the complete system, enabling more efficient validation and identification of potential issues.",
+        "Absolutely, Keploy facilitates the generation of mock data for API endpoints, allowing developers to simulate dependencies and streamline testing processes for backend services and integrations.",
     },
     {
-      title: "What issue does stub generation with Keploy address?",
+      title: "How does Keploy generate dynamic test data?",
       answer:
-        "Keploy's stub generation addresses dependency wait time and data variability concerns by providing realistic stubs, eliminating the need to wait for dependent components and ensuring diverse testing scenarios.",
+        "Keploy instruments ebpf to generate diverse and realistic test data sets tailored to specific testing scenarios and requirements by recording the incoming and outgoing API calls and replaying them.",
+    },
+    {
+      title: "Does Keploy support mocking API endpoints for backend testing??",
+      answer:
+        " Keploy facilitates the generation of mock data for API endpoints, allowing developers to simulate dependencies and streamline testing processes for backend services and integrations.",
     }
   ]
 
