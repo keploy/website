@@ -38,7 +38,7 @@ const BannerData = {
   title: " 🚀 Elevate Your Testing with Keploy!",
   subtitle: "Ready to simplify your testing process?",
   paraText:
-    "Click to experience Keploy's magic locally or book a demo for an interactive walkthrough. Embark on a journey to stress-free testing today!",
+    "Click to experience Keploy's magic locally or book a demo for an interactive walk-through. Embark on a journey to stress-free testing today!",
   btnTextLeft: "Book Cloud Demo",
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,

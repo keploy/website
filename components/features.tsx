@@ -145,11 +145,10 @@ export default function Features() {
       <section ref={container} className="relative hidden lg:block">
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
-            Keploy for developers
+            Keploy for Developers
           </h1>
           <p className="text-xl text-gray-600">
-            simplified testing, capturing network interactions and generating
-            automated tests
+            smart API testing, capture network calls and generate tests with stubs
           </p>
         </div>
         <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh]  mx-auto  content-container">
@@ -168,7 +167,7 @@ export default function Features() {
                     <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
                   </svg>
                 }
-                heading={" Test and Stubs Generation"}
+                heading={"Record Replay API Flows"}
                 description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
                 btnDescription="Explore More"
                 btnLink="/stub-generation"
@@ -188,8 +187,8 @@ export default function Features() {
                     />
                   </svg>
                 }
-                heading={"Test Deduplication"}
-                description="Automatically detect and remove duplicate tests, ideal for scenarios recorded in live-environments."
+                heading={"Find Duplicate Tests"}
+                description="Find redundant tests that doesn't add to the test coverage. Automatically detect and remove duplicate tests, ideal for big-teams crowd-sourcing tests."
                 btnDescription="Explore More"
                 btnLink="/test-duplication"
               />
@@ -208,8 +207,8 @@ export default function Features() {
                     />
                   </svg>
                 }
-                heading={"Native Integration"}
-                description="Merge Keploy tests with testing libraries(JUnit, go-test, py-test, jest) for combined test coverage."
+                heading={"Works with JUnit, PyTest, Jest, Go-Test in CI/CD"}
+                description="Merge Keploy tests coverage with unit testing libraries for combined test coverage gating in CI/CD pipelines like Jenkins, Github Actions."
                 btnDescription="Explore More"
                 btnLink="/native-integration"
               />
