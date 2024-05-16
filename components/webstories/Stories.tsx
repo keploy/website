@@ -60,7 +60,7 @@ const Stories = ({
 
   return (
     <>
-      <div className="relative h-full mt-10 rounded-xl z-30 border border-gray-300">
+      <div className="relative h-full mt-10 rounded-xl z-30 border border-gray-800  ">
         <div className="absolute flex flex-row w-full justify-end z-30">
           <div className="absolute z-10 w-full flex flex-row h-5 gap-1">
             {lines.map((line, key) => {
@@ -125,8 +125,8 @@ const Stories = ({
             "height" in Story.imageUrl)) ? (
           <Image
             src={Story.imageUrl as string}
-            layout="fill"
             alt="image"
+            layout="fill"
             objectFit="cover"
             className="h-full w-full rounded-xl"
           />

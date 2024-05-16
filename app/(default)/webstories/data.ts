@@ -1,7 +1,7 @@
 import BunnyImage from "@/public/images/community-bunny.png";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import thumbNail from "@/public/images/demo-thumbnail-bg.png";
-import card1_image1 from "@/public/images/webstories/images/card_1-image-1.png";
+// <---Card one --->
 import card1_image2 from "@/public/images/webstories/images/card_1-image-2.png";
 import card1_image3 from "@/public/images/webstories/images/card_1-image-3.png";
 import card1_image4 from "@/public/images/webstories/images/card_1-image-4.png";
@@ -9,20 +9,37 @@ import card1_image5 from "@/public/images/webstories/images/card_1-image-5.png";
 import card1_image6 from "@/public/images/webstories/images/card_1-image-6.png";
 import card1_image7 from "@/public/images/webstories/images/card_1-image-7.png";
 import card1_image8 from "@/public/images/webstories/images/card_1-image-8.png";
+// <---Card second --->
+import card2_image1 from "@/public/images/webstories/images/card_2-image-1.png";
+import card2_image2 from "@/public/images/webstories/images/card_2-image-2.png";
+import card2_image3 from "@/public/images/webstories/images/card_2-image-3.png";
+import card2_image4 from "@/public/images/webstories/images/card_2-image-4.png";
+// <---Card five --->
+import card5_image1 from "@/public/images/webstories/images/card_5-image-1.png";
+import card5_image2 from "@/public/images/webstories/images/card_5-image-2.png";
+import card5_image3 from "@/public/images/webstories/images/card_5-image-3.png";
+import card5_image4 from "@/public/images/webstories/images/card_5-image-4.png";
+import card5_image5 from "@/public/images/webstories/images/card_5-image-5.png";
+import card5_image6 from "@/public/images/webstories/images/card_5-image-6.png";
+import card5_image7 from "@/public/images/webstories/images/card_5-image-7.png";
+
+//thumbnail Section
+import card_1_thumbnail from "@/public/images/webstories/images/card_1-thumbnail.png";
 import card_2_thumbnail from "@/public/images/webstories/images/card_2-thumbnail.png";
 import card_3_thumbnail from "@/public/images/webstories/images/card_3-thumbnail.png";
-import card_4_thumbnail from "@/public/images/webstories/images/card_4-thumnbail.png";
+import card_4_thumbnail from "@/public/images/webstories/images/card_4-thumbnail.png";
 import card_5_thumbnail from "@/public/images/webstories/images/card_5-thumbnail.png";
+import follow_more from "@/public/images/webstories/images/follow_more.png";
 import captureRelay from "@/public/images/CaptureAndReplay.json";
 export const DummyData = [
   {
     //card-1
-    CardImage: card1_image2,
+    CardImage: card_1_thumbnail,
     CardDescription: "Balancing unit and e2e test cases !",
     Slug: "balancing-unit-and-e2e-test-cases",
     Story: [
       {
-        imageUrl: card1_image1,
+        imageUrl: card_1_thumbnail,
         Heading: "Importance of Testing",
         text: "Software testing is crucial for ensuring applications function as intended. It identifies bugs and prevents issues from reaching production.",
         // swipeText: "Swipe to read more",
@@ -86,7 +103,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: thumbNail,
+        imageUrl: follow_more,
         // Heading: "Effective Testing Strategy",
         // text: "A well-defined testing strategy considers factors like project size, complexity, and risk tolerance. It ensures a balance between unit and end-to-end testing for efficient and thorough quality assurance.",
         swipeText: "Swipe to learn more.",
@@ -103,7 +120,7 @@ export const DummyData = [
     Slug: "webstory-1",
     Story: [
       {
-        imageUrl: BunnyImage,
+        imageUrl: card_2_thumbnail,
         Heading: "A Must for Modern Software",
         text: "Performance testing helps identify bottlenecks and ensures software meets performance requirements.",
         // swipeText: "Swipe to read more",
@@ -111,7 +128,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card2_image1,
         Heading: "Types of Performance Testing",
         text: "There are various types of performance testing, including load testing, stress testing, and scalability testing.",
         // swipeText: "Swipe to read more",
@@ -119,7 +136,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card2_image2,
         Heading: "Benefits of Performance Testing",
         text: "Performance testing improves responsiveness, stability, and user experience of the software.",
         // swipeText: "Swipe to read more",
@@ -127,7 +144,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card2_image3,
         Heading: "Performance Testing Process",
         text: "The performance testing process involves defining goals, planning the test, executing the test, analyzing results, and taking corrective actions.",
         // swipeText: "Swipe to read more",
@@ -135,7 +152,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card2_image4,
         Heading: "Performance Testing Tools",
         text: "LoadRunner, JMeter, and K6 are some popular performance testing tools.",
         // swipeText: "Swipe to read more",
@@ -167,7 +184,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: follow_more,
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story1",
         image: true,
@@ -182,7 +199,7 @@ export const DummyData = [
     Slug: "webstory-1",
     Story: [
       {
-        imageUrl: BunnyImage,
+        imageUrl: card_4_thumbnail,
         Heading: "The Gatekeeper of Trust",
         text: "Imagine code integrity as a security guard for your software, ensuring only authorized code runs.",
         image: true,
@@ -236,7 +253,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: follow_more,
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story1",
         image: true,
@@ -251,7 +268,7 @@ export const DummyData = [
     Slug: "webstory-2",
     Story: [
       {
-        imageUrl: testAndStubsGen,
+        imageUrl: card_4_thumbnail,
         Heading: "The Achilles' Heel of E2E Tests",
         text: "Edge cases, unexpected scenarios, can expose flaws in E2E tests.",
         image: false,
@@ -311,7 +328,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: thumbNail,
+        imageUrl: follow_more,
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story3",
         image: true,
@@ -326,71 +343,55 @@ export const DummyData = [
     Slug: "webstory-3",
     Story: [
       {
-        imageUrl: BunnyImage,
+        imageUrl: card_5_thumbnail,
         Heading: "A World of Data Exchange",
         text: "APIs (Application Programming Interfaces) act as messengers, enabling communication between different software systems.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card5_image1,
         Heading: "Powering the Modern Web",
         text: "Web APIs allow web applications to access and exchange data over the internet.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card5_image2,
         Heading: "REST APIs",
         text: "A Structured Approach REST (REpresentational State Transfer) APIs follow a standardized approach for building web APIs.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card5_image3,
         Heading: "SOAP APIs",
         text: "A Mature Option SOAP (Simple Object Access Protocol) APIs are an XML-based protocol for web services integration.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card5_image4,
         Heading: "GraphQL APIs",
         text: "Flexibility for Complex Queries GraphQL APIs offer a flexible way to request specific data from a server.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card5_image5,
         Heading: "Streamlining Internal Communication",
         text: "Internal APIs facilitate communication between different components within a single application.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card5_image6,
         Heading: "Expanding Functionality Partner",
         text: "APIs enable integration with external services to extend an application's functionality.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card5_image7,
         Heading: "Designing API Architecture for Scalability",
         text: "A well-designed API architecture ensures efficient data exchange and scalability for future growth.",
-        swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: follow_more,
         swipeText: "Swipe to read more",
         swipeLink: "https://example.com/story3",
         image: true,

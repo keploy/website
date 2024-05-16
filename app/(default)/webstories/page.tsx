@@ -1,7 +1,6 @@
 import React from "react";
-import Container from "@/components/webstories/container";
 import StoriesCards from "@/components/webstories/StoriesCards";
-import { DummyData } from "./data"; // Import DummyData from data file
+import { DummyData } from "./data"; // Import Data from data file
 
 const page = () => {
   const Data = DummyData.map((item) => ({
@@ -12,9 +11,7 @@ const page = () => {
   }));
   return (
     <>
-      <Container>
         <StoriesCards data={Data} />
-      </Container>
     </>
   );
 };

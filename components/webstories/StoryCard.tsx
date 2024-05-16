@@ -8,6 +8,7 @@ type StoryCardProps = {
   CardDescription: string;
   slug: string;
   categories: string[];
+  settingSlugStories: (slug: string) => void;
 };
 
 const StoryCard = ({
@@ -15,35 +16,40 @@ const StoryCard = ({
   CardDescription,
   slug,
   categories,
+  settingSlugStories,
 }: StoryCardProps) => {
+
   const key = `${slug}-${categories.join("-")}`;
+  const ClickingStories = () => {
+    settingSlugStories(slug);
+  }
 
   return (
     <div
       key={key}
-      className="flex flex-row items-center justify-center border border-gray-300  rounded-md mx-auto hover:shadow-lg hover:shadow-gray-500 duration-150 h-full"
+      className="flex flex-col  items-center hover:cursor-pointer aspect-w-2 aspect-h-3 justify-center border border-gray-300 rounded-md mx-auto hover:shadow-lg hover:shadow-gray-500 duration-150"
+      onClick={ClickingStories}
     >
-      <Link target="_blank" href={`/webstories/${slug}`} className="flex-grow">
-        <div className="flex  ">
-          {" "}
-          {/* Image container, 70% of parent height */}
-          <Image
-            src={imagesrc}
-            alt={CardDescription}
-            className="w-full h-full object-cover rounded-t-md" // Using object-cover to fill the container
-          />
+      <div className="w-full">
+        <Image
+          src={imagesrc}
+          alt={CardDescription}
+          layout="responsive"
+          className= " w-full h-full rounded-t-md md:rounded-none"
+        />
+      </div>
+      <div className="flex-grow p-4">
+        <div className="flex justify-start px-2 pt-2 text-secondary-300 text-sm m-1 ml-1 whitespace-pre-line ">
+          <p className=" text-sm font-semibold xl:text-lg md:text-lg ">{CardDescription}</p>
         </div>
-        <div className="px-2 pt-2 text-secondary-300w text-sm m-1 ml-1">
-          <p>{CardDescription}</p>
-        </div>
-        <div className="flex flex-row gap-2 p-1  justify-end">
+        <div className="flex flex-row gap-2 p-1 justify-end">
           {categories.map((category, index) => (
             <p key={index} className="text-xs text-gray-500">
               {category}
             </p>
           ))}
         </div>
-      </Link>
+      </div>
     </div>
   );
 };
