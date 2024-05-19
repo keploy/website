@@ -1,7 +1,7 @@
 import React from "react";
 import StoriesCards from "@/components/webstories/StoriesCards";
 import { DummyData } from "./data"; // Import Data from data file
-
+import Header from "@/components/webstories/components/Header";
 const page = () => {
   const Data = DummyData.map((item) => ({
     CardImage: item.CardImage,
@@ -11,7 +11,9 @@ const page = () => {
   }));
   return (
     <>
-        <StoriesCards data={Data} />
+      <Header />
+
+      <StoriesCards data={Data} />
     </>
   );
 };

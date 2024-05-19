@@ -7,13 +7,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Stories from "./Stories";
 import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 
 type TestAndStubsGenType = typeof testAndStubsGen;
 
 type WebStoryItem = {
-  imageUrl: string | StaticImageData | TestAndStubsGenType;
+  imageUrl?: string | StaticImageData | TestAndStubsGenType;
   Heading?: string;
   text?: string;
   swipeText?: string;
@@ -28,17 +28,17 @@ type WebStoriesProps = {
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
+  const [totalTime, setTotalTime] = useState<number>(3000);
+  const [animatingDuration, setanimatingDuration] = useState<string>("3s");
+  const [timer, setTimer] = useState<Boolean>(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const [paused, setPaused] = useState<Boolean>(false);
-  const remainingTimeRef = useRef(5100);
+  const remainingTimeRef = useRef(totalTime);
   const startTimestampRef = useRef<number | null>(null);
 
   const Pausing = (pause: Boolean) => {
     if (pause) {
-      setPaused(true);
       stopTimer();
     } else {
-      setPaused(false);
       resumeTimer();
     }
   };
@@ -47,8 +47,13 @@ const WebStories = ({ data }: WebStoriesProps) => {
     startTimestampRef.current = Date.now();
     intervalRef.current = setTimeout(() => {
       handleNext();
-      remainingTimeRef.current = 5100;
-      startTimer(5100);
+      remainingTimeRef.current = totalTime;
+      startTimer(totalTime);
+      if (currentStoryIndex == data.length - 1) {
+        setTimer(true);
+      } else {
+        setTimer(false);
+      }
     }, duration);
   };
 
@@ -66,8 +71,20 @@ const WebStories = ({ data }: WebStoriesProps) => {
   };
 
   useEffect(() => {
-    startTimer(5100);
-    console.log(paused);
+    if (currentStoryIndex < data.length - 1) {
+      setTimer(false);
+    }
+    console.log(timer);
+  }, [timer]);
+
+  useEffect(() => {
+    if (currentStory.text) {
+      var time = TimeAccToContent(currentStory.text);
+      setTotalTime(time * 1000 + 200);
+      setanimatingDuration(`${time}s`);
+    }
+    startTimer(totalTime);
+
     return () => stopTimer();
   }, [currentStoryIndex]);
 
@@ -81,8 +98,9 @@ const WebStories = ({ data }: WebStoriesProps) => {
 
   const handleNext = () => {
     setCurrentStoryIndex((prevIndex) =>
-      prevIndex === data.length - 1 ? 0 : prevIndex + 1
+      prevIndex === data.length - 1 ? data.length - 1 : prevIndex + 1
     );
+
     setNext(true);
   };
 
@@ -97,9 +115,23 @@ const WebStories = ({ data }: WebStoriesProps) => {
       handlePrev();
     }
   };
+
+  const TimeAccToContent = (content: string) => {
+    if (!content) {
+      return 0;
+    }
+    const wordsPerSecond = 5;
+
+    const wordCount = content.split(/\s+/).length;
+
+    const readingTimeMinutes = Math.ceil(wordCount / wordsPerSecond);
+
+    return readingTimeMinutes;
+  };
+
   const currentStory = data[currentStoryIndex];
   return (
-    <div className="w-full h-full opacity-100">
+    <div className="w-full h-full opacity-100 cursor-pointer">
       <div className="flex flex-row  h-screen md:gap-10 lg:gap-10 xl:gap-10 gap-1 justify-center cursor-pointer">
         <button
           onClick={handlePrev}
@@ -116,7 +148,6 @@ const WebStories = ({ data }: WebStoriesProps) => {
           key={currentStoryIndex}
           className=" flex flex-col h-5/6  mt-8    md:basis-7/12 lg:basis-6/12 xl:basis-3/12 self-center cursor-pointer"
           onKeyDown={handleKeyDown}
-          // tabIndex={0} // Ensure the div is focusable
           style={{ height: "90%" }}
         >
           <Stories
@@ -125,6 +156,8 @@ const WebStories = ({ data }: WebStoriesProps) => {
             currentIndex={currentStoryIndex}
             Next={next}
             paused={Pausing}
+            animationDuration={`${animatingDuration}`}
+            timerScreen={timer}
           />
 
           <p

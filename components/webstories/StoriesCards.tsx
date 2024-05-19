@@ -5,13 +5,12 @@ import { StaticImageData } from "next/image";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SearchBar from "./components/SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Container from "@/components/webstories/container";
-import { DummyData } from "@/app/(default)/webstories/data";
-import WebStories from "./Webstories";
+import Container from "@/components/webstories/components/container";
+
 type StoriesCardProps = {
   CardImage: string | StaticImageData;
   CardDescription: string;
-  Slug: string;
+  Slug: string; 
   Category: string[];
 };
 
@@ -22,12 +21,6 @@ type StoriesCardsProps = {
 const StoriesCards = ({ data }: StoriesCardsProps) => {
   const [searchBarOpen, setSearchBarOpen] = useState(true);
   const [searchValue, setSearchValue] = useState("");
-  const [showWebBackground, setshowWebBackground] = useState(false);
-  const [slug, setSlug] = useState<string>("");
-
-
-  //finding the data from the DummyDate(Actually the data file now.)
-  const storyData = DummyData.find((item) => item.Slug === slug)?.Story;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -43,13 +36,6 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
       searchValue.toLowerCase()
     );
   });
-
-  const settingSlug = (slug: string) => {
-    setshowWebBackground(true);
-    setSlug(slug);
-  };
-
-
 
   return (
     <div className="relative">
@@ -93,43 +79,11 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
                 CardDescription={card.CardDescription}
                 slug={card.Slug}
                 categories={card.Category}
-                settingSlugStories={settingSlug}
               />
             </div>
           ))}
         </div>
       </Container>
-      {showWebBackground && (
-        <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
-          <div className="absolute w-full h-full top-0 opacity-90 bg-black"></div>
-          <div className="relative flex flex-col z-10 w-full h-full justify-center">
-            <button
-              className="text-black font-medium bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 transition duration-300 ease-in-out absolute top-4 right-4"
-              onClick={() => setshowWebBackground(false)}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            {storyData ? (
-              <WebStories data={storyData} />
-            ) : (
-              <div>Content Not Available</div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -14,6 +14,9 @@ import card2_image1 from "@/public/images/webstories/images/card_2-image-1.png";
 import card2_image2 from "@/public/images/webstories/images/card_2-image-2.png";
 import card2_image3 from "@/public/images/webstories/images/card_2-image-3.png";
 import card2_image4 from "@/public/images/webstories/images/card_2-image-4.png";
+import card2_image5 from "@/public/images/webstories/images/card_2-image-5.png";
+import card2_image6 from "@/public/images/webstories/images/card_2-image-6.png";
+import card2_image7 from "@/public/images/webstories/images/card_2-image-7.png";
 // <---Card five --->
 import card5_image1 from "@/public/images/webstories/images/card_5-image-1.png";
 import card5_image2 from "@/public/images/webstories/images/card_5-image-2.png";
@@ -160,7 +163,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card2_image5,
         Heading: "Performance Metrics",
         text: "Response time, throughput, and resource utilization are key performance metrics to track.",
         // swipeText: "Swipe to read more",
@@ -168,7 +171,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card2_image6,
         Heading: "Performance Testing Best Practices",
         text: "Define realistic test scenarios, use a performance testing strategy, and monitor performance throughout the development lifecycle.",
         // swipeText: "Swipe to read more",
@@ -176,7 +179,7 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card2_image7,
         Heading: "Performance Testing for Success",
         text: "Performance testing is crucial for delivering high-performance software that meets user expectations.",
         // swipeText: "Swipe to read more",

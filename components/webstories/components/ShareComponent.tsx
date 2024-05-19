@@ -83,7 +83,7 @@ export default function CustomizedDialogs() {
       <FontAwesomeIcon
         icon={faPaperPlane}
         onClick={handleClickOpen}
-        className=" text-slate-900"
+        className=" text-slate-200"
       />
 
       <BootstrapDialog

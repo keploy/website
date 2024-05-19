@@ -1,7 +1,7 @@
 import "./css/styles.css";
 
 import { Inter } from "next/font/google";
-import Header from "@/components/webstories/Header";
+import Header from "@/components/webstories/components/Header";
 const inter = Inter({
   subsets: ["latin"],
 });
@@ -23,7 +23,6 @@ export default function RootLayout({
         className={` ${inter.className} font-inter antialiased bg-white text-gray-900 tracking-tight`}
       >
         <div className={`flex flex-col min-h-screen  `}>
-          <Header />
           {children}
         </div>
       </body>

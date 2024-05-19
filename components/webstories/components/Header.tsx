@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 
 import Link from "next/link";
-import Logo from "../ui/logo";
+import Logo from "../../ui/logo";
 import Dropdown from "@/components/utils/dropdown";
-import MobileMenu from "../ui/mobile-menu";
-import CountingNumbers from "../utils/countingNumbers";
+import MobileMenu from "../../ui/mobile-menu";
+import CountingNumbers from "../../utils/countingNumbers";
 
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);

@@ -38,9 +38,10 @@
   top: 0;
   height: 100%;
   background: #FF914D;
-  animation: 5s prog ease-in forwards;
+  animation: var(--animation-duration, 1s) prog ease-in forwards; /* Use custom animation duration */
   animation-play-state: running;
 }
+
 
 .loader.paused:after,
 .loaderBack.paused:after {
