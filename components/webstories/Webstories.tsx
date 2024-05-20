@@ -10,6 +10,7 @@ import Link from "next/link";
 import { StaticImageData } from "next/image";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 
+
 type TestAndStubsGenType = typeof testAndStubsGen;
 
 type WebStoryItem = {
@@ -80,6 +81,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
+    console.log();
   }, []);
 
   useEffect(() => {
@@ -94,6 +96,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
       var time = TimeAccToContent(currentStory.text);
       setTotalTime(time * 1000 + 200);
       setanimatingDuration(`${time}s`);
+      console.log(time);
     }
     startTimer(totalTime);
 
@@ -107,9 +110,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
   }, []);
 
   const handlePrev = () => {
-    setCurrentStoryIndex((prevIndex) =>
-      prevIndex === 0 ? 0 : prevIndex - 1
-    );
+    setCurrentStoryIndex((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1));
 
     setNext(false);
   };
@@ -141,11 +142,8 @@ const WebStories = ({ data }: WebStoriesProps) => {
       return 0;
     }
     const wordsPerSecond = 5;
-
     const wordCount = content.split(/\s+/).length;
-
     const readingTimeMinutes = Math.ceil(wordCount / wordsPerSecond);
-
     return readingTimeMinutes;
   };
 
@@ -157,6 +155,14 @@ const WebStories = ({ data }: WebStoriesProps) => {
       tabIndex={0}
       ref={mainDivRef}
     >
+      {/* <Image
+        src={data[0].imageUrl as string}
+        alt="image"
+        layout="fill"
+        objectFit="cover"
+        className="relative z-10 h-full object-cover w-full blur-2xl opacity-60 md:rounded-xl lg:rounded-xl xl:rounded-xl"
+      /> */}
+
       <div className="flex flex-row h-screen md:gap-10 lg:gap-10 xl:gap-10 gap-1 justify-center cursor-pointer">
         {windowWidth > 1024 && (
           <button

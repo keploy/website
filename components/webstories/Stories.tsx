@@ -68,9 +68,9 @@ const Stories = ({
   };
 
   return (
-    <div className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 rounded-xl z-30 border border-gray-800">
+    <div className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl  z-30 border border-gray-500">
       {timerScreen && (
-        <div className="absolute flex opacity-70 rounded-xl inset-0 z-50 w-full h-full justify-center  bg-black">
+        <div className="absolute flex opacity-70 md:rounded-xl lg:rounded-xl xl:rounded-xl inset-0 z-50 w-full h-full justify-center  bg-black">
           <CircularLoader />
         </div>
       )}
@@ -121,7 +121,7 @@ const Stories = ({
                 key={key}
                 className={`h-1 w-full ${isLastLine ? "mr-1" : ""} ${
                   isFirstLine ? "ml-1" : ""
-                } mt-2 rounded pointer-events-none ${lineClass}`}
+                } mt-2 md:rounded-xl lg:rounded-xl xl:rounded-xl pointer-events-none ${lineClass}`}
                 style={
                   loaderClassApplied
                     ? ({
@@ -138,7 +138,7 @@ const Stories = ({
             <FontAwesomeIcon
               icon={isPaused ? faPlay : faPause}
               onClick={handlePauseResume}
-              className="scale-150 text-slate-200 cursor-wait"
+              className="scale-150 text-slate-200 cursor-pointer"
             />
           </div>
           <div className="cursor-pointer scale-125">
@@ -155,17 +155,17 @@ const Stories = ({
           alt="image"
           layout="fill"
           objectFit="cover"
-          className="h-full w-full rounded-xl"
+          className="h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
         />
       ) : (
         <LottiePlayer
           VideoPath={Story.imageUrl}
-          className="flex flex-col h-full w-full rounded-xl"
+          className="flex flex-col h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
         />
       )}
       <div className="absolute w-full z-30 bottom-0 animate-grow cursor-text">
         {Story.Heading && Story.text && (
-          <div className="bg-secondary-300 opacity-80 p-8 rounded-b-xl rounded-t-sm">
+          <div className="bg-secondary-300 opacity-80 p-8 md:rounded-b-xl md:rounded-t-sm lg:rounded-b-xl lg:rounded-t-sm xl:rounded-t-sm xl:rounded-b-xl">
             <h1 className="text-2xl text-slate-50 font-bold mb-3">
               {Story.Heading}
             </h1>
@@ -184,7 +184,7 @@ const Stories = ({
                 icon={faArrowUp}
                 className="text-orange-400 mr-1 animate-bounce"
               />
-              <p className="bg-gradient-300 p-2 rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
+              <p className="bg-gradient-300 p-2 md:rounded-3xl lg:rounded-3xl xl:rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
                 <FontAwesomeIcon
                   icon={faLink}
                   className="mx-1 text-secondary-300 bg-gradient-300 p-1 rounded-full"
