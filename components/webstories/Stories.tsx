@@ -35,7 +35,8 @@ type StoriesComponentProps = {
   paused: (pause: boolean) => void;
   animationDuration: string;
   timerScreen: Boolean;
-  handleNextStory:()=>void;
+  handleNextStory: () => void;
+  handlePrevStory: () => void;
 };
 
 const Stories = ({
@@ -46,7 +47,8 @@ const Stories = ({
   paused,
   animationDuration,
   timerScreen,
-  handleNextStory
+  handleNextStory,
+  handlePrevStory,
 }: StoriesComponentProps) => {
   const [contentAvailable, setContentAvailable] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -72,6 +74,16 @@ const Stories = ({
           <CircularLoader />
         </div>
       )}
+      <div className="absolute flex z-10 w-full h-full ">
+        <div
+          className=" opacity-70  inset-0 w-full h-full justify-center"
+          onClick={handlePrevStory}
+        ></div>
+        <div
+          className=" opacity-70 inset-0 w-full h-full justify-center"
+          onClick={handleNextStory}
+        ></div>
+      </div>
       <div className="absolute flex flex-row w-full justify-end z-30">
         <div className="absolute z-10 w-full flex flex-row h-5 gap-1">
           {lines.map((line, key) => {
@@ -126,7 +138,7 @@ const Stories = ({
             <FontAwesomeIcon
               icon={isPaused ? faPlay : faPause}
               onClick={handlePauseResume}
-              className="scale-150 text-slate-200 cursor-pointer"
+              className="scale-150 text-slate-200 cursor-wait"
             />
           </div>
           <div className="cursor-pointer scale-125">
@@ -144,7 +156,6 @@ const Stories = ({
           layout="fill"
           objectFit="cover"
           className="h-full w-full rounded-xl"
-          onClick={handleNextStory}
         />
       ) : (
         <LottiePlayer
@@ -152,7 +163,7 @@ const Stories = ({
           className="flex flex-col h-full w-full rounded-xl"
         />
       )}
-      <div className="absolute w-full bottom-0 animate-grow cursor-text">
+      <div className="absolute w-full z-30 bottom-0 animate-grow cursor-text">
         {Story.Heading && Story.text && (
           <div className="bg-secondary-300 opacity-80 p-8 rounded-b-xl rounded-t-sm">
             <h1 className="text-2xl text-slate-50 font-bold mb-3">

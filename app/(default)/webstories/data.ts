@@ -47,6 +47,7 @@ import card5_image4 from "@/public/images/webstories/images/card_5-image-4.png";
 import card5_image5 from "@/public/images/webstories/images/card_5-image-5.png";
 import card5_image6 from "@/public/images/webstories/images/card_5-image-6.png";
 import card5_image7 from "@/public/images/webstories/images/card_5-image-7.png";
+// <---Card six --->
 
 //thumbnail Section
 import card_1_thumbnail from "@/public/images/webstories/images/card_1-thumbnail.png";
@@ -61,7 +62,7 @@ export const DummyData = [
     //card-1
     CardImage: card_1_thumbnail,
     CardDescription: "Balancing unit and e2e test cases !",
-    Slug:"balancing-unit-and-e2e-test-cases",
+    Slug: "balancing-unit-and-e2e-test-cases",
     Story: [
       {
         imageUrl: card_1_thumbnail,
@@ -132,7 +133,7 @@ export const DummyData = [
         // Heading: "Effective Testing Strategy",
         // text: "A well-defined testing strategy considers factors like project size, complexity, and risk tolerance. It ensures a balance between unit and end-to-end testing for efficient and thorough quality assurance.",
         swipeText: "Swipe to learn more.",
-        swipeLink: "https://keploy.io/blog",
+        swipeLink: "https://keploy.io/blog/community/creating-the-balance-between-end-to-end-and-unit-testing",
         image: true,
       },
     ],
@@ -211,7 +212,7 @@ export const DummyData = [
       {
         imageUrl: follow_more,
         swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story1",
+        swipeLink: "https://keploy.io/blog/community/performance-testing-guide-to-ensure-your-software-performs-at-its-best",
         image: true,
       },
     ],
@@ -280,7 +281,7 @@ export const DummyData = [
       {
         imageUrl: follow_more,
         swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story1",
+        swipeLink: "https://keploy.io/blog/community/strategies-handling-edge-cases-e2e-tests",
         image: true,
       },
     ],
@@ -350,12 +351,12 @@ export const DummyData = [
         imageUrl: card4_image9,
         Heading: "Continuous Monitoring for Edge Case Detection",
         text: "Monitor application behavior to identify new edge cases over time.",
-        image: true,  
+        image: true,
       },
       {
         imageUrl: follow_more,
         swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
+        swipeLink: "https://keploy.io/blog/community/code-integrity-explained-building-trust-in-software",
         image: true,
       },
     ],
@@ -418,12 +419,112 @@ export const DummyData = [
       {
         imageUrl: follow_more,
         swipeText: "Swipe to read more",
-        swipeLink: "https://example.com/story3",
+        swipeLink: "https://keploy.io/blog/community/types-of-apis-and-api-architecture",
+        image: true,
+      },
+    ],
+    Categories: ["cat-3", "cat4"],
+  },
+  {
+    //card-6
+    CardImage: card_5_thumbnail,
+    CardDescription: "Understanding Continuous Testing",
+    Slug: "understanding-continuous-testing",
+    Story: [
+      {
+        imageUrl: card_5_thumbnail,
+        Heading: "Understanding Continuous Testing",
+        text: "Continuous Testing automates tests throughout the software development lifecycle, providing immediate feedback on changes. It ensures better quality and faster delivery to end-users.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image1,
+        Heading: "The Role of Continuous Testing in CI/CD",
+        text: "Integrating Continuous Testing into CI/CD pipelines catches defects early, fosters a culture of quality, and streamlines the path from development to deployment.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image2,
+        Heading: "Key Tools for Continuous Testing",
+        text: "Explore essential tools for Continuous Testing at every stage of development, from unit testing frameworks to API and security testing tools.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image3,
+        Heading: "Selecting the Right Tools for Your Project",
+        text: "Select Continuous Testing tools based on your project's size, tech stack, team skills, and budget for the most effective testing approach.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image4,
+        Heading: "Developing an Effective Test Execution Strategy",
+        text: "Manage test frequency and parallel execution to ensure thorough and time-efficient testing, maintaining the balance between speed and quality.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image5,
+        Heading: "Conclusion",
+        text: "Continuous Testing ensures faster, better, and more reliable software. Tailor your tools and strategies to meet your project's unique needs and deliver top-quality products.",
+        image: true,
+      },
+      {
+        imageUrl: follow_more,
+        swipeText: "Swipe to read more",
+        swipeLink: "https://keploy.io/blog/community/understand-the-role-of-continuous-testing-in-ci-cd",
+        image: true,
+      },
+    ],
+    Categories: ["cat-3", "cat4"],
+  },
+  {
+    //card-7
+    CardImage: card_5_thumbnail,
+    CardDescription: "The Misconception of 100% Coverage",
+    Slug: "the-misconception-of-100-coverage",
+    Story: [
+      {
+        imageUrl: card_5_thumbnail,
+        Heading: "The Misconception of 100% Coverage",
+        text: "Achieving 100% test coverage doesn't guarantee a flawless application. It overlooks aspects like diminishing returns, quality over quantity, and real-world user scenarios.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image1,
+        Heading: "Diminishing Returns",
+        text: "As codebases grow, reaching 100% coverage becomes harder and less beneficial. Covering rare edge cases can be time-consuming and resource-intensive.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image2,
+        Heading: "Prioritizing Quality in Testing",
+        text: "Focusing on the quality of test cases ensures better testing outcomes. Well-designed tests provide valuable insights, while excessive tests might miss critical issues.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image3,
+        Heading: "Embracing Exploratory Testing",
+        text: "Exploratory testing allows testers to use creativity and intuition to find issues. It complements scripted tests by covering real user scenarios and uncovering usability issues.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image4,
+        Heading: "Continuous Feedback Loop",
+        text: "Real-time feedback from users helps shape future test scenarios. It guides developers to address issues promptly and adapt testing strategies for better user satisfaction.",
+        image: true,
+      },
+      {
+        imageUrl: card5_image5,
+        Heading: "Balancing Quality and Testing Strategies",
+        text: "Focusing on quality, smart testing, and real-time feedback ensures robust software. Exploratory testing and user insights lead to better products that users enjoy.",
+        image: true,
+      },
+      {
+        imageUrl: follow_more,
+        swipeText: "Swipe to read more",
+        swipeLink: "https://keploy.io/blog/community/mastering-test-coverage-quality-over-quantity-in-software-testing",
         image: true,
       },
     ],
     Categories: ["cat-3", "cat4"],
   },
 ];
-
-

@@ -108,7 +108,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
 
   const handlePrev = () => {
     setCurrentStoryIndex((prevIndex) =>
-      prevIndex === 0 ? data.length - 1 : prevIndex - 1
+      prevIndex === 0 ? 0 : prevIndex - 1
     );
 
     setNext(false);
@@ -185,6 +185,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
             animationDuration={`${animatingDuration}`}
             timerScreen={timer}
             handleNextStory={handleNext}
+            handlePrevStory={handlePrev}
           />
           {windowWidth >= 1024 && (
             <p
