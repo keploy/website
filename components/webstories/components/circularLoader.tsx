@@ -7,14 +7,14 @@ const CircularLoader: React.FC = () => {
 
   useEffect(() => {
     let progress = 0;
-    const totalDuration = 1000; // Total duration for the animation in milliseconds
-    const intervalDuration = 10; // Interval duration in milliseconds
-    const increment = (intervalDuration / totalDuration) * 100; // Incremental progress per interval
+    const totalDuration = 1000; 
+    const intervalDuration = 10; 
+    const increment = (intervalDuration / totalDuration) * 100; 
 
     const interval = setInterval(() => {
       if (progress >= 100) {
         clearInterval(interval);
-        // window.location.href = 'https://github.com/'; // Redirect to your target URL after animation completes
+        window.location.href = '/webstories'; 
       } else {
         progress += increment;
         const offset = (283 * (100 - progress)) / 100;
@@ -34,17 +34,17 @@ const CircularLoader: React.FC = () => {
           className={styles.backgroundCircle}
           cx="50"
           cy="50"
-          r="45"  /* Adjusted radius to fit within the new size */
+          r="45"  
         />
         <circle
           className={styles.progressCircle}
           cx="50"
           cy="50"
-          r="45"  /* Adjusted radius to fit within the new size */
+          r="45"  
           ref={circleRef}
         />
       </svg>
-      <p className={'text-md text-center text-slate-200'}>Up-Next</p>
+      <p className={'text-md text-center text-slate-200'}>Up-Next <br /><span>Slug</span></p>
       <div className={styles.playIcon}>▶</div>
     </div>
   );

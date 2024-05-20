@@ -35,6 +35,7 @@ type StoriesComponentProps = {
   paused: (pause: boolean) => void;
   animationDuration: string;
   timerScreen: Boolean;
+  handleNextStory:()=>void;
 };
 
 const Stories = ({
@@ -45,6 +46,7 @@ const Stories = ({
   paused,
   animationDuration,
   timerScreen,
+  handleNextStory
 }: StoriesComponentProps) => {
   const [contentAvailable, setContentAvailable] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -56,10 +58,6 @@ const Stories = ({
     } else {
       setContentAvailable(false);
     }
-
-    if(timerScreen){
-      console.log("timed")
-    }
   }, [Story]);
 
   const handlePauseResume = () => {
@@ -68,10 +66,10 @@ const Stories = ({
   };
 
   return (
-    <div className="relative h-full mt-10 rounded-xl z-30 border border-gray-800">
-        {timerScreen && (
+    <div className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 rounded-xl z-30 border border-gray-800">
+      {timerScreen && (
         <div className="absolute flex opacity-70 rounded-xl inset-0 z-50 w-full h-full justify-center  bg-black">
-          <CircularLoader/>
+          <CircularLoader />
         </div>
       )}
       <div className="absolute flex flex-row w-full justify-end z-30">
@@ -123,7 +121,7 @@ const Stories = ({
             );
           })}
         </div>
-          <div className="flex flex-row mx-5 mt-5 z-10 gap-5">
+        <div className="flex flex-row mx-5 mt-5 z-10 gap-5">
           <div>
             <FontAwesomeIcon
               icon={isPaused ? faPlay : faPause}
@@ -146,6 +144,7 @@ const Stories = ({
           layout="fill"
           objectFit="cover"
           className="h-full w-full rounded-xl"
+          onClick={handleNextStory}
         />
       ) : (
         <LottiePlayer
@@ -153,7 +152,7 @@ const Stories = ({
           className="flex flex-col h-full w-full rounded-xl"
         />
       )}
-      <div className="absolute w-full bottom-0 animate-grow">
+      <div className="absolute w-full bottom-0 animate-grow cursor-text">
         {Story.Heading && Story.text && (
           <div className="bg-secondary-300 opacity-80 p-8 rounded-b-xl rounded-t-sm">
             <h1 className="text-2xl text-slate-50 font-bold mb-3">
@@ -180,7 +179,7 @@ const Stories = ({
                   className="mx-1 text-secondary-300 bg-gradient-300 p-1 rounded-full"
                 />
                 {Story.swipeText}
-                </p>
+              </p>
             </div>
           </Link>
         )}

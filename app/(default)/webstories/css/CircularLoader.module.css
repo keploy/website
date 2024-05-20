@@ -32,7 +32,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 25px;
+    font-size: 35px;
     color: #e04f00;
     pointer-events: none;
   }

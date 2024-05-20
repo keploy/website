@@ -1,3 +1,4 @@
+//<-importing-function-->
 import BunnyImage from "@/public/images/community-bunny.png";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import thumbNail from "@/public/images/demo-thumbnail-bg.png";
@@ -17,6 +18,27 @@ import card2_image4 from "@/public/images/webstories/images/card_2-image-4.png";
 import card2_image5 from "@/public/images/webstories/images/card_2-image-5.png";
 import card2_image6 from "@/public/images/webstories/images/card_2-image-6.png";
 import card2_image7 from "@/public/images/webstories/images/card_2-image-7.png";
+// <---Card third --->
+import card3_image1 from "@/public/images/webstories/images/card_3-image-1.png";
+import card3_image2 from "@/public/images/webstories/images/card_3-image-2.png";
+import card3_image3 from "@/public/images/webstories/images/card_3-image-3.png";
+import card3_image4 from "@/public/images/webstories/images/card_3-image-4.png";
+import card3_image5 from "@/public/images/webstories/images/card_3-image-5.png";
+import card3_image6 from "@/public/images/webstories/images/card_3-image-6.png";
+import card3_image7 from "@/public/images/webstories/images/card_3-image-7.png";
+import card3_image8 from "@/public/images/webstories/images/card_3-image-8.png";
+
+//<--Card fourth--->
+import card4_image1 from "@/public/images/webstories/images/card_4-image-1.png";
+import card4_image2 from "@/public/images/webstories/images/card_4-image-2.png";
+import card4_image3 from "@/public/images/webstories/images/card_4-image-3.png";
+import card4_image4 from "@/public/images/webstories/images/card_4-image-4.png";
+import card4_image5 from "@/public/images/webstories/images/card_4-image-5.png";
+import card4_image6 from "@/public/images/webstories/images/card_4-image-6.png";
+import card4_image7 from "@/public/images/webstories/images/card_4-image-7.png";
+import card4_image8 from "@/public/images/webstories/images/card_4-image-8.png";
+import card4_image9 from "@/public/images/webstories/images/card_4-image-9.png";
+
 // <---Card five --->
 import card5_image1 from "@/public/images/webstories/images/card_5-image-1.png";
 import card5_image2 from "@/public/images/webstories/images/card_5-image-2.png";
@@ -39,7 +61,7 @@ export const DummyData = [
     //card-1
     CardImage: card_1_thumbnail,
     CardDescription: "Balancing unit and e2e test cases !",
-    Slug: "balancing-unit-and-e2e-test-cases",
+    Slug:"balancing-unit-and-e2e-test-cases",
     Story: [
       {
         imageUrl: card_1_thumbnail,
@@ -120,7 +142,7 @@ export const DummyData = [
     //card-2
     CardImage: card_2_thumbnail,
     CardDescription: "Best Guide for Performance Testing !",
-    Slug: "webstory-1",
+    Slug: "best-guide-for-performance-testing",
     Story: [
       {
         imageUrl: card_2_thumbnail,
@@ -199,58 +221,58 @@ export const DummyData = [
     //card-3
     CardImage: card_3_thumbnail,
     CardDescription: "Building Trust with Code Integrity !",
-    Slug: "webstory-1",
+    Slug: "building-trust-with-code-integrity",
     Story: [
       {
-        imageUrl: card_4_thumbnail,
+        imageUrl: card_3_thumbnail,
         Heading: "The Gatekeeper of Trust",
         text: "Imagine code integrity as a security guard for your software, ensuring only authorized code runs.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image1,
         Heading: "Combating Malicious Actors",
         text: "Code integrity safeguards against attackers tampering with software to inject malicious code.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image2,
         Heading: "Building User Confidence",
         text: "Rigorous code integrity checks let users trust the software they're using.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image3,
         Heading: "Preventing Unauthorized Access",
         text: "Robust code integrity measures can significantly reduce the risk of malware infiltration.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image4,
         Heading: "Securing the Software Supply Chain",
         text: "Code integrity is crucial as developers rely on third-party libraries and components.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image5,
         Heading: "Verifying Code Authenticity",
         text: "Code integrity techniques ensure the code you run is genuine and hasn't been altered.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image6,
         Heading: "Detecting Tampering Attempts",
         text: "Code integrity can identify and prevent attempts to modify software for malicious purposes.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image7,
         Heading: "Maintaining Software Reliability",
         text: "Ensuring code integrity helps maintain the reliability and expected behavior of the software.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card3_image8,
         Heading: "Building a Foundation of Trust",
         text: "Code integrity is a critical step in building trust and confidence in the software you use.",
         image: true,
@@ -268,67 +290,67 @@ export const DummyData = [
     //card-4
     CardImage: card_4_thumbnail,
     CardDescription: "Strategies for handling edge cases !",
-    Slug: "webstory-2",
+    Slug: "stratergies-for-handling-edge-cases",
     Story: [
       {
         imageUrl: card_4_thumbnail,
         Heading: "The Achilles' Heel of E2E Tests",
         text: "Edge cases, unexpected scenarios, can expose flaws in E2E tests.",
-        image: false,
+        image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card4_image1,
         Heading: "Identify Edge Cases Systematically",
         text: "Analyze requirements, user journeys, and system behavior to find edge cases.",
         image: true,
       },
       {
-        imageUrl: testAndStubsGen,
+        imageUrl: card4_image2,
         Heading: "Prioritize Edge Cases Based on Risk",
         text: "Focus on edge cases with high impact or likelihood of occurrence.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card4_image3,
         Heading: "Leverage Data-Driven Testing for Edge Cases",
         text: "Use real-world data to create dynamic test scenarios for edge cases.",
         image: true,
       },
       {
-        imageUrl: BunnyImage,
+        imageUrl: card4_image4,
         Heading: "Mock External Dependencies for Edge Cases",
         text: "Simulate external system behavior to isolate and test edge cases effectively.",
         image: true,
       },
       {
-        imageUrl: thumbNail,
+        imageUrl: card4_image5,
         Heading: "Handle Dynamic Data in Edge Case Tests",
         text: "Design tests to handle unexpected data values during edge case scenarios.",
         image: true,
       },
       {
-        imageUrl: thumbNail,
+        imageUrl: card4_image6,
         Heading: "Utilize Page Object Model for Maintainable Tests",
         text: "Separate page UI elements from test logic for easier maintenance of E2E tests.",
         image: true,
       },
       {
-        imageUrl: thumbNail,
+        imageUrl: card4_image7,
         Heading: "Clear and Concise Edge Case Reporting",
         text: "Document edge cases clearly, including expected results and reproduction steps.",
         image: true,
       },
       {
-        imageUrl: thumbNail,
+        imageUrl: card4_image8,
         Heading: "Automate Edge Case Tests Whenever Possible",
         text: "Automate edge case tests for efficient regression testing.",
         image: true,
       },
       {
-        imageUrl: thumbNail,
+        imageUrl: card4_image9,
         Heading: "Continuous Monitoring for Edge Case Detection",
         text: "Monitor application behavior to identify new edge cases over time.",
-        image: true,
+        image: true,  
       },
       {
         imageUrl: follow_more,
@@ -343,7 +365,7 @@ export const DummyData = [
     //card-5
     CardImage: card_5_thumbnail,
     CardDescription: "Which API architecture to use?",
-    Slug: "webstory-3",
+    Slug: "which-api-architecture-to-use",
     Story: [
       {
         imageUrl: card_5_thumbnail,
@@ -403,3 +425,5 @@ export const DummyData = [
     Categories: ["cat-3", "cat4"],
   },
 ];
+
+
