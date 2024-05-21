@@ -133,7 +133,7 @@ const Stories = ({
             );
           })}
         </div>
-        <div className="flex flex-row mx-5 mt-5 z-10 gap-5">
+        <div className="flex flex-row mx-5 pt-3 mt-5 z-10 gap-5">
           <div>
             <FontAwesomeIcon
               icon={isPaused ? faPlay : faPause}

@@ -53,6 +53,11 @@ import card6_image2 from "@/public/images/webstories/images/card_6-image-2.png";
 import card6_image3 from "@/public/images/webstories/images/card_6-image-3.png";
 import card6_image4 from "@/public/images/webstories/images/card_6-image-4.png";
 import card6_image5 from "@/public/images/webstories/images/card_6-image-5.png";
+// <---Card seven --->
+import card7_image1 from "@/public/images/webstories/images/card_7-image-1.png";
+import card7_image2 from "@/public/images/webstories/images/card_7-image-2.png";
+import card7_image4 from "@/public/images/webstories/images/card_7-image-4.png";
+import card7_image5 from "@/public/images/webstories/images/card_7-image-5.png";
 
 //thumbnail Section
 import card_1_thumbnail from "@/public/images/webstories/images/card_1-thumbnail.png";
@@ -60,6 +65,8 @@ import card_2_thumbnail from "@/public/images/webstories/images/card_2-thumbnail
 import card_3_thumbnail from "@/public/images/webstories/images/card_3-thumbnail.png";
 import card_4_thumbnail from "@/public/images/webstories/images/card_4-thumbnail.png";
 import card_5_thumbnail from "@/public/images/webstories/images/card_5-thumbnail.png";
+import card_6_thumbnail from "@/public/images/webstories/images/card_6-thumbnail.png";
+import card_7_thumbnail from "@/public/images/webstories/images/card_7-thumbnail.png";
 import follow_more from "@/public/images/webstories/images/follow_more.png";
 import captureRelay from "@/public/images/CaptureAndReplay.json";
 export const DummyData = [
@@ -432,12 +439,12 @@ export const DummyData = [
   },
   {
     //card-6
-    CardImage: card_5_thumbnail,
+    CardImage: card_6_thumbnail,
     CardDescription: "Understanding Continuous Testing",
     Slug: "understanding-continuous-testing",
     Story: [
       {
-        imageUrl: card_5_thumbnail,
+        imageUrl: card_6_thumbnail,
         Heading: "Understanding Continuous Testing",
         text: "Continuous Testing automates tests throughout the software development lifecycle, providing immediate feedback on changes. It ensures better quality and faster delivery to end-users.",
         image: true,
@@ -483,24 +490,24 @@ export const DummyData = [
   },
   {
     //card-7
-    CardImage: card_5_thumbnail,
+    CardImage: card_7_thumbnail,
     CardDescription: "The Misconception of 100% Coverage",
     Slug: "the-misconception-of-100-coverage",
     Story: [
       {
-        imageUrl: card_5_thumbnail,
+        imageUrl: card_7_thumbnail,
         Heading: "The Misconception of 100% Coverage",
         text: "Achieving 100% test coverage doesn't guarantee a flawless application. It overlooks aspects like diminishing returns, quality over quantity, and real-world user scenarios.",
         image: true,
       },
       {
-        imageUrl: card5_image1,
+        imageUrl: card7_image1,
         Heading: "Diminishing Returns",
         text: "As codebases grow, reaching 100% coverage becomes harder and less beneficial. Covering rare edge cases can be time-consuming and resource-intensive.",
         image: true,
       },
       {
-        imageUrl: card5_image2,
+        imageUrl: card7_image2,
         Heading: "Prioritizing Quality in Testing",
         text: "Focusing on the quality of test cases ensures better testing outcomes. Well-designed tests provide valuable insights, while excessive tests might miss critical issues.",
         image: true,
@@ -512,13 +519,13 @@ export const DummyData = [
         image: true,
       },
       {
-        imageUrl: card5_image4,
+        imageUrl: card7_image4,
         Heading: "Continuous Feedback Loop",
         text: "Real-time feedback from users helps shape future test scenarios. It guides developers to address issues promptly and adapt testing strategies for better user satisfaction.",
         image: true,
       },
       {
-        imageUrl: card5_image5,
+        imageUrl: card7_image5,
         Heading: "Balancing Quality and Testing Strategies",
         text: "Focusing on quality, smart testing, and real-time feedback ensures robust software. Exploratory testing and user insights lead to better products that users enjoy.",
         image: true,
