@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useState , useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLink,
@@ -54,6 +54,9 @@ const Stories = ({
 }: StoriesComponentProps) => {
   const [contentAvailable, setContentAvailable] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isLongPress, setIsLongPress] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
   const lines = Array.from({ length: totalLen }, (_, i) => i);
 
   useEffect(() => {
@@ -73,10 +76,28 @@ const Stories = ({
     window.location.href = "/webstories";
   };
 
+  const handleLongPress = () => {
+    handlePauseResume()
+  };
+
   const handlers = useSwipeable({
     onSwipedUp: handleSwipeUp,
     trackMouse: true,
+    onTouchStartOrOnMouseDown: () => {
+      setIsLongPress(false);
+      timerRef.current = setTimeout(() => {
+        setIsLongPress(true);
+        handleLongPress();
+      }, 800); 
+    },
+    onTouchEndOrOnMouseUp: () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+    },
   });
+
 
   return (
     <div

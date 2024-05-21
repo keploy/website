@@ -486,7 +486,7 @@ export const DummyData = [
         image: true,
       },
     ],
-    Categories: ["cat-3", "cat4"],
+    Categories: ["testing"],
   },
   {
     //card-7
@@ -537,6 +537,6 @@ export const DummyData = [
         image: true,
       },
     ],
-    Categories: ["cat-3", "cat4"],
+    Categories: ["code-coverage"],
   },
 ];
