@@ -6,11 +6,12 @@ import Link from "next/link";
 import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
-
+import { isTypeOfExpression } from "typescript";
+import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
+import { PillarPages } from "../utils/resources";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
-  const [starsCount, setStarsCount] = useState<number>(0);
-
+  const [starsCount, setStarsCount] = useState<number>(1000);
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
     window.pageYOffset > 10 ? setTop(false) : setTop(true);
@@ -54,7 +55,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed w-full z-30 bg-neutral-100 md:bg-opacity-90 transition duration-300 ease-in-out ${
+      className={`fixed w-full z-30 bg-neutral-100 transition duration-300 ease-in-out ${
         !top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""
       }`}
     >
@@ -92,9 +93,16 @@ export default function Header() {
                   href="https://keploy.io/blog/community"
                   className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Guest Posts
+                  Articles
                 </Link>
               </li>
+              <div className="px-5">
+                {" "}
+                <NavItemWithSmallDropdown
+                  heading="Resources"
+                  dropdownData={PillarPages}
+                />
+              </div>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
@@ -126,8 +134,12 @@ export default function Header() {
                 <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
               </Link>
             </div>
-            <Link href="https://calendar.app.google/8Ncpff4QnAhpVnYd8" target="_blank" className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3">
-              <span>Book Cloud Demo</span>
+            <Link
+              href="https://forms.gle/waYcLSASm9dfE9tC9"
+              target="_blank"
+              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3"
+            >
+              <span>Join Waitlist</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
               {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
               {/*</svg>*/}

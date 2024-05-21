@@ -59,7 +59,7 @@ export default function Features(props: {
             ))}
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            {props.featuresData.slice(3, 5).map((feature, index) => (
+            {props.featuresData.slice(3, 6).map((feature, index) => (
               <TextBlock
                 key={index}
                 heading={feature.title}

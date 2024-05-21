@@ -4,14 +4,17 @@ import { useState, useRef, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import CountingNumbers from "../utils/countingNumbers";
-
+import Image from "next/image";
+import { UpIcon } from "../nav/UpIcon";
+import DownIcon from "../nav/DownIcon";
+import { PillarPages } from "../utils/resources";
 interface MobileMenuProps {
   starsCount: number;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
-
+  const [showResourcesDropdown,setShowResourcesDropdown] =useState<boolean>(false)
   const trigger = useRef<HTMLButtonElement>(null);
   const mobileNav = useRef<HTMLDivElement>(null);
 
@@ -147,13 +150,50 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
                 Community
               </Link>
             </li>
+            <div
+              onClick={() => setShowResourcesDropdown(!showResourcesDropdown)}
+              className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+            >
+              Resources
+              <div className="pl-2">
+                {showResourcesDropdown ? (
+                  <UpIcon className="text-current" />
+                ) : (
+                  <DownIcon className="text-current" />
+                )}
+              </div>
+            </div>
+            {showResourcesDropdown &&
+              PillarPages.map((lists) => (
+                <div key={lists.heading} className="pl-4">
+                  {" "}
+                  <span className="font-bold text-secondary-300 uppercase px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                    {lists.heading}
+                  </span>
+                  <ul className="px-4 ">
+                    {lists.links.map((link) => (
+                      <li key={link.pageName}>
+                        {" "}
+                        {/* Ensure to add a key for list items when mapping */}
+                        <Link
+                          target="_blank"
+                          href={link.pagelink}
+                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap	"
+                        >
+                          {link.pageName}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             {/*<li>*/}
             {/*  <Link href="/program" className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out">Program</Link>*/}
             {/*</li>*/}
             <li>
               <Link
-                  href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
-                className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3"
+                href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
+                className="btn-sm text-gray-200 bg-secondary-300 mt-3  hover:text-primary-300 ml-3"
               >
                 <span>Book Cloud Demo</span>
                 <svg

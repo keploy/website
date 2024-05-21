@@ -10,15 +10,15 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/ebpf-instrumentation";
+import { featuresData,faqQuestions } from "@/components/utils/record-replay";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 const heroData = {
-  titleTop: "Maximizing Efficiency and ",
-  titleBottom: "Seamlessness with Native Integration!",
-  subtitleTop: "Integrate Keploy with dev-setup to generate automated tests and data-mocks in 2 mins!",
+  titleTop: "Streamline CI Testing ",
+  titleBottom: "with Keploy Integration",
+  subtitleTop: "Eliminate the need for complex setup in CI for testing!",
   subtitleBottom:
-    "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
+    "Make testing in CI hassle-free with Keploy's seamless CI integration!🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -28,7 +28,7 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Native Integration",
+  title: "With Keploy's Record Replay ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
   highlightTitle: "eliminate",
