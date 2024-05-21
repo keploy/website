@@ -34,7 +34,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const remainingTimeRef = useRef(totalTime);
   const startTimestampRef = useRef<number | null>(null);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
   const mainDivRef = useRef<HTMLDivElement | null>(null);
 
   const Pausing = (pause: Boolean) => {
@@ -73,14 +73,12 @@ const WebStories = ({ data }: WebStoriesProps) => {
   };
 
   useEffect(() => {
-    // Setting window width when component mounts
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
       const handleResize = () => setWindowWidth(window.innerWidth);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
-    console.log();
   }, []);
 
   useEffect(() => {
@@ -146,7 +144,6 @@ const WebStories = ({ data }: WebStoriesProps) => {
     return readingTimeMinutes;
   };
 
-  
   const currentStory = data[currentStoryIndex];
   return (
     <div
