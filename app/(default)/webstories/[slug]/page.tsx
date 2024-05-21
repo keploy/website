@@ -30,7 +30,7 @@ const Index = () => {
       <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
         <div className="absolute w-full h-full top-0 opacity-90 bg-black">
           <Image
-            src={storyData[0].imageUrl as string}
+            src={storyData[0].imageUrl}
             alt="image"
             layout="fill"
             objectFit="cover"

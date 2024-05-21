@@ -10,7 +10,6 @@ import Link from "next/link";
 import { StaticImageData } from "next/image";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 
-
 type TestAndStubsGenType = typeof testAndStubsGen;
 
 type WebStoryItem = {
@@ -147,6 +146,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
     return readingTimeMinutes;
   };
 
+  
   const currentStory = data[currentStoryIndex];
   return (
     <div
@@ -155,14 +155,6 @@ const WebStories = ({ data }: WebStoriesProps) => {
       tabIndex={0}
       ref={mainDivRef}
     >
-      {/* <Image
-        src={data[0].imageUrl as string}
-        alt="image"
-        layout="fill"
-        objectFit="cover"
-        className="relative z-10 h-full object-cover w-full blur-2xl opacity-60 md:rounded-xl lg:rounded-xl xl:rounded-xl"
-      /> */}
-
       <div className="flex flex-row h-screen md:gap-10 lg:gap-10 xl:gap-10 gap-1 justify-center cursor-pointer">
         {windowWidth > 1024 && (
           <button

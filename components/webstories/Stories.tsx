@@ -12,6 +12,8 @@ import Image, { StaticImageData } from "next/image";
 import dynamic from "next/dynamic";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import CircularLoader from "./components/circularLoader";
+import { useSwipeable } from "react-swipeable";
+
 type TestAndStubsGenType = typeof testAndStubsGen;
 
 const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
@@ -32,7 +34,7 @@ type StoriesComponentProps = {
   totalLen: number;
   currentIndex: number;
   Next: boolean;
-  paused: (pause: boolean) => void;
+  paused: (pause: Boolean) => void;
   animationDuration: string;
   timerScreen: Boolean;
   handleNextStory: () => void;
@@ -67,20 +69,32 @@ const Stories = ({
     setIsPaused(!isPaused);
   };
 
+  const handleSwipeUp = () => {
+    window.location.href = "/webstories";
+  };
+
+  const handlers = useSwipeable({
+    onSwipedUp: handleSwipeUp,
+    trackMouse: true,
+  });
+
   return (
-    <div className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl  z-30 border border-gray-500">
+    <div
+      {...handlers}
+      className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500"
+    >
       {timerScreen && (
-        <div className="absolute flex opacity-70 md:rounded-xl lg:rounded-xl xl:rounded-xl inset-0 z-50 w-full h-full justify-center  bg-black">
+        <div className="absolute flex opacity-70 md:rounded-xl lg:rounded-xl xl:rounded-xl inset-0 z-50 w-full h-full justify-center bg-black">
           <CircularLoader />
         </div>
       )}
-      <div className="absolute flex z-10 w-full h-full ">
+      <div className="absolute flex z-10 w-full h-full">
         <div
-          className=" opacity-70  inset-0 w-full h-full justify-center"
+          className="opacity-70 inset-0 w-full h-full justify-center"
           onClick={handlePrevStory}
         ></div>
         <div
-          className=" opacity-70 inset-0 w-full h-full justify-center"
+          className="opacity-70 inset-0 w-full h-full justify-center"
           onClick={handleNextStory}
         ></div>
       </div>
