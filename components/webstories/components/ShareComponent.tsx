@@ -20,7 +20,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingPauseBehindScenes:()=>void}) {
   const [open, setOpen] = React.useState(false);
   const [openSnackBar, setOpenSnackBar] = React.useState(false);
   const [twitterShareUrl, settwitterShareUrl] = React.useState("");
@@ -30,6 +30,7 @@ export default function CustomizedDialogs() {
     setOpen(true);
   };
   const handleClose = () => {
+    handlingPauseBehindScenes();
     setOpen(false);
   };
 
@@ -37,6 +38,7 @@ export default function CustomizedDialogs() {
     navigator.clipboard.writeText(`${window.location.href}`).catch((error) => {
       alert(`Not able to copy the code due to ${error}`);
     });
+    handlingPauseBehindScenes();
     setOpenSnackBar(true);
   };
 

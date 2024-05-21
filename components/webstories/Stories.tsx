@@ -88,11 +88,12 @@ const Stories = ({
       timerRef.current = setTimeout(() => {
         setIsLongPress(true);
         handleLongPress();
-      }, 800); 
+      }, 300); 
     },
     onTouchEndOrOnMouseUp: () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
+        handlePauseResume();
         timerRef.current = null;
       }
     },
@@ -113,6 +114,9 @@ const Stories = ({
         <div
           className="opacity-70 inset-0 w-full h-full justify-center"
           onClick={handlePrevStory}
+        ></div>
+         <div
+          className="opacity-70 inset-0 w-full h-full justify-center"
         ></div>
         <div
           className="opacity-70 inset-0 w-full h-full justify-center"
@@ -177,7 +181,7 @@ const Stories = ({
             />
           </div>
           <div className="cursor-pointer scale-125">
-            <CustomizedDialogs />
+            <CustomizedDialogs handlingPauseBehindScenes={handlePauseResume} />
           </div>
         </div>
       </div>
