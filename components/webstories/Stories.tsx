@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState , useRef } from "react";
+import React, { memo, useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLink,
@@ -77,7 +77,7 @@ const Stories = ({
   };
 
   const handleLongPress = () => {
-    handlePauseResume()
+    handlePauseResume();
   };
 
   const handlers = useSwipeable({
@@ -88,7 +88,7 @@ const Stories = ({
       timerRef.current = setTimeout(() => {
         setIsLongPress(true);
         handleLongPress();
-      }, 300); 
+      }, 300);
     },
     onTouchEndOrOnMouseUp: () => {
       if (timerRef.current) {
@@ -99,12 +99,8 @@ const Stories = ({
     },
   });
 
-
   return (
-    <div
-      {...handlers}
-      className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500"
-    >
+    <div className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
       {timerScreen && (
         <div className="absolute flex opacity-70 md:rounded-xl lg:rounded-xl xl:rounded-xl inset-0 z-50 w-full h-full justify-center bg-black">
           <CircularLoader />
@@ -112,14 +108,15 @@ const Stories = ({
       )}
       <div className="absolute flex z-10 w-full h-full">
         <div
-          className="opacity-70 inset-0 w-full h-full justify-center"
+          className="inset-0 w-full h-full justify-center "
           onClick={handlePrevStory}
         ></div>
-         <div
-          className="opacity-70 inset-0 w-full h-full justify-center"
+        <div
+          {...handlers}
+          className="inset-0 w-full h-full justify-center "
         ></div>
         <div
-          className="opacity-70 inset-0 w-full h-full justify-center"
+          className="inset-0 w-full h-full justify-center "
           onClick={handleNextStory}
         ></div>
       </div>
@@ -192,9 +189,9 @@ const Stories = ({
         <Image
           src={Story.imageUrl as string}
           alt="image"
-          layout="fill"
           objectFit="cover"
           className="h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
+          priority
         />
       ) : (
         <LottiePlayer
