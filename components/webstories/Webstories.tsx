@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faRedoAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import Stories from "./Stories";
 import Link from "next/link";
 import { StaticImageData } from "next/image";

@@ -27,6 +27,7 @@ export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingP
   const [linkedinShareUrl, setlinkedinShareUrl] = React.useState("");
 
   const handleClickOpen = () => {
+    handlingPauseBehindScenes();
     setOpen(true);
   };
   const handleClose = () => {
@@ -38,7 +39,6 @@ export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingP
     navigator.clipboard.writeText(`${window.location.href}`).catch((error) => {
       alert(`Not able to copy the code due to ${error}`);
     });
-    handlingPauseBehindScenes();
     setOpenSnackBar(true);
   };
 
