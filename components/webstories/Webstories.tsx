@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-  faRedoAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faChevronRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import Stories from "./Stories";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
@@ -28,11 +24,11 @@ type WebStoriesProps = {
 const WebStories = ({ data }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
-  const [totalTime, setTotalTime] = useState<number>(5000);
-  const [animatingDuration, setAnimatingDuration] = useState<string>("5s");
+  const [totalTime, setTotalTime] = useState<number>(0);
+  const [animatingDuration, setAnimatingDuration] = useState<string>("");
   const [timer, setTimer] = useState<Boolean>(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const remainingTimeRef = useRef(totalTime);
+  const remainingTimeRef = useRef<number>(totalTime);
   const startTimestampRef = useRef<number | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
   const mainDivRef = useRef<HTMLDivElement | null>(null);
@@ -48,17 +44,13 @@ const WebStories = ({ data }: WebStoriesProps) => {
   const startTimer = (duration: number) => {
     startTimestampRef.current = Date.now();
     intervalRef.current = setTimeout(() => {
-      handleNext();
-      remainingTimeRef.current = totalTime;
-      startTimer(totalTime);
       if (currentStoryIndex === data.length - 1) {
         setTimer(true);
       } else {
         setTimer(false);
       }
+      handleNext();
     }, duration);
-
-    console.log("Timer started:", duration);
   };
 
   const stopTimer = () => {
@@ -67,8 +59,6 @@ const WebStories = ({ data }: WebStoriesProps) => {
       intervalRef.current = null;
       const elapsedTime = Date.now() - (startTimestampRef.current ?? 0);
       remainingTimeRef.current -= elapsedTime;
-
-      console.log("Timer stopped. Remaining time:", remainingTimeRef.current);
     }
   };
 
@@ -92,33 +82,22 @@ const WebStories = ({ data }: WebStoriesProps) => {
   }, [timer, currentStoryIndex]);
 
   useEffect(() => {
-    if (currentStory.text) {
-      const time = TimeAccToContent(currentStory.text);
-      setTotalTime(time * 1000);
-      setAnimatingDuration(`${time}s`);
-    } else {
-      setTotalTime(5000);
-      setAnimatingDuration("5s");
+    const currentStory = data[currentStoryIndex];
+    let time = 5;
+    if (currentStory?.text) {
+      time = TimeAccToContent(currentStory.text);
     }
-    console.log("--------starting------------", currentStoryIndex);
-    startTimer(totalTime);
-
-    // Log state after starting the timer
-    console.log("After starting timer:");
-    console.log("intervalRef:", intervalRef.current);
-    console.log("remainingTimeRef:", remainingTimeRef.current);
-    console.log("startTimestampRef:", startTimestampRef.current);
+    setTotalTime(time * 1000);
+    setAnimatingDuration(`${time}s`);
+    remainingTimeRef.current = time * 1000;
+    startTimestampRef.current = null;
+    intervalRef.current = null;
+    startTimer(time * 1000);
 
     return () => {
       stopTimer();
-
-      // Log state after stopping the timer
-      console.log("After stopping timer:");
-      console.log("intervalRef:", intervalRef);
-      console.log("remainingTimeRef:", remainingTimeRef);
-      console.log("startTimestampRef:", startTimestampRef);
     };
-  }, [currentStoryIndex]);
+  }, [currentStoryIndex, data]);
 
   useEffect(() => {
     if (mainDivRef.current) {

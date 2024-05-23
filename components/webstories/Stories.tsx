@@ -56,7 +56,7 @@ const Stories = ({
   const [isPaused, setIsPaused] = useState(false);
   const [isLongPress, setIsLongPress] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
+  console.log("animatingDuration says hi from core:",animationDuration)
   const lines = Array.from({ length: totalLen }, (_, i) => i);
 
   useEffect(() => {
