@@ -23,7 +23,7 @@ const heroData = {
     "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
   animationSrc: testAndStubsGen,
 };
-const metadata: Metadata = {
+const metadata = {
   title: 'Simplifying Testing with Dynamic Test Data Generator',
   description: 'The official Next.js Course Dashboard, built with App Router.',
 };
@@ -53,8 +53,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{String(metadata.title)}</title>
-        <meta name="description" content={metadata.description || ""} />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
       </Head>
       <Hero
         titleTop={heroData.titleTop}
