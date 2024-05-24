@@ -1,6 +1,6 @@
 import React from "react";
 import StoriesCards from "@/components/webstories/StoriesCards";
-import { DataFiles } from "./data"; // Import Data from data file
+import { DataFiles } from "../../../components/utils/data"; // Import Data from data file
 import Header from "@/components/webstories/components/Header";
 const page = () => {
   const Data = DataFiles.map((item) => ({
@@ -12,8 +12,7 @@ const page = () => {
   return (
     <>
       <Header />
-
-      <StoriesCards data={Data} />
+      <StoriesCards data={Data.reverse()} />
     </>
   );
 };

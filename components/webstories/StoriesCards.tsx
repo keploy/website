@@ -41,7 +41,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
     <div className="relative">
       <Container>
         <h1 className="lg:text-5xl text-4xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4 text-center">
-          Keploy Web-Stories
+          Keploy Web Stories
         </h1>
         <p className="text-center text-gray-500">
           Discover what's going on in and around Keploy. Learn about Keploy and

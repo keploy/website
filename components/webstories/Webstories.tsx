@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faRedoAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import Stories from "./Stories";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-
-type TestAndStubsGenType = typeof testAndStubsGen;
 
 type WebStoryItem = {
-  imageUrl?: string | StaticImageData | TestAndStubsGenType;
+  imageUrl?: string | StaticImageData ;
   Heading?: string;
   text?: string;
   swipeText?: string;
@@ -19,9 +20,10 @@ type WebStoryItem = {
 
 type WebStoriesProps = {
   data: WebStoryItem[];
+  slug:string | string[];
 };
 
-const WebStories = ({ data }: WebStoriesProps) => {
+const WebStories = ({ data , slug }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
   const [totalTime, setTotalTime] = useState<number>(0);
@@ -150,7 +152,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
         {windowWidth > 1024 && (
           <button
             onClick={handlePrev}
-            className={`relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
+            className={`relative bg-secondary-300 scale-125 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
               currentStoryIndex === 0
                 ? "disabled:bg-secondary-300 disabled:text-white opacity-30 cursor-not-allowed"
                 : ""
@@ -175,6 +177,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
             timerScreen={timer}
             handleNextStory={handleNext}
             handlePrevStory={handlePrev}
+            slug={slug}
           />
           {windowWidth >= 1024 && (
             <p
@@ -211,7 +214,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
           ? windowWidth > 1024 && (
               <button
                 onClick={handleReplay}
-                className="relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto"
+                className="relative bg-secondary-300 scale-125 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto"
               >
                 <FontAwesomeIcon icon={faRedoAlt} />
               </button>
@@ -219,7 +222,7 @@ const WebStories = ({ data }: WebStoriesProps) => {
           : windowWidth > 1024 && (
               <button
                 onClick={handleNext}
-                className={`relative bg-secondary-300 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
+                className={`relative bg-secondary-300 scale-125 text-slate-200 w-10 h-10 rounded-full border border-solid my-auto ${
                   currentStoryIndex === data.length - 1
                     ? "disabled:bg-orange-600 disabled:text-orange-200 cursor-not-allowed"
                     : ""

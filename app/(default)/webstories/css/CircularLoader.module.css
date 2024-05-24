@@ -1,6 +1,6 @@
 .loaderContainer {
     position: relative;
-    width: 100px;  /* Increased size */
+    width: 300px;  /* Increased size */
     height: 100px; /* Increased size */
     overflow: visible; /* Ensure overflow is visible */
   }

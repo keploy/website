@@ -14,14 +14,13 @@ import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import CircularLoader from "./components/circularLoader";
 import { useSwipeable } from "react-swipeable";
 
-type TestAndStubsGenType = typeof testAndStubsGen;
 
 const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
   ssr: false,
 });
 
 type StoriesProps = {
-  imageUrl?: string | StaticImageData | TestAndStubsGenType;
+  imageUrl?: string | StaticImageData ;
   Heading?: string;
   text?: string;
   swipeText?: string;
@@ -39,6 +38,7 @@ type StoriesComponentProps = {
   timerScreen: Boolean;
   handleNextStory: () => void;
   handlePrevStory: () => void;
+  slug:string|string[];
 };
 
 const Stories = ({
@@ -51,6 +51,7 @@ const Stories = ({
   timerScreen,
   handleNextStory,
   handlePrevStory,
+  slug,
 }: StoriesComponentProps) => {
   const [contentAvailable, setContentAvailable] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -102,7 +103,7 @@ const Stories = ({
     <div className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
       {timerScreen && (
         <div className="absolute flex opacity-70 md:rounded-xl lg:rounded-xl xl:rounded-xl inset-0 z-50 w-full h-full justify-center bg-black">
-          <CircularLoader />
+          <CircularLoader slug={slug} />
         </div>
       )}
       <div className="absolute flex z-10 w-full h-full">
@@ -168,7 +169,7 @@ const Stories = ({
             );
           })}
         </div>
-        <div className="flex flex-row mx-5 pt-3 mt-5 z-10 gap-5">
+        <div className="flex flex-row mx-5 pt-3 mt-5 z-10 gap-8">
           <div>
             <FontAwesomeIcon
               icon={isPaused ? faPlay : faPause}

@@ -14,7 +14,7 @@ const LottiePlayer = ({
         loop
         src={VideoPath}
         keepLastFrame={true}
-        className=" h-full"
+        className="h-full"
         
       >
         <Controls
