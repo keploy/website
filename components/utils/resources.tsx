@@ -3,12 +3,12 @@ export const PillarPages = [
       heading: "Use Cases",
       links: [
         {
-          pagelink: "/stub-generation",
+          pagelink: "/test-data-generator",
           pageName: "Test Data Generation"
         },
         {
-          pagelink: "/test-duplication",
-          pageName: "Test Deduplication"
+          pagelink: "/test-case-generator",
+          pageName: "Test Case Generation"
         },
         {
           pagelink: "/native-integration",

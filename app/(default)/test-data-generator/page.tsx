@@ -10,16 +10,22 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/test-duplication";
+import { featuresData,faqQuestions } from "@/components/utils/test-data-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import { Metadata } from 'next';
+import Head from 'next/head';
 const heroData = {
-  titleTop: "Increase Test coverage with ",
-  titleBottom: "Keploy Dedup feature",
-  subtitleTop: "Avoid confusion and Duplication in Test Execution!",
+  titleTop: "Simplifying Testing with ",
+  titleBottom: "Dynamic Test Data Generator",
+  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
   subtitleBottom:
-    "Remove the duplicate and redundant test cases in minutes. 🚀",
+    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
   animationSrc: testAndStubsGen,
+};
+const metadata: Metadata = {
+  title: 'Simplifying Testing with Dynamic Test Data Generator',
+  description: 'The official Next.js Course Dashboard, built with App Router.',
 };
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
@@ -28,9 +34,9 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's DeDuplication",
+  title: " With Keploy's Test Data Generation ",
   subtitle:
-    "Replace multiple tools in your test stack with one zero-code platform.Generic Features list/tables",
+    "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
   highlightTitle: "eliminate",
   featuresData: featuresData,
 };
@@ -46,6 +52,10 @@ const BannerData = {
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>{String(metadata.title)}</title>
+        <meta name="description" content={metadata.description || ""} />
+      </Head>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
