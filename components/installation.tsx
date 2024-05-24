@@ -94,9 +94,7 @@ const Installation = () => {
             <div className="bg-gray-900 p-4 rounded-lg flex flex-row items-center flex-grow overflow-clip">
               <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate">
                 {" "}
-                curl -O
-                https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh
-                && source
+                curl --silent -O -L https://keploy.io/install.sh && source install.sh
               </code>
               <Image
                 priority

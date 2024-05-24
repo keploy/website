@@ -84,60 +84,62 @@ const TextSection = ({
 export default function Features() {
   const container = useRef(null);
 
-  useGSAP(
-    () => {
-      const details: any = gsap.utils.toArray(".detail");
+useGSAP(
+  () => {
+    const details: any = gsap.utils.toArray(".detail");
 
-      const images: any = gsap.utils.toArray(".imageToShow");
+    const images: any = gsap.utils.toArray(".imageToShow");
 
-      gsap.set(images[1], { opacity: 0 });
+    gsap.set(images[1], { opacity: 0 });
+
+    ScrollTrigger.create({
+      trigger: ".content-container",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".right-content",
+    });
+
+    ScrollTrigger.create({
+      trigger: ".content-container",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".heading-text",
+    });
+
+    details.forEach((detail: any) => {
+      gsap.set(detail, { opacity: 1 }); 
 
       ScrollTrigger.create({
-        trigger: ".content-container",
-        start: "top top",
-        end: "bottom bottom",
-        pin: ".right-content",
+        trigger: detail,
+        start: "top 20%", 
+        end: "center center",
+        onEnter: () => gsap.set(detail, { opacity: 0 }),
+        onLeaveBack: () => gsap.set(detail, { opacity: 1 }),
+        scrub: 1, 
       });
+    });
 
-      ScrollTrigger.create({
-        trigger: ".content-container",
-        start: "top top",
-        end: "bottom bottom",
-        pin: ".heading-text",
-      });
-
-      details.forEach((detail: any) => {
-        gsap.to(detail, {
-          scrollTrigger: {
-            trigger: detail,
-            start: "center center",
-            scrub: 1,
-          },
-          opacity: 0,
-        });
-      });
-
-      gsap.to(images[0], {
-        scrollTrigger: {
-          trigger: details[1],
-          start: "center center",
-          end: "center center",
-          scrub: 1,
-        },
-        opacity: 0,
-      });
-      gsap.to(images[1], {
-        scrollTrigger: {
-          trigger: details[1],
-          start: "center center",
-          end: "center center",
-          scrub: 1,
-        },
-        opacity: 1,
-      });
-    },
-    { scope: container }
-  );
+    gsap.to(images[0], {
+      scrollTrigger: {
+        trigger: details[1],
+        start: "center center",
+        end: "center center",
+        scrub: 1,
+      },
+      opacity: 0,
+    });
+    gsap.to(images[1], {
+      scrollTrigger: {
+        trigger: details[1],
+        start: "center center",
+        end: "center center",
+        scrub: 1,
+      },
+      opacity: 1,
+    });
+  },
+  { scope: container }
+);
 
   return (
     <>
