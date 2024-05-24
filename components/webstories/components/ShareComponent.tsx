@@ -110,7 +110,7 @@ export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingP
           className="m-5 border-none flex flex-row gap-10 items-center"
         >
           <div className=" flex flex-col gap-5 justify-center items-center">
-            <p className=" font-bold justify-start mt-2">Share this webstories on these Platform</p>
+            <p className=" font-bold justify-start mt-2">Share this web story on your favorite platforms</p>
             <div className=" flex flex-row gap-10">
               <div className="text-xl m-1 mt-1.5 text-black transition-colors duration-300 hover:text-blue-500 flex flex-col">
                 <button

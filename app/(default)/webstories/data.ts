@@ -69,7 +69,7 @@ import card_6_thumbnail from "@/public/images/webstories/images/card_6-thumbnail
 import card_7_thumbnail from "@/public/images/webstories/images/card_7-thumbnail.png";
 import follow_more from "@/public/images/webstories/images/follow_more.png";
 import captureRelay from "@/public/images/CaptureAndReplay.json";
-export const DummyData = [
+export const DataFiles = [
   {
     //card-1
     CardImage: card_1_thumbnail,

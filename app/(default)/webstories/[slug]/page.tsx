@@ -1,15 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import WebStories from "@/components/webstories/Webstories";
-import { DummyData } from "../data";
+import { DataFiles } from "../data";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import CloseIcon from "@/components/webstories/components/CloseIcon";
 
 const Index = () => {
   const slug = useParams().slug;
   const [windowWidth, setWindowWidth] = useState(0);
-  const storyData = DummyData.find((item) => item.Slug === slug)?.Story;
+  const storyData = DataFiles.find((item) => item.Slug === slug)?.Story;
 
   if (!storyData) {
     return <div className="m-auto">Story not found!</div>;
@@ -39,20 +40,7 @@ const Index = () => {
         {windowWidth > 1024 && (
           <Link href={`/webstories`}>
             <button className="text-black font-medium bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 transition duration-300 ease-in-out absolute top-4 right-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <CloseIcon />
             </button>
           </Link>
         )}
