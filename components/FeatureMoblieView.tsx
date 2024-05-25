@@ -81,11 +81,10 @@ export default function FeaturesMobileView() {
 
                   <div>
                     <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300 ">
-                      Test and Stubs Generation
+                      Record Replay API Flows
                     </div>
                     <div className="text-gray-600">
-                      Record and replay complex, distributed API flows as mocks
-                      and stubs. It's like time machine for tests!
+                      Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!
                     </div>
                   </div>
                   <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
@@ -122,11 +121,10 @@ export default function FeaturesMobileView() {
 
                   <div>
                     <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
-                      Test Deduplication
+                      Find Duplicate Tests
                     </div>
                     <div className="text-gray-600">
-                      Automatically detect and remove duplicate tests, ideal for
-                      scenarios recorded in live-environments.
+                      Find redundant tests that doesn't add to the test coverage. Automatically detect and remove duplicate tests, ideal for big-teams crowd-sourcing tests.
                     </div>
                   </div>
                   <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
@@ -159,13 +157,15 @@ export default function FeaturesMobileView() {
                     setTab(3);
                   }}
                 >
+                <div className="flex flex-col">
+                  <div className="flex items-center">
                   <div>
                     <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
-                      Native Integration
+                      Works with JUnit, PyTest, Jest, Go-Test in CI/CD
                     </div>
                     <div className="text-gray-600">
-                      Merge Keploy tests with testing libraries(JUnit, go-test,
-                      py-test, jest) for combined test coverage.
+                      Merge Keploy tests coverage with unit testing libraries for combined test coverage gating in CI/CD pipelines like Jenkins, Github Actions.
+
                     </div>
                   </div>
                   <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
@@ -180,6 +180,11 @@ export default function FeaturesMobileView() {
                       />
                     </svg>
                   </div>
+                  </div>
+                  <div>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/native-integration">Explore More</Link>
+                  </div>
+                </div>
                 </Link>
               </div>
             </div>
@@ -283,7 +288,7 @@ export default function FeaturesMobileView() {
               className="w-full text-white btn bg-secondary-300 hover:font-semibold sm:w-auto sm:ml-4"
               href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
             >
-              Book Cloud Demo
+              Meet Maintainers{' '}
             </Link>
           </div>
         </div>

@@ -14,21 +14,21 @@ import { featuresData,faqQuestions } from "@/components/utils/stub-generation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 const heroData = {
-  titleTop: "Effortless Stub Generation",
-  titleBottom: "for Comprehensive Test Coverage!",
+  titleTop: "Simplifying Testing with ",
+  titleBottom: "Dynamic Test Data Generator",
   subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
   subtitleBottom:
-    "Seamlessly Convert User Interactions into Precise Test Cases and Data Stubs 🚀",
+    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",
-  btnText: "Try Keploy",
+  btnText: "Join Waitlist",
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: " With Keploy's stub generation",
+  title: " With Keploy's Test Data Generation ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
   highlightTitle: "eliminate",
@@ -79,6 +79,12 @@ export default function Home() {
         image={testimonialData[0].image}
       />
       <Language />
+      <Testimonial
+          content={testimonialData[2].content}
+          author={testimonialData[2].author}
+          company={testimonialData[2].company}
+          image={testimonialData[2].image}
+        />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}

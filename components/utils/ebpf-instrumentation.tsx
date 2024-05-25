@@ -136,7 +136,7 @@ export const featuresData = [
     {
       title: 'Developer Friendly, zero learning curve',
       icon:<DependencyWaitTimeIcon />,
-      description: 'Keploy can dynamically generate test cases by recording and replaying your interactions without integrating any code or complex setup within 2 mins.'
+      description: 'Keploy can dynamically generate test cases by recording and replaying your interactions with zero code addition or complex setup within 2 mins.'
     },
     {
       title: 'Seamless Test Generation',
@@ -144,7 +144,7 @@ export const featuresData = [
       description: 'eBPF instrumentation enables Keploy to effortlessly record and generate automated tests and data-mocks within a mere 2 minutes, streamlining the testing process.'
     },
     {
-      title: 'Codeless Integration',
+      title: 'Zero Code Integration',
       icon: <DataVariabilityConcernsIcon />,
       description: 'With eBPF, Keploy dynamically generates test cases without the need for integrating any code into the application, simplifying the testing workflow for developers.'
     },
@@ -172,7 +172,7 @@ export const featuresData = [
         "Keploy works at a kernel and network level, enabling support for various protocol versions such as HTTP, TLS, GRPC, Mongo, MySQL, Redis, and more. Once added, these protocols will be universally supported across all languages, runtimes, or drivers/packages."
     },
     {
-      title: "How does Keploy enable test case generation without code integration?",
+      title: "How does Keploy enable test case generation with zero code integration?",
       answer:
         "Keploy utilizes eBPF to dynamically generate test cases by recording and replaying interactions, eliminating the need for integrating any code into the application."
     },
@@ -184,6 +184,6 @@ export const featuresData = [
     {
       title: "How does eBPF instrumentation helps in enhancing test case generation with Keploy?",
       answer:
-        "With eBPF, Keploy dynamically records and replays interactions, allowing for the rapid generation of test cases without any intrusive code changes, thereby accelerating the testing process."
+        "With eBPF, Keploy dynamically records and replays interactions, allowing for the rapid generation of test cases with zero code changes, thereby accelerating the testing process."
     }
   ]

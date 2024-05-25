@@ -129,7 +129,9 @@ module.exports = {
             },
             fontFamily: {
                 inter: ['var(--font-inter)', 'sans-serif'],
-                'architects-daughter': ['var(--font-architects-daughter)', 'sans-serif']
+                'architects-daughter': ['var(--font-architects-daughter)', 'sans-serif'],
+                pencil: ['Pencil', 'sans-serif'],
+
             },
             fontSize: {
                 xs: '0.75rem',
@@ -205,6 +207,7 @@ module.exports = {
             },
             zIndex: {
                 '-1': '-1',
+                '99999':'99999'
             },
             variants: {
                 width: ["responsive", "hover", "focus"]

@@ -23,7 +23,6 @@ export default function Home() {
   return (
     <>
         <Hero />
-        <ProblemBlocks />
         <Features />
   
         <Testimonial
@@ -33,6 +32,12 @@ export default function Home() {
           image={testimonialData[0].image}
         />
         <Installation/>
+        <Testimonial
+          content={testimonialData[2].content}
+          author={testimonialData[2].author}
+          company={testimonialData[2].company}
+          image={testimonialData[2].image}
+        />
         <Community />
         <Testimonial
           content={testimonialData[1].content}
@@ -41,6 +46,7 @@ export default function Home() {
           image={testimonialData[1].image}
         />
         <Language />
+        <ProblemBlocks />
         <TwitterTestimonials/>
         <Newsletter />
         <Footer />

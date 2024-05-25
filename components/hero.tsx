@@ -6,6 +6,7 @@ import React from "react";
 import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
+import APItext from "@/public/images/apiText.png"
 export default function Hero() {
   return (
     <section className="relative">
@@ -35,20 +36,47 @@ export default function Hero() {
           {/* Section header */}
           <div className=" text-center pb-12 md:pb-16">
             <p className="text-2xl text-accent-200 mb-4 " data-aos="zoom-y-out" data-aos-delay="150">
-              2 minutes to 90% test coverage!
+              5 minutes to 90% test coverage!
             </p>
-            <h1 className="lg:text-6xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 " data-aos="zoom-y-out">AI Generated Tests <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">that actually work!</span></h1>
+            <h1
+              className="lg:text-6xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 md:mt-16 lg:mt-24"
+              data-aos="zoom-y-out"
+            >
+              {" "}
+              {"AI Generated "}
+              <span
+                className="absolute hidden md:inline font-pencil font-light pt-2 text-green-900"
+                style={{
+                  top: "0.8em",
+                  transform: "rotate(-10deg)",
+                }}
+              >
+                ^
+                <span
+                  className="absolute lg:bottom-44 bottom-28 -left-2 hidden md:inline font-pencil font-light text-3xl lg:text-5xl text-green-900"
+                  style={{
+                    transform: "rotate(-5deg)",
+                  }}
+                >
+                  API
+                </span>
+              </span> 
+              Tests
+              <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
+                that actually work!
+              </span>
+            </h1>
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl lg:text-left text-center text-accent-200 mb-8" data-aos="zoom-y-out" data-aos-delay="150">
-                Open source Tool for converting user-traffic to Test Cases and Data Stubs
+              <p className="text-xl lg:text-center text-center text-accent-200 mb-8" data-aos="zoom-y-out" data-aos-delay="150">
+                <b>Open Source</b> Platform for converting API calls to Test Cases with Data Mocks
               </p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                 <div>
-                  <Link className="btn text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="https://calendar.app.google/8Ncpff4QnAhpVnYd8">Book Cloud Demo</Link>
+                  <Link className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full mb-4 sm:w-auto sm:mb-0" href="https://www.github.com/keploy/keploy">Try Open Source</Link>
                 </div>
                 <div>
-                  <Link className="btn text-white bg-secondary-300 hover:text-primary-300 w-full sm:w-auto sm:ml-4" href="https://www.github.com/keploy/keploy">Try Locally</Link>
+                  <Link className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:ml-4" href="https://forms.gle/waYcLSASm9dfE9tC9">Join Cloud Waitlist </Link>
                 </div>
               </div>
               {/* <div className="code">
@@ -66,7 +94,7 @@ export default function Hero() {
             thumbWidth={768}
             thumbHeight={432}
             thumbAlt="Keploy Demo video"
-            video="https://www.youtube.com/embed/23yQaY81Zho"
+            video="https://www.youtube.com/embed/gvWvpqWM48s"
             videoWidth={768}
             videoHeight={432} />
         </div>
