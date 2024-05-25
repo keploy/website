@@ -1,3 +1,4 @@
+
 import Footer from "@/components/ui/footer";
 
 export const metadata = {
@@ -18,7 +19,7 @@ import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import TwitterTestimonials from "@/components/TwitterTestimonials";
-
+import Editor from "@/components/atg/editor";
 export default function Home() {
   return (
     <>
@@ -31,7 +32,7 @@ export default function Home() {
           company={testimonialData[0].company}
           image={testimonialData[0].image}
         />
-        <Installation/>
+        <Editor/>
         <Testimonial
           content={testimonialData[2].content}
           author={testimonialData[2].author}
