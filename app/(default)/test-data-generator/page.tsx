@@ -13,8 +13,8 @@ import { blocksData } from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/test-data-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import { Metadata } from 'next';
-import Head from 'next/head';
+import RootLayout, { Metadata } from "@/app/layout";
+
 const heroData = {
   titleTop: "Simplifying Testing with ",
   titleBottom: "Dynamic Test Data Generator",
@@ -23,10 +23,13 @@ const heroData = {
     "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
   animationSrc: testAndStubsGen,
 };
-const metadata = {
+
+const pageMetadata: Metadata = {
   title: 'Simplifying Testing with Dynamic Test Data Generator',
   description: 'The official Next.js Course Dashboard, built with App Router.',
+  keywords: 'dynamic test data, testing, automation, test case generation',
 };
+
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",
@@ -49,13 +52,10 @@ const BannerData = {
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
 };
+
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-      </Head>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -90,11 +90,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-          content={testimonialData[2].content}
-          author={testimonialData[2].author}
-          company={testimonialData[2].company}
-          image={testimonialData[2].image}
-        />
+        content={testimonialData[2].content}
+        author={testimonialData[2].author}
+        company={testimonialData[2].company}
+        image={testimonialData[2].image}
+      />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}
@@ -105,6 +105,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }
