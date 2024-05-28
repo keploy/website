@@ -14,13 +14,12 @@ import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import CircularLoader from "./components/circularLoader";
 import { useSwipeable } from "react-swipeable";
 
-
 const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
   ssr: false,
 });
 
 type StoriesProps = {
-  imageUrl?: string | StaticImageData ;
+  imageUrl?: string | StaticImageData;
   Heading?: string;
   text?: string;
   swipeText?: string;
@@ -38,7 +37,7 @@ type StoriesComponentProps = {
   timerScreen: Boolean;
   handleNextStory: () => void;
   handlePrevStory: () => void;
-  slug:string|string[];
+  slug: string | string[];
 };
 
 const Stories = ({
@@ -100,7 +99,7 @@ const Stories = ({
   });
 
   return (
-    <div className="relative h-full md:mt-10 lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
+    <div className="relative h-full  lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
       {timerScreen && (
         <div className="absolute flex opacity-70 md:rounded-xl lg:rounded-xl xl:rounded-xl inset-0 z-50 w-full h-full justify-center bg-black">
           <CircularLoader slug={slug} />
@@ -200,14 +199,14 @@ const Stories = ({
         />
       )}
       <div className="absolute w-full z-30 bottom-0 animate-grow cursor-text">
-        {Story.Heading && Story.text && (
-          <div className="bg-secondary-300 opacity-80 p-8 md:rounded-b-xl md:rounded-t-sm lg:rounded-b-xl lg:rounded-t-sm xl:rounded-t-sm xl:rounded-b-xl">
+        <div className="bg-secondary-300 opacity-80 p-8 md:rounded-b-xl md:rounded-t-sm lg:rounded-b-xl lg:rounded-t-sm xl:rounded-t-sm xl:rounded-b-xl">
+          {Story.Heading && (
             <h1 className="text-2xl text-slate-50 font-bold mb-3">
               {Story.Heading}
             </h1>
-            <p className="text-slate-50">{Story.text}</p>
-          </div>
-        )}
+          )}
+          {Story.text && <p className="text-slate-50">{Story.text}</p>}
+        </div>
 
         {Story.swipeLink && Story.swipeText && (
           <Link href={Story.swipeLink}>
@@ -220,7 +219,7 @@ const Stories = ({
                 icon={faArrowUp}
                 className="text-orange-400 mr-1 animate-bounce"
               />
-              <p className="bg-gradient-300 p-2 md:rounded-3xl lg:rounded-3xl xl:rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
+              <p className="bg-gradient-300 p-2 rounded-3xl md:rounded-3xl lg:rounded-3xl xl:rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
                 <FontAwesomeIcon
                   icon={faLink}
                   className="mx-1 text-secondary-300 bg-gradient-300 p-1 rounded-full"

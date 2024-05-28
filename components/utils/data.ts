@@ -79,7 +79,7 @@ export const DataFiles = [
       {
         imageUrl: card_1_thumbnail,
         Heading: "Importance of Testing",
-        text: "Software testing is crucial for ensuring applications function as intended. It identifies bugs and prevents issues from reaching production.",
+        // text: "Software testing is crucial for ensuring applications function as intended. It identifies bugs and prevents issues from reaching production.",
         // swipeText: "Swipe to read more",
         // swipeLink: "https://example.com/story1",
         image: true,
@@ -160,7 +160,7 @@ export const DataFiles = [
       {
         imageUrl: card_2_thumbnail,
         Heading: "A Must for Modern Software",
-        text: "Performance testing helps identify bottlenecks and ensures software meets performance requirements.",
+        // text: "Performance testing helps identify bottlenecks and ensures software meets performance requirements.",
         // swipeText: "Swipe to read more",
         // swipeLink: "https://example.com/story1",
         image: true,
@@ -239,7 +239,7 @@ export const DataFiles = [
       {
         imageUrl: card_3_thumbnail,
         Heading: "The Gatekeeper of Trust",
-        text: "Imagine code integrity as a security guard for your software, ensuring only authorized code runs.",
+        // text: "Imagine code integrity as a security guard for your software, ensuring only authorized code runs.",
         image: true,
       },
       {
@@ -308,7 +308,7 @@ export const DataFiles = [
       {
         imageUrl: card_4_thumbnail,
         Heading: "The Achilles' Heel of E2E Tests",
-        text: "Edge cases, unexpected scenarios, can expose flaws in E2E tests.",
+        // text: "Edge cases, unexpected scenarios, can expose flaws in E2E tests.",
         image: true,
       },
       {
@@ -383,7 +383,7 @@ export const DataFiles = [
       {
         imageUrl: card_5_thumbnail,
         Heading: "A World of Data Exchange",
-        text: "APIs (Application Programming Interfaces) act as messengers, enabling communication between different software systems.",
+        // text: "APIs (Application Programming Interfaces) act as messengers, enabling communication between different software systems.",
         image: true,
       },
       {
@@ -446,7 +446,7 @@ export const DataFiles = [
       {
         imageUrl: card_6_thumbnail,
         Heading: "Understanding Continuous Testing",
-        text: "Continuous Testing automates tests throughout the software development lifecycle, providing immediate feedback on changes. It ensures better quality and faster delivery to end-users.",
+        // text: "Continuous Testing automates tests throughout the software development lifecycle, providing immediate feedback on changes. It ensures better quality and faster delivery to end-users.",
         image: true,
       },
       {
@@ -497,7 +497,7 @@ export const DataFiles = [
       {
         imageUrl: card_7_thumbnail,
         Heading: "The Misconception of 100% Coverage",
-        text: "Achieving 100% test coverage doesn't guarantee a flawless application. It overlooks aspects like diminishing returns, quality over quantity, and real-world user scenarios.",
+        // text: "Achieving 100% test coverage doesn't guarantee a flawless application. It overlooks aspects like diminishing returns, quality over quantity, and real-world user scenarios.",
         image: true,
       },
       {

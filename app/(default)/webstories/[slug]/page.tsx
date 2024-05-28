@@ -42,7 +42,7 @@ const Index = () => {
       <div className="relative flex flex-col w-full h-full justify-center">
         {windowWidth > 1024 && (
           // <Link href={`/webstories`}>
-            <button onClick={handleClose} className="text-black font-medium bg-white p-3 rounded-full shadow-lg hover:bg-gray-200 transition duration-300 ease-in-out absolute top-4 right-4">
+            <button onClick={handleClose} className="text-slate-200 font-medium bg-secondary-300 p-3 rounded-full shadow-lg  absolute top-4 right-4">
               <CloseIcon />
             </button>
           // </Link>
