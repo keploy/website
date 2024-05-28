@@ -19,8 +19,8 @@ export const PillarPages = [
           pageName: "CI Testing"
         },
         {
-          pagelink: "/record-replay",
-          pageName: "Record and Replay",
+          pagelink: "/ebpf-instrumentation",
+          pageName: "eBPF Instrumentation",
         },
         {
           pagelink: "/test-management",

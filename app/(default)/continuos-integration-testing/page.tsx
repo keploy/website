@@ -13,6 +13,13 @@ import { blocksData } from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/record-replay";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Boost E2E Testing with Keploy Test Case Generator! Learn How',
+  description: 'Stop wasting time! Imagine waking up to ready-made test cases. Keploy.io test case generation makes it possible saving you hours. Click to learn how!',
+  keywords: 'test case generation',
+};
 const heroData = {
   titleTop: "Streamline CI Testing ",
   titleBottom: "with Keploy Integration",
@@ -45,7 +52,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -95,6 +102,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

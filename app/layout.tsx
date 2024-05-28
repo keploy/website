@@ -16,7 +16,7 @@ export interface Metadata {
 }
 
 export const defaultMetadata: Metadata = {
-  title: 'Open Source Stubs and API Test Generator for Developer',
+  title: 'Keploy | Open Source Stubs and API Test Generator for Developer',
   keywords: "API testing, e2e Testing, ai testing, open source ai testing tool, Service Mocking, Dependency Mocking",
   description: 'Keploy is AI based test case and stubs/mocks generator for e2e testing. 90% test coverage in minutes with open source testing tool',
 };

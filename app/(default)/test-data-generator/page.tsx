@@ -25,9 +25,9 @@ const heroData = {
 };
 
 const pageMetadata: Metadata = {
-  title: 'Simplifying Testing with Dynamic Test Data Generator',
-  description: 'The official Next.js Course Dashboard, built with App Router.',
-  keywords: 'dynamic test data, testing, automation, test case generation',
+  title: 'Keploy | Need Quick Mock Data? Try this reliable test data generator!',
+  description: 'Discover how quickly and efficiently you can generate test data by recording API calls with Keploy cutting-edge test data generation tool! Learn more now!',
+  keywords: 'dynamic test data, testing, automation, test data generation',
 };
 
 const ProblemBlocksData = {
