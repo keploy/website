@@ -1,7 +1,7 @@
 export enum Type {
   FILE, 
   DIRECTORY,
-  DUMMY 
+  DUMMY,
 }
 
 interface CommonProps {
@@ -20,6 +20,7 @@ export interface Directory extends CommonProps {
   files: File[];
   dirs: Directory[];
 }
+
 
 /**
  * 

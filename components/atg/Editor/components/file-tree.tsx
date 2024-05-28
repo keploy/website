@@ -59,8 +59,15 @@ const FileDiv = ({
   const depth = file.depth;
   return (
     <Div depth={depth} isSelected={isSelected} onClick={onClick}>
-      <FileIcon name={icon} extension={file.name.split(".").pop() || ""} />
-      <span style={{ marginLeft: 1 }}>{file.name}</span>
+      <FileIcon name={icon} extension={file?.name?.split(".").pop() || ""} />
+      <span style={{ marginLeft: 1 }}>
+        {file?.name &&
+        ["record", "test", "replay", "terminal"].includes(
+          file.name.split(".").pop() || ""
+        )
+          ? file.name.split(".").pop()
+          : file?.name || ""}
+      </span>
     </Div>
   );
 };
@@ -73,13 +80,13 @@ const Div = styled.div<{
   align-items: center;
   padding-left: ${(props) => props.depth * 16}px;
   background-color: ${(props) =>
-    props.isSelected ? "#808080" : "transparent"};
+    props.isSelected ? "#FDBA74" : "transparent"};
 
   border-color: #242424;
-
+  border-radius:2px;
   :hover {
     cursor: pointer;
-    background-color: #808080;
+    background-color: #FED7AA;
   }
 `;
 

@@ -1,13 +1,7 @@
-import React from 'react'
-import Editor from './atg/editor'
+import React from "react";
+import Editor from "./atg/editor";
 const TestingConsole = () => {
-  return (
-    <div className="flex flex-row">
-      <div className="flex flex-col w-full h-full ">
-          <Editor  />
-      </div>
-    </div>
-  )
-}
+  return <Editor />;
+};
 
-export default TestingConsole
+export default TestingConsole;

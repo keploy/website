@@ -14,7 +14,15 @@ export const Data: Directory = {
             type: Type.FILE,
             parentId: "root",
             depth: 1,
-            content: 'const express = require("express");const app = express();app.listen(8000,()=>{console.log(`listening on port ${8000}`) })'
+            content: 'const express = require("express");\nconst app = express();\napp.listen(8000,()=>{console.log(`listening on port ${8000}`) })'
+        },
+        {
+            id: "main2",
+            name: "index2.js",
+            type: Type.FILE,
+            parentId: "root",
+            depth: 1,
+            content: 'const express = require("express");\nconst app = express();\napp.listen(8000,()=>{console.log(`listening on port ${8000}`) })'
         }
     ],
 }
