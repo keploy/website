@@ -53,8 +53,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>Simplifying Testing with Dynamic Test Data Generator</title>
+        <meta name="description" content="Stop wasting time! Imagine waking up to ready-made test cases. Keploy.io test case generation makes it possible saving you hours. Click to learn how!" />
       </Head>
       <Hero
         titleTop={heroData.titleTop}

@@ -11,8 +11,8 @@ export const PillarPages = [
           pageName: "Test Case Generation"
         },
         {
-          pagelink: "/native-integration",
-          pageName: "Native Integration" 
+          pagelink: "/code-coverage",
+          pageName: "Code Coverage" 
         },
         {
           pagelink: "/continuos-integration-testing",
