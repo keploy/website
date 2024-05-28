@@ -10,7 +10,6 @@ import Link from "next/link";
 import CustomizedDialogs from "./components/ShareComponent";
 import Image, { StaticImageData } from "next/image";
 import dynamic from "next/dynamic";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import CircularLoader from "./components/circularLoader";
 import { useSwipeable } from "react-swipeable";
 
@@ -31,7 +30,7 @@ type StoriesComponentProps = {
   Story: StoriesProps;
   totalLen: number;
   currentIndex: number;
-  Next: boolean;
+  Next: Boolean;
   paused: (pause: Boolean) => void;
   animationDuration: string;
   timerScreen: Boolean;
@@ -99,7 +98,7 @@ const Stories = ({
   });
 
   return (
-    <div className="relative h-full  lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
+    <div className="relative h-full lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
       {timerScreen && (
         <div className="absolute flex opacity-70 md:rounded-xl lg:rounded-xl xl:rounded-xl inset-0 z-50 w-full h-full justify-center bg-black">
           <CircularLoader slug={slug} />
@@ -107,15 +106,15 @@ const Stories = ({
       )}
       <div className="absolute flex z-10 w-full h-full">
         <div
-          className="inset-0 w-full h-full justify-center "
+          className="inset-0 w-full h-full justify-center"
           onClick={handlePrevStory}
         ></div>
         <div
           {...handlers}
-          className="inset-0 w-full h-full justify-center "
+          className="inset-0 w-full h-full justify-center"
         ></div>
         <div
-          className="inset-0 w-full h-full justify-center "
+          className="inset-0 w-full h-full justify-center"
           onClick={handleNextStory}
         ></div>
       </div>
@@ -198,38 +197,41 @@ const Stories = ({
           className="flex flex-col h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
         />
       )}
-      <div className="absolute w-full z-30 bottom-0 animate-grow cursor-text">
-        <div className="bg-secondary-300 opacity-80 p-8 md:rounded-b-xl md:rounded-t-sm lg:rounded-b-xl lg:rounded-t-sm xl:rounded-t-sm xl:rounded-b-xl">
-          {Story.Heading && (
-            <h1 className="text-2xl text-slate-50 font-bold mb-3">
-              {Story.Heading}
-            </h1>
-          )}
-          {Story.text && <p className="text-slate-50">{Story.text}</p>}
-        </div>
 
-        {Story.swipeLink && Story.swipeText && (
-          <Link href={Story.swipeLink}>
-            <div
-              className={`absolute inset-x-0 bottom-10 ${
-                contentAvailable ? "opacity-25" : "opacity-100"
-              } hover:opacity-100 duration-300 flex flex-col justify-center items-center`}
-            >
+      {currentIndex < totalLen - 1 && (
+        <div className="absolute w-full z-30 bottom-0 animate-grow cursor-text">
+          <div className="bg-secondary-300 opacity-80 p-8 md:rounded-b-xl md:rounded-t-sm lg:rounded-b-xl lg:rounded-t-sm xl:rounded-t-sm xl:rounded-b-xl">
+            {Story.Heading && (
+              <h1 className="text-2xl text-slate-50 font-bold mb-3">
+                {Story.Heading}
+              </h1>
+            )}
+            {Story.text && <p className="text-slate-50">{Story.text}</p>}
+          </div>
+        </div>
+      )}
+
+      {Story.swipeLink && Story.swipeText && (
+        <Link href={Story.swipeLink}>
+          <div
+            className={`absolute inset-x-0 bottom-10 ${
+              contentAvailable ? "opacity-25" : "opacity-100"
+            } hover:opacity-100 duration-300 flex flex-col justify-center items-center`}
+          >
+            <FontAwesomeIcon
+              icon={faArrowUp}
+              className="text-orange-400 mr-1 animate-bounce"
+            />
+            <p className="bg-gradient-300 p-2 rounded-3xl md:rounded-3xl lg:rounded-3xl xl:rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
               <FontAwesomeIcon
-                icon={faArrowUp}
-                className="text-orange-400 mr-1 animate-bounce"
+                icon={faLink}
+                className="mx-1 text-secondary-300 bg-gradient-300 p-1 rounded-full"
               />
-              <p className="bg-gradient-300 p-2 rounded-3xl md:rounded-3xl lg:rounded-3xl xl:rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
-                <FontAwesomeIcon
-                  icon={faLink}
-                  className="mx-1 text-secondary-300 bg-gradient-300 p-1 rounded-full"
-                />
-                {Story.swipeText}
-              </p>
-            </div>
-          </Link>
-        )}
-      </div>
+              {Story.swipeText}
+            </p>
+          </div>
+        </Link>
+      )}
     </div>
   );
 };
