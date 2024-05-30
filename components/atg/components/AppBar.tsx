@@ -52,6 +52,7 @@ const Appbar = ({
 
   return (
     <div className="appbar-container">
+      <div className="appbar-scrollbar-container" ref={scrollRef}></div>
       <div className="appbar w-full border border-gray-300 mb-1 rounded-t-md">
         <div className="tabs-container" ref={tabsRef}>
           {selectedFilesArray.map((file, key) => {
@@ -76,7 +77,7 @@ const Appbar = ({
                   {file.name}
                 </button>
 
-               {selectedFile?.id != file.id &&  <button
+                {selectedFile?.id != file.id &&  <button
                   onClick={() => onCancel(file)}
                   className={`${
                     hoveredTab == file.id && selectedFile?.id != file.id

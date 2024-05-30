@@ -35,15 +35,14 @@ const Editor = ({}: {}) => {
   const [Background, setBackground] = useState<Boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
   const [toolsArray, setToolsArray] = useState<File[]>([]);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+
   useEffect(() => {
     const fetchData = async () => {
       setDataFetched(false);
       setError("");
       try {
         setRootDir(Data);
-        // if (!selectedFile) {
-        //   setSelectedFile(findFileByName(Data, "index.js"));
-        // }
         setDataFetched(true);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -52,6 +51,11 @@ const Editor = ({}: {}) => {
     };
     fetchData();
   }, []);
+
+  const CollapsingSidebar = (collapse: boolean) => {
+    setCollapsed(collapse);
+    console.log('Sidebar collapsed:', collapse);
+  };
 
   const onSelect = (file: File) => {
     setSelectedFile(file);
@@ -78,7 +82,7 @@ const Editor = ({}: {}) => {
     const updatedTools = toolsArray.filter((t) => t.id !== tools.id);
     setToolsArray(updatedTools);
     setTools(toolsArray[toolsArray.length - 2]);
-    if (toolsArray.length == 1) {
+    if (toolsArray.length === 1) {
       setBackground(false);
     }
   };
@@ -94,17 +98,18 @@ const Editor = ({}: {}) => {
       <div>
         {dataFetched ? (
           <div className="flex flex-row max-w-6xl px-4 mx-auto my-16 m-2">
-            <div className="w-3/12">
+            <div className={`transition-all duration-300 ${collapsed ? 'w-16' : 'w-3/12'}`}>
               <Sidebar
                 rootDir={rootDir}
                 selectedFile={selectedFile}
                 onSelect={onSelect}
                 selectedTool={Tools}
                 onSelectTools={onSelectTools}
+                Collapse={CollapsingSidebar}
               />
               {/* <MainTerminal/> */}
             </div>
-            <div className="relative flex flex-col w-9/12 ml-2">
+            <div className={`relative flex flex-col ${collapsed ? 'w-full' : 'w-9/12'} ml-2 transition-all duration-300`}>
               <Appbar
                 selectedFile={selectedFile}
                 selectedFilesArray={files}
@@ -115,13 +120,13 @@ const Editor = ({}: {}) => {
                 <div className={`w-full ${Background ? "h-4/6" : "h-full"}`}>
                   <Code selectedFile={selectedFile} />
                 </div>
-                {files.length == 0 && (
+                {files.length === 0 && (
                   <div className={`absolute w-full top-0 h-full`}>
                     <DefaultEditorPage />
                   </div>
                 )}
               </EditorContainer>
-              <div className="absolute w-full h-2/6  bottom-0 z-20">
+              <div className="absolute w-full h-2/6 bottom-0 z-20">
                 {Background && (
                   <BottomBar>
                     <Appbar

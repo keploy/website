@@ -11,7 +11,6 @@
   height: 8px;
   z-index: 10;
   pointer-events: none; /* Allow interactions to pass through */
-  overflow-x: hidden;
   transition: overflow-x 0.3s ease;
   background: transparent; /* Transparent background to prevent layout shifts */
 }
@@ -43,6 +42,8 @@
 .appbar {
   display: flex;
   overflow-x: hidden;
+  position: relative; /* Ensure appbar is properly positioned */
+  z-index: 5; /* Lower z-index than the scrollbar container */
 }
 
 .tabs-container {
