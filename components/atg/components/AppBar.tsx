@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { File } from "../Editor/utils/file-manager";
 import CloseIcon from "@mui/icons-material/Close";
+import "./css/Appbar.css"; // Import the CSS file for custom styling
+import { getIcon } from "../Editor/components/icon";
+import styled from "@emotion/styled";
 
 const Appbar = ({
   selectedFile,
@@ -14,6 +17,30 @@ const Appbar = ({
   onCancel: (file: File) => void;
 }) => {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    const tabsContainer = tabsRef.current;
+    if (scrollContainer && tabsContainer) {
+      const handleScroll = () => {
+        tabsContainer.scrollLeft = scrollContainer.scrollLeft;
+      };
+
+      const syncScroll = () => {
+        scrollContainer.scrollLeft = tabsContainer.scrollLeft;
+      };
+
+      scrollContainer.addEventListener("scroll", handleScroll);
+      tabsContainer.addEventListener("scroll", syncScroll);
+
+      return () => {
+        scrollContainer.removeEventListener("scroll", handleScroll);
+        tabsContainer.removeEventListener("scroll", syncScroll);
+      };
+    }
+  }, []);
 
   const handleMouseEnter = (fileId: string) => {
     setHoveredTab(fileId);
@@ -24,50 +51,76 @@ const Appbar = ({
   };
 
   return (
-    <div className="w-full bg-orange-200 mb-1 rounded-t-md">
-      <div className="max-w-full flex flex-row rounded-t-md">
-        {selectedFilesArray.map((file, key) => {
-          const isHovered = file.id === hoveredTab;
-          return (
-            <div
-              key={file.id}
-              className={`flex flex-row items-center p-1 ${
-                file?.id === selectedFile?.id
-                  ? "bg-orange-300 border-t-4 border-t-orange-700"
-                  : "border-r-2 border-r-orange-900 bg-orange-200"
-              } ${key === 0 ? "rounded-tl-md" : ""}`}
-              onMouseEnter={() => handleMouseEnter(file.id)}
-              onMouseLeave={handleMouseLeave}
-              style={{
-                width: `${file.name.length * 8 + 30}px`,
-                position: "relative",
-              }}
-            >
-              <button
+    <div className="appbar-container">
+      <div className="appbar w-full border border-gray-300 mb-1 rounded-t-md">
+        <div className="tabs-container" ref={tabsRef}>
+          {selectedFilesArray.map((file, key) => {
+            const isHovered = file.id === hoveredTab;
+            return (
+              <div
+                key={file.id}
+                className={`flex flex-row items-center cursor-pointer ${
+                  file?.id === selectedFile?.id
+                    ? "bg-white border-t-4 border-t-gray-700"
+                    : "border-r-2 border-r-gray-900 bg-gray-200"
+                } ${key === 0 ? "rounded-tl-md" : ""}`}
+                onMouseEnter={() => handleMouseEnter(file.id)}
+                onMouseLeave={handleMouseLeave}
                 onClick={() => onSelect(file)}
-                className="text-xs italic text-slate-900"
-                style={{ marginRight: isHovered ? "20px" : "0" }}
               >
-                {file.name}
-              </button>
-
-              {(isHovered || file.id === selectedFile?.id) && (
-                <button
-                  onClick={() => onCancel(file)}
-                  className="absolute right-0 top-0 bottom-0 flex items-center justify-center"
-                >
-                  <CloseIcon
-                    className="text-orange-600"
-                    sx={{ fontSize: 15 }}
-                  />
+                <FileIcon
+                  name={file.name}
+                  extension={file?.name?.split(".").pop() || ""}
+                />
+                <button className="text-xs mx-1 italic text-slate-900">
+                  {file.name}
                 </button>
-              )}
-            </div>
-          );
-        })}
+
+               {selectedFile?.id != file.id &&  <button
+                  onClick={() => onCancel(file)}
+                  className={`${
+                    hoveredTab == file.id && selectedFile?.id != file.id
+                      ? "visible"
+                      : "invisible"
+                  } mx-2`}
+                >
+                  <CloseIcon className="text-gray-600" sx={{ fontSize: 15 }} />
+                </button>}
+
+                {selectedFile?.id == file?.id && (
+                  <button onClick={() => onCancel(file)} className={`mx-2`}>
+                    <CloseIcon
+                      className="text-gray-600"
+                      sx={{ fontSize: 15 }}
+                    />
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 };
 
 export default Appbar;
+
+const FileIcon = ({
+  extension,
+  name,
+}: {
+  name?: string;
+  extension?: string;
+}) => {
+  let icon = getIcon(extension || "", name || "");
+  return <Span>{icon}</Span>;
+};
+
+const Span = styled.span`
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+`;

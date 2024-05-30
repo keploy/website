@@ -1,0 +1,56 @@
+.appbar-container {
+  width: 100%;
+  position: relative;
+}
+
+.appbar-scrollbar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  z-index: 10;
+  pointer-events: none; /* Allow interactions to pass through */
+  overflow-x: hidden;
+  transition: overflow-x 0.3s ease;
+  background: transparent; /* Transparent background to prevent layout shifts */
+}
+
+.appbar-scrollbar-container:hover {
+  pointer-events: auto; /* Enable interactions on hover */
+  overflow-x: auto;
+}
+
+/* Custom scrollbar styling for Webkit browsers */
+.appbar-scrollbar-container::-webkit-scrollbar {
+  height: 8px;
+  background: transparent; /* Transparent background to prevent layout shifts */
+}
+
+.appbar-scrollbar-container:hover::-webkit-scrollbar {
+  background: #f1f1f1;
+}
+
+.appbar-scrollbar-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.appbar-scrollbar-container:hover::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.appbar {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.tabs-container {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Webkit browsers */
+}

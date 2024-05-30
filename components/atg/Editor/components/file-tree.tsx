@@ -83,10 +83,10 @@ const Div = styled.div<{
     props.isSelected ? "#FDBA74" : "transparent"};
 
   border-color: #242424;
-  border-radius:2px;
+  border-radius: 2px;
   :hover {
     cursor: pointer;
-    background-color: #FED7AA;
+    background-color: #fed7aa;
   }
 `;
 

@@ -13,6 +13,7 @@ import {
 import { Data } from "./data/TypeScript";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import BottomBar from "./components/BottomBar";
+import MainTerminal from "./terminal";
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -61,11 +62,8 @@ const Editor = ({}: {}) => {
   const onSelectTools = (tools: File) => {
     setTools(tools);
     const updatedTools = toolsArray.filter((t) => t.id !== tools.id);
-    tools.name = tools.name.split(".")[0];
     setToolsArray([...updatedTools, tools]);
     setBackground(true);
-    // Background ? setBackground(false) : setBackground(true);
-    // console.log(`Has the background appeared: ${Background}`);
   };
 
   const onSelectTool = (tool: File) => {
@@ -96,7 +94,7 @@ const Editor = ({}: {}) => {
       <div>
         {dataFetched ? (
           <div className="flex flex-row max-w-6xl px-4 mx-auto my-16 m-2">
-            <div className="w-full basis-1/4">
+            <div className="w-3/12">
               <Sidebar
                 rootDir={rootDir}
                 selectedFile={selectedFile}
@@ -104,8 +102,9 @@ const Editor = ({}: {}) => {
                 selectedTool={Tools}
                 onSelectTools={onSelectTools}
               />
+              {/* <MainTerminal/> */}
             </div>
-            <div className="relative flex flex-col  w-full ml-2">
+            <div className="relative flex flex-col w-9/12 ml-2">
               <Appbar
                 selectedFile={selectedFile}
                 selectedFilesArray={files}

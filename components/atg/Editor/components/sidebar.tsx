@@ -58,7 +58,7 @@ export const Sidebar = ({
           />
         </AccordionDetails>
       </Accordion>
-      <Accordion
+      {/* <Accordion
         disableGutters
         elevation={0}
         square
@@ -93,7 +93,7 @@ export const Sidebar = ({
             onSelect={onSelectTools}
           />
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };

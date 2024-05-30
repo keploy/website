@@ -13,8 +13,8 @@ function MainTerminal({
   onRerenderEditor,
   inputRef,
 }: {
-  onRerenderEditor: any;
-  inputRef: React.RefObject<HTMLInputElement>;
+  onRerenderEditor?: any;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }) {
   const Emoji = "\u{1F430} Keploy"; // 🐰
   // State to manage multiple terminal sessions

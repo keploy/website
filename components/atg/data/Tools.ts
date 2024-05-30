@@ -10,7 +10,7 @@ export const Data: Directory = {
   files: [
     {
       id: "recording-main",
-      name: "Record.record",
+      name: "Record",
       type: Type.FILE,
       parentId: "rootTools",
       depth: 1,
@@ -18,7 +18,7 @@ export const Data: Directory = {
     },
     {
       id: "replaying-main",
-      name: "Test.test",
+      name: "Test",
       type: Type.FILE,
       parentId: "rootTools",
       depth: 1,
@@ -26,7 +26,7 @@ export const Data: Directory = {
     },
     {
       id: "testing-name",
-      name: "Replay.replay",
+      name: "Replay",
       type: Type.FILE,
       parentId: "rootTools",
       depth: 1,
@@ -34,7 +34,7 @@ export const Data: Directory = {
     },
     {
       id: "terminal-main",
-      name: "Terminal.terminal",
+      name: "Terminal",
       type: Type.FILE,
       parentId: "rootTools",
       depth: 1,
