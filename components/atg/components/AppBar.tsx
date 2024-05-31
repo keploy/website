@@ -44,6 +44,7 @@ const Appbar = ({
 
   const handleMouseEnter = (fileId: string) => {
     setHoveredTab(fileId);
+    console.log(fileId);
   };
 
   const handleMouseLeave = () => {
@@ -56,7 +57,6 @@ const Appbar = ({
       <div className="appbar w-full border border-gray-300 mb-1 rounded-t-md">
         <div className="tabs-container" ref={tabsRef}>
           {selectedFilesArray.map((file, key) => {
-            const isHovered = file.id === hoveredTab;
             return (
               <div
                 key={file.id}
@@ -67,26 +67,33 @@ const Appbar = ({
                 } ${key === 0 ? "rounded-tl-md" : ""}`}
                 onMouseEnter={() => handleMouseEnter(file.id)}
                 onMouseLeave={handleMouseLeave}
-                onClick={() => onSelect(file)}
               >
                 <FileIcon
                   name={file.name}
                   extension={file?.name?.split(".").pop() || ""}
                 />
-                <button className="text-xs mx-1 italic text-slate-900">
+                <button
+                  className="text-xs mx-1 italic text-slate-900"
+                  onClick={() => onSelect(file)}
+                >
                   {file.name}
                 </button>
 
-                {selectedFile?.id != file.id &&  <button
-                  onClick={() => onCancel(file)}
-                  className={`${
-                    hoveredTab == file.id && selectedFile?.id != file.id
-                      ? "visible"
-                      : "invisible"
-                  } mx-2`}
-                >
-                  <CloseIcon className="text-gray-600" sx={{ fontSize: 15 }} />
-                </button>}
+                {selectedFile?.id != file.id && (
+                  <button
+                    onClick={() => onCancel(file)}
+                    className={`${
+                      hoveredTab == file.id && selectedFile?.id != file.id
+                        ? "visible"
+                        : "invisible"
+                    } mx-2`}
+                  >
+                    <CloseIcon
+                      className="text-gray-600"
+                      sx={{ fontSize: 15 }}
+                    />
+                  </button>
+                )}
 
                 {selectedFile?.id == file?.id && (
                   <button onClick={() => onCancel(file)} className={`mx-2`}>

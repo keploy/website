@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Directory, File, sortDir, sortFile } from "../utils/file-manager";
 import { getIcon } from "./icon";
-import styled from "@emotion/styled";
-
+import { MdOutlineKeyboardArrowRight , MdOutlineKeyboardArrowDown } from "react-icons/md";
 interface FileTreeProps {
   rootDir: Directory;
   selectedFile: File | undefined;
@@ -58,9 +57,14 @@ const FileDiv = ({
   const isSelected = (selectedFile && selectedFile.id === file.id) as boolean;
   const depth = file.depth;
   return (
-    <Div depth={depth} isSelected={isSelected} onClick={onClick}>
+    <div
+      className={`flex items-center pl-${depth * 4} ${
+        isSelected ? "bg-orange-300" : "transparent"
+      } rounded cursor-pointer hover:bg-orange-200`}
+      onClick={onClick}
+    >
       <FileIcon name={icon} extension={file?.name?.split(".").pop() || ""} />
-      <span style={{ marginLeft: 1 }}>
+      <span className="ml-1">
         {file?.name &&
         ["record", "test", "replay", "terminal"].includes(
           file.name.split(".").pop() || ""
@@ -68,27 +72,9 @@ const FileDiv = ({
           ? file.name.split(".").pop()
           : file?.name || ""}
       </span>
-    </Div>
+    </div>
   );
 };
-
-const Div = styled.div<{
-  depth: number;
-  isSelected: boolean;
-}>`
-  display: flex;
-  align-items: center;
-  padding-left: ${(props) => props.depth * 16}px;
-  background-color: ${(props) =>
-    props.isSelected ? "#FDBA74" : "transparent"};
-
-  border-color: #242424;
-  border-radius: 2px;
-  :hover {
-    cursor: pointer;
-    background-color: #fed7aa;
-  }
-`;
 
 const DirDiv = ({
   directory,
@@ -104,12 +90,20 @@ const DirDiv = ({
   const [open, setOpen] = useState(defaultOpen);
   return (
     <>
-      <FileDiv
-        file={directory}
-        icon={open ? "openDirectory" : "closedDirectory"}
-        selectedFile={selectedFile}
+      <div
+        className={`flex items-center cursor-pointer ${
+          open ? "pl-4" : "pl-4"
+        }`}
         onClick={() => setOpen(!open)}
-      />
+      >
+        {open ? <MdOutlineKeyboardArrowDown /> : <MdOutlineKeyboardArrowRight />}
+        <FileDiv
+          file={directory}
+          icon={open ? "openDirectory" : "closedDirectory"}
+          selectedFile={selectedFile}
+          onClick={() => setOpen(!open)}
+        />
+      </div>
       {open ? (
         <SubTree
           directory={directory}
@@ -150,13 +144,5 @@ const FileIcon = ({
   extension?: string;
 }) => {
   let icon = getIcon(extension || "", name || "");
-  return <Span>{icon}</Span>;
+  return <span className="flex w-8 h-8 justify-center items-center">{icon}</span>;
 };
-
-const Span = styled.span`
-  display: flex;
-  width: 32px;
-  height: 32px;
-  justify-content: center;
-  align-items: center;
-`;

@@ -5,7 +5,6 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FileTree } from "./file-tree";
 import { Directory, File } from "../utils/file-manager";
-import { Data } from "../../data/Tools";
 import Button from "@mui/material/Button";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -14,15 +13,11 @@ export const Sidebar = ({
   rootDir,
   selectedFile,
   onSelect,
-  selectedTool,
-  onSelectTools,
   Collapse,
 }: {
   rootDir: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File) => void;
-  selectedTool: File | undefined;
-  onSelectTools: (file: File) => void;
   Collapse : (collapse:boolean)=>void;
 }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -37,11 +32,11 @@ export const Sidebar = ({
     <div className={`flex flex-col h-full border border-gray-300 transition-all duration-300 ${collapsed ? 'w-12' : 'w-64'}`}>
       <Button
         onClick={toggleCollapse}
-        startIcon={collapsed ? <ChevronRightIcon className=" mx-auto" /> : <ChevronLeftIcon />}
+        startIcon={collapsed ? <ChevronRightIcon className="hover:bg-slate-600" /> : <ChevronLeftIcon />}
         className="self-end"
       >
       </Button>
-      {!collapsed && (
+      {/* {!collapsed && (
         <>
           <Accordion
             disableGutters
@@ -71,52 +66,17 @@ export const Sidebar = ({
             >
               Files
             </AccordionSummary>
-            <AccordionDetails sx={{ padding: 0 }}>
-              <FileTree
+            <AccordionDetails sx={{ padding: 0 }}> */}
+            {!collapsed &&  <FileTree
                 rootDir={rootDir}
                 selectedFile={selectedFile}
                 onSelect={onSelect}
-              />
-            </AccordionDetails>
+              />}
+            {/* </AccordionDetails>
           </Accordion>
-          <Accordion
-            disableGutters
-            elevation={0}
-            square
-            className="border border-gray-300"
-            sx={{
-              "&:before": {
-                display: "none",
-              },
-              "& .MuiAccordionSummary-root": {
-                minHeight: 0,
-              },
-              "& .MuiAccordionSummary-content": {
-                margin: 0,
-              },
-              "& .MuiAccordionSummary-expandIconWrapper": {
-                padding: 0,
-              },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel2-content"
-              id="panel2-header"
-              className="py-2"
-            >
-              Tools
-            </AccordionSummary>
-            <AccordionDetails sx={{ padding: 0 }}>
-              <FileTree
-                rootDir={Data}
-                selectedFile={selectedTool}
-                onSelect={onSelectTools}
-              />
-            </AccordionDetails>
-          </Accordion>
+         
         </>
-      )}
+      )} */}
     </div>
   );
   

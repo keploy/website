@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { Terminal } from "./Terminal";
 import { useTerminal } from "./Terminal/hooks";
-import { CurlAPI, commandStart, commandStop, commandTest } from "@/app/api";
+import { CurlAPI, commandStart, commandStop, commandTest } from "@/app/api/hello/atg";
 function MainTerminal({
   onRerenderEditor,
   inputRef,
