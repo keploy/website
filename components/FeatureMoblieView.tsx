@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { useState, useRef, useEffect } from "react";
-import { Transition } from "@headlessui/react";
-import Image from "next/image";
-import NativeIntegration from "@/public/images/replay-tc31305e1d2286fe485b27.gif";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import deDuplication from "@/public/images/CaptureAndReplayV2.json";
-import Link from "next/link";
-import dynamic from "next/dynamic";
-const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
+import React, { useState, useRef, useEffect } from 'react';
+import { Transition } from '@headlessui/react';
+import Image from 'next/image';
+import NativeIntegration from '@/public/images/replay-tc31305e1d2286fe485b27.gif';
+import testAndStubsGen from '@/public/images/TestGenHighlighted.json';
+import deDuplication from '@/public/images/CaptureAndReplayV2.json';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const LottiePlayer = dynamic(()=>import("./LottiePlayer"),{ssr:false}) 
 export default function FeaturesMobileView() {
   const [tab, setTab] = useState<number>(1);
 
@@ -67,8 +67,8 @@ export default function FeaturesMobileView() {
                 <div
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3  transition duration-300 hover:shadow-lg ${
                     tab !== 1
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg "
-                      : "bg-gray-200 border-transparent shadow-lg "
+                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg '
+                      : 'bg-gray-200 border-transparent shadow-lg '
                   }`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -76,41 +76,38 @@ export default function FeaturesMobileView() {
                   }}
                 >
                   <div className="flex flex-col">
+
                     <div className="flex items-center">
-                      <div>
-                        <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300 ">
-                          Record Replay API Flows
-                        </div>
-                        <div className="text-gray-600">
-                          Record and replay complex, distributed API flows as
-                          mocks and stubs. It's like time machine for tests!
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
-                        <svg
-                          className="w-3 h-3 fill-primary-300 "
-                          viewBox="0 0 12 12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
-                        </svg>
-                      </div>
+
+                  <div>
+                    <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300 ">
+                      Record Replay API Flows
                     </div>
-                    <div>
-                      <Link
-                        className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
-                        href="/stub-generation"
-                      >
-                        Explore More
-                      </Link>
+                    <div className="text-gray-600">
+                      Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!
                     </div>
                   </div>
+                  <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
+                    <svg
+                      className="w-3 h-3 fill-primary-300 "
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
+                    </svg>
+                  </div>
+                    </div>
+                    <div>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/stub-generation">Explore More</Link>
+                    </div>
+                  </div>
+
                 </div>
                 <Link
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 2
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-gray-200 border-transparent shadow-lg"
+                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
+                      : 'bg-gray-200 border-transparent shadow-lg'
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -118,46 +115,41 @@ export default function FeaturesMobileView() {
                     setTab(2);
                   }}
                 >
-                  <div className="flex flex-col">
-                    <div className="flex items-center">
-                      <div>
-                        <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
-                          Find Duplicate Tests
-                        </div>
-                        <div className="text-gray-600">
-                          Find redundant tests that doesn't add to the test
-                          coverage. Automatically detect and remove duplicate
-                          tests, ideal for big-teams crowd-sourcing tests.
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
-                        <svg
-                          className="w-3 h-3 fill-primary-300"
-                          viewBox="0 0 12 12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z"
-                            fillRule="nonzero"
-                          />
-                        </svg>
-                      </div>
+                <div className="flex flex-col">
+
+                  <div className="flex items-center">
+
+                  <div>
+                    <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
+                      Find Duplicate Tests
                     </div>
-                    <div>
-                      <Link
-                        className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
-                        href="/test-duplication"
-                      >
-                        Explore More
-                      </Link>
+                    <div className="text-gray-600">
+                      Find redundant tests that doesn't add to the test coverage. Automatically detect and remove duplicate tests, ideal for big-teams crowd-sourcing tests.
                     </div>
                   </div>
+                  <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
+                    <svg
+                      className="w-3 h-3 fill-primary-300"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z"
+                        fillRule="nonzero"
+                      />
+                    </svg>
+                    </div>
+                    </div>
+                    <div>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/test-duplication">Explore More</Link>
+                    </div>
+                </div>
                 </Link>
                 <Link
                   className={`flex items-center text-lg p-5 rounded border ease-in-out mb-3 transition duration-300 hover:shadow-lg ${
                     tab !== 3
-                      ? "bg-white shadow-md border-gray-200 hover:shadow-lg"
-                      : "bg-gray-200 border-transparent shadow-lg"
+                      ? 'bg-white shadow-md border-gray-200 hover:shadow-lg'
+                      : 'bg-gray-200 border-transparent shadow-lg'
                   }`}
                   href="#0"
                   onClick={(e) => {
@@ -165,40 +157,34 @@ export default function FeaturesMobileView() {
                     setTab(3);
                   }}
                 >
-                  <div className="flex flex-col">
-                    <div className="flex items-center">
-                      <div>
-                        <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
-                          Works with JUnit, PyTest, Jest, Go-Test in CI/CD
-                        </div>
-                        <div className="text-gray-600">
-                          Merge Keploy tests coverage with unit testing
-                          libraries for combined test coverage gating in CI/CD
-                          pipelines like Jenkins, Github Actions.
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
-                        <svg
-                          className="w-3 h-3 fill-primary-300"
-                          viewBox="0 0 12 12"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M11.334 8.06a.5.5 0 00-.421-.237 6.023 6.023 0 01-5.905-6c0-.41.042-.82.125-1.221a.5.5 0 00-.614-.586 6 6 0 106.832 8.529.5.5 0 00-.017-.485z"
-                            fillRule="nonzero"
-                          />
-                        </svg>
-                      </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center">
+                  <div>
+                    <div className="mb-1 font-bold leading-snug tracking-tight text-secondary-300">
+                      Works with JUnit, PyTest, Jest, Go-Test in CI/CD
                     </div>
-                    <div>
-                      <Link
-                        className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
-                        href="/native-integration"
-                      >
-                        Explore More
-                      </Link>
+                    <div className="text-gray-600">
+                      Merge Keploy tests coverage with unit testing libraries for combined test coverage gating in CI/CD pipelines like Jenkins, Github Actions.
+
                     </div>
                   </div>
+                  <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 ml-3 bg-white rounded-full shadow">
+                    <svg
+                      className="w-3 h-3 fill-primary-300"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.334 8.06a.5.5 0 00-.421-.237 6.023 6.023 0 01-5.905-6c0-.41.042-.82.125-1.221a.5.5 0 00-.614-.586 6 6 0 106.832 8.529.5.5 0 00-.017-.485z"
+                        fillRule="nonzero"
+                      />
+                    </svg>
+                  </div>
+                  </div>
+                  <div>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/native-integration">Explore More</Link>
+                  </div>
+                </div>
                 </Link>
               </div>
             </div>
@@ -228,7 +214,7 @@ export default function FeaturesMobileView() {
                     <div className="relative inline-flex flex-col ">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       <div className=" mb-14">
-                        <LottiePlayer VideoPath={testAndStubsGen} />
+                        <LottiePlayer VideoPath={testAndStubsGen}/>
                       </div>
                     </div>
                   </Transition>
@@ -249,8 +235,8 @@ export default function FeaturesMobileView() {
                     <div className="flex flex-col justify-between">
                       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-
-                      <LottiePlayer VideoPath={deDuplication} />
+                     
+                      <LottiePlayer VideoPath={deDuplication}/>
                     </div>
                   </Transition>
                   {/* Item 3 */}
@@ -294,7 +280,7 @@ export default function FeaturesMobileView() {
               className="w-full mb-4 btn text-secondary-300 bg-primary-300 hover:font-semibold sm:w-auto sm:mb-0"
               href="https://keploy.io/docs"
             >
-              Documentation{" "}
+              Documentation{' '}
             </Link>
           </div>
           <div>
@@ -302,7 +288,7 @@ export default function FeaturesMobileView() {
               className="w-full text-white btn bg-secondary-300 hover:font-semibold sm:w-auto sm:ml-4"
               href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
             >
-              Meet Maintainers{" "}
+              Meet Maintainers{' '}
             </Link>
           </div>
         </div>
