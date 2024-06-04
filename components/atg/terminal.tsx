@@ -1,87 +1,18 @@
 "use client";
-import React, {
-  useEffect,
-  useMemo,
-  useState,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Terminal } from "./Terminal";
 import { useTerminal } from "./Terminal/hooks";
-import { CurlAPI, commandStart, commandStop, commandTest } from "@/app/api/hello/atg";
-function MainTerminal({
-  onRerenderEditor,
-  inputRef,
-}: {
-  onRerenderEditor?: any;
-  inputRef?: React.RefObject<HTMLInputElement>;
-}) {
-  const Emoji = "\u{1F430} Keploy"; // 🐰
-  // State to manage multiple terminal sessions
-  const [tabs, setTabs] = useState([{ id: 1, title: "Tab 1" }]);
-  const [nextTabId, setNextTabId] = useState(2);
-  const [activeTab, setActiveTab] = useState(1);
+// import { CurlAPI, commandStart, commandStop, commandTest } from "@/app/api/hello/atg";
 
-  const addNewTerminal = () => {
-    const newTabId = nextTabId;
-    setNextTabId(nextTabId + 1);
-    if (newTabId > 3) {
-      return;
-    }
-    const newTabTitle = `Tab ${newTabId}`;
-    setTabs([...tabs, { id: newTabId, title: newTabTitle }]);
-    setActiveTab(newTabId);
-  };
-
-  const switchTab = (tabId) => {
-    setActiveTab(tabId);
-  };
-
+function MainTerminal({ inputRef }:{inputRef:React.RefObject<HTMLInputElement>}) {
   return (
     <div>
-      <div className="flex bg-stone-800 sticky top-0 z-50 opacity-90">
-        <div
-          className="cursor-pointer bg-neutral-400 hover:bg-neutral-500 border-none text-slate-700 text-center no-underline font-bold inline-block text-base m-2 px-4 py-2 rounded-full"
-          onClick={addNewTerminal}
-        >
-          +
-        </div>
-
-        {tabs.map((tab) => (
-          <div
-            key={tab.id}
-            className={`cursor-pointer px-4 py-2 m-2 rounded-lg ${
-              activeTab === tab.id
-                ? "bg-neutral-500 text-white"
-                : "bg-neutral-400 text-gray-800"
-            }`}
-            onClick={() => switchTab(tab.id)}
-          >
-            {tab.title}
-          </div>
-        ))}
-      </div>
-      {tabs.map((tab) => (
-        <TerminalSession
-          key={tab.id}
-          tab={tab}
-          isActive={activeTab === tab.id}
-          ReRender={onRerenderEditor}
-          inputRef={inputRef}
-        />
-      ))}
+      <TerminalSession  inputRef={inputRef} />
     </div>
   );
 }
 
-function TerminalSession({
-  tab,
-  isActive,
-  ReRender,
-  inputRef,
-}: {
-  inputRef: React.RefObject<HTMLInputElement>;
-}) {
+function TerminalSession({ inputRef }:{inputRef:React.RefObject<HTMLInputElement>}) {
   const { history, pushToHistory, setTerminalRef, resetTerminal, popTerminal } =
     useTerminal();
   const Emoji = "\u{1F430} Keploy"; // 🐰
@@ -89,11 +20,10 @@ function TerminalSession({
 
   useEffect(() => {
     resetTerminal();
-
     pushToHistory(
       <>
         <div>
-          <strong>Welcome!</strong> to {tab.title}.
+          <strong>Welcome!</strong> to the terminal.
         </div>
         <div style={{ fontSize: 20 }}>
           It contains{" "}
@@ -103,7 +33,7 @@ function TerminalSession({
           . Awesome, right?
         </div>
         <br />
-        <div>You can write commands here to interact with {tab.title}.</div>
+        <div>You can write commands here to interact with the terminal.</div>
       </>
     );
   }, []);
@@ -111,8 +41,8 @@ function TerminalSession({
   const commands = useMemo(
     () => ({
       'keploy record -c "npm run dev"': async () => {
-        const data = await commandStart(`Start`);
-        ReRender();
+        const data = "data";
+        // ReRender();
         await pushToHistory(
           <>
             <div>
@@ -122,12 +52,12 @@ function TerminalSession({
         );
       },
       fetch: async () => {
-        ReRender();
+        // ReRender();
       },
       stop: async () => {
-        const data = await commandStop(`Stop`);
+        const data = "await commandStop(`Stop`)";
         setTimeout(() => {
-          ReRender();
+          // ReRender();
         }, 10000);
         await pushToHistory(
           <>
@@ -151,7 +81,7 @@ function TerminalSession({
 
         try {
           // Fetch data
-          const data = await commandTest(`test`);
+          const data = "await commandTest(`test`)";
           const usingJest = data[0];
           const TotalCoverage = data[1];
           await popTerminal();
@@ -194,7 +124,7 @@ function TerminalSession({
         );
       },
       "curl --request GET   --url http://localhost:8000/students": async () => {
-        const data = await CurlAPI();
+        const data = "await CurlAPI()";
         await pushToHistory(
           <>
             <div>{Emoji}: API captured</div>
@@ -215,10 +145,8 @@ function TerminalSession({
     [pushToHistory]
   );
 
-  return isActive ? (
+  return (
     <div>
-      <div>
-      </div>
       <Terminal
         history={history}
         ref={setTerminalRef}
@@ -227,7 +155,7 @@ function TerminalSession({
         inputRef={inputRef}
       />
     </div>
-  ) : null;
+  );
 }
 
 export default MainTerminal;

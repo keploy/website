@@ -8,20 +8,81 @@ export const Data: Directory = {
   depth: 0,
   dirs: [
     {
-      id: "NewFolder",
+      id: "src",
       name: "src",
       parentId: "root",
       type: Type.DIRECTORY,
-      depth: 0,
-      dirs: [],
+      depth: 1,
+      dirs: [
+        {
+          id:"src2",
+          name:"src2",
+          parentId:"src",
+          type:Type.DIRECTORY,
+          depth:2,
+          dirs:[],
+          files:[
+            {
+              id: "11",
+              name: "go.mod",
+              type: Type.FILE,
+              parentId: "src2",
+              depth: 3,
+              content:
+                "module github.com/keploy/animal-app\n\n\
+              go 1.19\n\n\
+              require (\n\
+                github.com/gin-gonic/gin v1.9.0\n\
+                go.mongodb.org/mongo-driver v1.11.6\n\
+              )\n\n\
+              require (\n\
+                github.com/bytedance/sonic v1.8.0 // indirect\n\
+                github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect\n\
+                github.com/gin-contrib/sse v0.1.0 // indirect\n\
+                github.com/go-playground/locales v0.14.1 // indirect\n\
+                github.com/go-playground/universal-translator v0.18.1 // indirect\n\
+                github.com/go-playground/validator/v10 v10.11.2 // indirect\n\
+                github.com/goccy/go-json v0.10.0 // indirect\n\
+                github.com/golang/snappy v0.0.1 // indirect\n\
+                github.com/json-iterator/go v1.1.12 // indirect\n\
+                github.com/klauspost/compress v1.13.6 // indirect\n\
+                github.com/klauspost/cpuid/v2 v2.0.9 // indirect\n\
+                github.com/leodido/go-urn v1.2.1 // indirect\n\
+                github.com/mattn/go-isatty v0.0.17 // indirect\n\
+                github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect\n\
+                github.com/modern-go/reflect2 v1.0.2 // indirect\n\
+                github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect\n\
+                github.com/pelletier/go-toml/v2 v2.0.6 // indirect\n\
+                github.com/pkg/errors v0.9.1 // indirect\n\
+                github.com/twitchyliquid64/golang-asm v0.15.1 // indirect\n\
+                github.com/ugorji/go/codec v1.2.9 // indirect\n\
+                github.com/xdg-go/pbkdf2 v1.0.0 // indirect\n\
+                github.com/xdg-go/scram v1.1.1 // indirect\n\
+                github.com/xdg-go/stringprep v1.0.3 // indirect\n\
+                github.com/youmark/pkcs8 v0.0.0-20181117223130-1be2e3e5546d // indirect\n\
+                golang.org/x/arch v0.0.0-20210923205945-b76863e36670 // indirect\n\
+                golang.org/x/crypto v0.5.0 // indirect\n\
+                golang.org/x/net v0.7.0 // indirect\n\
+                golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect\n\
+                golang.org/x/sys v0.5.0 // indirect\n\
+                golang.org/x/text v0.7.0 // indirect\n\
+                google.golang.org/protobuf v1.28.1 // indirect\n\
+                gopkg.in/yaml.v3 v3.0.1 // indirect\n\
+              )\n\
+              ",
+            },
+          ],
+        }
+      ],
       files: [
         {
           id: "1",
           name: "go.mod",
           type: Type.FILE,
-          parentId: "NewFolder",
-          depth: 1,
-          content: "module github.com/keploy/animal-app\n\n\
+          parentId: "src",
+          depth: 2,
+          content:
+            "module github.com/keploy/animal-app\n\n\
           go 1.19\n\n\
           require (\n\
             github.com/gin-gonic/gin v1.9.0\n\
@@ -61,15 +122,16 @@ export const Data: Directory = {
             google.golang.org/protobuf v1.28.1 // indirect\n\
             gopkg.in/yaml.v3 v3.0.1 // indirect\n\
           )\n\
-          "
+          ",
         },
         {
           id: "2",
           name: "go.sum",
           type: Type.FILE,
-          parentId: "NewFolder",
-          depth: 1,
-          content: "github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=\n\
+          parentId: "src",
+          depth: 2,
+          content:
+            "github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=\n\
           github.com/bytedance/sonic v1.8.0 h1:ea0Xadu+sHlu7x5O3gKhRpQ1IKiMrSiHttPF0ybECuA=\n\
           github.com/bytedance/sonic v1.8.0/go.mod h1:i736AoUSYt75HyZLoJW9ERYxcy6eaN6h4BZXU064P/U=\n\
           github.com/chenzhuoyu/base64x v0.0.0-20211019084208-fb5309c8db06/go.mod h1:DH46F32mSOjUmXrMHnKwZdA8wcEefY7UVqBKYGjpdQY=\n\
@@ -186,46 +248,47 @@ export const Data: Directory = {
           gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=\n\
           gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=\n\
           rsc.io/pdf v0.1.1/go.mod h1:n8OzWcQ6Sp37PL01nO98y4iUCRdTGarVfzxY20ICaU4=\n\
-          "
+          ",
         },
         {
           id: "3",
           name: "server.go",
           type: Type.FILE,
-          parentId: "NewFolder",
-          depth: 1,
-          content: "package main\n\n\
+          parentId: "src",
+          depth: 2,
+          content:
+            'package main\n\n\
           import (\n\
-            \"context\"\n\
-            \"github.com/gin-gonic/gin\"\n\
-            \"go.mongodb.org/mongo-driver/bson\"\n\
-            \"go.mongodb.org/mongo-driver/mongo\"\n\
-            \"go.mongodb.org/mongo-driver/mongo/options\"\n\
-            \"log\"\n\
-            \"net/http\"\n\
+            "context"\n\
+            "github.com/gin-gonic/gin"\n\
+            "go.mongodb.org/mongo-driver/bson"\n\
+            "go.mongodb.org/mongo-driver/mongo"\n\
+            "go.mongodb.org/mongo-driver/mongo/options"\n\
+            "log"\n\
+            "net/http"\n\
           )\n\n\
           var ctx = context.Background()\n\n\
           func getDB() (*mongo.Database, error) {\n\
-            clientOptions := options.Client().ApplyURI(\"mongodb://root:pass@localhost:27017/admin\")\n\
+            clientOptions := options.Client().ApplyURI("mongodb://root:pass@localhost:27017/admin")\n\
             client, err := mongo.Connect(ctx, clientOptions)\n\
             if err != nil {\n\
               return nil, err\n\
             }\n\n\
-            db := client.Database(\"animal_db\")\n\
+            db := client.Database("animal_db")\n\
             return db, nil\n\
           }\n\n\
           func main() {\n\
             r := gin.Default()\n\n\
-            r.GET(\"/\", func(c *gin.Context) {\n\
-              c.String(http.StatusOK, \"Welcome to the world of animals.\")\n\
+            r.GET("/", func(c *gin.Context) {\n\
+              c.String(http.StatusOK, "Welcome to the world of animals.")\n\
             })\n\n\
-            r.GET(\"/animals\", func(c *gin.Context) {\n\
+            r.GET("/animals", func(c *gin.Context) {\n\
               db, err := getDB()\n\
               if err != nil {\n\
                 c.AbortWithStatus(http.StatusInternalServerError)\n\
                 log.Fatal(err)\n\
               }\n\n\
-              cursor, err := db.Collection(\"animal_tb\").Find(ctx, bson.M{})\n\
+              cursor, err := db.Collection("animal_tb").Find(ctx, bson.M{})\n\
               if err != nil {\n\
                 c.AbortWithStatus(http.StatusInternalServerError)\n\
                 log.Fatal(err)\n\
@@ -235,13 +298,13 @@ export const Data: Directory = {
                 c.AbortWithStatus(http.StatusInternalServerError)\n\
                 log.Fatal(err)\n\
               }\n\n\
-              c.JSON(http.StatusOK, gin.H{\"animals\": animals})\n\
+              c.JSON(http.StatusOK, gin.H{"animals": animals})\n\
             })\n\n\
-            if err := r.Run(\":5000\"); err != nil {\n\
+            if err := r.Run(":5000"); err != nil {\n\
               log.Fatal(err)\n\
             }\n\
           }\n\
-          ",
+          ',
         },
       ],
     },

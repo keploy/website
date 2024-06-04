@@ -28,16 +28,16 @@ export const Terminal = forwardRef(
     /**
      * Focus on the input whenever we render the terminal or click in the terminal
      */
-    useEffect(() => {
-      inputRef.current?.focus();
-    });
+    // useEffect(() => {
+    //   inputRef.current?.focus();
+    // });
 
-    const focusInput = useCallback(() => {
-      if(inputRef.current?.value){
-        setInputValue(inputRef.current?.value)
-      }
-      inputRef.current?.focus();
-    }, []);
+    // const focusInput = useCallback(() => {
+    //   if(inputRef.current?.value){
+    //     setInputValue(inputRef.current?.value)
+    //   }
+    //   inputRef.current?.focus();
+    // }, []);
 
     /**
      * When user types something, we update the input value
@@ -80,7 +80,7 @@ export const Terminal = forwardRef(
 
     return (
       <div>
-        <div className="terminal" ref={ref} onClick={focusInput}>
+        <div className="terminal rounded-b-md" ref={ref}  >
           <div className="p-4">
             {history.map((line, index) => (
               <div

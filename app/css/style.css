@@ -32,3 +32,61 @@
 button{
     cursor: pointer !important;
 }
+
+/* Terminal's css */
+/* terminal.css */
+.terminal {
+    height: 20vh;
+    overflow-y: scroll;
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+    font-size: 14px;
+    line-height: 1.42;
+    font-family: "Menlo", "Monaco", "Consolas", "Courier New", Courier, monospace;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+  }
+  
+  .terminal::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+  }
+  
+  .terminal__line {
+    line-height: 2;
+    white-space: pre-wrap;
+  }
+  
+  .terminal__prompt {
+    display: flex;
+    align-items: center;
+  }
+  
+  .terminal__prompt__label {
+    flex: 0 0 auto;
+    color: #00ff00; /* Green prompt label */
+  }
+  
+  .terminal__prompt__input {
+    flex: 1;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+  
+  .terminal__prompt__input input {
+    flex: 1;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.42;
+    font-family: "Menlo", "Monaco", "Consolas", "Courier New", Courier, monospace;
+  }
+  
+  .terminal__prompt__input input::placeholder {
+    color: #00ff00; /* Green cursor style */
+  }
+  
