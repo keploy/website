@@ -63,7 +63,6 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
 
         <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
         <div className="flex flex-col  overflow-hidden supports-[overflow:clip]:overflow-clip">
-            <Header />
             {children}
             {/*<Banner />*/}
         </div>

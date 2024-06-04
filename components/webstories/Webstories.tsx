@@ -10,7 +10,7 @@ import Link from "next/link";
 import { StaticImageData } from "next/image";
 
 type WebStoryItem = {
-  imageUrl?: string | StaticImageData ;
+  imageUrl?: string | StaticImageData;
   Heading?: string;
   text?: string;
   swipeText?: string;
@@ -20,10 +20,10 @@ type WebStoryItem = {
 
 type WebStoriesProps = {
   data: WebStoryItem[];
-  slug:string | string[];
+  slug: string | string[];
 };
 
-const WebStories = ({ data , slug }: WebStoriesProps) => {
+const WebStories = ({ data, slug }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
   const [totalTime, setTotalTime] = useState<number>(0);
@@ -48,8 +48,10 @@ const WebStories = ({ data , slug }: WebStoriesProps) => {
     intervalRef.current = setTimeout(() => {
       if (currentStoryIndex === data.length - 1) {
         setTimer(true);
+        console.log("it  is true");
       } else {
         setTimer(false);
+        console.log("it  is false");
       }
       handleNext();
     }, duration);
@@ -120,7 +122,10 @@ const WebStories = ({ data , slug }: WebStoriesProps) => {
   };
 
   const handleReplay = () => {
-    setCurrentStoryIndex(0);
+    //when at the last story.
+    // setCurrentStoryIndex(-1);
+    setTimer(true);
+    
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {

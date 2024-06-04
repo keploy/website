@@ -10,9 +10,13 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/test-duplication";
+import {
+  featuresData,
+  faqQuestions,
+} from "@/components/utils/test-duplication";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import Header from "@/components/ui/header";
 const heroData = {
   titleTop: "Increase Test coverage with ",
   titleBottom: "Keploy Dedup feature",
@@ -46,6 +50,7 @@ const BannerData = {
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -80,11 +85,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-          content={testimonialData[2].content}
-          author={testimonialData[2].author}
-          company={testimonialData[2].company}
-          image={testimonialData[2].image}
-        />
+        content={testimonialData[2].content}
+        author={testimonialData[2].author}
+        company={testimonialData[2].company}
+        image={testimonialData[2].image}
+      />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}

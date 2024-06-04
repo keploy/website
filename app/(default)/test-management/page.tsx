@@ -13,6 +13,7 @@ import { blocksData } from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/test-management";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import Header from "@/components/ui/header";
 const heroData = {
   titleTop: "Efficient Test Management ",
   titleBottom: "made Simple.",
@@ -46,6 +47,7 @@ const BannerData = {
 export default function Home() {
   return (
     <>
+    <Header/>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
