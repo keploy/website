@@ -8,8 +8,8 @@ import { Type, File, Directory } from "./Editor/utils/file-manager";
 import { Data } from "./data/TypeScript";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import CustomizedSteppers from "./components/HorizontalStepper";
-import StageComponent from "./components/StageComponent";
 import MainTerminal from "./terminal";
+import StageComponent from "./components/StageComponent";
 
 const dummyDir: Directory = {
   id: "1",
@@ -31,7 +31,8 @@ const Editor = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [showTerminal, setShowTerminal] = useState<boolean>(false);
-  const [state, setState] = useState(0);
+  const [state, setState] = useState(-1);
+  const [functionName, setFunctionName] = useState<string>("record");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -39,7 +40,6 @@ const Editor = () => {
       setDataFetched(false);
       setError("");
       try {
-        // Assuming Data is a directory structure fetched from some API or defined locally
         setRootDir(Data);
         setDataFetched(true);
       } catch (err) {
@@ -72,11 +72,48 @@ const Editor = () => {
   };
 
   const nextState = () => {
-    setState((prevState) => (prevState + 1) % 3);
+    setState((prevState) => {
+      const newState = (prevState + 1);
+      newState>2 ?  (newState = 0 ): 
+      switch (newState) {
+        case -1:
+          setFunctionName("record");
+        case 0:
+          setFunctionName("record");
+          break;
+        case 1:
+          setFunctionName("deduplicate");
+          break;
+        case 2:
+          setFunctionName("testcoverage");
+          break;
+        default:
+          setFunctionName("");
+      }
+      console.log(state, functionName);
+
+      return newState;
+    });
   };
 
   const prevState = () => {
-    setState((prevState) => (prevState - 1 + 3) % 3);
+    setState((prevState) => {
+      const newState = (prevState - 1);
+      switch (newState) {
+        case 0:
+          setFunctionName("record");
+          break;
+        case 1:
+          setFunctionName("deduplicate");
+          break;
+        case 2:
+          setFunctionName("testcoverage");
+          break;
+        default:
+          setFunctionName("");
+      }
+      return newState;
+    });
   };
 
   const ShowingTerminal = () => {
@@ -93,9 +130,17 @@ const Editor = () => {
         {dataFetched ? (
           <>
             <div className="flex flex-col max-w-6xl px-4 mx-auto my-16 m-2">
-              <CustomizedSteppers activeStep={state} onNext={nextState} onPrev={prevState} />
+              <CustomizedSteppers
+                activeStep={state}
+                onNext={nextState}
+                onPrev={prevState}
+              />
               <div className="flex flex-row mt-5">
-                <div className={`transition-all duration-200 ${collapsed ? "w-16" : "w-3/12"}`}>
+                <div
+                  className={`transition-all duration-200 ${
+                    collapsed ? "w-16" : "w-3/12"
+                  }`}
+                >
                   <Sidebar
                     rootDir={rootDir}
                     selectedFile={selectedFile}
@@ -103,7 +148,11 @@ const Editor = () => {
                     Collapse={CollapsingSidebar}
                   />
                 </div>
-                <div className={`relative flex flex-col ${collapsed ? "w-full" : "w-9/12"} ml-2 transition-all duration-300`}>
+                <div
+                  className={`relative flex flex-col ${
+                    collapsed ? "w-full" : "w-9/12"
+                  } ml-2 transition-all duration-300`}
+                >
                   <EditorContainer>
                     <div className="flex flex-row w-full h-full">
                       <div className="relative w-full h-full flex flex-col">
@@ -115,16 +164,22 @@ const Editor = () => {
                         />
                         {files.length !== 0 && (
                           <StageComponent
-                            StateNumber={state}
+                            functionName={functionName}
                             onNext={nextState}
-                            onPrev={prevState}
                             showTerminal={ShowingTerminal}
                             hideTerminal={NotShowingTerminal}
                           />
                         )}
                         <Code selectedFile={selectedFile} />
-                        <div className={`absolute bottom-0  z-20  w-full transition-all duration-500 ${showTerminal ? 'max-h-96' : 'max-h-0'} overflow-hidden`}>
-                          <MainTerminal inputRef={inputRef} />
+                        <div
+                          className={`absolute bottom-0  z-0  w-full transition-all duration-500 ${
+                            showTerminal ? "max-h-96" : "max-h-0"
+                          } overflow-hidden`}
+                        >
+                          <MainTerminal
+                            inputRef={inputRef}
+                            functionName={functionName}
+                          />
                         </div>
                       </div>
                     </div>
@@ -134,7 +189,6 @@ const Editor = () => {
                       </div>
                     )}
                   </EditorContainer>
-                  <div className="absolute w-full h-2/6 bottom-0 z-20"></div>
                 </div>
               </div>
             </div>

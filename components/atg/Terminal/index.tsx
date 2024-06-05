@@ -26,18 +26,15 @@ export const Terminal = forwardRef(
     const [input, setInputValue] = useState<string>("");
 
     /**
-     * Focus on the input whenever we render the terminal or click in the terminal
+     * Focus on the input whenever we render the terminal
      */
-    // useEffect(() => {
-    //   inputRef.current?.focus();
-    // });
+    useEffect(() => {
+      inputRef.current?.focus();
+    }, [inputRef]); // Ensure this runs only when inputRef changes
 
-    // const focusInput = useCallback(() => {
-    //   if(inputRef.current?.value){
-    //     setInputValue(inputRef.current?.value)
-    //   }
-    //   inputRef.current?.focus();
-    // }, []);
+    const focusInput = useCallback(() => {
+      inputRef.current?.focus();
+    }, [inputRef]);
 
     /**
      * When user types something, we update the input value
@@ -54,13 +51,12 @@ export const Terminal = forwardRef(
      */
     const handleInputKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
-        console.log(input)
         if (e.key === "Enter") {
           const commandToExecute = commands?.[input];
           if (commandToExecute) {
             commandToExecute?.();
           } else {
-            handleCommandNotFound(); // Call function for handling command not found without arguments
+            handleCommandNotFound();
           }
           setInputValue("");
         }
@@ -68,11 +64,9 @@ export const Terminal = forwardRef(
       [commands, input]
     );
 
-  
     // Function to handle command not found
     const handleCommandNotFound = () => {
       const commandNotFoundFunc = commands["__notFound__"];
-
       if (commandNotFoundFunc) {
         commandNotFoundFunc();
       }
@@ -80,7 +74,7 @@ export const Terminal = forwardRef(
 
     return (
       <div>
-        <div className="terminal rounded-b-md" ref={ref}  >
+        <div className="terminal border border-gray-300 h-full" ref={ref} onClick={focusInput}>
           <div className="p-4">
             {history.map((line, index) => (
               <div
@@ -99,6 +93,7 @@ export const Terminal = forwardRef(
                   onKeyDown={handleInputKeyDown}
                   onChange={handleInputChange}
                   ref={inputRef}
+                  className="focus:outline-none appearance-none border border-slate-950"
                 />
               </div>
             </div>

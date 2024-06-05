@@ -1,4 +1,3 @@
-
 import Footer from "@/components/ui/footer";
 
 export const metadata = {
@@ -18,7 +17,8 @@ import MarutiLogo from "@/public/images/users/Logo_for_Maruti_Suzuki.svg";
 import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
-import TwitterTestimonials from "@/components/TwitterTestimonials";
+import TwitterTestimonials from "@/components/TwitterTestimonials"
+import RunCommandComponent from "@/components/atg/RunCommandComponent";
 import Editor from "@/components/atg/editor";
 export default function Home() {
   return (
@@ -33,6 +33,7 @@ export default function Home() {
           image={testimonialData[0].image}
         />
         <Editor/>
+        {/* <RunCommandComponent/> */}
         <Testimonial
           content={testimonialData[2].content}
           author={testimonialData[2].author}
