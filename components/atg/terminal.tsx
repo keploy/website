@@ -97,6 +97,16 @@ function TerminalSession({
       } else {
         console.log("dp2222");
       }
+    }else if(functionName === "deduplicate"){
+      if (inputRef.current) {
+        inputRef.current.value = `keploy record -c "Deduplicate ababy"`;
+        inputRef.current.focus();
+      }
+    }else if (functionName === "testcoverage"){
+      if (inputRef.current) {
+        inputRef.current.value = `keploy record -c "test"`;
+        inputRef.current.focus();
+      }
     }
   }, [functionName, commands, inputRef]);
 

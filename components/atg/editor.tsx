@@ -32,7 +32,7 @@ const Editor = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [showTerminal, setShowTerminal] = useState<boolean>(false);
   const [state, setState] = useState(-1);
-  const [functionName, setFunctionName] = useState<string>("record");
+  const [functionName, setFunctionName] = useState<string>("Start");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -49,6 +49,11 @@ const Editor = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    updateFunctionName(state);
+    console.log(state, functionName);
+  }, [state]);
 
   const CollapsingSidebar = (collapse: boolean) => {
     setCollapsed(collapse);
@@ -67,53 +72,33 @@ const Editor = () => {
   const CancelButtonAppBar = (file: File) => {
     const updatedFiles = files.filter((f) => f.id !== file.id);
     setFiles(updatedFiles);
-    console.log(updatedFiles.length);
     setSelectedFile(updatedFiles[updatedFiles.length - 1]);
   };
 
   const nextState = () => {
-    setState((prevState) => {
-      const newState = (prevState + 1);
-      newState>2 ?  (newState = 0 ): 
-      switch (newState) {
-        case -1:
-          setFunctionName("record");
-        case 0:
-          setFunctionName("record");
-          break;
-        case 1:
-          setFunctionName("deduplicate");
-          break;
-        case 2:
-          setFunctionName("testcoverage");
-          break;
-        default:
-          setFunctionName("");
-      }
-      console.log(state, functionName);
-
-      return newState;
-    });
+    setState((prevState) => (prevState === 2 ? 0 : prevState + 1));
   };
 
   const prevState = () => {
-    setState((prevState) => {
-      const newState = (prevState - 1);
-      switch (newState) {
-        case 0:
-          setFunctionName("record");
-          break;
-        case 1:
-          setFunctionName("deduplicate");
-          break;
-        case 2:
-          setFunctionName("testcoverage");
-          break;
-        default:
-          setFunctionName("");
-      }
-      return newState;
-    });
+    setState((prevState) => (prevState === 0 ? 0 : prevState - 1));
+  };
+
+  const updateFunctionName = (newState: number) => {
+    switch (newState) {
+      case -1:
+        setFunctionName("Start");
+      case 0:
+        setFunctionName("record");
+        break;
+      case 1:
+        setFunctionName("deduplicate");
+        break;
+      case 2:
+        setFunctionName("testcoverage");
+        break;
+      default:
+        setFunctionName("");
+    }
   };
 
   const ShowingTerminal = () => {
@@ -172,7 +157,7 @@ const Editor = () => {
                         )}
                         <Code selectedFile={selectedFile} />
                         <div
-                          className={`absolute bottom-0  z-0  w-full transition-all duration-500 ${
+                          className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
                             showTerminal ? "max-h-96" : "max-h-0"
                           } overflow-hidden`}
                         >

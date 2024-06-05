@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "@mui/material";
-import { useRunCommandSubscription } from "@/app/api/hello/atg";
 
 const StageComponent = ({
   functionName,
@@ -8,48 +7,15 @@ const StageComponent = ({
   showTerminal,
   hideTerminal,
 }: {
-  functionName:string
+  functionName: string;
   onNext: () => void;
   showTerminal: () => void;
   hideTerminal: () => void;
 }) => {
-  const [codeSubmissionId, setCodeSubmissionIdInput] = useState<string>("cefb2d5c-6543-432d-9254-4f2859cfe398");
-  
-  // const {
-  //   data,
-  //   loading,
-  //   error,
-  //   handleSubmit,
-  //   setCodeSubmissionId,
-  //   setCommand,
-  //   setSubmitted,
-  // } = useRunCommandSubscription({
-  //   codeSubmissionId,
-  //   command,
-  // });
-
-  // useEffect(() => {
-  //   switch (StateNumber) {
-  //     case 0:
-  //       setStateName("Record");
-  //       break;
-  //     case 1:
-  //       setStateName("De-Duplicate");
-  //       break;
-  //     case 2:
-  //       setStateName("Test-Coverage");
-  //       break;
-  //     default:
-  //       setStateName("");
-  //   }
-  // }, [StateNumber]);
 
   const MovingtoNextStage = async () => {
-    // if (functionName === "record") {
-      showTerminal();
-    // } else {
-      // hideTerminal();
-    // }
+    console.log("functionName from Stage Component: ", functionName);
+    showTerminal();
     onNext();
   };
 
@@ -62,9 +28,6 @@ const StageComponent = ({
       >
         {functionName}
       </Button>
-      {/* {loading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
-      {data && <pre>{JSON.stringify(data, null, 2)}</pre>} */}
     </div>
   );
 };
