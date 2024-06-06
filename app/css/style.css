@@ -38,7 +38,7 @@ button{
 .terminal {
   height: 30vh; ;
   overflow-y: scroll;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: scroll; /* Hide horizontal scrollbar */
   background-color: #f3f3f3; /* Light background similar to VS Code light theme */
   color: #333333; /* Dark text color */
   font-size: 14px;

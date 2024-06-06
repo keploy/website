@@ -9,8 +9,6 @@ const RUN_COMMAND_SUBSCRIPTION = gql`
   }
 `;
 
-
-
 const RunCommandComponent: React.FC = () => {
   const [codeSubmissionId, setCodeSubmissionId] = useState<string>('beba99be-a3d2-49bd-a788-80965a37b0ed');
   const [command, setCommand] = useState<String>('RECORD');

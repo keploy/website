@@ -87,6 +87,7 @@ const Editor = () => {
     switch (newState) {
       case -1:
         setFunctionName("Start");
+        break;
       case 0:
         setFunctionName("record");
         break;
@@ -153,6 +154,9 @@ const Editor = () => {
                             onNext={nextState}
                             showTerminal={ShowingTerminal}
                             hideTerminal={NotShowingTerminal}
+                            language={"GOLANG"}
+                            code={selectedFile?.content}
+                            selectedFile={selectedFile}
                           />
                         )}
                         <Code selectedFile={selectedFile} />

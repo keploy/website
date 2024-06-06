@@ -12,7 +12,8 @@ import JSON from "../../asset/icons/json.svg";
 import HTML from "../../asset/icons/html.svg";
 import IMAGE from "../../asset/icons/image.svg";
 import FAVICON from "../../asset/icons/favicon.svg";
-import TEXT from "../../asset/icons/textlint.svg";
+import YAML from "../../asset/icons/yaml.svg"
+import TEXT from "../../asset/icons/file-text-outline.svg"
 function getIconHelper() {
   const cache = new Map<string, ReactNode>();
   cache.set(
@@ -32,7 +33,7 @@ function getIconHelper() {
   cache.set("png", <Image src={IMAGE} alt="folder" width={24} height={24} />);
   cache.set("jpg", <Image src={IMAGE} alt="folder" width={24} height={24} />);
   cache.set("ico", <Image src={FAVICON} alt="folder" width={24} height={24} />);
-  cache.set("txt", <Image src={TEXT} alt="folder" width={24} height={24} />);
+  cache.set("yaml", <Image src={YAML} alt="folder" width={24} height={24} />);
   cache.set(
     "closedDirectory",
     <Image src={folderSrc} alt="folder" width={24} height={24} />
