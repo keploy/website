@@ -10,22 +10,23 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/record-replay";
+import { featuresData , faqQuestions} from "@/components/utils/api-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
 const pageMetadata: Metadata = {
-  title: 'Keploy | Speed Up Testing in CI/CD with secret Virtual Environments!',
-  description: "Virtualise Services and Dependencies during Continuous Integration Testing. Accelerate your software releases with Keploy's CI testing tool. Know How?",
-  keywords: 'CI testing, cicd testing, gitlab, github, jenkins',
+  title: 'Keploy | One-click API test with OpenSource and Free API Testing Tool',
+  description: "Discover how Keploy's free API testing tools can drastically transform your e2e api testing process and why developers love it! Get the free tool now!",
+  keywords: 'API test, FREE API Testing Tool, API Testing tool',
 };
+
 const heroData = {
-  titleTop: "Streamline CI Testing ",
-  titleBottom: "with Keploy Integration",
-  subtitleTop: "Eliminate the need for complex setup in CI for testing!",
+  titleTop: "Simplifying API Testing ",
+  titleBottom: "Effortlessly for Software Development!",
+  subtitleTop: "One-click API test with OpenSource and Free API Testing Tool",
   subtitleBottom:
-    "Make testing in CI hassle-free with Keploy's seamless CI integration!🚀",
+    "Rapidly scale your transform your E2E API Testing process with a platform that works out of the box. 🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -35,7 +36,7 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Record Replay ",
+  title: "With Keploy's eBPF Instrumentation",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
   highlightTitle: "eliminate",
@@ -45,14 +46,14 @@ const BannerData = {
   title: " 🚀 Elevate Your Testing with Keploy!",
   subtitle: "Ready to simplify your testing process?",
   paraText:
-    "Click to experience Keploy's magic locally or book a demo for an interactive walkthrough. Embark on a journey to stress-free testing today!",
+    "Click to experience Keploy's magic locally or book a demo for an interactive walk-through. Embark on a journey to stress-free testing today!",
   btnTextLeft: "Book Cloud Demo",
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
 };
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -102,6 +103,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </RootLayout>
+    </>
   );
 }

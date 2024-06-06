@@ -55,50 +55,50 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Centralized Test Suite',
+      title: 'Automated Testing',
       icon:<DependencyWaitTimeIcon />,
-      description: 'Keploy provides a centralized folder to organize and store all test cases, ensuring easy access and version control for team members.',
+      description: ' Keploy automates regression testing to ensure software stability over time.',
     },
     {
-      title: 'Integrate with CI/CD Tools',
+      title: 'Efficient Test Execution',
       icon: <ManualStubCreationIcon />,
-      description: "Seamlessly integrate Keploy with your CI/CD pipelines for automated test execution and continuous feedback loops.",
+      description: "Keploy enables efficient execution of regression tests, saving time and resources.",
     },
     {
-      title: 'Reporting and Analytics',
+      title: 'Continuous Testing',
       icon: <ScalabilityTestingDifficultiesIcon />,
-      description: "Visualize testing progress, identify areas for improvement, and make informed decisions to drive continuous improvement in testing practices.",
+      description: "Implement automated regression testing in software development cycles for continuous improvement.",
     },
     {
-      title: 'Real-time Test Execution',
+      title: 'Customizable Testing Scenarios',
       icon: <DataVariabilityConcernsIcon />,
-      description: "Monitor test results, identify bottlenecks, and make data-driven decisions to streamline testing processes and improve overall efficiency.",
+      description: "With Keploy you can tailor regression testing scenarios to match specific software requirements.",
     },
     {
-      title: 'Collaborative Test Management',
+      title: 'Accurate Bug Detection',
       icon: <CollaborationIcon />,
-      description: "Share test cases, collaborate on test scripts, and leverage collective insights to drive efficiency and effectiveness in your testing endeavors.",
+      description: "Keploy excels in regression testing in software testing by accurately detecting bugs introduced by new code changes.",
     }
   ];
   export const faqQuestions =[
     {
-        title: "How does Keploy's centralized test case benefit teams?",
+        title: "What is regression testing in software testing?",
         answer:
-        "A centralized testsuite streamlines test case management, ensuring easy access, organization, and version control. Teams can efficiently collaborate, share, and reuse test cases, fostering consistency and efficiency in testing efforts."
+        "Regression testing in software testing is the process of re-running tests to ensure that new code changes do not negatively affect existing functionality."
     },
     {
-        title: "Can Keploy accommodate different testing methodologies and frameworks?",
+        title: "How does Keploy automate regression testing?",
         answer:
-        "Yes, Keploy is designed to support various testing methodologies and frameworks, including Agile, Waterfall, and hybrid approaches. It offers flexibility and customization options to adapt to the specific needs of different projects and teams."
+        "Keploy automates regression testing by generating and executing test cases automatically, ensuring consistent and reliable results."
     },
     {
-        title: "What reporting capabilities does Keploy offer?",
+        title: "How quickly can Keploy execute automated regression testing?",
         answer:
-        "Keploy provides comprehensive reporting tools to generate insights into test coverage, execution status, and defect trends. Teams can access detailed reports, track progress, and make data-driven decisions to improve testing effectiveness and product quality."
+        "Keploy executes automated regression testing quickly, accelerating the development process and reducing time to market."
     },
     {
-        title: "Is Keploy suitable for teams of all sizes and industries?",
+        title: "Can Keploy detect bugs accurately in regression testing?",
         answer:
-        "Keploy caters to teams of all sizes and industries, from small startups to large enterprises. Its scalable features, intuitive interface, and customizable options make it adaptable to diverse testing needs and requirements across different domains and sectors."
-    },
+        "Yes, Keploy excels in regression testing in software testing by accurately detecting bugs introduced by new code changes."
+    }
 ]

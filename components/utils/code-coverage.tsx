@@ -90,6 +90,10 @@ export const featuresData = [
     {
       title: "What is Keploy's approach to unit test coverage?",
       answer:"Keploy offers a comprehensive solution to unit test coverage by seamlessly integrating with existing unit tests. It allows developers to merge Keploy-generated tests with their current unit tests, enhancing overall coverage and ensuring robust software delivery."
+    },
+    {
+      title: "Can Keploy help streamline my testing workflow for better code coverage??",
+      answer:"Absolutely, Keploy helps streamline your testing workflow, ensuring better code coverage and software reliability."
     }
   ]
 

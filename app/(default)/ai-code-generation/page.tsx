@@ -10,13 +10,21 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/test-management";
+import { featuresData,faqQuestions } from "@/components/utils/ai-code-generation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Transform Testing with AI that actually works! Explore Now!',
+  description: "Unlock the power of AI generated tests and mocks with Keploy's coding assistance. Transform your testing with AI code generation that actually works. Check Now!",
+  keywords: 'test generation, ai generated test, automated unit testing',
+};
+
 const heroData = {
-  titleTop: "Efficient Test Management ",
-  titleBottom: "made Simple.",
-  subtitleTop: "Elevate your testing processes with Keploy's comprehensive Test Management solution!",
+  titleTop: "Simplifying AI Code Generation ",
+  titleBottom: "for Efficient Testing.",
+  subtitleTop: "Transform Testing with AI that actually works! Explore Now!",
   subtitleBottom:
     "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
   animationSrc: testAndStubsGen,
@@ -28,7 +36,7 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Test Management ",
+  title: "With Keploy's AI Code Generation ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
   highlightTitle: "eliminate",
