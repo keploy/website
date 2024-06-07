@@ -15,16 +15,20 @@ export const PillarPages = [
           pageName: "Code Coverage" 
         },
         {
-          pagelink: "/continuos-integration-testing",
+          pagelink: "/continuous-integration-testing",
           pageName: "CI Testing"
+        },
+        {
+          pagelink: "/regression-testing",
+          pageName: "Regression Testing"
         },
         {
           pagelink: "/api-testing",
           pageName: "API Testing",
         },
         {
-          pagelink: "/test-management",
-          pageName: "Test Management"
+          pagelink: "/ai-code-generation",
+          pageName: "AI Code Generation"
         }
       ]
     }

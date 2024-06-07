@@ -55,12 +55,12 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Integration with CI Tools',
+      title: 'Integrate with CI Tools',
       icon:<DependencyWaitTimeIcon />,
       description: 'Integrate Keploy testsuite effortlessly with popular CI tools such as GitHub, GitLab, Jenkins etc.. in your workflow.',
     },
     {
-      title: 'Jest Continuos Integration',
+      title: 'Continuos Integration',
       icon: <ManualStubCreationIcon />,
       description: "Seamlessly integrate Keploy with Jest for automated testing workflows, ensuring compatibility with popular testing frameworks.",
     },

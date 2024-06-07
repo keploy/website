@@ -22,8 +22,8 @@ const pageMetadata: Metadata = {
 };
 
 const heroData = {
-  titleTop: "Simplifying API Testing ",
-  titleBottom: "Effortlessly for Software Development!",
+  titleTop: "API Testing ",
+  titleBottom: "with Seamless Experience",
   subtitleTop: "One-click API test with OpenSource and Free API Testing Tool",
   subtitleBottom:
     "Rapidly scale your transform your E2E API Testing process with a platform that works out of the box. 🚀",
@@ -36,10 +36,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's eBPF Instrumentation",
+  title: "With ",
+  title2: "ensure",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "API Testing",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -70,7 +71,8 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

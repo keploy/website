@@ -16,8 +16,8 @@ import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
 const heroData = {
-  titleTop: "Simplifying Testing with ",
-  titleBottom: "Dynamic Test Data Generator",
+  titleTop: "Get Quick and Reliable ",
+  titleBottom: "Test Data Stubs",
   subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
   subtitleBottom:
     "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
@@ -37,10 +37,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: " With Keploy's Test Data Generation ",
+  title: "With ",
+  title2: "ensure ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "Test Data Generation",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -72,7 +73,8 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

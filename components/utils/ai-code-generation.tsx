@@ -55,7 +55,7 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'AI-Generated Tests',
+      title: 'Eliminate Manual Tests',
       icon:<DependencyWaitTimeIcon />,
       description: 'Keploy uses AI to create tests automatically, reducing manual effort and ensuring thorough coverage.',
     },

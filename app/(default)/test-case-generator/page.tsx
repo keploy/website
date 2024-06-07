@@ -22,8 +22,8 @@ const pageMetadata: Metadata = {
 };
 
 const heroData = {
-  titleTop: "Boost E2E Testing  ",
-  titleBottom: "with Keploy Test Case Generator! Learn How",
+  titleTop: "Improve Tests with ",
+  titleBottom: "E2E Test Generator",
   subtitleTop: "Avoid confusion and Duplication in Test Execution!",
   subtitleBottom:
     "Remove the duplicate and redundant test cases in minutes. 🚀",
@@ -36,10 +36,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's DeDuplication",
+  title: "Leverage ",
+  title2: "with ",
   subtitle:
     "Replace multiple tools in your test stack with one zero-code platform.Generic Features list/tables",
-  highlightTitle: "eliminate",
+  highlightTitle: "Test Case Generator",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -70,7 +71,8 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

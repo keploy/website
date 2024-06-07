@@ -16,8 +16,8 @@ import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
 const heroData = {
-  titleTop: "Streamlining Regression Testing ",
-  titleBottom: "for Faster & Stable Releases",
+  titleTop: "Automate Regression Testing ",
+  titleBottom: "with AI",
   subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
   subtitleBottom:
     "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
@@ -25,9 +25,9 @@ const heroData = {
 };
 
 const pageMetadata: Metadata = {
-  title: 'Keploy | Need Quick Mock Data? Try this reliable test data generator!',
-  description: 'Discover how quickly and efficiently you can generate test data by recording API calls with Keploy cutting-edge test data generation tool! Learn more now!',
-  keywords: 'dynamic test data, testing, automation, test data generation',
+  title: 'Keploy | Automate Regression Testing with Keploy AI Test Generator!',
+  description: 'Try Keploy.io automated regression testing software that records API calls to test cases and mocks, designed for efficiency and accuracy! Learn more!',
+  keywords: 'regression testing software, regression testing in software testing,automated regression testing',
 };
 
 const ProblemBlocksData = {
@@ -37,10 +37,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: " Regression Testing With Keploy ",
+  title: "With ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "Regression Testing",
+  title2: "leverage",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -73,6 +74,7 @@ export default function Home() {
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
         highlightTitle={FeaturesData.highlightTitle}
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

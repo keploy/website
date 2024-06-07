@@ -21,8 +21,8 @@ const pageMetadata: Metadata = {
   keywords: 'test coverage tools, python code coverage, python coverage, Junit, Jest, Go test, code coverage, test coverage',
 };
 const heroData = {
-  titleTop: "Enhance Code Coverage for ",
-  titleBottom: "More Reliable Software Development!",
+  titleTop: "Improve Code Coverage ",
+  titleBottom: "with Confidence",
   subtitleTop: "Automate code coverage analysis, for more reliable software!",
   subtitleBottom:
     "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
@@ -35,10 +35,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Native Integration",
+  title: "Ensure ",
+  title2: "with",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "Code Coverage ",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -71,6 +72,7 @@ export default function Home() {
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
         highlightTitle={FeaturesData.highlightTitle}
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

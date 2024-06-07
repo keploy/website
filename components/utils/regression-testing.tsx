@@ -55,7 +55,7 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Automated Testing',
+      title: 'Test Automation',
       icon:<DependencyWaitTimeIcon />,
       description: ' Keploy automates regression testing to ensure software stability over time.',
     },
@@ -70,12 +70,12 @@ export const featuresData = [
       description: "Implement automated regression testing in software development cycles for continuous improvement.",
     },
     {
-      title: 'Customizable Testing Scenarios',
+      title: 'Customize Testing Scenarios',
       icon: <DataVariabilityConcernsIcon />,
       description: "With Keploy you can tailor regression testing scenarios to match specific software requirements.",
     },
     {
-      title: 'Accurate Bug Detection',
+      title: 'Early Bug Detection',
       icon: <CollaborationIcon />,
       description: "Keploy excels in regression testing in software testing by accurately detecting bugs introduced by new code changes.",
     }

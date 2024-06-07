@@ -41,7 +41,7 @@ export const DependencyWaitTimeIcon = () => (
 
 export const featuresData = [
     {
-      title: 'Automated Code Coverage Analysis',
+      title: 'Coverage Analysis',
       icon:<DependencyWaitTimeIcon />,
       description: 'Keploy automates code coverage analysis, making it easier and faster.',
     },

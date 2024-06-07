@@ -22,8 +22,8 @@ const pageMetadata: Metadata = {
 };
 
 const heroData = {
-  titleTop: "Simplifying AI Code Generation ",
-  titleBottom: "for Efficient Testing.",
+  titleTop: "Integration test generator ",
+  titleBottom: "for developers",
   subtitleTop: "Transform Testing with AI that actually works! Explore Now!",
   subtitleBottom:
     "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
@@ -36,10 +36,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's AI Code Generation ",
+  title: "With ",
+  title2: "leverage",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "AI Test Generation ",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -71,6 +72,7 @@ export default function Home() {
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
         highlightTitle={FeaturesData.highlightTitle}
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

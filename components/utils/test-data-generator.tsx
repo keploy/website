@@ -134,12 +134,12 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Dependency Wait Time',
+      title: 'No Dependency Waiting',
       icon:<DependencyWaitTimeIcon />,
       description: 'Eliminates waiting for dependent components, allowing parallel work and accelerating the development process.'
     },
     {
-      title: 'Dynamic TestData Generation',
+      title: 'Test Data Generation',
       icon:<ManualStubCreationIcon />,
       description: 'Eliminate the task of manually creating brittle stubs, and generate diverse and realistic test data sets effortlessly saving significant time and effort.'
     },
@@ -149,12 +149,12 @@ export const featuresData = [
       description: 'Easily generate mock data for various database systems such as DynamoDB, Mongo, SQL, Redis etc.'
     },
     {
-      title: 'Automate Testing with Mocks',
+      title: 'Automated Testing',
       icon:<ErrorHandlingChallengesIcon />,
       description: 'Utilize auto generated mocks to simulate dependencies, simplifying and accelerating test creation processes.'
     },
     {
-      title: 'Intuitive Test Data Management',
+      title: 'Intuitive Data Management',
       icon:<ScalabilityTestingDifficultiesIcon />,
       description: 'Simplify the creation and maintenance of test data with YAML format, and tailor the test data to specific testing scenarios and requirements.'
     },
