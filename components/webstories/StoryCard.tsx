@@ -21,20 +21,21 @@ const StoryCard = ({
   return (
     <div
       key={key}
-      className="flex flex-col  items-center hover:cursor-pointer aspect-w-2 aspect-h-3 justify-center border border-gray-300 rounded-md mx-auto hover:shadow-[0_0_5px_5px_rgba(0,0,0,0.2)]  duration-150"
+      className="flex flex-col h-full items-center hover:cursor-pointer border border-gray-300 rounded-md mx-auto hover:shadow-[0_0_5px_5px_rgba(0,0,0,0.2)] duration-150"
     >
       <Link target="_blank" href={`/webstories/${slug}`}>
-        <div className="w-full">
+        <div className="w-full h-0 pb-[150%] relative">
           <Image
             src={imagesrc}
             alt={CardDescription}
-            layout="responsive"
-            className=" w-full h-full rounded-t-md md:rounded-none"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-t-md md:rounded-none"
           />
         </div>
-        <div className="flex-grow p-4">
-          <div className="flex justify-start px-2 pt-2 text-secondary-300 text-sm m-1 ml-1 whitespace-pre-line ">
-            <p className=" text-sm font-semibold xl:text-lg md:text-lg ">
+        <div className="flex-grow p-4 flex flex-col justify-between">
+          <div className="flex justify-start px-2 pt-2 text-secondary-300 text-sm m-1 ml-1 whitespace-pre-line">
+            <p className="text-sm font-semibold xl:text-lg md:text-lg">
               {CardDescription}
             </p>
           </div>

@@ -6,7 +6,7 @@ type SearchBarProps = {
 
 const SearchBar = ({  onChange }: SearchBarProps) => {
   return (
-    <div className="w-full mx-auto">
+    <div className="w-full mx-auto mt-16">
       <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white gap-2 overflow-hidden">
         <div className="grid place-items-center border border-black p-2 rounded-full bg-secondary-300 text-white">
           <svg

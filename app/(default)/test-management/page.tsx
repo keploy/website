@@ -10,14 +10,15 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/test-management";
+import { featuresData, faqQuestions } from "@/components/utils/test-management";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import Header from "@/components/ui/header";
 const heroData = {
   titleTop: "Efficient Test Management ",
   titleBottom: "made Simple.",
-  subtitleTop: "Elevate your testing processes with Keploy's comprehensive Test Management solution!",
+  subtitleTop:
+    "Elevate your testing processes with Keploy's comprehensive Test Management solution!",
   subtitleBottom:
     "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
   animationSrc: testAndStubsGen,
@@ -47,7 +48,7 @@ const BannerData = {
 export default function Home() {
   return (
     <>
-    <Header/>
+    <Header />
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -82,11 +83,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-          content={testimonialData[2].content}
-          author={testimonialData[2].author}
-          company={testimonialData[2].company}
-          image={testimonialData[2].image}
-        />
+        content={testimonialData[2].content}
+        author={testimonialData[2].author}
+        company={testimonialData[2].company}
+        image={testimonialData[2].image}
+      />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}
