@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "@mui/material";
 import { submitCodeSnippet } from "@/app/api/hello/atg";
-import { File } from "../Editor/utils/file-manager";
 
 const StageComponent = ({
   functionName,
@@ -10,7 +9,6 @@ const StageComponent = ({
   hideTerminal,
   language,
   code,
-  selectedFile,
 }: {
   functionName: string;
   onNext: () => void;
@@ -18,11 +16,10 @@ const StageComponent = ({
   hideTerminal: () => void;
   language: string;
   code: string | undefined;
-  selectedFile: File | undefined;
 }) => {
+  const initialPushRef = useRef(false); // Ref to track the initial push
 
   const MovingtoNextStage = async () => {
-    console.log("functionName from Stage Component: ", functionName);
     showTerminal();
     onNext();
   };
@@ -30,17 +27,22 @@ const StageComponent = ({
   useEffect(() => {
     const storeCodeSubmissionId = async () => {
       if (code && language) {
-        const codeSubmissionId = await submitCodeSnippet({ language, code });
-        if (codeSubmissionId) {
-          localStorage.setItem("code_submission_id", codeSubmissionId);
+        try {
+          const codeSubmissionId = await submitCodeSnippet({ language, code });
+          if (codeSubmissionId) {
+            localStorage.setItem("code_submission_id", codeSubmissionId);
+          }
+        } catch (error) {
+          console.log("Error storing code submission ID:", error);
         }
       }
     };
 
-    if (functionName === "Start") {
+    if (functionName === "Start" && !initialPushRef.current) {
       storeCodeSubmissionId();
+      initialPushRef.current = true;
     }
-  }, [functionName, code, language]);
+  }, [functionName, code, language]); // Add dependencies if needed
 
   return (
     <div className="w-full my-2 border p-2 border-gray-300 flex justify-between items-center">

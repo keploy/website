@@ -13,73 +13,22 @@ export const Sidebar = ({
   rootDir,
   selectedFile,
   onSelect,
-  Collapse,
 }: {
   rootDir: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File) => void;
-  Collapse : (collapse:boolean)=>void;
 }) => {
-  const [collapsed, setCollapsed] = useState(false);
-
-  const toggleCollapse = () => {
-    const newCollapsedState = !collapsed;
-    setCollapsed(newCollapsedState);
-    Collapse(newCollapsedState);
-  };
-  
   return (
-    <div className={`flex flex-col h-full border border-gray-300 transition-all duration-300 ${collapsed ? 'w-12' : 'w-64'}`}>
-      <Button
-        onClick={toggleCollapse}
-        startIcon={collapsed ? <ChevronRightIcon className="hover:bg-slate-600" /> : <ChevronLeftIcon />}
-        className="self-end"
-      >
-      </Button>
-      {/* {!collapsed && (
-        <>
-          <Accordion
-            disableGutters
-            elevation={0}
-            className="border border-gray-300"
-            square
-            sx={{
-              "&:before": {
-                display: "none",
-              },
-              "& .MuiAccordionSummary-root": {
-                minHeight: 0,
-              },
-              "& .MuiAccordionSummary-content": {
-                margin: 0,
-              },
-              "& .MuiAccordionSummary-expandIconWrapper": {
-                padding: 0,
-              },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-              className="py-2 border-gray-300"
-            >
-              Files
-            </AccordionSummary>
-            <AccordionDetails sx={{ padding: 0 }}> */}
-            {!collapsed &&  <FileTree
-                rootDir={rootDir}
-                selectedFile={selectedFile}
-                onSelect={onSelect}
-              />}
-            {/* </AccordionDetails>
-          </Accordion>
-         
-        </>
-      )} */}
+    <div
+      className={`flex flex-col h-full mt-20 transition-all duration-300 w-full`}
+    >
+      <FileTree
+        rootDir={rootDir}
+        selectedFile={selectedFile}
+        onSelect={onSelect}
+      />
     </div>
   );
-  
 };
 
 export default Sidebar;

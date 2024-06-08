@@ -1,18 +1,30 @@
 "use client";
-import React, { useEffect, useMemo, useState, useRef } from "react";
+import React, {
+  useEffect,
+  useMemo,
+  useState,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { Terminal } from "./Terminal";
 import { useTerminal } from "./Terminal/hooks";
-import { useRunCommandSubscription } from "@/app/api/hello/atg"; // Update with actual path
+import { curlCommand, useRunCommandSubscription } from "@/app/api/hello/atg"; // Update with actual path
+import { fetchTestSets } from "@/app/api/hello/atg";
 import { Button } from "@mui/material";
+import { Directory } from "./Editor/utils/file-manager";
+// import { Button } from "@mui/material";
 
 const Emoji = "\u{1F430} Keploy"; // 🐰
 
 function MainTerminal({
   inputRef,
   functionName,
+  setRootDir,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   functionName: string;
+  setRootDir: Dispatch<SetStateAction<Directory>>;
 }) {
   return (
     <div className="h-full">
@@ -36,20 +48,32 @@ function RecordTerminalSession({
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal, popTerminal } =
     useTerminal();
+  const storedCodeSubmissionId =
+    localStorage.getItem("code_submission_id") || "";
   const [codeSubmissionId, setCodeSubmissionIdInput] = useState<string>(
-    "16d32d13-3761-4512-95db-92adce721d0a"
+    storedCodeSubmissionId
   );
+  const [testSets, setTestSets] = useState<string[]>([""]);
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
   const [command, setCommandSub] = useState<string>("RECORD");
   const [SocketErrors, setSocketErrors] = useState<string | null>(null);
+  const [commandsTrue, setOtherCommandsTrue] = useState<boolean>(false);
   const { data, loading, error, handleSubmit } = useRunCommandSubscription({
     codeSubmissionId,
     command,
   });
 
-  const initialPushRef = useRef(false); // Ref to track the initial push
+  const initialPushRef = useRef(false);
+  const intialRecordingRef = useRef(false);
 
   useEffect(() => {
     if (data) {
+      if (
+        data.runCommand == "[GIN-debug] Listening and serving HTTP on :5000"
+      ) {
+        setOtherCommandsTrue(true);
+      }
       pushToHistory(
         <div>
           <pre>{data.runCommand}</pre>
@@ -57,21 +81,61 @@ function RecordTerminalSession({
       );
     } else if (error) {
       setSocketErrors(error.message);
-      pushToHistory(<div>{Emoji}: {error.message}</div>);
+      pushToHistory(
+        <div>
+          {Emoji}: {error.message}
+        </div>
+      );
+    } else if (loading) {
+      pushToHistory(<div>{Emoji}: Loading...</div>);
     }
-  }, [data, pushToHistory]);
+  }, [data, error, loading, pushToHistory]);
 
   useEffect(() => {
     if (!initialPushRef.current) {
       pushToHistory(<>{Emoji}: Keploy recording starting....</>);
       initialPushRef.current = true;
     }
-  }, []);
+  }, [pushToHistory]);
 
   const commands = useMemo(
     () => ({
       'keploy record -c "npm run dev"': async () => {
-        handleSubmit();
+        if (!intialRecordingRef.current) {
+          handleSubmit();
+          if (commandsTrue) {
+            const Curlresponse = await curlCommand(
+              codeSubmissionId,
+              "curl -X GET http://localhost:5000/"
+            );
+            if (Curlresponse.success) {
+              console.log("hit it");
+            } else {
+              console.log("not hit it");
+            }
+            await delay(2000);
+            const response = await fetchTestSets(codeSubmissionId);
+            if (response.success) {
+              const runCommandSets = response.data.data.runCommand;
+              const newTestSets = runCommandSets.split("\n");
+              setTestSets(newTestSets);
+              console.log(testSets);
+              pushToHistory(
+                <div>
+                  <pre>{JSON.stringify(response.data, null, 2)}</pre>
+                </div>
+              );
+            } else {
+              console.error("Error fetching test sets:", response.error);
+              pushToHistory(
+                <div style={{ color: "red" }}>
+                  {Emoji}: Error fetching test sets: {response.error}
+                </div>
+              );
+            }
+            intialRecordingRef.current = true;
+          }
+        }
       },
       __notFound__: async () => {
         await pushToHistory(
@@ -85,13 +149,11 @@ function RecordTerminalSession({
         await resetTerminal();
       },
     }),
-    [pushToHistory, popTerminal, resetTerminal, data]
+    [commandsTrue]
   );
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.value = `keploy record -c "npm run dev"`;
-      inputRef.current.focus();
       setCommandSub("RECORD");
       setTimeout(() => {
         commands['keploy record -c "npm run dev"']();

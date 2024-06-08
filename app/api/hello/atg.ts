@@ -140,3 +140,88 @@ export const useRunCommandSubscription = ({
 
   return { data, loading, error, handleSubmit };
 };
+
+
+// API for tests.
+
+type CommandResponse = {
+  success: boolean;
+  data?: any;
+  error?: string;
+};
+
+async function postRequest(endpoint: string, query: string, variables: any): Promise<CommandResponse> {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    });
+
+    const data = await response.json();
+    return { success: response.ok, data };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+export async function fetchTestSets(codeSubmissionId: string): Promise<CommandResponse> {
+  const query = `
+    subscription FetchTestSets($code_submission_id: String!, $command: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: 'FETCH_TEST_SETS',
+  };
+  return await postRequest('http://localhost:8080/query', query, variables);
+}
+
+export async function fetchTestList(codeSubmissionId: string, testSetName: string): Promise<CommandResponse> {
+  const query = `
+    subscription FetchTestList($code_submission_id: String!, $command: String!, $test_set_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_set_name: $test_set_name)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: 'FETCH_TESTS_LIST',
+    test_set_name: testSetName,
+  };
+  return await postRequest('http://localhost:8080/query', query, variables);
+}
+
+export async function fetchTest(codeSubmissionId: string, testSetName: string, testCaseName: string): Promise<CommandResponse> {
+  const query = `
+    subscription FetchTest($code_submission_id: String!, $command: String!, $test_set_name: String!, $test_case_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_set_name: $test_set_name, test_case_name: $test_case_name)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: 'FETCH_TEST',
+    test_set_name: testSetName,
+    test_case_name: testCaseName,
+  };
+  return await postRequest('http://localhost:8080/query', query, variables);
+}
+
+export async function curlCommand(codeSubmissionId: string, customCommand: string): Promise<CommandResponse> {
+  const query = `
+    subscription CurlCommand($code_submission_id: String!, $command: String!, $command_content: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, command_content: $command_content)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: 'CURL',
+    command_content: customCommand,
+  };
+  return await postRequest('http://localhost:8080/query', query, variables);
+}

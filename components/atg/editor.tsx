@@ -10,6 +10,7 @@ import DefaultEditorPage from "./components/DefaultEditorPage";
 import CustomizedSteppers from "./components/HorizontalStepper";
 import MainTerminal from "./terminal";
 import StageComponent from "./components/StageComponent";
+import { Button, Skeleton } from "@mui/material";
 
 const dummyDir: Directory = {
   id: "1",
@@ -29,7 +30,6 @@ const Editor = () => {
   const [dataFetched, setDataFetched] = useState(false);
   const [error, setError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
-  const [collapsed, setCollapsed] = useState<boolean>(false);
   const [showTerminal, setShowTerminal] = useState<boolean>(false);
   const [state, setState] = useState(-1);
   const [functionName, setFunctionName] = useState<string>("Start");
@@ -52,12 +52,7 @@ const Editor = () => {
 
   useEffect(() => {
     updateFunctionName(state);
-    console.log(state, functionName);
   }, [state]);
-
-  const CollapsingSidebar = (collapse: boolean) => {
-    setCollapsed(collapse);
-  };
 
   const onSelect = (file: File) => {
     setSelectedFile(file);
@@ -122,22 +117,15 @@ const Editor = () => {
                 onPrev={prevState}
               />
               <div className="flex flex-row mt-5">
-                <div
-                  className={`transition-all duration-200 ${
-                    collapsed ? "w-16" : "w-3/12"
-                  }`}
-                >
+                <div className={`transition-all duration-200 w-3/12`}>
                   <Sidebar
                     rootDir={rootDir}
                     selectedFile={selectedFile}
                     onSelect={onSelect}
-                    Collapse={CollapsingSidebar}
                   />
                 </div>
                 <div
-                  className={`relative flex flex-col ${
-                    collapsed ? "w-full" : "w-9/12"
-                  } ml-2 transition-all duration-300`}
+                  className={`relative flex flex-col ml-2 w-full transition-all duration-300`}
                 >
                   <EditorContainer>
                     <div className="flex flex-row w-full h-full">
@@ -156,7 +144,6 @@ const Editor = () => {
                             hideTerminal={NotShowingTerminal}
                             language={"GOLANG"}
                             code={selectedFile?.content}
-                            selectedFile={selectedFile}
                           />
                         )}
                         <Code selectedFile={selectedFile} />
@@ -165,10 +152,31 @@ const Editor = () => {
                             showTerminal ? "max-h-96" : "max-h-0"
                           } overflow-hidden`}
                         >
+                          {showTerminal && (
+                            <Button
+                              className="w-full bg-slate-200 hover:bg-slate-200"
+                              onClick={() => {
+                                setShowTerminal(false);
+                              }}
+                            >
+                              Remove Terminal
+                            </Button>
+                          )}
                           <MainTerminal
                             inputRef={inputRef}
                             functionName={functionName}
+                            setRootDir={setRootDir}
                           />
+                          {!showTerminal && (
+                            <Button
+                              className="w-full h-10 bg-slate-200 hover:bg-slate-200"
+                              onClick={() => {
+                                setShowTerminal(true);
+                              }}
+                            >
+                              Show Terminal
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -183,28 +191,24 @@ const Editor = () => {
             </div>
           </>
         ) : (
-          <LoadingContainer>
-            <div className="flex flex-col">
-              <div className="flex items-center">
-                <span className="animate-spin text-white m-2">/</span>
-                {Emoji}: Loading...
-                <span className="animate-spin text-white m-2">/</span>
-              </div>
+          <div className="flex justify-center items-center h-screen  max-w-6xl px-4 mx-auto my-16 m-2">
+            <div className="flex flex-row items-center gap-4 h-full w-full ">
+              <Skeleton
+                variant="rectangular"
+                className="bg-gray-200 animate-pulse h-full w-1/3"
+              />
+              <Skeleton
+                variant="rectangular"
+                className="bg-gray-200 animate-pulse h-full w-2/3"
+              />
               {error && <div>{error}</div>}
             </div>
-          </LoadingContainer>
+          </div>
         )}
       </div>
     </>
   );
 };
-
-const LoadingContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
 
 const EditorContainer = styled.div`
   height: 70vh;
