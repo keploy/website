@@ -134,47 +134,47 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Developer Friendly, zero learning curve',
+      title: 'Effortless Testing',
       icon:<DependencyWaitTimeIcon />,
-      description: 'Keploy can dynamically generate test cases by recording and replaying your interactions with zero code addition or complex setup within 2 mins.'
+      description: 'Keploy can ease API testing processes, allowing developers to conduct tests effortlessly without the need for complex setups.'
     },
     {
-      title: 'Seamless Test Generation',
+      title: 'Free API Testing Tool',
       icon:<ManualStubCreationIcon />,
-      description: 'eBPF instrumentation enables Keploy to effortlessly record and generate automated tests and data-mocks within a mere 2 minutes, streamlining the testing process.'
+      description: 'Keploy can is an open source API testing tool, providing developers with a cost-effective solution for comprehensive testing.'
     },
     {
-      title: 'Zero Code Integration',
+      title: 'Automated API Test Generation',
       icon: <DataVariabilityConcernsIcon />,
-      description: 'With eBPF, Keploy dynamically generates test cases without the need for integrating any code into the application, simplifying the testing workflow for developers.'
+      description: 'Test cases are automatically generated based on recorded interactions, saving time and effort in test script creation.'
     },
     {
-      title: 'Continuous Improvement',
+      title: 'Dynamic Mocks',
       icon:<ScalabilityTestingDifficultiesIcon />,
-      description: 'Continuously enhance testing strategies and streamline the development lifecycle, ensuring the delivery of high-quality software with speed and efficiency.'
+      description: 'Keploy provides dynamic mock data, making your tests more realistic. With which, you can test your API without relying on external services or dependencies.'
     },
     {
-      title: 'Language and Framework Agnostic',
+      title: 'Real-time Test Execution',
       icon:<ErrorHandlingChallengesIcon />,
-      description: 'Generate test cases for all languages and frameworks, eliminating the need for complex coding knowledge and ensuring compatibility with diverse development environments.'
+      description: 'Keploy enables real-time test execution, allowing developers to receive immediate feedback on API functionality and performance.'
     },
     {
-      title: 'Comprehensive Test Coverage',
+      title: 'Comprehensive Reporting',
       icon:<ManualStubCreationIcon />,
-      description: 'Leveraging eBPF, Keploy ensures comprehensive test coverage by capturing and replaying interactions, facilitating thorough testing across different scenarios and use cases.'
+      description: 'Keploy provides comprehensive test reports, enabling developers to analyze test results and identify areas for improvement quickly.'
     }
   ];
 
   export const faqQuestions =[
     {
-      title: "What does language agnostic support mean?",
+      title: "How does Keploy simplify API testing?",
       answer:
-        "Keploy works at a kernel and network level, enabling support for various protocol versions such as HTTP, TLS, GRPC, Mongo, MySQL, Redis, and more. Once added, these protocols will be universally supported across all languages, runtimes, or drivers/packages."
+        "Keploy automated API test generation and execution, eliminating the need for manual scripting and complex setups."
     },
     {
-      title: "How does Keploy enable test case generation with zero code integration?",
+      title: "Does Keploy provide dynamic API test coverage?",
       answer:
-        "Keploy utilizes eBPF to dynamically generate test cases by recording and replaying interactions, eliminating the need for integrating any code into the application."
+        "Absolutely, Keploy ensures dynamic API test coverage by generating test cases based on recorded interactions, covering a wide range of scenarios."
     },
     {
       title: "How does Keploy simplify test automation across different languages and frameworks?",
@@ -182,8 +182,8 @@ export const featuresData = [
         "Keploy simplifies test automation by providing automated tests in simple YAML format, eliminating the need for complex coding knowledge and enabling teams to obtain test cases for all languages and frameworks effortlessly."
     },
     {
-      title: "How does eBPF instrumentation helps in enhancing test case generation with Keploy?",
+      title: "How does Keploy help in analyzing API test results?",
       answer:
-        "With eBPF, Keploy dynamically records and replays interactions, allowing for the rapid generation of test cases with zero code changes, thereby accelerating the testing process."
+        "Keploy provides comprehensive test reports, enabling developers to analyze test results quickly and identify areas for improvement."
     }
   ]

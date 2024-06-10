@@ -10,17 +10,26 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/ebpf-instrumentation";
+import { featuresData,faqQuestions } from "@/components/utils/test-data-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import RootLayout, { Metadata } from "@/app/layout";
+
 const heroData = {
-  titleTop: "Maximizing Efficiency and ",
-  titleBottom: "Seamlessness with Native Integration!",
-  subtitleTop: "Integrate Keploy with dev-setup to generate automated tests and data-mocks in 2 mins!",
+  titleTop: "Get Quick and Reliable ",
+  titleBottom: "Test Data Stubs",
+  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
   subtitleBottom:
-    "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
+    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
   animationSrc: testAndStubsGen,
 };
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Need Quick Mock Data? Try this reliable test data generator!',
+  description: 'Discover how quickly and efficiently you can generate test data by recording API calls with Keploy cutting-edge test data generation tool! Learn more now!',
+  keywords: 'dynamic test data, testing, automation, test data generation',
+};
+
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",
@@ -28,10 +37,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Native Integration",
+  title: "With ",
+  title2: "ensure ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "Test Data Generation",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -43,9 +53,10 @@ const BannerData = {
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
 };
+
 export default function Home() {
   return (
-    <>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -62,7 +73,8 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial
@@ -80,11 +92,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-          content={testimonialData[2].content}
-          author={testimonialData[2].author}
-          company={testimonialData[2].company}
-          image={testimonialData[2].image}
-        />
+        content={testimonialData[2].content}
+        author={testimonialData[2].author}
+        company={testimonialData[2].company}
+        image={testimonialData[2].image}
+      />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}
@@ -95,6 +107,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }
