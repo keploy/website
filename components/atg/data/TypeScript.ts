@@ -16,7 +16,7 @@ export const Data: Directory = {
       dirs: [],
       files: [
         {
-          id: "1",
+          id: "go_mod",
           name: "go.mod",
           type: Type.FILE,
           parentId: "src",
@@ -65,7 +65,7 @@ export const Data: Directory = {
           ",
         },
         {
-          id: "2",
+          id: "go_sum",
           name: "go.sum",
           type: Type.FILE,
           parentId: "src",
@@ -191,7 +191,7 @@ export const Data: Directory = {
           ",
         },
         {
-          id: "3",
+          id: "server_file",
           name: "server.go",
           type: Type.FILE,
           parentId: "src",

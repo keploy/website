@@ -1,5 +1,5 @@
-import { gql, useSubscription } from '@apollo/client';
-import { useState } from 'react';
+import { gql, useSubscription } from "@apollo/client";
+import { useState } from "react";
 
 // submitCodeSnippet.ts
 export const submitCodeSnippet = async ({
@@ -106,24 +106,26 @@ export const runCurlCommand = async ({
   }
 };
 
-
 const RUN_COMMAND_SUBSCRIPTION = gql`
   subscription RunCommand($code_submission_id: String!, $command: String!) {
     runCommand(code_submission_id: $code_submission_id, command: $command)
   }
 `;
 
-
 type RunCommandSubscriptionParams = {
   codeSubmissionId: string;
   command: string;
 };
 
+
+
 export const useRunCommandSubscription = ({
   codeSubmissionId: initialCodeSubmissionId,
   command: initialCommand,
 }: RunCommandSubscriptionParams) => {
-  const [codeSubmissionId, setCodeSubmissionId] = useState<string>(initialCodeSubmissionId);
+  const [codeSubmissionId, setCodeSubmissionId] = useState<string>(
+    initialCodeSubmissionId
+  );
   const [command, setCommand] = useState<string>(initialCommand);
   const [submitted, setSubmitted] = useState(false);
 
@@ -137,7 +139,6 @@ export const useRunCommandSubscription = ({
     setSubmitted(true); // Trigger the subscription
   };
 
-
   return { data, loading, error, handleSubmit };
 };
 
@@ -150,12 +151,16 @@ type CommandResponse = {
   error?: string;
 };
 
-async function postRequest(endpoint: string, query: string, variables: any): Promise<CommandResponse> {
+async function postRequest(
+  endpoint: string,
+  query: string,
+  variables: any
+): Promise<CommandResponse> {
   try {
     const response = await fetch(endpoint, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         query,
@@ -170,7 +175,9 @@ async function postRequest(endpoint: string, query: string, variables: any): Pro
   }
 }
 
-export async function fetchTestSets(codeSubmissionId: string): Promise<CommandResponse> {
+export async function fetchTestSets(
+  codeSubmissionId: string
+): Promise<CommandResponse> {
   const query = `
     subscription FetchTestSets($code_submission_id: String!, $command: String!) {
       runCommand(code_submission_id: $code_submission_id, command: $command)
@@ -178,12 +185,15 @@ export async function fetchTestSets(codeSubmissionId: string): Promise<CommandRe
   `;
   const variables = {
     code_submission_id: codeSubmissionId,
-    command: 'FETCH_TEST_SETS',
+    command: "FETCH_TEST_SETS",
   };
-  return await postRequest('http://localhost:8080/query', query, variables);
+  return await postRequest("http://localhost:8080/query", query, variables);
 }
 
-export async function fetchTestList(codeSubmissionId: string, testSetName: string): Promise<CommandResponse> {
+export async function fetchTestList(
+  codeSubmissionId: string,
+  testSetName: string
+): Promise<CommandResponse> {
   const query = `
     subscription FetchTestList($code_submission_id: String!, $command: String!, $test_set_name: String!) {
       runCommand(code_submission_id: $code_submission_id, command: $command, test_set_name: $test_set_name)
@@ -191,13 +201,17 @@ export async function fetchTestList(codeSubmissionId: string, testSetName: strin
   `;
   const variables = {
     code_submission_id: codeSubmissionId,
-    command: 'FETCH_TESTS_LIST',
+    command: "FETCH_TESTS_LIST",
     test_set_name: testSetName,
   };
-  return await postRequest('http://localhost:8080/query', query, variables);
+  return await postRequest("http://localhost:8080/query", query, variables);
 }
 
-export async function fetchTest(codeSubmissionId: string, testSetName: string, testCaseName: string): Promise<CommandResponse> {
+export async function fetchTest(
+  codeSubmissionId: string,
+  testSetName: string,
+  testCaseName: string
+): Promise<CommandResponse> {
   const query = `
     subscription FetchTest($code_submission_id: String!, $command: String!, $test_set_name: String!, $test_case_name: String!) {
       runCommand(code_submission_id: $code_submission_id, command: $command, test_set_name: $test_set_name, test_case_name: $test_case_name)
@@ -205,14 +219,17 @@ export async function fetchTest(codeSubmissionId: string, testSetName: string, t
   `;
   const variables = {
     code_submission_id: codeSubmissionId,
-    command: 'FETCH_TEST',
+    command: "FETCH_TEST",
     test_set_name: testSetName,
     test_case_name: testCaseName,
   };
-  return await postRequest('http://localhost:8080/query', query, variables);
+  return await postRequest("http://localhost:8080/query", query, variables);
 }
 
-export async function curlCommand(codeSubmissionId: string, customCommand: string): Promise<CommandResponse> {
+export async function curlCommand(
+  codeSubmissionId: string,
+  customCommand: string
+): Promise<CommandResponse> {
   const query = `
     subscription CurlCommand($code_submission_id: String!, $command: String!, $command_content: String!) {
       runCommand(code_submission_id: $code_submission_id, command: $command, command_content: $command_content)
@@ -220,8 +237,8 @@ export async function curlCommand(codeSubmissionId: string, customCommand: strin
   `;
   const variables = {
     code_submission_id: codeSubmissionId,
-    command: 'CURL',
+    command: "CURL",
     command_content: customCommand,
   };
-  return await postRequest('http://localhost:8080/query', query, variables);
+  return await postRequest("http://localhost:8080/query", query, variables);
 }

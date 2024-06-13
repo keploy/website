@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import Editor, { useMonaco } from "@monaco-editor/react";
+import * as monaco from 'monaco-editor'; // Import monaco-editor types
 import { File } from "../utils/file-manager";
 
 export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
   if (!selectedFile) return null;
 
-  const monaco = useMonaco();
+  const monacoInstance = useMonaco();
 
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
@@ -25,14 +26,19 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       ")": "(",
     };
 
+    const stringDelimiters = ['"', "'", '`'];
+    let stringStack: { char: string; position: number }[] = [];
+
     for (let i = 0; i < code.length; i++) {
       const char = code[i];
+      const prevChar = code[i - 1];
+      
       if (openBrackets.includes(char)) {
         stack.push({ char, position: i });
       } else if (closeBrackets.includes(char)) {
         if (stack.length === 0 || stack[stack.length - 1].char !== matchingBracket[char]) {
           diagnostics.push({
-            severity: monaco?.editor.MarkerSeverity.Error ?? 8,
+            severity: 8,
             message: `Unmatched closing bracket '${char}'`,
             startLineNumber: code.slice(0, i).split('\n').length,
             startColumn: (code.slice(0, i).split('\n').pop()?.length ?? 0) + 1,
@@ -43,12 +49,31 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
           stack.pop();
         }
       }
+
+      if (stringDelimiters.includes(char) && prevChar !== '\\') {
+        if (stringStack.length === 0 || stringStack[stringStack.length - 1].char !== char) {
+          stringStack.push({ char, position: i });
+        } else {
+          stringStack.pop();
+        }
+      }
     }
 
     stack.forEach(({ char, position }) => {
       diagnostics.push({
-        severity: monaco?.editor.MarkerSeverity.Error ?? 8,
+        severity: 8,
         message: `Unmatched opening bracket '${char}'`,
+        startLineNumber: code.slice(0, position).split('\n').length,
+        startColumn: (code.slice(0, position).split('\n').pop()?.length ?? 0) + 1,
+        endLineNumber: code.slice(0, position).split('\n').length,
+        endColumn: (code.slice(0, position).split('\n').pop()?.length ?? 0) + 2,
+      });
+    });
+
+    stringStack.forEach(({ char, position }) => {
+      diagnostics.push({
+        severity: 8,
+        message: `Unmatched string delimiter '${char}'`,
         startLineNumber: code.slice(0, position).split('\n').length,
         startColumn: (code.slice(0, position).split('\n').pop()?.length ?? 0) + 1,
         endLineNumber: code.slice(0, position).split('\n').length,
@@ -60,13 +85,13 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
   };
 
   useEffect(() => {
-    if (monaco) {
-      const model = monaco.editor.getModels()[0];
+    if (monacoInstance) {
+      const model = monacoInstance.editor.getModels()[0];
       if (model) {
         const validate = () => {
           const code = model.getValue();
           const diagnostics = validateCode(code);
-          monaco.editor.setModelMarkers(model, "owner", diagnostics);
+          monacoInstance.editor.setModelMarkers(model, "owner", diagnostics);
         };
 
         validate();
@@ -74,7 +99,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
         return () => subscription.dispose();
       }
     }
-  }, [monaco]);
+  }, [monacoInstance]);
 
   return (
     <div className="w-full h-full border">
