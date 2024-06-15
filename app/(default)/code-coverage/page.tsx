@@ -10,19 +10,22 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import {
-  featuresData,
-  faqQuestions,
-} from "@/components/utils/test-duplication";
+import { featuresData,faqQuestions } from "@/components/utils/code-coverage";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import Header from "@/components/ui/header";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Need Complete Code Coverage? Check this Test Coverage Tool!',
+  description: 'Explore how Keploy test coverage tools help you cover every scenario. 100% unit test coverage, Python code coverage, Java, Gotest, Jest Test Coverage. Start now',
+  keywords: 'test coverage tools, python code coverage, python coverage, Junit, Jest, Go test, code coverage, test coverage',
+};
 const heroData = {
-  titleTop: "Increase Test coverage with ",
-  titleBottom: "Keploy Dedup feature",
-  subtitleTop: "Avoid confusion and Duplication in Test Execution!",
+  titleTop: "Improve Code Coverage ",
+  titleBottom: "with Confidence",
+  subtitleTop: "Automate code coverage analysis, for more reliable software!",
   subtitleBottom:
-    "Remove the duplicate and redundant test cases in minutes. 🚀",
+    "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -32,10 +35,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's DeDuplication",
+  title: "Ensure ",
+  title2: "with",
   subtitle:
-    "Replace multiple tools in your test stack with one zero-code platform.Generic Features list/tables",
-  highlightTitle: "eliminate",
+    "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
+  highlightTitle: "Code Coverage ",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -49,8 +53,8 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <>
-      <Header />
+    <RootLayout metadata={pageMetadata}>
+
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -68,6 +72,7 @@ export default function Home() {
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
         highlightTitle={FeaturesData.highlightTitle}
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial
@@ -85,11 +90,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-        content={testimonialData[2].content}
-        author={testimonialData[2].author}
-        company={testimonialData[2].company}
-        image={testimonialData[2].image}
-      />
+          content={testimonialData[2].content}
+          author={testimonialData[2].author}
+          company={testimonialData[2].company}
+          image={testimonialData[2].image}
+        />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}
@@ -100,6 +105,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

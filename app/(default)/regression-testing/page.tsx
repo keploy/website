@@ -10,19 +10,26 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData, faqQuestions } from "@/components/utils/test-management";
+import { featuresData,faqQuestions } from "@/components/utils/regression-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import Header from "@/components/ui/header";
+import RootLayout, { Metadata } from "@/app/layout";
+
 const heroData = {
-  titleTop: "Efficient Test Management ",
-  titleBottom: "made Simple.",
-  subtitleTop:
-    "Elevate your testing processes with Keploy's comprehensive Test Management solution!",
+  titleTop: "Automate Regression Testing ",
+  titleBottom: "with AI",
+  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
   subtitleBottom:
-    "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
+    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
   animationSrc: testAndStubsGen,
 };
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Automate Regression Testing with Keploy AI Test Generator!',
+  description: 'Try Keploy.io automated regression testing software that records API calls to test cases and mocks, designed for efficiency and accuracy! Learn more!',
+  keywords: 'regression testing software, regression testing in software testing,automated regression testing',
+};
+
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",
@@ -30,10 +37,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Test Management ",
+  title: "With ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "Regression Testing",
+  title2: "leverage",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -45,10 +53,10 @@ const BannerData = {
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
 };
+
 export default function Home() {
   return (
-    <>
-    <Header />
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -66,6 +74,7 @@ export default function Home() {
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
         highlightTitle={FeaturesData.highlightTitle}
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial
@@ -98,6 +107,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

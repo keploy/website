@@ -55,41 +55,41 @@ export const DependencyWaitTimeIcon = () => (
   );
 export const featuresData = [
     {
-      title: 'Centralized Test Suite',
+      title: 'Eliminate Manual Tests',
       icon:<DependencyWaitTimeIcon />,
-      description: 'Keploy provides a centralized folder to organize and store all test cases, ensuring easy access and version control for team members.',
+      description: 'Keploy uses AI to create tests automatically, reducing manual effort and ensuring thorough coverage.',
     },
     {
-      title: 'Integrate with CI/CD Tools',
+      title: 'Automated E2E Testing',
       icon: <ManualStubCreationIcon />,
-      description: "Seamlessly integrate Keploy with your CI/CD pipelines for automated test execution and continuous feedback loops.",
+      description: "Keploy simplifies automated unit testing by generating test cases based on actual usage patterns.",
     },
     {
-      title: 'Reporting and Analytics',
+      title: 'Enhanced Test Accuracy',
       icon: <ScalabilityTestingDifficultiesIcon />,
-      description: "Visualize testing progress, identify areas for improvement, and make informed decisions to drive continuous improvement in testing practices.",
+      description: "With AI-generated tests, Keploy ensures more accurate and reliable testing outcomes.",
     },
     {
-      title: 'Real-time Test Execution',
+      title: 'Easy Integration',
       icon: <DataVariabilityConcernsIcon />,
-      description: "Monitor test results, identify bottlenecks, and make data-driven decisions to streamline testing processes and improve overall efficiency.",
+      description: "Integrating Keploy into your workflow is straightforward, making AI-generated tests and automated unit testing accessible to all developers.",
     },
     {
-      title: 'Collaborative Test Management',
+      title: 'Reduced Development Time',
       icon: <CollaborationIcon />,
-      description: "Share test cases, collaborate on test scripts, and leverage collective insights to drive efficiency and effectiveness in your testing endeavors.",
+      description: "Keploy’s automated unit testing speeds up the development process, allowing for quicker releases.",
     }
   ];
   export const faqQuestions =[
     {
-        title: "How does Keploy's centralized test case benefit teams?",
+        title: "What are AI-generated tests in Keploy?",
         answer:
-        "A centralized testsuite streamlines test case management, ensuring easy access, organization, and version control. Teams can efficiently collaborate, share, and reuse test cases, fostering consistency and efficiency in testing efforts."
+        "AI-generated tests in Keploy are automated test cases created by analyzing real user interactions and application behavior."
     },
     {
-        title: "Can Keploy accommodate different testing methodologies and frameworks?",
+        title: "How does Keploy assist with automated E2E testing?",
         answer:
-        "Yes, Keploy is designed to support various testing methodologies and frameworks, including Agile, Waterfall, and hybrid approaches. It offers flexibility and customization options to adapt to the specific needs of different projects and teams."
+        "Yes, Keploy simplifies automated E2E testing by automatically generating test cases, reducing the need for manual test creation."
     },
     {
         title: "What reporting capabilities does Keploy offer?",
@@ -97,8 +97,13 @@ export const featuresData = [
         "Keploy provides comprehensive reporting tools to generate insights into test coverage, execution status, and defect trends. Teams can access detailed reports, track progress, and make data-driven decisions to improve testing effectiveness and product quality."
     },
     {
-        title: "Is Keploy suitable for teams of all sizes and industries?",
+        title: "Is it easy to integrate Keploy into existing workflows?",
         answer:
-        "Keploy caters to teams of all sizes and industries, from small startups to large enterprises. Its scalable features, intuitive interface, and customizable options make it adaptable to diverse testing needs and requirements across different domains and sectors."
+        "Yes, integrating Keploy into existing workflows such as GitLab, GitHub, Jenkins etc.. is straightforward, making it easy for developers to start using AI-generated tests and automated unit testing."
     },
+    {
+      title: "What is the primary benefit of using Keploy for automated unit testing?",
+      answer:
+      "The primary benefit of using Keploy for automated unit testing is the significant reduction in manual effort required for test creation, leading to faster and more efficient testing processes."
+  }
 ]

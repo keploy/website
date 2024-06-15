@@ -10,16 +10,23 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData , faqQuestions} from "@/components/utils/ebpf-instrumentation";
+import { featuresData,faqQuestions } from "@/components/utils/ai-code-generation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import Header from "@/components/ui/header";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Transform Testing with AI that actually works! Explore Now!',
+  description: "Unlock the power of AI generated tests and mocks with Keploy's coding assistance. Transform your testing with AI code generation that actually works. Check Now!",
+  keywords: 'test generation, ai generated test, automated unit testing',
+};
+
 const heroData = {
-  titleTop: "Accelerate automated test ",
-  titleBottom: "development with eBPF !",
-  subtitleTop: "With Keploy, you can record-and-generate automated tests and data-mocks in 2 mins",
+  titleTop: "Integration test generator ",
+  titleBottom: "for developers",
+  subtitleTop: "Transform Testing with AI that actually works! Explore Now!",
   subtitleBottom:
-    "Rapidly scale your automated test coverage with a zero-code platform that works out of the box. 🚀",
+    "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -29,17 +36,18 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's eBPF Instrumentation",
+  title: "With ",
+  title2: "leverage",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "AI Test Generation ",
   featuresData: featuresData,
 };
 const BannerData = {
   title: " 🚀 Elevate Your Testing with Keploy!",
   subtitle: "Ready to simplify your testing process?",
   paraText:
-    "Click to experience Keploy's magic locally or book a demo for an interactive walk-through. Embark on a journey to stress-free testing today!",
+    "Click to experience Keploy's magic locally or book a demo for an interactive walkthrough. Embark on a journey to stress-free testing today!",
   btnTextLeft: "Book Cloud Demo",
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
@@ -47,7 +55,6 @@ const BannerData = {
 export default function Home() {
   return (
     <>
-    <Header/>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -65,6 +72,7 @@ export default function Home() {
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
         highlightTitle={FeaturesData.highlightTitle}
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

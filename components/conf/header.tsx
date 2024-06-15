@@ -3,11 +3,7 @@
 import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
-import Logo from "../ui/logo";
-import Dropdown from "@/components/utils/dropdown";
 import MobileMenu from "../ui/mobile-menu";
-import CountingNumbers from "../utils/countingNumbers";
-import { isTypeOfExpression } from "typescript";
 import Image from "next/image";
 import GitTogether from "@/public/images/conf/gittogether.png";
 

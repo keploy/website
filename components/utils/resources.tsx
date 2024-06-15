@@ -3,28 +3,32 @@ export const PillarPages = [
       heading: "Use Cases",
       links: [
         {
-          pagelink: "/stub-generation",
+          pagelink: "/test-data-generator",
           pageName: "Test Data Generation"
         },
         {
-          pagelink: "/test-duplication",
-          pageName: "Test Deduplication"
+          pagelink: "/test-case-generator",
+          pageName: "Test Case Generation"
         },
         {
-          pagelink: "/native-integration",
-          pageName: "Native Integration" 
+          pagelink: "/code-coverage",
+          pageName: "Code Coverage" 
         },
         {
-          pagelink: "/continuos-integration-testing",
+          pagelink: "/continuous-integration-testing",
           pageName: "CI Testing"
         },
         {
-          pagelink: "/record-replay",
-          pageName: "Record and Replay",
+          pagelink: "/regression-testing",
+          pageName: "Regression Testing"
         },
         {
-          pagelink: "/test-management",
-          pageName: "Test Management"
+          pagelink: "/api-testing",
+          pageName: "API Testing",
+        },
+        {
+          pagelink: "/ai-code-generation",
+          pageName: "AI Code Generation"
         }
       ]
     }
