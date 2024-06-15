@@ -190,6 +190,8 @@ const Stories = ({
           objectFit="cover"
           className="h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
           priority
+          width={100}
+          height={100}
         />
       ) : (
         <LottiePlayer

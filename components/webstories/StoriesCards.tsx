@@ -49,7 +49,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
         </p>
         <div className="flex flex-row justify-end my-2 mt-10">
           {searchBarOpen ? (
-            <button onClick={AlternativeBar}>
+            <button onClick={AlternativeBar} className="mt-16">
               <FontAwesomeIcon
                 icon={faSearch}
                 className="size-5 bg-secondary-300 text-white p-2 rounded-full"
@@ -58,7 +58,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
           ) : (
             <>
               <SearchBar onChange={handleInputChange} />
-              <button onClick={AlternativeBar} className="ml-2">
+              <button onClick={AlternativeBar} className="ml-2 self-end">
                 <FontAwesomeIcon
                   icon={faTimes}
                   className="size-5 bg-secondary-300 text-white p-2 rounded-full"
