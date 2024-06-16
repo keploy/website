@@ -13,9 +13,6 @@ import { blocksData } from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/continuous-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-<<<<<<< HEAD:app/(default)/continuos-integration-testing/page.tsx
-import Header from "@/components/ui/header";
-=======
 import RootLayout, { Metadata } from "@/app/layout";
 
 const pageMetadata: Metadata = {
@@ -23,7 +20,6 @@ const pageMetadata: Metadata = {
   description: "Virtualise Services and Dependencies during Continuous Integration Testing. Accelerate your software releases with Keploy's CI testing tool. Know How?",
   keywords: 'CI testing, cicd testing, gitlab, github, jenkins',
 };
->>>>>>> upstream/main:app/(default)/continuous-integration-testing/page.tsx
 const heroData = {
   titleTop: "Speed Up Testing ",
   titleBottom: "in CI/CD pipeline",
@@ -57,12 +53,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-<<<<<<< HEAD:app/(default)/continuos-integration-testing/page.tsx
-    <>
-    <Header/>
-=======
     <RootLayout metadata={pageMetadata}>
->>>>>>> upstream/main:app/(default)/continuous-integration-testing/page.tsx
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}

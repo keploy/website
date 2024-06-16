@@ -22,6 +22,12 @@ module.exports = {
         port: "",
         pathname: "**",
       },
+      // {
+      //   protocol: "https",
+      //   hostname: "web-stories.keploy.io.s3.amazonaws.com",
+      //   port: "",
+      //   pathname: "**",
+      // },
     ],
     domains: ["web-stories.keploy.io.s3.amazonaws.com"],
     unoptimized: true,

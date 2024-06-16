@@ -28,7 +28,9 @@ const StoryCard = ({
           <Image
             src={imagesrc}
             alt={CardDescription}
-            layout="fill"
+            // layout="fill"
+            height={500}
+            width={500}
             objectFit="cover"
             className="rounded-t-md md:rounded-none"
           />
