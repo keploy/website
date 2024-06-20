@@ -21,9 +21,10 @@ type WebStoryItem = {
 type WebStoriesProps = {
   data: WebStoryItem[];
   slug: string | string[];
+  onStoryIndexChange: (index: number) => void;
 };
 
-const WebStories = ({ data, slug }: WebStoriesProps) => {
+const WebStories = ({ data, slug , onStoryIndexChange }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
   const [totalTime, setTotalTime] = useState<number>(0);
@@ -118,6 +119,7 @@ const WebStories = ({ data, slug }: WebStoriesProps) => {
     setCurrentStoryIndex((prevIndex) =>
       prevIndex === data.length - 1 ? data.length - 1 : prevIndex + 1
     );
+
     setNext(true);
   };
 
@@ -144,6 +146,10 @@ const WebStories = ({ data, slug }: WebStoriesProps) => {
     const wordCount = content.split(/\s+/).length;
     return Math.ceil(wordCount / wordsPerSecond);
   };
+
+  useEffect(() => {
+    onStoryIndexChange(currentStoryIndex);
+  }, [currentStoryIndex, onStoryIndexChange]);
 
   const currentStory = data[currentStoryIndex];
   return (
