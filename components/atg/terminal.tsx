@@ -141,7 +141,7 @@ function RecordTerminalSession({
           if (commandsTrue) {
             const Curlresponse = await curlCommand(
               codeSubmissionId,
-              "curl -X GET http://localhost:5000/"
+              "curl -X GET http://localhost:5000/animals"
             );
 
             makeKeployTestDir();

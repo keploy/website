@@ -45,7 +45,7 @@ const StageComponent = ({
   }, [functionName, code, language]); // Add dependencies if needed
 
   return (
-    <div className="w-full my-2 border p-2 border-gray-300 flex justify-between items-center">
+    <div className="w-full  border p-2 border-gray-300 flex justify-between items-center">
       <Button
         color="primary"
         className="hover:bg-slate-700 hover:text-white transition duration-300"

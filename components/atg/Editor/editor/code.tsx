@@ -111,6 +111,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
           scrollBeyondLastLine: false,
           fontSize: 15,
         }}
+
         onChange={(newValue) => {
           if (newValue !== undefined) {
             selectedFile.content = newValue;

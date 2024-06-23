@@ -14,6 +14,7 @@ import IMAGE from "../../asset/icons/image.svg";
 import FAVICON from "../../asset/icons/favicon.svg";
 import YAML from "../../asset/icons/yaml.svg"
 import TEXT from "../../asset/icons/file-text-outline.svg"
+import PYTHON from "../../asset/icons/python.svg"
 function getIconHelper() {
   const cache = new Map<string, ReactNode>();
   cache.set(
@@ -34,6 +35,7 @@ function getIconHelper() {
   cache.set("jpg", <Image src={IMAGE} alt="folder" width={24} height={24} />);
   cache.set("ico", <Image src={FAVICON} alt="folder" width={24} height={24} />);
   cache.set("yaml", <Image src={YAML} alt="folder" width={24} height={24} />);
+  cache.set("py", <Image src={PYTHON} alt="folder" width={24} height={24} />);
   cache.set(
     "closedDirectory",
     <Image src={folderSrc} alt="folder" width={24} height={24} />

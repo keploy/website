@@ -117,8 +117,6 @@ type RunCommandSubscriptionParams = {
   command: string;
 };
 
-
-
 export const useRunCommandSubscription = ({
   codeSubmissionId: initialCodeSubmissionId,
   command: initialCommand,
@@ -141,7 +139,6 @@ export const useRunCommandSubscription = ({
 
   return { data, loading, error, handleSubmit };
 };
-
 
 // API for tests.
 
@@ -239,6 +236,23 @@ export async function curlCommand(
     code_submission_id: codeSubmissionId,
     command: "CURL",
     command_content: customCommand,
+  };
+  return await postRequest("http://localhost:8080/query", query, variables);
+}
+
+export async function fetchMock(
+  codeSubmissionId: string,
+  testSetName: string
+): Promise<CommandResponse> {
+  const query = `
+    subscription FetchMock($code_submission_id: String!, $command: String!, $test_set_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_set_name: $test_set_name)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "FETCH_MOCK",
+    test_set_name: testSetName,
   };
   return await postRequest("http://localhost:8080/query", query, variables);
 }

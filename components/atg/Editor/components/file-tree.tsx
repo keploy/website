@@ -11,15 +11,24 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowDown,
 } from "react-icons/md";
-import { fetchTest, fetchTestList, fetchTestSets } from "@/app/api/hello/atg";
+import {
+  fetchMock,
+  fetchTest,
+  fetchTestList,
+  fetchTestSets,
+} from "@/app/api/hello/atg";
 
 interface FileTreeProps {
   rootDir: Directory;
   selectedFile: File | undefined;
-  onSelect: (file: File) => void;
+  onSelect: (file: File|undefined) => void;
 }
 
 export const FileTree = (props: FileTreeProps) => {
+  useEffect(() => {
+    props.onSelect(undefined);
+    console.log("rootDir in the file-tree" , props.rootDir)
+  }, [props.rootDir]);
   return <SubTree directory={props.rootDir} {...props} />;
 };
 
@@ -95,10 +104,8 @@ const SetTestSets = async (
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
   const response = await fetchTestSets(storedCodeSubmissionId);
-  // console.log(response);
   if (response.success) {
     const runCommandSets = response.data.data.runCommand;
-    // console.log(runCommandSets);
     const newTestSets = runCommandSets.split("\n");
     let val = 0;
     newTestSets.pop();
@@ -130,25 +137,50 @@ const SetTestList = async (
   if (response.success) {
     const runCommandTestLists = response.data.data.runCommand;
     const newTestLists = runCommandTestLists.split("\n");
-    let val = 10;
     newTestLists.pop();
-    console.log(newTestLists);
-    const newFiles = await Promise.all(newTestLists.map(async (TestSetName: string, index: number) => ({
-      id: `${directory.id}${index}`,
-      name: TestSetName,
-      parentId: directory.id,
-      type: Type.FILE,
-      depth: 3,
-      content: await GetFileDetails(storedCodeSubmissionId, directory.name, TestSetName),
-    })));
-    console.log(newFiles);
+
+    const newFiles = await Promise.all(
+      newTestLists.map(async (TestSetName: string, index: number) => {
+        const fileDetails = await GetFileDetails(
+          storedCodeSubmissionId,
+          directory.name,
+          TestSetName
+        );
+        return {
+          id: `${directory.id}${index}`,
+          name: TestSetName,
+          parentId: directory.id,
+          type: Type.FILE,
+          depth: 3,
+          content: fileDetails.testDetails,
+        };
+      })
+    );
+
+    const mockResponse = await fetchMock(
+      storedCodeSubmissionId,
+      directory.name
+    );
+    if (mockResponse.success) {
+      const mockDetails = mockResponse.data.data.runCommand;
+      newFiles.push({
+        id: `${directory.id}mock`,
+        name: `mocks.yaml`,
+        parentId: directory.id,
+        type: Type.FILE,
+        depth: 3,
+        content: mockDetails,
+      });
+    }else{
+      console.log("error bhyi error in mocks")
+    }
+
     setDirectory({
       ...directory,
       files: newFiles,
     });
-    console.log(directory);
   } else {
-    console.log("Error fetching test-list:", response.error);
+    console.error("Error fetching test-list:", response.error);
   }
 };
 
@@ -156,16 +188,17 @@ const GetFileDetails = async (
   codeSubmissionId: string,
   testSetName: string,
   testCaseName: string
-) => {
+): Promise<{ testDetails: string; mockDetails: string }> => {
   try {
-    const response = await fetchTest(
+    const testResponse = await fetchTest(
       codeSubmissionId,
       testSetName,
       testCaseName
     );
-    return response.data.data.runCommand;
+    const testDetails = testResponse.data.data.runCommand;
+    return { testDetails, mockDetails: "" };
   } catch (err) {
-    return `content Not found ${err}`;
+    throw new Error(`Content not found: ${err.message}`);
   }
 };
 

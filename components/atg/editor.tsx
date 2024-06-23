@@ -5,12 +5,15 @@ import { Code } from "./Editor/editor/code";
 import styled from "@emotion/styled";
 import Appbar from "./components/AppBar";
 import { Type, File, Directory } from "./Editor/utils/file-manager";
-import { Data } from "./data/TypeScript";
+import { GolangData } from "./data/Golang";
+import { PythonData } from "./data/Python";
+import { TypeScriptData } from "./data/TypeScript";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import CustomizedSteppers from "./components/HorizontalStepper";
 import MainTerminal from "./terminal";
 import StageComponent from "./components/StageComponent";
 import { Button, Skeleton } from "@mui/material";
+import LanguageSelector from "./components/LanguageSelectorComponent";
 
 const dummyDir: Directory = {
   id: "1",
@@ -27,37 +30,66 @@ const Emoji = "\u{1F430} Keploy"; // 🐰
 const Editor = () => {
   const [rootDir, setRootDir] = useState<Directory>(dummyDir);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
-  const [dataFetched, setDataFetched] = useState(false);
+  const [dataFetched, setDataFetched] = useState(true);
   const [error, setError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [showTerminal, setShowTerminal] = useState<boolean>(false);
   const [state, setState] = useState(-1);
   const [functionName, setFunctionName] = useState<string>("Start");
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setDataFetched(false);
-      setError("");
-      try {
-        setRootDir(Data);
-        setDataFetched(true);
-      } catch (err) {
-        console.error("Error fetching data:", err);
-        setError("Not able to reach the server");
-      }
-    };
-    fetchData();
-  }, []);
+  const [language, setSelectedLanguage] = useState<string>("Golang");
 
   useEffect(() => {
     updateFunctionName(state);
   }, [state]);
 
-  const onSelect = (file: File) => {
+  useEffect(() => {
+    const fetchData = () => {
+      let data;
+      if (language === "Golang") {
+        data = GolangData;
+      } else if (language === "Python") {
+        data = PythonData;
+      } else {
+        data = TypeScriptData;
+      }
+      setRootDir(data);
+    };
+    fetchData();
+    console.log(language);
+  }, [language]);
+
+  useEffect(() => {
+    console.log(rootDir);
+  }, [rootDir]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "`") {
+        event.preventDefault();
+        toggleTerminal();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showTerminal]);
+
+  const onLanguageSelect = (language: string) => {
+    setSelectedLanguage(language);
+  };
+
+  const onSelect = (file: File | undefined) => {
     setSelectedFile(file);
-    const updatedFiles = files.filter((f) => f.id !== file.id);
-    setFiles([...updatedFiles, file]);
+    if (file != undefined) {
+      const updatedFiles = files.filter((f) => f.id !== file.id);
+      setFiles([...updatedFiles, file]);
+    } else {
+      setFiles([]);
+    }
   };
 
   const onSelectAppBar = (file: File) => {
@@ -97,12 +129,8 @@ const Editor = () => {
     }
   };
 
-  const ShowingTerminal = () => {
-    setShowTerminal(true);
-  };
-
-  const NotShowingTerminal = () => {
-    setShowTerminal(false);
+  const toggleTerminal = () => {
+    setShowTerminal((prevShowTerminal) => !prevShowTerminal);
   };
 
   return (
@@ -110,14 +138,17 @@ const Editor = () => {
       <div>
         {dataFetched ? (
           <>
-            <div className="flex flex-col max-w-6xl px-4 mx-auto my-16 m-2">
+            <div className="flex flex-col max-w-6xl  px-4 mx-auto my-16 m-2">
               <CustomizedSteppers
                 activeStep={state}
                 onNext={nextState}
                 onPrev={prevState}
               />
-              <div className="flex flex-row mt-5">
-                <div className={`transition-all duration-200 w-3/12`}>
+              <div className="flex flex-row mt-5 my-10 ">
+                <div className={`flex flex-col transition-all duration-200 w-3/12  border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md `}>
+                  <LanguageSelector
+                    onSelectLanguageForCode={onLanguageSelect}
+                  />
                   <Sidebar
                     rootDir={rootDir}
                     selectedFile={selectedFile}
@@ -125,7 +156,7 @@ const Editor = () => {
                   />
                 </div>
                 <div
-                  className={`relative flex flex-col ml-2 w-full transition-all duration-300`}
+                  className={`relative flex flex-col ml-2 w-full h-full transition-all duration-300`}
                 >
                   <EditorContainer>
                     <div className="flex flex-row w-full h-full">
@@ -140,8 +171,10 @@ const Editor = () => {
                           <StageComponent
                             functionName={functionName}
                             onNext={nextState}
-                            showTerminal={ShowingTerminal}
-                            hideTerminal={NotShowingTerminal}
+                            showTerminal={() => {
+                              setShowTerminal(true);
+                            }}
+                            hideTerminal={toggleTerminal}
                             language={"GOLANG"}
                             code={selectedFile?.content}
                           />
@@ -152,31 +185,11 @@ const Editor = () => {
                             showTerminal ? "max-h-96" : "max-h-0"
                           } overflow-hidden`}
                         >
-                          {showTerminal && (
-                            <Button
-                              className="w-full bg-slate-200 hover:bg-slate-200"
-                              onClick={() => {
-                                setShowTerminal(false);
-                              }}
-                            >
-                              Remove Terminal
-                            </Button>
-                          )}
                           <MainTerminal
                             inputRef={inputRef}
                             functionName={functionName}
                             setRootDir={setRootDir}
                           />
-                          {!showTerminal && (
-                            <Button
-                              className="w-full h-10 bg-slate-200 hover:bg-slate-200"
-                              onClick={() => {
-                                setShowTerminal(true);
-                              }}
-                            >
-                              Show Terminal
-                            </Button>
-                          )}
                         </div>
                       </div>
                     </div>
