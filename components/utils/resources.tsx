@@ -4,9 +4,12 @@ export const PillarPages = [
       links: [
         {
           pagelink: "/test-data-generator",
+          pagelink: "/test-data-generator",
           pageName: "Test Data Generation"
         },
         {
+          pagelink: "/test-case-generator",
+          pageName: "Test Case Generation"
           pagelink: "/test-case-generator",
           pageName: "Test Case Generation"
         },
@@ -20,6 +23,7 @@ export const PillarPages = [
         },
         {
           pagelink: "/continuous-integration-testing",
+          pagelink: "/continuous-integration-testing",
           pageName: "CI Testing"
         },
         {
@@ -29,8 +33,16 @@ export const PillarPages = [
         {
           pagelink: "/api-testing",
           pageName: "API Testing",
+          pagelink: "/regression-testing",
+          pageName: "Regression Testing"
         },
         {
+          pagelink: "/api-testing",
+          pageName: "API Testing",
+        },
+        {
+          pagelink: "/ai-code-generation",
+          pageName: "AI Code Generation"
           pagelink: "/ai-code-generation",
           pageName: "AI Code Generation"
         }
