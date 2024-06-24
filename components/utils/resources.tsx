@@ -11,6 +11,10 @@ export const PillarPages = [
           pageName: "Test Case Generation"
         },
         {
+          pagelink: "/unit-test-generator",
+          pageName: "Unit Test Generation"
+        },
+        {
           pagelink: "/code-coverage",
           pageName: "Code Coverage" 
         },
