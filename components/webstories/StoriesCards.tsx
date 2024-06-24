@@ -38,7 +38,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
   });
 
   return (
-    <div className="relative">
+    <div className="relative bg-neutral-100">
       <Container>
         <h1 className="lg:text-5xl text-4xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4 text-center">
           Keploy Web Stories
