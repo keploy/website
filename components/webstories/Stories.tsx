@@ -214,9 +214,9 @@ const Stories = ({
       )}
 
       {Story.swipeLink && Story.swipeText && (
-        <Link href={Story.swipeLink}>
+        <Link href={Story.swipeLink} >
           <div
-            className={`absolute inset-x-0 bottom-10 ${
+            className={`absolute inset-x-0 z-30 bottom-10 ${
               contentAvailable ? "opacity-25" : "opacity-100"
             } hover:opacity-100 duration-300 flex flex-col justify-center items-center`}
           >

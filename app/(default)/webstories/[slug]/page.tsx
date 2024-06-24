@@ -99,9 +99,9 @@ const Index: React.FC = () => {
         {windowWidth > 1024 && (
           <button
             onClick={handleClose}
-            className="text-slate-200 font-medium bg-secondary-300 p-3 rounded-full shadow-lg absolute top-4 right-4"
+            className="text-slate-200 border border-solid font-medium bg-secondary-300 p-3 rounded-full shadow-lg absolute top-4 right-4"
           >
-            <CloseIcon />
+            <CloseIcon  />
           </button>
         )}
         {storyData ? (
