@@ -50,7 +50,6 @@ export default function CountingNumbers({
           const data = await response.json();
           // Use setStarsCount to update the state
           setStarsCount(data.stargazers_count);
-          console.log(data.stargazers_count);
         } else {
           console.error("Failed to fetch stars count", response.statusText);
         }

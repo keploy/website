@@ -185,10 +185,6 @@ export const faqQuestions =[
         "Test case management tools and Keploy enhance software testing processes by organizing test cases efficiently, providing a centralized repository for test-related artifacts, enabling version control for traceability, integrating with CI/CD pipelines for streamlined testing, facilitating efficient deployment automation with Keploy, and ensuring comprehensive test coverage across environments. Together, they optimize workflows, enhance collaboration, and improve software quality, reducing the risk of production defects.",
     },
     {
-      title:"Is Keploy as Test Management Software suitable for teams following Agile or DevOps methodologies?",
-      answer:"Yes, Keploy is well-suited for teams practicing Agile or DevOps methodologies. It supports iterative development cycles, continuous testing, and rapid feedback loops, aligning with the principles of Agile and DevOps to deliver high-quality software incrementally."
-    },
-    {
       title:"What features does Keploy offer?",
       answer:"As a Test Management Software, Keploy provides a range of features, including test case management, test execution scheduling, integration with CI/CD pipelines, traceability matrices, defect tracking, and customizable reporting. These features cater to the diverse needs of software testing teams."
     }
