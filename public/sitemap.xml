@@ -13,9 +13,49 @@
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://keploy.io/gittogether</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
   <loc>https://keploy.io/blog/</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://keploy.io/test-data-generator/</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://keploy.io/test-case-generator/</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://keploy.io/code-coverage/</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://keploy.io/continuous-integration-testing/</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://keploy.io/regression-testing/</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://keploy.io/api-testing/</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://keploy.io/ai-code-generation/</loc>
+  <lastmod>2024-06-18T06:59:05+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://keploy.io/docs/</loc>
