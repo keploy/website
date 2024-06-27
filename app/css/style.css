@@ -32,3 +32,86 @@
 button{
     cursor: pointer !important;
 }
+
+.terminal {
+  height: 30vh;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  background-color: #f3f3f3; /* Light background similar to VS Code light theme */
+  color: #333333; /* Dark text color */
+  font-size: 14px;
+  line-height: 1.42;
+  /* font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace; */
+  scrollbar-width: none; /* For Firefox to hide scrollbars */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.terminal__line {
+  line-height: 2;
+  white-space: pre-wrap; /* Wrap long lines */
+  word-wrap: break-word; /* Break long words */
+}
+
+.terminal__line input:focus {
+  outline: none; /* Remove the blue border */
+  border: none;
+}
+
+.terminal__prompt {
+  display: flex;
+  align-items: center;
+}
+
+.terminal__prompt__label {
+  flex: 0 0 auto;
+  color: #007acc; /* Blue color similar to VS Code prompt */
+}
+
+.terminal__prompt__input {
+  flex: 1;
+  margin-left: 0.4rem;
+  display: flex;
+  align-items: center;
+  color: #333333; /* Dark text color */
+}
+
+.terminal__prompt__input input {
+  flex: 1;
+  width: 100%;
+  background-color: transparent;
+  color: #333333; /* Dark text color */
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  line-height: 1.42;
+  /* font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace; */
+}
+
+/* WebKit-based browsers */
+.terminal::-webkit-scrollbar {
+  display: none; /* Hide scrollbars */
+}
+
+.fat-cursor {
+  position: relative;
+}
+
+.fat-cursor::before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 2px; /* Adjust the width to make the cursor thicker */
+  height: 1em; /* Height of the cursor */
+  top: 0;
+  left: 0;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
