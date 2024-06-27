@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import twitterIcon from './assets/images/twitter-icon.png';
 import "../../app/css/community.css"
 import { socialLinks } from '../utils/common';
 

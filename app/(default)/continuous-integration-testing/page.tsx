@@ -10,12 +10,19 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/record-replay";
+import { featuresData,faqQuestions } from "@/components/utils/continuous-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Speed Up Testing in CI/CD with secret Virtual Environments!',
+  description: "Virtualise Services and Dependencies during Continuous Integration Testing. Accelerate your software releases with Keploy's CI testing tool. Know How?",
+  keywords: 'CI testing, cicd testing, gitlab, github, jenkins',
+};
 const heroData = {
-  titleTop: "Streamline CI Testing ",
-  titleBottom: "with Keploy Integration",
+  titleTop: "Speed Up Testing ",
+  titleBottom: "in CI/CD pipeline",
   subtitleTop: "Eliminate the need for complex setup in CI for testing!",
   subtitleBottom:
     "Make testing in CI hassle-free with Keploy's seamless CI integration!🚀",
@@ -28,10 +35,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Record Replay ",
+  title: "Improve ",
+  title2: "with ",
+  highlightTitle: "Continuous Testing",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -45,7 +53,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -62,7 +70,8 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial
@@ -95,6 +104,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

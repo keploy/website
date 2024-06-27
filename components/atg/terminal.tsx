@@ -22,21 +22,33 @@ function MainTerminal({
   inputRef,
   functionName,
   setRootDir,
+  hideTerminal,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   functionName: string;
   setRootDir: Dispatch<SetStateAction<Directory>>;
+  hideTerminal: () => void;
 }) {
   return (
     <div className="h-full">
       {functionName === "record" && (
-        <RecordTerminalSession inputRef={inputRef} setRootDir={setRootDir} />
+        <RecordTerminalSession
+          inputRef={inputRef}
+          setRootDir={setRootDir}
+          hideTerminal={hideTerminal}
+        />
       )}
       {functionName === "deduplicate" && (
-        <DeduplicateTerminalSession inputRef={inputRef} />
+        <DeduplicateTerminalSession
+          inputRef={inputRef}
+          hideTerminal={hideTerminal}
+        />
       )}
       {functionName === "testcoverage" && (
-        <TestCoverageTerminalSession inputRef={inputRef} />
+        <TestCoverageTerminalSession
+          inputRef={inputRef}
+          hideTerminal={hideTerminal}
+        />
       )}
     </div>
   );
@@ -45,9 +57,11 @@ function MainTerminal({
 function RecordTerminalSession({
   inputRef,
   setRootDir,
+  hideTerminal,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   setRootDir: Dispatch<SetStateAction<Directory>>;
+  hideTerminal: () => void;
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal, popTerminal } =
     useTerminal();
@@ -181,6 +195,7 @@ function RecordTerminalSession({
         promptLabel={<>{Emoji}:</>}
         commands={commands}
         inputRef={inputRef}
+        hideTerminal={hideTerminal}
       />
     </div>
   );
@@ -188,8 +203,11 @@ function RecordTerminalSession({
 
 function DeduplicateTerminalSession({
   inputRef,
+  hideTerminal,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
+
+  hideTerminal: () => void;
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
@@ -232,6 +250,7 @@ function DeduplicateTerminalSession({
         promptLabel={<>{Emoji}:</>}
         commands={commands}
         inputRef={inputRef}
+        hideTerminal={hideTerminal}
       />
     </div>
   );
@@ -239,8 +258,10 @@ function DeduplicateTerminalSession({
 
 function TestCoverageTerminalSession({
   inputRef,
+  hideTerminal,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
+  hideTerminal: () => void;
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
@@ -328,6 +349,7 @@ function TestCoverageTerminalSession({
         promptLabel={<>{Emoji}:</>}
         commands={commands}
         inputRef={inputRef}
+        hideTerminal={hideTerminal}
       />
     </div>
   );

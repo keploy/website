@@ -10,15 +10,23 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/stub-generation";
+import { featuresData,faqQuestions } from "@/components/utils/test-case-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Boost E2E Testing with Keploy Test Case Generator! Learn How',
+  description: 'Stop wasting time! Imagine waking up to ready-made test cases. Keploy.io test case generation makes it possible saving you hours. Click to learn how!',
+  keywords: 'test case generation',
+};
+
 const heroData = {
-  titleTop: "Simplifying Testing with ",
-  titleBottom: "Dynamic Test Data Generator",
-  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
+  titleTop: "Improve Tests with ",
+  titleBottom: "E2E Test Generator",
+  subtitleTop: "Avoid confusion and Duplication in Test Execution!",
   subtitleBottom:
-    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
+    "Remove the duplicate and redundant test cases in minutes. 🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -28,10 +36,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: " With Keploy's Test Data Generation ",
+  title: "Leverage ",
+  title2: "with ",
   subtitle:
-    "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+    "Replace multiple tools in your test stack with one zero-code platform.Generic Features list/tables",
+  highlightTitle: "Test Case Generator",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -45,7 +54,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -62,7 +71,8 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial
@@ -95,6 +105,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

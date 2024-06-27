@@ -14,7 +14,7 @@ import MainTerminal from "./terminal";
 import StageComponent from "./components/StageComponent";
 import { Button, Skeleton } from "@mui/material";
 import LanguageSelector from "./components/LanguageSelectorComponent";
-
+import { findFileByName } from "./Editor/utils/file-manager";
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -25,7 +25,6 @@ const dummyDir: Directory = {
   files: [],
 };
 
-const Emoji = "\u{1F430} Keploy"; // 🐰
 
 const Editor = () => {
   const [rootDir, setRootDir] = useState<Directory>(dummyDir);
@@ -53,6 +52,8 @@ const Editor = () => {
       } else {
         data = TypeScriptData;
       }
+      setState(-1);
+      setShowTerminal(false);
       setRootDir(data);
     };
     fetchData();
@@ -133,6 +134,14 @@ const Editor = () => {
     setShowTerminal((prevShowTerminal) => !prevShowTerminal);
   };
 
+  const showTerminalFunction = () =>{
+    setShowTerminal(true);
+  }
+
+  const hideTerminalFunction = () =>{
+    setShowTerminal(false);
+  }
+
   return (
     <>
       <div>
@@ -146,9 +155,9 @@ const Editor = () => {
               />
               <div className="flex flex-row mt-5 my-10 ">
                 <div className={`flex flex-col transition-all duration-200 w-3/12  border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md `}>
-                  <LanguageSelector
+                  {/* <LanguageSelector
                     onSelectLanguageForCode={onLanguageSelect}
-                  />
+                  /> */}
                   <Sidebar
                     rootDir={rootDir}
                     selectedFile={selectedFile}
@@ -166,8 +175,9 @@ const Editor = () => {
                           selectedFilesArray={files}
                           onSelect={onSelectAppBar}
                           onCancel={CancelButtonAppBar}
+                          onSelectLanguage={onLanguageSelect}
                         />
-                        {files.length !== 0 && (
+                        {/* {files.length !== 0 && (
                           <StageComponent
                             functionName={functionName}
                             onNext={nextState}
@@ -178,7 +188,7 @@ const Editor = () => {
                             language={"GOLANG"}
                             code={selectedFile?.content}
                           />
-                        )}
+                        )} */}
                         <Code selectedFile={selectedFile} />
                         <div
                           className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
@@ -189,6 +199,7 @@ const Editor = () => {
                             inputRef={inputRef}
                             functionName={functionName}
                             setRootDir={setRootDir}
+                            hideTerminal={hideTerminalFunction}
                           />
                         </div>
                       </div>

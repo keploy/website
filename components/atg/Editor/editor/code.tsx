@@ -14,6 +14,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
   if (language === "js" || language === "jsx") language = "javascript";
   else if (language === "ts" || language === "tsx") language = "typescript";
   else if (language === "go") language = "go";
+  else if (language === "py") language = "python";
 
   const validateCode = (code: string) => {
     const diagnostics: monaco.editor.IMarkerData[] = [];
@@ -32,10 +33,13 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
     for (let i = 0; i < code.length; i++) {
       const char = code[i];
       const prevChar = code[i - 1];
-      
+
+      // Handle opening brackets
       if (openBrackets.includes(char)) {
         stack.push({ char, position: i });
-      } else if (closeBrackets.includes(char)) {
+      } 
+      // Handle closing brackets
+      else if (closeBrackets.includes(char)) {
         if (stack.length === 0 || stack[stack.length - 1].char !== matchingBracket[char]) {
           diagnostics.push({
             severity: 8,
@@ -50,6 +54,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
         }
       }
 
+      // Handle string delimiters
       if (stringDelimiters.includes(char) && prevChar !== '\\') {
         if (stringStack.length === 0 || stringStack[stringStack.length - 1].char !== char) {
           stringStack.push({ char, position: i });
@@ -59,6 +64,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       }
     }
 
+    // Add unmatched opening brackets to diagnostics
     stack.forEach(({ char, position }) => {
       diagnostics.push({
         severity: 8,
@@ -70,6 +76,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       });
     });
 
+    // Add unmatched string delimiters to diagnostics
     stringStack.forEach(({ char, position }) => {
       diagnostics.push({
         severity: 8,
@@ -94,7 +101,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
           monacoInstance.editor.setModelMarkers(model, "owner", diagnostics);
         };
 
-        validate();
+        validate(); // Initial validation
         const subscription = model.onDidChangeContent(() => validate());
         return () => subscription.dispose();
       }
@@ -111,7 +118,6 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
           scrollBeyondLastLine: false,
           fontSize: 15,
         }}
-
         onChange={(newValue) => {
           if (newValue !== undefined) {
             selectedFile.content = newValue;

@@ -1,34 +1,10 @@
 import React, { useState } from "react";
-import { Theme, useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { MenuProps as MenuPropsType } from '@mui/material/Menu';
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps: Partial<MenuPropsType> = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-      overflowY: 'auto' as 'auto',
-    },
-  },
-  disableScrollLock: true,
-};
-
-const projectNames = ['Golang', 'Typescript', 'Python'];
-
-function getStyles(name: string, selectedProject: string, theme: Theme) {
-  return {
-    fontWeight:
-      selectedProject === name
-        ? theme.typography.fontWeightMedium
-        : theme.typography.fontWeightRegular,
-  };
-}
+import { useTheme } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import { FaPython, FaJs } from "react-icons/fa"; // Assuming you are using react-icons
+import { FaGolang } from "react-icons/fa6";
+import './css/LanguageSelector.css'; // Import CSS for transitions
 
 export const LanguageSelector = ({
   onSelectLanguageForCode,
@@ -36,44 +12,61 @@ export const LanguageSelector = ({
   onSelectLanguageForCode: (language: string) => void;
 }) => {
   const theme = useTheme();
-  const [selectedProject, setSelectedProject] = useState<string>('Golang');
+  const [selectedProject, setSelectedProject] = useState<string>("Golang");
+  const [showIcons, setShowIcons] = useState<boolean>(false);
 
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    const newProject = event.target.value;
-    setSelectedProject(newProject);
-    onSelectLanguageForCode(newProject);
+  const handleSelect = (language: string) => {
+    setSelectedProject(language);
+    onSelectLanguageForCode(language);
+    setShowIcons(false); // Hide icons after selection
+  };
+
+  const toggleIcons = () => {
+    setShowIcons(!showIcons);
   };
 
   return (
-    <div className="mb-5 text-gray-800 w-full p-2 rounded-md">
-      <FormControl fullWidth>
-        <Select
-          value={selectedProject}
-          onChange={handleChange}
-          input={<OutlinedInput />}
-          renderValue={(selected) => {
-            if (!selected) {
-              return <em>Language</em>;
-            }
-            return selected;
-          }}
-          MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem disabled value="">
-            <em>Language</em>
-          </MenuItem>
-          {projectNames.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, selectedProject, theme)}
+    <div className="text-gray-800  rounded-md flex justify-around">
+      
+      {showIcons && (
+        <div className="icon-container transition-all duration-300">
+          <Tooltip title="Golang">
+            <IconButton
+              color={selectedProject === "Golang" ? "primary" : "default"}
+              onClick={() => handleSelect("Golang")}
             >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+              <FaGolang size={30} />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Python">
+            <IconButton
+              color={selectedProject === "Python" ? "primary" : "default"}
+              onClick={() => handleSelect("Python")}
+            >
+              <FaPython size={30} />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="JavaScript">
+            <IconButton
+              color={selectedProject === "JavaScript" ? "primary" : "default"}
+              onClick={() => handleSelect("JavaScript")}
+            >
+              <FaJs size={30} />
+            </IconButton>
+          </Tooltip>
+        </div>
+      )}
+      <Tooltip title={selectedProject}>
+        <IconButton
+          color="primary"
+          onClick={toggleIcons}
+          className={`icon-transition ${showIcons ? 'expanded' : ''}`}
+        >
+          {selectedProject === "Golang" && <FaGolang size={30} />}
+          {selectedProject === "Python" && <FaPython size={30} />}
+          {selectedProject === "JavaScript" && <FaJs size={30} />}
+        </IconButton>
+      </Tooltip>
     </div>
   );
 };

@@ -10,15 +10,23 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/test-duplication";
+import { featuresData,faqQuestions } from "@/components/utils/ai-code-generation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Transform Testing with AI that actually works! Explore Now!',
+  description: "Unlock the power of AI generated tests and mocks with Keploy's coding assistance. Transform your testing with AI code generation that actually works. Check Now!",
+  keywords: 'test generation, ai generated test, automated unit testing',
+};
+
 const heroData = {
-  titleTop: "Increase Test coverage with ",
-  titleBottom: "Keploy Dedup feature",
-  subtitleTop: "Avoid confusion and Duplication in Test Execution!",
+  titleTop: "Integration test generator ",
+  titleBottom: "for developers",
+  subtitleTop: "Transform Testing with AI that actually works! Explore Now!",
   subtitleBottom:
-    "Remove the duplicate and redundant test cases in minutes. 🚀",
+    "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -28,10 +36,11 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's DeDuplication",
+  title: "With ",
+  title2: "leverage",
   subtitle:
-    "Replace multiple tools in your test stack with one zero-code platform.Generic Features list/tables",
-  highlightTitle: "eliminate",
+    "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
+  highlightTitle: "AI Test Generation ",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -63,6 +72,7 @@ export default function Home() {
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
         highlightTitle={FeaturesData.highlightTitle}
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

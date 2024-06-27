@@ -7,9 +7,11 @@ import {
   useState,
 } from "react";
 import { TerminalProps, TerminalCommands } from "./types"; // Assuming you have a types file where `TerminalCommands` is defined
-
+import { IoIosArrowDropdownCircle } from "react-icons/io";
+import { IoTerminal } from "react-icons/io5";
 export interface AdditionalProps {
   inputRef: React.RefObject<HTMLInputElement>;
+  hideTerminal: () => void;
 }
 
 interface CombinedProps extends TerminalProps, AdditionalProps {}
@@ -21,6 +23,7 @@ export const Terminal = forwardRef(
       promptLabel = ">",
       inputRef,
       commands = {},
+      hideTerminal,
     } = props;
 
     const [input, setInputValue] = useState<string>("");
@@ -74,8 +77,27 @@ export const Terminal = forwardRef(
 
     return (
       <div>
-        <div className="terminal border border-gray-300 h-full" ref={ref} onClick={focusInput}>
-          <div className="p-4">
+        <div
+          className="terminal border border-t-slate-900 border-b-slate-900 border-t-4 border-b-4 h-full"
+          ref={ref}
+          onClick={focusInput}
+        >
+          <div className="sticky top-0 text-slate-300 flex justify-between   mr-2 bg-inherit bg-slate-300 p-2 border-b-slate-800">
+            <div className="flex flex-row gap-2">
+              <IoTerminal
+                className=" cursor-pointer scale-150 text-slate-800"
+                aria-label="Expand Terminal"
+                onClick={hideTerminal}
+              />
+              {/* <p className=" text-slate-800">Terminal</p> */}
+            </div>
+            <IoIosArrowDropdownCircle
+              className=" cursor-pointer scale-150 text-slate-800"
+              aria-label="Expand Terminal"
+              onClick={hideTerminal}
+            />
+          </div>
+          <div className="p-1">
             {history.map((line, index) => (
               <div
                 className="terminal__line"
@@ -93,7 +115,7 @@ export const Terminal = forwardRef(
                   onKeyDown={handleInputKeyDown}
                   onChange={handleInputChange}
                   ref={inputRef}
-                  className="focus:outline-none appearance-none border border-slate-950"
+                  className="form-input fat-cursor caret-slate-600 pl-0 ml-0 border-none focus:outline-none border border-r-0 text-sm appearance-none border-transparent fat-cursor"
                 />
               </div>
             </div>

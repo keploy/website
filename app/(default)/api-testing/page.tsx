@@ -10,15 +10,23 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/test-management";
+import { featuresData , faqQuestions} from "@/components/utils/api-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
+import RootLayout, { Metadata } from "@/app/layout";
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | One-click API test with OpenSource and Free API Testing Tool',
+  description: "Discover how Keploy's free API testing tools can drastically transform your e2e api testing process and why developers love it! Get the free tool now!",
+  keywords: 'API test, FREE API Testing Tool, API Testing tool',
+};
+
 const heroData = {
-  titleTop: "Efficient Test Management ",
-  titleBottom: "made Simple.",
-  subtitleTop: "Elevate your testing processes with Keploy's comprehensive Test Management solution!",
+  titleTop: "API Testing ",
+  titleBottom: "with Seamless Experience",
+  subtitleTop: "One-click API test with OpenSource and Free API Testing Tool",
   subtitleBottom:
-    "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
+    "Rapidly scale your transform your E2E API Testing process with a platform that works out of the box. 🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -28,17 +36,18 @@ const ProblemBlocksData = {
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With Keploy's Test Management ",
+  title: "With ",
+  title2: "ensure",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "eliminate",
+  highlightTitle: "API Testing",
   featuresData: featuresData,
 };
 const BannerData = {
   title: " 🚀 Elevate Your Testing with Keploy!",
   subtitle: "Ready to simplify your testing process?",
   paraText:
-    "Click to experience Keploy's magic locally or book a demo for an interactive walkthrough. Embark on a journey to stress-free testing today!",
+    "Click to experience Keploy's magic locally or book a demo for an interactive walk-through. Embark on a journey to stress-free testing today!",
   btnTextLeft: "Book Cloud Demo",
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
@@ -62,7 +71,8 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
+        title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
       <Testimonial

@@ -4,17 +4,20 @@ import CloseIcon from "@mui/icons-material/Close";
 import "./css/Appbar.css"; // Import the CSS file for custom styling
 import { getIcon } from "../Editor/components/icon";
 import styled from "@emotion/styled";
+import LanguageSelector from "./LanguageSelectorComponent";
 
 const Appbar = ({
   selectedFile,
   selectedFilesArray,
   onSelect,
   onCancel,
+  onSelectLanguage,
 }: {
   selectedFile: File | undefined;
   selectedFilesArray: File[];
   onSelect: (file: File) => void;
   onCancel: (file: File) => void;
+  onSelectLanguage: (language: string) => void;
 }) => {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -54,8 +57,8 @@ const Appbar = ({
   return (
     <div className="appbar-container">
       <div className="appbar-scrollbar-container" ref={scrollRef}></div>
-      <div className="appbar w-full border border-gray-300 mb-1 rounded-t-md">
-        <div className="tabs-container" ref={tabsRef}>
+      <div className="appbar flex flex-row justify-between w-full border border-gray-300 mb-1 rounded-t-md">
+        <div className="tabs-container flex-grow" ref={tabsRef}>
           {selectedFilesArray.map((file, key) => {
             return (
               <div
@@ -106,6 +109,9 @@ const Appbar = ({
               </div>
             );
           })}
+        </div>
+        <div className="flex items-center">
+          <LanguageSelector onSelectLanguageForCode={onSelectLanguage} />
         </div>
       </div>
     </div>

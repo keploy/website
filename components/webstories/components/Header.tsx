@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 
 import Link from "next/link";
-import Logo from "./logo";
-import MobileMenu from "./mobile-menu";
-import CountingNumbers from "../utils/countingNumbers";
+import Logo from "../../ui/logo";
+import MobileMenu from "../../ui/mobile-menu";
+import CountingNumbers from "../../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
-import { PillarPages } from "../utils/resources";
+import { PillarPages } from "../../utils/resources";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);

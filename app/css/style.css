@@ -33,26 +33,28 @@ button{
     cursor: pointer !important;
 }
 
-/* Terminal's css */
-/* terminal.css */
-/* Terminal CSS */
 .terminal {
   height: 30vh;
-  overflow-y: scroll;
-  overflow-x: scroll; /* Hide horizontal scrollbar */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  overflow-x: scroll; /* Enable horizontal scrolling */
   background-color: #f3f3f3; /* Light background similar to VS Code light theme */
   color: #333333; /* Dark text color */
   font-size: 14px;
   line-height: 1.42;
-  font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #007acc #f3f3f3; /* For Firefox */
+  /* font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace; */
+  scrollbar-width: none; /* For Firefox to hide scrollbars */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
 }
 
 .terminal__line {
   line-height: 2;
   white-space: pre-wrap; /* Wrap long lines */
   word-wrap: break-word; /* Break long words */
+}
+
+.terminal__line input:focus {
+  outline: none; /* Remove the blue border */
+  border: none;
 }
 
 .terminal__prompt {
@@ -67,7 +69,7 @@ button{
 
 .terminal__prompt__input {
   flex: 1;
-  margin-left: 1rem;
+  margin-left: 0.4rem;
   display: flex;
   align-items: center;
   color: #333333; /* Dark text color */
@@ -82,24 +84,34 @@ button{
   outline: none;
   font-size: 14px;
   line-height: 1.42;
-  font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace;
+  /* font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace; */
 }
 
 /* WebKit-based browsers */
 .terminal::-webkit-scrollbar {
-  width: 12px; /* Adjust scrollbar width */
+  display: none; /* Hide scrollbars */
 }
 
-.terminal::-webkit-scrollbar-track {
-  background-color: #f3f3f3; /* Light background similar to VS Code light theme */
+.fat-cursor {
+  position: relative;
 }
 
-.terminal::-webkit-scrollbar-thumb {
-  background-color: #007acc; /* Blue color similar to VS Code prompt */
-  border-radius: 6px; /* Rounded edges */
-  border: 3px solid #f3f3f3; /* Space between thumb and track */
+.fat-cursor::before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 2px; /* Adjust the width to make the cursor thicker */
+  height: 1em; /* Height of the cursor */
+  top: 0;
+  left: 0;
+  animation: blink 1s step-end infinite;
 }
 
-.terminal::-webkit-scrollbar-thumb:hover {
-  background-color: #005999; /* Darker blue on hover */
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }

@@ -4,6 +4,7 @@ export default function Features(props: {
   title: string;
   subtitle: string;
   highlightTitle: string;
+  title2: string;
   featuresData: Array<{
     title: string;
     description: string;
@@ -42,6 +43,7 @@ export default function Features(props: {
                 {props.highlightTitle}&nbsp;
               </span>
             </span>
+            {props.title2}
           </h2>
         </div>
         {/* Grid of features */}
