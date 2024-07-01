@@ -20,7 +20,6 @@ export const PillarPages = [
         },
         {
           pagelink: "/continuous-integration-testing",
-          pagelink: "/continuous-integration-testing",
           pageName: "CI Testing"
         },
         {
