@@ -41,7 +41,10 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
     <div className="relative bg-neutral-100">
       <Container>
         <h1 className="lg:text-5xl text-4xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4 text-center">
-          Keploy Web Stories
+          Test{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
+            Stories
+          </span>
         </h1>
         <p className="text-center text-gray-500">
           Discover what's going on in and around Keploy. Learn about Keploy and

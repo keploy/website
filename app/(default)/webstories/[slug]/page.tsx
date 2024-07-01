@@ -5,9 +5,10 @@ import { DataFiles } from "../../../../components/utils/data";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import CloseIcon from "@/components/webstories/components/CloseIcon";
+import { StaticImageData } from "next/image";
 
 interface PreloadedImage {
-  url: string;
+  url: string | StaticImageData;
   img: HTMLImageElement;
 }
 
@@ -32,13 +33,13 @@ const Index: React.FC = () => {
     }
   }, []);
 
-  const preloadImages = async (images: string[]) => {
+  const preloadImages = async (images: (string | StaticImageData)[]) => {
     const loadedImages = await Promise.all(
       images.map(
         (url) =>
           new Promise<PreloadedImage>((resolve) => {
             const img = new (window as any).Image();
-            img.src = url;
+            img.src = typeof url === "string" ? url : url.src;
             img.onload = () => resolve({ url, img });
           })
       )
@@ -52,7 +53,7 @@ const Index: React.FC = () => {
       const imageUrls = [
         storyData[index]?.imageUrl,
         storyData[index + 1]?.imageUrl,
-      ].filter(Boolean) as string[];
+      ].filter(Boolean) as (string | StaticImageData)[];
       preloadImages(imageUrls);
     }
   };
@@ -62,7 +63,7 @@ const Index: React.FC = () => {
   }, [currentStoryIndex, storyData]);
 
   const handleClose = () => {
-    window.close();
+    window.location.href = "/webstories";
   };
 
   const handleStoryIndexChange = (index: number) => {
@@ -77,7 +78,7 @@ const Index: React.FC = () => {
     );
   }
 
-  const getImageElement = (url: string) => {
+  const getImageElement = (url: string | StaticImageData) => {
     const preloadedImage = preloadedImages.find((img) => img.url === url);
     return preloadedImage ? preloadedImage.img : null;
   };
@@ -88,7 +89,7 @@ const Index: React.FC = () => {
     <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
       <div className="absolute w-full h-full top-0 opacity-90 bg-black">
         <Image
-          src={storyData[0].imageUrl}
+          src={typeof storyData[0].imageUrl === "string" ? storyData[0].imageUrl : storyData[0].imageUrl.src}
           alt="image"
           layout="fill"
           objectFit="cover"
@@ -101,7 +102,7 @@ const Index: React.FC = () => {
             onClick={handleClose}
             className="text-slate-200 border border-solid font-medium bg-secondary-300 p-3 rounded-full shadow-lg absolute top-4 right-4"
           >
-            <CloseIcon  />
+            <CloseIcon />
           </button>
         )}
         {storyData ? (

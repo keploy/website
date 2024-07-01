@@ -23,9 +23,9 @@ const StoryCard = ({
   return (
     <div
       key={key}
-      className="relative flex flex-col h-full items-center hover:cursor-pointer border border-gray-300 rounded-md mx-auto hover:shadow-[0_0_5px_5px_rgba(0,0,0,0.2)] duration-150 group"
+      className="relative flex flex-col h-full items-center hover:cursor-pointer hover:scale-101 border border-gray-300 rounded-md mx-auto hover:shadow-[0_0_5px_5px_rgba(0,0,0,0.2)] duration-150 group"
     >
-      <Link target="_blank" href={`/webstories/${slug}`}>
+      <Link  href={`/webstories/${slug}`}>
         <div className="w-full h-0 pb-[150%] relative">
           <Image
             src={imagesrc}
@@ -35,7 +35,7 @@ const StoryCard = ({
             objectFit="cover"
             className="rounded-t-md md:rounded-none"
           />
-          <div className="absolute inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+          <div className="absolute inset-0 bg-gray-800 bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150">
             <FontAwesomeIcon icon={faPlay} className="text-white text-4xl" />
           </div>
         </div>
