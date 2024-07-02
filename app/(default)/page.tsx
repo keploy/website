@@ -10,10 +10,11 @@ import Installation from "@/components/installation";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import TwitterTestimonials from "@/components/TwitterTestimonials";
-
+import Header from "@/components/ui/header";
 export default function Home() {
   return (
     <>
+        <Header/>
         <Hero />
         <Features />
   

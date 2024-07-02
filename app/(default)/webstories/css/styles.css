@@ -1,0 +1,92 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* Additional styles */
+
+@keyframes growAnimation {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+.animate-grow {
+  animation: growAnimation 0.2s ease-out forwards;
+}
+
+.loader,
+.loaderBack {
+  display: block;
+  position: relative;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden; 
+}
+
+.loader:after,
+.loaderBack:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #FF914D;
+  animation: var(--animation-duration, 1s) prog ease-in forwards; /* Use custom animation duration */
+  animation-play-state: running;
+}
+
+
+.loader.paused:after,
+.loaderBack.paused:after {
+  animation-play-state: paused;
+}
+
+@keyframes prog {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes progBack {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.lf-player-container {
+  display: flex;
+  height: 100%;
+}
+
+#lottie {
+  height: 100%;
+}
+
+
+/* styles/loading.css */
+.loaderLoading {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

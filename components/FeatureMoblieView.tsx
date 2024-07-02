@@ -257,7 +257,7 @@ export default function FeaturesMobileView() {
                       <Image
                         className="mx-auto rounded md:max-w-none"
                         src={NativeIntegration}
-                        width={500}
+                        width={300}
                         height="462"
                         alt="Features bg"
                       />
