@@ -37,6 +37,10 @@ export const PillarPages = [
         {
           pagelink: "/ai-code-generation",
           pageName: "AI Code Generation"
+        },
+        {
+          pagelink: "/contract-testing",
+          pageName: "Contract Testing"
         }
       ]
     }
