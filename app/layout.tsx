@@ -81,6 +81,8 @@ export default function RootLayout({ children, metadata }: RootLayoutProps) {
         <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/43912677.js"></script>
       </head>
       <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
+      <noscript>
+      </noscript>
         <div className="flex flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           <Header />
           {children}
