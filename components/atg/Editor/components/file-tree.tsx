@@ -27,7 +27,6 @@ interface FileTreeProps {
 export const FileTree = (props: FileTreeProps) => {
   useEffect(() => {
     props.onSelect(undefined);
-    console.log("rootDir in the file-tree" , props.rootDir)
   }, [props.rootDir]);
   return <SubTree directory={props.rootDir} {...props} />;
 };
@@ -197,7 +196,7 @@ const GetFileDetails = async (
     );
     const testDetails = testResponse.data.data.runCommand;
     return { testDetails, mockDetails: "" };
-  } catch (err) {
+  } catch (err:any) {
     throw new Error(`Content not found: ${err.message}`);
   }
 };
@@ -224,7 +223,6 @@ const DirDiv = ({
     } else if (directory.parentId === "test_root") {
       await SetTestList(dirState, setDirState);
     }
-    console.log(directory.id);
   };
 
   return (
@@ -258,7 +256,7 @@ const DirDiv = ({
   );
 };
 
-const isChildSelected = (directory: Directory, selectedFile: File) => {
+const isChildSelected = (directory: Directory, selectedFile?: File) => {
   if (!selectedFile) return false;
 
   let isSelected = false;

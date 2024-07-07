@@ -11,10 +11,9 @@ import { TypeScriptData } from "./data/TypeScript";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import CustomizedSteppers from "./components/HorizontalStepper";
 import MainTerminal from "./terminal";
-import StageComponent from "./components/StageComponent";
-import { Button, Skeleton } from "@mui/material";
-import LanguageSelector from "./components/LanguageSelectorComponent";
-import { findFileByName } from "./Editor/utils/file-manager";
+import { Skeleton } from "@mui/material";
+import SideBarhandle from "./components/SideBarhandle";
+import StepsForRecording from "./StepTypes/types";
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -37,10 +36,17 @@ const Editor = () => {
   const [functionName, setFunctionName] = useState<string>("Start");
   const inputRef = useRef<HTMLInputElement>(null);
   const [language, setSelectedLanguage] = useState<string>("Golang");
-
+  const [stepsForRecording,setStepsForRecording] = useState<StepsForRecording>({
+    starting:false,
+    curlApiHitting:false,
+  })
   useEffect(() => {
     updateFunctionName(state);
   }, [state]);
+
+  useEffect(()=>{
+  },[stepsForRecording])
+
 
   useEffect(() => {
     const fetchData = () => {
@@ -57,11 +63,9 @@ const Editor = () => {
       setRootDir(data);
     };
     fetchData();
-    console.log(language);
   }, [language]);
 
   useEffect(() => {
-    console.log(rootDir);
   }, [rootDir]);
 
   useEffect(() => {
@@ -134,12 +138,19 @@ const Editor = () => {
     setShowTerminal((prevShowTerminal) => !prevShowTerminal);
   };
 
-  const showTerminalFunction = () =>{
+  const showTerminalFunction = () => {
     setShowTerminal(true);
-  }
+  };
 
-  const hideTerminalFunction = () =>{
+  const hideTerminalFunction = () => {
     setShowTerminal(false);
+  };
+
+  const resetEverthing = () =>{
+    setSelectedFile(undefined);
+    setShowTerminal(false);
+    setState(-1);
+    setFiles([]);
   }
 
   return (
@@ -147,14 +158,16 @@ const Editor = () => {
       <div>
         {dataFetched ? (
           <>
-            <div className="flex flex-col max-w-6xl  px-4 mx-auto my-16 m-2">
+            <div className="flex flex-col max-w-7xl  px-4 mx-auto my-16 m-2">
               <CustomizedSteppers
                 activeStep={state}
                 onNext={nextState}
                 onPrev={prevState}
               />
               <div className="flex flex-row mt-5 my-10 ">
-                <div className={`flex flex-col transition-all duration-200 w-3/12  border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md `}>
+                <div
+                  className={`flex flex-col transition-all duration-200 w-3/12  border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md `}
+                >
                   {/* <LanguageSelector
                     onSelectLanguageForCode={onLanguageSelect}
                   /> */}
@@ -200,6 +213,7 @@ const Editor = () => {
                             functionName={functionName}
                             setRootDir={setRootDir}
                             hideTerminal={hideTerminalFunction}
+                            stepsForRecording={setStepsForRecording}
                           />
                         </div>
                       </div>
@@ -211,6 +225,22 @@ const Editor = () => {
                     )}
                   </EditorContainer>
                 </div>
+                {files.length != 0 && (
+                  <div className=" w-2/6 ml-2">
+                    <SideBarhandle
+                      Stage={state}
+                      onNext={nextState}
+                      showTerminal={() => {
+                        setShowTerminal(true);
+                      }}
+                      functionName={functionName}
+                      code={selectedFile?.content}
+                      language="GOLANG"
+                      onReset={resetEverthing}
+                      stepsForRecording={stepsForRecording}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </>

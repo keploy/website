@@ -167,7 +167,7 @@ async function postRequest(
 
     const data = await response.json();
     return { success: response.ok, data };
-  } catch (error) {
+  } catch (error:any) {
     return { success: false, error: error.message };
   }
 }

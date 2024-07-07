@@ -1,74 +1,72 @@
-import React, { useState } from "react";
-import { useTheme } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import { FaPython, FaJs } from "react-icons/fa"; // Assuming you are using react-icons
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { FaPython, FaJs } from "react-icons/fa";
 import { FaGolang } from "react-icons/fa6";
-import './css/LanguageSelector.css'; // Import CSS for transitions
 
-export const LanguageSelector = ({
-  onSelectLanguageForCode,
-}: {
+const languages = [
+  { name: "Golang", icon: FaGolang },
+  { name: "Python", icon: FaPython },
+  { name: "JavaScript", icon: FaJs },
+];
+
+interface LanguageSelectorProps {
   onSelectLanguageForCode: (language: string) => void;
-}) => {
-  const theme = useTheme();
-  const [selectedProject, setSelectedProject] = useState<string>("Golang");
-  const [showIcons, setShowIcons] = useState<boolean>(false);
+}
 
-  const handleSelect = (language: string) => {
-    setSelectedProject(language);
+export default function LanguageSelector({ onSelectLanguageForCode }: LanguageSelectorProps) {
+  const [selectedLanguage, setSelectedLanguage] = React.useState<string>("Golang");
+
+  const handleChange = (event: SelectChangeEvent<string>) => {
+    const language = event.target.value;
+    setSelectedLanguage(language);
     onSelectLanguageForCode(language);
-    setShowIcons(false); // Hide icons after selection
-  };
-
-  const toggleIcons = () => {
-    setShowIcons(!showIcons);
   };
 
   return (
-    <div className="text-gray-800  rounded-md flex justify-around">
-      
-      {showIcons && (
-        <div className="icon-container transition-all duration-300">
-          <Tooltip title="Golang">
-            <IconButton
-              color={selectedProject === "Golang" ? "primary" : "default"}
-              onClick={() => handleSelect("Golang")}
-            >
-              <FaGolang size={30} />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Python">
-            <IconButton
-              color={selectedProject === "Python" ? "primary" : "default"}
-              onClick={() => handleSelect("Python")}
-            >
-              <FaPython size={30} />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="JavaScript">
-            <IconButton
-              color={selectedProject === "JavaScript" ? "primary" : "default"}
-              onClick={() => handleSelect("JavaScript")}
-            >
-              <FaJs size={30} />
-            </IconButton>
-          </Tooltip>
-        </div>
-      )}
-      <Tooltip title={selectedProject}>
-        <IconButton
-          color="primary"
-          onClick={toggleIcons}
-          className={`icon-transition ${showIcons ? 'expanded' : ''}`}
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth className='scale-75'>
+        <InputLabel id="language-select-label">Language</InputLabel>
+        <Select
+          labelId="language-select-label"
+          id="language-select"
+          value={selectedLanguage}
+          label="Language"
+          onChange={handleChange}
+          sx={{
+            height: 40,
+            '& .MuiSelect-select': {
+              display: 'flex',
+              alignItems: 'center',
+              padding: '8px 14px',
+            },
+            '& .MuiSelect-icon': {
+              top: 'calc(50% - 10px)',
+            }
+          }}
+          renderValue={(value) => {
+            const selectedLang = languages.find(lang => lang.name === value);
+            return (
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {selectedLang && <selectedLang.icon size={20} style={{ marginRight: 8 }} />}
+                {value}
+              </div>
+            );
+          }}
         >
-          {selectedProject === "Golang" && <FaGolang size={30} />}
-          {selectedProject === "Python" && <FaPython size={30} />}
-          {selectedProject === "JavaScript" && <FaJs size={30} />}
-        </IconButton>
-      </Tooltip>
-    </div>
+          {languages.map((lang) => (
+            lang.name !== selectedLanguage && (
+              <MenuItem key={lang.name} value={lang.name} sx={{ height: 40 }} >
+                <lang.icon size={20} style={{ marginRight: 8 }} />
+                {lang.name}
+              </MenuItem>
+            )
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
-};
-
-export default LanguageSelector;
+}

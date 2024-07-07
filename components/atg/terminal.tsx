@@ -14,6 +14,7 @@ import { fetchTestSets } from "@/app/api/hello/atg";
 import { Button } from "@mui/material";
 import { Directory } from "./Editor/utils/file-manager";
 import { Type } from "./Editor/utils/file-manager";
+import StepsForRecording from "./StepTypes/types";
 // import { Button } from "@mui/material";
 
 const Emoji = "\u{1F430} Keploy"; // 🐰
@@ -23,11 +24,13 @@ function MainTerminal({
   functionName,
   setRootDir,
   hideTerminal,
+  stepsForRecording,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   functionName: string;
   setRootDir: Dispatch<SetStateAction<Directory>>;
   hideTerminal: () => void;
+  stepsForRecording: Dispatch<SetStateAction<StepsForRecording>>;
 }) {
   return (
     <div className="h-full">
@@ -36,6 +39,7 @@ function MainTerminal({
           inputRef={inputRef}
           setRootDir={setRootDir}
           hideTerminal={hideTerminal}
+          setStepsForRecording={stepsForRecording}
         />
       )}
       {functionName === "deduplicate" && (
@@ -58,12 +62,14 @@ function RecordTerminalSession({
   inputRef,
   setRootDir,
   hideTerminal,
+  setStepsForRecording,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   setRootDir: Dispatch<SetStateAction<Directory>>;
   hideTerminal: () => void;
+  setStepsForRecording: Dispatch<SetStateAction<StepsForRecording>>;
 }) {
-  const { history, pushToHistory, setTerminalRef, resetTerminal, popTerminal } =
+  const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
@@ -89,6 +95,7 @@ function RecordTerminalSession({
         data.runCommand == "[GIN-debug] Listening and serving HTTP on :5000"
       ) {
         setOtherCommandsTrue(true);
+        setStepsForRecording((prev) => ({ ...prev, starting: true }));
       }
       pushToHistory(
         <div>
@@ -102,17 +109,22 @@ function RecordTerminalSession({
           {Emoji}: {error.message}
         </div>
       );
+      setStepsForRecording((prev) => ({
+        ...prev,
+        starting: true,
+        curlApiHitting: true,
+      }));
     } else if (loading) {
       pushToHistory(<div>{Emoji}: Loading...</div>);
     }
-  }, [data, error, loading, pushToHistory]);
+  }, [data, error, loading, pushToHistory, setStepsForRecording]);
 
   useEffect(() => {
     if (!initialPushRef.current) {
       pushToHistory(<>{Emoji}: Keploy recording starting....</>);
       initialPushRef.current = true;
     }
-  }, [pushToHistory]);
+  }, [pushToHistory, setStepsForRecording]);
 
   const makeKeployTestDir = () => {
     setRootDir((prevRootDir) => {
@@ -147,6 +159,7 @@ function RecordTerminalSession({
       };
     });
   };
+
   const commands = useMemo(
     () => ({
       'keploy record -c "npm run dev"': async () => {
@@ -157,6 +170,7 @@ function RecordTerminalSession({
               codeSubmissionId,
               "curl -X GET http://localhost:5000/animals"
             );
+            setStepsForRecording((prev) => ({ ...prev, curlApiHitting: true }));
 
             makeKeployTestDir();
             intialRecordingRef.current = true;
@@ -175,7 +189,7 @@ function RecordTerminalSession({
         await resetTerminal();
       },
     }),
-    [commandsTrue]
+    [commandsTrue, codeSubmissionId, handleSubmit, pushToHistory, resetTerminal]
   );
 
   useEffect(() => {
@@ -237,7 +251,6 @@ function DeduplicateTerminalSession({
     if (inputRef.current && intialRenderRef.current) {
       inputRef.current.value = `keploy deduplicate -c "Deduplicate ababy"`;
       commands[`keploy deduplicate -c "Deduplicate ababy"`]();
-      console.log("here in useffect here");
       intialRenderRef.current = false;
     }
   }, []);

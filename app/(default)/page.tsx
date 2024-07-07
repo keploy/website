@@ -10,12 +10,10 @@ import Installation from "@/components/installation";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import TwitterTestimonials from "@/components/TwitterTestimonials"
-import RunCommandComponent from "@/components/atg/RunCommandComponent";
 import Editor from "@/components/atg/editor";
 export default function Home() {
   return (
     <>
-        <Header/>
         <Hero />
         <Features />
   
