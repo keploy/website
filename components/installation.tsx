@@ -37,7 +37,7 @@ const Installation = () => {
     switch (index) {
       case 0:
         codeToCopy =
-          "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source";
+          "curl --silent -O -L https://keploy.io/install.sh && source install.sh";
         break;
       case 1:
         codeToCopy = "keploy record -c CMD_TO_RUN_APP";

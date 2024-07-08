@@ -97,211 +97,211 @@ export default function Language() {
           </div>
           <div className="max-w-6xl px-4 mx-auto overflow-hidden sm:px-6  [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)] ">
             <div className="relative inline-flex flex-nowrap no-scrollbar ">
-              <div className="flex items-center py-12 animate-marquee whitespace-nowrap w-max">
+              <div className="flex items-center  py-12 animate-marquee whitespace-nowrap w-max">
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={ApacheClient}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Chi}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Dynamo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Echo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Elastic}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Express}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Gin}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={GoogleMaps}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Gorilla}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Grpc}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={H2db}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={MariaDB}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Mongo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={NetHttp}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Octokit}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={OkHttp}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={OracleDB}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Postgres}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Redis}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={S3}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={SpringBoot}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Sql}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={WebGo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
@@ -309,213 +309,212 @@ export default function Language() {
               <div className="flex items-center py-12 animate-marquee whitespace-nowrap w-max">
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={ApacheClient}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Chi}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Dynamo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Echo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Elastic}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Express}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Gin}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={GoogleMaps}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Gorilla}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Grpc}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
-                <span className="flex-none mx-4">
+                <span className="flex-none mx-4"> 
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={H2db}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={MariaDB}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Mongo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={NetHttp}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Octokit}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={OkHttp}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={OracleDB}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Postgres}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Redis}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={S3}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={SpringBoot}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={Sql}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
                 <span className="flex-none mx-4">
                   <Image
-                    className="relative transition-transform hover:scale-110 h-auto w-auto"
+                    className="relative transition-transform hover:scale-110 "
                     src={WebGo}
-                    width={106}
-                    height={100}
+                    width={115}
+                    height={110}
                     alt="Nutanix Testimonial"
                   />
                 </span>
               </div>
-              div
             </div>
           </div>
 
@@ -663,19 +662,19 @@ export default function Language() {
             </div>
             <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
               <Image
-                src="/images/frameworks/csharp.svg" 
+                src="/images/frameworks/csharp.svg"
                 alt="C# Logo"
-                width={150} 
-                height={80} 
+                width={150}
+                height={80}
                 className="mb-2"
               />
             </div>
             <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
               <Image
-                src="/images/frameworks/rust.svg" 
+                src="/images/frameworks/rust.svg"
                 alt="C# Logo"
-                width={150} 
-                height={80}   
+                width={150}
+                height={80}
                 className="mb-5"
               />
             </div>
@@ -690,7 +689,7 @@ export default function Language() {
                   <svg className="absolute top-0 right-0 w-16 h-16 -mr-12 fill-current text-primary-300" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                     <path d="M37.89 58.338c-2.648-5.63-3.572-10.045-2.774-13.249.8-3.203 8.711-13.383 23.737-30.538l2.135.532c-6.552 10.033-10.532 17.87-11.939 23.515-.583 2.34.22 6.158 2.41 11.457l-13.57 8.283zm-26.963-6.56c-2.648-5.63-3.572-10.046-2.773-13.25.799-3.203 8.71-13.382 23.736-30.538l2.136.533c-6.552 10.032-10.532 17.87-11.94 23.515-.583 2.339.22 6.158 2.41 11.456l-13.57 8.283z" />
                   </svg>
-                  <Image className="relative mt-16 " src={TestimonialImage} width={106} height={100} alt="Nutanix Testimonial" />
+                  <Image className="relative mt-16 " src={TestimonialImage} width={115} height={110} alt="Nutanix Testimonial" />
                 </div>
                 <blockquote className="mb-4 text-xl italic font-medium text-accent-200">
                   “Makes it easy to unit test my complex systems with realistic test data“
