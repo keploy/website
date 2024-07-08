@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/contract-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -20,17 +23,51 @@ const pageMetadata: Metadata = {
   description: "Discover how Keploy automates contract tests more effectively than Pact, with no code changes required. Effective, efficient, and reliable!",
   keywords: 'contract testing, contract tests, pact.io alternative',
 };
+
+const blocksData = [
+  {
+    title: "Inconsistent Responses",
+    description: "Difficulty ensuring APIs consistently meet agreed-upon contracts.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Integration Challenges",
+    description: "Complex integrations between services causing mismatched data and behavior.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Manual Verification",
+    description: "Process of verifying contract manually are tedious and usually error-prone.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Lack of Automation",
+    description: "Insufficient tools for automating contract tests, leading to repetitive tasks.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Version Management",
+    description: "Managing contract changes across different API versions is very difficult.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Debugging Issues",
+    description: "Identifying and resolving contract violations quickly is difficult.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const heroData = {
   titleTop: "Cross-Language Contract ",
   titleBottom: "Testing Made Simple",
-  subtitleTop: "Eliminate the need for complex setup in CI for testing!",
+  subtitleTop: "Streamline API Integration and Debugging for Efficient Development Processes",
   subtitleBottom:
-    "Make testing in CI hassle-free with Keploy's seamless CI integration!🚀",
+    "Automate Contract validation to improve efficiency accurately!🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Challenges of Contract Testing",
+  subtitle: "👋 Tried of 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };

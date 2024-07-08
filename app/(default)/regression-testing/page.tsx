@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/regression-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -30,9 +33,42 @@ const pageMetadata: Metadata = {
   keywords: 'regression testing software, regression testing in software testing,automated regression testing',
 };
 
+const blocksData = [
+  {
+    title: "Slow Test Execution",
+    description: "Regression testing often involves running a large number of tests, which can be time-consuming and delay the release cycle.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Manual Test Maintenance",
+    description: "Updating and maintaining regression test cases manually as the software evolves can be labor-intensive and prone to errors.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Difficulty in Prioritization",
+    description: "Determining which tests to prioritize for regression testing amidst frequent code changes and updates can be challenging.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Resource Intensive",
+    description: "Regression testing requires significant computational resources and infrastructure, which can be costly to maintain and scale.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Test Data Management:",
+    description: "Ensuring consistent and relevant test data for regression testing across different environments and scenarios can be complex and error-prone.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Low Test Coverage",
+    description: "Despite efforts, regression testing may not cover all critical paths and edge cases, potentially missing subtle regressions in the software.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Navigating Regression Testing",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };

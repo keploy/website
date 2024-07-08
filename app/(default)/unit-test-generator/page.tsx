@@ -9,18 +9,54 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/unit-test-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
+const blocksData = [
+  {
+    title: "Time-Consuming",
+    description: "Manually writing unit tests takes a lot of time.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Incomplete Coverage",
+    description: "Ensuring comprehensive test coverage is difficult.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "High Maintenance",
+    description: "Keeping tests up to date with code changes requires ongoing effort.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Complex Scenarios",
+    description: "Writing effective tests for complex scenarios is challenging.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Domain Context",
+    description: "LLMs may generate irrelevant tests due to lack of specific domain knowledge.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Integration Issues",
+    description: "Integrating LLM-generated tests with existing frameworks can be problematic.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const heroData = {
-  titleTop: "Enhancing Unit Test",
-  titleBottom: "Code Coverage",
-  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
+  titleTop: "Accurate and Reliable ",
+  titleBottom: "AI unit tests",
+  subtitleTop: "Generate edge cases and keep only necessary ones",
   subtitleBottom:
-    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
+    "AI-Powered Unit Tests for Precision and Reliability! 🚀",
   animationSrc: testAndStubsGen,
 };
 
@@ -31,8 +67,8 @@ const pageMetadata: Metadata = {
 };
 
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Manual Unit Testing",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
