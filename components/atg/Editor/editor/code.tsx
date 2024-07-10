@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Editor, { useMonaco } from "@monaco-editor/react";
-import * as monaco from 'monaco-editor'; // Import monaco-editor types
+import * as monaco from "monaco-editor"; // Import monaco-editor types
 import { File } from "../utils/file-manager";
-
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
   if (!selectedFile) return null;
 
   const monacoInstance = useMonaco();
-
+  const [showText,setShowText] = useState<boolean>(false);
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
 
@@ -27,7 +28,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       ")": "(",
     };
 
-    const stringDelimiters = ['"', "'", '`'];
+    const stringDelimiters = ['"', "'", "`"];
     let stringStack: { char: string; position: number }[] = [];
 
     for (let i = 0; i < code.length; i++) {
@@ -37,17 +38,20 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       // Handle opening brackets
       if (openBrackets.includes(char)) {
         stack.push({ char, position: i });
-      } 
+      }
       // Handle closing brackets
       else if (closeBrackets.includes(char)) {
-        if (stack.length === 0 || stack[stack.length - 1].char !== matchingBracket[char]) {
+        if (
+          stack.length === 0 ||
+          stack[stack.length - 1].char !== matchingBracket[char]
+        ) {
           diagnostics.push({
             severity: 8,
             message: `Unmatched closing bracket '${char}'`,
-            startLineNumber: code.slice(0, i).split('\n').length,
-            startColumn: (code.slice(0, i).split('\n').pop()?.length ?? 0) + 1,
-            endLineNumber: code.slice(0, i).split('\n').length,
-            endColumn: (code.slice(0, i).split('\n').pop()?.length ?? 0) + 2,
+            startLineNumber: code.slice(0, i).split("\n").length,
+            startColumn: (code.slice(0, i).split("\n").pop()?.length ?? 0) + 1,
+            endLineNumber: code.slice(0, i).split("\n").length,
+            endColumn: (code.slice(0, i).split("\n").pop()?.length ?? 0) + 2,
           });
         } else {
           stack.pop();
@@ -55,8 +59,11 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       }
 
       // Handle string delimiters
-      if (stringDelimiters.includes(char) && prevChar !== '\\') {
-        if (stringStack.length === 0 || stringStack[stringStack.length - 1].char !== char) {
+      if (stringDelimiters.includes(char) && prevChar !== "\\") {
+        if (
+          stringStack.length === 0 ||
+          stringStack[stringStack.length - 1].char !== char
+        ) {
           stringStack.push({ char, position: i });
         } else {
           stringStack.pop();
@@ -69,10 +76,11 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       diagnostics.push({
         severity: 8,
         message: `Unmatched opening bracket '${char}'`,
-        startLineNumber: code.slice(0, position).split('\n').length,
-        startColumn: (code.slice(0, position).split('\n').pop()?.length ?? 0) + 1,
-        endLineNumber: code.slice(0, position).split('\n').length,
-        endColumn: (code.slice(0, position).split('\n').pop()?.length ?? 0) + 2,
+        startLineNumber: code.slice(0, position).split("\n").length,
+        startColumn:
+          (code.slice(0, position).split("\n").pop()?.length ?? 0) + 1,
+        endLineNumber: code.slice(0, position).split("\n").length,
+        endColumn: (code.slice(0, position).split("\n").pop()?.length ?? 0) + 2,
       });
     });
 
@@ -81,10 +89,11 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
       diagnostics.push({
         severity: 8,
         message: `Unmatched string delimiter '${char}'`,
-        startLineNumber: code.slice(0, position).split('\n').length,
-        startColumn: (code.slice(0, position).split('\n').pop()?.length ?? 0) + 1,
-        endLineNumber: code.slice(0, position).split('\n').length,
-        endColumn: (code.slice(0, position).split('\n').pop()?.length ?? 0) + 2,
+        startLineNumber: code.slice(0, position).split("\n").length,
+        startColumn:
+          (code.slice(0, position).split("\n").pop()?.length ?? 0) + 1,
+        endLineNumber: code.slice(0, position).split("\n").length,
+        endColumn: (code.slice(0, position).split("\n").pop()?.length ?? 0) + 2,
       });
     });
 
@@ -109,7 +118,7 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
   }, [monacoInstance]);
 
   return (
-    <div className="w-full h-full border">
+    <div className="relative w-full h-full border border-gray-300 rounded-lg shadow-md">
       <Editor
         language={language}
         value={code}
@@ -124,6 +133,20 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
           }
         }}
       />
+      <div
+        onMouseEnter={() => setShowText(true)}
+        onMouseLeave={() => setShowText(false)}
+        className={`p-2 absolute z-10 border border-gray-500 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
+        style={{ transform: 'translateY(-50%)', height: '3rem', width: showText ? '200px' : '40px' }} // Adjust width values as needed
+      >
+        <ChevronLeftIcon className="text-gray-50" />
+        <div className={`overflow-hidden transition-width duration-500 ${showText ? 'w-full' : 'w-0'}`}>
+          <p className={`text-gray-50 font-bold ml-2 text-sm`}>
+            Side Content
+          </p>
+        </div>
+      </div>
+
     </div>
   );
 };

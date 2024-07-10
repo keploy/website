@@ -13,8 +13,9 @@ const SideBarHandle: FC<{
   code:string | undefined;
   onReset:()=>void;
   stepsForRecording:StepsForRecording
+  removeSideContent: ()=>void;
 
-}> = ({ Stage, onNext, showTerminal , functionName , language , code , onReset , stepsForRecording}) => {
+}> = ({ Stage, onNext, showTerminal , functionName , language , code , onReset , stepsForRecording,removeSideContent}) => {
 
   const MovingtoNextStage = async () => {
     showTerminal();
@@ -41,7 +42,7 @@ const SideBarHandle: FC<{
 
   return (
     <div className="border border-gray-300 h-full">
-      <SideBarNormal onNext={MovingtoNextStage} onReset={onReset} stepsForRecording={stepsForRecording} />
+      <SideBarNormal onNext={MovingtoNextStage} onReset={onReset} stepsForRecording={stepsForRecording} removeSideContent={removeSideContent} />
     </div>
   );
 };

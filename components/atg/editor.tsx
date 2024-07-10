@@ -24,7 +24,6 @@ const dummyDir: Directory = {
   files: [],
 };
 
-
 const Editor = () => {
   const [rootDir, setRootDir] = useState<Directory>(dummyDir);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
@@ -36,17 +35,18 @@ const Editor = () => {
   const [functionName, setFunctionName] = useState<string>("Start");
   const inputRef = useRef<HTMLInputElement>(null);
   const [language, setSelectedLanguage] = useState<string>("Golang");
-  const [stepsForRecording,setStepsForRecording] = useState<StepsForRecording>({
-    starting:false,
-    curlApiHitting:false,
-  })
+  const [showSideContent,setShowSideContent] = useState<boolean>(true);
+  const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
+    {
+      starting: false,
+      curlApiHitting: false,
+    }
+  );
   useEffect(() => {
     updateFunctionName(state);
   }, [state]);
 
-  useEffect(()=>{
-  },[stepsForRecording])
-
+  useEffect(() => {}, [stepsForRecording]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -65,8 +65,7 @@ const Editor = () => {
     fetchData();
   }, [language]);
 
-  useEffect(() => {
-  }, [rootDir]);
+  useEffect(() => {}, [rootDir]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -146,12 +145,25 @@ const Editor = () => {
     setShowTerminal(false);
   };
 
-  const resetEverthing = () =>{
+  const resetEverthing = () => {
     setSelectedFile(undefined);
     setShowTerminal(false);
     setState(-1);
     setFiles([]);
+  };
+
+  const ShowSideContent = () =>{
+    setShowSideContent(true);
   }
+  const RemoveSideContent = () =>{
+    setShowSideContent(false);
+    console.log("here is debug")
+  }
+
+  useEffect(()=>{
+    console.log(showSideContent);
+  },[showSideContent])
+
 
   return (
     <>
@@ -182,7 +194,7 @@ const Editor = () => {
                 >
                   <EditorContainer>
                     <div className="flex flex-row w-full h-full">
-                      <div className="relative w-full h-full flex flex-col">
+                      <div className="relative w-full h-full flex flex-col shadow-custom " >
                         <Appbar
                           selectedFile={selectedFile}
                           selectedFilesArray={files}
@@ -225,22 +237,23 @@ const Editor = () => {
                     )}
                   </EditorContainer>
                 </div>
-                {files.length != 0 && (
-                  <div className=" w-2/6 ml-2">
-                    <SideBarhandle
-                      Stage={state}
-                      onNext={nextState}
-                      showTerminal={() => {
-                        setShowTerminal(true);
-                      }}
-                      functionName={functionName}
-                      code={selectedFile?.content}
-                      language="GOLANG"
-                      onReset={resetEverthing}
-                      stepsForRecording={stepsForRecording}
-                    />
-                  </div>
-                )}
+                  {showSideContent && files.length != 0 && (
+                    <div className=" w-2/6 h-full ml-2 border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md">
+                      <SideBarhandle
+                        Stage={state}
+                        onNext={nextState}
+                        showTerminal={() => {
+                          setShowTerminal(true);
+                        }}
+                        functionName={functionName}
+                        code={selectedFile?.content}
+                        language="GOLANG"
+                        onReset={resetEverthing}
+                        stepsForRecording={stepsForRecording}
+                        removeSideContent={RemoveSideContent}
+                      />
+                    </div>
+                  )}
               </div>
             </div>
           </>
@@ -265,7 +278,7 @@ const Editor = () => {
 };
 
 const EditorContainer = styled.div`
-  height: 70vh;
+  height: 71vh;
 `;
 
 export default Editor;

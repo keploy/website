@@ -67,24 +67,14 @@ button{
   color: #007acc; /* Blue color similar to VS Code prompt */
 }
 
-.terminal__prompt__input {
-  flex: 1;
-  margin-left: 0.4rem;
-  display: flex;
-  align-items: center;
-  color: #333333; /* Dark text color */
-}
 
-.terminal__prompt__input input {
-  flex: 1;
-  width: 100%;
-  background-color: transparent;
-  color: #333333; /* Dark text color */
-  border: 0;
-  outline: none;
-  font-size: 14px;
-  line-height: 1.42;
-  /* font-family: "IBM Plex Mono", Consolas, Menlo, Monaco, "Courier New", Courier, monospace; */
+
+.block-class {
+  display: inline-block;
+  background-color: #007acc; /* Block color similar to VS Code prompt */
+  width: 10px;
+  height: 10px;
+  margin-left: 0.4rem;
 }
 
 /* WebKit-based browsers */
@@ -92,20 +82,6 @@ button{
   display: none; /* Hide scrollbars */
 }
 
-.fat-cursor {
-  position: relative;
-}
-
-.fat-cursor::before {
-  content: "";
-  position: absolute;
-  background-color: black;
-  width: 2px; /* Adjust the width to make the cursor thicker */
-  height: 1em; /* Height of the cursor */
-  top: 0;
-  left: 0;
-  animation: blink 1s step-end infinite;
-}
 
 @keyframes blink {
   from, to {
@@ -114,4 +90,8 @@ button{
   50% {
     opacity: 0;
   }
+}
+
+.MuiExpansionPanelSummary-expandIcon.Mui-expanded {
+  transform: rotate(0deg);
 }
