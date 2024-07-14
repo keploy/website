@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Link">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="svg">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title" type="xs:string" />
+                            <xs:element name="defs">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="linearGradient" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="stop" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="offset"
+                                                                use="required" />
+                                                            <xs:attribute name="stopColor"
+                                                                use="required" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="id" use="required" />
+                                                <xs:attribute name="x1" use="required" />
+                                                <xs:attribute name="y1" use="required" />
+                                                <xs:attribute name="x2" use="required" />
+                                                <xs:attribute name="y2" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="g">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="g">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="g" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="g"
+                                                                    maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="path">
+                                                                                <xs:complexType>
+                                                                                    <xs:attribute
+                                                                                        name="id"
+                                                                                        use="required" />
+                                                                                    <xs:attribute
+                                                                                        name="fill" />
+                                                                                    <xs:attribute
+                                                                                        name="d"
+                                                                                        use="required" />
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute
+                                                                            name="transform" />
+                                                                        <xs:attribute name="id" />
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="id" use="required" />
+                                                            <xs:attribute name="transform" />
+                                                            <xs:attribute name="fill" />
+                                                            <xs:attribute name="stroke" />
+                                                            <xs:attribute name="strokeWidth"
+                                                                type="xs:decimal" />
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="id" use="required" />
+                                                <xs:attribute name="fillRule" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" use="required" />
+                                    <xs:attribute name="fill" use="required" />
+                                    <xs:attribute name="fillRule" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="width" type="xs:integer" use="required" />
+                        <xs:attribute name="height" type="xs:integer" use="required" />
+                        <xs:attribute name="viewBox" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="href" use="required" />
+            <xs:attribute name="className" use="required" />
+            <xs:attribute name="aria-label" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
