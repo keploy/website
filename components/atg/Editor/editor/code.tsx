@@ -4,11 +4,19 @@ import * as monaco from "monaco-editor"; // Import monaco-editor types
 import { File } from "../utils/file-manager";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
+export const Code = ({
+  selectedFile,
+  showSideBannerBool,
+  RemoveSideBanner,
+}: {
+  selectedFile: File | undefined;
+  showSideBannerBool: Boolean;
+  RemoveSideBanner: () => void;
+}) => {
   if (!selectedFile) return null;
 
   const monacoInstance = useMonaco();
-  const [showText,setShowText] = useState<boolean>(false);
+  const [showText, setShowText] = useState<boolean>(false);
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
 
@@ -133,20 +141,33 @@ export const Code = ({ selectedFile }: { selectedFile: File | undefined }) => {
           }
         }}
       />
-      <div
-        onMouseEnter={() => setShowText(true)}
-        onMouseLeave={() => setShowText(false)}
-        className={`p-2 absolute z-10 border border-gray-500 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
-        style={{ transform: 'translateY(-50%)', height: '3rem', width: showText ? '200px' : '40px' }} // Adjust width values as needed
-      >
-        <ChevronLeftIcon className="text-gray-50" />
-        <div className={`overflow-hidden transition-width duration-500 ${showText ? 'w-full' : 'w-0'}`}>
-          <p className={`text-gray-50 font-bold ml-2 text-sm`}>
-            Side Content
-          </p>
+      {!showSideBannerBool && (
+        <div
+          onMouseEnter={() => setShowText(true)}
+          onMouseLeave={() => setShowText(false)}
+          className={`p-2 absolute z-10 hover:cursor-pointer border border-gray-500 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
+          style={{
+            transform: "translateY(-50%)",
+            height: "3rem",
+            width: showText ? "200px" : "40px",
+          }} // Adjust width values as needed
+          onClick={() => {
+            RemoveSideBanner();
+            setShowText(false);
+          }}
+        >
+          <ChevronLeftIcon className="text-gray-50" />
+          <div
+            className={`overflow-hidden transition-width duration-500 ${
+              showText ? "w-full" : "w-0"
+            }`}
+          >
+            <p className={`text-gray-50 font-bold ml-2 text-sm`}>
+              Side Content
+            </p>
+          </div>
         </div>
-      </div>
-
+      )}
     </div>
   );
 };

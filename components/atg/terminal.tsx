@@ -17,7 +17,7 @@ import { Type } from "./Editor/utils/file-manager";
 import StepsForRecording from "./StepTypes/types";
 // import { Button } from "@mui/material";
 
-const Emoji = "User@1231-Keploy:~$" ; // 🐰
+const Emoji = "User@1231-Keploy:" ; // 🐰
 
 function MainTerminal({
   inputRef,
@@ -25,7 +25,7 @@ function MainTerminal({
   setRootDir,
   hideTerminal,
   stepsForRecording,
-}: {
+}:{
   inputRef: React.RefObject<HTMLInputElement>;
   functionName: string;
   setRootDir: Dispatch<SetStateAction<Directory>>;
@@ -63,7 +63,7 @@ function RecordTerminalSession({
   setRootDir,
   hideTerminal,
   setStepsForRecording,
-}: {
+}:{
   inputRef: React.RefObject<HTMLInputElement>;
   setRootDir: Dispatch<SetStateAction<Directory>>;
   hideTerminal: () => void;
@@ -106,7 +106,7 @@ function RecordTerminalSession({
       setSocketErrors(error.message);
       pushToHistory(
         <div className="flex">
-          {<p className="font-bold">{Emoji}</p>}: {error.message}
+          {<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> {error.message}
         </div>
       );
       setStepsForRecording((prev) => ({
@@ -115,13 +115,13 @@ function RecordTerminalSession({
         curlApiHitting: true,
       }));
     } else if (loading) {
-      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}: Loading...</div>);
+      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Loading...</div>);
     }
   }, [data, error, loading, pushToHistory, setStepsForRecording]);
 
   useEffect(() => {
     if (!initialPushRef.current) {
-      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}: Keploy recording starting....</div>);
+      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Keploy recording starting....</div>);
       initialPushRef.current = true;
     }
   }, [pushToHistory, setStepsForRecording]);
@@ -179,11 +179,11 @@ function RecordTerminalSession({
       },
       __notFound__: async () => {
         await pushToHistory(
-          <div style={{ color: "red" }} className="flex">{<p className="font-bold">{Emoji}</p>}: Command not found</div>
+          <div style={{ color: "red" }} className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Command not found</div>
         );
       },
       "": async () => {
-        await pushToHistory(<div  className="flex">{<p className="font-bold">{Emoji}</p>}:</div>);
+        await pushToHistory(<div  className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> </div>);
       },
       clear: async () => {
         await resetTerminal();
@@ -206,7 +206,7 @@ function RecordTerminalSession({
       <Terminal
         history={history}
         ref={setTerminalRef}
-        promptLabel={<p className="font-bold">{Emoji}</p>}
+        promptLabel={<p className="font-bold flex">{Emoji }<p className="text-accent-100">~/$</p></p>}
         commands={commands}
         inputRef={inputRef}
         hideTerminal={hideTerminal}
@@ -218,7 +218,7 @@ function RecordTerminalSession({
 function DeduplicateTerminalSession({
   inputRef,
   hideTerminal,
-}: {
+}:{
   inputRef: React.RefObject<HTMLInputElement>;
 
   hideTerminal: () => void;
@@ -230,15 +230,15 @@ function DeduplicateTerminalSession({
   const commands = useMemo(
     () => ({
       'keploy deduplicate -c "Deduplicate ababy"': async () => {
-        await pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}: Deduplicate command executed</div>);
+        await pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Deduplicate command executed</div>);
       },
       __notFound__: async () => {
         await pushToHistory(
-          <div style={{ color: "red" }} className="flex">{<p className="font-bold">{Emoji}</p>}: Command not found</div>
+          <div style={{ color: "red" }} className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Command not found</div>
         );
       },
       "": async () => {
-        await pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}:</div>);
+        await pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> </div>);
       },
       clear: async () => {
         await resetTerminal();
@@ -260,7 +260,7 @@ function DeduplicateTerminalSession({
       <Terminal
         history={history}
         ref={setTerminalRef}
-        promptLabel={<p className="font-bold">{Emoji}</p>}
+        promptLabel={<p className="font-bold flex">{Emoji }<p className="text-accent-100">~/$</p></p>}
         commands={commands}
         inputRef={inputRef}
         hideTerminal={hideTerminal}
@@ -272,7 +272,7 @@ function DeduplicateTerminalSession({
 function TestCoverageTerminalSession({
   inputRef,
   hideTerminal,
-}: {
+}:{
   inputRef: React.RefObject<HTMLInputElement>;
   hideTerminal: () => void;
 }) {
@@ -307,17 +307,17 @@ function TestCoverageTerminalSession({
       setSocketErrors(error.message);
       pushToHistory(
         <div className="flex">
-          {<p className="font-bold">{Emoji}</p>}: {error.message}
+          {<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> {error.message}
         </div>
       );
     } else if (loading) {
-      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}: Loading...</div>);
+      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Loading...</div>);
     }
   }, [data, error, loading, pushToHistory]);
 
   useEffect(() => {
     if (!initialPushRef.current) {
-      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}: Keploy Testing starting....</div>);
+      pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Keploy Testing starting....</div>);
       initialPushRef.current = true;
     }
   }, [pushToHistory]);
@@ -332,11 +332,11 @@ function TestCoverageTerminalSession({
       },
       __notFound__: async () => {
         await pushToHistory(
-          <div style={{ color: "red" }} className="flex">{<p className="font-bold">{Emoji}</p>}: Command not found</div>
+          <div style={{ color: "red" }} className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Command not found</div>
         );
       },
       "": async () => {
-        await pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}:</div>);
+        await pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> </div>);
       },
       clear: async () => {
         await resetTerminal();
@@ -358,7 +358,7 @@ function TestCoverageTerminalSession({
       <Terminal
         history={history}
         ref={setTerminalRef}
-        promptLabel={<p className="font-bold">{Emoji}</p>}
+        promptLabel={<p className="font-bold flex">{Emoji }<p className="text-accent-100">~/$</p></p>}
         commands={commands}
         inputRef={inputRef}
         hideTerminal={hideTerminal}

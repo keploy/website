@@ -35,7 +35,7 @@ const Editor = () => {
   const [functionName, setFunctionName] = useState<string>("Start");
   const inputRef = useRef<HTMLInputElement>(null);
   const [language, setSelectedLanguage] = useState<string>("Golang");
-  const [showSideContent,setShowSideContent] = useState<boolean>(true);
+  const [showSideContent, setShowSideContent] = useState<boolean>(false);
   const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
     {
       starting: false,
@@ -76,11 +76,15 @@ const Editor = () => {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-
+    if (files.length != 0) {
+      setShowSideContent(true);
+    } else {
+      setShowSideContent(false);
+    }
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [showTerminal]);
+  }, [showTerminal, files]);
 
   const onLanguageSelect = (language: string) => {
     setSelectedLanguage(language);
@@ -152,18 +156,17 @@ const Editor = () => {
     setFiles([]);
   };
 
-  const ShowSideContent = () =>{
+  const ShowSideContent = () => {
     setShowSideContent(true);
-  }
-  const RemoveSideContent = () =>{
+  };
+  const RemoveSideContent = () => {
     setShowSideContent(false);
-    console.log("here is debug")
-  }
+    console.log("here is debug");
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(showSideContent);
-  },[showSideContent])
-
+  }, [showSideContent]);
 
   return (
     <>
@@ -176,9 +179,12 @@ const Editor = () => {
                 onNext={nextState}
                 onPrev={prevState}
               />
-              <div className="flex flex-row mt-5 my-10 ">
+              <div className="flex flex-row mt-5 my-10 w-full">
+                {/* sidebar */}
                 <div
-                  className={`flex flex-col transition-all duration-200 w-3/12  border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md `}
+                  className={`flex flex-col transition-all duration-200 ${
+                    showSideContent ? "w-3/12" : "w-2/12"
+                  }  border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md `}
                 >
                   {/* <LanguageSelector
                     onSelectLanguageForCode={onLanguageSelect}
@@ -190,19 +196,23 @@ const Editor = () => {
                   />
                 </div>
                 <div
-                  className={`relative flex flex-col ml-2 w-full h-full transition-all duration-300`}
+                  className={`relative flex flex-col ${
+                    showSideContent ? "w-8/12" : "w-full"
+                  }   ml-2  h-full transition-all duration-300`}
                 >
+                  {/* Code and Terminal */}
                   <EditorContainer>
-                    <div className="flex flex-row w-full h-full">
-                      <div className="relative w-full h-full flex flex-col shadow-custom " >
-                        <Appbar
-                          selectedFile={selectedFile}
-                          selectedFilesArray={files}
-                          onSelect={onSelectAppBar}
-                          onCancel={CancelButtonAppBar}
-                          onSelectLanguage={onLanguageSelect}
-                        />
-                        {/* {files.length !== 0 && (
+                    {files.length != 0 && (
+                      <div className="flex flex-row w-full h-full">
+                        <div className="relative w-full h-full flex flex-col shadow-custom ">
+                          <Appbar
+                            selectedFile={selectedFile}
+                            selectedFilesArray={files}
+                            onSelect={onSelectAppBar}
+                            onCancel={CancelButtonAppBar}
+                            onSelectLanguage={onLanguageSelect}
+                          />
+                          {/* {files.length !== 0 && (
                           <StageComponent
                             functionName={functionName}
                             onNext={nextState}
@@ -214,46 +224,52 @@ const Editor = () => {
                             code={selectedFile?.content}
                           />
                         )} */}
-                        <Code selectedFile={selectedFile} />
-                        <div
-                          className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
-                            showTerminal ? "max-h-96" : "max-h-0"
-                          } overflow-hidden`}
-                        >
-                          <MainTerminal
-                            inputRef={inputRef}
-                            functionName={functionName}
-                            setRootDir={setRootDir}
-                            hideTerminal={hideTerminalFunction}
-                            stepsForRecording={setStepsForRecording}
+                          <Code
+                            selectedFile={selectedFile}
+                            showSideBannerBool={showSideContent}
+                            RemoveSideBanner={ShowSideContent}
                           />
+                          <div
+                            className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
+                              showTerminal ? "max-h-96" : "max-h-0"
+                            } overflow-hidden`}
+                          >
+                            <MainTerminal
+                              inputRef={inputRef}
+                              functionName={functionName}
+                              setRootDir={setRootDir}
+                              hideTerminal={hideTerminalFunction}
+                              stepsForRecording={setStepsForRecording}
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                     {files.length === 0 && (
-                      <div className="absolute w-full top-0 h-full">
+                      <div className="h-full w-full  top-0">
                         <DefaultEditorPage />
                       </div>
                     )}
                   </EditorContainer>
                 </div>
-                  {showSideContent && files.length != 0 && (
-                    <div className=" w-2/6 h-full ml-2 border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md">
-                      <SideBarhandle
-                        Stage={state}
-                        onNext={nextState}
-                        showTerminal={() => {
-                          setShowTerminal(true);
-                        }}
-                        functionName={functionName}
-                        code={selectedFile?.content}
-                        language="GOLANG"
-                        onReset={resetEverthing}
-                        stepsForRecording={stepsForRecording}
-                        removeSideContent={RemoveSideContent}
-                      />
-                    </div>
-                  )}
+                {/* Side Content */}
+                {showSideContent && (
+                  <div className=" w-4/12 h-full ml-2 border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md">
+                    <SideBarhandle
+                      Stage={state}
+                      onNext={nextState}
+                      showTerminal={() => {
+                        setShowTerminal(true);
+                      }}
+                      functionName={functionName}
+                      code={selectedFile?.content}
+                      language="GOLANG"
+                      onReset={resetEverthing}
+                      stepsForRecording={stepsForRecording}
+                      removeSideContent={RemoveSideContent}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </>

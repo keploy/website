@@ -45,14 +45,14 @@ interface SideBarNormalProps {
   onNext: () => void;
   onReset: () => void;
   stepsForRecording: StepsForRecording;
-  removeSideContent:()=>void;
+  RemoveSideContent: () => void;
 }
 
 export default function SideBarNormal({
   onNext,
   onReset,
   stepsForRecording,
-  removeSideContent,
+  RemoveSideContent,
 }: SideBarNormalProps) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [subStepIndex, setSubStepIndex] = React.useState(-1);
@@ -131,21 +131,24 @@ export default function SideBarNormal({
         },
       }}
     >
-       <div className="flex items-center h-14 bg-[#f5f5f5]  justify-between  px-3 py-1  border-b-2 border-gray-300">
-      <Typography
-        sx={{
-          color: "#1f2937", // Tailwind's gray-700 color
-          fontWeight: "bold",
-          m: 0, // remove margin
-        }}
-        className="text-gray-700 font-bold"
-      >
-        Content
-      </Typography>
-      <button className="text-gray-500 hover:text-gray-700" onClick={()=>{removeSideContent}}>
-        <CloseIcon  />
-      </button>
-    </div>
+      <div className="flex items-center h-14 bg-[#f5f5f5]  justify-between  px-3 py-1  border-b-2 border-gray-300">
+        <Typography
+          sx={{
+            color: "#1f2937", // Tailwind's gray-700 color
+            fontWeight: "bold",
+            m: 0, // remove margin
+          }}
+          className="text-gray-700 font-bold"
+        >
+          Content
+        </Typography>
+        <button
+          className="text-gray-500  hover:text-gray-700"
+          onClick={RemoveSideContent}
+        >
+          <CloseIcon />
+        </button>
+      </div>
       {stepsRecord.map((step, index) => (
         <Accordion
           expanded={expandedSteps.includes(index)}
@@ -176,7 +179,9 @@ export default function SideBarNormal({
               m: 0, // remove margin
             }}
           >
-            <Typography className="text-gray-700 font-bold">{step.label}</Typography>
+            <Typography className="text-gray-700 font-bold">
+              {step.label}
+            </Typography>
           </AccordionSummary>
           <AccordionDetails
             sx={{
@@ -205,19 +210,19 @@ export default function SideBarNormal({
                     >
                       {subStepIndex === subIndex && index === activeStep ? (
                         subStepCompleted ? (
-                          <DoneIcon sx={{ color: "green" }} />
+                          <DoneIcon className=" bg-secondary-300 font-bold rounded-md scale-75 p-1 text-neutral-300" />
                         ) : (
                           <CircularProgress size={14} />
                         )
                       ) : subStepIndex > subIndex || index < activeStep ? (
-                        <DoneIcon sx={{ color: "green" }} />
+                        <DoneIcon className="bg-secondary-300 font-bold rounded-md scale-75 p-1 text-neutral-300" />
                       ) : null}
                     </Box>
                     <Box
                       component="span"
                       sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
                     >
-                      {`${subIndex + 1}. ${subStep.stepName}`}
+                      {`${subStep.stepName}`}
                     </Box>
                   </Box>
                 ))}

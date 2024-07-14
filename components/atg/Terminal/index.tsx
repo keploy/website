@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { TerminalProps, TerminalCommands } from "./types"; // Assuming you have a types file where `TerminalCommands` is defined
+import CloseIcon from "@mui/icons-material/Close"; // Use CloseIcon to mimic the red button on Mac
 
 export interface AdditionalProps {
   inputRef: React.RefObject<HTMLInputElement>;
@@ -26,7 +27,9 @@ export const Terminal = forwardRef(
     } = props;
 
     const [input, setInputValue] = useState<string>("");
+    const [blinkingTrue, setBlinkingTrue] = useState<boolean>(true);
     const spanRef = useRef<HTMLSpanElement>(null);
+    const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     /**
      * Focus on the input whenever we render the terminal
@@ -45,6 +48,15 @@ export const Terminal = forwardRef(
     const handleInputChange = useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value + "");
+        setBlinkingTrue(false);
+
+        if (typingTimeoutRef.current) {
+          clearTimeout(typingTimeoutRef.current);
+        }
+
+        typingTimeoutRef.current = setTimeout(() => {
+          setBlinkingTrue(true);
+        }, 500); // 1 second delay after user stops typing
       },
       []
     );
@@ -62,6 +74,7 @@ export const Terminal = forwardRef(
             handleCommandNotFound();
           }
           setInputValue("");
+          setBlinkingTrue(true);
         }
       },
       [commands, input]
@@ -87,32 +100,23 @@ export const Terminal = forwardRef(
     return (
       <div>
         <div
-          className="terminal border border-b-slate-900 border-t-4 border-b-4 h-full"
+          className="terminal border w-full rounded-t-xl border-b-slate-900 border-t-4 border-b-4 h-full"
           ref={ref}
           onClick={focusInput}
         >
-          <div className="sticky top-0 w-full text-slate-300 flex justify-center  rounded-t-md bg-inherit bg-secondary-300 p-2 border-b-slate-800">
-            <div className="flex flex-row gap-2">
-              {/* <IoTerminal
-                className=" cursor-pointer scale-150 text-slate-300"
-                aria-label="Expand Terminal"
-                onClick={hideTerminal}
-              /> */}
-              {/* <p className=" text-slate-800">Terminal</p> */}
-            </div>
-            <p className="text-white font-bold">User@1231-Keploy:~</p>
-            {/* <IoIosArrowDropdownCircle
-              className=" cursor-pointer right-0  scale-150 text-white"
-              aria-label="Expand Terminal"
+          <div className="sticky top-0 w-full text-slate-300 flex justify-center items-center border border-b-2 border-black bg-inherit bg-[#3a3b3d] p-2 px-3">
+            <p className="text-white flex-grow text-center font-bold">TERMINAL</p>
+            <button
+              className="close-button bg-red-500 rounded-full w-4 h-4 flex items-center justify-center"
+              aria-label="Close Terminal"
               onClick={hideTerminal}
-            /> */}
+            >
+              <CloseIcon className="text-red-500 w-3 h-3" />
+            </button>
           </div>
-          <div className="p-1">
+          <div className="p-1 px-3">
             {history.map((line, index) => (
-              <div
-                className="terminal__line"
-                key={`terminal-line-${index}-${line}`}
-              >
+              <div className="terminal__line" key={`terminal-line-${index}-${line}`}>
                 {line}
               </div>
             ))}
@@ -126,14 +130,13 @@ export const Terminal = forwardRef(
                     onKeyDown={handleInputKeyDown}
                     onChange={handleInputChange}
                     ref={inputRef}
-                    className="form-input  fat-cursor p-0 bg-inherit   text-slate-950 caret-slate-100  ml-2 border-none focus:outline-none border border-r-0 text-sm appearance-none border-transparent fat-cursor " // Add padding-right to make space for the emoji
+                    className="form-input fat-cursor p-0 bg-inherit text-white caret-black ml-2 border-none focus:outline-none border border-r-0 text-sm appearance-none border-transparent fat-cursor" // Add padding-right to make space for the emoji
                   />
-                  <span className="absolute text-sm scale-90 inset-y-0 right-0 bg-slate-950 flex border border-slate-950 items-center pr-2"/>
+                  <span
+                    className={`${blinkingTrue ? "animate-blink" : ""} absolute text-sm scale-90 inset-y-0 right-0 bg-gray-400 flex border border-gray-900 items-center pr-2`}
+                  />
                 </div>
-                <span
-                  ref={spanRef}
-                  className="absolute invisible whitespace-pre  text-sm"
-                >
+                <span ref={spanRef} className="absolute invisible whitespace-pre text-sm">
                   {input}
                 </span>
               </div>

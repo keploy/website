@@ -27,7 +27,7 @@ export default function LanguageSelector({ onSelectLanguageForCode }: LanguageSe
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120}}  >
       <FormControl fullWidth className='scale-75'>
         <InputLabel id="language-select-label">Language</InputLabel>
         <Select
@@ -47,19 +47,29 @@ export default function LanguageSelector({ onSelectLanguageForCode }: LanguageSe
               top: 'calc(50% - 10px)',
             }
           }}
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                transform: 'scale(0.75)',
+                transformOrigin: 'top left',
+                width:"10px",
+                padding:"0px",
+              },
+            },
+          }}
           renderValue={(value) => {
             const selectedLang = languages.find(lang => lang.name === value);
             return (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}> 
                 {selectedLang && <selectedLang.icon size={20} style={{ marginRight: 8 }} />}
-                {value}
-              </div>
+                {selectedLang?.name}
+              </div>  
             );
           }}
         >
           {languages.map((lang) => (
             lang.name !== selectedLanguage && (
-              <MenuItem key={lang.name} value={lang.name} sx={{ height: 40 }} >
+              <MenuItem key={lang.name} value={lang.name} sx={{ height: 40 ,width:"100%" }} className='scale-75 p-0 m-0' >
                 <lang.icon size={20} style={{ marginRight: 8 }} />
                 {lang.name}
               </MenuItem>
