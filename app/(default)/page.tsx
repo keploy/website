@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
         <Hero />
-        {/* <Features /> */}
+        <Features />
   
         <Testimonial
           content={testimonialData[0].content}

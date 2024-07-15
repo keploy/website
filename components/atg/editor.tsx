@@ -173,22 +173,19 @@ const Editor = () => {
       <div>
         {dataFetched ? (
           <>
-            <div className="flex flex-col max-w-7xl  px-4 mx-auto my-16 m-2">
+            <div className="flex flex-col max-w-7xl px-4 mx-auto my-16 m-2">
               <CustomizedSteppers
                 activeStep={state}
                 onNext={nextState}
                 onPrev={prevState}
               />
               <div className="flex flex-row mt-5 my-10 w-full">
-                {/* sidebar */}
+                {/* Sidebar */}
                 <div
                   className={`flex flex-col transition-all duration-200 ${
-                    showSideContent ? "w-3/12" : "w-2/12"
-                  }  border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md `}
+                    showSideContent ? "w-2/12" : "w-2/12"
+                  } border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md`}
                 >
-                  {/* <LanguageSelector
-                    onSelectLanguageForCode={onLanguageSelect}
-                  /> */}
                   <Sidebar
                     rootDir={rootDir}
                     selectedFile={selectedFile}
@@ -197,14 +194,14 @@ const Editor = () => {
                 </div>
                 <div
                   className={`relative flex flex-col ${
-                    showSideContent ? "w-8/12" : "w-full"
-                  }   ml-2  h-full transition-all duration-300`}
+                    showSideContent ? "w-8/12" : "w-9/12"
+                  } ml-2 h-full transition-all duration-300`}
                 >
                   {/* Code and Terminal */}
                   <EditorContainer>
-                    {files.length != 0 && (
+                    {files.length !== 0 ? (
                       <div className="flex flex-row w-full h-full">
-                        <div className="relative w-full h-full flex flex-col shadow-custom ">
+                        <div className="relative w-full h-full flex flex-col shadow-custom">
                           <Appbar
                             selectedFile={selectedFile}
                             selectedFilesArray={files}
@@ -212,18 +209,6 @@ const Editor = () => {
                             onCancel={CancelButtonAppBar}
                             onSelectLanguage={onLanguageSelect}
                           />
-                          {/* {files.length !== 0 && (
-                          <StageComponent
-                            functionName={functionName}
-                            onNext={nextState}
-                            showTerminal={() => {
-                              setShowTerminal(true);
-                            }}
-                            hideTerminal={toggleTerminal}
-                            language={"GOLANG"}
-                            code={selectedFile?.content}
-                          />
-                        )} */}
                           <Code
                             selectedFile={selectedFile}
                             showSideBannerBool={showSideContent}
@@ -244,9 +229,8 @@ const Editor = () => {
                           </div>
                         </div>
                       </div>
-                    )}
-                    {files.length === 0 && (
-                      <div className="h-full w-full  top-0">
+                    ) : (
+                      <div className="h-full w-full top-0">
                         <DefaultEditorPage />
                       </div>
                     )}
@@ -254,13 +238,11 @@ const Editor = () => {
                 </div>
                 {/* Side Content */}
                 {showSideContent && (
-                  <div className=" w-4/12 h-full ml-2 border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md">
+                  <div className="w-3/12 grow h-full ml-2 border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md transition-all duration-300">
                     <SideBarhandle
                       Stage={state}
                       onNext={nextState}
-                      showTerminal={() => {
-                        setShowTerminal(true);
-                      }}
+                      showTerminal={() => setShowTerminal(true)}
                       functionName={functionName}
                       code={selectedFile?.content}
                       language="GOLANG"
