@@ -9,11 +9,47 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/test-data-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
+
+const blocksData = [
+  {
+    title: "Limited Data Variation",
+    description: "Difficulty in ensuring consistent mock data across different tests.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Dependency on Real Data",
+    description: "Limited ability to simulate scenarios without real data dependencies.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Manual Data Generation",
+    description: "A significant amout of time is spent in manually generating mock data.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Scalability Concerns",
+    description: "Difficulty in scaling mock data generation for large datasets or complex scenarios.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Data Inefficiencies",
+    description: "Usually Mock data does not accurately represent real-world scenarios.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Maintenance Overhead",
+    description: "High maintenance effort due to frequent updates and changes in mock data.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
 
 const heroData = {
   titleTop: "Get Quick and Reliable ",
@@ -31,8 +67,8 @@ const pageMetadata: Metadata = {
 };
 
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Mock Data Challenges for Developers",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
