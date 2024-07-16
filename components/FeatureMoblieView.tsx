@@ -98,7 +98,7 @@ export default function FeaturesMobileView() {
                   </div>
                     </div>
                     <div>
-                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/stub-generation">Explore More</Link>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/docs/server/sdk-installation/go">Explore More</Link>
                     </div>
                   </div>
 
@@ -141,7 +141,7 @@ export default function FeaturesMobileView() {
                     </div>
                     </div>
                     <div>
-                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/test-duplication">Explore More</Link>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/docs/server/sdk-installation/go/">Explore More</Link>
                     </div>
                 </div>
                 </Link>
@@ -182,7 +182,7 @@ export default function FeaturesMobileView() {
                   </div>
                   </div>
                   <div>
-                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/native-integration">Explore More</Link>
+                      <Link className="btn mt-4 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0" href="/docs/server/sdk-installation/go/">Explore More</Link>
                   </div>
                 </div>
                 </Link>
