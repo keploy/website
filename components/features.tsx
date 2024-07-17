@@ -172,7 +172,7 @@ useGSAP(
                 heading={"Record Replay API Flows"}
                 description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
                 btnDescription="Explore More"
-                btnLink=" https://keploy.io/docs/server/sdk-installation/go/"
+                btnLink="https://keploy.io/docs/keploy-explained/introduction/"
               />
             </div>
             <div className="flex items-center detail">
@@ -192,7 +192,7 @@ useGSAP(
                 heading={"Find Duplicate Tests"}
                 description="Find redundant tests that doesn't add to the test coverage. Automatically detect and remove duplicate tests, ideal for big-teams crowd-sourcing tests."
                 btnDescription="Explore More"
-                btnLink=" https://keploy.io/docs/server/sdk-installation/go/"
+                btnLink="https://keploy.io/docs/keploy-cloud/deduplication/"
               />
             </div>
             <div className="flex items-center detail">
