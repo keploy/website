@@ -13,71 +13,70 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
   CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
   MaterialSymbolsLightEarlyOnOutline
 } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/regression-testing";
+import { featuresData,faqQuestions } from "@/components/utils/contract-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
-const heroData = {
-  titleTop: "Automate Regression Testing ",
-  titleBottom: "with AI",
-  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
-  subtitleBottom:
-    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
-  animationSrc: testAndStubsGen,
-};
-
 const pageMetadata: Metadata = {
-  title: 'Keploy | Automate Regression Testing with Keploy AI Test Generator!',
-  description: 'Try Keploy.io automated regression testing software that records API calls to test cases and mocks, designed for efficiency and accuracy! Learn more!',
-  keywords: 'regression testing software, regression testing in software testing,automated regression testing',
+  title: 'Keploy | Consumer Driven Contract Testing without Code Changes!',
+  description: "Discover how Keploy automates contract tests more effectively than Pact, with no code changes required. Effective, efficient, and reliable!",
+  keywords: 'contract testing, contract tests, pact.io alternative',
 };
 
 const blocksData = [
   {
-    title: "Slow Test Execution",
-    description: "Regression testing often involves running a large number of tests, which can be time-consuming and delay the release cycle.",
+    title: "Inconsistent Responses",
+    description: "Difficulty ensuring APIs consistently meet agreed-upon contracts.",
     SvgComponent: MdiLightningBolt,
   },
   {
-    title: "Manual Test Maintenance",
-    description: "Updating and maintaining regression test cases manually as the software evolves can be labor-intensive and prone to errors.",
+    title: "Integration Challenges",
+    description: "Complex integrations between services causing mismatched data and behavior.",
     SvgComponent: FluentPuzzleCubePiece20Filled,
   },
   {
-    title: "Difficulty in Prioritization",
-    description: "Determining which tests to prioritize for regression testing amidst frequent code changes and updates can be challenging.",
+    title: "Manual Verification",
+    description: "Process of verifying contract manually are tedious and usually error-prone.",
     SvgComponent: CollaborationIcon,
   },
   {
-    title: "Resource Intensive",
-    description: "Regression testing requires significant computational resources and infrastructure, which can be costly to maintain and scale.",
+    title: "Lack of Automation",
+    description: "Insufficient tools for automating contract tests, leading to repetitive tasks.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
-    title: "Test Data Management:",
-    description: "Ensuring consistent and relevant test data for regression testing across different environments and scenarios can be complex and error-prone.",
+    title: "Version Management",
+    description: "Managing contract changes across different API versions is very difficult.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
-    title: "Low Test Coverage",
-    description: "Despite efforts, regression testing may not cover all critical paths and edge cases, potentially missing subtle regressions in the software.",
+    title: "Debugging Issues",
+    description: "Identifying and resolving contract violations quickly is difficult.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
 
+const heroData = {
+  titleTop: "Cross-Language Contract ",
+  titleBottom: "Testing Made Simple",
+  subtitleTop: "Streamline API Integration and Debugging for Efficient Development Processes",
+  subtitleBottom:
+    "Automate Contract validation to improve efficiency accurately!🚀",
+  animationSrc: testAndStubsGen,
+};
 const ProblemBlocksData = {
-  title: "Navigating Regression Testing",
-  subtitle: "👋 Challenges 👋",
+  title: "Challenges of Contract Testing",
+  subtitle: "👋 Tried of 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With ",
+  title: "Improve ",
+  title2: "with ",
+  highlightTitle: "Contract Testing",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "Regression Testing",
-  title2: "leverage",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -89,7 +88,6 @@ const BannerData = {
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
 };
-
 export default function Home() {
   return (
     <RootLayout metadata={pageMetadata}>
@@ -109,7 +107,7 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
         title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
@@ -128,11 +126,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-        content={testimonialData[2].content}
-        author={testimonialData[2].author}
-        company={testimonialData[2].company}
-        image={testimonialData[2].image}
-      />
+          content={testimonialData[2].content}
+          author={testimonialData[2].author}
+          company={testimonialData[2].company}
+          image={testimonialData[2].image}
+        />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}

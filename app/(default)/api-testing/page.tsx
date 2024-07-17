@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData , faqQuestions} from "@/components/utils/api-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -21,6 +24,39 @@ const pageMetadata: Metadata = {
   keywords: 'API test, FREE API Testing Tool, API Testing tool',
 };
 
+const blocksData = [
+  {
+    title: "Manual Test Script",
+    description: "Creating test scripts for API testing manually is time-consuming and error-prone.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Limited Test Coverage",
+    description: "Traditional API testing methods may not cover all possible scenarios, leading to gaps in test coverage.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Difficulty in Test Maintenance",
+    description: "Maintaining and updating test scripts as APIs evolve can be challenging and resource-intensive.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Complex Setup Requirements",
+    description: "Setting up environments for API testing can be complex and require specialized knowledge.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Lack of Real-time Feedback",
+    description: "Waiting for test results can slow down the development process and delay bug fixes.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Pipeline Integration",
+    description: "Integrating API tests with CI/CD pipelines can be difficult and requires extensive configuration.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const heroData = {
   titleTop: "API Testing ",
   titleBottom: "with Seamless Experience",
@@ -30,8 +66,8 @@ const heroData = {
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Traditional API Testing",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
@@ -54,7 +90,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -105,6 +141,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

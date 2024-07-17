@@ -4,9 +4,9 @@ import Header from '@/components/ui/header';
 import React, { ReactNode } from 'react';
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
+    subsets: ['latin'],
+    variable: '--font-inter',
+    display: 'swap',
 });
 
 export interface Metadata {
@@ -24,8 +24,8 @@ export const defaultMetadata: Metadata = {
 };
 
 interface RootLayoutProps {
-  children: ReactNode;
-  metadata?: Metadata;
+    children: ReactNode;
+    metadata?: Metadata;
 }
 
 export default function RootLayout({ children, metadata }: RootLayoutProps) {
@@ -52,11 +52,11 @@ export default function RootLayout({ children, metadata }: RootLayoutProps) {
               gtag('js', new Date());
               gtag('config', 'G-TLL6DW2H6N');
             `,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+                }}
+            />
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
               (function(h,o,t,j,a,r){
                 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
                 h._hjSettings={hjid:3609484,hjsv:6};
@@ -65,29 +65,40 @@ export default function RootLayout({ children, metadata }: RootLayoutProps) {
                 a.appendChild(r);
               })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
             `,
-          }}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+                }}
+            />
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a.q=c[a.q||[]).push(arguments)};
                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "iu0391ggta");
             `,
-          }}
-        />
-        <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/43912677.js"></script>
-      </head>
-      <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
-      <noscript>
-      </noscript>
+                }}
+            />
+            <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/43912677.js"></script>
+
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-P7DBR4PH');
+            `,
+                }}
+            />
+
+        </head>
+        <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
         <div className="flex flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
-          <Header />
-          {children}
+            <Header />
+            {children}
         </div>
-      </body>
-    </html>
-  );
+        </body>
+        </html>
+    );
 }
