@@ -1,8 +1,24 @@
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
 import { websiteContactUrl } from "@/services/constants";
 import Link from "next/link";
+
+const emailValidation = (email: string) => {
+  const response = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if(!response){
+    return {
+      success: false,
+      message: "Please enter a valid email address!"
+    }
+  }
+
+  return {
+    success: true,
+    message: "Please hit the subscribe button"
+  };
+}
+
 export const subscribeMutation = (formData: { email: string, message: string }) => {
   if (websiteContactUrl) {
     return fetch(websiteContactUrl, {
@@ -26,12 +42,20 @@ export const subscribeMutation = (formData: { email: string, message: string }) 
 
 export default function Newsletter() {
   const [subscribed, setSubscribed] = useState(false);
+  const [subscribeMessage, setSubscribeMessage] = useState('');
   const [email, setEmail] = useState('');
+
+  const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>)=>{
+    setEmail(e.target.value);
+    const emailValidationResponse =  emailValidation(email);
+    setSubscribeMessage(emailValidationResponse.message);
+  }
 
   const handleSubscribe = async () => {
     try {
       const response = await subscribeMutation({ email: email, message:"$100" });
       if (response.status == 201) {
+        setSubscribeMessage("Thanks for subscribing!");
         setSubscribed(true);
       } else {
         console.error('Subscribe request failed.');
@@ -48,7 +72,6 @@ export default function Newsletter() {
 
             {/* CTA box */}
             <div className="relative bg-secondary-300  rounded-lg  py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden" data-aos="zoom-y-out">
-
               {/* Background illustration */}
               <div className="absolute right-0 bottom-0 pointer-events-none hidden lg:block" aria-hidden="true">
                 <svg width="428" height="328" xmlns="http://www.w3.org/2000/svg">
@@ -97,13 +120,13 @@ export default function Newsletter() {
                   <form id="subscribeForm" className="w-full lg:w-auto">
                     {!subscribed && <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:mx-0">
                       <input value={email}
-                             onChange={(e) => setEmail(e.target.value)}
+                             onChange={handleEmailInput}
                              type="email" className="form-input w-full appearance-none bg-neutral-100 border border-secondary-500 focus:border-secondary-400 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-secondary-300 placeholder-secondary-100" placeholder="Your email…" aria-label="Your email…" />
                       <Link className="btn text-secondary-300 bg-primary-300 hover:bg-primary-400 shadow" href="#0"  onClick={handleSubscribe} >Subscribe</Link>
                     </div> }
-                    {/* Success message */}
-                    {subscribed && <p className="text-sm text-gray-400 mt-3">Thanks for subscribing!</p>}
-                    {!subscribed &&   <p className="text-sm text-gray-400 mt-3">No spam. You can unsubscribe at any time.</p> }
+                    {/* Subscribe Message */}
+                    {<p className="text-sm text-gray-400 mt-3">{subscribeMessage}</p>}
+                    {!subscribeMessage &&   <p className="text-sm text-gray-400 mt-3">No spam. You can unsubscribe at any time.</p> }
                   </form>
                 </div>
               </div>
