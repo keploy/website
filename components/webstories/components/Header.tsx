@@ -1,18 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import Link from "next/link";
 import Logo from "../../ui/logo";
 import MobileMenu from "../../ui/mobile-menu";
 import CountingNumbers from "../../utils/countingNumbers";
-import { isTypeOfExpression } from "typescript";
-import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
-import { PillarPages } from "../../utils/resources";
-export default function Header() {
+import NavItemWithSmallDropdown from "@/components/nav/navItemWithSmallDropdown";
+import { PillarPages } from "@/components/utils/resources";
+import SearchBar from "@/components/webstories/components/SearchBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+
+interface HeaderProps {
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ handleInputChange }) => {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
-  // detect whether user has scrolled the page down by 10px
+
+  // Detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
     window.pageYOffset > 10 ? setTop(false) : setTop(true);
   };
@@ -31,21 +38,11 @@ export default function Header() {
         );
         if (response.ok) {
           const data = await response.json();
-          // Convert starsCount to 1-digit decimal with 'K'
-          let stars = data.stargazers_count;
-          // let roundedStars = Math.round(data.stargazers_count / 50) * 50;
-          // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-          setStarsCount(stars);
+          setStarsCount(data.stargazers_count);
         } else {
-          // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
-          // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-          // setStarsCount(formattedStars);
           console.error("Failed to fetch stars count", response.statusText);
         }
       } catch (error) {
-        // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
-        // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-        // setStarsCount(formattedStars);
         console.error("Error fetching stars count:", error);
       }
     };
@@ -61,14 +58,11 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Site branding */}
-          <div className="shrink-0 mr-4 flex-grow-0 w-2/12 ">
+          <div className="shrink-0 mr-2 flex-grow-0 w-2/12 ">
             <Logo />
           </div>
-          {/* Desktop navigation */}
-          <nav className="hidden lg:flex  flex-grow-0 w-6/12">
-            {/* Desktop privacy-policy in links */}
-            <ul className="flex grow justify-end flex items-center">
+          <nav className="hidden lg:flex flex-grow-0 w-7/12">
+            <ul className="flex grow justify-end  items-center">
               <li>
                 <Link
                   target="_blank"
@@ -82,7 +76,7 @@ export default function Header() {
                 <Link
                   target="_blank"
                   href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  className="font-medium text-gray-600 w-24  hover:text-primary-300 px-2 py-2 mx-2 flex items-center transition duration-150 ease-in-out"
                 >
                   Tech Blog
                 </Link>
@@ -97,7 +91,6 @@ export default function Header() {
                 </Link>
               </li>
               <div className="px-5">
-                {" "}
                 <NavItemWithSmallDropdown
                   heading="Resources"
                   dropdownData={PillarPages}
@@ -105,6 +98,9 @@ export default function Header() {
               </div>
             </ul>
           </nav>
+          <div className="flex items-center w-full ">
+            <SearchBar onChange={handleInputChange} />
+          </div>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
             <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 ">
               <Link
@@ -145,10 +141,11 @@ export default function Header() {
               {/*</svg>*/}
             </Link>
           </div>
-
           <MobileMenu starsCount={starsCount} />
         </div>
       </div>
     </header>
   );
-}
+};
+
+export default Header;
