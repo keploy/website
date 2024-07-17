@@ -55,9 +55,9 @@ const Appbar = ({
   };
 
   return (
-    <div className="appbar-container">
+    <div className="appbar-container bg-neutral-200">
       <div className="appbar-scrollbar-container" ref={scrollRef}></div>
-      <div className="appbar flex flex-row justify-between w-full border border-gray-300 mb-1 rounded-t-md">
+      <div className="appbar flex flex-row justify-between w-full border border-gray-300 ">
         <div className="tabs-container flex-grow" ref={tabsRef}>
           {selectedFilesArray.map((file, key) => {
             return (
@@ -66,8 +66,8 @@ const Appbar = ({
                 className={`flex flex-row items-center cursor-pointer ${
                   file?.id === selectedFile?.id
                     ? "bg-white border-t-4 border-t-gray-700"
-                    : "border-r-2 border-r-gray-900 bg-gray-200"
-                } ${key === 0 ? "rounded-tl-md" : ""}`}
+                    : "border-r-2 border-r-gray-900 bg-gray-100"
+                } ${key === 0 ? "" : ""}`}
                 onMouseEnter={() => handleMouseEnter(file.id)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -110,9 +110,9 @@ const Appbar = ({
             );
           })}
         </div>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <LanguageSelector onSelectLanguageForCode={onSelectLanguage} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

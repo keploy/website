@@ -28,8 +28,8 @@ export default function LanguageSelector({ onSelectLanguageForCode }: LanguageSe
 
   return (
     <Box sx={{ minWidth: 120}}  >
-      <FormControl fullWidth className='scale-75'>
-        <InputLabel id="language-select-label">Language</InputLabel>
+      <FormControl fullWidth className='scale-75 bg-white '>
+        <InputLabel id="language-select-label " className='text-secondary-300'></InputLabel>
         <Select
           labelId="language-select-label"
           id="language-select"

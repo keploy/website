@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CircularProgress from "@mui/material/CircularProgress";
 import DoneIcon from "@mui/icons-material/Done";
+import LockIcon from "@mui/icons-material/Lock";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import StepsForRecording from "../../StepTypes/types";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -105,11 +107,13 @@ export default function SideBarNormal({
   };
 
   const handleAccordionChange = (index: number) => {
-    setExpandedSteps((prevExpanded) =>
-      prevExpanded.includes(index)
-        ? prevExpanded.filter((step) => step !== index)
-        : [...prevExpanded, index]
-    );
+    if (expandedSteps.includes(index) || index <= activeStep) {
+      setExpandedSteps((prevExpanded) =>
+        prevExpanded.includes(index)
+          ? prevExpanded.filter((step) => step !== index)
+          : [...prevExpanded, index]
+      );
+    }
   };
 
   React.useEffect(() => {
@@ -123,27 +127,28 @@ export default function SideBarNormal({
       sx={{
         maxWidth: 300,
         backgroundColor: "#f5f5f5",
-        height: "70vh",
+        height: "67vh",
         overflowY: "auto",
+        position: "relative",
         scrollbarWidth: "none", // For Firefox
         "&::-webkit-scrollbar": {
           display: "none", // For Chrome, Safari, and Opera
         },
       }}
     >
-      <div className="flex items-center h-14 bg-[#f5f5f5]  justify-between  px-3 py-1  border-b-2 border-gray-300">
+      <div className="flex items-center h-14 bg-neutral-200 justify-between px-3 py-1  sticky top-0 z-10">
         <Typography
           sx={{
             color: "#1f2937", // Tailwind's gray-700 color
             fontWeight: "bold",
             m: 0, // remove margin
           }}
-          className="text-gray-700 font-bold"
+          className="text-secondary-300 font-bold"
         >
           Content
         </Typography>
         <button
-          className="text-gray-500  hover:text-gray-700"
+          className="text-gray-500 hover:text-gray-700"
           onClick={RemoveSideContent}
         >
           <CloseIcon />
@@ -164,12 +169,18 @@ export default function SideBarNormal({
               borderBottom: "none",
             },
           }}
-          className="border border-b-2 border-gray-300"
+          className="border border-b-1 bg-neutral-200 border-gray-200"
           disableGutters={true}
           TransitionProps={{ timeout: { appear: 1, enter: 1, exit: 4 } }}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon className="text-gray-700" />}
+            expandIcon={
+              expandedSteps.includes(index) ? (
+                <ExpandMoreIcon className="text-gray-700" />
+              ) : (
+                index <= activeStep ? <ExpandMoreIcon className="text-gray-700" /> : <LockIcon className="text-secondary-300" />
+              )
+            }
             aria-controls={`panel${index}-content`}
             id={`panel${index}-header`}
             sx={{
@@ -179,7 +190,7 @@ export default function SideBarNormal({
               m: 0, // remove margin
             }}
           >
-            <Typography className="text-gray-700 font-bold">
+            <Typography className="text-secondary-300 font-semibold">
               {step.label}
             </Typography>
           </AccordionSummary>
@@ -189,6 +200,10 @@ export default function SideBarNormal({
               overflowY: "auto",
               m: 0,
               paddingright: "15px",
+              scrollbarWidth: "none", // For Firefox
+              "&::-webkit-scrollbar": {
+                display: "none", // For Chrome, Safari, and Opera
+              },
             }}
           >
             <Box sx={{ mt: 2 }}>
@@ -210,13 +225,15 @@ export default function SideBarNormal({
                     >
                       {subStepIndex === subIndex && index === activeStep ? (
                         subStepCompleted ? (
-                          <DoneIcon className=" bg-secondary-300 font-bold rounded-md scale-75 p-1 text-neutral-300" />
+                          <DoneIcon className=" bg-accent-100 font-bold rounded-md scale-75 p-1 text-neutral-300" />
                         ) : (
                           <CircularProgress size={14} />
                         )
                       ) : subStepIndex > subIndex || index < activeStep ? (
-                        <DoneIcon className="bg-secondary-300 font-bold rounded-md scale-75 p-1 text-neutral-300" />
-                      ) : null}
+                        <DoneIcon className="bg-accent-100 font-bold rounded-md scale-75 p-1 text-neutral-300" />
+                      ) : (
+                        <CheckBoxOutlineBlankIcon className="text-gray-300 shadow-inner scale-90" />
+                      )}
                     </Box>
                     <Box
                       component="span"
@@ -225,15 +242,15 @@ export default function SideBarNormal({
                       {`${subStep.stepName}`}
                     </Box>
                   </Box>
-                ))}
+                ))} 
               </Box>
             </Box>
             {index === activeStep && (
-              <Box sx={{ mb: 2 }}>
-                <div>
+              <Box sx={{ mb: 2 }} className="shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
+                <div className="">
                   <button
                     onClick={handleNext}
-                    className="mt-1 mr-1 bg-[#00163D] text-primary-50 hover:bg-secondary-300 px-4 py-2 rounded"
+                    className="mt-1 mr-1 w-full  bg-primary-300 font-semibold  text-secondary-300   px-4 py-2 rounded"
                     disabled={subStepIndex !== -1}
                   >
                     {step.stepName}
@@ -245,14 +262,13 @@ export default function SideBarNormal({
         </Accordion>
       ))}
       {activeStep === stepsRecord.length && (
-        <Paper square elevation={0} sx={{ p: 3, backgroundColor: "#f5f5f5" }}>
-          <Typography>
-            All steps completed - Thank you for using Keploy. Click on the reset
-            to start again.
+        <Paper square elevation={0} sx={{ p: 2, backgroundColor: "#f5f5f5" }}>
+          <Typography className="text-base text-center font-semibold">
+            Would you like to reset?
           </Typography>
           <button
             onClick={handleReset}
-            className="mt-1 mr-1 bg-[#00163D] text-primary-50 hover:bg-secondary-300 px-4 py-2 rounded"
+            className="mt-1 mr-1 w-full bg-primary-300 font-semibold scale-90 px-4 py-2 rounded"
           >
             Reset
           </button>

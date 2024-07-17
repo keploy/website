@@ -126,7 +126,7 @@ export const Code = ({
   }, [monacoInstance]);
 
   return (
-    <div className="relative w-full h-full border border-gray-300 rounded-lg shadow-md">
+    <div className="relative w-full h-full shadow-custom  border border-gray-300 rounded-lg">
       <Editor
         language={language}
         value={code}

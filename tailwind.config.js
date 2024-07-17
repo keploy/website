@@ -135,6 +135,7 @@ module.exports = {
           "var(--font-architects-daughter)",
           "sans-serif",
         ],
+        courier: ["Courier Prime", "monospace"],
         pencil: ["Pencil", "sans-serif"],
       },
       fontSize: {
@@ -182,6 +183,9 @@ module.exports = {
       minWidth: {
         10: "2.5rem",
         48: "12rem",
+      },
+      height:{
+        "70v":"70vh",
       },
       opacity: {
         90: "0.9",

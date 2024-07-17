@@ -97,15 +97,42 @@ export const Terminal = forwardRef(
       }
     }, [input]);
 
+    /**
+     * Handle focus and blur events for the input
+     */
+    useEffect(() => {
+      const handleFocus = () => {
+        setBlinkingTrue(true);
+      };
+
+      const handleBlur = () => {
+        setBlinkingTrue(false);
+      };
+
+      const inputElement = inputRef.current;
+
+      if (inputElement) {
+        inputElement.addEventListener("focus", handleFocus);
+        inputElement.addEventListener("blur", handleBlur);
+      }
+
+      return () => {
+        if (inputElement) {
+          inputElement.removeEventListener("focus", handleFocus);
+          inputElement.removeEventListener("blur", handleBlur);
+        }
+      };
+    }, [inputRef]);
+
     return (
       <div>
         <div
-          className="terminal border w-full rounded-t-xl border-b-slate-900 border-t-4 border-b-4 h-full"
+          className="terminal_light font-courier bg-white border w-full text-sm rounded-t-xl  border-t-4 border-b-4 h-full"
           ref={ref}
           onClick={focusInput}
         >
-          <div className="sticky top-0 w-full text-slate-300 flex justify-center items-center border border-b-2 border-black bg-inherit bg-[#3a3b3d] p-2 px-3">
-            <p className="text-white flex-grow text-center font-bold">TERMINAL</p>
+          <div className="sticky top-0 w-full text-slate-300 flex justify-center items-center border border-b-2 border-gray-300 bg-inherit   p-2 px-3">
+            <p className="text-secondary-300 flex-grow text-center font-bold">TERMINAL</p>
             <button
               className="close-button bg-red-500 rounded-full w-4 h-4 flex items-center justify-center"
               aria-label="Close Terminal"
@@ -114,14 +141,14 @@ export const Terminal = forwardRef(
               <CloseIcon className="text-red-500 w-3 h-3" />
             </button>
           </div>
-          <div className="p-1 px-3">
+          <div className="p-1 px-3 ">
             {history.map((line, index) => (
-              <div className="terminal__line" key={`terminal-line-${index}-${line}`}>
+              <div className="terminal__line_light" key={`terminal-line-${index}-${line}`}>
                 {line}
               </div>
             ))}
-            <div className="terminal__prompt">
-              <div className="terminal__prompt__label">{promptLabel}</div>
+            <div className="terminal__prompt_light">
+              <div className="terminal__prompt__label_light">{promptLabel}</div>
               <div className="terminal__prompt__input flex">
                 <div className="relative w-full">
                   <input
@@ -130,10 +157,10 @@ export const Terminal = forwardRef(
                     onKeyDown={handleInputKeyDown}
                     onChange={handleInputChange}
                     ref={inputRef}
-                    className="form-input fat-cursor p-0 bg-inherit text-white caret-black ml-2 border-none focus:outline-none border border-r-0 text-sm appearance-none border-transparent fat-cursor" // Add padding-right to make space for the emoji
+                    className="form-input fat-cursor p-0 bg-inherit text-secondary-300 caret-white ml-2 border-none focus:outline-none border border-r-0 text-sm appearance-none border-transparent fat-cursor" // Add padding-right to make space for the emoji
                   />
                   <span
-                    className={`${blinkingTrue ? "animate-blink" : ""} absolute text-sm scale-90 inset-y-0 right-0 bg-gray-400 flex border border-gray-900 items-center pr-2`}
+                    className={`${blinkingTrue ? "animate-blink" : ""} absolute text-sm scale-90 inset-y-0 right-0 bg-secondary-300 flex border border-secondary-300 items-center pr-2`}
                   />
                 </div>
                 <span ref={spanRef} className="absolute invisible whitespace-pre text-sm">

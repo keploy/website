@@ -9,11 +9,11 @@ import { GolangData } from "./data/Golang";
 import { PythonData } from "./data/Python";
 import { TypeScriptData } from "./data/TypeScript";
 import DefaultEditorPage from "./components/DefaultEditorPage";
-import CustomizedSteppers from "./components/HorizontalStepper";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
 import SideBarhandle from "./components/SideBarhandle";
 import StepsForRecording from "./StepTypes/types";
+import TopHeader from "./components/TopHeader";
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -28,6 +28,7 @@ const Editor = () => {
   const [rootDir, setRootDir] = useState<Directory>(dummyDir);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
+  const [lighttheme,setTheme] = useState<boolean>(true);
   const [error, setError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [showTerminal, setShowTerminal] = useState<boolean>(false);
@@ -161,7 +162,6 @@ const Editor = () => {
   };
   const RemoveSideContent = () => {
     setShowSideContent(false);
-    console.log("here is debug");
   };
 
   useEffect(() => {
@@ -173,72 +173,71 @@ const Editor = () => {
       <div>
         {dataFetched ? (
           <>
-            <div className="flex flex-col max-w-7xl px-4 mx-auto my-16 m-2">
-              <CustomizedSteppers
-                activeStep={state}
-                onNext={nextState}
-                onPrev={prevState}
+            <div className="flex flex-col max-w-7xl   mx-auto my-16 m-2 border rounded-md bg-neutral-100 border-gray-300 shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
+              <TopHeader
+                currentSelectedFileName={selectedFile?.name}
+                onSelectLanguage={onLanguageSelect}
               />
-              <div className="flex flex-row mt-5 my-10 w-full">
+
+              <div className="flex flex-row h-70v w-full">
                 {/* Sidebar */}
                 <div
                   className={`flex flex-col transition-all duration-200 ${
-                    showSideContent ? "w-2/12" : "w-2/12"
-                  } border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md`}
+                    showSideContent ? "w-64" : "w-2/12"
+                  }  h-full  `}
                 >
                   <Sidebar
                     rootDir={rootDir}
                     selectedFile={selectedFile}
                     onSelect={onSelect}
+                    currentSelectedFileName={selectedFile?.name}
                   />
                 </div>
                 <div
                   className={`relative flex flex-col ${
-                    showSideContent ? "w-8/12" : "w-9/12"
-                  } ml-2 h-full transition-all duration-300`}
+                    showSideContent ? "w-8/12" : "w-full"
+                  }  h-full transition-all mt- duration-300 `}
                 >
                   {/* Code and Terminal */}
-                  <EditorContainer>
-                    {files.length !== 0 ? (
-                      <div className="flex flex-row w-full h-full">
-                        <div className="relative w-full h-full flex flex-col shadow-custom">
-                          <Appbar
-                            selectedFile={selectedFile}
-                            selectedFilesArray={files}
-                            onSelect={onSelectAppBar}
-                            onCancel={CancelButtonAppBar}
-                            onSelectLanguage={onLanguageSelect}
+                  {files.length !== 0 ? (
+                    <div className="flex flex-row  w-full h-full">
+                      <div className="relative w-full h-full flex flex-col">
+                        <Appbar
+                          selectedFile={selectedFile}
+                          selectedFilesArray={files}
+                          onSelect={onSelectAppBar}
+                          onCancel={CancelButtonAppBar}
+                          onSelectLanguage={onLanguageSelect}
+                        />
+                        <Code
+                          selectedFile={selectedFile}
+                          showSideBannerBool={showSideContent}
+                          RemoveSideBanner={ShowSideContent}
+                        />
+                        <div
+                          className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
+                            showTerminal ? "max-h-96" : "max-h-0"
+                          } overflow-hidden`}
+                        >
+                          <MainTerminal
+                            inputRef={inputRef}
+                            functionName={functionName}
+                            setRootDir={setRootDir}
+                            hideTerminal={hideTerminalFunction}
+                            stepsForRecording={setStepsForRecording}
                           />
-                          <Code
-                            selectedFile={selectedFile}
-                            showSideBannerBool={showSideContent}
-                            RemoveSideBanner={ShowSideContent}
-                          />
-                          <div
-                            className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
-                              showTerminal ? "max-h-96" : "max-h-0"
-                            } overflow-hidden`}
-                          >
-                            <MainTerminal
-                              inputRef={inputRef}
-                              functionName={functionName}
-                              setRootDir={setRootDir}
-                              hideTerminal={hideTerminalFunction}
-                              stepsForRecording={setStepsForRecording}
-                            />
-                          </div>
                         </div>
                       </div>
-                    ) : (
-                      <div className="h-full w-full top-0">
-                        <DefaultEditorPage />
-                      </div>
-                    )}
-                  </EditorContainer>
+                    </div>
+                  ) : (
+                    <div className="h-full w-full top-0">
+                      <DefaultEditorPage />
+                    </div>
+                  )}
                 </div>
                 {/* Side Content */}
                 {showSideContent && (
-                  <div className="w-3/12 grow h-full ml-2 border border-gray-300 border-t-black border-b-black border-b-4 border-t-4 rounded-md shadow-md transition-all duration-300">
+                  <div className="w-3/12 grow h-70v      rounded-b-md  transition-all duration-300">
                     <SideBarhandle
                       Stage={state}
                       onNext={nextState}
@@ -274,9 +273,5 @@ const Editor = () => {
     </>
   );
 };
-
-const EditorContainer = styled.div`
-  height: 71vh;
-`;
 
 export default Editor;

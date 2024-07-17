@@ -8,15 +8,23 @@ const SideBarHandle: FC<{
   Stage: number;
   onNext: () => void;
   showTerminal: () => void;
-  functionName:string;
-  language:string;
-  code:string | undefined;
-  onReset:()=>void;
-  removeSideContent: ()=>void;
-  stepsForRecording:StepsForRecording
-
-}> = ({ Stage, onNext, showTerminal , functionName , language , code , onReset , stepsForRecording,removeSideContent}) => {
-
+  functionName: string;
+  language: string;
+  code: string | undefined;
+  onReset: () => void;
+  removeSideContent: () => void;
+  stepsForRecording: StepsForRecording;
+}> = ({
+  Stage,
+  onNext,
+  showTerminal,
+  functionName,
+  language,
+  code,
+  onReset,
+  stepsForRecording,
+  removeSideContent,
+}) => {
   const MovingtoNextStage = async () => {
     showTerminal();
     onNext();
@@ -41,8 +49,13 @@ const SideBarHandle: FC<{
   }, [functionName, code, language]); // Add dependencies if needed
 
   return (
-    <div className="border border-gray-300 h-full">
-      <SideBarNormal onNext={MovingtoNextStage} onReset={onReset} stepsForRecording={stepsForRecording} RemoveSideContent={removeSideContent} />
+    <div className="h-full">
+      <SideBarNormal
+        onNext={MovingtoNextStage}
+        onReset={onReset}
+        stepsForRecording={stepsForRecording}
+        RemoveSideContent={removeSideContent}
+      />
     </div>
   );
 };

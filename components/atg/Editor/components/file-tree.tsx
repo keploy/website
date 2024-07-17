@@ -21,7 +21,7 @@ import {
 interface FileTreeProps {
   rootDir: Directory;
   selectedFile: File | undefined;
-  onSelect: (file: File|undefined) => void;
+  onSelect: (file: File | undefined) => void;
 }
 
 export const FileTree = (props: FileTreeProps) => {
@@ -79,8 +79,10 @@ const FileDiv = ({
   return (
     <div
       className={`flex items-center ${
-        isSelected ? "bg-slate-300" : "bg-transparent"
-      } rounded cursor-pointer hover:bg-slate-200`}
+        isSelected
+          ? "bg-gray-200 border-y-1 border-y-gray-400"
+          : "bg-transparent"
+      }  cursor-pointer ${!isSelected ? "hover:bg-gray-200" : "hover:bg-gray-300"} `}
       onClick={onClick}
       style={{ paddingLeft: `${(depth + 1) * 16}px` }} // Adjust padding for depth, add an additional level for files
     >
@@ -170,8 +172,8 @@ const SetTestList = async (
         depth: 3,
         content: mockDetails,
       });
-    }else{
-      console.log("error bhyi error in mocks")
+    } else {
+      console.log("error bhyi error in mocks");
     }
 
     setDirectory({
@@ -196,7 +198,7 @@ const GetFileDetails = async (
     );
     const testDetails = testResponse.data.data.runCommand;
     return { testDetails, mockDetails: "" };
-  } catch (err:any) {
+  } catch (err: any) {
     throw new Error(`Content not found: ${err.message}`);
   }
 };
