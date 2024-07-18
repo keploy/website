@@ -10,15 +10,17 @@ const inter = Inter({
 });
 
 export interface Metadata {
-    title: string;
-    keywords?: string;
-    description?: string;
+  title: string;
+  keywords?: string;
+  description?: string;
+  image?: string;
 }
 
 export const defaultMetadata: Metadata = {
-    title: 'Keploy | Open Source Stubs and API Test Generator for Developer',
-    keywords: "API testing, e2e Testing, ai testing, open source ai testing tool, Service Mocking, Dependency Mocking",
-    description: 'Keploy is AI based test case and stubs/mocks generator for e2e testing. 90% test coverage in minutes with open source testing tool',
+  title: 'Keploy | Open Source Stubs and API Test Generator for Developer',
+  keywords: "API testing, e2e Testing, ai testing, open source ai testing tool, Service Mocking, Dependency Mocking",
+  description: 'Keploy is AI based test case and stubs/mocks generator for e2e testing. 90% test coverage in minutes with open source testing tool',
+  image: "images/logo.svg",
 };
 
 interface RootLayoutProps {
@@ -27,21 +29,24 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children, metadata }: RootLayoutProps) {
-    const finalMetadata = {
-        title: metadata?.title || defaultMetadata.title,
-        keywords: metadata?.keywords || defaultMetadata.keywords,
-        description: metadata?.description || defaultMetadata.description,
-    };
-    return (
-        <html lang="en">
-        <head>
-            <title>{finalMetadata.title}</title>
-            <meta name="keywords" content={finalMetadata.keywords} />
-            <meta name="description" content={finalMetadata.description} />
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLL6DW2H6N"></script>
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: `
+  const finalMetadata = {
+    title: metadata?.title || defaultMetadata.title,
+    keywords: metadata?.keywords || defaultMetadata.keywords,
+    description: metadata?.description || defaultMetadata.description,
+    image: metadata?.image || defaultMetadata.image,
+  };
+  return (
+    <html lang="en">
+      <head>
+        <title>{finalMetadata.title}</title>
+        <meta name="keywords" content={finalMetadata.keywords} />
+        <meta name="description" content={finalMetadata.description} />
+        <meta property="og:image" name="image" content={finalMetadata.image} />
+        <meta name='twitter:card' content={finalMetadata.image} />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLL6DW2H6N"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){window.dataLayer.push(arguments);}
               gtag('js', new Date());
