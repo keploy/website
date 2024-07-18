@@ -8,10 +8,12 @@ export const Code = ({
   selectedFile,
   showSideBannerBool,
   RemoveSideBanner,
+  settingCodeTheme,
 }: {
   selectedFile: File | undefined;
   showSideBannerBool: Boolean;
   RemoveSideBanner: () => void;
+  settingCodeTheme:boolean;
 }) => {
   if (!selectedFile) return null;
 
@@ -126,11 +128,11 @@ export const Code = ({
   }, [monacoInstance]);
 
   return (
-    <div className="relative w-full h-full shadow-custom  border border-gray-300 rounded-lg">
+    <div className={`relative w-full h-full shadow-custom ${settingCodeTheme?"border border-gray-300":""}    rounded-lg`}>
       <Editor
         language={language}
         value={code}
-        theme="vs-light"
+        theme={settingCodeTheme?"light":"vs-dark"}
         options={{
           scrollBeyondLastLine: false,
           fontSize: 15,

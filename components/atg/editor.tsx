@@ -28,7 +28,7 @@ const Editor = () => {
   const [rootDir, setRootDir] = useState<Directory>(dummyDir);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
-  const [lighttheme,setTheme] = useState<boolean>(true);
+  const [lighttheme, setTheme] = useState<boolean>(true);
   const [error, setError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [showTerminal, setShowTerminal] = useState<boolean>(false);
@@ -164,6 +164,10 @@ const Editor = () => {
     setShowSideContent(false);
   };
 
+  const settingTheme = () => {
+    setTheme(!lighttheme);
+  };
+
   useEffect(() => {
     console.log(showSideContent);
   }, [showSideContent]);
@@ -177,6 +181,7 @@ const Editor = () => {
               <TopHeader
                 currentSelectedFileName={selectedFile?.name}
                 onSelectLanguage={onLanguageSelect}
+                settingTheme={settingTheme}
               />
 
               <div className="flex flex-row h-70v w-full">
@@ -191,6 +196,7 @@ const Editor = () => {
                     selectedFile={selectedFile}
                     onSelect={onSelect}
                     currentSelectedFileName={selectedFile?.name}
+                    theme={lighttheme}
                   />
                 </div>
                 <div
@@ -208,11 +214,13 @@ const Editor = () => {
                           onSelect={onSelectAppBar}
                           onCancel={CancelButtonAppBar}
                           onSelectLanguage={onLanguageSelect}
+                          AppBarTheme={lighttheme}
                         />
                         <Code
                           selectedFile={selectedFile}
                           showSideBannerBool={showSideContent}
                           RemoveSideBanner={ShowSideContent}
+                          settingCodeTheme={lighttheme}
                         />
                         <div
                           className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
@@ -237,7 +245,7 @@ const Editor = () => {
                 </div>
                 {/* Side Content */}
                 {showSideContent && (
-                  <div className="w-3/12 grow h-70v      rounded-b-md  transition-all duration-300">
+                  <div className="w-3/12 grow h-70v  bg-white    rounded-b-md  transition-all duration-300">
                     <SideBarhandle
                       Stage={state}
                       onNext={nextState}
@@ -248,6 +256,7 @@ const Editor = () => {
                       onReset={resetEverthing}
                       stepsForRecording={stepsForRecording}
                       removeSideContent={RemoveSideContent}
+                      SideBarTheme={lighttheme}
                     />
                   </div>
                 )}

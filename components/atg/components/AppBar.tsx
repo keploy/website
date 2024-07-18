@@ -12,12 +12,14 @@ const Appbar = ({
   onSelect,
   onCancel,
   onSelectLanguage,
+  AppBarTheme,
 }: {
   selectedFile: File | undefined;
   selectedFilesArray: File[];
   onSelect: (file: File) => void;
   onCancel: (file: File) => void;
   onSelectLanguage: (language: string) => void;
+  AppBarTheme: boolean;
 }) => {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -55,9 +57,17 @@ const Appbar = ({
   };
 
   return (
-    <div className="appbar-container bg-neutral-200">
+    <div
+      className={`appbar-container ${
+        AppBarTheme ? "bg-neutral-200" : "bg-neutral-900"
+      } `}
+    >
       <div className="appbar-scrollbar-container" ref={scrollRef}></div>
-      <div className="appbar flex flex-row justify-between w-full border border-gray-300 ">
+      <div
+        className={`appbar flex flex-row justify-between w-full  ${
+          AppBarTheme ? "border border-gray-300" : ""
+        } `}
+      >
         <div className="tabs-container flex-grow" ref={tabsRef}>
           {selectedFilesArray.map((file, key) => {
             return (
@@ -65,8 +75,16 @@ const Appbar = ({
                 key={file.id}
                 className={`flex flex-row items-center cursor-pointer ${
                   file?.id === selectedFile?.id
-                    ? "bg-white border-t-4 border-t-gray-700"
-                    : "border-r-2 border-r-gray-900 bg-gray-100"
+                    ? ` ${
+                        AppBarTheme
+                          ? "bg-white border-t-4 border-t-gray-700"
+                          : "bg-neutral-700 border-r-2 border-r-black"
+                      }`
+                    : `${
+                        AppBarTheme
+                          ? "border-r-2 border-r-gray-900 bg-gray-100"
+                          : "bg-neutral-800 border-r-2 border-r-black"
+                      }`
                 } ${key === 0 ? "" : ""}`}
                 onMouseEnter={() => handleMouseEnter(file.id)}
                 onMouseLeave={handleMouseLeave}
@@ -74,9 +92,10 @@ const Appbar = ({
                 <FileIcon
                   name={file.name}
                   extension={file?.name?.split(".").pop() || ""}
+                  IconsTheme={AppBarTheme}
                 />
                 <button
-                  className="text-xs mx-1 italic text-slate-900"
+                  className={`text-xs mx-1 italic ${AppBarTheme?"text-slate-900":"text-white"} `}
                   onClick={() => onSelect(file)}
                 >
                   {file.name}
@@ -92,7 +111,7 @@ const Appbar = ({
                     } mx-2`}
                   >
                     <CloseIcon
-                      className="text-gray-600"
+                      className={`${AppBarTheme?"text-gray-600":"text-gray-50"}`}
                       sx={{ fontSize: 15 }}
                     />
                   </button>
@@ -101,7 +120,7 @@ const Appbar = ({
                 {selectedFile?.id == file?.id && (
                   <button onClick={() => onCancel(file)} className={`mx-2`}>
                     <CloseIcon
-                      className="text-gray-600"
+                      className={`${AppBarTheme?"text-gray-600":"text-white"}`}
                       sx={{ fontSize: 15 }}
                     />
                   </button>
@@ -110,9 +129,9 @@ const Appbar = ({
             );
           })}
         </div>
-        {/* <div className="flex items-center">
+        <div className="flex items-center">
           <LanguageSelector onSelectLanguageForCode={onSelectLanguage} />
-        </div> */}
+        </div>
       </div>
     </div>
   );
@@ -123,11 +142,13 @@ export default Appbar;
 const FileIcon = ({
   extension,
   name,
+  IconsTheme,
 }: {
   name?: string;
   extension?: string;
+  IconsTheme: boolean;
 }) => {
-  let icon = getIcon(extension || "", name || "");
+  let icon = getIcon(extension || "", name || "", IconsTheme);
   return <Span>{icon}</Span>;
 };
 

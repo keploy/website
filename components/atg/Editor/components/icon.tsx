@@ -12,9 +12,10 @@ import JSON from "../../asset/icons/json.svg";
 import HTML from "../../asset/icons/html.svg";
 import IMAGE from "../../asset/icons/image.svg";
 import FAVICON from "../../asset/icons/favicon.svg";
-import YAML from "../../asset/icons/yaml.svg"
-import TEXT from "../../asset/icons/file-text-outline.svg"
-import PYTHON from "../../asset/icons/python.svg"
+import YAML from "../../asset/icons/yaml.svg";
+import TEXT from "../../asset/icons/file-text-outline.svg";
+import PYTHON from "../../asset/icons/python.svg";
+import TEXT_DARK from "../../asset/icons/document.svg"
 function getIconHelper() {
   const cache = new Map<string, ReactNode>();
   cache.set(
@@ -45,10 +46,14 @@ function getIconHelper() {
     <Image src={folderSrcOpen} alt="folder" width={24} height={24} />
   );
 
-  return function (extension: string, name: string): ReactNode {
+  return function (
+    extension: string,
+    name: string,
+    IconsTheme: boolean
+  ): ReactNode {
     if (cache.has(extension)) return cache.get(extension);
     else if (cache.has(name)) return cache.get(name);
-    else return <Image src={TEXT} alt="folder" width={24} height={24} />;
+    else return  <Image src={IconsTheme ? TEXT:TEXT_DARK} alt="folder" width={24} height={24} className="text-white" />
   };
 }
 

@@ -48,6 +48,7 @@ interface SideBarNormalProps {
   onReset: () => void;
   stepsForRecording: StepsForRecording;
   RemoveSideContent: () => void;
+  SideBartheme: boolean;
 }
 
 export default function SideBarNormal({
@@ -55,6 +56,7 @@ export default function SideBarNormal({
   onReset,
   stepsForRecording,
   RemoveSideContent,
+  SideBartheme,
 }: SideBarNormalProps) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [subStepIndex, setSubStepIndex] = React.useState(-1);
@@ -126,8 +128,7 @@ export default function SideBarNormal({
     <Box
       sx={{
         maxWidth: 300,
-        backgroundColor: "#f5f5f5",
-        height: "67vh",
+        height: "70vh",
         overflowY: "auto",
         position: "relative",
         scrollbarWidth: "none", // For Firefox
@@ -135,15 +136,22 @@ export default function SideBarNormal({
           display: "none", // For Chrome, Safari, and Opera
         },
       }}
+      className={`${SideBartheme ? "bg-white" : "bg-neutral-800"}`}
     >
-      <div className="flex items-center h-14 bg-neutral-200 justify-between px-3 py-1  sticky top-0 z-10">
+      <div
+        className={`flex items-center h-14 ${
+          SideBartheme ? "bg-neutral-200" : "bg-neutral-900"
+        } justify-between px-3 py-1  sticky top-0 z-10`}
+      >
         <Typography
           sx={{
             color: "#1f2937", // Tailwind's gray-700 color
             fontWeight: "bold",
             m: 0, // remove margin
           }}
-          className="text-secondary-300 font-bold"
+          className={`${
+            SideBartheme ? "text-secondary-300" : "text-white"
+          } font-bold`}
         >
           Content
         </Typography>
@@ -169,7 +177,11 @@ export default function SideBarNormal({
               borderBottom: "none",
             },
           }}
-          className="border border-b-1 bg-neutral-200 border-gray-200"
+          className={`${
+            SideBartheme
+              ? "border border-b-1 bg-neutral-200 border-gray-200"
+              : "bg-neutral-900"
+          }`}
           disableGutters={true}
           TransitionProps={{ timeout: { appear: 1, enter: 1, exit: 4 } }}
         >
@@ -177,20 +189,38 @@ export default function SideBarNormal({
             expandIcon={
               expandedSteps.includes(index) ? (
                 <ExpandMoreIcon className="text-gray-700" />
+              ) : index <= activeStep ? (
+                <ExpandMoreIcon className="text-gray-700" />
               ) : (
-                index <= activeStep ? <ExpandMoreIcon className="text-gray-700" /> : <LockIcon className="text-secondary-300" />
+                <LockIcon
+                  className={`${
+                    SideBartheme ? "text-secondary-300" : "text-white"
+                  }`}
+                />
               )
             }
             aria-controls={`panel${index}-content`}
             id={`panel${index}-header`}
             sx={{
-              backgroundColor: "#f5f5f5",
               color: "#ffffff",
               fontWeight: "bold",
               m: 0, // remove margin
             }}
+            className={` ${
+              SideBartheme
+                ? index <= activeStep
+                  ? "bg-white"
+                  : "bg-gray-200"
+                : index <= activeStep
+                ? "bg-neutral-800"
+                : "bg-neutral-700"
+            }  `}
           >
-            <Typography className="text-secondary-300 font-semibold">
+            <Typography
+              className={`${
+                SideBartheme ? "text-secondary-300" : "text-gray-300"
+              } font-semibold`}
+            >
               {step.label}
             </Typography>
           </AccordionSummary>
@@ -225,28 +255,43 @@ export default function SideBarNormal({
                     >
                       {subStepIndex === subIndex && index === activeStep ? (
                         subStepCompleted ? (
-                          <DoneIcon className=" bg-accent-100 font-bold rounded-md scale-75 p-1 text-neutral-300" />
+                          <DoneIcon className=" font-bold rounded-md  p-1 text-accent-100" />
                         ) : (
                           <CircularProgress size={14} />
                         )
                       ) : subStepIndex > subIndex || index < activeStep ? (
-                        <DoneIcon className="bg-accent-100 font-bold rounded-md scale-75 p-1 text-neutral-300" />
+                        <DoneIcon className=" font-bold rounded-md  p-1 text-accent-100" />
                       ) : (
-                        <CheckBoxOutlineBlankIcon className="text-gray-300 shadow-inner scale-90" />
+                        <p
+                          className={`text-sm ${
+                            SideBartheme
+                              ? "text-secondary-300"
+                              : "text-gray-300"
+                          }`}
+                        >
+                          {subIndex + 1}
+                        </p>
+                        // <CheckBoxOutlineBlankIcon className="text-gray-300 shadow-inner scale-90" />
                       )}
                     </Box>
                     <Box
                       component="span"
                       sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
+                      className={`${
+                        SideBartheme ? "text-secondary-300" : "text-gray-300"
+                      }`}
                     >
                       {`${subStep.stepName}`}
                     </Box>
                   </Box>
-                ))} 
+                ))}
               </Box>
             </Box>
             {index === activeStep && (
-              <Box sx={{ mb: 2 }} className="shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
+              <Box
+                sx={{ mb: 2 }}
+                className="shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]"
+              >
                 <div className="">
                   <button
                     onClick={handleNext}
@@ -262,8 +307,17 @@ export default function SideBarNormal({
         </Accordion>
       ))}
       {activeStep === stepsRecord.length && (
-        <Paper square elevation={0} sx={{ p: 2, backgroundColor: "#f5f5f5" }}>
-          <Typography className="text-base text-center font-semibold">
+        <Paper
+          square
+          elevation={0}
+          sx={{ p: 2 }}
+          className={`${SideBartheme ? "bg-white" : "bg-neutral-800"}`}
+        >
+          <Typography
+            className={`text-base text-center font-semibold ${
+              SideBartheme ? "text-secondary-300" : "text-white"
+            }`}
+          >
             Would you like to reset?
           </Typography>
           <button

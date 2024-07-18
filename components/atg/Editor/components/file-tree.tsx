@@ -22,19 +22,21 @@ interface FileTreeProps {
   rootDir: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File | undefined) => void;
+  themeFile:boolean;
 }
 
 export const FileTree = (props: FileTreeProps) => {
   useEffect(() => {
     props.onSelect(undefined);
   }, [props.rootDir]);
-  return <SubTree directory={props.rootDir} {...props} />;
+  return <SubTree directory={props.rootDir} themeSub={props.themeFile} {...props}  />;
 };
 
 interface SubTreeProps {
   directory: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File) => void;
+  themeSub:boolean;
 }
 
 const SubTree = (props: SubTreeProps) => {
@@ -46,6 +48,7 @@ const SubTree = (props: SubTreeProps) => {
           directory={dir}
           selectedFile={props.selectedFile}
           onSelect={props.onSelect}
+          themeDir={props.themeSub}
         />
       ))}
       {props.directory.files.sort(sortFile).map((file) => (
@@ -54,6 +57,7 @@ const SubTree = (props: SubTreeProps) => {
           file={file}
           selectedFile={props.selectedFile}
           onClick={() => props.onSelect(file)}
+          themeFileDiv={props.themeSub}
         />
       ))}
     </div>
@@ -66,12 +70,14 @@ const FileDiv = ({
   selectedFile,
   onClick,
   openParameter,
+  themeFileDiv,
 }: {
   file: File | Directory;
   icon?: string;
   selectedFile: File | undefined;
   onClick: () => void;
   openParameter?: boolean;
+  themeFileDiv:boolean;
 }) => {
   const isSelected = selectedFile && selectedFile.id === file.id;
   const depth = file.depth;
@@ -80,9 +86,9 @@ const FileDiv = ({
     <div
       className={`flex items-center ${
         isSelected
-          ? "bg-gray-200 border-y-1 border-y-gray-400"
+          ? `${themeFileDiv?"bg-gray-200 border-y-1 border-y-gray-400":"bg-gray-700"}`
           : "bg-transparent"
-      }  cursor-pointer ${!isSelected ? "hover:bg-gray-200" : "hover:bg-gray-300"} `}
+      }  cursor-pointer ${themeFileDiv?(!isSelected ? "hover:bg-gray-200" : "hover:bg-gray-300"):(!isSelected ? "hover:bg-gray-800" : "hover:bg-gray-600")}  `}
       onClick={onClick}
       style={{ paddingLeft: `${(depth + 1) * 16}px` }} // Adjust padding for depth, add an additional level for files
     >
@@ -92,7 +98,7 @@ const FileDiv = ({
         ) : (
           <MdOutlineKeyboardArrowRight />
         ))}
-      <FileIcon name={icon} extension={file?.name?.split(".").pop() || ""} />
+      <FileIcon name={icon} extension={file?.name?.split(".").pop() || ""} themeIcons={themeFileDiv} />
       <span className="ml-1">{file.name}</span>
     </div>
   );
@@ -207,10 +213,12 @@ const DirDiv = ({
   directory,
   selectedFile,
   onSelect,
+  themeDir
 }: {
   directory: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File) => void;
+  themeDir:boolean;
 }) => {
   const [open, setOpen] = useState(() =>
     isChildSelected(directory, selectedFile)
@@ -242,6 +250,7 @@ const DirDiv = ({
         <FileIcon
           name={open ? "openDirectory" : "closedDirectory"}
           extension=""
+          themeIcons={themeDir}
         />
         <span className="ml-1">{directory.name}</span>
       </div>
@@ -251,6 +260,7 @@ const DirDiv = ({
             directory={dirState}
             selectedFile={selectedFile}
             onSelect={onSelect}
+            themeSub={themeDir}
           />
         </div>
       )}
@@ -278,11 +288,13 @@ const isChildSelected = (directory: Directory, selectedFile?: File) => {
 const FileIcon = ({
   extension,
   name,
+  themeIcons,
 }: {
   name?: string;
   extension?: string;
+  themeIcons:boolean;
 }) => {
-  const icon = getIcon(extension || "", name || "");
+  const icon = getIcon(extension || "", name || "" , themeIcons);
   return (
     <span className="flex w-5 h-5 justify-center items-center">{icon}</span>
   );

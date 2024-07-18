@@ -25,7 +25,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       },
       "& + .MuiSwitch-track": {
         opacity: 1,
-        backgroundColor: "#EAEAEA", // Gray track when checked
+        backgroundColor: "#f5f5f5", // Gray track when checked
       },
     },
   },
@@ -58,20 +58,23 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 const YourComponent = ({
   currentSelectedFileName,
   onSelectLanguage,
+  settingTheme,
 }: {
   currentSelectedFileName: string | undefined;
   onSelectLanguage: (language: string) => void;
+  settingTheme: ()=>void;
 }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
+    settingTheme();
     document.body.classList.toggle("dark-mode", !isDarkMode); // Add a class to the body element
   };
 
   return (
     <div
-      className={`flex justify-between items-center border p-2 rounded-t-md ${
+      className={`flex justify-between items-center  p-2 rounded-t-md ${
         isDarkMode ? "bg-neutral-800 text-white" : "bg-neutral-200 text-black"
       }`}
     >
@@ -85,7 +88,7 @@ const YourComponent = ({
       <div
         className={`font-semibold py-1 shadow-inner w-full text-center mr-6  rounded-md border ${
           isDarkMode
-            ? "bg-primary-900 text-secondary-200 border-gray-600"
+            ? "bg-neutral-900 text-white border-neutral-600"
             : "bg-white text-gray-500 border-gray-200"}`}
       >
         <p
@@ -114,7 +117,7 @@ const YourComponent = ({
           ❤️
         </p>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center scale-[0.80]">
         {/* <LanguageSelector onSelectLanguageForCode={onSelectLanguage} /> */}
         <FormControlLabel
           control={

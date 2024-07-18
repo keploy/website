@@ -14,6 +14,7 @@ const SideBarHandle: FC<{
   onReset: () => void;
   removeSideContent: () => void;
   stepsForRecording: StepsForRecording;
+  SideBarTheme:boolean;
 }> = ({
   Stage,
   onNext,
@@ -24,6 +25,7 @@ const SideBarHandle: FC<{
   onReset,
   stepsForRecording,
   removeSideContent,
+  SideBarTheme,
 }) => {
   const MovingtoNextStage = async () => {
     showTerminal();
@@ -55,6 +57,7 @@ const SideBarHandle: FC<{
         onReset={onReset}
         stepsForRecording={stepsForRecording}
         RemoveSideContent={removeSideContent}
+        SideBartheme={SideBarTheme}
       />
     </div>
   );

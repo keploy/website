@@ -27,9 +27,9 @@ export default function LanguageSelector({ onSelectLanguageForCode }: LanguageSe
   };
 
   return (
-    <Box sx={{ minWidth: 120}}  >
-      <FormControl fullWidth className='scale-75 bg-white '>
-        <InputLabel id="language-select-label " className='text-secondary-300'></InputLabel>
+    <Box className="scale-[0.85]">
+      <FormControl sx={{ m: 0.5, minWidth: 100 }} size="small">
+        <InputLabel id="language-select-label">Language</InputLabel>
         <Select
           labelId="language-select-label"
           id="language-select"
@@ -37,43 +37,26 @@ export default function LanguageSelector({ onSelectLanguageForCode }: LanguageSe
           label="Language"
           onChange={handleChange}
           sx={{
-            height: 40,
             '& .MuiSelect-select': {
               display: 'flex',
               alignItems: 'center',
-              padding: '8px 14px',
-            },
-            '& .MuiSelect-icon': {
-              top: 'calc(50% - 10px)',
-            }
-          }}
-          MenuProps={{
-            PaperProps: {
-              sx: {
-                transform: 'scale(0.75)',
-                transformOrigin: 'top left',
-                width:"10px",
-                padding:"0px",
-              },
+              justifyContent: 'center',
+              padding: '4px 10px',
             },
           }}
           renderValue={(value) => {
             const selectedLang = languages.find(lang => lang.name === value);
             return (
-              <div style={{ display: 'flex', alignItems: 'center' }}> 
-                {selectedLang && <selectedLang.icon size={20} style={{ marginRight: 8 }} />}
-                {selectedLang?.name}
-              </div>  
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {selectedLang && <selectedLang.icon size={25} />}
+              </div>
             );
           }}
         >
           {languages.map((lang) => (
-            lang.name !== selectedLanguage && (
-              <MenuItem key={lang.name} value={lang.name} sx={{ height: 40 ,width:"100%" }} className='scale-75 p-0 m-0' >
-                <lang.icon size={20} style={{ marginRight: 8 }} />
-                {lang.name}
-              </MenuItem>
-            )
+            <MenuItem key={lang.name} className='p-0' value={lang.name} sx={{ height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', padding:"0"}}>
+              <lang.icon size={20} />
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

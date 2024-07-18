@@ -7,11 +7,13 @@ export const Sidebar = ({
   selectedFile,
   onSelect,
   currentSelectedFileName,
+  theme,
 }: {
   rootDir: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File | undefined) => void;
   currentSelectedFileName: string | undefined;
+  theme: boolean;
 }) => {
   const [expanded, setexpanded] = useState<boolean>(true);
 
@@ -21,13 +23,17 @@ export const Sidebar = ({
 
   return (
     <div
-      className={`flex flex-col h-full text-sm text-secondary-300  rounded-b-md bg-neutral-200 `}
+      className={`flex flex-col h-full text-sm rounded-bl-md ${
+        theme
+          ? "text-secondary-300   bg-neutral-200"
+          : "text-white bg-neutral-800"
+      } `}
     >
       <div
-        className="flex hover:cursor-pointer py-1.5  px-1 text-center bg-white   font-medium border  border-b-gray-100 mb-2"
+        className={`flex hover:cursor-pointer py-2.5 mb-2  px-1 text-center font-medium ${theme ? "bg-white  border  border-b-gray-100":" bg-neutral-900  "} `}
         onClick={ClickExpanded}
       >
-        <ExpandMoreIcon className={`${expanded? "":"rotate-[-90deg]"}`} />
+        <ExpandMoreIcon className={`${expanded ? "" : "rotate-[-90deg]"}`} />
         Website
       </div>
       {expanded && (
@@ -35,6 +41,7 @@ export const Sidebar = ({
           rootDir={rootDir}
           selectedFile={selectedFile}
           onSelect={onSelect}
+          themeFile={theme}
         />
       )}
     </div>
