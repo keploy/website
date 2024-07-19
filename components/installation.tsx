@@ -69,11 +69,11 @@ const Installation = () => {
       <div className="pt-30 pb-12 md:pt-30 md:pb-20 rounded-lg p-10 gap-16">
         {/* Section header */}
         <div className="text-center pb-10 md:pb-10">
-          <h1 className="h2 mb-4 text-secondary-300" data-aos="zoom-y-out">
+          <h1 className="h2 mb-4 dark:text-blue-700 text-secondary-300" data-aos="zoom-y-out">
             Getting Started
             <br />
           </h1>
-          <h1 className="text-xl text-gray-600" data-aos="zoom-y-out">
+          <h1 className="text-xl dark:text-gray-100 text-gray-600" data-aos="zoom-y-out">
             Start Recording Test cases with code-less integration
             <br />
           </h1>
@@ -83,10 +83,10 @@ const Installation = () => {
           className="max-w-4xl mx-auto pb-12 md:pb-16 "
           data-aos="zoom-y-out"
         >
-          <h1 className="text-2xl text-secondary-300 font-semibold leading-tighter tracking-tighter mb-4 ">
+          <h1 className="text-2xl dark:text-blue-700 text-secondary-300 font-semibold leading-tighter tracking-tighter mb-4 ">
             1. Installing 📥
           </h1>
-          <p className=" text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
+          <p className=" dark:text-gray-100 text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
             Integrate Keploy by installing the open-source agent locally. No
             code-changes required.
           </p>
@@ -109,10 +109,10 @@ const Installation = () => {
           </div>
         </div>
         <div className="max-w-4xl mx-auto pb-9 md:pb-16 " data-aos="zoom-y-out">
-          <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
+          <h1 className="text-2xl dark:text-blue-700 text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
             2. Record 🎬
           </h1>
-          <p className=" text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
+          <p className="dark:text-gray-100 text-gray-700 mb-2 text-xs md:text-sm lg:text-base">
             Start your app with keploy to convert API calls as tests and
             mocks/stubs. Make some API calls to your app.
           </p>
@@ -134,8 +134,8 @@ const Installation = () => {
               />
             </div>
           </div>
-          <p className=" text-gray-700 mb-0 mt-2 text-xs md:text-sm lg:text-base leading-6">
-            <code className="text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">CMD_TO_RUN_APP</code> is the command to start you app. Say,
+          <p className="dark:text-gray-100 text-gray-700 mb-0 mt-2 text-xs md:text-sm lg:text-base leading-6">
+            <code className=" text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">CMD_TO_RUN_APP</code> is the command to start you app. Say,
             <code className="text-gray-700 bg-gray-300 p-0.5 mx-1 rounded">
               python main.py
             </code>{" "}
@@ -154,10 +154,10 @@ const Installation = () => {
           </p>
         </div>
         <div className="max-w-4xl mx-auto pb-12 md:pb-16" data-aos="zoom-y-out">
-          <h1 className="text-2xl text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
+          <h1 className="text-2xl dark:text-blue-700 text-secondary-300  font-semibold leading-tighter tracking-tighter mb-4 ">
             3. Test 🧪
           </h1>
-          <p className=" text-gray-700 mb-2 mt-1 text-xs md:text-sm lg:text-base">
+          <p className="dark:text-gray-100 text-gray-700 mb-2 mt-1 text-xs md:text-sm lg:text-base">
             Shut down Database , Redis , Kafka and other services. Keploy don't need
             those during test.
           </p>

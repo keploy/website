@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { useState, useEffect } from "react";
 
 import Link from "next/link";
@@ -9,6 +11,7 @@ import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
+import DarkModeToggle from "../DarkMode";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -55,11 +58,11 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed w-full z-30 bg-neutral-100 transition duration-300 ease-in-out ${
-        !top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""
+      className={`fixed w-full z-30  bg-neutral-100 dark:bg-dark-background  transition duration-300 ease-in-out ${
+        !top ? "bg-neutral-100 dark:bg-dark-background backdrop-blur-sm shadow-lg" : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+      <div className="max-w-6xl dark:text-white mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
           <div className="shrink-0 mr-4 flex-grow-0 w-2/12 ">
@@ -73,7 +76,7 @@ export default function Header() {
                 <Link
                   target="_blank"
                   href="https://keploy.io/docs"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  className="font-medium text-gray-600 dark:hover:text-purple-500 dark:text-white hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Docs
                 </Link>
@@ -82,7 +85,7 @@ export default function Header() {
                 <Link
                   target="_blank"
                   href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  className="font-medium text-gray-600  dark:hover:text-purple-500 dark:text-white hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Tech Blog
                 </Link>
@@ -91,7 +94,7 @@ export default function Header() {
                 <Link
                   target="_blank"
                   href="https://keploy.io/blog/community"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  className="font-medium text-gray-600 hover:text-primary-300  dark:hover:text-purple-500 dark:text-white px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Articles
                 </Link>
@@ -103,6 +106,12 @@ export default function Header() {
                   dropdownData={PillarPages}
                 />
               </div>
+              <li>
+              <div className="bg-white">
+                <DarkModeToggle/>
+                {/* Rest of your components */}
+              </div>
+              </li>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
@@ -137,7 +146,7 @@ export default function Header() {
             <Link
               href="https://forms.gle/waYcLSASm9dfE9tC9"
               target="_blank"
-              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3"
+              className="btn-sm text-white bg-secondary-300 hover:text-primary-300 dark:bg-green-600 dark:hover:text-green-200 ml-3"
             >
               <span>Join Waitlist</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}

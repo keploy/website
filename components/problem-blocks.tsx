@@ -11,9 +11,9 @@ export default function ProblemBlocks() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-6 md:pb-10">
-            <h1 className="h1 mb-4 text-secondary-300">Test smart - Build better</h1>
-            <h3 className="h3 text-xl text-gray-600">  &nbsp; ❌ &nbsp;  Just say no to &nbsp; ❌ &nbsp;  </h3>
-            <div className="flex text-gray-600 pt-3 pl-6 pr-6">
+            <h1 className="h1 mb-4 dark:text-blue-700 text-secondary-300">Test smart - Build better</h1>
+            <h3 className="h3 text-xl dark:text-gray-100 text-gray-600">  &nbsp; ❌ &nbsp;  Just say no to &nbsp; ❌ &nbsp;  </h3>
+            <div className="flex dark:text-gray-100 text-gray-600 pt-3 pl-6 pr-6">
               <svg width="8" height="40" viewBox="0 0 8 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto mt-2 md:invisible">
                 <path d="M3.64644 39.3536C3.84171 39.5488 4.15829 39.5488 4.35355 39.3536L7.53553 36.1716C7.73079 35.9763 7.73079 35.6597 7.53553 35.4645C7.34027 35.2692 7.02369 35.2692 6.82843 35.4645L4 38.2929L1.17157 35.4645C0.976309 35.2692 0.659727 35.2692 0.464465 35.4645C0.269202 35.6597 0.269202 35.9763 0.464465 36.1716L3.64644 39.3536ZM3.5 -2.18558e-08L3.5 39L4.5 39L4.5 2.18558e-08L3.5 -2.18558e-08Z" fill="#111827"></path>
               </svg>

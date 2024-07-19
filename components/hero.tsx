@@ -35,17 +35,17 @@ export default function Hero() {
 
           {/* Section header */}
           <div className=" text-center pb-12 md:pb-16">
-            <p className="text-2xl text-accent-200 mb-4 " data-aos="zoom-y-out" data-aos-delay="150">
+            <p className="text-2xl text-accent-200 mb-4 dark:text-sky-500 " data-aos="zoom-y-out" data-aos-delay="150">
               5 minutes to 90% test coverage!
             </p>
             <h1
-              className="lg:text-6xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 md:mt-16 lg:mt-24"
+              className="lg:text-6xl text-5xl text-secondary-300 dark:text-sky-500 font-extrabold leading-tighter tracking-tighter mb-4 md:mt-16 lg:mt-24"
               data-aos="zoom-y-out"
             >
               {" "}
               {"AI Generated "}
               <span
-                className="absolute hidden md:inline font-pencil font-light pt-2 text-green-900"
+                className="absolute hidden md:inline font-pencil font-light pt-2 text-green-900  dark:text-green-500"
                 style={{
                   top: "0.8em",
                   transform: "rotate(-10deg)",
@@ -53,7 +53,7 @@ export default function Hero() {
               >
                 ^
                 <span
-                  className="absolute lg:bottom-44 bottom-28 -left-2 hidden md:inline font-pencil font-light text-3xl lg:text-5xl text-green-900"
+                  className="absolute lg:bottom-44 bottom-28 -left-2 hidden md:inline font-pencil font-light text-3xl lg:text-5xl text-green-900 dark:text-green-500"
                   style={{
                     transform: "rotate(-5deg)",
                   }}
@@ -63,12 +63,12 @@ export default function Hero() {
               </span> 
               Tests
               <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
+              <span className=" text-orange-600 bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
                 that actually work!
               </span>
             </h1>
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl lg:text-center text-center text-accent-200 mb-8" data-aos="zoom-y-out" data-aos-delay="150">
+              <p className="text-xl lg:text-center text-center text-accent-200 mb-8 dark:text-orange-300" data-aos="zoom-y-out" data-aos-delay="150">
                 <b>Open Source</b> Platform for converting API calls to Test Cases with Data Mocks
               </p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
@@ -76,7 +76,7 @@ export default function Hero() {
                   <Link className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full mb-4 sm:w-auto sm:mb-0" href="https://www.github.com/keploy/keploy">Try Open Source</Link>
                 </div>
                 <div>
-                  <Link className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:ml-4" href="https://forms.gle/waYcLSASm9dfE9tC9">Join Cloud Waitlist </Link>
+                  <Link className="btn text-white bg-green-900 dark:bg-green-500 dark:hover:text-green-200 hover:text-emerald-200 w-full sm:w-auto sm:ml-4" href="https://forms.gle/waYcLSASm9dfE9tC9">Join Cloud Waitlist </Link>
                 </div>
               </div>
               {/* <div className="code">
