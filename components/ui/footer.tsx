@@ -95,10 +95,10 @@ export default function Footer() {
 
           <div className="sm:col-span-6 md:col-span-4 lg:col-span-3">
             <h6 className="text-primary-300 font-medium mb-2">Find us on CNCF Landscape</h6>
-            <Link href="https://landscape.cncf.io/card-mode?selected=keploy">
+            <Link href="https://landscape.cncf.io/?item=app-definition-and-development--continuous-integration-delivery--keploy" target="_blank">
               <Image width={200} height={100} src={CNCF} alt="CNCF Landscape" className="w-full" />
             </Link>
-            <Link href="https://blog.google/intl/en-in/introducing-the-eighth-cohort-of-google-for-startups-accelerator-india/">
+            <Link href="https://blog.google/intl/en-in/introducing-the-eighth-cohort-of-google-for-startups-accelerator-india/" target="_blank">
               <Image width={200} height={100} src={GSA} alt="CNCF Landscape" className="w-full py-2" />
             </Link>
           </div>
