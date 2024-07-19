@@ -141,7 +141,7 @@ export default function Community() {
   return (
     <section className="relative py-8 ">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="h2 text-secondary-300">
+        <h2 className="h2 dark:text-blue-700 text-secondary-300">
           🐰 Join the Keploy community ✨
         </h2>
       </div>

@@ -127,11 +127,11 @@ const TwitterTestimonials = () => {
     <>
       <div className="relative mt-20 mb-20">
         <div className=" relative mt-2 mb-8 z-10 max-w-5xl mx-auto flex flex-col justify-center">
-          <h3 className=" text-center h2 px-10 text-secondary-300">
+          <h3 className=" text-center h2 px-10 dark:text-blue-700 text-secondary-300">
           We love when users talk about Keploy..
           </h3>
           {isMobile ? (
-             <div className="flex flex-row max-lg:flex-col mt-10">
+             <div className="flex dark:text-black flex-row max-lg:flex-col mt-10">
              <div className="flex flex-col">
                {tweets.slice(0, 4).map((tweet, index) => (
                  <Tweet

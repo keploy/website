@@ -49,7 +49,7 @@ const Testimonial = ({
 
   return (
     <div ref={container} className="max-w-6xl px-4 mx-auto my-16">
-      <p className="text-lg md:text-2xl quote-container text-secondary-300">
+      <p className="text-lg md:text-2xl quote-container dark:text-white text-secondary-300">
         <span className="quote-character opacity-[0.2]">"</span>
         {content.split("").map((character, index) => {
           if (character) {

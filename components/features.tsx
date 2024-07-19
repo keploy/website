@@ -146,15 +146,15 @@ useGSAP(
       <FeaturesMobileView />
       <section ref={container} className="relative hidden lg:block">
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
-          <h1 className="mb-2 text-5xl font-bold text-secondary-300">
+          <h1 className="mb-2 text-5xl font-bold text-secondary-300 dark:text-blue-500">
             Keploy for Developers
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-100">
             smart API testing, capture network calls and generate tests with stubs
           </p>
         </div>
         <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh]  mx-auto  content-container">
-          <div className="mt-20 space-y-[50vh]  ">
+          <div className="mt-20 space-y-[50vh]">
             <div
               className="flex items-center detail"
               data-marker-content="img-1"

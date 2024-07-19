@@ -73,20 +73,20 @@ export default function Language() {
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center ">
-            <h2 className="h2 text-secondary-300">
+            <h2 className="h2 dark:text-blue-700 text-secondary-300">
               Replicate data from{" "}
               <span
-                className="relative inline-block pl-1 border-l-2 border-primary-400"
+                className="relative inline-block pl-1 border-l-2 dark:border-orange-300 border-primary-400"
                 data-aos="fade-right"
                 data-aos-delay="200"
               >
                 {" "}
                 <span
-                  className="absolute inset-0 opacity-50 bg-gradient-to-r from-primary-300 to-primary-50"
+                  className="absolute inset-0 opacity-50 bg-gradient-to-r from-yellow-600 to-orange-200"
                   aria-hidden="true"
                 />
                 <span
-                  className="relative text-accent-100 "
+                  className="relative dark:text-green-400 text-accent-100 "
                   data-aos="fade-in"
                   data-aos-delay="500"
                 >
@@ -95,7 +95,7 @@ export default function Language() {
               </span>
             </h2>
           </div>
-          <div className="max-w-6xl px-4 mx-auto overflow-hidden sm:px-6  [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)] ">
+          <div className="max-w-6xl px-4 mx-auto overflow-hidden sm:px-6  [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
             <div className="relative inline-flex flex-nowrap no-scrollbar ">
               <div className="flex items-center  py-12 animate-marquee whitespace-nowrap w-max">
                 <span className="flex-none mx-4">
@@ -520,7 +520,7 @@ export default function Language() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto mt-10 mb-3 text-center ">
-            <h2 className="h2 text-secondary-300 ">...in your language</h2>
+            <h2 className="h2 dark:text-blue-700 text-secondary-300 ">...in your language</h2>
           </div>
 
           {/* Items */}

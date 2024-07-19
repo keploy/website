@@ -35,7 +35,7 @@ export default function NavItemWithSmallDropdown({heading,dropdownData}:NavItemW
                 onMouseLeave={hideDropdown}
                 className="relative flex items-center py-3 transition duration-150 ease-in-out cursor-pointer"
               >
-                <div className="flex align-center text-gray-600 hover:text-primary-300">
+                <div className="flex align-center text-gray-600 hover:text-primary-300 dark:hover:text-purple-500 dark:text-white">
                 <div className="font-medium mr-2">
                   Resources
                 </div>
@@ -44,13 +44,13 @@ export default function NavItemWithSmallDropdown({heading,dropdownData}:NavItemW
       </div></div>
                 {openDropdown && (
                   <div
-                    className="absolute top-full bg-[#eeeded] pb-8 z-10"                  >
+                    className="absolute top-full dark:bg-dark-background bg-[#eeeded] pb-8 z-10"                  >
                     <div>
                       <div className="flex items-center justify-between">
                         {dropdownData.map((lists) => (
                           <div key={lists.heading}>
                             {" "}
-                            <span className="font-bold text-secondary-300 uppercase px-3 py-3 flex items-center transition duration-150 ease-in-out">
+                            <span className="font-bold dark:text-gray-300 text-secondary-300 uppercase px-3 py-3 flex items-center transition duration-150 ease-in-out">
                               {lists.heading}
                             </span>
                             <ul>
@@ -61,7 +61,7 @@ export default function NavItemWithSmallDropdown({heading,dropdownData}:NavItemW
                                   <Link
                                     target="_blank"
                                     href={link.pagelink}
-                                    className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap	"
+                                    className="font-medium dark:hover:text-purple-500 dark:text-white text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap	"
                                   >
                                     {link.pageName}
                                   </Link>

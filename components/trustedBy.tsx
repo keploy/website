@@ -17,11 +17,11 @@ export const TrustedBy =() =>{
 
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center ">
-          <div className="h5 text-gray-500">Trusted by</div>
+          <div className="h5 dark:text-white text-gray-500">Trusted by</div>
         </div>
 
         <div className="relative inline-flex flex-nowrap no-scrollbar ">
-          <div className="py-4 md:py-12 animate-marquee whitespace-nowrap flex items-center w-max">
+          <div className=" dark:bg-gray-950 py-4 md:py-12 animate-marquee whitespace-nowrap flex items-center w-max">
             <span className="mx-4 flex-none">
               <Image
                 className="relative w-32 md:w- md:w-40"
