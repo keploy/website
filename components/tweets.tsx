@@ -18,7 +18,7 @@ const Tweets = ({
   return (
     <>
       <Link
-        className="bg-gray-100 border p-6 rounded-md lg:hover:shadow-md transition m-1 hover:scale-101"
+        className="bg-gray-100 dark:bg-black dark:text-white border p-6 rounded-md lg:hover:shadow-md transition m-1 hover:scale-101"
         href={post}
         target="_blank"
       >

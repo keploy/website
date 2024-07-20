@@ -60,7 +60,7 @@ function SocialLinkCard({
       style={showExtraStyle ? { ...style } : {}}
       className={`${
         showExtraStyle ? "circle" : "w-3/4 mx-auto mb-5"
-      } z-10 bg-white shadow-md rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start group transition duration-300`}
+      } z-10 bg-white shadow-md rounded-lg border dark:text-gray-50 dark:bg-slate-950 border-accent-500 p-4 hover:shadow-xl flex items-center justify-start group transition duration-300`}
     >
       <div className="w-12 h-12 text-center sm:mr-2">
         <Image src={svgIcon} alt={platformName} />
@@ -156,7 +156,7 @@ export default function Community() {
           />
         </div>
         <div className="md:hidden">
-          <Image src={CommunityBunny} alt="Image" className="w-3/4 mx-auto" />
+          <Image src={CommunityBunny} alt="Image" className="w-3/4  mx-auto" />
           {cardsList}
         </div>
       </div>

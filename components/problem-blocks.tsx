@@ -3,7 +3,7 @@ export default function ProblemBlocks() {
     <section className="relative">
 
       {/* Section background (needs .relative class on parent and next sibling elements) */}
-      <div className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0 bg-gradient-to-b from-secondary-500 to-secondary-100  pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0 bg-gradient-to-b from-secondary-500 to-secondary-100  pointer-events-none dark:bg-gradient-to-b from-blue-900  to-gray-500" aria-hidden="true" />
       <div className="absolute left-0 right-0 bottom-0 m-auto w-px p-px h-20 bg-gray-200 transform translate-y-1/2" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -36,7 +36,7 @@ export default function ProblemBlocks() {
           <div className="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none ">
 
             {/* 1st item */}
-            <div className="hidden md:flex relative  flex-col items-center p-6 bg-white rounded shadow-xl">
+            <div className="border border-gray-300 dark:border-orange-600 hidden md:flex relative flex-col items-center p-6 bg-white rounded shadow-xl dark:bg-stone-950">
               <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
@@ -48,12 +48,12 @@ export default function ProblemBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight text-accent-200 mb-1">Blind network calls</h4>
-              <p className="text-gray-600 text-center">Unseen network calls hinder testing and analysis of software behavior.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight dark:text-red-500 text-accent-200 mb-1">Blind network calls</h4>
+              <p className=" dark:text-white text-gray-600 text-center">Unseen network calls hinder testing and analysis of software behavior.</p>
             </div>
 
             {/* 2nd item */}
-            <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
+            <div className="border border-gray-300 dark:border-orange-600 hidden md:flex relative flex-col items-center p-6 bg-white rounded shadow-xl dark:bg-stone-950">
               <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
@@ -64,12 +64,12 @@ export default function ProblemBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight text-accent-200 mb-1">Manual test writing</h4>
-              <p className="text-gray-600 text-center">Time-consuming, repetitive to maintain test automation suites.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight dark:text-red-500 text-accent-200 mb-1">Manual test writing</h4>
+              <p className=" dark:text-white text-gray-600 text-center">Time-consuming, repetitive to maintain test automation suites.</p>
             </div>
 
             {/* 3rd item */}
-            <div className="hidden relative md:flex flex-col items-center p-6 bg-white rounded shadow-xl">
+            <div className="border border-gray-300 dark:border-orange-600 hidden md:flex relative flex-col items-center p-6 bg-white rounded shadow-xl dark:bg-stone-950">
               <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
@@ -81,12 +81,12 @@ export default function ProblemBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight text-accent-200 mb-1">Inefficient codepath</h4>
-              <p className="text-gray-600 text-center">Underperforming code leading to critical problems and inefficiencies.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight  dark:text-red-500 text-accent-200 mb-1">Inefficient codepath</h4>
+              <p className="text-gray-600 text-center  dark:text-white">Underperforming code leading to critical problems and inefficiencies.</p>
             </div>
 
             {/* 4th item */}
-            <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
+            <div className="border border-gray-300 dark:border-orange-600 hidden md:flex relative flex-col items-center p-6 bg-white rounded shadow-xl dark:bg-stone-950">
               <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
@@ -98,12 +98,12 @@ export default function ProblemBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight text-accent-200 mb-1">Dependency chaos</h4>
-              <p className="text-gray-600 text-center">Tedious stubs and mocks maintenance for testing purpose.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight  dark:text-red-500 text-accent-200 mb-1">Dependency chaos</h4>
+              <p className="text-gray-600 text-center  dark:text-white">Tedious stubs and mocks maintenance for testing purpose.</p>
             </div>
 
             {/* 5th item */}
-            <div className="hidden relative md:flex flex-col items-center p-6 bg-white rounded shadow-xl">
+            <div className="border border-gray-300 dark:border-orange-600 hidden md:flex relative flex-col items-center p-6 bg-white rounded shadow-xl dark:bg-stone-950">
               <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
@@ -114,12 +114,12 @@ export default function ProblemBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight text-accent-200 mb-1">Mystery production issues</h4>
-              <p className="text-gray-600 text-center">Difficult-to-reproduce production issues locally for testing and debugging.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight  dark:text-red-500 text-accent-200 mb-1">Mystery production issues</h4>
+              <p className="text-gray-600 text-center  dark:text-white">Difficult-to-reproduce production issues locally for testing and debugging.</p>
             </div>
 
             {/* 6th item */}
-            <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
+            <div className="border border-gray-300 dark:border-orange-600 hidden md:flex relative flex-col items-center p-6 bg-white rounded shadow-xl dark:bg-stone-950">
               <svg className="w-16 h-16 p-1 -mt-1 mb-2" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                 <g fill="none" fillRule="evenodd">
                   <rect className="fill-current text-primary-300" width="64" height="64" rx="32" />
@@ -129,8 +129,8 @@ export default function ProblemBlocks() {
                   </g>
                 </g>
               </svg>
-              <h4 className="text-xl font-bold leading-snug tracking-tight text-accent-200 mb-1">Scattered test environments</h4>
-              <p className="text-gray-600 text-center">Multiple env complicates testing, stub preparation and are unrealistic.</p>
+              <h4 className="text-xl font-bold leading-snug tracking-tight  dark:text-red-500 text-accent-200 mb-1">Scattered test environments</h4>
+              <p className="text-gray-600 text-center  dark:text-white">Multiple env complicates testing, stub preparation and are unrealistic.</p>
             </div>
           </div>
         </div>
