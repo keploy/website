@@ -1,7 +1,7 @@
 "use client"; // Ensure this is at the top
 
 import React, { useState, useEffect } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -24,13 +24,28 @@ const DarkModeToggle = () => {
     }
   }, [darkMode]);
 
+  const toggleDarkMode = (checked: boolean) => {
+    setDarkMode(checked);
+  };
+
   return (
-    <button
-      onClick={() => setDarkMode(!darkMode)}
-      className="p-2 bg-gray-200 dark:bg-dark-background text-black dark:text-white"
-    >
-      {darkMode ? <FaSun /> : <FaMoon />}
-    </button>
+    <div className="flex items-center bg-slate-100 dark:bg-black justify-center p-4">
+      <DarkModeSwitch
+        style={{
+          marginBottom: '1',
+          backgroundColor: darkMode ? '#0C0C0C' : '#F2613F',
+          border: `2px solid ${darkMode ? '#F2613F' : '#F2613F'}`,
+          borderRadius: '9999px',
+          padding: '1px',
+        }}
+        checked={darkMode}
+        onChange={toggleDarkMode}
+        size={35}
+        sunColor={darkMode ? '#FFDE4D' : '#FFDE4D'} // Changed to a darker yellow
+
+        moonColor={darkMode ? '#FFD700' : '#F2613F'}
+      />
+    </div>
   );
 };
 

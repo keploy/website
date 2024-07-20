@@ -19,7 +19,7 @@ export default function Home() {
       <Header/>
       <div className="flex justify-end p-4">
         <DarkModeToggle/>
-      </div>
+      </div>  
       
         <Hero />
         <Features />
