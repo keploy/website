@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { websiteContactUrl } from "@/services/constants";
+import '../app/css/style.css'
 
 const emailValidation = (email: string) => {
   const response = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -43,7 +44,7 @@ export default function Newsletter() {
   const [subscribed, setSubscribed] = useState(false);
   const [subscribeMessage, setSubscribeMessage] = useState('');
   const [email, setEmail] = useState('');
-  const [subscribeButtonStatus, setSubscribeButtonStatus] = useState(false);
+  const [subscribeButtonStatus, setSubscribeButtonStatus] = useState(true);
 
   const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>)=>{
     setEmail(e.target.value);
@@ -123,7 +124,7 @@ export default function Newsletter() {
                       <input value={email}
                              onChange={handleEmailInput}
                              type="email" className="form-input w-full appearance-none bg-neutral-100 border border-secondary-500 focus:border-secondary-400 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-secondary-300 placeholder-secondary-100" placeholder="Your email…" aria-label="Your email…" />
-                      <button type="button" className="btn text-secondary-300 bg-primary-300 hover:bg-primary-400 shadow" onClick={handleSubscribe} disabled={subscribeButtonStatus} >Subscribe</button>
+                      <button type="button" className={`btn text-secondary-300 bg-primary-300 hover:bg-primary-400 shadow ${subscribeButtonStatus? 'not-allowed-button': undefined}`} onClick={handleSubscribe} disabled={subscribeButtonStatus} >Subscribe</button>
                     </div> }
                     {/* Subscribe Message */}
                     {<p className="text-sm text-gray-400 mt-3">{subscribeMessage}</p>}
