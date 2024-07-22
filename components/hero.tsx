@@ -63,7 +63,7 @@ export default function Hero() {
               </span> 
               Tests
               <br />
-              <span className=" text-orange-600 bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
+              <span className="text-orange-600 text-clip">
                 that actually work!
               </span>
             </h1>
