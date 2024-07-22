@@ -33,7 +33,7 @@ const DarkModeToggle = () => {
       <DarkModeSwitch
         style={{
           marginBottom: '1',
-          backgroundColor: darkMode ? '#0C0C0C' : '#F2613F',
+          backgroundColor: darkMode ? '#0c0c0c' : '#F2613F',
           border: `2px solid ${darkMode ? '#F2613F' : '#F2613F'}`,
           borderRadius: '9999px',
           padding: '1px',
