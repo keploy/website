@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/ai-code-generation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -22,16 +25,49 @@ const pageMetadata: Metadata = {
 };
 
 const heroData = {
-  titleTop: "Integration test generator ",
-  titleBottom: "for developers",
+  titleTop: "Integration Test Generator ",
+  titleBottom: "for Developers",
   subtitleTop: "Transform Testing with AI that actually works! Explore Now!",
   subtitleBottom:
     "Experience efficiency and reliability with 90% coverage in 2 mins.🚀",
   animationSrc: testAndStubsGen,
 };
+
+const blocksData = [
+  {
+    title: "Learning Curve",
+    description: "Steep learning curve to understand AI-powered test generation tools.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Dependency on Data Quality",
+    description: "AI tools heavily rely on high-quality and representative data for accurate test generation.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Setting Test Parameters",
+    description: "It is difficult to adjust AI-generated tests for various scenarios.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Cost of Implementation",
+    description: "High initial costs and ongoing expenses associated with integrating AI into testing workflows.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Integration with Existing Tools",
+    description: "Compatibility issues when integrating AI test generation with existing testing tools and frameworks.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Understanding Test Outcomes",
+    description: "Difficulties in interpreting and validating AI-generated test results.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Using AI for Test Generation",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
@@ -39,7 +75,7 @@ const FeaturesData = {
   title: "With ",
   title2: "leverage",
   subtitle:
-    "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
+    "Generate realistic, diverse, and customizable tests for precise testing",
   highlightTitle: "AI Test Generation ",
   featuresData: featuresData,
 };
@@ -54,7 +90,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -105,6 +141,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

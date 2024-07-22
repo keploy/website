@@ -30,7 +30,7 @@ export default function ProblemBlocks(props: {
 }) {
   const [isFormOpen, setFormOpen] = useState(false);
   return (
-    <section className="relative">
+    <section className="relative bg-neutral-100">
       <div
         className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0 bg-gradient-to-b from-secondary-500 to-secondary-100  pointer-events-none"
         aria-hidden="true"
