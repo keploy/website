@@ -63,7 +63,7 @@ export default function Hero() {
               </span> 
               Tests
               <br />
-              <span className="text-orange-600 text-clip">
+              <span className=" dark:text-orange-600 text-orange-600 text-clip">
                 that actually work!
               </span>
             </h1>
