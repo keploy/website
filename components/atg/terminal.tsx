@@ -10,12 +10,9 @@ import React, {
 import { Terminal } from "./Terminal";
 import { useTerminal } from "./Terminal/hooks";
 import { curlCommand, useRunCommandSubscription } from "@/app/api/hello/atg"; // Update with actual path
-import { fetchTestSets } from "@/app/api/hello/atg";
-import { Button } from "@mui/material";
 import { Directory } from "./Editor/utils/file-manager";
 import { Type } from "./Editor/utils/file-manager";
 import StepsForRecording from "./StepTypes/types";
-// import { Button } from "@mui/material";
 
 const Emoji = "User@1231-Keploy:" ; // 🐰
 
@@ -25,14 +22,17 @@ function MainTerminal({
   setRootDir,
   hideTerminal,
   stepsForRecording,
+  terminalTheme,
 }:{
   inputRef: React.RefObject<HTMLInputElement>;
   functionName: string;
   setRootDir: Dispatch<SetStateAction<Directory>>;
   hideTerminal: () => void;
   stepsForRecording: Dispatch<SetStateAction<StepsForRecording>>;
+  terminalTheme:boolean;
 }) {
-  return (
+  console.log(`from termninal ${terminalTheme}`);
+  return (  
     <div className="h-full">
       {functionName === "record" && (
         <RecordTerminalSession
@@ -40,18 +40,21 @@ function MainTerminal({
           setRootDir={setRootDir}
           hideTerminal={hideTerminal}
           setStepsForRecording={stepsForRecording}
+          RecordTheme={terminalTheme}
         />
       )}
       {functionName === "deduplicate" && (
         <DeduplicateTerminalSession
           inputRef={inputRef}
           hideTerminal={hideTerminal}
+          DedupTheme={terminalTheme}
         />
       )}
       {functionName === "testcoverage" && (
         <TestCoverageTerminalSession
           inputRef={inputRef}
           hideTerminal={hideTerminal}
+          TestTheme={terminalTheme}
         />
       )}
     </div>
@@ -63,11 +66,13 @@ function RecordTerminalSession({
   setRootDir,
   hideTerminal,
   setStepsForRecording,
+  RecordTheme,
 }:{
   inputRef: React.RefObject<HTMLInputElement>;
   setRootDir: Dispatch<SetStateAction<Directory>>;
   hideTerminal: () => void;
   setStepsForRecording: Dispatch<SetStateAction<StepsForRecording>>;
+  RecordTheme:boolean
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
@@ -111,8 +116,8 @@ function RecordTerminalSession({
       );
       setStepsForRecording((prev) => ({
         ...prev,
-        starting: true,
-        curlApiHitting: true,
+        starting: false,
+        curlApiHitting: false,
       }));
     } else if (loading) {
       pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Loading...</div>);
@@ -210,6 +215,7 @@ function RecordTerminalSession({
         commands={commands}
         inputRef={inputRef}
         hideTerminal={hideTerminal}
+        terminalTheme={RecordTheme}
       />
     </div>
   );
@@ -218,10 +224,11 @@ function RecordTerminalSession({
 function DeduplicateTerminalSession({
   inputRef,
   hideTerminal,
+  DedupTheme,
 }:{
   inputRef: React.RefObject<HTMLInputElement>;
-
   hideTerminal: () => void;
+  DedupTheme:boolean;
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
@@ -264,6 +271,7 @@ function DeduplicateTerminalSession({
         commands={commands}
         inputRef={inputRef}
         hideTerminal={hideTerminal}
+        terminalTheme={DedupTheme}
       />
     </div>
   );
@@ -272,9 +280,11 @@ function DeduplicateTerminalSession({
 function TestCoverageTerminalSession({
   inputRef,
   hideTerminal,
+  TestTheme,
 }:{
   inputRef: React.RefObject<HTMLInputElement>;
   hideTerminal: () => void;
+  TestTheme:boolean;
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
@@ -362,6 +372,7 @@ function TestCoverageTerminalSession({
         commands={commands}
         inputRef={inputRef}
         hideTerminal={hideTerminal}
+        terminalTheme={TestTheme}
       />
     </div>
   );

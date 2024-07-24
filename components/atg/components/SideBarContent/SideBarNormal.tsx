@@ -12,32 +12,41 @@ import LockIcon from "@mui/icons-material/Lock";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import StepsForRecording from "../../StepTypes/types";
 import CloseIcon from "@mui/icons-material/Close";
-
+import CircleIcon from '@mui/icons-material/Circle';
 const stepsRecord = [
   {
     label: "Auto Generate Test",
     steps: [
-      { stepName: "Recording" },
-      { stepName: "Hitting API's" },
-      { stepName: "Generating keploy tests" },
+      {
+        stepName: "Recording",
+        info: "Keploy is starting the recording process",
+      },
+      { stepName: "Hitting API's", info: "We are hitting the api's" },
+      {
+        stepName: "Generating keploy tests",
+        info: "Let's generate the keploy-test cases.",
+      },
     ],
     stepName: "Start Recording",
   },
   {
     label: "Remove Duplicate",
     steps: [
-      { stepName: "Starting Deduplication" },
-      { stepName: "Duplicates removed" },
+      {
+        stepName: "Starting Deduplication",
+        info: "Let's remove the duplicate test-cases",
+      },
+      { stepName: "Duplicates removed", info: "Duplicates have been removed." },
     ],
     stepName: "Start Deduplication",
   },
   {
     label: "Test Coverage",
     steps: [
-      { stepName: "Recording" },
-      { stepName: "Hitting API's" },
-      { stepName: "Generating Keploy Test Folder" },
-      { stepName: "Generating keploy tests" },
+      { stepName: "Recording", info: "Dummy tesxt here" },
+      { stepName: "Hitting API's", info: "Dummy tesxt here" },
+      { stepName: "Generating Keploy Test Folder", info: "Dummy tesxt here" },
+      { stepName: "Generating keploy tests", info: "Dummy tesxt here" },
     ],
     stepName: "Get Test Coverage",
   },
@@ -118,17 +127,16 @@ export default function SideBarNormal({
     }
   };
 
-  React.useEffect(() => {
-    console.log("substepIndex: ", subStepIndex);
-    console.log("substepcompleted: ", subStepCompleted);
-    console.log("expandedSteps: ", expandedSteps);
-  }, [subStepIndex, subStepCompleted, expandedSteps]);
+  // React.useEffect(() => {
+  //   console.log("substepIndex: ", subStepIndex);
+  //   console.log("substepcompleted: ", subStepCompleted);
+  //   console.log("expandedSteps: ", expandedSteps);
+  // }, [subStepIndex, subStepCompleted, expandedSteps]);
 
   return (
     <Box
       sx={{
         maxWidth: 300,
-        height: "70vh",
         overflowY: "auto",
         position: "relative",
         scrollbarWidth: "none", // For Firefox
@@ -136,7 +144,9 @@ export default function SideBarNormal({
           display: "none", // For Chrome, Safari, and Opera
         },
       }}
-      className={`${SideBartheme ? "bg-white" : "bg-neutral-800"}`}
+      className={`${
+        SideBartheme ? "bg-white" : "bg-neutral-800"
+      } h-full rounded-br-md`}
     >
       <div
         className={`flex items-center h-14 ${
@@ -242,7 +252,7 @@ export default function SideBarNormal({
                   <Box
                     component="li"
                     key={subIndex}
-                    sx={{ display: "flex", alignItems: "center", mb: 1 }}
+                    sx={{ display: "flex", alignItems: "start", mb: 1 }}
                   >
                     <Box
                       sx={{
@@ -262,26 +272,45 @@ export default function SideBarNormal({
                       ) : subStepIndex > subIndex || index < activeStep ? (
                         <DoneIcon className=" font-bold rounded-md  p-1 text-accent-100" />
                       ) : (
-                        <p
+                        <CircleIcon
                           className={`text-sm ${
                             SideBartheme
                               ? "text-secondary-300"
                               : "text-gray-300"
-                          }`}
-                        >
-                          {subIndex + 1}
-                        </p>
+                          } scale-90`}
+                        />
                         // <CheckBoxOutlineBlankIcon className="text-gray-300 shadow-inner scale-90" />
                       )}
                     </Box>
-                    <Box
-                      component="span"
-                      sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
-                      className={`${
-                        SideBartheme ? "text-secondary-300" : "text-gray-300"
-                      }`}
-                    >
-                      {`${subStep.stepName}`}
+                    <Box className="flex flex-col">
+                      <Box
+                        component="span"
+                        sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
+                        className={`${
+                          SideBartheme ? "text-secondary-300" : "text-gray-300"
+                        }`}
+                      >
+                        {`${subStep.stepName}`}
+                      </Box>
+
+                      {(subStepIndex === subIndex && index === activeStep) ||
+                      subStepIndex > subIndex ||
+                      index < activeStep ? (
+                        <Box
+                          component="span"
+                          sx={{ fontSize: "0.65rem", fontWeight: "normal" }}
+                          className={`${
+                            SideBartheme
+                              ? "text-secondary-300"
+                              : "text-gray-300"
+                          } mt-1`}
+                        >
+                          {`${subStep.info}`}
+                        </Box>
+                      ) : (
+                        <p></p>
+                        // <CheckBoxOutlineBlankIcon className="text-gray-300 shadow-inner scale-90" />
+                      )}
                     </Box>
                   </Box>
                 ))}

@@ -51,7 +51,7 @@ const SideBarHandle: FC<{
   }, [functionName, code, language]); // Add dependencies if needed
 
   return (
-    <div className="h-full">
+    <div className={`h-full ${SideBarTheme?"bg-white":"bg-neutral-800"}  rounded-br-md`}>
       <SideBarNormal
         onNext={MovingtoNextStage}
         onReset={onReset}

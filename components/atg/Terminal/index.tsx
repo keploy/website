@@ -12,6 +12,7 @@ import CloseIcon from "@mui/icons-material/Close"; // Use CloseIcon to mimic the
 export interface AdditionalProps {
   inputRef: React.RefObject<HTMLInputElement>;
   hideTerminal: () => void;
+  terminalTheme: boolean;
 }
 
 interface CombinedProps extends TerminalProps, AdditionalProps {}
@@ -24,12 +25,14 @@ export const Terminal = forwardRef(
       inputRef,
       commands = {},
       hideTerminal,
+      terminalTheme,
     } = props;
 
     const [input, setInputValue] = useState<string>("");
     const [blinkingTrue, setBlinkingTrue] = useState<boolean>(true);
     const spanRef = useRef<HTMLSpanElement>(null);
     const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    console.log(terminalTheme);
 
     /**
      * Focus on the input whenever we render the terminal
@@ -47,7 +50,7 @@ export const Terminal = forwardRef(
      */
     const handleInputChange = useCallback(
       (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value + "");
+        setInputValue(e.target.value);
         setBlinkingTrue(false);
 
         if (typingTimeoutRef.current) {
@@ -91,11 +94,11 @@ export const Terminal = forwardRef(
     /**
      * Update the input width based on the span width
      */
-    useEffect(() => {
-      if (spanRef.current && inputRef.current) {
-        inputRef.current.style.width = `${spanRef.current.offsetWidth + 20}px`; // Add some padding
-      }
-    }, [input]);
+    // useEffect(() => {
+    //   if (spanRef.current && inputRef.current) {
+    //     inputRef.current.style.width = `${spanRef.current.offsetWidth+10}px`;
+    //   }
+    // }, [input]);
 
     /**
      * Handle focus and blur events for the input
@@ -125,47 +128,88 @@ export const Terminal = forwardRef(
     }, [inputRef]);
 
     return (
-      <div>
+      <div className="h-full">
         <div
-          className="terminal_light font-courier bg-white border w-full text-sm rounded-t-xl  border-t-4 border-b-4 h-full"
+          className={`${
+            terminalTheme ? "terminal_light  bg-neutral-200 border border-y-gray-200 border-b-gray-200 " : "terminal "
+          } font-courier w-full h-full relative  `}
           ref={ref}
           onClick={focusInput}
         >
-          <div className="sticky top-0 w-full text-slate-300 flex justify-center items-center border border-b-2 border-gray-300 bg-inherit   p-2 px-3">
-            <p className="text-secondary-300 flex-grow text-center font-bold">TERMINAL</p>
+          <div
+            className={`absolute top-0  w-full flex justify-center items-center  bg-inherit p-2 px-3 ${
+              terminalTheme
+                ? " text-black bg-neutral-200 border border-gray-200  "
+                : " text-white bg-neutral-600 "
+            }`}
+          >
+            <p className="flex-grow text-center font-bold text-sm">TERMINAL</p>
             <button
-              className="close-button bg-red-500 rounded-full w-4 h-4 flex items-center justify-center"
+              className={`close-button bg-primary-300 hover:bg-primary-400 rounded-full w-4 h-4 flex items-center justify-center`}
               aria-label="Close Terminal"
               onClick={hideTerminal}
             >
-              <CloseIcon className="text-red-500 w-3 h-3" />
+              <CloseIcon className="text-primary-300 hover:bg-primary-400 w-3 h-3" />
             </button>
           </div>
           <div className="p-1 px-3 ">
             {history.map((line, index) => (
-              <div className="terminal__line_light" key={`terminal-line-${index}-${line}`}>
+              <div
+                className={`${
+                  terminalTheme ? "terminal__line_light" : "terminal__line"
+                }`}
+                key={`terminal-line-${index}-${line}`}
+              >
                 {line}
               </div>
             ))}
-            <div className="terminal__prompt_light">
-              <div className="terminal__prompt__label_light">{promptLabel}</div>
-              <div className="terminal__prompt__input flex">
-                <div className="relative w-full">
+            <div
+              className={`${
+                terminalTheme ? "terminal__prompt_light" : "terminal__prompt"
+              }`}
+            >
+              <div
+                className={`${
+                  terminalTheme
+                    ? "terminal__prompt__label_light"
+                    : "terminal__prompt__label"
+                }  `}
+              >
+                {promptLabel}
+              </div>
+              <div className="flex">
+                <div className="relative w-1/2 bg-black">
                   <input
                     type="text"
                     value={input}
                     onKeyDown={handleInputKeyDown}
                     onChange={handleInputChange}
                     ref={inputRef}
-                    className="form-input fat-cursor p-0 bg-inherit text-secondary-300 caret-white ml-2 border-none focus:outline-none border border-r-0 text-sm appearance-none border-transparent fat-cursor" // Add padding-right to make space for the emoji
+                    className={`form-input  fat-cursor p-0 bg-inherit text-xs ml-2 border-none focus:outline-none appearance-none ${
+                      terminalTheme
+                        ? "text-secondary-300 caret-white "
+                        : "text-white caret-black"
+                    } min-w-0`}
+                    style={{ width: inputRef.current ? inputRef.current.value.length + 'ch' : 'auto' }}
+                    spellCheck={false}
                   />
+
                   <span
-                    className={`${blinkingTrue ? "animate-blink" : ""} absolute text-sm scale-90 inset-y-0 right-0 bg-secondary-300 flex border border-secondary-300 items-center pr-2`}
+                    className={`${
+                      blinkingTrue ? "animate-blink" : ""
+                    } absolute text-sm scale-90 inset-y-0 -right-2 flex items-center  pr-2 ${
+                      terminalTheme
+                        ? "bg-secondary-300 border-secondary-300"
+                        : "bg-white border-white"
+                    }`}
                   />
                 </div>
-                <span ref={spanRef} className="absolute invisible whitespace-pre text-sm">
+                {/* <span
+                  ref={spanRef}
+                  className="absolute text-sm invisible whitespace-pre"
+                >
                   {input}
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

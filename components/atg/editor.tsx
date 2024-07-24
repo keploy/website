@@ -184,7 +184,7 @@ const Editor = () => {
                 settingTheme={settingTheme}
               />
 
-              <div className="flex flex-row h-70v w-full">
+              <div className="flex flex-row h-[80vh] w-full">
                 {/* Sidebar */}
                 <div
                   className={`flex flex-col transition-all duration-200 ${
@@ -233,6 +233,8 @@ const Editor = () => {
                             setRootDir={setRootDir}
                             hideTerminal={hideTerminalFunction}
                             stepsForRecording={setStepsForRecording}
+                            terminalTheme={lighttheme}
+
                           />
                         </div>
                       </div>
@@ -245,7 +247,7 @@ const Editor = () => {
                 </div>
                 {/* Side Content */}
                 {showSideContent && (
-                  <div className="w-3/12 grow h-70v  bg-white    rounded-b-md  transition-all duration-300">
+                  <div className={`w-3/12 grow h-full  bg-white    rounded-br-md  transition-all duration-300`}>
                     <SideBarhandle
                       Stage={state}
                       onNext={nextState}

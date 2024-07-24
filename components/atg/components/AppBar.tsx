@@ -49,7 +49,7 @@ const Appbar = ({
 
   const handleMouseEnter = (fileId: string) => {
     setHoveredTab(fileId);
-    console.log(fileId);
+    // console.log(fileId);
   };
 
   const handleMouseLeave = () => {
@@ -89,13 +89,18 @@ const Appbar = ({
                 onMouseEnter={() => handleMouseEnter(file.id)}
                 onMouseLeave={handleMouseLeave}
               >
-                <FileIcon
-                  name={file.name}
-                  extension={file?.name?.split(".").pop() || ""}
-                  IconsTheme={AppBarTheme}
-                />
+                <button onClick={()=>onSelect(file)} className="w-full h-full">
+                  <FileIcon
+                    name={file.name}
+                    extension={file?.name?.split(".").pop() || ""}
+                    IconsTheme={AppBarTheme}
+                  />
+                </button>
+
                 <button
-                  className={`text-xs mx-1 italic ${AppBarTheme?"text-slate-900":"text-white"} `}
+                  className={`text-xs mx-1 italic ${
+                    AppBarTheme ? "text-slate-900" : "text-white"
+                  }  h-full `}
                   onClick={() => onSelect(file)}
                 >
                   {file.name}
@@ -111,7 +116,9 @@ const Appbar = ({
                     } mx-2`}
                   >
                     <CloseIcon
-                      className={`${AppBarTheme?"text-gray-600":"text-gray-50"}`}
+                      className={`${
+                        AppBarTheme ? "text-gray-600" : "text-gray-50"
+                      }`}
                       sx={{ fontSize: 15 }}
                     />
                   </button>
@@ -120,7 +127,9 @@ const Appbar = ({
                 {selectedFile?.id == file?.id && (
                   <button onClick={() => onCancel(file)} className={`mx-2`}>
                     <CloseIcon
-                      className={`${AppBarTheme?"text-gray-600":"text-white"}`}
+                      className={`${
+                        AppBarTheme ? "text-gray-600" : "text-white"
+                      }`}
                       sx={{ fontSize: 15 }}
                     />
                   </button>
