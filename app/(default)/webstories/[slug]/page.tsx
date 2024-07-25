@@ -6,6 +6,8 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import CloseIcon from "@/components/webstories/components/CloseIcon";
 import { StaticImageData } from "next/image";
+  import RootLayout from "@/app/layout";
+
 
 interface PreloadedImage {
   url: string | StaticImageData;
@@ -23,6 +25,16 @@ const Index: React.FC = () => {
   if (!storyData) {
     return <div className="m-auto">Story not found!</div>;
   }
+
+  const metadata = {
+    title: storyData[0]?.Heading || "Webstory",
+    description: storyData[0]?.text || "A webstory",
+    keywords: "webstories, stories, entertainment, reading",
+    // image:
+    //   typeof storyData[0]?.imageUrl === "string"
+    //     ? storyData[0]?.imageUrl
+    //     : storyData[0]?.imageUrl?.src || "",
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -86,39 +98,45 @@ const Index: React.FC = () => {
   const nextImageIndex = currentStoryIndex + 1;
 
   return (
-    <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
-      <div className="absolute w-full h-full top-0 opacity-90 bg-black">
-        <Image
-          src={typeof storyData[0].imageUrl === "string" ? storyData[0].imageUrl : storyData[0].imageUrl.src}
-          alt="image"
-          layout="fill"
-          objectFit="cover"
-          className="relative z-10 h-full object-cover w-full blur-2xl opacity-60 md:rounded-xl lg:rounded-xl xl:rounded-xl"
-        />
-      </div>
-      <div className="relative flex flex-col w-full h-full justify-center">
-        {windowWidth > 1024 && (
-          <button
-            onClick={handleClose}
-            className="text-slate-200 border border-solid font-medium bg-secondary-300 p-3 rounded-full shadow-lg absolute top-4 right-4"
-          >
-            <CloseIcon />
-          </button>
-        )}
-        {storyData ? (
-          <WebStories
-            data={storyData.map((story) => ({
-              ...story,
-              imageElement: getImageElement(story.imageUrl),
-            }))}
-            slug={slug}
-            onStoryIndexChange={handleStoryIndexChange}
+    <RootLayout metadata={metadata} HeaderDisplayed={false}>
+      <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
+        <div className="absolute w-full h-full top-0 opacity-95 bg-black">
+          <Image
+            src={
+              typeof storyData[0].imageUrl === "string"
+                ? storyData[0].imageUrl
+                : storyData[0].imageUrl.src
+            }
+            alt="image"
+            layout="fill"
+            objectFit="cover"
+            className="relative z-10 h-full object-cover w-full blur-2xl opacity-60 md:rounded-xl lg:rounded-xl xl:rounded-xl"
           />
-        ) : (
-          <div>Content Not Available</div>
-        )}
+        </div>
+        <div className="relative flex flex-col w-full h-full justify-center">
+          {windowWidth > 1024 && (
+            <button
+              onClick={handleClose}
+              className="text-slate-200 border border-solid font-medium bg-secondary-300 p-3 rounded-full shadow-lg absolute top-4 right-4"
+            >
+              <CloseIcon />
+            </button>
+          )}
+          {storyData ? (
+            <WebStories
+              data={storyData.map((story) => ({
+                ...story,
+                imageElement: getImageElement(story.imageUrl),
+              }))}
+              slug={slug}
+              onStoryIndexChange={handleStoryIndexChange}
+            />
+          ) : (
+            <div>Content Not Available</div>
+          )}
+        </div>
       </div>
-    </div>
+    </RootLayout>
   );
 };
 

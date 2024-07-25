@@ -7,15 +7,10 @@ import MobileMenu from "../../ui/mobile-menu";
 import CountingNumbers from "../../utils/countingNumbers";
 import NavItemWithSmallDropdown from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "@/components/utils/resources";
-import SearchBar from "@/components/webstories/components/SearchBar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-interface HeaderProps {
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
 
-const Header: React.FC<HeaderProps> = ({ handleInputChange }) => {
+
+export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
 
@@ -98,9 +93,7 @@ const Header: React.FC<HeaderProps> = ({ handleInputChange }) => {
               </div>
             </ul>
           </nav>
-          <div className="flex items-center w-full ">
-            <SearchBar onChange={handleInputChange} />
-          </div>
+         
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
             <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 ">
               <Link
@@ -148,4 +141,3 @@ const Header: React.FC<HeaderProps> = ({ handleInputChange }) => {
   );
 };
 
-export default Header;

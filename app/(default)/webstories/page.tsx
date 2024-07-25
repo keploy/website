@@ -6,11 +6,7 @@ import Header from "@/components/webstories/components/Header";
 import RootLayout from "@/app/layout";
 
 const Page = () => {
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
-  };
+ 
 
   const Data = DataFiles.map((item) => ({
     CardImage: item.CardImage,
@@ -23,17 +19,14 @@ const Page = () => {
     title: "WebStories - Explore and Enjoy",
     description: "Discover amazing stories with our WebStories collection.",
     keywords: "webstories, stories, entertainment, reading",
-    image: "/public/images/gsa.png",
-    url: "https://yourwebsite.com/webstories",
   };
 
   return (
-    <RootLayout metadata={metadata}>
-      <Header handleInputChange={handleInputChange} />
-      <div className="flex flex-row justify-end my-2 mt-10">
-        <StoriesCards data={Data.reverse()} searchValue={searchValue} />
+    <RootLayout metadata={metadata}> 
+      <div className="flex flex-row justify-end my-2 mt-10 border  min-h-screen overflow-hidden">
+        <StoriesCards data={Data.reverse()} />
       </div>
-    </RootLayout>
+   </RootLayout>
   );
 };
 

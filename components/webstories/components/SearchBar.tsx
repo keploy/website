@@ -25,7 +25,7 @@ const SearchBar = ({ onChange }: SearchBarProps) => {
           </svg>
         </div>
         <input
-          className=" focus:border-t-0 border-none bg-white  focus:border-none focus:outline-none focus:text-xs w-full appearance-none bg-neutral-100 rounded-sm  text-secondary-300 placeholder-secondary-100 placeholder:text-xs group-hover:placeholder:text-secondary-300 transition-all duration-300"
+          className="input_search focus:border-t-0 border-none   focus:border-none focus:outline-none focus:text-xs w-full appearance-none bg-white rounded-sm  text-secondary-300 placeholder-secondary-100 placeholder:text-xs group-hover:placeholder:text-secondary-300 transition-all duration-300"
           id="search"
           placeholder="Search Stories.."
           onChange={onChange}
