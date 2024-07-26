@@ -277,7 +277,7 @@ export default function FeaturesMobileView() {
         >
           <div>
             <Link
-              className="w-full mb-4 btn text-secondary-300 bg-primary-300 hover:font-semibold sm:w-auto sm:mb-0"
+              className="w-full mb-4 btn text-secondary-300 bg-primary-300 hover:font-semibold mt-300 sm:w-auto sm:mb-0"
               href="https://keploy.io/docs"
             >
               Documentation{' '}
