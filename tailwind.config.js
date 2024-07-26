@@ -126,6 +126,7 @@ module.exports = {
                 '9/16': '56.25%',
                 '3/4': '75%',
                 '1/1': '100%',
+                '300' : '300px',
             },
             fontFamily: {
                 inter: ['var(--font-inter)', 'sans-serif'],
