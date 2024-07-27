@@ -1,7 +1,8 @@
-import React, { useEffect, useState, FC } from "react";
+import React, { useEffect, FC } from "react";
 import SideBarNormal from "./SideBarContent/SideBarNormal";
 import { submitCodeSnippet } from "@/app/api/hello/atg";
 import StepsForRecording from "../StepTypes/types";
+
 type StageComponent = FC;
 
 const SideBarHandle: FC<{
@@ -14,7 +15,19 @@ const SideBarHandle: FC<{
   onReset: () => void;
   removeSideContent: () => void;
   stepsForRecording: StepsForRecording;
-  SideBarTheme:boolean;
+  SideBarTheme: boolean;
+  sidebarState: {
+    activeStep: number;
+    subStepIndex: number;
+    expandedSteps: number[];
+  };
+  setSidebarState: React.Dispatch<
+    React.SetStateAction<{
+      activeStep: number;
+      subStepIndex: number;
+      expandedSteps: number[];
+    }>
+  >;
 }> = ({
   Stage,
   onNext,
@@ -26,11 +39,14 @@ const SideBarHandle: FC<{
   stepsForRecording,
   removeSideContent,
   SideBarTheme,
+  sidebarState,
+  setSidebarState,
 }) => {
   const MovingtoNextStage = async () => {
     showTerminal();
     onNext();
   };
+
   useEffect(() => {
     const storeCodeSubmissionId = async () => {
       if (code && language) {
@@ -50,14 +66,48 @@ const SideBarHandle: FC<{
     }
   }, [functionName, code, language]); // Add dependencies if needed
 
+  const handleNext = () => {
+    onNext();
+    setSidebarState((prevState) => ({
+      ...prevState,
+      subStepIndex: 0,
+    }));
+  };
+
+  const handleReset = () => {
+    onReset();
+    setSidebarState({
+      activeStep: 0,
+      subStepIndex: -1,
+      expandedSteps: [0],
+    });
+  };
+
+  const handleAccordionChange = (index: number) => {
+    setSidebarState((prevState) => ({
+      ...prevState,
+      expandedSteps: prevState.expandedSteps.includes(index)
+        ? prevState.expandedSteps.filter((step) => step !== index)
+        : [...prevState.expandedSteps, index],
+    }));
+  };
+
   return (
-    <div className={`h-full ${SideBarTheme?"bg-white":"bg-neutral-800"}  rounded-br-md`}>
+    <div
+      className={`h-full ${
+        SideBarTheme ? "bg-white" : "bg-[#21252b]"
+      } rounded-br-md`}
+    >
       <SideBarNormal
         onNext={MovingtoNextStage}
-        onReset={onReset}
+        onReset={handleReset}
         stepsForRecording={stepsForRecording}
         RemoveSideContent={removeSideContent}
         SideBartheme={SideBarTheme}
+        activeStep={sidebarState.activeStep}
+        subStepIndex={sidebarState.subStepIndex}
+        expandedSteps={sidebarState.expandedSteps}
+        setSidebarState={setSidebarState}
       />
     </div>
   );

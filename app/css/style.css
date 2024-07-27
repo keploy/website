@@ -36,7 +36,7 @@ button {
     height: 30vh;
     overflow-y: scroll; /* Enable vertical scrolling */
     overflow-x: scroll; /* Enable horizontal scrolling */
-    background-color: #1e1e1e; /* Dark background */
+    background-color: #282c34; /* Dark background */
     color: #ffffff; /* Light text color */
     font-size: 9pt; /* 11 point font size */
     line-height: 1.42;

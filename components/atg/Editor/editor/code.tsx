@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Editor, { useMonaco } from "@monaco-editor/react";
-import * as monaco from "monaco-editor"; // Import monaco-editor types
+import * as monaco from "monaco-editor";
 import { File } from "../utils/file-manager";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 export const Code = ({
   selectedFile,
   showSideBannerBool,
   RemoveSideBanner,
   settingCodeTheme,
-}: {
+}: {  
   selectedFile: File | undefined;
   showSideBannerBool: Boolean;
   RemoveSideBanner: () => void;
-  settingCodeTheme:boolean;
+  settingCodeTheme: boolean;
 }) => {
   if (!selectedFile) return null;
 
@@ -127,12 +128,43 @@ export const Code = ({
     }
   }, [monacoInstance]);
 
+  useEffect(() => {
+    if (monacoInstance) {
+      monacoInstance.editor.defineTheme("atom-one-dark", {
+        base: "vs-dark",
+        inherit: true,
+        rules: [
+          { token: "", background: "282c34", foreground: "abb2bf" },
+          { token: "comment", foreground: "5c6370", fontStyle: "italic" },
+          { token: "string", foreground: "98c379" },
+          { token: "keyword", foreground: "c678dd" },
+          { token: "number", foreground: "d19a66" },
+          { token: "type", foreground: "e06c75" },
+          { token: "function", foreground: "61afef" },
+        ],
+        colors: {
+          "editor.background": "#282c34",
+          "editor.foreground": "#abb2bf",
+          "editor.lineHighlightBackground": "#2c313a",
+          "editorCursor.foreground": "#528bff",
+          "editorIndentGuide.background": "#3b4048",
+          "editorIndentGuide.activeBackground": "#3b4048",
+        },
+      });
+      if (settingCodeTheme) {
+        monacoInstance.editor.setTheme("light");
+      } else {
+        monacoInstance.editor.setTheme("atom-one-dark");
+      }
+    }
+  }, [monacoInstance, settingCodeTheme]);
+
   return (
-    <div className={`relative w-full h-full  ${settingCodeTheme?"border border-gray-300":""}    rounded-lg`}>
+    <div className={`relative w-full h-full ${settingCodeTheme ? "border border-gray-300" : ""} rounded-lg`}>
       <Editor
         language={language}
         value={code}
-        theme={settingCodeTheme?"light":"vs-dark"}
+        theme={settingCodeTheme ? "light" : "atom-one-dark"}
         options={{
           scrollBeyondLastLine: false,
           fontSize: 15,
@@ -160,9 +192,7 @@ export const Code = ({
         >
           <ChevronLeftIcon className="text-gray-50" />
           <div
-            className={`overflow-hidden transition-width duration-500 ${
-              showText ? "w-full" : "w-0"
-            }`}
+            className={`overflow-hidden transition-width duration-500 ${showText ? "w-full" : "w-0"}`}
           >
             <p className={`text-gray-50 font-bold ml-2 text-sm`}>
               Side Content

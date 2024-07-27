@@ -75,7 +75,7 @@ const YourComponent = ({
   return (
     <div
       className={`flex justify-between items-center  p-2 rounded-t-md ${
-        isDarkMode ? "bg-neutral-800 text-white" : "bg-neutral-200 text-black"
+        isDarkMode ? "bg-[#1a1d23] text-white" : "bg-neutral-200 text-black"
       }`}
     >
       <Image
@@ -88,7 +88,7 @@ const YourComponent = ({
       <div
         className={`font-semibold py-1 shadow-inner w-full text-center mr-6  rounded-md border ${
           isDarkMode
-            ? "bg-neutral-900 text-white border-neutral-600"
+            ? "bg-[#121417] text-white border-neutral-600"
             : "bg-white text-gray-500 border-gray-200"}`}
       >
         <p

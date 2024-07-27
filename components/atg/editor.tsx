@@ -11,9 +11,11 @@ import { TypeScriptData } from "./data/TypeScript";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
-import SideBarhandle from "./components/SideBarhandle";
+import SideBarHandle from "./components/SideBarhandle";
 import StepsForRecording from "./StepTypes/types";
 import TopHeader from "./components/TopHeader";
+import { findFileByName } from "./Editor/utils/file-manager";
+
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -43,11 +45,15 @@ const Editor = () => {
       curlApiHitting: false,
     }
   );
+  const [sidebarState, setSidebarState] = useState({
+    activeStep: 0,
+    subStepIndex: -1,
+    expandedSteps: [0],
+  });
+
   useEffect(() => {
     updateFunctionName(state);
   }, [state]);
-
-  useEffect(() => {}, [stepsForRecording]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -66,8 +72,6 @@ const Editor = () => {
     fetchData();
   }, [language]);
 
-  useEffect(() => {}, [rootDir]);
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === "`") {
@@ -77,7 +81,7 @@ const Editor = () => {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    if (files.length != 0) {
+    if (files.length !== 0) {
       setShowSideContent(true);
     } else {
       setShowSideContent(false);
@@ -155,6 +159,11 @@ const Editor = () => {
     setShowTerminal(false);
     setState(-1);
     setFiles([]);
+    setSidebarState({
+      activeStep: 0,
+      subStepIndex: -1,
+      expandedSteps: [0],
+    });
   };
 
   const ShowSideContent = () => {
@@ -177,7 +186,7 @@ const Editor = () => {
       <div>
         {dataFetched ? (
           <>
-            <div className="flex flex-col max-w-7xl   mx-auto my-16 m-2 border rounded-md bg-neutral-100 border-gray-300 shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
+            <div className="flex flex-col max-w-7xl mx-auto my-16 m-2 border rounded-md bg-neutral-100 border-gray-300 shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
               <TopHeader
                 currentSelectedFileName={selectedFile?.name}
                 onSelectLanguage={onLanguageSelect}
@@ -189,7 +198,7 @@ const Editor = () => {
                 <div
                   className={`flex flex-col transition-all duration-200 ${
                     showSideContent ? "w-64" : "w-2/12"
-                  }  h-full  `}
+                  } h-full`}
                 >
                   <Sidebar
                     rootDir={rootDir}
@@ -202,11 +211,11 @@ const Editor = () => {
                 <div
                   className={`relative flex flex-col ${
                     showSideContent ? "w-8/12" : "w-full"
-                  }  h-full transition-all mt- duration-300 `}
+                  } h-full transition-all mt- duration-300`}
                 >
                   {/* Code and Terminal */}
                   {files.length !== 0 ? (
-                    <div className="flex flex-row  w-full h-full">
+                    <div className="flex flex-row w-full h-full">
                       <div className="relative w-full h-full flex flex-col">
                         <Appbar
                           selectedFile={selectedFile}
@@ -215,6 +224,7 @@ const Editor = () => {
                           onCancel={CancelButtonAppBar}
                           onSelectLanguage={onLanguageSelect}
                           AppBarTheme={lighttheme}
+                          languageApp={language}
                         />
                         <Code
                           selectedFile={selectedFile}
@@ -234,7 +244,6 @@ const Editor = () => {
                             hideTerminal={hideTerminalFunction}
                             stepsForRecording={setStepsForRecording}
                             terminalTheme={lighttheme}
-
                           />
                         </div>
                       </div>
@@ -247,8 +256,10 @@ const Editor = () => {
                 </div>
                 {/* Side Content */}
                 {showSideContent && (
-                  <div className={`w-3/12 grow h-full  bg-white    rounded-br-md  transition-all duration-300`}>
-                    <SideBarhandle
+                  <div
+                    className={`w-3/12 grow h-full bg-white rounded-br-md transition-all duration-300`}
+                  >
+                    <SideBarHandle
                       Stage={state}
                       onNext={nextState}
                       showTerminal={() => setShowTerminal(true)}
@@ -259,6 +270,8 @@ const Editor = () => {
                       stepsForRecording={stepsForRecording}
                       removeSideContent={RemoveSideContent}
                       SideBarTheme={lighttheme}
+                      sidebarState={sidebarState}
+                      setSidebarState={setSidebarState}
                     />
                   </div>
                 )}
@@ -266,8 +279,8 @@ const Editor = () => {
             </div>
           </>
         ) : (
-          <div className="flex justify-center items-center h-screen  max-w-6xl px-4 mx-auto my-16 m-2">
-            <div className="flex flex-row items-center gap-4 h-full w-full ">
+          <div className="flex justify-center items-center h-screen max-w-6xl px-4 mx-auto my-16 m-2">
+            <div className="flex flex-row items-center gap-4 h-full w-full">
               <Skeleton
                 variant="rectangular"
                 className="bg-gray-200 animate-pulse h-full w-1/3"

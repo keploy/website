@@ -131,26 +131,44 @@ export const Terminal = forwardRef(
       <div className="h-full">
         <div
           className={`${
-            terminalTheme ? "terminal_light  bg-neutral-200 border border-y-gray-200 border-b-gray-200 " : "terminal "
+            terminalTheme
+              ? "terminal_light  bg-neutral-200 border border-y-gray-200 border-b-gray-200 "
+              : "terminal "
           } font-courier w-full h-full relative  `}
           ref={ref}
           onClick={focusInput}
         >
           <div
-            className={`absolute top-0  w-full flex justify-center items-center  bg-inherit p-2 px-3 ${
+            className={`sticky top-0  w-full flex justify-center items-center  bg-inherit p-2 px-3 ${
               terminalTheme
                 ? " text-black bg-neutral-200 border border-gray-200  "
-                : " text-white bg-neutral-600 "
+                : " text-white bg-[#171a1e] shadow-md shadow-[#1b1e21] mb-4"
             }`}
           >
             <p className="flex-grow text-center font-bold text-sm">TERMINAL</p>
-            <button
-              className={`close-button bg-primary-300 hover:bg-primary-400 rounded-full w-4 h-4 flex items-center justify-center`}
-              aria-label="Close Terminal"
-              onClick={hideTerminal}
-            >
-              <CloseIcon className="text-primary-300 hover:bg-primary-400 w-3 h-3" />
-            </button>
+            <div className="flex flex-row gap-2">
+              <button
+                className={`close-button bg-red-500 hover:bg-red-600 rounded-full w-4 h-4 flex items-center justify-center`}
+                aria-label="Close Terminal"
+                onClick={hideTerminal}
+              >
+                <CloseIcon className="text-red-600 hover:bg-red-600 w-3 h-3" />
+              </button>
+              <button
+                className={`close-button bg-primary-300 hover:bg-primary-400 rounded-full w-4 h-4 flex items-center justify-center`}
+                aria-label="Close Terminal"
+                onClick={hideTerminal}
+              >
+                <CloseIcon className="text-primary-300 hover:bg-primary-400 w-3 h-3" />
+              </button>
+              <button
+                className={`close-button bg-green-500 hover:bg-green-600 rounded-full w-4 h-4 flex items-center justify-center`}
+                aria-label="Close Terminal"
+                onClick={hideTerminal}
+              >
+                <CloseIcon className="text-green-500 hover:bg-green-600 w-3 h-3" />
+              </button>
+            </div>
           </div>
           <div className="p-1 px-3 ">
             {history.map((line, index) => (
@@ -178,7 +196,7 @@ export const Terminal = forwardRef(
                 {promptLabel}
               </div>
               <div className="flex">
-                <div className="relative w-1/2 bg-black">
+                <div className="relative">
                   <input
                     type="text"
                     value={input}
@@ -188,9 +206,13 @@ export const Terminal = forwardRef(
                     className={`form-input  fat-cursor p-0 bg-inherit text-xs ml-2 border-none focus:outline-none appearance-none ${
                       terminalTheme
                         ? "text-secondary-300 caret-white "
-                        : "text-white caret-black"
+                        : "text-white caret-[#282c34]"
                     } min-w-0`}
-                    style={{ width: inputRef.current ? inputRef.current.value.length + 'ch' : 'auto' }}
+                    style={{
+                      width: inputRef.current
+                        ? inputRef.current.value.length + "ch"
+                        : "auto",
+                    }}
                     spellCheck={false}
                   />
 

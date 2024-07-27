@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FileTree } from "./file-tree";
 import { Directory, File } from "../utils/file-manager";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 export const Sidebar = ({
   rootDir,
   selectedFile,
@@ -25,12 +26,16 @@ export const Sidebar = ({
     <div
       className={`flex flex-col h-full text-sm rounded-bl-md ${
         theme
-          ? "text-secondary-300   bg-neutral-200"
-          : "text-white bg-neutral-800"
-      } `}
+          ? "text-secondary-300 bg-neutral-200"
+          : "text-white bg-[#21252b]"
+      }`}
     >
       <div
-        className={`flex hover:cursor-pointer py-2.5 mb-2  px-1 text-center font-medium ${theme ? "bg-white  border  border-b-gray-100":" bg-neutral-900  "} `}
+        className={`flex hover:cursor-pointer py-2.5 mb-2 px-1 text-center font-medium ${
+          theme
+            ? "bg-white border border-b-gray-100"
+            : "bg-[#21252b] shadow-lg shadow-[#171a1e]"
+        }`}
         onClick={ClickExpanded}
       >
         <ExpandMoreIcon className={`${expanded ? "" : "rotate-[-90deg]"}`} />

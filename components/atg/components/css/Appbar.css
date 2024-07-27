@@ -9,15 +9,13 @@
   left: 0;
   right: 0;
   height: 8px;
-  z-index: 10;
+  z-index: 0;
   pointer-events: none; /* Allow interactions to pass through */
-  transition: overflow-x 0.3s ease;
   background: transparent; /* Transparent background to prevent layout shifts */
 }
 
 .appbar-scrollbar-container:hover {
   pointer-events: auto; /* Enable interactions on hover */
-  overflow-x: auto;
 }
 
 /* Custom scrollbar styling for Webkit browsers */
@@ -41,7 +39,6 @@
 
 .appbar {
   display: flex;
-  overflow-x: hidden;
   position: relative; /* Ensure appbar is properly positioned */
   z-index: 5; /* Lower z-index than the scrollbar container */
 }
@@ -55,3 +52,5 @@
 .tabs-container::-webkit-scrollbar {
   display: none; /* Hide scrollbar in Webkit browsers */
 }
+
+

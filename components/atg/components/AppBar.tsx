@@ -13,6 +13,7 @@ const Appbar = ({
   onCancel,
   onSelectLanguage,
   AppBarTheme,
+  languageApp,
 }: {
   selectedFile: File | undefined;
   selectedFilesArray: File[];
@@ -20,6 +21,7 @@ const Appbar = ({
   onCancel: (file: File) => void;
   onSelectLanguage: (language: string) => void;
   AppBarTheme: boolean;
+  languageApp: string;
 }) => {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,7 +61,7 @@ const Appbar = ({
   return (
     <div
       className={`appbar-container ${
-        AppBarTheme ? "bg-neutral-200" : "bg-neutral-900"
+        AppBarTheme ? "bg-neutral-200" : "bg-[#21252b]"
       } `}
     >
       <div className="appbar-scrollbar-container" ref={scrollRef}></div>
@@ -78,18 +80,21 @@ const Appbar = ({
                     ? ` ${
                         AppBarTheme
                           ? "bg-white border-t-4 border-t-gray-700"
-                          : "bg-neutral-700 border-r-2 border-r-black"
-                      }`
+                          : "bg-[#282c34] shadow-inner shadow-[#21252b] border-r-2 border-r-black"
+                      }`  
                     : `${
                         AppBarTheme
-                          ? "border-r-2 border-r-gray-900 bg-gray-100"
-                          : "bg-neutral-800 border-r-2 border-r-black"
+                          ? "border-r-[1] border-r-gray-900 bg-gray-100"
+                          : "bg-[#21252b] border-r-2 border-r-black"
                       }`
                 } ${key === 0 ? "" : ""}`}
                 onMouseEnter={() => handleMouseEnter(file.id)}
                 onMouseLeave={handleMouseLeave}
               >
-                <button onClick={()=>onSelect(file)} className="w-full h-full">
+                <button
+                  onClick={() => onSelect(file)}
+                  className="w-full h-full"
+                >
                   <FileIcon
                     name={file.name}
                     extension={file?.name?.split(".").pop() || ""}
@@ -138,8 +143,12 @@ const Appbar = ({
             );
           })}
         </div>
-        <div className="flex items-center">
-          <LanguageSelector onSelectLanguageForCode={onSelectLanguage} />
+        <div className="flex relative items-center">
+          <LanguageSelector
+            onSelectLanguageForCode={onSelectLanguage}
+            language={languageApp}
+            Selectortheme={AppBarTheme}
+          />
         </div>
       </div>
     </div>

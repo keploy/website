@@ -9,44 +9,35 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CircularProgress from "@mui/material/CircularProgress";
 import DoneIcon from "@mui/icons-material/Done";
 import LockIcon from "@mui/icons-material/Lock";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CircleIcon from "@mui/icons-material/Circle";
 import StepsForRecording from "../../StepTypes/types";
 import CloseIcon from "@mui/icons-material/Close";
-import CircleIcon from '@mui/icons-material/Circle';
+
 const stepsRecord = [
   {
     label: "Auto Generate Test",
     steps: [
-      {
-        stepName: "Recording",
-        info: "Keploy is starting the recording process",
-      },
-      { stepName: "Hitting API's", info: "We are hitting the api's" },
-      {
-        stepName: "Generating keploy tests",
-        info: "Let's generate the keploy-test cases.",
-      },
+      { stepName: "Recording" },
+      { stepName: "Hitting API's" },
+      { stepName: "Generating keploy tests" },
     ],
     stepName: "Start Recording",
   },
   {
     label: "Remove Duplicate",
     steps: [
-      {
-        stepName: "Starting Deduplication",
-        info: "Let's remove the duplicate test-cases",
-      },
-      { stepName: "Duplicates removed", info: "Duplicates have been removed." },
+      { stepName: "Starting Deduplication" },
+      { stepName: "Duplicates removed" },
     ],
     stepName: "Start Deduplication",
   },
   {
     label: "Test Coverage",
     steps: [
-      { stepName: "Recording", info: "Dummy tesxt here" },
-      { stepName: "Hitting API's", info: "Dummy tesxt here" },
-      { stepName: "Generating Keploy Test Folder", info: "Dummy tesxt here" },
-      { stepName: "Generating keploy tests", info: "Dummy tesxt here" },
+      { stepName: "Recording" },
+      { stepName: "Hitting API's" },
+      { stepName: "Generating Keploy Test Folder" },
+      { stepName: "Generating keploy tests" },
     ],
     stepName: "Get Test Coverage",
   },
@@ -58,6 +49,16 @@ interface SideBarNormalProps {
   stepsForRecording: StepsForRecording;
   RemoveSideContent: () => void;
   SideBartheme: boolean;
+  activeStep: number;
+  subStepIndex: number;
+  expandedSteps: number[];
+  setSidebarState: React.Dispatch<
+    React.SetStateAction<{
+      activeStep: number;
+      subStepIndex: number;
+      expandedSteps: number[];
+    }>
+  >;
 }
 
 export default function SideBarNormal({
@@ -66,11 +67,12 @@ export default function SideBarNormal({
   stepsForRecording,
   RemoveSideContent,
   SideBartheme,
+  activeStep,
+  subStepIndex,
+  expandedSteps,
+  setSidebarState,
 }: SideBarNormalProps) {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [subStepIndex, setSubStepIndex] = React.useState(-1);
   const [subStepCompleted, setSubStepCompleted] = React.useState(false);
-  const [expandedSteps, setExpandedSteps] = React.useState<number[]>([0]);
 
   React.useEffect(() => {
     if (
@@ -87,14 +89,17 @@ export default function SideBarNormal({
           setTimeout(() => {
             setSubStepCompleted(false);
             if (subStepIndex + 1 < stepsRecord[activeStep].steps.length) {
-              setSubStepIndex(subStepIndex + 1);
+              setSidebarState((prevState) => ({
+                ...prevState,
+                subStepIndex: subStepIndex + 1,
+              }));
             } else {
-              setActiveStep((prevActiveStep) => prevActiveStep + 1);
-              setSubStepIndex(-1);
-              setExpandedSteps((prevExpanded) => [
-                ...prevExpanded,
-                activeStep + 1,
-              ]);
+              setSidebarState((prevState) => ({
+                ...prevState,
+                activeStep: prevState.activeStep + 1,
+                subStepIndex: -1,
+                expandedSteps: [...prevState.expandedSteps, activeStep + 1],
+              }));
             }
           }, 500);
         }
@@ -102,36 +107,26 @@ export default function SideBarNormal({
 
       return () => clearTimeout(timer);
     }
-  }, [subStepIndex, activeStep, stepsForRecording]);
+  }, [subStepIndex, activeStep, stepsForRecording, setSidebarState]);
 
   const handleNext = () => {
     onNext();
-    setSubStepIndex(0);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-    setSubStepIndex(-1);
-    setSubStepCompleted(false);
-    setExpandedSteps([0]);
-    onReset();
+    setSidebarState((prevState) => ({
+      ...prevState,
+      subStepIndex: 0,
+    }));
   };
 
   const handleAccordionChange = (index: number) => {
     if (expandedSteps.includes(index) || index <= activeStep) {
-      setExpandedSteps((prevExpanded) =>
-        prevExpanded.includes(index)
-          ? prevExpanded.filter((step) => step !== index)
-          : [...prevExpanded, index]
-      );
+      setSidebarState((prevState) => ({
+        ...prevState,
+        expandedSteps: prevState.expandedSteps.includes(index)
+          ? prevState.expandedSteps.filter((step) => step !== index)
+          : [...prevState.expandedSteps, index],
+      }));
     }
   };
-
-  // React.useEffect(() => {
-  //   console.log("substepIndex: ", subStepIndex);
-  //   console.log("substepcompleted: ", subStepCompleted);
-  //   console.log("expandedSteps: ", expandedSteps);
-  // }, [subStepIndex, subStepCompleted, expandedSteps]);
 
   return (
     <Box
@@ -143,15 +138,16 @@ export default function SideBarNormal({
         "&::-webkit-scrollbar": {
           display: "none", // For Chrome, Safari, and Opera
         },
+        zIndex: "0", // Set a lower z-index
       }}
       className={`${
-        SideBartheme ? "bg-white" : "bg-neutral-800"
+        SideBartheme ? "bg-white" : "bg-[#21252b]"
       } h-full rounded-br-md`}
     >
       <div
         className={`flex items-center h-14 ${
-          SideBartheme ? "bg-neutral-200" : "bg-neutral-900"
-        } justify-between px-3 py-1  sticky top-0 z-10`}
+          SideBartheme ? "bg-neutral-200" : "bg-[#171a1e]"
+        } justify-between px-3 py-1 sticky top-0 z-10`}
       >
         <Typography
           sx={{
@@ -190,7 +186,7 @@ export default function SideBarNormal({
           className={`${
             SideBartheme
               ? "border border-b-1 bg-neutral-200 border-gray-200"
-              : "bg-neutral-900"
+              : "bg-[#171a1e]"
           }`}
           disableGutters={true}
           TransitionProps={{ timeout: { appear: 1, enter: 1, exit: 4 } }}
@@ -252,7 +248,12 @@ export default function SideBarNormal({
                   <Box
                     component="li"
                     key={subIndex}
-                    sx={{ display: "flex", alignItems: "start", mb: 1 }}
+                    sx={{ display: "flex", mb: 1 }}
+                    className={`${
+                      subStepIndex > subIndex || index < activeStep
+                        ? "items-center"
+                        : "items-center"
+                    }`}
                   >
                     <Box
                       sx={{
@@ -265,21 +266,20 @@ export default function SideBarNormal({
                     >
                       {subStepIndex === subIndex && index === activeStep ? (
                         subStepCompleted ? (
-                          <DoneIcon className=" font-bold rounded-md  p-1 text-accent-100" />
+                          <DoneIcon className="font-bold rounded-md p-1 text-accent-100" />
                         ) : (
                           <CircularProgress size={14} />
                         )
                       ) : subStepIndex > subIndex || index < activeStep ? (
-                        <DoneIcon className=" font-bold rounded-md  p-1 text-accent-100" />
+                        <DoneIcon className="font-bold rounded-md p-1 text-accent-100" />
                       ) : (
                         <CircleIcon
-                          className={`text-sm ${
+                          className={`text-xs ${
                             SideBartheme
                               ? "text-secondary-300"
                               : "text-gray-300"
                           } scale-90`}
                         />
-                        // <CheckBoxOutlineBlankIcon className="text-gray-300 shadow-inner scale-90" />
                       )}
                     </Box>
                     <Box className="flex flex-col">
@@ -287,30 +287,25 @@ export default function SideBarNormal({
                         component="span"
                         sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
                         className={`${
-                          SideBartheme ? "text-secondary-300" : "text-gray-300"
+                          subStepIndex === subIndex && index === activeStep
+                            ? subStepCompleted
+                              ? SideBartheme
+                                ? "text-secondary-300"
+                                : "text-gray-300"
+                              : SideBartheme
+                              ? "text-secondary-500"
+                              : "text-gray-100"
+                            : subStepIndex > subIndex || index < activeStep
+                            ? SideBartheme
+                              ? "text-secondary-300"
+                              : "text-gray-300"
+                            : SideBartheme
+                            ? "text-secondary-300"
+                            : "text-gray-300"
                         }`}
                       >
                         {`${subStep.stepName}`}
                       </Box>
-
-                      {(subStepIndex === subIndex && index === activeStep) ||
-                      subStepIndex > subIndex ||
-                      index < activeStep ? (
-                        <Box
-                          component="span"
-                          sx={{ fontSize: "0.65rem", fontWeight: "normal" }}
-                          className={`${
-                            SideBartheme
-                              ? "text-secondary-300"
-                              : "text-gray-300"
-                          } mt-1`}
-                        >
-                          {`${subStep.info}`}
-                        </Box>
-                      ) : (
-                        <p></p>
-                        // <CheckBoxOutlineBlankIcon className="text-gray-300 shadow-inner scale-90" />
-                      )}
                     </Box>
                   </Box>
                 ))}
@@ -324,7 +319,7 @@ export default function SideBarNormal({
                 <div className="">
                   <button
                     onClick={handleNext}
-                    className="mt-1 mr-1 w-full  bg-primary-300 font-semibold  text-secondary-300   px-4 py-2 rounded"
+                    className="mt-1 mr-1 w-full bg-primary-300 font-semibold text-secondary-300 px-4 py-2 rounded"
                     disabled={subStepIndex !== -1}
                   >
                     {step.stepName}
@@ -350,7 +345,7 @@ export default function SideBarNormal({
             Would you like to reset?
           </Typography>
           <button
-            onClick={handleReset}
+            onClick={onReset}
             className="mt-1 mr-1 w-full bg-primary-300 font-semibold scale-90 px-4 py-2 rounded"
           >
             Reset

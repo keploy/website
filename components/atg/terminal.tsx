@@ -116,8 +116,8 @@ function RecordTerminalSession({
       );
       setStepsForRecording((prev) => ({
         ...prev,
-        starting: false,
-        curlApiHitting: false,
+        starting: true,
+        curlApiHitting: true,
       }));
     } else if (loading) {
       pushToHistory(<div className="flex">{<p className="font-bold">{Emoji}</p>}<p className="text-accent-100 font-bold">~/$</p> Loading...</div>);
