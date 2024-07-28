@@ -47,7 +47,7 @@ export default function NavItemWithLargeDropdown({
         <div>
           <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
             {heading}
-            <span className="absolute left-0 bottom-0 w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+            <span className="absolute text-[#eeeded] left-0 bottom-0 w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
           </div>
         </div>
         <div onClick={toggleDropdown} className="pt-4">
@@ -61,7 +61,7 @@ export default function NavItemWithLargeDropdown({
       {openDropdown && (
         <div className="fixed top-20 left-0 bg-[#eeeded] pb-8 z-10 w-full h-[400px]">
           <div className="flex justify-evenly items-start">
-            <div className="flex items-center justify-evenly">
+            <div className="flex items-center justify-evenly max-w-[15rem]">
               {openDropdown && (
                 <div className="">
                   <div>
@@ -79,11 +79,11 @@ export default function NavItemWithLargeDropdown({
                     {dropdownProductData.map((lists) => (
                       <ul>
                         {lists.links.map((links) => (
-                          <li className="flex flex-col gap-4 hover:bg-[#E5905E] px-6 py-4 hover:opacity-65">
+                          <li className="flex flex-col gap-4 hover:bg-[#e5905e] px-6 py-4 hover:opacity-65">
                             <Link
                               href={links.pagelink}
                               target="_blank"
-                              className="flex"
+                              className="flex hover:text-[#fff]"
                             >
                               {links.pageSvg && (
                                 <img src={links.pageSvg} className="pr-2" />
@@ -120,7 +120,7 @@ export default function NavItemWithLargeDropdown({
                             <Link
                               href={links.pagelink}
                               target="_blank"
-                              className="flex"
+                              className="flex hover:text-[#fff]"
                             >
                               {links.pageSvg && (
                                 <img src={links.pageSvg} className="pr-2" />
@@ -157,7 +157,7 @@ export default function NavItemWithLargeDropdown({
                             <Link
                               href={links.pagelink}
                               target="_blank"
-                              className="flex"
+                              className="flex hover:text-[#fff]"
                             >
                               {links.pageSvg && (
                                 <img src={links.pageSvg} className="pr-2" />
