@@ -47,7 +47,7 @@ export default function NavItemWithLargeDropdown({
         <div>
           <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
             {heading}
-            <span className="absolute text-[#eeeded] left-0 bottom-0 w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+            <span className="absolute text-primary-300 left-0 bottom-0 w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
           </div>
         </div>
         <div onClick={toggleDropdown} className="pt-4">
@@ -59,7 +59,7 @@ export default function NavItemWithLargeDropdown({
         </div>
       </div>
       {openDropdown && (
-        <div className="fixed top-20 left-0 bg-[#eeeded] pb-8 z-10 w-full h-[400px]">
+        <div className="fixed top-20 left-0 bg-neutral-100 pb-8 z-10 w-full h-[400px] shadow-lg">
           <div className="flex justify-evenly items-start">
             <div className="flex items-center justify-evenly max-w-[15rem]">
               {openDropdown && (
