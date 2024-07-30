@@ -18,7 +18,7 @@ const Success: React.FC<SuccessProps> = ({ heading, subHeading, ctaText, ctaClic
       </div>
       <button
         onClick={ctaClickFunction}
-        className="btn text-secondary-300 bg-primary-300 mb-4 sm:mb-0 px-4 py-3 rounded text-base font-bold border-1 border-transparent text-white shadow mt-4">
+        className="btn text-secondary-300 bg-primary-300 mb-4 sm:mb-0 px-4 py-3 rounded text-base font-bold border-1 border-transparent shadow mt-4">
         {ctaText}
       </button>
     </div>

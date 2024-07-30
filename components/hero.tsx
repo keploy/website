@@ -31,7 +31,7 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Hero content */}
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20 gap-16">
+        <div className="pt-0 pb-12 md:pt-8 md:pb-20 gap-16">
 
           {/* Section header */}
           <div className=" text-center pb-12 md:pb-16">
@@ -63,9 +63,11 @@ export default function Hero() {
               </span> 
               Tests
               <br />
-              <span className=" dark:text-orange-600 text-orange-600 text-clip">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-red-600 to-orange-500">
                 that actually work!
               </span>
+
+
             </h1>
             <div className="max-w-3xl mx-auto">
               <p className="text-xl lg:text-center text-center text-accent-200 mb-8 dark:text-orange-300" data-aos="zoom-y-out" data-aos-delay="150">

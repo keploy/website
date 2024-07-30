@@ -58,8 +58,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed w-full z-30  bg-neutral-100 dark:bg-dark-background  transition duration-300 ease-in-out ${
-        !top ? "bg-neutral-100 dark:bg-dark-background backdrop-blur-sm shadow-lg" : ""
+      className={`fixed w-full z-30  bg-neutral-100 dark:bg-black  transition duration-300 ease-in-out ${
+        !top ? "bg-neutral-100 dark:bg-black backdrop-blur-sm shadow-lg" : ""
       }`}
     >
       <div className="max-w-6xl dark:text-white mx-auto px-5 sm:px-6">
