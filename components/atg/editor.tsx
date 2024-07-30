@@ -56,6 +56,22 @@ const Editor = () => {
   }, [state]);
 
   useEffect(() => {
+    if (rootDir === GolangData) {
+      const file = findFileByName(GolangData, "server.go");
+      setSelectedFile(file);
+      setFiles(file ? [file] : []);
+    } else if (rootDir === PythonData) {
+      const file = findFileByName(PythonData, "main.py");
+      setSelectedFile(file);
+      setFiles(file ? [file] : []);
+    } else if (rootDir === TypeScriptData) {
+      const file = findFileByName(TypeScriptData, "server.js");
+      setSelectedFile(file);
+      setFiles(file ? [file] : []);
+    }
+  }, [rootDir]);
+
+  useEffect(() => {
     const fetchData = () => {
       let data;
       if (language === "Golang") {
@@ -93,6 +109,12 @@ const Editor = () => {
 
   const onLanguageSelect = (language: string) => {
     setSelectedLanguage(language);
+    setSidebarState({
+      activeStep: 0,
+      subStepIndex: -1,
+      expandedSteps: [0],
+    });
+
   };
 
   const onSelect = (file: File | undefined) => {
@@ -164,6 +186,19 @@ const Editor = () => {
       subStepIndex: -1,
       expandedSteps: [0],
     });
+    if (rootDir === GolangData) {
+      const file = findFileByName(GolangData, "server.go");
+      setSelectedFile(file);
+      setFiles(file ? [file] : []);
+    } else if (rootDir === PythonData) {
+      const file = findFileByName(PythonData, "main.py");
+      setSelectedFile(file);
+      setFiles(file ? [file] : []);
+    } else if (rootDir === TypeScriptData) {
+      const file = findFileByName(TypeScriptData, "server.js");
+      setSelectedFile(file);
+      setFiles(file ? [file] : []);
+    }
   };
 
   const ShowSideContent = () => {

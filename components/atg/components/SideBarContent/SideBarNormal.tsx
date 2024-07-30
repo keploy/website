@@ -194,7 +194,7 @@ export default function SideBarNormal({
           <AccordionSummary
             expandIcon={
               expandedSteps.includes(index) ? (
-                <ExpandMoreIcon className="text-gray-700" />
+                <ExpandMoreIcon className="text-gray-600" />
               ) : index <= activeStep ? (
                 <ExpandMoreIcon className="text-gray-700" />
               ) : (
@@ -218,8 +218,8 @@ export default function SideBarNormal({
                   ? "bg-white"
                   : "bg-gray-200"
                 : index <= activeStep
-                ? "bg-neutral-800"
-                : "bg-neutral-700"
+                ? "bg-[#30363e]"
+                : "bg-[#3f4651]"
             }  `}
           >
             <Typography

@@ -142,7 +142,7 @@ export const Terminal = forwardRef(
             className={`sticky top-0  w-full flex justify-center items-center  bg-inherit p-2 px-3 ${
               terminalTheme
                 ? " text-black bg-neutral-200 border border-gray-200  "
-                : " text-white bg-[#171a1e] shadow-md shadow-[#1b1e21] mb-4"
+                : " text-white bg-[#21252b] shadow-sm shadow-[#1b1e21] mb-4"
             }`}
           >
             <p className="flex-grow text-center font-bold text-sm">TERMINAL</p>

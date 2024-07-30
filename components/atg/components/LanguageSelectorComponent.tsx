@@ -100,7 +100,7 @@ export default function LanguageSelector({
       {isExpanded && (
         <div
           ref={dropdownRef}
-          className={`absolute z-40 w-44 mt-2 rounded-md shadow-lg ${Selectortheme ? "border border-gray-200 bg-white" : "bg-neutral-800"} ring-1 ring-black ring-opacity-5 transition-transform duration-300 ease-in-out opacity-100 scale-100`}
+          className={`absolute z-40 w-44 mt-2 rounded-md shadow-lg ${Selectortheme ? "border border-gray-300 bg-white" : "bg-neutral-800"} ring-1 ring-black ring-opacity-5 transition-transform duration-300 ease-in-out opacity-100 scale-100`}
           style={{ top: "100%", left: "0" }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -116,7 +116,7 @@ export default function LanguageSelector({
               .map((lang) => (
                 <button
                   key={lang.name}
-                  className={`w-full text-left px-10 py-2 text-sm ${Selectortheme ? "text-gray-700 hover:bg-gray-100 hover:text-gray-900" : "bg-[#1a1e22] text-gray-200 hover:text-gray-100 hover:bg-neutral-700 border border-gray-700"} flex items-center transition duration-200 ease-in-out`}
+                  className={`w-full text-left px-10 py-2 text-sm ${Selectortheme ? "text-gray-700 hover:bg-gray-300 hover:text-gray-900 border-b-2 border-gray-200" : "bg-[#1a1e22] text-gray-200 hover:text-gray-100 hover:bg-neutral-700 border border-gray-700"} flex items-center transition duration-200 ease-in-out`}
                   onClick={() => handleSelect(lang.name)}
                   role="menuitem"
                 >

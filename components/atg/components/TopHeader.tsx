@@ -88,7 +88,7 @@ const YourComponent = ({
       <div
         className={`font-semibold py-1 shadow-inner w-full text-center mr-6  rounded-md border ${
           isDarkMode
-            ? "bg-[#121417] text-white border-neutral-600"
+            ? "bg-[#171a1e] text-white border-neutral-600"
             : "bg-white text-gray-500 border-gray-200"}`}
       >
         <p

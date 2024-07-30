@@ -80,12 +80,12 @@ const Appbar = ({
                     ? ` ${
                         AppBarTheme
                           ? "bg-white border-t-4 border-t-gray-700"
-                          : "bg-[#282c34] shadow-inner shadow-[#21252b] border-r-2 border-r-black"
+                          : "bg-[#30363e] shadow-inner shadow-[#21252b] border-r-2 border-r-black text-white"
                       }`  
                     : `${
                         AppBarTheme
-                          ? "border-r-[1] border-r-gray-900 bg-gray-100"
-                          : "bg-[#21252b] border-r-2 border-r-black"
+                          ? "border-r-2 border-r-gray-900 bg-gray-100"
+                          : "bg-[#21252b] border-r-2 border-r-black text-gray-600"
                       }`
                 } ${key === 0 ? "" : ""}`}
                 onMouseEnter={() => handleMouseEnter(file.id)}
