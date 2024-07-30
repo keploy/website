@@ -13,71 +13,71 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
   CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
   MaterialSymbolsLightEarlyOnOutline
 } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/regression-testing";
+import { featuresData,faqQuestions } from "@/components/utils/unit-test-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
-const heroData = {
-  titleTop: "Automate Regression Testing ",
-  titleBottom: "with AI",
-  subtitleTop: "Transforming User Scenarios into Reliable Test Data Instantly!",
-  subtitleBottom:
-    "Turn User Interactions into Test Cases and Data Stubs that actually works! 🚀",
-  animationSrc: testAndStubsGen,
-};
-
-const pageMetadata: Metadata = {
-  title: 'Keploy | Automate Regression Testing with Keploy AI Test Generator!',
-  description: 'Try Keploy.io automated regression testing software that records API calls to test cases and mocks, designed for efficiency and accuracy! Learn more!',
-  keywords: 'regression testing software, regression testing in software testing,automated regression testing',
-};
-
 const blocksData = [
   {
-    title: "Slow Test Execution",
-    description: "Regression testing often involves running a large number of tests, which can be time-consuming and delay the release cycle.",
+    title: "Time-Consuming",
+    description: "Manually writing unit tests takes a lot of time.",
     SvgComponent: MdiLightningBolt,
   },
   {
-    title: "Manual Test Maintenance",
-    description: "Updating and maintaining regression test cases manually as the software evolves can be labor-intensive and prone to errors.",
+    title: "Incomplete Coverage",
+    description: "Ensuring comprehensive test coverage is difficult.",
     SvgComponent: FluentPuzzleCubePiece20Filled,
   },
   {
-    title: "Difficulty in Prioritization",
-    description: "Determining which tests to prioritize for regression testing amidst frequent code changes and updates can be challenging.",
+    title: "High Maintenance",
+    description: "Keeping tests up to date with code changes requires ongoing effort.",
     SvgComponent: CollaborationIcon,
   },
   {
-    title: "Resource Intensive",
-    description: "Regression testing requires significant computational resources and infrastructure, which can be costly to maintain and scale.",
+    title: "Complex Scenarios",
+    description: "Writing effective tests for complex scenarios is challenging.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
-    title: "Test Data Management:",
-    description: "Ensuring consistent and relevant test data for regression testing across different environments and scenarios can be complex and error-prone.",
+    title: "Domain Context",
+    description: "LLMs may generate irrelevant tests due to lack of specific domain knowledge.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
-    title: "Low Test Coverage",
-    description: "Despite efforts, regression testing may not cover all critical paths and edge cases, potentially missing subtle regressions in the software.",
+    title: "Integration Issues",
+    description: "Integrating LLM-generated tests with existing frameworks can be problematic.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
 
+const heroData = {
+  titleTop: "Accurate and Reliable ",
+  titleBottom: "AI unit tests",
+  subtitleTop: "Generate edge cases and keep only necessary ones",
+  subtitleBottom:
+    "AI-Powered Unit Tests for Precision and Reliability! 🚀",
+  animationSrc: testAndStubsGen,
+};
+
+const pageMetadata: Metadata = {
+  title: 'Keploy | Need Quick Mock Data? Try this reliable test data generator!',
+  description: 'Discover how quickly and efficiently you can generate test data by recording API calls with Keploy cutting-edge test data generation tool! Learn more now!',
+  keywords: 'dynamic test data, testing, automation, test data generation',
+};
+
 const ProblemBlocksData = {
-  title: "Navigating Regression Testing",
+  title: "Manual Unit Testing",
   subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "With ",
+  title: "Keploy's ",
+  title2: "ensure ",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "Regression Testing",
-  title2: "leverage",
+  highlightTitle: "Unit Test Generation",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -109,7 +109,7 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
         title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
