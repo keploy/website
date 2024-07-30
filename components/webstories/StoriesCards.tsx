@@ -1,12 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StoryCard from "./StoryCard";
 import { StaticImageData } from "next/image";
 import Container from "@/components/webstories/components/container";
 import SearchBar from "./components/SearchBar";
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 type StoriesCardProps = {
   CardImage: string | StaticImageData;
@@ -22,6 +24,10 @@ type StoriesCardsProps = {
 const StoriesCards = ({ data }: StoriesCardsProps) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchActive, setSearchActive] = useState(false);
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
 
   const filteredData = data.filter((card) => {
     return card.CardDescription.toLowerCase().includes(
@@ -43,9 +49,11 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
   };
 
   return (
-    <div className="relative bg-neutral-100 w-full">
+    <div className="relative bg-neutral-100 w-full" data-aos="fade-up">
       <Container>
-        <h1 className="lg:text-5xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4 text-center">
+        <h1
+          className="lg:text-5xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4 text-center"
+        >
           Test{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
             Stories
@@ -55,28 +63,34 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
           Discover what's going on in and around Keploy. Learn about Keploy and
           everything related to testing. Tap right to read visual stories.
         </p>
-        <div className="flex flex-row items-center mt-20 justify-between">
+        <div className="flex flex-row items-center mt-20 justify-between min-h-[80px]">
           {!searchActive && (
             <h1 className="lg:text-3xl text-2xl text-secondary-300 font-bold leading-tighter tracking-tighter my-4 mb-5">
               Latest Web Stories
             </h1>
           )}
-          <div className={`flex items-center  self-center ${searchActive ? ' w-full justify-between' : ' '}`}>
+          <div
+            className={`flex items-center self-center ${
+              searchActive ? "w-full justify-between" : ""
+            }`}
+          >
             {searchActive ? (
               <>
-                <SearchBar onChange={handleInputChange}/>
+                <SearchBar onChange={handleInputChange} />
                 <IconButton onClick={handleCloseClick} color="primary">
-                  <CloseIcon />
+                  <CloseIcon className="text-secondary-300"/>
                 </IconButton>
               </>
             ) : (
               <IconButton onClick={handleSearchClick} color="primary">
-                <SearchIcon />
+                <SearchIcon className="text-secondary-300" />
               </IconButton>
             )}
           </div>
         </div>
-        <div className="w-full grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 lg:gap-x-5 gap-y-5 md:gap-y-10 mb-16 mt-5">
+        <div
+          className="w-full grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 lg:gap-x-5 gap-y-5 md:gap-y-10 mb-16 mt-5"
+        >
           {filteredData.length > 0 ? (
             filteredData.map((card, key) => (
               <div key={key} className="flex">

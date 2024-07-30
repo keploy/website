@@ -6,8 +6,9 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import CloseIcon from "@/components/webstories/components/CloseIcon";
 import { StaticImageData } from "next/image";
-  import RootLayout from "@/app/layout";
-
+import RootLayout from "@/app/layout";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 interface PreloadedImage {
   url: string | StaticImageData;
@@ -30,11 +31,11 @@ const Index: React.FC = () => {
     title: storyData[0]?.Heading || "Webstory",
     description: storyData[0]?.text || "A webstory",
     keywords: "webstories, stories, entertainment, reading",
-    // image:
-    //   typeof storyData[0]?.imageUrl === "string"
-    //     ? storyData[0]?.imageUrl
-    //     : storyData[0]?.imageUrl?.src || "",
   };
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -50,7 +51,7 @@ const Index: React.FC = () => {
       images.map(
         (url) =>
           new Promise<PreloadedImage>((resolve) => {
-            const img = new (window as any).Image();
+            const img =  new (window as any).Image();;
             img.src = typeof url === "string" ? url : url.src;
             img.onload = () => resolve({ url, img });
           })
@@ -60,19 +61,12 @@ const Index: React.FC = () => {
     setIsPreloading(false);
   };
 
-  const loadCurrentAndNextImage = (index: number) => {
+  useEffect(() => {
     if (storyData) {
-      const imageUrls = [
-        storyData[index]?.imageUrl,
-        storyData[index + 1]?.imageUrl,
-      ].filter(Boolean) as (string | StaticImageData)[];
+      const imageUrls = storyData.map((story) => story.imageUrl).filter(Boolean) as (string | StaticImageData)[];
       preloadImages(imageUrls);
     }
-  };
-
-  useEffect(() => {
-    loadCurrentAndNextImage(currentStoryIndex);
-  }, [currentStoryIndex, storyData]);
+  }, [storyData]);
 
   const handleClose = () => {
     window.location.href = "/webstories";
@@ -95,11 +89,9 @@ const Index: React.FC = () => {
     return preloadedImage ? preloadedImage.img : null;
   };
 
-  const nextImageIndex = currentStoryIndex + 1;
-
   return (
     <RootLayout metadata={metadata} HeaderDisplayed={false}>
-      <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
+      <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center" data-aos="fade-up">
         <div className="absolute w-full h-full top-0 opacity-95 bg-black">
           <Image
             src={
