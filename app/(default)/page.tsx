@@ -9,12 +9,11 @@ import Community from "@/components/community";
 import Installation from "@/components/installation";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
-import TwitterTestimonials from "@/components/TwitterTestimonials";
-import Header from "@/components/ui/header";
+import TwitterTestimonials from "@/components/TwitterTestimonials"
+import Editor from "@/components/atg/editor";
 export default function Home() {
   return (
     <>
-        <Header/>
         <Hero />
         <Features />
   
@@ -24,7 +23,8 @@ export default function Home() {
           company={testimonialData[0].company}
           image={testimonialData[0].image}
         />
-        <Installation/>
+        <Editor/>
+        {/* <RunCommandComponent/> */}
         <Testimonial
           content={testimonialData[2].content}
           author={testimonialData[2].author}

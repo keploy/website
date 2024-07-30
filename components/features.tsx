@@ -19,7 +19,8 @@ const TestAndStubGenerationImage = () => {
     <div className="inline-flex flex-col w-full imageToShow " id="img-1">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       <div className=" mb-2 h-[50%]">
-        <LottiePlayer VideoPath={testAndStubsGen} />
+        {/* <LottiePlayer VideoPath={testAndStubsGen} /> */}
+        hello
       </div>
       
     </div>
@@ -31,7 +32,8 @@ const TestDuplicationImage = () => {
     <div className="w-full relative imageToShow" id="img-2">
       {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
       {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
-      <LottiePlayer VideoPath={deDuplication} className="h-[60vh]" />
+      {/* <LottiePlayer VideoPath={deDuplication} className="h-[60vh]" /> */}
+      hello
     </div>
   );
 };
