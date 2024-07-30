@@ -32,6 +32,10 @@ button {
     cursor: pointer !important;
 }
 
+.not-allowed-button {
+    cursor: not-allowed !important;
+}
+
 .terminal {
     height: 30vh;
     overflow-y: scroll; /* Enable vertical scrolling */

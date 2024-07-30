@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/code-coverage";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -28,6 +31,38 @@ const heroData = {
     "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
   animationSrc: testAndStubsGen,
 };
+const blocksData = [
+  {
+    title: "Manual Tests",
+    description: "Writing tests manually for code coverage is time-consuming and prone to errors.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Limited Coverage",
+    description: "Traditional code coverage methods may not cover all code paths, leading to gaps in coverage.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Realistic Scenarios",
+    description: "Test scenarios may not accurately reflect real-world usage, affecting code coverage accuracy.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Setup Complexity",
+    description: "Setting up code coverage tools can be complex and require additional configuration.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Maintenance Challenges",
+    description: "Maintaining code coverage tests as code evolves can be challenging and time-consuming.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Slow Feedback Loop",
+    description: "Waiting for code coverage results can slow down the development process and delay bug fixes.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
 const ProblemBlocksData = {
   title: "Smart generation - Enhanced development",
   subtitle: "👋 Say Hi to 👋",

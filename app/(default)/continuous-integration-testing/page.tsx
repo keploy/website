@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/continuous-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -28,9 +31,43 @@ const heroData = {
     "Make testing in CI hassle-free with Keploy's seamless CI integration!🚀",
   animationSrc: testAndStubsGen,
 };
+
+const blocksData = [
+  {
+    title: "Monitoring and Debugging",
+    description: "Identifying and resolving issues related to failed tests and effectively can be a tough task, affecting overall productivity.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Limited Scalability",
+    description: "Scaling CI pipelines to accommodate growing codebases and increased testing requirements requires additional resources and infrastructure",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Maintaining Test Stability",
+    description: "Keeping tests stable and reliable across frequent code changes and updates can be difficult, impacting the accuracy of test results.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Complex Configuration",
+    description: "Setting up and configuring CI pipelines can be intricate and time-consuming, especially for large or complex projects.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Testing Bottlenecks",
+    description: "Testing bottlenecks can occur when tests take too long to execute, delaying feedback and slowing down the development process.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "CI Integration",
+    description: "Ensuring seamless integration of various tools, environments, and dependencies within CI pipelines can be challenging and prone to errors.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Tackling Continuous Testing",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };

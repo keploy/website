@@ -174,7 +174,7 @@ useGSAP(
                 heading={"Record Replay API Flows"}
                 description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
                 btnDescription="Explore More"
-                btnLink="/stub-generation"
+                btnLink="https://keploy.io/docs/keploy-explained/introduction/"
               />
             </div>
             <div className="flex items-center detail">
@@ -194,7 +194,7 @@ useGSAP(
                 heading={"Find Duplicate Tests"}
                 description="Find redundant tests that doesn't add to the test coverage. Automatically detect and remove duplicate tests, ideal for big-teams crowd-sourcing tests."
                 btnDescription="Explore More"
-                btnLink="/test-duplication"
+                btnLink="https://keploy.io/docs/keploy-cloud/deduplication/"
               />
             </div>
             <div className="flex items-center detail">
@@ -214,7 +214,7 @@ useGSAP(
                 heading={"Works with JUnit, PyTest, Jest, Go-Test in CI/CD"}
                 description="Merge Keploy tests coverage with unit testing libraries for combined test coverage gating in CI/CD pipelines like Jenkins, Github Actions."
                 btnDescription="Explore More"
-                btnLink="/native-integration"
+                btnLink=" https://keploy.io/docs/server/sdk-installation/go/"
               />
             </div>
           </div>
