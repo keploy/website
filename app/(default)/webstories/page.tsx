@@ -1,13 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import StoriesCards from "@/components/webstories/StoriesCards";
-import { DataFiles } from "../../../components/utils/data";
-import Header from "@/components/webstories/components/Header";
+import { DataFiles } from "../../../components/utils/data"; // Import Data from data file
 import RootLayout from "@/app/layout";
 
 const Page = () => {
- 
-
   const Data = DataFiles.map((item) => ({
     CardImage: item.CardImage,
     CardDescription: item.CardDescription,

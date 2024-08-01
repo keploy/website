@@ -25,8 +25,8 @@ Created and maintained with ❤️ by [Keploy.io](https://keploy.io/).
 
 ### Getting Started
 
-Please make sure you have Node.js 18.x.x installed on your machine.
-
+- Please make sure you have Node.js 18.x.x installed on your machine.
+- Please install the ESLint extension by microsoft - https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 First, run the development server:
 
 ```bash
@@ -36,6 +36,8 @@ yarn dev
 # or
 pnpm dev
 ```
+
+- Run `npx eslint .` to identify the linting issues and fix them before raising the PR. 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 Note: this template is inspired from cruip/tailwind-landing-page-template 

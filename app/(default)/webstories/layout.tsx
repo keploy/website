@@ -1,34 +1,23 @@
 "use client";
 
-import { useEffect } from 'react'
+import { Inter } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+});
 
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
-export default function DefaultLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {  
-
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      disable: 'phone',
-      duration: 700,
-      easing: 'ease-out-cubic',
-    })
-  })
-
+export default function RootLayout({children}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <main className="grow bg-neutral-100 z-10">
-
-        {children}
-
-      </main>
-
-      {/*<Footer />*/}
-    </>
-  )
+    <html lang="en">
+      <title>WebStories for Software Testing</title>
+      <body
+        className={` ${inter.className} font-inter antialiased bg-white text-gray-900 tracking-tight`}
+      >
+        <div className={`flex flex-col min-h-screen  `}>
+          {children}
+        </div>
+      </body>
+    </html>
+  );
 }
