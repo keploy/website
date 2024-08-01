@@ -38,17 +38,17 @@ export const SolutionsList = [
       {
         pagelink: "https://keploy.io/regression-testing",
         pageName: "Regression Testing",
-        pageSvg: "keploy-api-testing-dropDown.svg",
+        pageSvg: "keploy-regression-testing-dropDown.svg",
       },
       {
         pagelink: "https://keploy.io/continuous-integration-testing",
         pageName: "Continuous Integration Testing",
-        pageSvg: "keploy-api-testing-dropDown.svg",
+        pageSvg: "keploy-ci-testing-dropDown.svg",
       },
       {
         pagelink: "https://keploy.io/unit-test-generator",
         pageName: "Unit test generation",
-        pageSvg: "keploy-api-testing-dropDown.svg",
+        pageSvg: "keploy-unit-testing-dropDown.svg",
       },
       {
         pagelink: "https://keploy.io/ai-code-generation",
@@ -77,6 +77,24 @@ export const SocialsList = [
         pagelink: "https://x.com/Keployio",
         pageName: "Twitter",
         pageSvg: "keploy-twitter-dropdown.svg",
+      },
+    ],
+  },
+];
+
+export const BlogsList = [
+  {
+    heading: "Blogs",
+    links: [
+      {
+        pagelink: "https://keploy.io/blog/technology",
+        pageName: "Technology",
+        pageSvg: "keploy-regression-testing-dropDown.svg",
+      },
+      {
+        pagelink: "https://keploy.io/blog/community",
+        pageName: "Community",
+        pageSvg: "keploy-community-dropDown.svg",
       },
     ],
   },

@@ -13,7 +13,7 @@ import NavItemWithSmallDropdown, {
 } from "@/components/nav/navItemWithSmallDropdown";
 //import { PillarPages } from "../utils/resources";
 import NavItemWithLargeDropdown from "../nav/navItemWithLargeDropdown";
-import { ProductList, SocialsList, SolutionsList } from "../utils/resources";
+import { BlogsList, ProductList, SocialsList, SolutionsList } from "../utils/resources";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -75,21 +75,18 @@ export default function Header() {
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end items-center">
               <li>
+                <NavItemWithSmallDropdown
+                  heading="Blogs"
+                  dropdownData={BlogsList}
+                />
+              </li>
+              <li>
                 <Link
                   target="_blank"
                   href="https://keploy.io/docs"
                   className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Docs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Tech Blog
                 </Link>
               </li>
               <li>

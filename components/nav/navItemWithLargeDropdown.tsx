@@ -59,7 +59,7 @@ export default function NavItemWithLargeDropdown({
         </div>
       </div>
       {openDropdown && (
-        <div className="fixed top-20 left-0 bg-neutral-100 pb-8 z-10 w-full h-[400px] shadow-lg">
+        <div className="fixed top-20 left-0 bg-neutral-100 pb-8 z-10 w-full h-[430px] shadow-lg">
           <div className="flex justify-evenly items-start">
             <div className="flex items-center justify-evenly max-w-[15rem]">
               {openDropdown && (
@@ -135,43 +135,27 @@ export default function NavItemWithLargeDropdown({
                 </div>
               )}
             </div>
-            <div className="flex items-center justify-evenly">
-              {openDropdown && (
-                <div className="">
-                  <div>
-                    {dropdownProductData.map((lists) => (
-                      <div key="Solutions">
-                        {" "}
-                        <span className="text-[#666666] uppercase px-3 py-3 flex items-center transition duration-150 ease-in-out flex-col text-[1.25rem]">
-                          Socials
-                          <span className="absolute left-0 bottom-0 w-full h-[.125rem] bg-white"></span>
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex flex-row gap-5">
-                    {dropdownSocialsData.map((lists) => (
-                      <ul>
-                        {lists.links.map((links) => (
-                          <li className="flex flex-col gap-4 hover:bg-[#E5905E] px-6 py-4 hover:opacity-65">
-                            <Link
-                              href={links.pagelink}
-                              target="_blank"
-                              className="flex hover:text-[#fff]"
-                            >
-                              {links.pageSvg && (
-                                <img src={links.pageSvg} className="pr-2" />
-                              )}
-                              {links.pageName}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+          </div>
+          <div className="fixed left-[35%] pt-4 flex flex-row">
+            {dropdownSocialsData.map((list) => (
+              <ul className="flex flex-row gap-16">
+                {list.links.map((item) => (
+                  <li>
+                    <Link
+                      href={item.pagelink}
+                      target="_blank"
+                      className="flex flex-row justify-center items-center gap-2"
+                    >
+                      {item.pageSvg && <img src={item.pageSvg} />}
+
+                      <p className="text-[20px] hover:text-primary-300 duration-100">
+                        {item.pageName}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
       )}

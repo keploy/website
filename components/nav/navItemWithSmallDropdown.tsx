@@ -16,6 +16,7 @@ export interface DropdowndataInterface {
 export interface LinkDatainterface {
   pagelink: string;
   pageName: string;
+  pageSvg: string;
 }
 export default function NavItemWithSmallDropdown({
   heading,
@@ -38,44 +39,53 @@ export default function NavItemWithSmallDropdown({
       onMouseLeave={hideDropdown}
       className="relative flex items-center py-3 transition duration-150 ease-in-out cursor-pointer"
     >
-      <div className="flex align-center text-gray-600 hover:text-primary-300">
-        <div className="font-medium mr-2">{heading}</div>
-        <div onClick={toggleDropdown} className="pt-1.5">
-          {openDropdown ? (
-            <UpIcon className="text-current" />
-          ) : (
-            <DownIcon className="text-current" />
-          )}
+      <div className="flex align-center text-gray-600">
+        <div className="flex">
+          <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
+            {heading}
+            <span className="absolute text-primary-300 left-0 bottom-0 w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+          </div>
+          <div onClick={toggleDropdown} className="pt-4">
+            {openDropdown ? (
+              <UpIcon className="text-current" />
+            ) : (
+              <DownIcon className="text-current" />
+            )}
+          </div>
         </div>
       </div>
       {openDropdown && (
-        <div className="absolute top-full bg-[#eeeded] pb-8 z-10">
-          <div>
-            <div className="flex items-center justify-between">
-              {dropdownData.map((lists) => (
-                <div key={lists.heading}>
-                  {" "}
-                  <span className="font-bold text-secondary-300 uppercase px-3 py-3 flex items-center transition duration-150 ease-in-out">
-                    {lists.heading}
-                  </span>
-                  <ul>
-                    {lists.links.map((link) => (
-                      <li key={link.pageName}>
-                        {" "}
-                        {/* Ensure to add a key for list items when mapping */}
-                        <Link
-                          target="_blank"
-                          href={link.pagelink}
-                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group"
-                        >
-                          {link.pageName}
-                          <span className="absolute left-0 bottom-0 w-full h-0.5 bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
-                        </Link>
-                      </li>
+        <div className="fixed top-20 left-[40%] bg-neutral-100 pb-8 z-10 w-[300px] h-[150px] shadow-lg">
+          <div className="flex justify-evenly items-start">
+            <div className="flex items-center justify-evenly max-w-[15rem]">
+              {openDropdown && (
+                <div>
+                  <div>
+                    {dropdownData.map((item) => (
+                      <div className="flex flex-row gap-5">
+                        {dropdownData.map((lists) => (
+                          <ul>
+                            {lists.links.map((links) => (
+                              <li className="flex flex-col gap-4 hover:bg-[#e5905e] px-9 py-4 hover:opacity-65">
+                                <Link
+                                  href={links.pagelink}
+                                  target="_blank"
+                                  className="flex hover:text-[#fff]"
+                                >
+                                  {links.pageSvg && (
+                                    <img src={links.pageSvg} className="pr-2" />
+                                  )}
+                                  {links.pageName}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        ))}
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
