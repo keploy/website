@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import StoriesCards from "@/components/webstories/StoriesCards";
-import { DataFiles } from "../../../components/utils/data";
+import { DataFiles } from "@/components/utils/data";
 import Header from "@/components/webstories/components/Header";
 import RootLayout from "@/app/layout";
 
@@ -23,7 +23,7 @@ const Page = () => {
 
   return (
     <RootLayout metadata={metadata}> 
-      <div className="flex flex-row justify-end my-2 mt-10 border  min-h-screen overflow-hidden">
+      <div className="flex flex-row justify-end my-2 mt-10 border bg-neutral-100 min-h-screen overflow-hidden">
         <StoriesCards data={Data.reverse()} />
       </div>
    </RootLayout>

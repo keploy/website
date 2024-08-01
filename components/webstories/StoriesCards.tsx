@@ -49,11 +49,9 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
   };
 
   return (
-    <div className="relative bg-neutral-100 w-full" data-aos="fade-up">
+    <div className="relative bg-neutral-100 w-full my-28" data-aos="fade-up">
       <Container>
-        <h1
-          className="lg:text-5xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-4 text-center"
-        >
+        <h1 className=" lg:text-5xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-6 text-center">
           Test{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
             Stories
