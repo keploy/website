@@ -11,8 +11,8 @@ import CloseIcon from "@mui/icons-material/Close"; // Use CloseIcon to mimic the
 
 export interface AdditionalProps {
   inputRef: React.RefObject<HTMLInputElement>;
-  hideTerminal: () => void;
   terminalTheme: boolean;
+  SetTerminalHeight:(val:string)=>void;
 }
 
 interface CombinedProps extends TerminalProps, AdditionalProps {}
@@ -24,16 +24,15 @@ export const Terminal = forwardRef(
       promptLabel = ">",
       inputRef,
       commands = {},
-      hideTerminal,
       terminalTheme,
+      SetTerminalHeight
     } = props;
 
     const [input, setInputValue] = useState<string>("");
     const [blinkingTrue, setBlinkingTrue] = useState<boolean>(true);
     const spanRef = useRef<HTMLSpanElement>(null);
     const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    console.log(terminalTheme);
-
+    const [height,setHeight] = useState<string>("orange");
     /**
      * Focus on the input whenever we render the terminal
      */
@@ -130,7 +129,7 @@ export const Terminal = forwardRef(
     return (
       <div className="h-full">
         <div
-          className={`${
+          className={` h-[30vh] ${ 
             terminalTheme
               ? "terminal_light  bg-neutral-200 border border-y-gray-200 border-b-gray-200 "
               : "terminal "
@@ -139,7 +138,7 @@ export const Terminal = forwardRef(
           onClick={focusInput}
         >
           <div
-            className={`sticky top-0  w-full flex justify-center items-center  bg-inherit p-2 px-3 ${
+            className={`sticky top-0 left-0 right-0  w-full flex justify-center items-center  bg-inherit p-2 px-3 ${
               terminalTheme
                 ? " text-black bg-neutral-200 border border-gray-200  "
                 : " text-white bg-[#21252b] shadow-sm shadow-[#1b1e21] mb-4"
@@ -150,21 +149,21 @@ export const Terminal = forwardRef(
               <button
                 className={`close-button bg-red-500 hover:bg-red-600 rounded-full w-4 h-4 flex items-center justify-center`}
                 aria-label="Close Terminal"
-                onClick={hideTerminal}
+                onClick={()=>{SetTerminalHeight("red"); setHeight("red")}}
               >
                 <CloseIcon className="text-red-600 hover:bg-red-600 w-3 h-3" />
               </button>
               <button
                 className={`close-button bg-primary-300 hover:bg-primary-400 rounded-full w-4 h-4 flex items-center justify-center`}
                 aria-label="Close Terminal"
-                onClick={hideTerminal}
+                onClick={()=>{SetTerminalHeight("orange");setHeight("orange")}}
               >
                 <CloseIcon className="text-primary-300 hover:bg-primary-400 w-3 h-3" />
               </button>
               <button
                 className={`close-button bg-green-500 hover:bg-green-600 rounded-full w-4 h-4 flex items-center justify-center`}
                 aria-label="Close Terminal"
-                onClick={hideTerminal}
+                onClick={()=>{SetTerminalHeight("green");setHeight("green")}}
               >
                 <CloseIcon className="text-green-500 hover:bg-green-600 w-3 h-3" />
               </button>

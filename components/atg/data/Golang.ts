@@ -197,56 +197,27 @@ export const GolangData: Directory = {
           parentId: "src",
           depth: 2,
           content:
-            'package main\n\n\
-          import (\n\
-            "context"\n\
-            "github.com/gin-gonic/gin"\n\
-            "go.mongodb.org/mongo-driver/bson"\n\
-            "go.mongodb.org/mongo-driver/mongo"\n\
-            "go.mongodb.org/mongo-driver/mongo/options"\n\
-            "log"\n\
-            "net/http"\n\
-          )\n\n\
-          var ctx = context.Background()\n\n\
-          func getDB() (*mongo.Database, error) {\n\
-            clientOptions := options.Client().ApplyURI("mongodb://root:pass@localhost:27017/admin")\n\
-            client, err := mongo.Connect(ctx, clientOptions)\n\
-            if err != nil {\n\
-              return nil, err\n\
-            }\n\n\
-            db := client.Database("animal_db")\n\
-            return db, nil\n\
-          }\n\n\
-          func main() {\n\
-            r := gin.Default()\n\n\
-            r.GET("/", func(c *gin.Context) {\n\
-              c.String(http.StatusOK, "Welcome to the world of animals.")\n\
-            })\n\n\
-            r.GET("/animals", func(c *gin.Context) {\n\
-              db, err := getDB()\n\
-              if err != nil {\n\
-                c.AbortWithStatus(http.StatusInternalServerError)\n\
-                log.Fatal(err)\n\
-              }\n\n\
-              cursor, err := db.Collection("animal_tb").Find(ctx, bson.M{})\n\
-              if err != nil {\n\
-                c.AbortWithStatus(http.StatusInternalServerError)\n\
-                log.Fatal(err)\n\
-              }\n\n\
-              var animals []bson.M\n\
-              if err = cursor.All(ctx, &animals); err != nil {\n\
-                c.AbortWithStatus(http.StatusInternalServerError)\n\
-                log.Fatal(err)\n\
-              }\n\n\
-              c.JSON(http.StatusOK, gin.H{"animals": animals})\n\
-            })\n\n\
-            if err := r.Run(":5000"); err != nil {\n\
-              log.Fatal(err)\n\
-            }\n\
-          }\n\
-          ',
+            'package main\n\nimport (\n\t"log"\n\t"net/http"\n\n\t"github.com/gin-gonic/gin"\n)\n\nfunc main() {\n\tr := gin.Default()\n\n\tr.GET("/", func(c *gin.Context) {\n\t\tc.String(http.StatusOK, "Welcome to the world of animals.")\n\t})\n\n\tr.GET("/animals", func(c *gin.Context) {\n\t\tc.JSON(http.StatusOK, gin.H{"animals": map[string]string{"animals": "apple"}})\n\t})\n\n\tif err := r.Run(":5000"); err != nil {\n\t\tlog.Fatal(err)\n\t}\n}',
+        },
+        {
+          id: "schema_file",
+          name: "schema.json",
+          type: Type.FILE,
+          parentId: "src",
+          depth: 2,
+          content:
+            '{"openapi": "3.0.3", "info": {"title": "Animal API", "description": "API for managing animals", "version": "1.0.0"}, "servers": [{"url": "http://localhost:5000/"}], "paths": {"/": {"get": {"summary": "Welcome message", "operationId": "getWelcomeMessage", "responses": {"200": {"description": "Welcome to the world of animals", "content": {"text/plain": {"schema": {"type": "string", "example": "Welcome to the world of animals."}}}}}}}, "/animals": {"get": {"summary": "Get list of animals", "operationId": "getAnimals", "responses": {"200": {"description": "List of animals", "content": {"application/json": {"schema": {"type": "object", "properties": {"animals": {"type": "object", "additionalProperties": {"type": "string"}}}, "example": {"animals": {"animals": "apple"}}}}}}}}}}, "components": {"schemas": {"Error": {"type": "object", "properties": {"code": {"type": "integer", "format": "int32"}, "message": {"type": "string"}}}}}}',
         },
       ],
+    },
+    {
+      id: "test_root",
+      name: "Keploy",
+      parentId: "root",
+      type: Type.DIRECTORY,
+      depth: 1,
+      dirs: [],
+      files: [],
     },
   ],
   files: [],

@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Sidebar from "./Editor/components/sidebar";
 import { Code } from "./Editor/editor/code";
-import styled from "@emotion/styled";
 import Appbar from "./components/AppBar";
 import { Type, File, Directory } from "./Editor/utils/file-manager";
 import { GolangData } from "./data/Golang";
@@ -12,7 +11,7 @@ import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
 import SideBarHandle from "./components/SideBarhandle";
-import StepsForRecording from "./StepTypes/types";
+import StepsForRecording from "./Utils/types";
 import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
 
@@ -39,6 +38,8 @@ const Editor = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [language, setSelectedLanguage] = useState<string>("Golang");
   const [showSideContent, setShowSideContent] = useState<boolean>(false);
+  const [TerminalStatus, setTerminalStatus] = useState<string>("red");
+  const [TerminalHeight, setTerminalHeight] = useState<string>("0");
   const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
     {
       starting: false,
@@ -92,7 +93,8 @@ const Editor = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === "`") {
         event.preventDefault();
-        toggleTerminal();
+        setTerminalHeight("max-h-96");
+        setTerminalStatus("orange");
       }
     };
 
@@ -105,7 +107,7 @@ const Editor = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [showTerminal, files]);
+  }, [showTerminal, files, TerminalHeight, TerminalStatus]);
 
   const onLanguageSelect = (language: string) => {
     setSelectedLanguage(language);
@@ -114,7 +116,6 @@ const Editor = () => {
       subStepIndex: -1,
       expandedSteps: [0],
     });
-
   };
 
   const onSelect = (file: File | undefined) => {
@@ -129,12 +130,14 @@ const Editor = () => {
 
   const onSelectAppBar = (file: File) => {
     setSelectedFile(file);
-  };
+  };  
 
   const CancelButtonAppBar = (file: File) => {
     const updatedFiles = files.filter((f) => f.id !== file.id);
-    setFiles(updatedFiles);
-    setSelectedFile(updatedFiles[updatedFiles.length - 1]);
+    if (updatedFiles.length >= 1) {
+      setFiles(updatedFiles);
+      setSelectedFile(updatedFiles[updatedFiles.length - 1]);
+    }
   };
 
   const nextState = () => {
@@ -168,15 +171,7 @@ const Editor = () => {
     setShowTerminal((prevShowTerminal) => !prevShowTerminal);
   };
 
-  const showTerminalFunction = () => {
-    setShowTerminal(true);
-  };
-
-  const hideTerminalFunction = () => {
-    setShowTerminal(false);
-  };
-
-  const resetEverthing = () => {
+  const resetEverything = () => {
     setSelectedFile(undefined);
     setShowTerminal(false);
     setState(-1);
@@ -212,9 +207,21 @@ const Editor = () => {
     setTheme(!lighttheme);
   };
 
+  const settingTerminalStatus = (val: string) => {
+    setTerminalStatus(val);
+  };
+
   useEffect(() => {
-    console.log(showSideContent);
-  }, [showSideContent]);
+    if (TerminalStatus === "green") {
+      setTerminalHeight("max-h-100");
+    } else if (TerminalStatus === "orange") {
+      setTerminalHeight("max-h-96");
+    } else if (TerminalStatus === "red") {
+      setTerminalHeight("max-h-0");
+    }
+    console.log(TerminalStatus);
+    console.log(TerminalHeight);
+  }, [TerminalStatus, TerminalHeight]);
 
   return (
     <>
@@ -268,17 +275,15 @@ const Editor = () => {
                           settingCodeTheme={lighttheme}
                         />
                         <div
-                          className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${
-                            showTerminal ? "max-h-96" : "max-h-0"
-                          } overflow-hidden`}
+                          className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${TerminalHeight} overflow-hidden`}
                         >
                           <MainTerminal
                             inputRef={inputRef}
                             functionName={functionName}
                             setRootDir={setRootDir}
-                            hideTerminal={hideTerminalFunction}
                             stepsForRecording={setStepsForRecording}
                             terminalTheme={lighttheme}
+                            setTerminalHeightStatus={settingTerminalStatus}
                           />
                         </div>
                       </div>
@@ -297,16 +302,20 @@ const Editor = () => {
                     <SideBarHandle
                       Stage={state}
                       onNext={nextState}
-                      showTerminal={() => setShowTerminal(true)}
+                      showTerminal={() => {
+                        setShowTerminal(true);
+                        setTerminalHeight("max-h-96");
+                        setTerminalStatus("orange");
+                      }}
                       functionName={functionName}
-                      code={selectedFile?.content}
-                      language="GOLANG"
-                      onReset={resetEverthing}
+                      onReset={resetEverything}
                       stepsForRecording={stepsForRecording}
                       removeSideContent={RemoveSideContent}
                       SideBarTheme={lighttheme}
                       sidebarState={sidebarState}
                       setSidebarState={setSidebarState}
+                      CodeLanguage={language.toUpperCase()}
+                      CodeContent={selectedFile?.content}
                     />
                   </div>
                 )}

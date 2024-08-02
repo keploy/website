@@ -10,7 +10,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import DoneIcon from "@mui/icons-material/Done";
 import LockIcon from "@mui/icons-material/Lock";
 import CircleIcon from "@mui/icons-material/Circle";
-import StepsForRecording from "../../StepTypes/types";
+import StepsForRecording from "../../Utils/types";
 import CloseIcon from "@mui/icons-material/Close";
 
 const stepsRecord = [

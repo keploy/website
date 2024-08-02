@@ -4,9 +4,11 @@ import { useState } from "react";
 // submitCodeSnippet.ts
 export const submitCodeSnippet = async ({
   language,
+  schema,
   code,
 }: {
   language: string;
+  schema: string;
   code: string;
 }) => {
   try {
@@ -16,22 +18,22 @@ export const submitCodeSnippet = async ({
 
     const requestBody = {
       query: `
-        mutation SubmitCode($language: String!, $code: String!) {
-          submitCode(language: $language, code: $code) {
+        mutation SubmitCode($language: String!, $schema: String!, $code: String!) {
+          submitCode(language: $language, schema: $schema, code: $code) {
             code_submission_id
           }
         }
       `,
-      variables: { language, code },
+      variables: { language, schema, code },
     };
 
     const options: RequestInit = {
       method: "POST",
       headers,
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify(requestBody),  
     };
 
-    const response = await fetch("http://localhost:8080/query", options);
+    const response = await fetch("https://landing-page.staging.keploy.io/query", options);
     const responseData = await response.json();
 
     if (response.ok && responseData?.data?.submitCode?.code_submission_id) {
@@ -53,6 +55,7 @@ export const submitCodeSnippet = async ({
     return null;
   }
 };
+
 
 // runCurlCommand.ts
 export const runCurlCommand = async ({
@@ -91,7 +94,7 @@ export const runCurlCommand = async ({
       body: JSON.stringify(requestBody),
     };
 
-    const response = await fetch("http://localhost:8080/query", options);
+    const response = await fetch("https://landing-page.staging.keploy.io/query", options);
     const responseData = await response.json();
 
     if (response.ok && responseData?.data?.runCommand) {
@@ -126,7 +129,7 @@ export const useRunCommandSubscription = ({
   );
   const [command, setCommand] = useState<string>(initialCommand);
   const [submitted, setSubmitted] = useState(false);
-
+  console.log(codeSubmissionId);
   const { data, loading, error } = useSubscription(RUN_COMMAND_SUBSCRIPTION, {
     variables: { code_submission_id: codeSubmissionId, command },
     skip: !submitted, // Skip the subscription until the form is submitted
@@ -184,7 +187,7 @@ export async function fetchTestSets(
     code_submission_id: codeSubmissionId,
     command: "FETCH_TEST_SETS",
   };
-  return await postRequest("http://localhost:8080/query", query, variables);
+  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
 }
 
 export async function fetchTestList(
@@ -201,7 +204,7 @@ export async function fetchTestList(
     command: "FETCH_TESTS_LIST",
     test_set_name: testSetName,
   };
-  return await postRequest("http://localhost:8080/query", query, variables);
+  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
 }
 
 export async function fetchTest(
@@ -220,7 +223,7 @@ export async function fetchTest(
     test_set_name: testSetName,
     test_case_name: testCaseName,
   };
-  return await postRequest("http://localhost:8080/query", query, variables);
+  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
 }
 
 export async function curlCommand(
@@ -237,7 +240,7 @@ export async function curlCommand(
     command: "CURL",
     command_content: customCommand,
   };
-  return await postRequest("http://localhost:8080/query", query, variables);
+  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
 }
 
 export async function fetchMock(
@@ -254,5 +257,5 @@ export async function fetchMock(
     command: "FETCH_MOCK",
     test_set_name: testSetName,
   };
-  return await postRequest("http://localhost:8080/query", query, variables);
+  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
 }

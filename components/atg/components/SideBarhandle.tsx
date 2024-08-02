@@ -1,21 +1,22 @@
 import React, { useEffect, FC } from "react";
 import SideBarNormal from "./SideBarContent/SideBarNormal";
 import { submitCodeSnippet } from "@/app/api/hello/atg";
-import StepsForRecording from "../StepTypes/types";
+import StepsForRecording from "../Utils/types";
+import { GolangSchema, JavaScriptSchema, PythonSchema } from "../Utils/Schema";
 
 type StageComponent = FC;
 
-const SideBarHandle: FC<{
+interface SideBarHandleProps {
   Stage: number;
   onNext: () => void;
   showTerminal: () => void;
   functionName: string;
-  language: string;
-  code: string | undefined;
   onReset: () => void;
   removeSideContent: () => void;
   stepsForRecording: StepsForRecording;
   SideBarTheme: boolean;
+  CodeLanguage: string;
+  CodeContent?: string;
   sidebarState: {
     activeStep: number;
     subStepIndex: number;
@@ -28,43 +29,71 @@ const SideBarHandle: FC<{
       expandedSteps: number[];
     }>
   >;
-}> = ({
+}
+
+const SideBarHandle: FC<SideBarHandleProps> = ({
   Stage,
   onNext,
   showTerminal,
   functionName,
-  language,
-  code,
   onReset,
-  stepsForRecording,
   removeSideContent,
+  stepsForRecording,
   SideBarTheme,
+  CodeLanguage,
+  CodeContent,
   sidebarState,
   setSidebarState,
 }) => {
-  const MovingtoNextStage = async () => {
+  const moveToNextStage = async () => {
+    if (functionName === "Start") {
+      var schema = "";
+      if(CodeLanguage == "GOLANG"){
+        schema = GolangSchema;
+      }else if(CodeLanguage == "PYTHON"){
+        schema = PythonSchema;
+      }else if(CodeLanguage == "JAVASCRIPT"){
+        schema = JavaScriptSchema
+      }
+      try {
+        const response = await submitCodeSnippet({
+          language: CodeLanguage,
+          code: CodeContent || "",
+          schema: GolangSchema,
+        });
+        if (response) {
+          localStorage.setItem("code_submission_id", response);
+        }
+      } catch (error) {
+        console.error("Error storing code submission ID:", error);
+      }
+    }
+    if(functionName=="Start"){
+      await new Promise(resolve => setTimeout(resolve, 4000)); // 2-second timeout
+    }
     showTerminal();
     onNext();
   };
 
-  useEffect(() => {
-    const storeCodeSubmissionId = async () => {
-      if (code && language) {
-        try {
-          const codeSubmissionId = await submitCodeSnippet({ language, code });
-          if (codeSubmissionId) {
-            localStorage.setItem("code_submission_id", codeSubmissionId);
-          }
-        } catch (error) {
-          console.log("Error storing code submission ID:", error);
-        }
-      }
-    };
-
-    if (functionName === "Start") {
-      storeCodeSubmissionId();
-    }
-  }, [functionName, code, language]); // Add dependencies if needed
+  // useEffect(() => {
+  //   const storeSubmissionCode = async () => {
+  //     try {
+  //       const response = await submitCodeSnippet({
+  //         language: CodeLanguage,
+  //         code: CodeContent || "",
+  //         schema: GolangSchema,
+  //       });
+  //       if (response) {
+  //         localStorage.setItem("code_submission_id", response);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error storing code submission ID:", error);
+  //     }
+  //   };
+  //   if (functionName === "Start") {
+  //     storeSubmissionCode();
+  //   }
+  // },[functionName, CodeLanguage, CodeContent]);
 
   const handleNext = () => {
     onNext();
@@ -99,7 +128,7 @@ const SideBarHandle: FC<{
       } rounded-br-md`}
     >
       <SideBarNormal
-        onNext={MovingtoNextStage}
+        onNext={moveToNextStage}
         onReset={handleReset}
         stepsForRecording={stepsForRecording}
         RemoveSideContent={removeSideContent}

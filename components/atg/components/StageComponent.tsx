@@ -24,25 +24,25 @@ const StageComponent = ({
     onNext();
   };
 
-  useEffect(() => {
-    const storeCodeSubmissionId = async () => {
-      if (code && language) {
-        try {
-          const codeSubmissionId = await submitCodeSnippet({ language, code });
-          if (codeSubmissionId) {
-            localStorage.setItem("code_submission_id", codeSubmissionId);
-          }
-        } catch (error) {
-          console.log("Error storing code submission ID:", error);
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const storeCodeSubmissionId = async () => {
+  //     if (code && language) {
+  //       try {
+  //         const codeSubmissionId = await submitCodeSnippet({ language, code });
+  //         if (codeSubmissionId) {
+  //           localStorage.setItem("code_submission_id", codeSubmissionId);
+  //         }
+  //       } catch (error) {
+  //         console.log("Error storing code submission ID:", error);
+  //       }
+  //     }
+  //   };
 
-    if (functionName === "Start" && !initialPushRef.current) {
-      storeCodeSubmissionId();
-      initialPushRef.current = true;
-    }
-  }, [functionName, code, language]); // Add dependencies if needed
+  //   if (functionName === "Start" && !initialPushRef.current) {
+  //     storeCodeSubmissionId();
+  //     initialPushRef.current = true;
+  //   }
+  // }, [functionName, code, language]); // Add dependencies if needed
 
   return (
     <div className="w-full  border p-2 border-gray-300 flex justify-between items-center">

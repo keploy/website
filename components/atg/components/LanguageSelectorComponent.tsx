@@ -9,7 +9,7 @@ import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 const languages = [
   { name: "Golang", image: GO },
   { name: "Python", image: PYTHON },
-  { name: "JavaScript", image: JAVASCRIPT },
+  { name: "Javascript", image: JAVASCRIPT },
 ];
 
 interface LanguageSelectorProps {

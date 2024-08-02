@@ -51,7 +51,6 @@ const Appbar = ({
 
   const handleMouseEnter = (fileId: string) => {
     setHoveredTab(fileId);
-    // console.log(fileId);
   };
 
   const handleMouseLeave = () => {
@@ -70,12 +69,12 @@ const Appbar = ({
           AppBarTheme ? "border border-gray-300" : ""
         } `}
       >
-        <div className="tabs-container flex-grow" ref={tabsRef}>
+        <div className="tabs-container" ref={tabsRef}>
           {selectedFilesArray.map((file, key) => {
             return (
               <div
                 key={file.id}
-                className={`flex flex-row items-center cursor-pointer ${
+                className={`flex flex-row flex-grow items-center cursor-pointer ${
                   file?.id === selectedFile?.id
                     ? ` ${
                         AppBarTheme
@@ -93,7 +92,7 @@ const Appbar = ({
               >
                 <button
                   onClick={() => onSelect(file)}
-                  className="w-full h-full"
+                  className=""
                 >
                   <FileIcon
                     name={file.name}

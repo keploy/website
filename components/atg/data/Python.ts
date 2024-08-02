@@ -21,7 +21,7 @@ export const PythonData: Directory = {
           type: Type.FILE,
           parentId: "src2",
           depth: 2,
-          content: "flask\npymongo\narrow",
+          content: "flask\npymongo\narrow\ncoverage",
         },
         {
           id: "main_py",
@@ -30,36 +30,16 @@ export const PythonData: Directory = {
           parentId: "src2",
           depth: 2,
           content:
-            "from flask import Flask, jsonify\n\
-import pymongo\n\
-from pymongo import MongoClient\n\
-\n\
-app = Flask(__name__)\n\
-\n\
-def get_db():\n\
-    client = MongoClient(host='localhost',\n\
-                         port=27017, \n\
-                         username='root', \n\
-                         password='pass',\n\
-                         authSource='admin')\n\
-                         \n\
-    db = client['animal_db']\n\
-    return db\n\
-\n\
-@app.route('/')\n\
-def ping_server():\n\
-    return 'Welcome to the world of animals.'\n\
-\n\
-@app.route('/animals')\n\
-def get_stored_animals():\n\
-    db = get_db()\n\
-    _animals = db.animal_tb.find()\n\
-    animals = [{'id': animal['id'], 'name': animal['name'], 'type': animal['type']} for animal in _animals]\n\
-    return jsonify({'animals': animals})\n\
-\n\
-if __name__=='__main__':\n\
-    app.run(host='0.0.0.0', port=5000)\n\
-",
+            'from flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route(\'/\')\ndef ping_server():\n\treturn "Welcome to the world of animals."\n\n@app.route(\'/animals\')\ndef get_stored_animals():\n\tanimals = [{"id": "animals"}]\n\treturn jsonify({"animals": animals})\n\nif __name__ == \'__main__\':\n\tapp.run(host="0.0.0.0", port=5000)',
+        },
+        {
+          id: "schema_json",
+          name: "schema.json",
+          type: Type.FILE,
+          parentId: "src2",
+          depth: 2,
+          content:
+            '{"openapi": "3.0.3", "info": {"title": "Animal API", "description": "API for managing animals", "version": "1.0.0"}, "servers": [{"url": "http://localhost:5000/"}], "paths": {"/": {"get": {"summary": "Welcome message", "operationId": "pingServer", "responses": {"200": {"description": "Welcome to the world of animals", "content": {"text/plain": {"schema": {"type": "string", "example": "Welcome to the world of animals."}}}}}}}, "/animals": {"get": {"summary": "Get list of animals", "operationId": "getStoredAnimals", "responses": {"200": {"description": "List of animals", "content": {"application/json": {"schema": {"type": "object", "properties": {"animals": {"type": "array", "items": {"type": "object", "properties": {"id": {"type": "string", "example": "animals"}}}}}, "example": {"animals": [{"id": "animals"}]}}}}}}}}, "components": {"schemas": {"Error": {"type": "object", "properties": {"code": {"type": "integer", "format": "int32"}, "message": {"type": "string"}}}}}}}',
         },
       ],
     },
