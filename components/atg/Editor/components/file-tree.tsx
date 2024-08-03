@@ -22,21 +22,23 @@ interface FileTreeProps {
   rootDir: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File | undefined) => void;
-  themeFile:boolean;
+  themeFile: boolean;
 }
 
 export const FileTree = (props: FileTreeProps) => {
   useEffect(() => {
     props.onSelect(undefined);
   }, [props.rootDir]);
-  return <SubTree directory={props.rootDir} themeSub={props.themeFile} {...props}  />;
+  return (
+    <SubTree directory={props.rootDir} themeSub={props.themeFile} {...props} />
+  );
 };
 
 interface SubTreeProps {
   directory: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File) => void;
-  themeSub:boolean;
+  themeSub: boolean;
 }
 
 const SubTree = (props: SubTreeProps) => {
@@ -77,7 +79,7 @@ const FileDiv = ({
   selectedFile: File | undefined;
   onClick: () => void;
   openParameter?: boolean;
-  themeFileDiv:boolean;
+  themeFileDiv: boolean;
 }) => {
   const isSelected = selectedFile && selectedFile.id === file.id;
   const depth = file.depth;
@@ -86,9 +88,21 @@ const FileDiv = ({
     <div
       className={`flex items-center ${
         isSelected
-          ? `${themeFileDiv?"bg-gray-200 border-y-1 border-y-gray-400":"bg-gray-700"}`
+          ? `${
+              themeFileDiv
+                ? "bg-gray-200 border-y-1 border-y-gray-400"
+                : "bg-gray-700"
+            }`
           : "bg-transparent"
-      }  cursor-pointer ${themeFileDiv?(!isSelected ? "hover:bg-gray-200" : "hover:bg-gray-300"):(!isSelected ? "hover:bg-gray-800" : "hover:bg-gray-600")}  `}
+      } cursor-pointer ${
+        themeFileDiv
+          ? !isSelected
+            ? "hover:bg-gray-200"
+            : "hover:bg-gray-300"
+          : !isSelected
+          ? "hover:bg-gray-800"
+          : "hover:bg-gray-600"
+      } `}
       onClick={onClick}
       style={{ paddingLeft: `${(depth + 1) * 16}px` }} // Adjust padding for depth, add an additional level for files
     >
@@ -98,7 +112,11 @@ const FileDiv = ({
         ) : (
           <MdOutlineKeyboardArrowRight />
         ))}
-      <FileIcon name={icon} extension={file?.name?.split(".").pop() || ""} themeIcons={themeFileDiv} />
+      <FileIcon
+        name={icon}
+        extension={file?.name?.split(".").pop() || ""}
+        themeIcons={themeFileDiv}
+      />
       <span className="ml-1">{file.name}</span>
     </div>
   );
@@ -114,17 +132,25 @@ const SetTestSets = async (
   if (response.success) {
     const runCommandSets = response.data.data.runCommand;
     const newTestSets = runCommandSets.split("\n");
-    let val = 0;
     newTestSets.pop();
-    const newDirs = newTestSets.map((TestSetName: string, index: number) => ({
-      id: index.toString(),
-      name: TestSetName,
-      parentId: "test_root",
-      type: Type.DIRECTORY,
-      depth: 2,
-      dirs: [],
-      files: [],
-    }));
+
+    const newDirs = await Promise.all(
+      newTestSets.map(async (TestSetName: string, index: number) => {
+        const newDir: Directory = {
+          id: index.toString(),
+          name: TestSetName,
+          parentId: "test_root",
+          type: Type.DIRECTORY,
+          depth: 2,
+          dirs: [],
+          files: [],
+        };
+
+        // await SetTestList(newDir, setDirectory);
+        return newDir;
+      })
+    );
+
     setDirectory({
       ...directory,
       dirs: newDirs,
@@ -179,7 +205,7 @@ const SetTestList = async (
         content: mockDetails,
       });
     } else {
-      console.log("error bhyi error in mocks");
+      console.log("error in fetching mocks");
     }
 
     setDirectory({
@@ -213,16 +239,17 @@ const DirDiv = ({
   directory,
   selectedFile,
   onSelect,
-  themeDir
+  themeDir,
 }: {
   directory: Directory;
   selectedFile: File | undefined;
   onSelect: (file: File) => void;
-  themeDir:boolean;
+  themeDir: boolean;
 }) => {
   const [open, setOpen] = useState(() =>
     isChildSelected(directory, selectedFile)
   );
+  const [emptyDirectory, setEmptyDirectory] = useState<boolean>(false);
   const [dirState, setDirState] = useState(directory);
   const depth = directory.depth;
 
@@ -234,6 +261,11 @@ const DirDiv = ({
       await SetTestList(dirState, setDirState);
     }
   };
+  useEffect(() => {
+    if (directory.files.length == 0 && directory.dirs.length == 0) {
+      setEmptyDirectory(true);
+    }
+  }, [directory]);
 
   return (
     <>
@@ -292,9 +324,9 @@ const FileIcon = ({
 }: {
   name?: string;
   extension?: string;
-  themeIcons:boolean;
+  themeIcons: boolean;
 }) => {
-  const icon = getIcon(extension || "", name || "" , themeIcons);
+  const icon = getIcon(extension || "", name || "", themeIcons);
   return (
     <span className="flex w-5 h-5 justify-center items-center">{icon}</span>
   );

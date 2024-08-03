@@ -129,7 +129,7 @@ export const Terminal = forwardRef(
     return (
       <div className="h-full">
         <div
-          className={` h-[30vh] ${ 
+          className={` ${ 
             terminalTheme
               ? "terminal_light  bg-neutral-200 border border-y-gray-200 border-b-gray-200 "
               : "terminal "

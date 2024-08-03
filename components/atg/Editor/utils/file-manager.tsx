@@ -24,76 +24,76 @@ export interface Directory extends CommonProps {
 
 /**
  * 
- * @param data 
+//  *  
  */
-export function buildFileTree(data: any): Directory {
-  const dirs = [...data.directories]; 
-  const files = [...data.modules]; 
-  const cache = new Map<string, Directory | File>(); 
+// export function buildFileTree(data: any): Directory {
+//   const dirs = [...data.directories]; 
+//   const files = [...data.modules]; 
+//   const cache = new Map<string, Directory | File>(); 
 
-  let rootDir: Directory = {
-    id: "0",
-    name: "root",
-    parentId: undefined,
-    type: Type.DIRECTORY,
-    depth: 0,
-    dirs: [],
-    files: []
-  };
-  dirs.forEach((item) => {
-    let dir: Directory = {
-      id: item.shortid,
-      name: item.title,
-      parentId: item.directory_shortid === null ? "0" : item.directory_shortid,
-      type: Type.DIRECTORY,
-      depth: 0,
-      dirs: [],
-      files: []
-    };
+//   let rootDir: Directory = {
+//     id: "0",
+//     name: "root",
+//     parentId: undefined,
+//     type: Type.DIRECTORY,
+//     depth: 0,
+//     dirs: [],
+//     files: []
+//   };
+//   dirs.forEach((item) => {
+//     let dir: Directory = {
+//       id: item.shortid,
+//       name: item.title,
+//       parentId: item.directory_shortid === null ? "0" : item.directory_shortid,
+//       type: Type.DIRECTORY,
+//       depth: 0,
+//       dirs: [],
+//       files: []
+//     };
 
-    cache.set(dir.id, dir);
-  });
-  files.forEach((item) => {
-    let file: File = {
-      id: item.shortid,
-      name: item.title,
-      parentId: item.directory_shortid === null ? "0" : item.directory_shortid,
-      type: Type.FILE,
-      depth: 0,
-      content: item.code
-    };
-    cache.set(file.id, file);
-  });
-  cache.forEach((value, key) => {
-    if (value.parentId === "0") {
-      if (value.type === Type.DIRECTORY) rootDir.dirs.push(value as Directory);
-      else rootDir.files.push(value as File);
-    } else {
-      const parentDir = cache.get(value.parentId as string) as Directory;
-      if (value.type === Type.DIRECTORY)
-        parentDir.dirs.push(value as Directory);
-      else parentDir.files.push(value as File);
-    }
-  });
+//     cache.set(dir.id, dir);
+//   });
+//   files.forEach((item) => {
+//     let file: File = {
+//       id: item.shortid,
+//       name: item.title,
+//       parentId: item.directory_shortid === null ? "0" : item.directory_shortid,
+//       type: Type.FILE,
+//       depth: 0,
+//       content: item.code
+//     };
+//     cache.set(file.id, file);
+//   });
+//   cache.forEach((value, key) => {
+//     if (value.parentId === "0") {
+//       if (value.type === Type.DIRECTORY) rootDir.dirs.push(value as Directory);
+//       else rootDir.files.push(value as File);
+//     } else {
+//       const parentDir = cache.get(value.parentId as string) as Directory;
+//       if (value.type === Type.DIRECTORY)
+//         parentDir.dirs.push(value as Directory);
+//       else parentDir.files.push(value as File);
+//     }
+//   });
 
-  getDepth(rootDir, 0);
+//   getDepth(rootDir, 0);
 
-  return rootDir;
-}
+//   return rootDir;
+// }
 
-/**
- * @param rootDir 
- * @param curDepth 
- */
-function getDepth(rootDir: Directory, curDepth: number) {
-  rootDir.files.forEach((file) => {
-    file.depth = curDepth + 1;
-  });
-  rootDir.dirs.forEach((dir) => {
-    dir.depth = curDepth + 1;
-    getDepth(dir, curDepth + 1);
-  });
-}
+// /**
+//  * @param rootDir 
+//  * @param curDepth 
+//  */
+// function getDepth(rootDir: Directory, curDepth: number) {
+//   rootDir.files.forEach((file) => {
+//     file.depth = curDepth + 1;
+//   });
+//   rootDir.dirs.forEach((dir) => {
+//     dir.depth = curDepth + 1;
+//     getDepth(dir, curDepth + 1);
+//   });
+// }
 
 export function findFileByName(
   rootDir: Directory,
