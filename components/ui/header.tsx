@@ -7,8 +7,13 @@ import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
-import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
-import { PillarPages } from "../utils/resources";
+import NavItemWithSmallDropdown, {
+  DropdowndataInterface,
+  LinkDatainterface,
+} from "@/components/nav/navItemWithSmallDropdown";
+//import { PillarPages } from "../utils/resources";
+import NavItemWithLargeDropdown from "../nav/navItemWithLargeDropdown";
+import { BlogsList, ProductList, SocialsList, SolutionsList } from "../utils/resources";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -68,7 +73,13 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
-            <ul className="flex grow justify-end flex items-center">
+            <ul className="flex grow justify-end items-center">
+              <li>
+                <NavItemWithSmallDropdown
+                  heading="Blogs"
+                  dropdownData={BlogsList}
+                />
+              </li>
               <li>
                 <Link
                   target="_blank"
@@ -79,30 +90,13 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Tech Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/community"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Articles
-                </Link>
-              </li>
-              <div className="px-5">
-                {" "}
-                <NavItemWithSmallDropdown
-                  heading="Resources"
-                  dropdownData={PillarPages}
+                <NavItemWithLargeDropdown
+                  heading="Platform"
+                  dropdownProductData={ProductList}
+                  dropdownSolutionsData={SolutionsList}
+                  dropdownSocialsData={SocialsList}
                 />
-              </div>
+              </li>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
@@ -131,7 +125,10 @@ export default function Header() {
                   {" "}
                   |
                 </span>
-                <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
+                <span className="text-base flex gap-1">
+                  {" "}
+                  ⭐️ <CountingNumbers className="" />
+                </span>
               </Link>
             </div>
             <Link
