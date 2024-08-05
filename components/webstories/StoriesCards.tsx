@@ -91,7 +91,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
         >
           {filteredData.length > 0 ? (
             filteredData.map((card, key) => (
-              <div key={key} className="flex">
+              <div key={key} className="flex hover:scale-101 duration-300">
                 <StoryCard
                   imagesrc={card.CardImage}
                   CardDescription={card.CardDescription}

@@ -14,7 +14,7 @@ export default function RootLayout({children}: {
       <body
         className={` ${inter.className} font-inter antialiased bg-white text-gray-900 tracking-tight`}
       >
-        <div className={`flex flex-col min-h-screen  `}>
+        <div className={`flex flex-col  overflow-hidden  `}>
           {children}
         </div>
       </body>

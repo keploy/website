@@ -23,7 +23,7 @@ const StoryCard = ({
   return (
     <div
       key={key}
-      className="relative flex flex-col h-full items-center mb-2 hover:cursor-pointer  hover:scale-101 border border-gray-300 rounded-md mx-auto hover:shadow-[0_0_5px_5px_rgba(0,0,0,0.2)] duration-150 group"
+      className="relative flex flex-col h-full items-center mb-2 hover:scale-105 hover:cursor-pointer  border border-gray-300 rounded-md mx-auto hover:shadow-[0_0_5px_5px_rgba(0,0,0,0.2)] duration-150 group"
       data-aos="zoom-y-out" data-aos-delay="150"
     >
       <Link  href={`/webstories/${slug}`}>

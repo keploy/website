@@ -9,7 +9,7 @@ const Page = () => {
   const Data = DataFiles.map((item) => ({
     CardImage: item.CardImage,
     CardDescription: item.CardDescription,
-    Slug: item.Slug,
+    Slug: item.Slug,  
     Category: item.Categories,
   }));
 
