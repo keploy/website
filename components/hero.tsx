@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+"use client"
 import VideoThumb from '@/public/images/demo-thumbnail.png'
 import ModalVideo from '@/components/modal-video'
 import Image from "next/image";
@@ -7,7 +9,19 @@ import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
 import APItext from "@/public/images/apiText.png"
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import Particles from './Particles';
+
+
 export default function Hero() {
+  const { theme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
+ 
+  useEffect(() => {
+    setColor(theme === "dark" ? "#ffffff" : "#000000");
+  }, [theme]);
+
   return (
     <section className="relative">
 
@@ -28,7 +42,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
         {/* Hero content */}
         <div className="pt-32 pb-12 md:pt-40 md:pb-20 gap-16">
@@ -102,6 +116,13 @@ export default function Hero() {
       </div>
       <TrustedBy/>
       {/*Trusted by users section*/}
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={150}
+        ease={80}
+        color={color}
+        refresh
+      />
 
     </section>
   )
