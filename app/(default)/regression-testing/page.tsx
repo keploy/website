@@ -36,32 +36,32 @@ const pageMetadata: Metadata = {
 const blocksData = [
   {
     title: "Slow Test Execution",
-    description: "Regression testing often involves running a large number of tests, which can be time-consuming and delay the release cycle.",
+    description: "Regression testing involves running a large suite of tests, which can be extremely time-consuming, often causing delays in the release cycle and slowing down the overall development process.",
     SvgComponent: MdiLightningBolt,
   },
   {
     title: "Manual Test Maintenance",
-    description: "Updating and maintaining regression test cases manually as the software evolves can be labor-intensive and prone to errors.",
+    description: "As software evolves, manually updating and maintaining regression test cases becomes labor-intensive and error-prone, increasing the risk of outdated or inaccurate tests.",
     SvgComponent: FluentPuzzleCubePiece20Filled,
   },
   {
     title: "Difficulty in Prioritization",
-    description: "Determining which tests to prioritize for regression testing amidst frequent code changes and updates can be challenging.",
+    description: " Amidst frequent code changes, determining which tests to prioritize for regression testing is challenging, often leading to inefficient testing and potential oversight of critical areas.",
     SvgComponent: CollaborationIcon,
   },
   {
     title: "Resource Intensive",
-    description: "Regression testing requires significant computational resources and infrastructure, which can be costly to maintain and scale.",
+    description: "Regression testing demands significant computational resources and robust infrastructure, which can be costly to maintain and scale, especially for large and complex applications.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
     title: "Test Data Management:",
-    description: "Ensuring consistent and relevant test data for regression testing across different environments and scenarios can be complex and error-prone.",
+    description: "Managing consistent and relevant test data across different environments and scenarios is complex and prone to errors, impacting the reliability and effectiveness of regression tests.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
     title: "Low Test Coverage",
-    description: "Despite efforts, regression testing may not cover all critical paths and edge cases, potentially missing subtle regressions in the software.",
+    description: "Despite extensive efforts, regression testing may still miss critical paths and edge cases, leaving subtle regressions undetected and potentially causing issues in the software.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
