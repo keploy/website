@@ -90,3 +90,13 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+.input_search {
+  outline: none;
+}
+
+.input_search:focus {
+  outline: none;
+  box-shadow: none;
+}
