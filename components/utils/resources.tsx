@@ -27,10 +27,6 @@ export const PillarPages = [
           pageName: "Regression Testing"
         },
         {
-          pagelink: "/regression-testing",
-          pageName: "Regression Testing"
-        },
-        {
           pagelink: "/api-testing",
           pageName: "API Testing",
         },
