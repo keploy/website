@@ -31,7 +31,7 @@ export const TypeScriptData: Directory = {
           parentId: "src3",
           depth: 2,
           content:
-            "\"const express = require('express');\\n\\nconst app = express();\\n\\nconst kMiddleware = require('@keploy/sdk/dist/v2/dedup/middleware.js');\\napp.use(kMiddleware());\\n\\napp.get('/', (req, res) => {\\n  res.send('Welcome to the world of animals.');\\n});\\n\\napp.get('/animals', async (req, res) => {\\n  try {\\n    res.json({ animals: 'tiger' });\\n  } catch (err) {\\n    console.error(err);\\n    res.sendStatus(500);\\n  } \\n});\\n\\napp.listen(5000, () => {\\n  console.log('Server started on port 5000');\\n});\"",
+            "const express = require('express');\n\nconst app = express();\n\nconst kMiddleware = require('@keploy/sdk/dist/v2/dedup/middleware.js');\n\napp.use(kMiddleware());\n\napp.get('/', (req, res) => {\n    res.send('Welcome to the world of animals.');\n});\n\napp.get('/animals', async (req, res) => {\n    try {\n        res.json({ animals: 'tiger' });\n    } catch (err) {\n        console.error(err);\n        res.sendStatus(500);\n    }\n});\n\napp.listen(5000, () => {\n    console.log('Server started on port 5000');\n});",
         },
       ],
     },

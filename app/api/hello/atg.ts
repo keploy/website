@@ -109,16 +109,16 @@ export const runCurlCommand = async ({
   }
 };
 
-const RUN_COMMAND_SUBSCRIPTION = gql`
-  subscription RunCommand($code_submission_id: String!, $command: String!) {
-    runCommand(code_submission_id: $code_submission_id, command: $command)
-  }
-`;
 
 type RunCommandSubscriptionParams = {
   codeSubmissionId: string;
   command: string;
 };
+const RUN_COMMAND_SUBSCRIPTION = gql`
+  subscription RunCommand($code_submission_id: String!, $command: String!) {
+    runCommand(code_submission_id: $code_submission_id, command: $command)
+  }
+`;
 
 export const useRunCommandSubscription = ({
   codeSubmissionId: initialCodeSubmissionId,
@@ -129,11 +129,12 @@ export const useRunCommandSubscription = ({
   );
   const [command, setCommand] = useState<string>(initialCommand);
   const [submitted, setSubmitted] = useState(false);
-  console.log(codeSubmissionId);
   const { data, loading, error } = useSubscription(RUN_COMMAND_SUBSCRIPTION, {
     variables: { code_submission_id: codeSubmissionId, command },
     skip: !submitted, // Skip the subscription until the form is submitted
   });
+
+  
 
   const handleSubmit = (e?: React.FormEvent) => {
     if (e) e.preventDefault();

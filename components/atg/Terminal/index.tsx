@@ -12,7 +12,8 @@ import CloseIcon from "@mui/icons-material/Close"; // Use CloseIcon to mimic the
 export interface AdditionalProps {
   inputRef: React.RefObject<HTMLInputElement>;
   terminalTheme: boolean;
-  SetTerminalHeight:(val:string)=>void;
+  SetTerminalHeight: (val: string) => void;
+  Loading?: boolean;
 }
 
 interface CombinedProps extends TerminalProps, AdditionalProps {}
@@ -25,14 +26,15 @@ export const Terminal = forwardRef(
       inputRef,
       commands = {},
       terminalTheme,
-      SetTerminalHeight
+      SetTerminalHeight,
+      Loading,
     } = props;
 
     const [input, setInputValue] = useState<string>("");
     const [blinkingTrue, setBlinkingTrue] = useState<boolean>(true);
     const spanRef = useRef<HTMLSpanElement>(null);
     const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const [height,setHeight] = useState<string>("orange");
+    const [height, setHeight] = useState<string>("orange");
     /**
      * Focus on the input whenever we render the terminal
      */
@@ -44,6 +46,11 @@ export const Terminal = forwardRef(
       inputRef.current?.focus();
     }, [inputRef]);
 
+    useEffect(() => {
+      if (Loading) {
+        inputRef.current?.value == "Loading ... ";
+      }
+    }, [Loading]);
     /**
      * When user types something, we update the input value
      */
@@ -129,7 +136,7 @@ export const Terminal = forwardRef(
     return (
       <div className="h-full">
         <div
-          className={` ${ 
+          className={` ${
             terminalTheme
               ? "terminal_light  bg-neutral-200 border border-y-gray-200 border-b-gray-200 "
               : "terminal "
@@ -149,21 +156,30 @@ export const Terminal = forwardRef(
               <button
                 className={`close-button bg-red-500 hover:bg-red-600 rounded-full w-4 h-4 flex items-center justify-center`}
                 aria-label="Close Terminal"
-                onClick={()=>{SetTerminalHeight("red"); setHeight("red")}}
+                onClick={() => {
+                  SetTerminalHeight("red");
+                  setHeight("red");
+                }}
               >
                 <CloseIcon className="text-red-600 hover:bg-red-600 w-3 h-3" />
               </button>
               <button
                 className={`close-button bg-primary-300 hover:bg-primary-400 rounded-full w-4 h-4 flex items-center justify-center`}
                 aria-label="Close Terminal"
-                onClick={()=>{SetTerminalHeight("orange");setHeight("orange")}}
+                onClick={() => {
+                  SetTerminalHeight("orange");
+                  setHeight("orange");
+                }}
               >
                 <CloseIcon className="text-primary-300 hover:bg-primary-400 w-3 h-3" />
               </button>
               <button
                 className={`close-button bg-green-500 hover:bg-green-600 rounded-full w-4 h-4 flex items-center justify-center`}
                 aria-label="Close Terminal"
-                onClick={()=>{SetTerminalHeight("green");setHeight("green")}}
+                onClick={() => {
+                  SetTerminalHeight("green");
+                  setHeight("green");
+                }}
               >
                 <CloseIcon className="text-green-500 hover:bg-green-600 w-3 h-3" />
               </button>
@@ -185,53 +201,85 @@ export const Terminal = forwardRef(
                 terminalTheme ? "terminal__prompt_light" : "terminal__prompt"
               }`}
             >
-              <div
-                className={`${
-                  terminalTheme
-                    ? "terminal__prompt__label_light"
-                    : "terminal__prompt__label"
-                }  `}
-              >
-                {promptLabel}
-              </div>
-              <div className="flex">
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={input}
-                    onKeyDown={handleInputKeyDown}
-                    onChange={handleInputChange}
-                    ref={inputRef}
-                    className={`form-input  fat-cursor p-0 bg-inherit text-xs ml-2 border-none focus:outline-none appearance-none ${
-                      terminalTheme
-                        ? "text-secondary-300 caret-white "
-                        : "text-white caret-[#282c34]"
-                    } min-w-0`}
-                    style={{
-                      width: inputRef.current
-                        ? inputRef.current.value.length + "ch"
-                        : "auto",
-                    }}
-                    spellCheck={false}
-                  />
-
-                  <span
+              {!Loading ? (
+                <>
+                  <div
                     className={`${
-                      blinkingTrue ? "animate-blink" : ""
-                    } absolute text-sm scale-90 inset-y-0 -right-2 flex items-center  pr-2 ${
                       terminalTheme
-                        ? "bg-secondary-300 border-secondary-300"
-                        : "bg-white border-white"
-                    }`}
-                  />
-                </div>
-                {/* <span
+                        ? "terminal__prompt__label_light"
+                        : "terminal__prompt__label"
+                    }  `}
+                  >
+                    {promptLabel}
+                  </div>
+                  <div className="flex">
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={input}
+                        onKeyDown={handleInputKeyDown}
+                        onChange={handleInputChange}
+                        ref={inputRef}
+                        className={`form-input  fat-cursor p-0 bg-inherit text-xs ml-2 border-none focus:outline-none appearance-none ${
+                          terminalTheme
+                            ? "text-secondary-300 caret-white "
+                            : "text-white caret-[#282c34]"
+                        } min-w-0`}
+                        style={{
+                          width: inputRef.current
+                            ? inputRef.current.value.length + "ch"
+                            : "auto",
+                        }}
+                        spellCheck={false}
+                      />
+
+                      <span
+                        className={`${
+                          blinkingTrue ? "animate-blink" : ""
+                        } absolute text-sm scale-90 inset-y-0 -right-2 flex items-center  pr-2 ${
+                          terminalTheme
+                            ? "bg-secondary-300 border-secondary-300"
+                            : "bg-white border-white"
+                        }`}
+                      />
+                    </div>
+                    {/* <span
                   ref={spanRef}
                   className="absolute text-sm invisible whitespace-pre"
                 >
                   {input}
                 </span> */}
-              </div>
+                  </div>
+                </>
+              ) : (
+                <div className="flex items-center justify-center w-full ">
+                  <div
+                    className={`  text-xs font-courier flex items-center space-x-1`}
+                  >
+                    <span>[</span>
+                    <span className="animate-blink transition delay-900">=</span>
+                    <span className="animate-blink transition delay-800">=</span>
+                    <span className="animate-blink transition delay-700">=</span>
+                    <span className="animate-blink transition delay-600">=</span>
+                    <span className="animate-blink transition delay-500">=</span>
+                    <span className="animate-blink transition delay-400">=</span>
+                    <span className="animate-blink transition delay-300">=</span>
+                    <span className="animate-blink transition delay-200">=</span>
+                    <span className="animate-blink ">=</span>
+                    <span className="">Loading</span>
+                    <span className="animate-blink ">=</span>
+                    <span className="animate-blink transition delay-200">=</span>
+                    <span className="animate-blink transition delay-300">=</span>
+                    <span className="animate-blink transition delay-400">=</span>
+                    <span className="animate-blink transition delay-500">=</span>
+                    <span className="animate-blink transition delay-600">=</span>
+                    <span className="animate-blink transition delay-700">=</span>
+                    <span className="animate-blink transition delay-800">=</span>
+                    <span className="animate-blink transition delay-900">=</span>
+                      <span>]</span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

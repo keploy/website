@@ -11,9 +11,11 @@ import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
 import SideBarHandle from "./components/SideBarhandle";
-import StepsForRecording from "./Utils/types";
+import {StepsForRecording , StepforTests} from "./Utils/types";
 import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
+// import { submitCodeSnippet } from "@/app/api/hello/atg";
+// import { GolangSchema, JavaScriptSchema, PythonSchema } from "./Utils/Schema";
 
 const dummyDir: Directory = {
   id: "1",
@@ -26,7 +28,7 @@ const dummyDir: Directory = {
 };
 
 const Editor = () => {
-  const [rootDir, setRootDir] = useState<Directory>(dummyDir);
+  const [rootDir, setRootDir] = useState<Directory>(GolangData);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
   const [lighttheme, setTheme] = useState<boolean>(true);
@@ -39,16 +41,25 @@ const Editor = () => {
   const [language, setSelectedLanguage] = useState<string>("Golang");
   const [showSideContent, setShowSideContent] = useState<boolean>(false);
   const [TerminalStatus, setTerminalStatus] = useState<string>("red");
-  const [TerminalHeight, setTerminalHeight] = useState<string>("0");
+  const [TerminalHeight, setTerminalHeight] = useState<string>("0");4
+  // const [schema,setSchema] = useState<string>(GolangSchema);
   const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
     {
-      starting: false,
-      curlApiHitting: false,
+      schemaValidation: false,
+      GenerateTest: false,
+    }
+  );
+  const [stepsForTest, setStepsForTests] = useState<StepforTests>(
+    {
+      Replaying_tests:false,
+      generate_report:false,
+      
     }
   );
   const [sidebarState, setSidebarState] = useState({
     activeStep: 0,
     subStepIndex: -1,
+    testSubStepIndex: -1,
     expandedSteps: [0],
   });
 
@@ -61,16 +72,19 @@ const Editor = () => {
       const file = findFileByName(GolangData, "server.go");
       setSelectedFile(file);
       setFiles(file ? [file] : []);
+      // setSchema(GolangSchema)
     } else if (rootDir === PythonData) {
       const file = findFileByName(PythonData, "main.py");
       setSelectedFile(file);
       setFiles(file ? [file] : []);
+      // setSchema(PythonSchema);
     } else if (rootDir === TypeScriptData) {
       const file = findFileByName(TypeScriptData, "server.js");
       setSelectedFile(file);
       setFiles(file ? [file] : []);
+      // setSchema(JavaScriptSchema);
     }
-  }, [rootDir]);
+  }, [language,rootDir]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -88,6 +102,28 @@ const Editor = () => {
     };
     fetchData();
   }, [language]);
+
+  //code-submission
+  // useEffect(() => {
+  //   const storeSubmissionCode = async () => {
+  //     try {
+  //       const response = await submitCodeSnippet({
+  //         language: language,
+  //         code: selectedFile?.content || "",
+  //         schema: GolangSchema,
+  //       });
+  //       if (response) {
+  //         localStorage.setItem("code_submission_id", response);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error storing code submission ID:", error);
+  //     }
+  //   };
+  //   if (functionName === "Start") {
+  //     storeSubmissionCode();
+  //   }
+  // },[functionName, language , selectedFile?.content]);
+
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -114,6 +150,7 @@ const Editor = () => {
     setSidebarState({
       activeStep: 0,
       subStepIndex: -1,
+      testSubStepIndex: -1, // Add this line
       expandedSteps: [0],
     });
   };
@@ -144,9 +181,9 @@ const Editor = () => {
     setState((prevState) => (prevState === 2 ? 0 : prevState + 1));
   };
 
-  const prevState = () => {
-    setState((prevState) => (prevState === 0 ? 0 : prevState - 1));
-  };
+  // const prevState = () => {
+  //   setState((prevState) => (prevState === 0 ? 0 : prevState - 1));
+  // };
 
   const updateFunctionName = (newState: number) => {
     switch (newState) {
@@ -167,33 +204,36 @@ const Editor = () => {
     }
   };
 
-  const toggleTerminal = () => {
-    setShowTerminal((prevShowTerminal) => !prevShowTerminal);
-  };
+  // const toggleTerminal = () => {
+  //   setShowTerminal((prevShowTerminal) => !prevShowTerminal);
+  // };
 
   const resetEverything = () => {
-    setSelectedFile(undefined);
+    // setSelectedFile(undefined);
     setShowTerminal(false);
     setState(-1);
-    setFiles([]);
+    // setFiles([]);
     setSidebarState({
       activeStep: 0,
       subStepIndex: -1,
+      testSubStepIndex: -1, // Add this line
       expandedSteps: [0],
     });
-    if (rootDir === GolangData) {
-      const file = findFileByName(GolangData, "server.go");
-      setSelectedFile(file);
-      setFiles(file ? [file] : []);
-    } else if (rootDir === PythonData) {
-      const file = findFileByName(PythonData, "main.py");
-      setSelectedFile(file);
-      setFiles(file ? [file] : []);
-    } else if (rootDir === TypeScriptData) {
-      const file = findFileByName(TypeScriptData, "server.js");
-      setSelectedFile(file);
-      setFiles(file ? [file] : []);
-    }
+    setStepsForRecording({schemaValidation:false,GenerateTest:false});
+    setStepsForTests({Replaying_tests:false,generate_report:false});
+    // if (rootDir === GolangData) {
+    //   const file = findFileByName(GolangData, "server.go");
+    //   setSelectedFile(file);
+    //   setFiles(file ? [file] : []);
+    // } else if (rootDir === PythonData) {
+    //   const file = findFileByName(PythonData, "main.py");
+    //   setSelectedFile(file);
+    //   setFiles(file ? [file] : []);
+    // } else if (rootDir === TypeScriptData) {
+    //   const file = findFileByName(TypeScriptData, "server.js");
+    //   setSelectedFile(file);
+    //   setFiles(file ? [file] : []);
+    // }
   };
 
   const ShowSideContent = () => {
@@ -280,8 +320,10 @@ const Editor = () => {
                           <MainTerminal
                             inputRef={inputRef}
                             functionName={functionName}
+                            RootDir={rootDir}
                             setRootDir={setRootDir}
                             stepsForRecording={setStepsForRecording}
+                            stepsForTesting={setStepsForTests}
                             terminalTheme={lighttheme}
                             setTerminalHeightStatus={settingTerminalStatus}
                           />
@@ -310,6 +352,7 @@ const Editor = () => {
                       functionName={functionName}
                       onReset={resetEverything}
                       stepsForRecording={stepsForRecording}
+                      stepsForTesting={stepsForTest}
                       removeSideContent={RemoveSideContent}
                       SideBarTheme={lighttheme}
                       sidebarState={sidebarState}

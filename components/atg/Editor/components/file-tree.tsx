@@ -11,13 +11,6 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowDown,
 } from "react-icons/md";
-import {
-  fetchMock,
-  fetchTest,
-  fetchTestList,
-  fetchTestSets,
-} from "@/app/api/hello/atg";
-
 interface FileTreeProps {
   rootDir: Directory;
   selectedFile: File | undefined;
@@ -26,9 +19,9 @@ interface FileTreeProps {
 }
 
 export const FileTree = (props: FileTreeProps) => {
-  useEffect(() => {
-    props.onSelect(undefined);
-  }, [props.rootDir]);
+  // useEffect(() => {
+  //   props.onSelect(undefined);
+  // }, [props.rootDir]);
   return (
     <SubTree directory={props.rootDir} themeSub={props.themeFile} {...props} />
   );
@@ -42,26 +35,38 @@ interface SubTreeProps {
 }
 
 const SubTree = (props: SubTreeProps) => {
+  const [emptyDirectory, setEmptyDirectory] = useState<boolean>(false);
+  // useEffect(() => {
+  //   if (props.directory.files.length == 0 && props.directory.dirs.length == 0) {
+  //     setEmptyDirectory(true);
+  //   }
+  // }, [props.directory]);
   return (
     <div>
-      {props.directory.dirs.sort(sortDir).map((dir) => (
-        <DirDiv
-          key={dir.id}
-          directory={dir}
-          selectedFile={props.selectedFile}
-          onSelect={props.onSelect}
-          themeDir={props.themeSub}
-        />
-      ))}
-      {props.directory.files.sort(sortFile).map((file) => (
-        <FileDiv
-          key={file.id}
-          file={file}
-          selectedFile={props.selectedFile}
-          onClick={() => props.onSelect(file)}
-          themeFileDiv={props.themeSub}
-        />
-      ))}
+      {emptyDirectory ? (
+        <div className="h-2 flex items-center "></div>
+      ) : (
+        <>
+          {props.directory.dirs.sort(sortDir).map((dir) => (
+            <DirDiv
+              key={dir.id}
+              directory={dir}
+              selectedFile={props.selectedFile}
+              onSelect={props.onSelect}
+              themeDir={props.themeSub}
+            />
+          ))}
+          {props.directory.files.sort(sortFile).map((file) => (
+            <FileDiv
+              key={file.id}
+              file={file}
+              selectedFile={props.selectedFile}
+              onClick={() => props.onSelect(file)}
+              themeFileDiv={props.themeSub}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 };
@@ -122,119 +127,6 @@ const FileDiv = ({
   );
 };
 
-const SetTestSets = async (
-  directory: Directory,
-  setDirectory: (dir: Directory) => void
-) => {
-  const storedCodeSubmissionId =
-    localStorage.getItem("code_submission_id") || "";
-  const response = await fetchTestSets(storedCodeSubmissionId);
-  if (response.success) {
-    const runCommandSets = response.data.data.runCommand;
-    const newTestSets = runCommandSets.split("\n");
-    newTestSets.pop();
-
-    const newDirs = await Promise.all(
-      newTestSets.map(async (TestSetName: string, index: number) => {
-        const newDir: Directory = {
-          id: index.toString(),
-          name: TestSetName,
-          parentId: "test_root",
-          type: Type.DIRECTORY,
-          depth: 2,
-          dirs: [],
-          files: [],
-        };
-
-        // await SetTestList(newDir, setDirectory);
-        return newDir;
-      })
-    );
-
-    setDirectory({
-      ...directory,
-      dirs: newDirs,
-    });
-  } else {
-    console.error("Error fetching test sets:", response.error);
-  }
-};
-
-const SetTestList = async (
-  directory: Directory,
-  setDirectory: (dir: Directory) => void
-) => {
-  const storedCodeSubmissionId =
-    localStorage.getItem("code_submission_id") || "";
-  const response = await fetchTestList(storedCodeSubmissionId, directory.name);
-  if (response.success) {
-    const runCommandTestLists = response.data.data.runCommand;
-    const newTestLists = runCommandTestLists.split("\n");
-    newTestLists.pop();
-
-    const newFiles = await Promise.all(
-      newTestLists.map(async (TestSetName: string, index: number) => {
-        const fileDetails = await GetFileDetails(
-          storedCodeSubmissionId,
-          directory.name,
-          TestSetName
-        );
-        return {
-          id: `${directory.id}${index}`,
-          name: TestSetName,
-          parentId: directory.id,
-          type: Type.FILE,
-          depth: 3,
-          content: fileDetails.testDetails,
-        };
-      })
-    );
-
-    const mockResponse = await fetchMock(
-      storedCodeSubmissionId,
-      directory.name
-    );
-    if (mockResponse.success) {
-      const mockDetails = mockResponse.data.data.runCommand;
-      newFiles.push({
-        id: `${directory.id}mock`,
-        name: `mocks.yaml`,
-        parentId: directory.id,
-        type: Type.FILE,
-        depth: 3,
-        content: mockDetails,
-      });
-    } else {
-      console.log("error in fetching mocks");
-    }
-
-    setDirectory({
-      ...directory,
-      files: newFiles,
-    });
-  } else {
-    console.error("Error fetching test-list:", response.error);
-  }
-};
-
-const GetFileDetails = async (
-  codeSubmissionId: string,
-  testSetName: string,
-  testCaseName: string
-): Promise<{ testDetails: string; mockDetails: string }> => {
-  try {
-    const testResponse = await fetchTest(
-      codeSubmissionId,
-      testSetName,
-      testCaseName
-    );
-    const testDetails = testResponse.data.data.runCommand;
-    return { testDetails, mockDetails: "" };
-  } catch (err: any) {
-    throw new Error(`Content not found: ${err.message}`);
-  }
-};
-
 const DirDiv = ({
   directory,
   selectedFile,
@@ -249,23 +141,50 @@ const DirDiv = ({
   const [open, setOpen] = useState(() =>
     isChildSelected(directory, selectedFile)
   );
-  const [emptyDirectory, setEmptyDirectory] = useState<boolean>(false);
   const [dirState, setDirState] = useState(directory);
+  // const [fetchTestListBool, setFetchTestListBool] = useState(() => {
+  //   const item = localStorage.getItem("fetchTestListBool");
+  //   return item ? JSON.parse(item) : false;
+  // });
+  useState(()=>{
+    if(directory.id === "src" || directory.id === "src2" || directory.id === "src3" ){
+      setOpen(true);
+    }
+  },);
+
   const depth = directory.depth;
+
+  // useEffect(() => {
+  //   if (fetchTestListBool) {
+  //     console.log("here");
+  //     if (directory.id === "test_root") {
+  //       SetTestSets(dirState, setDirState);
+  //     } else if (directory.parentId === "test_root") {
+  //       SetTestList(dirState, setDirState);
+  //     }
+  //   }
+  // }, [fetchTestListBool , localStorage]);
 
   const handleToggle = async () => {
     setOpen(!open);
-    if (directory.id === "test_root") {
-      await SetTestSets(dirState, setDirState);
-    } else if (directory.parentId === "test_root") {
-      await SetTestList(dirState, setDirState);
-    }
+    // if (directory.id === 'test_root' && !open) {
+    //   await SetTestSets(dirState, setDirState);
+    // } else if (directory.parentId === 'test_root' && !open) {
+    //   await SetTestList(dirState, setDirState);
+    // }
   };
-  useEffect(() => {
-    if (directory.files.length == 0 && directory.dirs.length == 0) {
-      setEmptyDirectory(true);
-    }
-  }, [directory]);
+
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     const item = localStorage.getItem("fetchTestListBool");
+  //     const newFetchTestListBool = item ? JSON.parse(item) : false;
+  //     setFetchTestListBool(newFetchTestListBool);
+  //   };
+  //   window.addEventListener("storage", handleStorageChange);
+  //   return () => {
+  //     window.removeEventListener("storage", handleStorageChange);
+  //   };
+  // }, []);
 
   return (
     <>

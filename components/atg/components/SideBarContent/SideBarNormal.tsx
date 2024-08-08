@@ -10,16 +10,15 @@ import CircularProgress from "@mui/material/CircularProgress";
 import DoneIcon from "@mui/icons-material/Done";
 import LockIcon from "@mui/icons-material/Lock";
 import CircleIcon from "@mui/icons-material/Circle";
-import StepsForRecording from "../../Utils/types";
+import { StepsForRecording, StepforTests } from "../../Utils/types";
 import CloseIcon from "@mui/icons-material/Close";
 
 const stepsRecord = [
   {
     label: "Auto Generate Test",
     steps: [
-      { stepName: "Recording" },
-      { stepName: "Hitting API's" },
-      { stepName: "Generating keploy tests" },
+      { stepName: "Schema Validation." },
+      { stepName: "Generating tests." },
     ],
     stepName: "Start Recording",
   },
@@ -34,10 +33,8 @@ const stepsRecord = [
   {
     label: "Test Coverage",
     steps: [
-      { stepName: "Recording" },
-      { stepName: "Hitting API's" },
-      { stepName: "Generating Keploy Test Folder" },
-      { stepName: "Generating keploy tests" },
+      { stepName: "Replaying tests" },
+      { stepName: "Generating report" },
     ],
     stepName: "Get Test Coverage",
   },
@@ -47,15 +44,18 @@ interface SideBarNormalProps {
   onNext: () => void;
   onReset: () => void;
   stepsForRecording: StepsForRecording;
+  stepsForTesting: StepforTests;
   RemoveSideContent: () => void;
   SideBartheme: boolean;
   activeStep: number;
   subStepIndex: number;
+  testSubStepIndex: number;
   expandedSteps: number[];
   setSidebarState: React.Dispatch<
     React.SetStateAction<{
       activeStep: number;
       subStepIndex: number;
+      testSubStepIndex: number;
       expandedSteps: number[];
     }>
   >;
@@ -65,56 +65,100 @@ export default function SideBarNormal({
   onNext,
   onReset,
   stepsForRecording,
+  stepsForTesting,
   RemoveSideContent,
   SideBartheme,
   activeStep,
   subStepIndex,
+  testSubStepIndex,
   expandedSteps,
   setSidebarState,
 }: SideBarNormalProps) {
   const [subStepCompleted, setSubStepCompleted] = React.useState(false);
 
   React.useEffect(() => {
-    if (
-      subStepIndex >= 0 &&
-      subStepIndex < stepsRecord[activeStep].steps.length
-    ) {
-      const timer = setTimeout(() => {
-        if (subStepIndex === 0 && !stepsForRecording.starting) {
-          setSubStepCompleted(false);
-        } else if (subStepIndex === 1 && !stepsForRecording.curlApiHitting) {
-          setSubStepCompleted(false);
-        } else {
-          setSubStepCompleted(true);
-          setTimeout(() => {
+    if (activeStep < 2) {
+      if (
+        subStepIndex >= 0 &&
+        subStepIndex < stepsRecord[activeStep].steps.length
+      ) {
+        const timer = setTimeout(() => {
+          if (subStepIndex === 0 && !stepsForRecording.schemaValidation) {
             setSubStepCompleted(false);
-            if (subStepIndex + 1 < stepsRecord[activeStep].steps.length) {
-              setSidebarState((prevState) => ({
-                ...prevState,
-                subStepIndex: subStepIndex + 1,
-              }));
-            } else {
-              setSidebarState((prevState) => ({
-                ...prevState,
-                activeStep: prevState.activeStep + 1,
-                subStepIndex: -1,
-                expandedSteps: [...prevState.expandedSteps, activeStep + 1],
-              }));
-            }
-          }, 500);
-        }
-      }, 1000);
+          } else if (subStepIndex === 1 && !stepsForRecording.GenerateTest) {
+            setSubStepCompleted(false);
+          } else {
+            setSubStepCompleted(true);
+            setTimeout(() => {
+              setSubStepCompleted(false);
+              if (subStepIndex + 1 < stepsRecord[activeStep].steps.length) {
+                setSidebarState((prevState) => ({
+                  ...prevState,
+                  subStepIndex: subStepIndex + 1,
+                }));
+              } else {
+                setSidebarState((prevState) => ({
+                  ...prevState,
+                  activeStep: prevState.activeStep + 1,
+                  subStepIndex: -1,
+                  expandedSteps: [...prevState.expandedSteps, activeStep + 1],
+                }));
+              }
+            }, 500);
+          }
+        }, 1000);
 
-      return () => clearTimeout(timer);
+        return () => clearTimeout(timer);
+      }
+    } else if (activeStep === 2) {
+      if (
+        testSubStepIndex >= 0 &&
+        testSubStepIndex < stepsRecord[activeStep].steps.length
+      ) {
+        const timer = setTimeout(() => {
+          if (testSubStepIndex === 0 && !stepsForTesting.Replaying_tests) {
+            setSubStepCompleted(false);
+          } else if (testSubStepIndex === 1 && !stepsForTesting.generate_report) {
+            setSubStepCompleted(false);
+          } else {
+            setSubStepCompleted(true);
+            setTimeout(() => {
+              setSubStepCompleted(false);
+              if (testSubStepIndex + 1 < stepsRecord[activeStep].steps.length) {
+                setSidebarState((prevState) => ({
+                  ...prevState,
+                  testSubStepIndex: testSubStepIndex + 1,
+                }));
+              } else {
+                setSidebarState((prevState) => ({
+                  ...prevState,
+                  activeStep: prevState.activeStep + 1,
+                  testSubStepIndex: -1,
+                  expandedSteps: [...prevState.expandedSteps, activeStep + 1],
+                }));
+              }
+            }, 500);
+          }
+        }, 1000);
+
+        return () => clearTimeout(timer);
+      }
     }
-  }, [subStepIndex, activeStep, stepsForRecording, setSidebarState]);
+  }, [subStepIndex, testSubStepIndex, activeStep, stepsForRecording, stepsForTesting, setSidebarState]);
 
   const handleNext = () => {
     onNext();
-    setSidebarState((prevState) => ({
-      ...prevState,
-      subStepIndex: 0,
-    }));
+    if (activeStep < 2) {
+      setSidebarState((prevState) => ({
+        ...prevState,
+        subStepIndex: 0,
+      }));
+    } else {
+      setSidebarState((prevState) => ({
+        ...prevState,
+        testSubStepIndex: 0,
+      }));
+    }
   };
 
   const handleAccordionChange = (index: number) => {
@@ -134,15 +178,13 @@ export default function SideBarNormal({
         maxWidth: 300,
         overflowY: "auto",
         position: "relative",
-        scrollbarWidth: "none", // For Firefox
+        scrollbarWidth: "none",
         "&::-webkit-scrollbar": {
-          display: "none", // For Chrome, Safari, and Opera
+          display: "none",
         },
-        zIndex: "0", // Set a lower z-index
+        zIndex: "0",
       }}
-      className={`${
-        SideBartheme ? "bg-white" : "bg-[#21252b]"
-      } h-full rounded-br-md`}
+      className={`${SideBartheme ? "bg-white" : "bg-[#21252b]"} h-full rounded-br-md`}
     >
       <div
         className={`flex items-center h-14 ${
@@ -151,20 +193,15 @@ export default function SideBarNormal({
       >
         <Typography
           sx={{
-            color: "#1f2937", // Tailwind's gray-700 color
+            color: "#1f2937",
             fontWeight: "bold",
-            m: 0, // remove margin
+            m: 0,
           }}
-          className={`${
-            SideBartheme ? "text-secondary-300" : "text-white"
-          } font-bold`}
+          className={`${SideBartheme ? "text-secondary-300" : "text-white"} font-bold`}
         >
           Content
         </Typography>
-        <button
-          className="text-gray-500 hover:text-gray-700"
-          onClick={RemoveSideContent}
-        >
+        <button className="text-gray-500 hover:text-gray-700" onClick={RemoveSideContent}>
           <CloseIcon />
         </button>
       </div>
@@ -183,11 +220,7 @@ export default function SideBarNormal({
               borderBottom: "none",
             },
           }}
-          className={`${
-            SideBartheme
-              ? "border border-b-1 bg-neutral-200 border-gray-200"
-              : "bg-[#171a1e]"
-          }`}
+          className={`${SideBartheme ? "border border-b-1 bg-neutral-200 border-gray-200" : "bg-[#171a1e]"}`}
           disableGutters={true}
           TransitionProps={{ timeout: { appear: 1, enter: 1, exit: 4 } }}
         >
@@ -198,11 +231,7 @@ export default function SideBarNormal({
               ) : index <= activeStep ? (
                 <ExpandMoreIcon className="text-gray-700" />
               ) : (
-                <LockIcon
-                  className={`${
-                    SideBartheme ? "text-secondary-300" : "text-white"
-                  }`}
-                />
+                <LockIcon className={`${SideBartheme ? "text-secondary-300" : "text-white"}`} />
               )
             }
             aria-controls={`panel${index}-content`}
@@ -210,23 +239,11 @@ export default function SideBarNormal({
             sx={{
               color: "#ffffff",
               fontWeight: "bold",
-              m: 0, // remove margin
+              m: 0,
             }}
-            className={` ${
-              SideBartheme
-                ? index <= activeStep
-                  ? "bg-white"
-                  : "bg-gray-200"
-                : index <= activeStep
-                ? "bg-[#30363e]"
-                : "bg-[#3f4651]"
-            }  `}
+            className={` ${SideBartheme ? (index <= activeStep ? "bg-white" : "bg-gray-200") : (index <= activeStep ? "bg-[#30363e]" : "bg-[#3f4651]")}  `}
           >
-            <Typography
-              className={`${
-                SideBartheme ? "text-secondary-300" : "text-gray-300"
-              } font-semibold`}
-            >
+            <Typography className={`${SideBartheme ? "text-secondary-300" : "text-gray-300"} font-semibold`}>
               {step.label}
             </Typography>
           </AccordionSummary>
@@ -236,9 +253,9 @@ export default function SideBarNormal({
               overflowY: "auto",
               m: 0,
               paddingright: "15px",
-              scrollbarWidth: "none", // For Firefox
+              scrollbarWidth: "none",
               "&::-webkit-scrollbar": {
-                display: "none", // For Chrome, Safari, and Opera
+                display: "none",
               },
             }}
           >
@@ -250,36 +267,36 @@ export default function SideBarNormal({
                     key={subIndex}
                     sx={{ display: "flex", mb: 1 }}
                     className={`${
-                      subStepIndex > subIndex || index < activeStep
+                      (activeStep < 2 && subStepIndex > subIndex) ||
+                      (activeStep === 2 && testSubStepIndex > subIndex) ||
+                      index < activeStep
                         ? "items-center"
                         : "items-center"
                     }`}
                   >
                     <Box
                       sx={{
-                        width: 24, // fixed width for icons
+                        width: 24,
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
                         mr: 1,
                       }}
                     >
-                      {subStepIndex === subIndex && index === activeStep ? (
+                      {((activeStep < 2 && subStepIndex === subIndex) ||
+                        (activeStep === 2 && testSubStepIndex === subIndex)) &&
+                      index === activeStep ? (
                         subStepCompleted ? (
                           <DoneIcon className="font-bold rounded-md p-1 text-accent-100" />
                         ) : (
                           <CircularProgress size={14} />
                         )
-                      ) : subStepIndex > subIndex || index < activeStep ? (
+                      ) : (activeStep < 2 && subStepIndex > subIndex) ||
+                        (activeStep === 2 && testSubStepIndex > subIndex) ||
+                        index < activeStep ? (
                         <DoneIcon className="font-bold rounded-md p-1 text-accent-100" />
                       ) : (
-                        <CircleIcon
-                          className={`text-xs ${
-                            SideBartheme
-                              ? "text-secondary-300"
-                              : "text-gray-300"
-                          } scale-90`}
-                        />
+                        <CircleIcon className={`text-xs ${SideBartheme ? "text-secondary-300" : "text-gray-300"} scale-90`} />
                       )}
                     </Box>
                     <Box className="flex flex-col">
@@ -287,7 +304,9 @@ export default function SideBarNormal({
                         component="span"
                         sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
                         className={`${
-                          subStepIndex === subIndex && index === activeStep
+                          ((activeStep < 2 && subStepIndex === subIndex) ||
+                            (activeStep === 2 && testSubStepIndex === subIndex)) &&
+                          index === activeStep
                             ? subStepCompleted
                               ? SideBartheme
                                 ? "text-secondary-300"
@@ -295,7 +314,9 @@ export default function SideBarNormal({
                               : SideBartheme
                               ? "text-secondary-500"
                               : "text-gray-100"
-                            : subStepIndex > subIndex || index < activeStep
+                            : (activeStep < 2 && subStepIndex > subIndex) ||
+                              (activeStep === 2 && testSubStepIndex > subIndex) ||
+                              index < activeStep
                             ? SideBartheme
                               ? "text-secondary-300"
                               : "text-gray-300"
@@ -312,15 +333,12 @@ export default function SideBarNormal({
               </Box>
             </Box>
             {index === activeStep && (
-              <Box
-                sx={{ mb: 2 }}
-                className="shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]"
-              >
+              <Box sx={{ mb: 2 }} className="shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
                 <div className="">
                   <button
                     onClick={handleNext}
                     className="mt-1 mr-1 w-full bg-primary-300 font-semibold text-secondary-300 px-4 py-2 rounded"
-                    disabled={subStepIndex !== -1}
+                    disabled={activeStep < 2 ? subStepIndex !== -1 : testSubStepIndex !== -1}
                   >
                     {step.stepName}
                   </button>
@@ -331,23 +349,11 @@ export default function SideBarNormal({
         </Accordion>
       ))}
       {activeStep === stepsRecord.length && (
-        <Paper
-          square
-          elevation={0}
-          sx={{ p: 2 }}
-          className={`${SideBartheme ? "bg-white" : "bg-neutral-800"}`}
-        >
-          <Typography
-            className={`text-base text-center font-semibold ${
-              SideBartheme ? "text-secondary-300" : "text-white"
-            }`}
-          >
+        <Paper square elevation={0} sx={{ p: 2 }} className={`${SideBartheme ? "bg-white" : "bg-neutral-800"}`}>
+          <Typography className={`text-base text-center font-semibold ${SideBartheme ? "text-secondary-300" : "text-white"}`}>
             Would you like to reset?
           </Typography>
-          <button
-            onClick={onReset}
-            className="mt-1 mr-1 w-full bg-primary-300 font-semibold scale-90 px-4 py-2 rounded"
-          >
+          <button onClick={onReset} className="mt-1 mr-1 w-full bg-primary-300 font-semibold scale-90 px-4 py-2 rounded">
             Reset
           </button>
         </Paper>

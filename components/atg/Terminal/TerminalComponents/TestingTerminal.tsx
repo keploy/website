@@ -1,17 +1,30 @@
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
 import { useRunCommandSubscription } from "@/app/api/hello/atg";
-
+import {
+  replaceAnsiColors,
+  replaceDates,
+} from "../../Editor/utils/api-functions";
+import { StepforTests } from "../../Utils/types";
 const Emoji = "User@1231-Keploy:"; // 🐰
 
 function TestCoverageTerminalSession({
   inputRef,
   TestTheme,
+  setStepsForTesting,
   TestSetTerminalHeightStatus,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   TestTheme: boolean;
+  setStepsForTesting: Dispatch<SetStateAction<StepforTests>>;
   TestSetTerminalHeightStatus: (val: string) => void;
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
@@ -30,15 +43,36 @@ function TestCoverageTerminalSession({
     codeSubmissionId,
     command,
   });
-
+  const [loader, setLoader] = useState<boolean>(false);
   const initialPushRef = useRef(false);
   const intialRecordingRef = useRef(false);
 
   useEffect(() => {
     if (data) {
+      data.runCommand = replaceDates(data.runCommand);
+      data.runCommand = replaceAnsiColors(data.runCommand);
+
+      if (data.runCommand.match(/<span style="color: [^>]+;">/)) {
+        data.runCommand += "</span>";
+      }
+      if (data.runCommand.includes("proxy stopped...")) {
+        setLoader(false);
+      }
+
+      if (
+        data.runCommand === "[GIN-debug] Listening and serving HTTP on :5000" ||
+        data.runCommand.includes("Server started on port 5000")
+      ) {
+        setOtherCommandsTrue(true);
+        setStepsForTesting((prev) => ({ ...prev, Replaying_tests: true }));
+      }
+
       pushToHistory(
         <div>
-          <pre>{data.runCommand}</pre>
+          <p
+            className="inline"
+            dangerouslySetInnerHTML={{ __html: data.runCommand }}
+          ></p>
         </div>
       );
     } else if (error) {
@@ -49,28 +83,28 @@ function TestCoverageTerminalSession({
           <p className="text-accent-100 font-bold">~/$</p> {error.message}
         </div>
       );
+      setStepsForTesting((prev) => ({
+        ...prev,
+        generate_report: true,
+        Replaying_tests: true,
+      }));
     } else if (loading) {
-      pushToHistory(
-        <div className="flex">
-          {<p className="font-bold">{Emoji}</p>}
-          <p className="text-accent-100 font-bold">~/$</p> Loading...
-        </div>
-      );
+      setLoader(true);
     }
-  }, [data, error, loading, pushToHistory]);
+  }, [data, error, loading, pushToHistory,setStepsForTesting,loader]);
 
-  useEffect(() => {
-    if (!initialPushRef.current) {
-      pushToHistory(
-        <div className="flex">
-          {<p className="font-bold">{Emoji}</p>}
-          <p className="text-accent-100 font-bold">~/$</p> Keploy Testing
-          starting....
-        </div>
-      );
-      initialPushRef.current = true;
-    }
-  }, [pushToHistory]);
+  // useEffect(() => {
+  //   if (!initialPushRef.current) {
+  //     pushToHistory(
+  //       <div className="flex">
+  //         {<p className="font-bold">{Emoji}</p>}
+  //         <p className="text-accent-100 font-bold">~/$</p> Keploy Testing
+  //         starting....
+  //       </div>
+  //     );
+  //     initialPushRef.current = true;
+  //   }
+  // }, [pushToHistory , loader , ]);
 
   const commands = useMemo(
     () => ({
@@ -78,6 +112,13 @@ function TestCoverageTerminalSession({
         if (!intialRecordingRef.current) {
           handleSubmit();
           intialRecordingRef.current = true;
+
+          setStepsForTesting((prev) => ({ ...prev, generate_report: true }));
+          if (commandsTrue) {
+            //add a time buffer here.
+            // SetTestSets(rootDir.dirs[1],setRootDir)
+            intialRecordingRef.current = true;
+          }
         }
       },
       __notFound__: async () => {
@@ -126,6 +167,7 @@ function TestCoverageTerminalSession({
         inputRef={inputRef}
         terminalTheme={TestTheme}
         SetTerminalHeight={TestSetTerminalHeightStatus}
+        Loading={loader}
       />
     </div>
   );
