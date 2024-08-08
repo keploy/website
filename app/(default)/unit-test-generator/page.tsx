@@ -21,32 +21,32 @@ import RootLayout, { Metadata } from "@/app/layout";
 const blocksData = [
   {
     title: "Time-Consuming",
-    description: "Manually writing unit tests takes a lot of time.",
+    description: "Manually writing unit tests is a process that can consume significant amounts of a developer's time, leading to delays in the development cycle.",
     SvgComponent: MdiLightningBolt,
   },
   {
     title: "Incomplete Coverage",
-    description: "Ensuring comprehensive test coverage is difficult.",
+    description: "Achieving higher test coverage is challenging, as it requires identifying and writing tests for all possible code paths and edge cases,leaving some part of codebase are untested and potentially prone to bugs.",
     SvgComponent: FluentPuzzleCubePiece20Filled,
   },
   {
     title: "High Maintenance",
-    description: "Keeping tests up to date with code changes requires ongoing effort.",
+    description: "Keeping unit tests up to date with frequent code changes demands ongoing effort. As the code evolves, tests need to be reviewed and updated to ensure they remain relevant and effective, which can be a significant maintenance burden.",
     SvgComponent: CollaborationIcon,
   },
   {
     title: "Complex Scenarios",
-    description: "Writing effective tests for complex scenarios is challenging.",
+    description: "Writing effective unit tests for complex scenarios requires deep understanding and careful consideration of various interactions and edge cases. This makes it difficult to create accurate and meaningful tests, especially in large codebases.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
     title: "Domain Context",
-    description: "LLMs may generate irrelevant tests due to lack of specific domain knowledge.",
+    description: "Tools like Co-pilot may generate tests that lack specific domain knowledge, leading to irrelevant or ineffective test cases, resulting in tests that do not accurately reflect the real-world use cases and requirements of the application.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
     title: "Integration Issues",
-    description: "Integrating LLM-generated tests with existing frameworks can be problematic.",
+    description: "Integrating LLM-generated tests with existing testing frameworks can be problematic. Compatibility issues, differences in coding standards, and the need for additional configuration creates friction and slow down the adoption of automated solutions.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
