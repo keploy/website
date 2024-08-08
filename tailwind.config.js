@@ -7,6 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+      },
       colors: {
         // Brand Palette
         // Primary headings, primary buttons, main elements
@@ -189,20 +203,25 @@ module.exports = {
         98: ".98",
         101: "1.01",
       },
-      animation: {
-        marquee: "marquee var(--duration) linear infinite",
-        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
-      },
-      keyframes: {
-        marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-100% - var(--gap)))" },
-        },
-        "marquee-vertical": {
-          from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-100% - var(--gap)))" },
-        },
-      },
+      //   animation: {
+      //     float: "float 3s ease-in-out infinite",
+      //     marquee: "marquee 25s linear infinite",
+      //     marquee2: "marquee2 25s linear infinite ",
+      //   },
+      //   keyframes: {
+      //     float: {
+      //       "0%, 100%": { transform: "translateY(0)" },
+      //       "50%": { transform: "translateY(-5%)" },
+      //     },
+      //     marquee: {
+      //       "0%": { transform: "translateX(0%)" },
+      //       "100%": { transform: "translateX(-100%)" },
+      //     },
+      //     marquee2: {
+      //       "0%": { transform: "translateX(0%)" },
+      //       "100%": { transform: "translateX(-90%)" },
+      //     },
+      //   },
       zIndex: {
         "-1": "-1",
         99999: "99999",

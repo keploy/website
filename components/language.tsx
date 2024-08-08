@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
@@ -27,7 +28,7 @@ import SpringBoot from "@/public/images/frameworks/springboot.png";
 import Sql from "@/public/images/frameworks/sql.png";
 import WebGo from "@/public/images/frameworks/webgo.png";
 
-const frameworks = [
+const frameworksGroup1 = [
   ApacheClient,
   Chi,
   Dynamo,
@@ -39,6 +40,9 @@ const frameworks = [
   Gorilla,
   Grpc,
   H2db,
+];
+
+const frameworksGroup2 = [
   MariaDB,
   Mongo,
   NetHttp,
@@ -139,13 +143,13 @@ export default function Language() {
             </h2>
           </div>
           <div className="relative max-w-6xl px-4 mx-auto overflow-hidden sm:px-6 mt-10 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
-            <Marquee pauseOnHover className="[--duration:40s]">
-              {frameworks.map((framework, index) => (
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {frameworksGroup1.map((framework, index) => (
                 <FrameworkCard key={index} src={framework} />
               ))}
             </Marquee>
-            <Marquee reverse pauseOnHover className="[--duration:40s]">
-              {frameworks.map((framework, index) => (
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {frameworksGroup2.map((framework, index) => (
                 <FrameworkCard key={index} src={framework} />
               ))}
             </Marquee>
