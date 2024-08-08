@@ -10,10 +10,13 @@ import { Terminal } from "..";
 import { useTerminal } from "../hooks";
 import { useRunCommandSubscription } from "@/app/api/hello/atg";
 import {
+  makeKeployTestDir,
   replaceAnsiColors,
   replaceDates,
 } from "../../Editor/utils/api-functions";
 import { StepforTests } from "../../Utils/types";
+import { Directory } from "../../Editor/utils/file-manager";
+
 const Emoji = "User@1231-Keploy:"; // 🐰
 
 function TestCoverageTerminalSession({
@@ -21,11 +24,14 @@ function TestCoverageTerminalSession({
   TestTheme,
   setStepsForTesting,
   TestSetTerminalHeightStatus,
+  setRootDir,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   TestTheme: boolean;
   setStepsForTesting: Dispatch<SetStateAction<StepforTests>>;
   TestSetTerminalHeightStatus: (val: string) => void;
+  setRootDir: Dispatch<SetStateAction<Directory>>;
+ 
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
@@ -111,11 +117,10 @@ function TestCoverageTerminalSession({
       'keploy testcoverage -c "test"': async () => {
         if (!intialRecordingRef.current) {
           handleSubmit();
-          intialRecordingRef.current = true;
-
-          setStepsForTesting((prev) => ({ ...prev, generate_report: true }));
           if (commandsTrue) {
-            //add a time buffer here.
+           makeKeployTestDir({ setRootDir });
+           setStepsForTesting((prev) => ({ ...prev, generate_report: true }));
+             //add a time buffer here.
             // SetTestSets(rootDir.dirs[1],setRootDir)
             intialRecordingRef.current = true;
           }
@@ -141,7 +146,7 @@ function TestCoverageTerminalSession({
         await resetTerminal();
       },
     }),
-    []
+    [commandsTrue, codeSubmissionId, handleSubmit, pushToHistory, resetTerminal]
   );
   useEffect(() => {
     if (inputRef.current) {

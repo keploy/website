@@ -10,7 +10,7 @@ import { Terminal } from "..";
 import { useTerminal } from "../hooks";
 import { useRunCommandSubscription } from "@/app/api/hello/atg";
 import { Directory, Type } from "../../Editor/utils/file-manager";
-import {StepsForRecording} from "../../Utils/types";
+import { StepsForRecording } from "../../Utils/types";
 import {
   makeKeployTestDir,
   replaceDates,
@@ -27,7 +27,7 @@ function RecordTerminalSession({
   RecordSetTerminalHeightStatus,
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
-  rootDir:Directory;
+  rootDir: Directory;
   setRootDir: Dispatch<SetStateAction<Directory>>;
   setStepsForRecording: Dispatch<SetStateAction<StepsForRecording>>;
   RecordTheme: boolean;
@@ -59,7 +59,7 @@ function RecordTerminalSession({
   //     await SetTestSets(keployDir, (updatedKeployDir) => {
   //       setRootDir({
   //         ...rootDir,
-  //         dirs: rootDir.dirs.map(dir => 
+  //         dirs: rootDir.dirs.map(dir =>
   //           dir.name === 'Keploy' ? updatedKeployDir : dir
   //         ),
   //       });
@@ -68,7 +68,6 @@ function RecordTerminalSession({
   //     console.error('Keploy directory not found');
   //   }
   // };
-
 
   useEffect(() => {
     if (data) {
@@ -89,7 +88,8 @@ function RecordTerminalSession({
       }
 
       if (
-        data.runCommand === "[GIN-debug] Listening and serving HTTP on :5000" || data.runCommand.includes("Server started on port 5000")
+        data.runCommand === "[GIN-debug] Listening and serving HTTP on :5000" ||
+        data.runCommand.includes("Server started on port 5000")
       ) {
         setOtherCommandsTrue(true);
         setStepsForRecording((prev) => ({ ...prev, schemaValidation: true }));
@@ -127,8 +127,8 @@ function RecordTerminalSession({
         if (!intialRecordingRef.current) {
           handleSubmit();
           if (commandsTrue) {
+            await makeKeployTestDir({ setRootDir });
             setStepsForRecording((prev) => ({ ...prev, GenerateTest: true }));
-            makeKeployTestDir({ setRootDir });
             //add a time buffer here.
             // SetTestSets(rootDir.dirs[1],setRootDir)
             intialRecordingRef.current = true;

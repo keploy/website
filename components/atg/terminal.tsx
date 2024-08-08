@@ -62,6 +62,7 @@ function MainTerminal({
           setStepsForTesting={stepsForTesting}
           TestTheme={terminalTheme}
           TestSetTerminalHeightStatus={setTerminalHeightStatus}
+          setRootDir={setRootDir}
         />
       )}
     </div>

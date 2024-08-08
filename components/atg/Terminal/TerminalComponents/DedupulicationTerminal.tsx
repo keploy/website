@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useRef } from "react";
+import React, { useMemo, useEffect, useRef , useState } from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
 
@@ -15,6 +15,8 @@ function DeduplicateTerminalSession({
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
+    const [command, setCommandSub] = useState<string>("TEST_GENERATE");
+  
   let intialRenderRef = useRef(true);
 
   const commands = useMemo(
