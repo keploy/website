@@ -12,7 +12,7 @@ import Image, { StaticImageData } from "next/image";
 import dynamic from "next/dynamic";
 import CircularLoader from "./components/circularLoader";
 import { useSwipeable } from "react-swipeable";
-
+import { KeyboardArrowLeft } from "@mui/icons-material";
 const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
   ssr: false,
 });
@@ -55,6 +55,8 @@ const Stories = ({
   const [isPaused, setIsPaused] = useState(false);
   const [isLongPress, setIsLongPress] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const [windowWidth, setWindowWidth] = React.useState(0);
+
   const lines = Array.from({ length: totalLen }, (_, i) => i);
 
   useEffect(() => {
@@ -96,6 +98,15 @@ const Stories = ({
       }
     },
   });
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
 
   return (
     <div className="relative h-full lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
@@ -167,13 +178,20 @@ const Stories = ({
             );
           })}
         </div>
-        <div className="flex flex-row mx-5 pt-3 mt-5 z-10 gap-8">
+        <div className="flex flex-row mx-5 pt-3 mt-5 z-10 gap-8 items-center">
           <div>
-            <FontAwesomeIcon
-              icon={isPaused ? faPlay : faPause}
-              onClick={handlePauseResume}
-              className="scale-150 text-slate-200 cursor-pointer"
-            />
+            {windowWidth > 1024 ? (
+              <FontAwesomeIcon
+                icon={isPaused ? faPlay : faPause}
+                onClick={handlePauseResume}
+                className="scale-150 text-slate-200 cursor-pointer"
+              />
+            ) : (
+              <KeyboardArrowLeft
+                className="scale-125 text-slate-200 cursor-pointer" // Add Cancel Icon here
+                onClick={()=>{window.location.href="/webstories"}}
+              />
+            )}
           </div>
           <div className="cursor-pointer scale-125">
             <CustomizedDialogs handlingPauseBehindScenes={handlePauseResume} />
@@ -214,7 +232,7 @@ const Stories = ({
       )}
 
       {Story.swipeLink && Story.swipeText && (
-        <Link href={Story.swipeLink} >
+        <Link href={Story.swipeLink}>
           <div
             className={`absolute inset-x-0 z-30 bottom-10 ${
               contentAvailable ? "opacity-25" : "opacity-100"

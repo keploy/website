@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import Snackbar from "@mui/material/Snackbar";
-
+import { Cancel } from "@mui/icons-material";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -25,7 +25,8 @@ export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingP
   const [openSnackBar, setOpenSnackBar] = React.useState(false);
   const [twitterShareUrl, settwitterShareUrl] = React.useState("");
   const [linkedinShareUrl, setlinkedinShareUrl] = React.useState("");
-
+  const [windowWidth, setWindowWidth] = React.useState(0);
+ 
   const handleClickOpen = () => {
     handlingPauseBehindScenes();
     setOpen(true);
@@ -77,6 +78,15 @@ export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingP
           window.location.href
         )}`
       );
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
 

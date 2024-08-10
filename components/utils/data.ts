@@ -1,5 +1,4 @@
 import card_1_thumbnailImage from "@/public/images/conf/webstories/card_1-thumbnail.png";
-
 import card_2_thumbnailImage from "@/public/images/conf/webstories/card_2-thumbnail.png";
 import card_3_thumbnailImage from "@/public/images/conf/webstories/card_3-thumbnail.png";
 import card_4_thumbnailImage from "@/public/images/conf/webstories/card_4-thumbnail.png";

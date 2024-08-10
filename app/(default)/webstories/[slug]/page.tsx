@@ -46,27 +46,27 @@ const Index: React.FC = () => {
     }
   }, []);
 
-  const preloadImages = async (images: (string | StaticImageData)[]) => {
-    const loadedImages = await Promise.all(
-      images.map(
-        (url) =>
-          new Promise<PreloadedImage>((resolve) => {
-            const img =  new (window as any).Image();;
-            img.src = typeof url === "string" ? url : url.src;
-            img.onload = () => resolve({ url, img });
-          })
-      )
-    );
-    setPreloadedImages(loadedImages);
-    setIsPreloading(false);
-  };
+  // const preloadImages = async (images: (string | StaticImageData)[]) => {
+  //   const loadedImages = await Promise.all(
+  //     images.map(
+  //       (url) =>
+  //         new Promise<PreloadedImage>((resolve) => {
+  //           const img =  new (window as any).Image();;
+  //           img.src = typeof url === "string" ? url : url.src;
+  //           img.onload = () => resolve({ url, img });
+  //         })
+  //     )
+  //   );
+  //   setPreloadedImages(loadedImages);
+  //   setIsPreloading(false);
+  // };
 
-  useEffect(() => {
-    if (storyData) {
-      const imageUrls = storyData.map((story) => story.imageUrl).filter(Boolean) as (string | StaticImageData)[];
-      preloadImages(imageUrls);
-    }
-  }, [storyData]);
+  // useEffect(() => {
+  //   if (storyData) {
+  //     const imageUrls = storyData.map((story) => story.imageUrl).filter(Boolean) as (string | StaticImageData)[];
+  //     preloadImages(imageUrls);
+  //   }
+  // }, [storyData]);
 
   const handleClose = () => {
     window.location.href = "/webstories";
@@ -76,18 +76,20 @@ const Index: React.FC = () => {
     setCurrentStoryIndex(index);
   };
 
-  if (isPreloading) {
-    return (
-      <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
-        <div className="loaderLoading"></div>
-      </div>
-    );
-  }
+  // if (isPreloading) {
+  //   return (
+  //     <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
+  //       <div className="loaderLoading"></div>
+  //     </div>
+  //   );
+  // }
 
-  const getImageElement = (url: string | StaticImageData) => {
-    const preloadedImage = preloadedImages.find((img) => img.url === url);
-    return preloadedImage ? preloadedImage.img : null;
-  };
+  // const getImageElement = (url: string | StaticImageData) => {
+  //   const preloadedImage = preloadedImages.find((img) => img.url === url);
+  //   return preloadedImage ? preloadedImage.img.src : "";
+  // };
+
+  // console.log(preloadedImages[1].img.src);
 
   return (
     <RootLayout metadata={metadata} HeaderDisplayed={false}>
@@ -116,10 +118,7 @@ const Index: React.FC = () => {
           )}
           {storyData ? (
             <WebStories
-              data={storyData.map((story) => ({
-                ...story,
-                imageElement: getImageElement(story.imageUrl),
-              }))}
+              data={storyData}
               slug={slug}
               onStoryIndexChange={handleStoryIndexChange}
             />
