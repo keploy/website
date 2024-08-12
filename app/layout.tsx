@@ -93,6 +93,24 @@ export default function RootLayout({ children, metadata , HeaderDisplayed=true }
             `,
                 }}
             />
+            <script
+                  dangerouslySetInnerHTML={{
+                    __html: `
+                      function initApollo() {
+                        var n = Math.random().toString(36).substring(7);
+                        var o = document.createElement("script");
+                        o.src = "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" + n;
+                        o.async = true;
+                        o.defer = true;
+                        o.onload = function() {
+                          window.trackingFunctions.onLoad({ appId: "6644a0d6a54b5b0438c841cc" });
+                        };
+                        document.head.appendChild(o);
+                      }
+                      initApollo();
+                    `,
+                  }}
+                />
 
         </head>
         <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
