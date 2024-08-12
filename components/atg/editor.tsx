@@ -11,9 +11,11 @@ import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
 import SideBarHandle from "./components/SideBarhandle";
-import {StepsForRecording , StepforTests} from "./Utils/types";
+import { StepsForRecording, StepforTests, StepsforDedup } from "./Utils/types";
 import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
+import useFullScreen from "./fullscreen"; // Import the hook
+
 // import { submitCodeSnippet } from "@/app/api/hello/atg";
 // import { GolangSchema, JavaScriptSchema, PythonSchema } from "./Utils/Schema";
 
@@ -27,7 +29,7 @@ const dummyDir: Directory = {
   files: [],
 };
 
-const Editor = () => {
+const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   const [rootDir, setRootDir] = useState<Directory>(GolangData);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
@@ -41,7 +43,8 @@ const Editor = () => {
   const [language, setSelectedLanguage] = useState<string>("Golang");
   const [showSideContent, setShowSideContent] = useState<boolean>(false);
   const [TerminalStatus, setTerminalStatus] = useState<string>("red");
-  const [TerminalHeight, setTerminalHeight] = useState<string>("0");4
+  const [TerminalHeight, setTerminalHeight] = useState<string>("0");
+  const [FullScreen, setFullScreen] = useState<boolean>(false);
   // const [schema,setSchema] = useState<string>(GolangSchema);
   const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
     {
@@ -49,20 +52,44 @@ const Editor = () => {
       GenerateTest: false,
     }
   );
-  const [stepsForTest, setStepsForTests] = useState<StepforTests>(
-    {
-      Replaying_tests:false,
-      generate_report:false,
-      
-    }
-  );
+  const [stepsForTest, setStepsForTests] = useState<StepforTests>({
+    Replaying_tests: false,
+    generate_report: false,
+  });
+  const [stepsForDedup, setStepsForDedup] = useState<StepsforDedup>({
+    Dedup: false,
+    Duplicates_removed: false,
+  });
   const [sidebarState, setSidebarState] = useState({
     activeStep: 0,
     subStepIndex: -1,
+    dedupStepIndex: -1,
     testSubStepIndex: -1,
     expandedSteps: [0],
   });
+  const settingFullScreenTrue = () => {
+    setFullScreen(true);
+  };
 
+  const settingFullScreenFalse = () => {
+    setFullScreen(false);
+  };
+
+  useEffect(() => {
+    console.log(FullScreen);
+  }, [FullScreen]);
+
+  const { elementRef, enterFullScreen, exitFullScreen } = useFullScreen({
+    onEnter: settingFullScreenTrue,
+    onExit: settingFullScreenFalse,
+  });
+
+  // useEffect(() => {
+  //   if (goFullScreen) {
+  //     enterFullScreen();
+  //     // setFullScreen(true);
+  //   }
+  // }, [goFullScreen, enterFullScreen); //maybe later to add TODO
   useEffect(() => {
     updateFunctionName(state);
   }, [state]);
@@ -84,7 +111,7 @@ const Editor = () => {
       setFiles(file ? [file] : []);
       // setSchema(JavaScriptSchema);
     }
-  }, [language,rootDir]);
+  }, [language, rootDir]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -124,7 +151,6 @@ const Editor = () => {
   //   }
   // },[functionName, language , selectedFile?.content]);
 
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === "`") {
@@ -150,6 +176,7 @@ const Editor = () => {
     setSidebarState({
       activeStep: 0,
       subStepIndex: -1,
+      dedupStepIndex: -1,
       testSubStepIndex: -1, // Add this line
       expandedSteps: [0],
     });
@@ -167,7 +194,7 @@ const Editor = () => {
 
   const onSelectAppBar = (file: File) => {
     setSelectedFile(file);
-  };  
+  };
 
   const CancelButtonAppBar = (file: File) => {
     const updatedFiles = files.filter((f) => f.id !== file.id);
@@ -216,11 +243,13 @@ const Editor = () => {
     setSidebarState({
       activeStep: 0,
       subStepIndex: -1,
+      dedupStepIndex: -1,
       testSubStepIndex: -1, // Add this line
       expandedSteps: [0],
     });
-    setStepsForRecording({schemaValidation:false,GenerateTest:false});
-    setStepsForTests({Replaying_tests:false,generate_report:false});
+    setStepsForRecording({ schemaValidation: false, GenerateTest: false });
+    setStepsForTests({ Replaying_tests: false, generate_report: false });
+    setStepsForDedup({ Dedup: false, Duplicates_removed: false });
     // if (rootDir === GolangData) {
     //   const file = findFileByName(GolangData, "server.go");
     //   setSelectedFile(file);
@@ -253,7 +282,7 @@ const Editor = () => {
 
   useEffect(() => {
     if (TerminalStatus === "green") {
-      setTerminalHeight("max-h-100");
+      setTerminalHeight("max-h-full");
     } else if (TerminalStatus === "orange") {
       setTerminalHeight("max-h-96");
     } else if (TerminalStatus === "red") {
@@ -265,17 +294,33 @@ const Editor = () => {
 
   return (
     <>
-      <div>
+      <div className="bg-neutral-100">
         {dataFetched ? (
           <>
-            <div className="flex flex-col max-w-7xl mx-auto my-16 m-2 border rounded-md bg-neutral-100 border-gray-300 shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]">
+            <div
+              ref={elementRef}
+              className="flex flex-col max-w-7xl mx-auto my-16 m-2 border rounded-md bg-neutral-100 border-gray-300 shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]"
+            >
               <TopHeader
                 currentSelectedFileName={selectedFile?.name}
                 onSelectLanguage={onLanguageSelect}
                 settingTheme={settingTheme}
+                enterFullScreen={() => {
+                  enterFullScreen();
+                  setFullScreen(true);
+                }}
+                enterSmallScreen={() => {
+                  exitFullScreen();
+                  setFullScreen(false);
+                }}
+                fullscreen={FullScreen}
               />
 
-              <div className="flex flex-row h-[80vh] w-full">
+              <div
+                className={`flex flex-row ${
+                  FullScreen ? "h-[100vh]" : "h-[80vh]"
+                } ${lighttheme ? "bg-white" : "bg-[#282c34]"}  w-full`}
+              >
                 {/* Sidebar */}
                 <div
                   className={`flex flex-col transition-all duration-200 ${
@@ -298,7 +343,7 @@ const Editor = () => {
                   {/* Code and Terminal */}
                   {files.length !== 0 ? (
                     <div className="flex flex-row w-full h-full">
-                      <div className="relative w-full h-full flex flex-col">
+                      <div className="relative w-full h-full  flex flex-col">
                         <Appbar
                           selectedFile={selectedFile}
                           selectedFilesArray={files}
@@ -313,6 +358,7 @@ const Editor = () => {
                           showSideBannerBool={showSideContent}
                           RemoveSideBanner={ShowSideContent}
                           settingCodeTheme={lighttheme}
+                          isFullScreen={FullScreen} // Pass FullScreen state
                         />
                         <div
                           className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${TerminalHeight} overflow-hidden`}
@@ -324,6 +370,7 @@ const Editor = () => {
                             setRootDir={setRootDir}
                             stepsForRecording={setStepsForRecording}
                             stepsForTesting={setStepsForTests}
+                            stepsForDedup={setStepsForDedup}
                             terminalTheme={lighttheme}
                             setTerminalHeightStatus={settingTerminalStatus}
                           />
@@ -332,7 +379,7 @@ const Editor = () => {
                     </div>
                   ) : (
                     <div className="h-full w-full top-0">
-                      <DefaultEditorPage />
+                      <DefaultEditorPage lightTheme={lighttheme} />
                     </div>
                   )}
                 </div>
@@ -353,6 +400,7 @@ const Editor = () => {
                       onReset={resetEverything}
                       stepsForRecording={stepsForRecording}
                       stepsForTesting={stepsForTest}
+                      stepsForDedup={stepsForDedup}
                       removeSideContent={RemoveSideContent}
                       SideBarTheme={lighttheme}
                       sidebarState={sidebarState}

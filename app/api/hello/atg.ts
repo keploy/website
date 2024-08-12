@@ -30,10 +30,13 @@ export const submitCodeSnippet = async ({
     const options: RequestInit = {
       method: "POST",
       headers,
-      body: JSON.stringify(requestBody),  
+      body: JSON.stringify(requestBody),
     };
 
-    const response = await fetch("https://landing-page.staging.keploy.io/query", options);
+    const response = await fetch(
+      "https://landing-page.staging.keploy.io/query",
+      options
+    );
     const responseData = await response.json();
 
     if (response.ok && responseData?.data?.submitCode?.code_submission_id) {
@@ -56,85 +59,45 @@ export const submitCodeSnippet = async ({
   }
 };
 
-
-// runCurlCommand.ts
-export const runCurlCommand = async ({
-  code_submission_id,
-  command,
-  command_content,
-}: {
-  code_submission_id: string;
-  command: string;
-  command_content: string;
-}) => {
-  try {
-    const headers = {
-      "Content-Type": "application/json",
-    };
-
-    const requestBody = {
-      query: `
-        subscription RunCommand($code_submission_id: String!, $command: String!, $command_content: String!) {
-          runCommand(
-            code_submission_id: $code_submission_id
-            command: $command
-            command_content: $command_content
-          ) {
-            status
-            output
-          }
-        }
-      `,
-      variables: { code_submission_id, command, command_content },
-    };
-
-    const options = {
-      method: "POST",
-      headers,
-      body: JSON.stringify(requestBody),
-    };
-
-    const response = await fetch("https://landing-page.staging.keploy.io/query", options);
-    const responseData = await response.json();
-
-    if (response.ok && responseData?.data?.runCommand) {
-      return responseData.data.runCommand;
-    } else {
-      console.error("Error in response:", responseData.errors || responseData);
-      return null;
-    }
-  } catch (err) {
-    console.error("ERROR DURING FETCH REQUEST", err);
-    return null;
-  }
-};
-
-
 type RunCommandSubscriptionParams = {
   codeSubmissionId: string;
   command: string;
+  testSetName?: string; // Optional parameter
 };
+
 const RUN_COMMAND_SUBSCRIPTION = gql`
-  subscription RunCommand($code_submission_id: String!, $command: String!) {
-    runCommand(code_submission_id: $code_submission_id, command: $command)
+  subscription RunCommand(
+    $code_submission_id: String!
+    $command: String!
+    $test_set_name: String
+  ) {
+    runCommand(
+      code_submission_id: $code_submission_id
+      command: $command
+      test_set_name: $test_set_name
+    )
   }
 `;
 
 export const useRunCommandSubscription = ({
   codeSubmissionId: initialCodeSubmissionId,
   command: initialCommand,
+  testSetName, // Optional parameter
 }: RunCommandSubscriptionParams) => {
   const [codeSubmissionId, setCodeSubmissionId] = useState<string>(
     initialCodeSubmissionId
   );
   const [command, setCommand] = useState<string>(initialCommand);
   const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(RUN_COMMAND_SUBSCRIPTION, {
-    variables: { code_submission_id: codeSubmissionId, command },
+    variables: {
+      code_submission_id: codeSubmissionId,
+      command,
+      test_set_name: testSetName, // Include testSetName if provided
+    },
     skip: !submitted, // Skip the subscription until the form is submitted
   });
-
-  
 
   const handleSubmit = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -171,7 +134,7 @@ async function postRequest(
 
     const data = await response.json();
     return { success: response.ok, data };
-  } catch (error:any) {
+  } catch (error: any) {
     return { success: false, error: error.message };
   }
 }
@@ -188,7 +151,11 @@ export async function fetchTestSets(
     code_submission_id: codeSubmissionId,
     command: "FETCH_TEST_SETS",
   };
-  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
 }
 
 export async function fetchTestList(
@@ -205,7 +172,11 @@ export async function fetchTestList(
     command: "FETCH_TESTS_LIST",
     test_set_name: testSetName,
   };
-  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
 }
 
 export async function fetchTest(
@@ -224,7 +195,11 @@ export async function fetchTest(
     test_set_name: testSetName,
     test_case_name: testCaseName,
   };
-  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
 }
 
 export async function curlCommand(
@@ -241,7 +216,11 @@ export async function curlCommand(
     command: "CURL",
     command_content: customCommand,
   };
-  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
 }
 
 export async function fetchMock(
@@ -258,5 +237,9 @@ export async function fetchMock(
     command: "FETCH_MOCK",
     test_set_name: testSetName,
   };
-  return await postRequest("https://landing-page.staging.keploy.io/query", query, variables);
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
 }

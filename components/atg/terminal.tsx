@@ -12,7 +12,7 @@ import { useTerminal } from "./Terminal/hooks";
 import { curlCommand, useRunCommandSubscription } from "@/app/api/hello/atg"; // Update with actual path
 import { Directory } from "./Editor/utils/file-manager";
 import { Type } from "./Editor/utils/file-manager";
-import {StepforTests, StepsForRecording} from "./Utils/types";
+import {StepforTests, StepsForRecording, StepsforDedup} from "./Utils/types";
 import RecordTerminalSession from "./Terminal/TerminalComponents/RecordTerminal";
 import DeduplicateTerminalSession from "./Terminal/TerminalComponents/DedupulicationTerminal";
 import TestCoverageTerminalSession from "./Terminal/TerminalComponents/TestingTerminal";
@@ -25,6 +25,7 @@ function MainTerminal({
   setRootDir,
   stepsForRecording,
   stepsForTesting,
+  stepsForDedup,
   terminalTheme,
   setTerminalHeightStatus,
 }: {
@@ -34,6 +35,7 @@ function MainTerminal({
   setRootDir: Dispatch<SetStateAction<Directory>>;
   stepsForRecording: Dispatch<SetStateAction<StepsForRecording>>;
   stepsForTesting: Dispatch<SetStateAction<StepforTests>>;
+  stepsForDedup:Dispatch<SetStateAction<StepsforDedup>>;
   terminalTheme: boolean;
   setTerminalHeightStatus: (val: string) => void;
 }) {
@@ -53,6 +55,7 @@ function MainTerminal({
         <DeduplicateTerminalSession
           inputRef={inputRef}
           DedupTheme={terminalTheme}
+          stepForDedup={stepsForDedup}
           DeDupSetTerminalHeightStatus={setTerminalHeightStatus}
         />
       )}

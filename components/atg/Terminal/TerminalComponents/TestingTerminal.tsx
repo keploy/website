@@ -150,7 +150,7 @@ function TestCoverageTerminalSession({
   );
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.value = `keploy testcoverage -c "test"`;
+      // inputRef.current.value = `keploy testcoverage -c "test"`;
       setTimeout(() => {
         commands['keploy testcoverage -c "test"']();
       }, 1000);

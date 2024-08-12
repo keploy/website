@@ -4,8 +4,11 @@ import logo from "@/public/images/logo.svg";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import LanguageSelector from "./LanguageSelectorComponent";
 import Link from "next/link";
+import CropFreeIcon from '@mui/icons-material/CropFree'; // Import fullscreen icon
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit'; // Import fullscreen exit icon
+import useFullScreen from "../fullscreen";
+
 // Define the MaterialUI switch
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -54,27 +57,41 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-
-const YourComponent = ({
+const TopHeader = ({
   currentSelectedFileName,
   onSelectLanguage,
   settingTheme,
+  enterFullScreen,
+  enterSmallScreen,
+  fullscreen,
 }: {
   currentSelectedFileName: string | undefined;
   onSelectLanguage: (language: string) => void;
-  settingTheme: ()=>void;
+  settingTheme: () => void;
+  enterFullScreen:()=>void;
+  enterSmallScreen:()=>void;
+  fullscreen:boolean;
 }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+ 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
     settingTheme();
     document.body.classList.toggle("dark-mode", !isDarkMode); // Add a class to the body element
   };
 
+  const toggleScreen = ()=>{
+    if(fullscreen){
+      enterSmallScreen();
+    }else{
+      enterFullScreen();
+    }
+  }
+
+  
   return (
     <div
-      className={`flex justify-between items-center  p-2 rounded-t-md ${
+      className={`flex justify-between items-center p-2 rounded-t-md ${
         isDarkMode ? "bg-[#1a1d23] text-white" : "bg-neutral-200 text-black"
       }`}
     >
@@ -86,15 +103,13 @@ const YourComponent = ({
         className=" flex-auto"
       />
       <div
-        className={`font-semibold py-1 shadow-inner w-full text-center mr-6  rounded-md border ${
+        className={`font-semibold py-1 shadow-inner w-full text-center mr-6 rounded-md border ${
           isDarkMode
             ? "bg-[#171a1e] text-white border-neutral-600"
-            : "bg-white text-gray-500 border-gray-200"}`}
+            : "bg-white text-gray-500 border-gray-200"
+        }`}
       >
-        <p
-          className={`
-              } content-end text-sm text-center `}
-        >
+        <p className={`content-end text-sm text-center`}>
           If you like Keploy, give it a star on{" "}
           <span>
             {" "}
@@ -118,7 +133,6 @@ const YourComponent = ({
         </p>
       </div>
       <div className="flex items-center scale-[0.80]">
-        {/* <LanguageSelector onSelectLanguageForCode={onSelectLanguage} /> */}
         <FormControlLabel
           control={
             <MaterialUISwitch checked={isDarkMode} onChange={toggleTheme} />
@@ -126,9 +140,16 @@ const YourComponent = ({
           label=""
           className="ml-4"
         />
+        <button onClick={toggleScreen} className="ml-4">
+          {fullscreen ? (
+            <FullscreenExitIcon style={{ color: isDarkMode ? "white" : "black" }} />
+          ) : (
+            <CropFreeIcon style={{ color: isDarkMode ? "white" : "black" }} />
+          )}
+        </button>
       </div>
     </div>
   );
 };
 
-export default YourComponent;
+export default TopHeader;

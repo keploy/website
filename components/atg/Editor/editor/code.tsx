@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import { File } from "../utils/file-manager";
@@ -10,15 +10,18 @@ export const Code = ({
   showSideBannerBool,
   RemoveSideBanner,
   settingCodeTheme,
-}: {  
+  isFullScreen,
+}: {
   selectedFile: File | undefined;
   showSideBannerBool: Boolean;
   RemoveSideBanner: () => void;
   settingCodeTheme: boolean;
+  isFullScreen: boolean;
 }) => {
   if (!selectedFile) return null;
 
   const monacoInstance = useMonaco();
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [showText, setShowText] = useState<boolean>(false);
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
@@ -27,6 +30,19 @@ export const Code = ({
   else if (language === "ts" || language === "tsx") language = "typescript";
   else if (language === "go") language = "go";
   else if (language === "py") language = "python";
+
+  useEffect(() => {
+    if (monacoInstance && editorRef.current) {
+      const layoutEditor = () => {
+        editorRef.current?.layout();
+      };
+      layoutEditor();
+
+      // Add event listener to window resize to handle screen transition
+      window.addEventListener("resize", layoutEditor);
+      return () => window.removeEventListener("resize", layoutEditor);
+    }
+  }, [isFullScreen, monacoInstance]);
 
   const validateCode = (code: string) => {
     const diagnostics: monaco.editor.IMarkerData[] = [];
@@ -160,7 +176,11 @@ export const Code = ({
   }, [monacoInstance, settingCodeTheme]);
 
   return (
-    <div className={`relative w-full h-full ${settingCodeTheme ? "border border-gray-300" : ""} rounded-lg`}>
+    <div
+      className={`w-full ${
+        isFullScreen ? "h-full" : "h-[75vh]"
+      } ${settingCodeTheme ? "border border-gray-300" : ""} rounded-lg`}
+    >
       <Editor
         language={language}
         value={code}
@@ -174,12 +194,13 @@ export const Code = ({
             selectedFile.content = newValue;
           }
         }}
+        onMount={(editor) => (editorRef.current = editor)} // Store editor instance
       />
       {!showSideBannerBool && (
         <div
           onMouseEnter={() => setShowText(true)}
           onMouseLeave={() => setShowText(false)}
-          className={`p-2 absolute z-10 hover:cursor-pointer border border-gray-500 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
+          className={`p-2 absolute z-10 hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
           style={{
             transform: "translateY(-50%)",
             height: "3rem",
@@ -192,7 +213,9 @@ export const Code = ({
         >
           <ChevronLeftIcon className="text-gray-50" />
           <div
-            className={`overflow-hidden transition-width duration-500 ${showText ? "w-full" : "w-0"}`}
+            className={`overflow-hidden transition-width duration-500 ${
+              showText ? "w-full" : "w-0"
+            }`}
           >
             <p className={`text-gray-50 font-bold ml-2 text-sm`}>
               Side Content

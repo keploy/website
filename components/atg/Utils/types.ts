@@ -3,9 +3,10 @@ export  interface StepsForRecording {
   GenerateTest: boolean;
 };
 
-// export default interface StepsforDedup {
-//   firstStep:boolean;
-// };
+export  interface StepsforDedup {
+  Dedup:boolean;
+  Duplicates_removed:boolean;
+};
 
 export  interface StepforTests {
   Replaying_tests:boolean;

@@ -10,7 +10,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import DoneIcon from "@mui/icons-material/Done";
 import LockIcon from "@mui/icons-material/Lock";
 import CircleIcon from "@mui/icons-material/Circle";
-import { StepsForRecording, StepforTests } from "../../Utils/types";
+import { StepsForRecording, StepforTests, StepsforDedup } from "../../Utils/types";
 import CloseIcon from "@mui/icons-material/Close";
 
 const stepsRecord = [
@@ -45,16 +45,19 @@ interface SideBarNormalProps {
   onReset: () => void;
   stepsForRecording: StepsForRecording;
   stepsForTesting: StepforTests;
+  stepsForDedup: StepsforDedup;
   RemoveSideContent: () => void;
   SideBartheme: boolean;
   activeStep: number;
   subStepIndex: number;
+  dedupStepIndex: number;
   testSubStepIndex: number;
   expandedSteps: number[];
   setSidebarState: React.Dispatch<
     React.SetStateAction<{
       activeStep: number;
       subStepIndex: number;
+      dedupStepIndex: number;
       testSubStepIndex: number;
       expandedSteps: number[];
     }>
@@ -66,10 +69,12 @@ export default function SideBarNormal({
   onReset,
   stepsForRecording,
   stepsForTesting,
+  stepsForDedup,
   RemoveSideContent,
   SideBartheme,
   activeStep,
   subStepIndex,
+  dedupStepIndex,
   testSubStepIndex,
   expandedSteps,
   setSidebarState,
@@ -77,7 +82,7 @@ export default function SideBarNormal({
   const [subStepCompleted, setSubStepCompleted] = React.useState(false);
 
   React.useEffect(() => {
-    if (activeStep < 2) {
+    if (activeStep === 0) {
       if (
         subStepIndex >= 0 &&
         subStepIndex < stepsRecord[activeStep].steps.length
@@ -101,6 +106,39 @@ export default function SideBarNormal({
                   ...prevState,
                   activeStep: prevState.activeStep + 1,
                   subStepIndex: -1,
+                  expandedSteps: [...prevState.expandedSteps, activeStep + 1],
+                }));
+              }
+            }, 500);
+          }
+        }, 1000);
+
+        return () => clearTimeout(timer);
+      }
+    } else if (activeStep === 1) {
+      if (
+        dedupStepIndex >= 0 &&
+        dedupStepIndex < stepsRecord[activeStep].steps.length
+      ) {
+        const timer = setTimeout(() => {
+          if (dedupStepIndex === 0 && !stepsForDedup.Dedup) {
+            setSubStepCompleted(false);
+          } else if (dedupStepIndex === 1 && !stepsForDedup.Duplicates_removed) {
+            setSubStepCompleted(false);
+          } else {
+            setSubStepCompleted(true);
+            setTimeout(() => {
+              setSubStepCompleted(false);
+              if (dedupStepIndex + 1 < stepsRecord[activeStep].steps.length) {
+                setSidebarState((prevState) => ({
+                  ...prevState,
+                  dedupStepIndex: dedupStepIndex + 1,
+                }));
+              } else {
+                setSidebarState((prevState) => ({
+                  ...prevState,
+                  activeStep: prevState.activeStep + 1,
+                  dedupStepIndex: -1,
                   expandedSteps: [...prevState.expandedSteps, activeStep + 1],
                 }));
               }
@@ -144,14 +182,19 @@ export default function SideBarNormal({
         return () => clearTimeout(timer);
       }
     }
-  }, [subStepIndex, testSubStepIndex, activeStep, stepsForRecording, stepsForTesting, setSidebarState]);
+  }, [subStepIndex, testSubStepIndex, dedupStepIndex, activeStep, stepsForRecording, stepsForTesting, stepsForDedup, setSidebarState]);
 
   const handleNext = () => {
     onNext();
-    if (activeStep < 2) {
+    if (activeStep === 0) {
       setSidebarState((prevState) => ({
         ...prevState,
         subStepIndex: 0,
+      }));
+    } else if (activeStep === 1) {
+      setSidebarState((prevState) => ({
+        ...prevState,
+        dedupStepIndex: 0,
       }));
     } else {
       setSidebarState((prevState) => ({
@@ -175,14 +218,13 @@ export default function SideBarNormal({
   return (
     <Box
       sx={{
-        maxWidth: 300,
         overflowY: "auto",
-        position: "relative",
         scrollbarWidth: "none",
         "&::-webkit-scrollbar": {
           display: "none",
         },
         zIndex: "0",
+        width:"100%",
       }}
       className={`${SideBartheme ? "bg-white" : "bg-[#21252b]"} h-full rounded-br-md`}
     >
@@ -241,7 +283,15 @@ export default function SideBarNormal({
               fontWeight: "bold",
               m: 0,
             }}
-            className={` ${SideBartheme ? (index <= activeStep ? "bg-white" : "bg-gray-200") : (index <= activeStep ? "bg-[#30363e]" : "bg-[#3f4651]")}  `}
+            className={` ${
+              SideBartheme
+                ? index <= activeStep
+                  ? "bg-white"
+                  : "bg-gray-200"
+                : index <= activeStep
+                ? "bg-[#30363e]"
+                : "bg-[#3f4651]"
+            }  `}
           >
             <Typography className={`${SideBartheme ? "text-secondary-300" : "text-gray-300"} font-semibold`}>
               {step.label}
@@ -267,7 +317,8 @@ export default function SideBarNormal({
                     key={subIndex}
                     sx={{ display: "flex", mb: 1 }}
                     className={`${
-                      (activeStep < 2 && subStepIndex > subIndex) ||
+                      (activeStep === 0 && subStepIndex > subIndex) ||
+                      (activeStep === 1 && dedupStepIndex > subIndex) ||
                       (activeStep === 2 && testSubStepIndex > subIndex) ||
                       index < activeStep
                         ? "items-center"
@@ -283,7 +334,8 @@ export default function SideBarNormal({
                         mr: 1,
                       }}
                     >
-                      {((activeStep < 2 && subStepIndex === subIndex) ||
+                      {((activeStep === 0 && subStepIndex === subIndex) ||
+                        (activeStep === 1 && dedupStepIndex === subIndex) ||
                         (activeStep === 2 && testSubStepIndex === subIndex)) &&
                       index === activeStep ? (
                         subStepCompleted ? (
@@ -291,7 +343,8 @@ export default function SideBarNormal({
                         ) : (
                           <CircularProgress size={14} />
                         )
-                      ) : (activeStep < 2 && subStepIndex > subIndex) ||
+                      ) : (activeStep === 0 && subStepIndex > subIndex) ||
+                        (activeStep === 1 && dedupStepIndex > subIndex) ||
                         (activeStep === 2 && testSubStepIndex > subIndex) ||
                         index < activeStep ? (
                         <DoneIcon className="font-bold rounded-md p-1 text-accent-100" />
@@ -304,7 +357,8 @@ export default function SideBarNormal({
                         component="span"
                         sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
                         className={`${
-                          ((activeStep < 2 && subStepIndex === subIndex) ||
+                          ((activeStep === 0 && subStepIndex === subIndex) ||
+                            (activeStep === 1 && dedupStepIndex === subIndex) ||
                             (activeStep === 2 && testSubStepIndex === subIndex)) &&
                           index === activeStep
                             ? subStepCompleted
@@ -314,7 +368,8 @@ export default function SideBarNormal({
                               : SideBartheme
                               ? "text-secondary-500"
                               : "text-gray-100"
-                            : (activeStep < 2 && subStepIndex > subIndex) ||
+                            : (activeStep === 0 && subStepIndex > subIndex) ||
+                              (activeStep === 1 && dedupStepIndex > subIndex) ||
                               (activeStep === 2 && testSubStepIndex > subIndex) ||
                               index < activeStep
                             ? SideBartheme
@@ -338,7 +393,13 @@ export default function SideBarNormal({
                   <button
                     onClick={handleNext}
                     className="mt-1 mr-1 w-full bg-primary-300 font-semibold text-secondary-300 px-4 py-2 rounded"
-                    disabled={activeStep < 2 ? subStepIndex !== -1 : testSubStepIndex !== -1}
+                    disabled={
+                      activeStep === 0
+                        ? subStepIndex !== -1
+                        : activeStep === 1
+                        ? dedupStepIndex !== -1
+                        : testSubStepIndex !== -1
+                    }
                   >
                     {step.stepName}
                   </button>
