@@ -18,8 +18,8 @@ export interface Metadata {
 
 export const defaultMetadata: Metadata = {
   title: 'Keploy | Open Source Stubs and API Test Generator for Developer',
-  keywords: "API testing, e2e Testing, ai testing, open source ai testing tool, Service Mocking, Dependency Mocking",
-  description: 'Keploy is AI based test case and stubs/mocks generator for e2e testing. 90% test coverage in minutes with open source testing tool',
+  keywords: "Integration testing, e2e Testing, ai testing, Unit Testing, API Testing, open source ai testing tool, Service Mocking, Dependency Mocking",
+  description: 'Keploy is AI based test case and stubs/mocks generator for integration and unit testing. 90% test coverage in minutes with open source testing tool',
   image: "images/logo.svg",
 };
 
@@ -91,6 +91,24 @@ export default function RootLayout({ children, metadata }: RootLayoutProps) {
             `,
                 }}
             />
+            <script
+                  dangerouslySetInnerHTML={{
+                    __html: `
+                      function initApollo() {
+                        var n = Math.random().toString(36).substring(7);
+                        var o = document.createElement("script");
+                        o.src = "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" + n;
+                        o.async = true;
+                        o.defer = true;
+                        o.onload = function() {
+                          window.trackingFunctions.onLoad({ appId: "6644a0d6a54b5b0438c841cc" });
+                        };
+                        document.head.appendChild(o);
+                      }
+                      initApollo();
+                    `,
+                  }}
+                />
 
         </head>
         <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
