@@ -27,7 +27,7 @@ const StoryCard = ({
       data-aos="zoom-y-out" data-aos-delay="150"
     >
       <Link  href={`/webstories/${slug}`}>
-        <div className="w-full h-0relative">
+        <div className="w-full relative">
           <Image
             src={imagesrc}
             alt={CardDescription}

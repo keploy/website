@@ -2,24 +2,17 @@
 import React, { useEffect, useState } from "react";
 import WebStories from "@/components/webstories/Webstories";
 import { DataFiles } from "../../../../components/utils/data";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import CloseIcon from "@/components/webstories/components/CloseIcon";
-import { StaticImageData } from "next/image";
 import RootLayout from "@/app/layout";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-interface PreloadedImage {
-  url: string | StaticImageData;
-  img: HTMLImageElement;
-}
-
 const Index: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const router = useRouter();
   const [windowWidth, setWindowWidth] = useState<number>(0);
-  const [isPreloading, setIsPreloading] = useState<boolean>(true);
-  const [preloadedImages, setPreloadedImages] = useState<PreloadedImage[]>([]);
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const storyData = DataFiles.find((item) => item.Slug === slug)?.Story;
 
@@ -46,50 +39,13 @@ const Index: React.FC = () => {
     }
   }, []);
 
-  // const preloadImages = async (images: (string | StaticImageData)[]) => {
-  //   const loadedImages = await Promise.all(
-  //     images.map(
-  //       (url) =>
-  //         new Promise<PreloadedImage>((resolve) => {
-  //           const img =  new (window as any).Image();;
-  //           img.src = typeof url === "string" ? url : url.src;
-  //           img.onload = () => resolve({ url, img });
-  //         })
-  //     )
-  //   );
-  //   setPreloadedImages(loadedImages);
-  //   setIsPreloading(false);
-  // };
-
-  // useEffect(() => {
-  //   if (storyData) {
-  //     const imageUrls = storyData.map((story) => story.imageUrl).filter(Boolean) as (string | StaticImageData)[];
-  //     preloadImages(imageUrls);
-  //   }
-  // }, [storyData]);
-
   const handleClose = () => {
-    window.location.href = "/webstories";
+    router.push("/webstories");
   };
 
   const handleStoryIndexChange = (index: number) => {
     setCurrentStoryIndex(index);
   };
-
-  // if (isPreloading) {
-  //   return (
-  //     <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center">
-  //       <div className="loaderLoading"></div>
-  //     </div>
-  //   );
-  // }
-
-  // const getImageElement = (url: string | StaticImageData) => {
-  //   const preloadedImage = preloadedImages.find((img) => img.url === url);
-  //   return preloadedImage ? preloadedImage.img.src : "";
-  // };
-
-  // console.log(preloadedImages[1].img.src);
 
   return (
     <RootLayout metadata={metadata} HeaderDisplayed={false}>
