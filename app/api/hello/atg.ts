@@ -201,7 +201,7 @@ export async function fetchTest(
     variables
   );
 }
-
+//for the curl  command
 export async function curlCommand(
   codeSubmissionId: string,
   customCommand: string
@@ -235,6 +235,98 @@ export async function fetchMock(
   const variables = {
     code_submission_id: codeSubmissionId,
     command: "FETCH_MOCK",
+    test_set_name: testSetName,
+  };
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
+}
+
+//api for fetching the test-run:
+export async function fetchTestRun(
+  codeSubmissionId: string
+): Promise<CommandResponse> {
+  // Removed the `reportName` parameter since it's no longer needed
+  const query = `
+    subscription RunCommand($code_submission_id: String!, $command: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "FETCH_TEST_RUNS",
+  };
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
+}
+
+//api for the  fetching the files'name inside the report folder(coverage.yaml etc).
+export async function fetchReport(
+  codeSubmissionId: string,
+  testRunName: string // Changed variable name for clarity
+): Promise<CommandResponse> {
+  const query = `
+    subscription RunCommand($code_submission_id: String!, $command: String!, $test_run_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_run_name: $test_run_name)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "FETCH_TEST_SET_REPORTS",
+    test_run_name: testRunName, // Updated to match the query
+  };
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
+}
+
+//api for fetching the contents of report.
+export async function fetchDetailedReport(
+  codeSubmissionId: string,
+  testRunName: string,
+  testSetReportName: string // Added a new parameter for test_set_report_name
+): Promise<CommandResponse> {
+  const query = `
+    subscription RunCommand($code_submission_id: String!, $command: String!, $test_run_name: String!, $test_set_report_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_run_name: $test_run_name, test_set_report_name: $test_set_report_name)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "FETCH_REPORT",
+    test_run_name: testRunName,
+    test_set_report_name: testSetReportName // Updated to match the query
+  };
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
+}
+
+export async function RemovingDuplicate(
+  codeSubmissionId: string,
+  testSetName: string
+): Promise<CommandResponse> {
+  const query = `
+    subscription RunCommand($code_submission_id: String!, $command: String!, $test_set_name: String!) {
+      runCommand(
+        code_submission_id: $code_submission_id, 
+        command: $command, 
+        test_set_name: $test_set_name
+      )
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "REMOVE_DUPLICATES",
     test_set_name: testSetName,
   };
   return await postRequest(

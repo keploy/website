@@ -101,7 +101,7 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
     if (functionName === "Start") {
       storeSubmissionCode();
     }
-  },[CodeLanguage, CodeContent]);
+  },[CodeLanguage]);
 
   // const handleNext = () => {
   //   onNext();

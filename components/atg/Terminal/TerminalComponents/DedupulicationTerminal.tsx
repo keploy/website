@@ -14,6 +14,7 @@ import {
   replaceDates,
 } from "../../Editor/utils/api-functions";
 import { StepsforDedup } from "../../Utils/types";
+import { RemovingDuplicate } from "@/app/api/hello/atg";
 const Emoji = "User@1231-Keploy:"; // 🐰
 
 function DeduplicateTerminalSession({
@@ -53,18 +54,6 @@ function DeduplicateTerminalSession({
     testSetName: "test-set-0",
   });
 
-  // Subscription for the second command
-  const {
-    data: dataSecond,
-    loading: loadingSecond,
-    error: errorSecond,
-    handleSubmit: handleSubmitSecond,
-  } = useRunCommandSubscription({
-    codeSubmissionId,
-    command: commandSecond,
-    testSetName: "test-set-0",
-  });
-
   let intialRenderRef = useRef(true);
 
   // Effect for dataFirst
@@ -77,11 +66,17 @@ function DeduplicateTerminalSession({
         dataFirst.runCommand += "</span>";
       }
 
-      if (dataFirst.runCommand.includes("proxy stopped...")) {
+      if (
+        dataFirst.runCommand.includes("proxy stopped...") ||
+        dataFirst.runCommand.includes("eBPF resources released successfully...")
+      ) {
+        setLoader(false);
+        setOtherCommandsTrue(true);
         localStorage.setItem("fetchTestListBool", JSON.stringify(true));
       }
 
       if (dataFirst.runCommand.includes("error in verifying the API key")) {
+        setLoader(false);
       }
 
       if (
@@ -90,7 +85,6 @@ function DeduplicateTerminalSession({
         dataFirst.runCommand.includes("Server started on port 5000")
       ) {
         stepForDedup((prev) => ({ ...prev, Dedup: true }));
-        setOtherCommandsTrue(true);
         setLoader(true);
       }
       pushToHistory(
@@ -115,62 +109,18 @@ function DeduplicateTerminalSession({
     }
   }, [dataFirst, errorFirst, loadingFirst, pushToHistory, loader]);
 
-  // Effect for dataSecond
-  useEffect(() => {
-    if (dataSecond) {
-      dataSecond.runCommand = replaceDates(dataSecond.runCommand);
-      dataSecond.runCommand = replaceAnsiColors(dataSecond.runCommand);
-
-      if (dataSecond.runCommand.match(/<span style="color: [^>]+;">/)) {
-        dataSecond.runCommand += "</span>";
-      }
-
-      // if (dataSecond.runCommand.includes("proxy stopped...")) {
-      //   localStorage.setItem("fetchTestListBool", JSON.stringify(true));
-      //   setLoader(false);
-      // }
-
-      // if (dataSecond.runCommand.includes("error in verifying the API key")) {
-      //   setLoader(false);
-      // }
-
-      if (dataSecond.runCommand === "deleted redundant testcases") {
-        stepForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
-        setLoader(false);
-      }
-      pushToHistory(
-        <div>
-          <p
-            className="inline"
-            dangerouslySetInnerHTML={{ __html: dataSecond.runCommand }}
-          ></p>
-        </div>
-      );
-    } else if (errorSecond) {
-      setSocketErrors(errorSecond.message);
-      pushToHistory(
-        <div className="flex">
-          <p className="font-bold">{Emoji}</p>
-          <p className="text-accent-100 font-bold">~/$</p> {errorSecond.message}
-        </div>
-      );
-    } else if (loadingSecond) {
-      setLoader(true);
-    }
-  }, [dataSecond, errorSecond, loadingSecond, pushToHistory, loader]);
-
   const commands = useMemo(
     () => ({
       'keploy deduplicate -c "Deduplicate ababy"': async () => {
         if (!intialRecordingRef.current) {
-          handleSubmitFirst();
+          await handleSubmitFirst();
           if (OtherCommand) {
-            handleSubmitSecond();
+            const data = await RemovingDuplicate(
+              codeSubmissionId,
+              "test-set-0"
+            );
             console.log("here is coming");
-            // await makeKeployTestDir({ setRootDir });
-            // setStepsForRecording((prev) => ({ ...prev, GenerateTest: true }));
-            //add a time buffer here.
-            // SetTestSets(rootDir.dirs[1],setRootDir)
+            stepForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
             intialRecordingRef.current = true;
           }
         }
@@ -195,7 +145,13 @@ function DeduplicateTerminalSession({
         await resetTerminal();
       },
     }),
-    []
+    [
+      OtherCommand,
+      pushToHistory,
+      resetTerminal,
+      handleSubmitFirst,
+      RemovingDuplicate,
+    ]
   );
 
   useEffect(() => {

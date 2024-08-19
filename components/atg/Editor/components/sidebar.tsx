@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FileTree } from "./file-tree";
 import { Directory, File } from "../utils/file-manager";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -24,7 +24,7 @@ export const Sidebar = ({
 
   return (
     <div
-      className={`flex flex-col h-full text-sm rounded-bl-md ${
+      className={`flex flex-col h-full text-sm rounded-bl-md overflow-x-hidden whitespace-nowrap ${
         theme
           ? "text-secondary-300 bg-neutral-200"
           : "text-white bg-[#21252b]"

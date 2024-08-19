@@ -118,7 +118,7 @@ function TestCoverageTerminalSession({
         if (!intialRecordingRef.current) {
           handleSubmit();
           if (commandsTrue) {
-           makeKeployTestDir({ setRootDir });
+            await makeKeployTestDir({ setRootDir });
            setStepsForTesting((prev) => ({ ...prev, generate_report: true }));
              //add a time buffer here.
             // SetTestSets(rootDir.dirs[1],setRootDir)

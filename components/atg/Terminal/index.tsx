@@ -190,7 +190,7 @@ export const Terminal = forwardRef(
               <div
                 className={`${
                   terminalTheme ? "terminal__line_light" : "terminal__line"
-                }`}
+                } text-start`}
                 key={`terminal-line-${index}-${line}`}
               >
                 {line}

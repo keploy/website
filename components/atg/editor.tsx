@@ -40,7 +40,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   const [state, setState] = useState(-1);
   const [functionName, setFunctionName] = useState<string>("Start");
   const inputRef = useRef<HTMLInputElement>(null);
-  const [language, setSelectedLanguage] = useState<string>("Golang");
+  const [language, setSelectedLanguage] = useState<string>("Javascript");
   const [showSideContent, setShowSideContent] = useState<boolean>(false);
   const [TerminalStatus, setTerminalStatus] = useState<string>("red");
   const [TerminalHeight, setTerminalHeight] = useState<string>("0");
@@ -72,6 +72,8 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   };
 
   const settingFullScreenFalse = () => {
+    //here below because when it goes full screen side-contentshould always be there.
+    setShowSideContent(true);
     setFullScreen(false);
   };
 
@@ -180,6 +182,9 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
       testSubStepIndex: -1, // Add this line
       expandedSteps: [0],
     });
+    setStepsForRecording({schemaValidation:false,GenerateTest:false});    
+    setStepsForDedup({Dedup:false,Duplicates_removed:false});
+    setStepsForTests({Replaying_tests:false,generate_report:false});
   };
 
   const onSelect = (file: File | undefined) => {

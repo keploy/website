@@ -24,7 +24,7 @@ export default function LanguageSelector({
   Selectortheme,
 }: LanguageSelectorProps) {
   const [selectedLanguage, setSelectedLanguage] =
-    React.useState<string>("Golang");
+    React.useState<string>("Javascript");
   const [isExpanded, setIsExpanded] = React.useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);

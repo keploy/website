@@ -179,7 +179,7 @@ export const Code = ({
     <div
       className={`w-full ${
         isFullScreen ? "h-full" : "h-[75vh]"
-      } ${settingCodeTheme ? "border border-gray-300" : ""} rounded-lg`}
+      } ${settingCodeTheme ? "border border-gray-300" : ""}`}
     >
       <Editor
         language={language}
