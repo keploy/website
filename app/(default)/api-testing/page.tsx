@@ -27,32 +27,32 @@ const pageMetadata: Metadata = {
 const blocksData = [
   {
     title: "Manual Test Script",
-    description: "Creating test scripts for API testing manually is time-consuming and error-prone.",
+    description: "Manually creating test scripts for API testing is a time-consuming and error-prone process, often leading to inefficiencies and inconsistencies in testing practices.",
     SvgComponent: MdiLightningBolt,
   },
   {
     title: "Limited Test Coverage",
-    description: "Traditional API testing methods may not cover all possible scenarios, leading to gaps in test coverage.",
+    description: "Traditional API testing methods may fail to cover all possible scenarios, leaving gaps in test coverage that can result in undetected bugs and vulnerabilities.",
     SvgComponent: FluentPuzzleCubePiece20Filled,
   },
   {
     title: "Difficulty in Test Maintenance",
-    description: "Maintaining and updating test scripts as APIs evolve can be challenging and resource-intensive.",
+    description: "As APIs evolve, maintaining and updating test scripts becomes increasingly challenging and resource-intensive, making it difficult to keep tests current and effective.",
     SvgComponent: CollaborationIcon,
   },
   {
     title: "Complex Setup Requirements",
-    description: "Setting up environments for API testing can be complex and require specialized knowledge.",
+    description: "Setting up environments for API testing can be complex, requiring specialized knowledge and tools, which adds to the difficulty and time needed for comprehensive testing.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
     title: "Lack of Real-time Feedback",
-    description: "Waiting for test results can slow down the development process and delay bug fixes.",
+    description: "Delays in receiving test results can slow down the development process, causing delays in identifying and fixing bugs, which hampers overall progress.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
     title: "Pipeline Integration",
-    description: "Integrating API tests with CI/CD pipelines can be difficult and requires extensive configuration.",
+    description: "Integrating API tests with CI/CD pipelines can be challenging, often requiring extensive configuration and expertise to ensure seamless operations within the development workflow.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
