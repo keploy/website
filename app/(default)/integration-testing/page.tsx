@@ -19,16 +19,16 @@ import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
 const pageMetadata: Metadata = {
-  title: 'Keploy | Need Complete Code Coverage? Check this Test Coverage Tool!',
-  description: 'Explore how Keploy test coverage tools help you cover every scenario. 100% unit test coverage, Python code coverage, Java, Gotest, Jest Test Coverage. Start now',
-  keywords: 'test coverage tools, python code coverage, python coverage, Junit, Jest, Go test, code coverage, test coverage',
+  title: 'Keploy | Maximize Integration Testing Efficiency with Our Tools!',
+  description: 'Discover how Keploy’s integration testing tools streamline complex workflows. Achieve scalable, reliable, and automated testing with zero-code solutions. Start now.',
+  keywords: 'integration testing, test coverage tools, automated testing, zero-code testing, Python integration testing, Java integration testing, Jest, Go test',
 };
 
 const heroData = {
-    titleTop: "Enhance Integration Testing",
-    titleBottom: "with Ease and Efficiency",
-    subtitleTop: "Automate your integration testing workflows for seamless collaboration.",
-    subtitleBottom: "Unlock scalable and reliable testing for complex systems with zero-code solutions🚀",
+    titleTop: "Optimize Integration Testing",
+    titleBottom: "with Seamless Automation",
+    subtitleTop: "Automate your integration testing workflows for enhanced collaboration.",
+    subtitleBottom: "Achieve reliable and scalable testing for complex systems with zero-code solutions🚀",
     animationSrc: testAndStubsGen,
 };
 
