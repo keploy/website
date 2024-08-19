@@ -7,6 +7,30 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        float: "float 3s ease-in-out infinite", // Added from File 2
+        marquee2: "marquee2 25s linear infinite", // Added from File 2
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" }, // Added from File 2
+          "50%": { transform: "translateY(-5%)" }, // Added from File 2
+        },
+        marquee2: {
+          "0%": { transform: "translateX(0%)" }, // Added from File 2
+          "100%": { transform: "translateX(-90%)" }, // Added from File 2
+        },
+      },
       colors: {
         // Brand Palette
         // Primary headings, primary buttons, main elements
@@ -122,7 +146,7 @@ module.exports = {
         inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)",
         outline: "0 0 0 3px rgba(66, 153, 225, 0.5)",
         none: "none",
-        custom: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+        custom: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Added from File 2
       },
       spacing: {
         "9/16": "56.25%",
@@ -135,8 +159,8 @@ module.exports = {
           "var(--font-architects-daughter)",
           "sans-serif",
         ],
-        courier: ["Courier Prime", "monospace"],
         pencil: ["Pencil", "sans-serif"],
+        courier: ["Courier Prime", "monospace"], // Added from File 2
       },
       fontSize: {
         xs: "0.75rem",
@@ -184,8 +208,8 @@ module.exports = {
         10: "2.5rem",
         48: "12rem",
       },
-      height:{
-        "70v":"70vh",
+      height: {
+        "70v": "70vh", // Added from File 2
       },
       opacity: {
         90: "0.9",
@@ -193,25 +217,6 @@ module.exports = {
       scale: {
         98: ".98",
         101: "1.01",
-      },
-      animation: {
-        float: "float 3s ease-in-out infinite",
-        marquee: "marquee 25s linear infinite",
-        marquee2: "marquee2 25s linear infinite ",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-5%)" },
-        },
-        marquee: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
-        marquee2: {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-90%)" },
-        },
       },
       zIndex: {
         "-1": "-1",
