@@ -210,15 +210,6 @@ export const GolangData: Directory = {
         },
       ],
     },
-    // {
-    //   id: "test_root",
-    //   name: "Keploy",
-    //   parentId: "root",
-    //   type: Type.DIRECTORY,
-    //   depth: 1,
-    //   dirs: [],
-    //   files: [],
-    // },
   ],
   files: [],
 };

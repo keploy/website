@@ -54,29 +54,7 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
   setSidebarState,
 }) => {
   const moveToNextStage = async () => {
-    // if (functionName === "Start") {
-    //   var schema = "";
-    //   if(CodeLanguage == "GOLANG"){
-    //     schema = GolangSchema;
-    //   }else if(CodeLanguage == "PYTHON"){
-    //     schema = PythonSchema;
-    //   }else if(CodeLanguage == "JAVASCRIPT"){
-    //     schema = JavaScriptSchema
-    //   }
-    //   try {
-    //     const response = await submitCodeSnippet({
-    //       language: CodeLanguage,
-    //       code: CodeContent || "",
-    //       schema: GolangSchema,
-    //     });
-    //     if (response) {
-    //       localStorage.setItem("code_submission_id", response);
-    //     }
-    //   } catch (error) {
-    //     console.error("Error storing code submission ID:", error);
-    //   }
-    // }
-    if(functionName=="Start"){
+      if(functionName=="Start"){
       await new Promise(resolve => setTimeout(resolve, 4000)); // 2-second timeout
     }
     showTerminal();
@@ -103,32 +81,7 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
     }
   },[CodeLanguage]);
 
-  // const handleNext = () => {
-  //   onNext();
-  //   setSidebarState((prevState) => ({
-  //     ...prevState,
-  //     subStepIndex: 0,
-  //   }));
-  // };
 
-  // const handleReset = () => {
-  //   onReset();
-  //   setSidebarState({
-  //     activeStep: 0,
-  //     subStepIndex: -1,
-  //     testSubStepIndex: -1, // Add this line
-  //     expandedSteps: [0],
-  //   });
-  // };
-
-  // const handleAccordionChange = (index: number) => {
-  //   setSidebarState((prevState) => ({
-  //     ...prevState,
-  //     expandedSteps: prevState.expandedSteps.includes(index)
-  //       ? prevState.expandedSteps.filter((step) => step !== index)
-  //       : [...prevState.expandedSteps, index],
-  //   }));
-  // };
 
   return (
     <div

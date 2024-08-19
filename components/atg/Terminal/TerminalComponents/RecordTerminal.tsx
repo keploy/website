@@ -53,21 +53,6 @@ function RecordTerminalSession({
   const initialPushRef = useRef(false);
   const intialRecordingRef = useRef(false);
 
-  // const handleSetTestSets = async () => {
-  //   const keployDir = rootDir.dirs.find(dir => dir.name === 'Keploy');
-  //   if (keployDir) {
-  //     await SetTestSets(keployDir, (updatedKeployDir) => {
-  //       setRootDir({
-  //         ...rootDir,
-  //         dirs: rootDir.dirs.map(dir =>
-  //           dir.name === 'Keploy' ? updatedKeployDir : dir
-  //         ),
-  //       });
-  //     });
-  //   } else {
-  //     console.error('Keploy directory not found');
-  //   }
-  // };
 
   useEffect(() => {
     if (data) {

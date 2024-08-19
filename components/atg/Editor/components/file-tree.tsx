@@ -19,9 +19,6 @@ interface FileTreeProps {
 }
 
 export const FileTree = (props: FileTreeProps) => {
-  // useEffect(() => {
-  //   props.onSelect(undefined);
-  // }, [props.rootDir]);
   return (
     <SubTree directory={props.rootDir} themeSub={props.themeFile} {...props} />
   );
@@ -36,11 +33,6 @@ interface SubTreeProps {
 
 const SubTree = (props: SubTreeProps) => {
   const [emptyDirectory, setEmptyDirectory] = useState<boolean>(false);
-  // useEffect(() => {
-  //   if (props.directory.files.length == 0 && props.directory.dirs.length == 0) {
-  //     setEmptyDirectory(true);
-  //   }
-  // }, [props.directory]);
   return (
     <div>
       {emptyDirectory ? (
@@ -142,49 +134,21 @@ const DirDiv = ({
     isChildSelected(directory, selectedFile)
   );
   const [dirState, setDirState] = useState(directory);
-  // const [fetchTestListBool, setFetchTestListBool] = useState(() => {
-  //   const item = localStorage.getItem("fetchTestListBool");
-  //   return item ? JSON.parse(item) : false;
-  // });
-  useState(()=>{
-    if(directory.id === "src" || directory.id === "src2" || directory.id === "src3" ){
+  useState(() => {
+    if (
+      directory.id === "src" ||
+      directory.id === "src2" ||
+      directory.id === "src3"
+    ) {
       setOpen(true);
     }
-  },);
+  });
 
   const depth = directory.depth;
 
-  // useEffect(() => {
-  //   if (fetchTestListBool) {
-  //     console.log("here");
-  //     if (directory.id === "test_root") {
-  //       SetTestSets(dirState, setDirState);
-  //     } else if (directory.parentId === "test_root") {
-  //       SetTestList(dirState, setDirState);
-  //     }
-  //   }
-  // }, [fetchTestListBool , localStorage]);
-
   const handleToggle = async () => {
     setOpen(!open);
-    // if (directory.id === 'test_root' && !open) {
-    //   await SetTestSets(dirState, setDirState);
-    // } else if (directory.parentId === 'test_root' && !open) {
-    //   await SetTestList(dirState, setDirState);
-    // }
   };
-
-  // useEffect(() => {
-  //   const handleStorageChange = () => {
-  //     const item = localStorage.getItem("fetchTestListBool");
-  //     const newFetchTestListBool = item ? JSON.parse(item) : false;
-  //     setFetchTestListBool(newFetchTestListBool);
-  //   };
-  //   window.addEventListener("storage", handleStorageChange);
-  //   return () => {
-  //     window.removeEventListener("storage", handleStorageChange);
-  //   };
-  // }, []);
 
   return (
     <>

@@ -58,15 +58,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const TopHeader = ({
-  currentSelectedFileName,
-  onSelectLanguage,
   settingTheme,
   enterFullScreen,
   enterSmallScreen,
   fullscreen,
 }: {
-  currentSelectedFileName: string | undefined;
-  onSelectLanguage: (language: string) => void;
   settingTheme: () => void;
   enterFullScreen:()=>void;
   enterSmallScreen:()=>void;

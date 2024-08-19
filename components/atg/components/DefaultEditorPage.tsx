@@ -12,9 +12,6 @@ const DefaultEditorPage = ({lightTheme}:{lightTheme:boolean}) => {
         height={200}
         className=" basis-2/3 mt-2 w-full"
       />
-      {/* <p className="text-center basis-1/3  text-slate-700 font-bold text-4xl">
-        Welcome to Keploy
-      </p> */}
     </div>
   );
 };

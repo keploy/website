@@ -132,27 +132,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     fetchData();
   }, [language]);
 
-  //code-submission
-  // useEffect(() => {
-  //   const storeSubmissionCode = async () => {
-  //     try {
-  //       const response = await submitCodeSnippet({
-  //         language: language,
-  //         code: selectedFile?.content || "",
-  //         schema: GolangSchema,
-  //       });
-  //       if (response) {
-  //         localStorage.setItem("code_submission_id", response);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error storing code submission ID:", error);
-  //     }
-  //   };
-  //   if (functionName === "Start") {
-  //     storeSubmissionCode();
-  //   }
-  // },[functionName, language , selectedFile?.content]);
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === "`") {
@@ -213,9 +192,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     setState((prevState) => (prevState === 2 ? 0 : prevState + 1));
   };
 
-  // const prevState = () => {
-  //   setState((prevState) => (prevState === 0 ? 0 : prevState - 1));
-  // };
+
 
   const updateFunctionName = (newState: number) => {
     switch (newState) {
@@ -236,11 +213,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     }
   };
 
-  // const toggleTerminal = () => {
-  //   setShowTerminal((prevShowTerminal) => !prevShowTerminal);
-  // };
-
-  const resetEverything = () => {
+   const resetEverything = () => {
     // setSelectedFile(undefined);
     setShowTerminal(false);
     setState(-1);
@@ -307,8 +280,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
               className="flex flex-col max-w-7xl mx-auto my-16 m-2 border rounded-md bg-neutral-100 border-gray-300 shadow-[0_0_20px_2px_rgba(0,0,0,0.1)]"
             >
               <TopHeader
-                currentSelectedFileName={selectedFile?.name}
-                onSelectLanguage={onLanguageSelect}
                 settingTheme={settingTheme}
                 enterFullScreen={() => {
                   enterFullScreen();

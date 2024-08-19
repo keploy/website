@@ -10,7 +10,7 @@ const httpLink = new HttpLink({
 ``;
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "ws://landing-page.staging.keploy.io/query",  
+    url: "wss://landing-page.staging.keploy.io/query",  
   })
 );
 
