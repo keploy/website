@@ -97,18 +97,6 @@ export const Terminal = forwardRef(
       }
     };
 
-    /**
-     * Update the input width based on the span width
-     */
-    // useEffect(() => {
-    //   if (spanRef.current && inputRef.current) {
-    //     inputRef.current.style.width = `${spanRef.current.offsetWidth+10}px`;
-    //   }
-    // }, [input]);
-
-    /**
-     * Handle focus and blur events for the input
-     */
     useEffect(() => {
       const handleFocus = () => {
         setBlinkingTrue(true);

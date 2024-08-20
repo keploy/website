@@ -134,6 +134,8 @@ const DirDiv = ({
     isChildSelected(directory, selectedFile)
   );
   const [dirState, setDirState] = useState(directory);
+
+  //when the directory loads for the first time it should rather than being closed. 
   useState(() => {
     if (
       directory.id === "src" ||
@@ -146,7 +148,7 @@ const DirDiv = ({
 
   const depth = directory.depth;
 
-  const handleToggle = async () => {
+  const handleToggle = () => {
     setOpen(!open);
   };
 

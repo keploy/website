@@ -11,13 +11,11 @@ import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
 import SideBarHandle from "./components/SideBarhandle";
-import { StepsForRecording, StepforTests, StepsforDedup } from "./Utils/types";
+import { StepsForRecording, StepforTests, StepsforDedup } from "./utils/types";
 import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
 import useFullScreen from "./fullscreen"; // Import the hook
 
-// import { submitCodeSnippet } from "@/app/api/hello/atg";
-// import { GolangSchema, JavaScriptSchema, PythonSchema } from "./Utils/Schema";
 
 const dummyDir: Directory = {
   id: "1",
@@ -45,7 +43,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   const [TerminalStatus, setTerminalStatus] = useState<string>("red");
   const [TerminalHeight, setTerminalHeight] = useState<string>("0");
   const [FullScreen, setFullScreen] = useState<boolean>(false);
-  // const [schema,setSchema] = useState<string>(GolangSchema);
   const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
     {
       schemaValidation: false,
@@ -101,17 +98,14 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
       const file = findFileByName(GolangData, "server.go");
       setSelectedFile(file);
       setFiles(file ? [file] : []);
-      // setSchema(GolangSchema)
     } else if (rootDir === PythonData) {
       const file = findFileByName(PythonData, "main.py");
       setSelectedFile(file);
       setFiles(file ? [file] : []);
-      // setSchema(PythonSchema);
     } else if (rootDir === TypeScriptData) {
       const file = findFileByName(TypeScriptData, "server.js");
       setSelectedFile(file);
       setFiles(file ? [file] : []);
-      // setSchema(JavaScriptSchema);
     }
   }, [language, rootDir]);
 
@@ -214,10 +208,8 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   };
 
    const resetEverything = () => {
-    // setSelectedFile(undefined);
     setShowTerminal(false);
     setState(-1);
-    // setFiles([]);
     setSidebarState({
       activeStep: 0,
       subStepIndex: -1,
@@ -228,19 +220,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     setStepsForRecording({ schemaValidation: false, GenerateTest: false });
     setStepsForTests({ Replaying_tests: false, generate_report: false });
     setStepsForDedup({ Dedup: false, Duplicates_removed: false });
-    // if (rootDir === GolangData) {
-    //   const file = findFileByName(GolangData, "server.go");
-    //   setSelectedFile(file);
-    //   setFiles(file ? [file] : []);
-    // } else if (rootDir === PythonData) {
-    //   const file = findFileByName(PythonData, "main.py");
-    //   setSelectedFile(file);
-    //   setFiles(file ? [file] : []);
-    // } else if (rootDir === TypeScriptData) {
-    //   const file = findFileByName(TypeScriptData, "server.js");
-    //   setSelectedFile(file);
-    //   setFiles(file ? [file] : []);
-    // }
   };
 
   const ShowSideContent = () => {
@@ -269,6 +248,10 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     console.log(TerminalStatus);
     console.log(TerminalHeight);
   }, [TerminalStatus, TerminalHeight]);
+
+  // useEffect(()=>{
+  //   console.log(selectedFile?.content)
+  // },[selectedFile])
 
   return (
     <>

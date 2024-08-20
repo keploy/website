@@ -8,13 +8,13 @@ import React, {
 } from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
-import { useRunCommandSubscription } from "@/app/api/hello/atg";
+import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/atg";
 import {
   makeKeployTestDir,
   replaceAnsiColors,
   replaceDates,
 } from "../../Editor/utils/api-functions";
-import { StepforTests } from "../../Utils/types";
+import { StepforTests } from "../../utils/types";
 import { Directory } from "../../Editor/utils/file-manager";
 
 const Emoji = "User@1231-Keploy:"; // 🐰

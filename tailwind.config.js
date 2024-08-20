@@ -184,8 +184,8 @@ module.exports = {
         10: "2.5rem",
         48: "12rem",
       },
-      height:{
-        "70v":"70vh",
+      height: {
+        "70v": "70vh",
       },
       opacity: {
         90: "0.9",

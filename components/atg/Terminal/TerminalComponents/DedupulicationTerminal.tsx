@@ -8,13 +8,13 @@ import React, {
 } from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
-import { useRunCommandSubscription } from "@/app/api/hello/atg";
+import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/atg";
 import {
   replaceAnsiColors,
   replaceDates,
 } from "../../Editor/utils/api-functions";
-import { StepsforDedup } from "../../Utils/types";
-import { RemovingDuplicate } from "@/app/api/hello/atg";
+import { StepsforDedup } from "../../utils/types";
+import { RemovingDuplicate } from "@/app/api/automatic-test-generator/atg";
 const Emoji = "User@1231-Keploy:"; // 🐰
 
 function DeduplicateTerminalSession({

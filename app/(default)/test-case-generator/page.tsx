@@ -17,7 +17,6 @@ import {
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
-import Editor from "@/components/atg/editor";
 const pageMetadata: Metadata = {
   title:
     "Keploy | Boost E2E Testing with Keploy Test Case Generator! Learn How",
@@ -69,7 +68,6 @@ export default function Home() {
         extraClasses="text-center" // Pass this to ensure text is centered
       />
 
-      {/* <Editor/> */}
       <ProblemBlocks
         title={ProblemBlocksData.title}
         subtitle={ProblemBlocksData.subtitle}

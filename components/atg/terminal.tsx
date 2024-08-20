@@ -4,7 +4,7 @@ import React, {
   SetStateAction,
 } from "react";
 import { Directory } from "./Editor/utils/file-manager";
-import {StepforTests, StepsForRecording, StepsforDedup} from "./Utils/types";
+import {StepforTests, StepsForRecording, StepsforDedup} from "./utils/types";
 import RecordTerminalSession from "./Terminal/TerminalComponents/RecordTerminal";
 import DeduplicateTerminalSession from "./Terminal/TerminalComponents/DedupulicationTerminal";
 import TestCoverageTerminalSession from "./Terminal/TerminalComponents/TestingTerminal";

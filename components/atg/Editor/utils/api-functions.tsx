@@ -8,7 +8,7 @@ import {
   fetchTestRun,
   fetchDetailedReport,
   fetchReport,
-} from "@/app/api/hello/atg";
+} from "@/app/api/automatic-test-generator/atg";
 import { Dispatch, SetStateAction } from "react";
 
 // Utility function to generate unique IDs

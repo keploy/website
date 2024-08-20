@@ -201,27 +201,6 @@ export async function fetchTest(
     variables
   );
 }
-//for the curl  command
-export async function curlCommand(
-  codeSubmissionId: string,
-  customCommand: string
-): Promise<CommandResponse> {
-  const query = `
-    subscription CurlCommand($code_submission_id: String!, $command: String!, $command_content: String!) {
-      runCommand(code_submission_id: $code_submission_id, command: $command, command_content: $command_content)
-    }
-  `;
-  const variables = {
-    code_submission_id: codeSubmissionId,
-    command: "CURL",
-    command_content: customCommand,
-  };
-  return await postRequest(
-    "https://landing-page.staging.keploy.io/query",
-    query,
-    variables
-  );
-}
 
 export async function fetchMock(
   codeSubmissionId: string,

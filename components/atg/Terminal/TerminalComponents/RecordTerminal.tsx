@@ -8,9 +8,9 @@ import React, {
 } from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
-import { useRunCommandSubscription } from "@/app/api/hello/atg";
+import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/atg";
 import { Directory, Type } from "../../Editor/utils/file-manager";
-import { StepsForRecording } from "../../Utils/types";
+import { StepsForRecording } from "../../utils/types";
 import {
   makeKeployTestDir,
   replaceDates,

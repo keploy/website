@@ -1,10 +1,8 @@
 import React, { useEffect, FC } from "react";
 import SideBarNormal from "./SideBarContent/SideBarNormal";
-import { submitCodeSnippet } from "@/app/api/hello/atg";
-import {StepsForRecording,StepforTests, StepsforDedup} from "../Utils/types";
-import { GolangSchema, JavaScriptSchema, PythonSchema } from "../Utils/Schema";
-
-type StageComponent = FC;
+import { submitCodeSnippet } from "@/app/api/automatic-test-generator/atg";
+import { StepsForRecording, StepforTests, StepsforDedup } from "../utils/types";
+import { GolangSchema, JavaScriptSchema, PythonSchema } from "../utils/schema";
 
 interface SideBarHandleProps {
   Stage: number;
@@ -15,23 +13,23 @@ interface SideBarHandleProps {
   removeSideContent: () => void;
   stepsForRecording: StepsForRecording;
   stepsForTesting: StepforTests;
-  stepsForDedup:StepsforDedup
+  stepsForDedup: StepsforDedup;
   SideBarTheme: boolean;
   CodeLanguage: string;
   CodeContent?: string;
   sidebarState: {
     activeStep: number;
     subStepIndex: number;
-    dedupStepIndex:number;
-    testSubStepIndex: number, // Add this line
+    dedupStepIndex: number;
+    testSubStepIndex: number;
     expandedSteps: number[];
   };
   setSidebarState: React.Dispatch<
     React.SetStateAction<{
       activeStep: number;
       subStepIndex: number;
-      dedupStepIndex:number;  
-      testSubStepIndex: number, // Add this line
+      dedupStepIndex: number;
+      testSubStepIndex: number;
       expandedSteps: number[];
     }>
   >;
@@ -53,9 +51,15 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
   sidebarState,
   setSidebarState,
 }) => {
+  const schemaMap: Record<string, string> = {
+    Golang: GolangSchema,
+    Javascript: JavaScriptSchema,
+    Python: PythonSchema,
+  };
+
   const moveToNextStage = async () => {
-      if(functionName=="Start"){
-      await new Promise(resolve => setTimeout(resolve, 4000)); // 2-second timeout
+    if (functionName === "Start") {
+      await new Promise((resolve) => setTimeout(resolve, 4000)); // 4-second timeout
     }
     showTerminal();
     onNext();
@@ -64,10 +68,11 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
   useEffect(() => {
     const storeSubmissionCode = async () => {
       try {
+        const schema = schemaMap[CodeLanguage] || JavaScriptSchema;
         const response = await submitCodeSnippet({
           language: CodeLanguage,
           code: CodeContent || "",
-          schema: GolangSchema,
+          schema: schema,
         });
         if (response) {
           localStorage.setItem("code_submission_id", response);
@@ -76,12 +81,11 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
         console.error("Error storing code submission ID:", error);
       }
     };
+
     if (functionName === "Start") {
       storeSubmissionCode();
     }
-  },[CodeLanguage]);
-
-
+  }, [CodeLanguage, CodeContent, functionName]);
 
   return (
     <div
@@ -100,7 +104,7 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
         activeStep={sidebarState.activeStep}
         subStepIndex={sidebarState.subStepIndex}
         dedupStepIndex={sidebarState.dedupStepIndex}
-        testSubStepIndex={sidebarState.testSubStepIndex} // Pass this prop
+        testSubStepIndex={sidebarState.testSubStepIndex}
         expandedSteps={sidebarState.expandedSteps}
         setSidebarState={setSidebarState}
       />
