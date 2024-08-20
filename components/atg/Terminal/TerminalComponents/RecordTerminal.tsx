@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
-import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/atg";
+import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/Subscription";
 import { Directory, Type } from "../../Editor/utils/file-manager";
 import { StepsForRecording } from "../../utils/types";
 import {
@@ -112,6 +112,7 @@ function RecordTerminalSession({
         if (!intialRecordingRef.current) {
           handleSubmit();
           if (commandsTrue) {
+            console.log("here in the record terminal")
             await makeKeployTestDir({ setRootDir });
             setStepsForRecording((prev) => ({ ...prev, GenerateTest: true }));
             //add a time buffer here.

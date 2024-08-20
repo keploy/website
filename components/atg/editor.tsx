@@ -28,7 +28,7 @@ const dummyDir: Directory = {
 };
 
 const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
-  const [rootDir, setRootDir] = useState<Directory>(GolangData);
+  const [rootDir, setRootDir] = useState<Directory>(TypeScriptData);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
   const [lighttheme, setTheme] = useState<boolean>(true);

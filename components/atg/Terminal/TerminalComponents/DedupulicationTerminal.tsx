@@ -8,13 +8,14 @@ import React, {
 } from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
-import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/atg";
+import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/Subscription"; // Updated import path
 import {
   replaceAnsiColors,
   replaceDates,
 } from "../../Editor/utils/api-functions";
 import { StepsforDedup } from "../../utils/types";
-import { RemovingDuplicate } from "@/app/api/automatic-test-generator/atg";
+import { useRemovingDuplicateSubscription } from "@/app/api/automatic-test-generator/Subscription";
+
 const Emoji = "User@1231-Keploy:"; // 🐰
 
 function DeduplicateTerminalSession({
@@ -30,31 +31,25 @@ function DeduplicateTerminalSession({
 }) {
   const { history, pushToHistory, setTerminalRef, resetTerminal } =
     useTerminal();
-  const [command, setCommandFirst] = useState<string>("DEDUP");
-  const [commandSecond, setCommandSecond] =
-    useState<string>("REMOVE_DUPLICATES");
+  const [command] = useState<string>("DEDUP");
+  const [commandSecond] = useState<string>("REMOVE_DUPLICATES");
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
   const [OtherCommand, setOtherCommandsTrue] = useState<boolean>(false);
   const [socketErrors, setSocketErrors] = useState<string | null>(null);
-  const [codeSubmissionId, setCodeSubmissionIdInput] = useState<string>(
-    storedCodeSubmissionId
-  );
+  const [codeSubmissionId] = useState<string>(storedCodeSubmissionId);
   const [loader, setLoader] = useState<boolean>(false);
   const intialRecordingRef = useRef(false);
-  // Subscription for the first command
-  const {
-    data: dataFirst,
-    loading: loadingFirst,
-    error: errorFirst,
-    handleSubmit: handleSubmitFirst,
-  } = useRunCommandSubscription({
-    codeSubmissionId,
-    command,
-    testSetName: "test-set-0",
-  });
 
-  let intialRenderRef = useRef(true);
+  // Subscription for the first command
+  const { data: dataFirst, loading: loadingFirst, error: errorFirst } =
+    useRunCommandSubscription({
+      codeSubmissionId,
+      command,
+      testSetName: "test-set-0",
+    });
+
+  const intialRenderRef = useRef(true);
 
   // Effect for dataFirst
   useEffect(() => {
@@ -113,15 +108,19 @@ function DeduplicateTerminalSession({
     () => ({
       'keploy deduplicate -c "Deduplicate ababy"': async () => {
         if (!intialRecordingRef.current) {
-          await handleSubmitFirst();
           if (OtherCommand) {
-            const data = await RemovingDuplicate(
+            const { data, loading, error } = useRemovingDuplicateSubscription(
               codeSubmissionId,
               "test-set-0"
             );
-            console.log("here is coming");
-            stepForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
-            intialRecordingRef.current = true;
+            if (data && !loading) {
+              console.log("here is coming");
+              stepForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
+              intialRecordingRef.current = true;
+            } else if (error) {
+              setSocketErrors(error.message);
+              console.error("Error removing duplicates:", error.message);
+            }
           }
         }
       },
@@ -145,19 +144,11 @@ function DeduplicateTerminalSession({
         await resetTerminal();
       },
     }),
-    [
-      OtherCommand,
-      pushToHistory,
-      resetTerminal,
-      handleSubmitFirst,
-      RemovingDuplicate,
-    ]
+    [OtherCommand, pushToHistory, resetTerminal, codeSubmissionId]
   );
 
   useEffect(() => {
     if (inputRef.current && codeSubmissionId) {
-      setCommandFirst("DEDUP");
-      setCommandSecond("REMOVE_DUPLICATES");
       setTimeout(() => {
         commands['keploy deduplicate -c "Deduplicate ababy"']();
       }, 500);

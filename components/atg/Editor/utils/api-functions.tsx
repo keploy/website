@@ -1,15 +1,15 @@
 import { Directory } from "./file-manager";
 import { Type } from "./file-manager";
 import {
-  fetchTestSets,
-  fetchTestList,
-  fetchMock,
-  fetchTest,
-  fetchTestRun,
-  fetchDetailedReport,
-  fetchReport,
-} from "@/app/api/automatic-test-generator/atg";
-import { Dispatch, SetStateAction } from "react";
+  useFetchTestSetsSubscription,
+  useFetchTestListSubscription,
+  useFetchMockSubscription,
+  useFetchTestSubscription,
+  useFetchTestRunSubscription,
+  useFetchDetailedReportSubscription,
+  useFetchReportSubscription,
+} from "@/app/api/automatic-test-generator/Subscription"; // Update import path accordingly
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 // Utility function to generate unique IDs
 const generateUniqueId = (): string => {
@@ -19,14 +19,17 @@ const generateUniqueId = (): string => {
 export const SetTestSets = async (directory: Directory) => {
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
-  const response = await fetchTestSets(storedCodeSubmissionId);
-  if (response.success) {
-    const runCommandSets = response.data.data.runCommand;
-    const newTestSets = runCommandSets.split("\n");
-    newTestSets.pop();
+  
+  // Hook usage
+  const { data, loading, error } = useFetchTestSetsSubscription(storedCodeSubmissionId);
 
-    const newDirs = await Promise.all(
-      newTestSets.map(async (TestSetName: string, index: number) => {
+  useEffect(() => {
+    if (!loading && data) {
+      const runCommandSets = data.runCommand;
+      const newTestSets = runCommandSets.split("\n");
+      newTestSets.pop();
+
+      const newDirs = newTestSets.map((TestSetName: string) => {
         const newDir: Directory = {
           id: generateUniqueId(),
           name: TestSetName,
@@ -37,32 +40,38 @@ export const SetTestSets = async (directory: Directory) => {
           files: [],
         };
         if (TestSetName == "reports") {
-          await ReportTestRuns(newDir);
+          ReportTestRuns(newDir);
         } else {
-          await SetTestList(newDir);
+          SetTestList(newDir);
         }
         return newDir;
-      })
-    );
+      });
 
-    directory.dirs.push(...newDirs);
-  } else {
-    console.error("Error fetching test sets:", response.error);
-  }
+      directory.dirs.push(...newDirs);
+    } else if (error) {
+      console.error("Error fetching test sets:", error.message);
+    }
+  }, [loading, data, error]);
 };
 
 export const SetTestList = async (directory: Directory) => {
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
-  const response = await fetchTestList(storedCodeSubmissionId, directory.name);
-  if (response.success) {
-    const runCommandTestLists = response.data.data.runCommand;
-    const newTestLists = runCommandTestLists.split("\n");
-    newTestLists.pop();
 
-    const newFiles = await Promise.all(
-      newTestLists.map(async (TestSetName: string, index: number) => {
-        const fileDetails = await GetFileDetails(
+  // Hook usage
+  const { data, loading, error } = useFetchTestListSubscription(
+    storedCodeSubmissionId,
+    directory.name
+  );
+
+  useEffect(() => {
+    if (!loading && data) {
+      const runCommandTestLists = data.runCommand;
+      const newTestLists = runCommandTestLists.split("\n");
+      newTestLists.pop();
+
+      const newFiles = newTestLists.map((TestSetName: string, index: number) => {
+        const { testDetails } = GetFileDetails(
           storedCodeSubmissionId,
           directory.name,
           TestSetName
@@ -73,47 +82,46 @@ export const SetTestList = async (directory: Directory) => {
           parentId: directory.id,
           type: Type.FILE,
           depth: 3,
-          content: fileDetails.testDetails,
+          content: testDetails,
         };
-      })
-    );
-
-    const mockResponse = await fetchMock(
-      storedCodeSubmissionId,
-      directory.name
-    );
-    if (mockResponse.success) {
-      const mockDetails = mockResponse.data.data.runCommand;
-      newFiles.push({
-        id: `${directory.id}mock`,
-        name: `mocks.yaml`,
-        parentId: directory.id,
-        type: Type.FILE,
-        depth: 3,
-        content: mockDetails,
       });
-    } else {
-      console.log("Error in fetching mocks");
-    }
 
-    directory.files.push(...newFiles);
-  } else {
-    console.error("Error fetching test-list:", response.error);
-  }
+      const { data: mockData, loading: mockLoading, error: mockError } = useFetchMockSubscription(storedCodeSubmissionId, directory.name);
+      if (mockData && !mockLoading) {
+        const mockDetails = mockData.runCommand;
+        newFiles.push({
+          id: `${directory.id}mock`,
+          name: `mocks.yaml`,
+          parentId: directory.id,
+          type: Type.FILE,
+          depth: 3,
+          content: mockDetails,
+        });
+      } else if (mockError) {
+        console.error("Error in fetching mocks:", mockError.message);
+      }
+
+      directory.files.push(...newFiles);
+    } else if (error) {
+      console.error("Error fetching test-list:", error.message);
+    }
+  }, [loading, data, error]);
 };
 
 export const ReportTestRuns = async (directory: Directory) => {
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
-  const response = await fetchTestRun(storedCodeSubmissionId);
 
-  if (response.success) {
-    const runSet = response.data.data.runCommand;
-    const runSetList = runSet.split("\n");
-    runSetList.pop();
-    console.log(runSetList);
-    const runSets = await Promise.all(
-      runSetList.map(async (testRunName: string, index: string) => {
+  // Hook usage
+  const { data, loading, error } = useFetchTestRunSubscription(storedCodeSubmissionId);
+
+  useEffect(() => {
+    if (!loading && data) {
+      const runSet = data.runCommand;
+      const runSetList = runSet.split("\n");
+      runSetList.pop();
+
+      const runSets = runSetList.map((testRunName: string) => {
         const newDir: Directory = {
           id: generateUniqueId(),
           name: testRunName,
@@ -123,30 +131,36 @@ export const ReportTestRuns = async (directory: Directory) => {
           dirs: [],
           files: [],
         };
-        await ReportFileNames(newDir);
+        ReportFileNames(newDir);
         return newDir;
-      })
-    );
-    directory.dirs.push(...runSets);
-  } else {
-    console.log("error fetching test-runs: ", response.error);
-  }
+      });
+
+      directory.dirs.push(...runSets);
+    } else if (error) {
+      console.error("Error fetching test-runs:", error.message);
+    }
+  }, [loading, data, error]);
 };
 
 export const ReportFileNames = async (directory: Directory) => {
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
 
-  const response = await fetchReport(storedCodeSubmissionId, directory.name);
-  if (response.success) {
-    const runCommandReportLists = response.data.data.runCommand;
-    const reportLists = runCommandReportLists.split("\n");
-    reportLists.pop();
+  // Hook usage
+  const { data, loading, error } = useFetchReportSubscription(
+    storedCodeSubmissionId,
+    directory.name
+  );
 
-    const ReportFiles = await Promise.all(
-      reportLists.map(async (TestRunName: string, index: number) => {
+  useEffect(() => {
+    if (!loading && data) {
+      const runCommandReportLists = data.runCommand;
+      const reportLists = runCommandReportLists.split("\n");
+      reportLists.pop();
+
+      const ReportFiles = reportLists.map((TestRunName: string, index: number) => {
         const firstName = TestRunName.split(".")[0];
-        const fileDetails = await GetReportDetails(
+        const { reportDetails } = GetReportDetails(
           storedCodeSubmissionId,
           directory.name,
           firstName
@@ -157,52 +171,56 @@ export const ReportFileNames = async (directory: Directory) => {
           parentId: directory.id,
           type: Type.FILE,
           depth: 4,
-          content: fileDetails.reportDetails,
+          content: reportDetails,
         };
-      })
-    );
+      });
 
-    directory.files.push(...ReportFiles);
-  } else {
-    console.error("Error fetching report-list:", response.error);
-  }
+      directory.files.push(...ReportFiles);
+    } else if (error) {
+      console.error("Error fetching report-list:", error.message);
+    }
+  }, [loading, data, error]);
 };
 
 //used for fetching the file content;
-export const GetFileDetails = async (
+export const GetFileDetails = (
   codeSubmissionId: string,
   testSetName: string,
   testCaseName: string
-): Promise<{ testDetails: string; mockDetails: string }> => {
-  try {
-    const testResponse = await fetchTest(
-      codeSubmissionId,
-      testSetName,
-      testCaseName
-    );
-    const testDetails = testResponse.data.data.runCommand;
-    return { testDetails, mockDetails: "" };
-  } catch (err: any) {
-    throw new Error(`Content not found: ${err.message}`);
+): { testDetails: string } => {
+  const { data, loading, error } = useFetchTestSubscription(
+    codeSubmissionId,
+    testSetName,
+    testCaseName
+  );
+
+  if (data && !loading) {
+    return { testDetails: data.runCommand };
+  } else if (error) {
+    throw new Error(`Error fetching test details: ${error.message}`);
+  } else {
+    throw new Error("Test details not found");
   }
 };
 
 //used for fetching the report contents
-export const GetReportDetails = async (
+export const GetReportDetails = (
   codeSubmissionId: string,
   testRunName: string,
   reportName: string
-): Promise<{ reportDetails: string }> => {
-  try {
-    const reportResponse = await fetchDetailedReport(
-      codeSubmissionId,
-      testRunName,
-      reportName
-    );
-    const reportDetails = reportResponse.data.data.runCommand;
-    return { reportDetails };
-  } catch (err: any) {
-    throw new Error(`content not found in reports: ${err.message}`);
+): { reportDetails: string } => {
+  const { data, loading, error } = useFetchDetailedReportSubscription(
+    codeSubmissionId,
+    testRunName,
+    reportName
+  );
+
+  if (data && !loading) {
+    return { reportDetails: data.runCommand };
+  } else if (error) {
+    throw new Error(`Error fetching report details: ${error.message}`);
+  } else {
+    throw new Error("Report details not found");
   }
 };
 
@@ -211,20 +229,21 @@ export const makeKeployTestDir = async ({
 }: {
   setRootDir: Dispatch<SetStateAction<Directory>>;
 }) => {
+  const newDir: Directory = {
+    id: generateUniqueId(),
+    name: "Keploy",
+    parentId: "root",
+    type: Type.DIRECTORY,
+    depth: 1,
+    dirs: [],
+    files: [],
+  };
+
+  // Perform asynchronous operation before updating state
+  await SetTestSets(newDir);
+
   setRootDir((prevRootDir) => {
     const dirIndex = prevRootDir.dirs.findIndex((dir) => dir.name === "src");
-
-    const newDir: Directory = {
-      id: generateUniqueId(),
-      name: "Keploy",
-      parentId: "root",
-      type: Type.DIRECTORY,
-      depth: 1,
-      dirs: [],
-      files: [],
-    };
-
-    SetTestSets(newDir);
 
     let updatedDirs;
     if (dirIndex !== -1) {
@@ -239,6 +258,7 @@ export const makeKeployTestDir = async ({
       dirs: updatedDirs,
     };
   });
+  console.log("after adding new directory:", newDir);
 };
 
 export const replaceDates = (str: string) => {

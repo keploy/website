@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { Terminal } from "..";
 import { useTerminal } from "../hooks";
-import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/atg";
+import { useRunCommandSubscription } from "@/app/api/automatic-test-generator/Subscription";
 import {
   makeKeployTestDir,
   replaceAnsiColors,

@@ -1,6 +1,6 @@
 import React, { useEffect, FC } from "react";
 import SideBarNormal from "./SideBarContent/SideBarNormal";
-import { submitCodeSnippet } from "@/app/api/automatic-test-generator/atg";
+import { submitCodeSnippet } from "@/app/api/automatic-test-generator/Mutation"; // Ensure correct import path
 import { StepsForRecording, StepforTests, StepsforDedup } from "../utils/types";
 import { GolangSchema, JavaScriptSchema, PythonSchema } from "../utils/schema";
 
@@ -86,7 +86,6 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
       storeSubmissionCode();
     }
   }, [CodeLanguage, CodeContent, functionName]);
-
   return (
     <div
       className={`h-full ${
