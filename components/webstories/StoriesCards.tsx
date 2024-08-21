@@ -49,7 +49,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
   };
 
   return (
-    <div className="relative bg-neutral-100 w-full my-28" data-aos="fade-up">
+    <div className="relative bg-neutral-100 w-full my-10" data-aos="fade-up">
       <Container>
         <h1 className=" lg:text-5xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-6 text-center">
           Test{" "}
@@ -63,19 +63,19 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
         </p>
         <div className="flex flex-row items-center mt-20 justify-between min-h-[80px]">
           {!searchActive && (
-            <h1 className="lg:text-3xl text-2xl text-secondary-300 font-bold leading-tighter tracking-tighter my-4 mb-5">
+            <h1 className="lg:text-3xl md:text-2xl text-xl text-secondary-300 font-bold leading-tighter tracking-tighter my-4 mb-5">
               Latest Web Stories
             </h1>
           )}
           <div
-            className={`flex items-center self-center ${
-              searchActive ? "w-full justify-between" : ""
+            className={`flex items-center ${
+              searchActive ? "w-full justify-center" : ""
             }`}
           >
             {searchActive ? (
               <>
                 <SearchBar onChange={handleInputChange} />
-                <IconButton onClick={handleCloseClick} color="primary">
+                <IconButton onClick={handleCloseClick} color="primary" className=" mt-3 lg:mt-0">
                   <CloseIcon className="text-secondary-300"/>
                 </IconButton>
               </>

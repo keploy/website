@@ -191,7 +191,7 @@ const WebStories = ({ data, slug, onStoryIndexChange }: WebStoriesProps) => {
                 currentStoryIndex === data.length - 1
                   ? "opacity-100"
                   : "opacity-0"
-              } mt-5 content-end text-sm text-center text-slate-200`}
+              } mt-5 mb-10 text-sm text-center text-slate-200`}
             >
               If you like Keploy, give it a star on{" "}
               <span>

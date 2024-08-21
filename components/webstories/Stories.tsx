@@ -181,20 +181,34 @@ const Stories = ({
         <div className="flex flex-row mx-5 pt-3 mt-5 z-10 gap-8 items-center">
           <div>
             {windowWidth > 1024 ? (
-              <FontAwesomeIcon
-                icon={isPaused ? faPlay : faPause}
-                onClick={handlePauseResume}
-                className="scale-150 text-slate-200 cursor-pointer"
-              />
+              <div className="">
+                <div className="cursor-pointer scale-125 flex flex-row gap-5">
+                  <FontAwesomeIcon
+                    icon={isPaused ? faPlay : faPause}
+                    onClick={handlePauseResume}
+                    className="scale-125 text-slate-200 cursor-pointer"
+                  />
+                  <CustomizedDialogs
+                    handlingPauseBehindScenes={handlePauseResume}
+                  />
+                </div>
+              </div>
             ) : (
-              <KeyboardArrowLeft
-                className="scale-125 text-slate-200 cursor-pointer" // Add Cancel Icon here
-                onClick={()=>{window.location.href="/webstories"}}
-              />
+              <div className="flex flex-row gap-8">
+                <div className="cursor-pointer scale-125">
+                  <CustomizedDialogs
+                    handlingPauseBehindScenes={handlePauseResume}
+                  />
+                </div>
+
+                <KeyboardArrowLeft
+                  className="scale-[1.7] text-slate-200 cursor-pointer" // Add Cancel Icon here
+                  onClick={() => {
+                    window.location.href = "/webstories";
+                  }}
+                />
+              </div>
             )}
-          </div>
-          <div className="cursor-pointer scale-125">
-            <CustomizedDialogs handlingPauseBehindScenes={handlePauseResume} />
           </div>
         </div>
       </div>
