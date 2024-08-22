@@ -13,6 +13,7 @@ import dynamic from "next/dynamic";
 import CircularLoader from "./components/circularLoader";
 import { useSwipeable } from "react-swipeable";
 import { KeyboardArrowLeft } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
   ssr: false,
 });
@@ -56,7 +57,7 @@ const Stories = ({
   const [isLongPress, setIsLongPress] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [windowWidth, setWindowWidth] = React.useState(0);
-
+  const router = useRouter();
   const lines = Array.from({ length: totalLen }, (_, i) => i);
 
   useEffect(() => {
@@ -129,7 +130,7 @@ const Stories = ({
           onClick={handleNextStory}
         ></div>
       </div>
-      <div className="absolute flex flex-row w-full justify-end z-30">
+      <div className={`absolute flex flex-row w-full z-30`}>
         <div className="absolute z-10 w-full flex flex-row h-5 gap-1">
           {lines.map((line, key) => {
             const isCurrentLine = line === currentIndex;
@@ -178,38 +179,33 @@ const Stories = ({
             );
           })}
         </div>
-        <div className="flex flex-row mx-5 pt-3 mt-5 z-10 gap-8 items-center">
-          <div>
-            {windowWidth > 1024 ? (
-              <div className="">
-                <div className="cursor-pointer scale-125 flex flex-row gap-5">
-                  <FontAwesomeIcon
-                    icon={isPaused ? faPlay : faPause}
-                    onClick={handlePauseResume}
-                    className="scale-125 text-slate-200 cursor-pointer"
-                  />
-                  <CustomizedDialogs
-                    handlingPauseBehindScenes={handlePauseResume}
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-row gap-8">
-                <div className="cursor-pointer scale-125">
-                  <CustomizedDialogs
-                    handlingPauseBehindScenes={handlePauseResume}
-                  />
-                </div>
-
-                <KeyboardArrowLeft
-                  className="scale-[1.7] text-slate-200 cursor-pointer" // Add Cancel Icon here
-                  onClick={() => {
-                    window.location.href = "/webstories";
-                  }}
+        <div className="flex flex-row mx-5 pt-3 mt-5 z-10 w-full items-center justify-end">
+          {windowWidth > 1024 ? (
+            <div className="cursor-pointer scale-125 flex flex-row gap-5">
+              <FontAwesomeIcon
+                icon={isPaused ? faPlay : faPause}
+                onClick={handlePauseResume}
+                className="scale-125 text-slate-200 cursor-pointer"
+              />
+              <CustomizedDialogs
+                handlingPauseBehindScenes={handlePauseResume}
+              />
+            </div>
+          ) : (
+            <div className="flex flex-row w-full justify-between">
+              <KeyboardArrowLeft
+                className="scale-[1.7] text-slate-200 cursor-pointer"
+                onClick={() => {
+                  router.push("/webstories");
+                }}
+              />
+              <div className="scale-[1.5]">
+                <CustomizedDialogs
+                  handlingPauseBehindScenes={handlePauseResume}
                 />
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
 

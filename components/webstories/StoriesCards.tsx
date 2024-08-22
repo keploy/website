@@ -49,7 +49,7 @@ const StoriesCards = ({ data }: StoriesCardsProps) => {
   };
 
   return (
-    <div className="relative bg-neutral-100 w-full my-10" data-aos="fade-up">
+    <div className="relative bg-neutral-100 w-full lg:my-10" data-aos="fade-up">
       <Container>
         <h1 className=" lg:text-5xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter my-6 text-center">
           Test{" "}
