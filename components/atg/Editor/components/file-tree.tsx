@@ -11,6 +11,7 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowDown,
 } from "react-icons/md";
+
 interface FileTreeProps {
   rootDir: Directory;
   selectedFile: File | undefined;
@@ -101,7 +102,7 @@ const FileDiv = ({
           : "hover:bg-gray-600"
       } `}
       onClick={onClick}
-      style={{ paddingLeft: `${(depth + 1) * 16}px` }} // Adjust padding for depth, add an additional level for files
+      style={{ paddingLeft: depth > 1 ? `${(depth + 1) * 10}px` : "8px" }}
     >
       {openParameter !== undefined &&
         (openParameter ? (
@@ -134,9 +135,12 @@ const DirDiv = ({
     isChildSelected(directory, selectedFile)
   );
   const [dirState, setDirState] = useState(directory);
+  const depth = directory.depth;
 
-  //when the directory loads for the first time it should rather than being closed. 
-  useState(() => {
+  const testSetRegex = /^test-set-\d+$/; // Regular expression to match 'test-set-<number>'
+
+  // Handle first load logic to open specific directories
+  useEffect(() => {
     if (
       directory.id === "src" ||
       directory.id === "src2" ||
@@ -144,20 +148,30 @@ const DirDiv = ({
     ) {
       setOpen(true);
     }
-  });
 
-  const depth = directory.depth;
+    // Store directory name in local storage if it matches the pattern 'test-set-<number>'
+    if (testSetRegex.test(directory.name)) {
+      localStorage.setItem("selectedTestSetDir", directory.name);
+    }
+  }, [directory]);
 
   const handleToggle = () => {
     setOpen(!open);
   };
+
+  useEffect(() => {
+    // Store the selected directory name if it matches the pattern 'test-set-<number>'
+    if (open && testSetRegex.test(directory.name)) {
+      localStorage.setItem("selectedTestSetDir", directory.name);
+    }
+  }, [open, directory.name]);
 
   return (
     <>
       <div
         className="flex items-center cursor-pointer"
         onClick={handleToggle}
-        style={{ paddingLeft: `${depth * 16}px` }} // Adjust padding for depth
+        style={{ paddingLeft: `${depth * 13}px` }} // Adjust padding for depth
       >
         {open ? (
           <MdOutlineKeyboardArrowDown />
@@ -184,7 +198,6 @@ const DirDiv = ({
     </>
   );
 };
-
 const isChildSelected = (directory: Directory, selectedFile?: File) => {
   if (!selectedFile) return false;
 

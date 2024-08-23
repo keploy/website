@@ -85,7 +85,7 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
     if (functionName === "Start") {
       storeSubmissionCode();
     }
-  }, [CodeLanguage, CodeContent, functionName]);
+  }, [CodeLanguage]);
   return (
     <div
       className={`h-full ${

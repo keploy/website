@@ -11,18 +11,21 @@ export const Code = ({
   RemoveSideBanner,
   settingCodeTheme,
   isFullScreen,
+  selectedFileName,
 }: {
   selectedFile: File | undefined;
   showSideBannerBool: Boolean;
   RemoveSideBanner: () => void;
   settingCodeTheme: boolean;
   isFullScreen: boolean;
+  selectedFileName:string | undefined;
 }) => {
   if (!selectedFile) return null;
 
   const monacoInstance = useMonaco();
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [showText, setShowText] = useState<boolean>(false);
+  const testFileRegex = /^test-\d+\.yaml$/; // Regular expression to match 'test-<number>.yaml'
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
 
@@ -30,6 +33,21 @@ export const Code = ({
   else if (language === "ts" || language === "tsx") language = "typescript";
   else if (language === "go") language = "go";
   else if (language === "py") language = "python";
+
+
+  const handleFileChange = (newValue: string | undefined) => {
+    if (newValue !== undefined) {
+      selectedFile.content = newValue;
+
+      // Check if the filename matches the pattern 'test-<number>.yaml'
+      if (selectedFileName && testFileRegex.test(selectedFileName)) {
+
+        
+
+      }
+    }
+  };
+
 
   useEffect(() => {
     if (monacoInstance && editorRef.current) {
@@ -189,11 +207,7 @@ export const Code = ({
           scrollBeyondLastLine: false,
           fontSize: 15,
         }}
-        onChange={(newValue) => {
-          if (newValue !== undefined) {
-            selectedFile.content = newValue;
-          }
-        }}
+        onChange={handleFileChange}
         onMount={(editor) => (editorRef.current = editor)} // Store editor instance
       />
       {!showSideBannerBool && (

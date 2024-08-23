@@ -1,4 +1,5 @@
-// queries.ts
+//queries
+
 
 export const SUBMIT_CODE_MUTATION = `
   mutation SubmitCode($language: String!, $schema: String!, $code: String!) {
@@ -56,7 +57,30 @@ export const FETCH_MOCK_SUBSCRIPTION = `
       test_set_name: $test_set_name
     )
   }
+
 `;
+
+
+export const EDIT_TEST_SUBSCRIPTION = `
+  subscription EditTest(
+    $code_submission_id: String!,
+    $command: String!,
+    $command_content: String!,
+    $test_set_name: String!,
+    $test_case_name: String!
+  ) {
+    runCommand(
+      code_submission_id: $code_submission_id,
+      command: $command,
+      command_content: $command_content,
+      test_set_name: $test_set_name,
+      test_case_name: $test_case_name
+    ) {
+      # Your expected fields here
+    }
+  }
+`;
+
 
 export const FETCH_TEST_RUN_SUBSCRIPTION = `
   subscription FetchTestRun($code_submission_id: String!, $command: String!) {

@@ -1,3 +1,4 @@
+import { SUBMIT_CODE_MUTATION } from "./queries";
 export const submitCodeSnippet = async ({
   language,
   schema,
@@ -13,12 +14,7 @@ export const submitCodeSnippet = async ({
     };
 
     const requestBody = {
-      query: 
-       ` mutation SubmitCode($language: String!, $schema: String!, $code: String!) {
-          submitCode(language: $language, schema: $schema, code: $code) {
-            code_submission_id
-          }
-        }`
+      query: SUBMIT_CODE_MUTATION
       ,
       variables: { language, schema, code },
     };

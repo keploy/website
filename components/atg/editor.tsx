@@ -13,19 +13,20 @@ import { StepsForRecording, StepforTests, StepsforDedup } from "./utils/types";
 import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
 import useFullScreen from "./fullscreen"; // Import the hook
+import { fetchGitHubDirectoryContents } from "./Editor/utils/file-manager";
 
-// const dummyDir: Directory = {
-//   id: "1",
-//   name: "loading...",
-//   type: Type.DUMMY,
-//   parentId: undefined,
-//   depth: 0,
-//   dirs: [],
-//   files: [],
-// };
+const dummyDir: Directory = {
+  id: "1",
+  name: "loading...",
+  type: Type.DUMMY,
+  parentId: undefined,
+  depth: 0,
+  dirs: [],
+  files: [],
+};
 
 const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
-  const [rootDir, setRootDir] = useState<Directory>(FileData.dirs[2]);
+  const [rootDir, setRootDir] = useState<Directory>(dummyDir);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
   const [lighttheme, setTheme] = useState<boolean>(true);
@@ -66,7 +67,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   };
 
   const settingFullScreenFalse = () => {
-    //here below because when it goes full screen side-contentshould always be there.
     setShowSideContent(true);
     setFullScreen(false);
   };
@@ -75,49 +75,49 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     console.log(FullScreen);
   }, [FullScreen]);
 
+  const fetchDirectoryContents = async (lang: string) => {
+    try {
+      let url = 'projects/javaScript';
+      if (lang === 'Golang') url = 'projects/goApp';
+      else if (lang === 'Python') url = 'projects/python';
+
+      const directory = await fetchGitHubDirectoryContents(url);
+      setRootDir(directory);
+      console.log(directory);
+      setDataFetched(true);
+    } catch (err) {
+      console.error("Failed to fetch directory structure:", err);
+      setError("Failed to fetch directory structure.");
+      setDataFetched(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDirectoryContents(language);
+  }, [language]);
+
   const { elementRef, enterFullScreen, exitFullScreen } = useFullScreen({
     onEnter: settingFullScreenTrue,
     onExit: settingFullScreenFalse,
   });
 
-  // useEffect(() => {
-  //   if (goFullScreen) {
-  //     enterFullScreen();
-  //     // setFullScreen(true);
-  //   }
-  // }, [goFullScreen, enterFullScreen); //maybe later to add TODO
-  
   useEffect(() => {
     updateFunctionName(state);
   }, [state]);
 
   useEffect(() => {
-    // Set initial root directory based on selected language
-    const initialDir = getDirectoryByLanguage(language);
-    setRootDir(initialDir);
-  }, [language]);
-
-  useEffect(() => {
     let file;
-    if (rootDir === FileData.dirs[0]) { //  this is Golang
+    if (rootDir.name === "goApp") {
       file = findFileByName(rootDir, "server.go");
-    } else if (rootDir === FileData.dirs[1]) { //  this is Python
+    } else if (rootDir.name === "python") {
       file = findFileByName(rootDir, "main.py");
-    } else if (rootDir === FileData.dirs[2]) { //  this is TypeScript
+    } else if (rootDir.name === "javascript") {
       file = findFileByName(rootDir, "server.js");
     }
-  
+
     setSelectedFile(file);
     setFiles(file ? [file] : []);
   }, [rootDir, language]);
-  
-
-  const getDirectoryByLanguage = (lang: string): Directory => {
-    if (lang === "Golang") return FileData.dirs[0];
-    if (lang === "Python") return FileData.dirs[1];
-    if (lang === "Javascript") return FileData.dirs[2];
-    return FileData.dirs[0]; // Default to Golang if no match
-  };
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -145,7 +145,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
       activeStep: 0,
       subStepIndex: -1,
       dedupStepIndex: -1,
-      testSubStepIndex: -1, // Add this line
+      testSubStepIndex: -1,
       expandedSteps: [0],
     });
     setStepsForRecording({ schemaValidation: false, GenerateTest: false });
@@ -205,7 +205,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
       activeStep: 0,
       subStepIndex: -1,
       dedupStepIndex: -1,
-      testSubStepIndex: -1, // Add this line
+      testSubStepIndex: -1,
       expandedSteps: [0],
     });
     setStepsForRecording({ schemaValidation: false, GenerateTest: false });
@@ -239,10 +239,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     console.log(TerminalStatus);
     console.log(TerminalHeight);
   }, [TerminalStatus, TerminalHeight]);
-
-  // useEffect(()=>{
-  //   console.log(selectedFile?.content)
-  // },[selectedFile])
 
   return (
     <>
@@ -305,6 +301,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
                         />
                         <Code
                           selectedFile={selectedFile}
+                          selectedFileName = {selectedFile?.name}
                           showSideBannerBool={showSideContent}
                           RemoveSideBanner={ShowSideContent}
                           settingCodeTheme={lighttheme}
