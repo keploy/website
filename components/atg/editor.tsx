@@ -4,9 +4,7 @@ import Sidebar from "./Editor/components/sidebar";
 import { Code } from "./Editor/editor/code";
 import Appbar from "./components/AppBar";
 import { Type, File, Directory } from "./Editor/utils/file-manager";
-import { GolangData } from "./data/Golang";
-import { PythonData } from "./data/Python";
-import { TypeScriptData } from "./data/TypeScript";
+import { FileData } from "./data/File";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
@@ -16,19 +14,18 @@ import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
 import useFullScreen from "./fullscreen"; // Import the hook
 
-
-const dummyDir: Directory = {
-  id: "1",
-  name: "loading...",
-  type: Type.DUMMY,
-  parentId: undefined,
-  depth: 0,
-  dirs: [],
-  files: [],
-};
+// const dummyDir: Directory = {
+//   id: "1",
+//   name: "loading...",
+//   type: Type.DUMMY,
+//   parentId: undefined,
+//   depth: 0,
+//   dirs: [],
+//   files: [],
+// };
 
 const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
-  const [rootDir, setRootDir] = useState<Directory>(TypeScriptData);
+  const [rootDir, setRootDir] = useState<Directory>(FileData.dirs[2]);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
   const [lighttheme, setTheme] = useState<boolean>(true);
@@ -89,42 +86,38 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   //     // setFullScreen(true);
   //   }
   // }, [goFullScreen, enterFullScreen); //maybe later to add TODO
+  
   useEffect(() => {
     updateFunctionName(state);
   }, [state]);
 
   useEffect(() => {
-    if (rootDir === GolangData) {
-      const file = findFileByName(GolangData, "server.go");
-      setSelectedFile(file);
-      setFiles(file ? [file] : []);
-    } else if (rootDir === PythonData) {
-      const file = findFileByName(PythonData, "main.py");
-      setSelectedFile(file);
-      setFiles(file ? [file] : []);
-    } else if (rootDir === TypeScriptData) {
-      const file = findFileByName(TypeScriptData, "server.js");
-      setSelectedFile(file);
-      setFiles(file ? [file] : []);
-    }
-  }, [language, rootDir]);
+    // Set initial root directory based on selected language
+    const initialDir = getDirectoryByLanguage(language);
+    setRootDir(initialDir);
+  }, [language]);
 
   useEffect(() => {
-    const fetchData = () => {
-      let data;
-      if (language === "Golang") {
-        data = GolangData;
-      } else if (language === "Python") {
-        data = PythonData;
-      } else {
-        data = TypeScriptData;
-      }
-      setState(-1);
-      setShowTerminal(false);
-      setRootDir(data);
-    };
-    fetchData();
-  }, [language]);
+    let file;
+    if (rootDir === FileData.dirs[0]) { //  this is Golang
+      file = findFileByName(rootDir, "server.go");
+    } else if (rootDir === FileData.dirs[1]) { //  this is Python
+      file = findFileByName(rootDir, "main.py");
+    } else if (rootDir === FileData.dirs[2]) { //  this is TypeScript
+      file = findFileByName(rootDir, "server.js");
+    }
+  
+    setSelectedFile(file);
+    setFiles(file ? [file] : []);
+  }, [rootDir, language]);
+  
+
+  const getDirectoryByLanguage = (lang: string): Directory => {
+    if (lang === "Golang") return FileData.dirs[0];
+    if (lang === "Python") return FileData.dirs[1];
+    if (lang === "Javascript") return FileData.dirs[2];
+    return FileData.dirs[0]; // Default to Golang if no match
+  };
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -155,9 +148,9 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
       testSubStepIndex: -1, // Add this line
       expandedSteps: [0],
     });
-    setStepsForRecording({schemaValidation:false,GenerateTest:false});    
-    setStepsForDedup({Dedup:false,Duplicates_removed:false});
-    setStepsForTests({Replaying_tests:false,generate_report:false});
+    setStepsForRecording({ schemaValidation: false, GenerateTest: false });
+    setStepsForDedup({ Dedup: false, Duplicates_removed: false });
+    setStepsForTests({ Replaying_tests: false, generate_report: false });
   };
 
   const onSelect = (file: File | undefined) => {
@@ -186,8 +179,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     setState((prevState) => (prevState === 2 ? 0 : prevState + 1));
   };
 
-
-
   const updateFunctionName = (newState: number) => {
     switch (newState) {
       case -1:
@@ -207,7 +198,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     }
   };
 
-   const resetEverything = () => {
+  const resetEverything = () => {
     setShowTerminal(false);
     setState(-1);
     setSidebarState({

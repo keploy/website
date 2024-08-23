@@ -1,6 +1,6 @@
 import { Type, Directory } from "../Editor/utils/file-manager";
 
-export const GolangData: Directory = {
+export const FileData: Directory = {
   id: "root",
   name: "rootDir",
   parentId: "null",
@@ -207,6 +207,70 @@ export const GolangData: Directory = {
           depth: 2,
           content:
             '{"openapi": "3.0.3", "info": {"title": "Animal API", "description": "API for managing animals", "version": "1.0.0"}, "servers": [{"url": "http://localhost:5000/"}], "paths": {"/": {"get": {"summary": "Welcome message", "operationId": "getWelcomeMessage", "responses": {"200": {"description": "Welcome to the world of animals", "content": {"text/plain": {"schema": {"type": "string", "example": "Welcome to the world of animals."}}}}}}}, "/animals": {"get": {"summary": "Get list of animals", "operationId": "getAnimals", "responses": {"200": {"description": "List of animals", "content": {"application/json": {"schema": {"type": "object", "properties": {"animals": {"type": "object", "additionalProperties": {"type": "string"}}}, "example": {"animals": {"animals": "apple"}}}}}}}}}}, "components": {"schemas": {"Error": {"type": "object", "properties": {"code": {"type": "integer", "format": "int32"}, "message": {"type": "string"}}}}}}',
+        },
+      ],
+    },
+    {
+      id: "src2",
+      name: "src",
+      parentId: "root",
+      type: Type.DIRECTORY,
+      depth: 1,
+      dirs: [],
+      files: [
+        {
+          id: "py_txt",
+          name: "requirements.txt",
+          type: Type.FILE,
+          parentId: "src2",
+          depth: 2,
+          content: "flask\npymongo\narrow\ncoverage",
+        },
+        {
+          id: "main_py",
+          name: "main.py",
+          type: Type.FILE,
+          parentId: "src2",
+          depth: 2,
+          content:
+            'from flask import Flask, jsonify\n\napp = Flask(__name__)\n\n@app.route(\'/\')\ndef ping_server():\n\treturn "Welcome to the world of animals."\n\n@app.route(\'/animals\')\ndef get_stored_animals():\n\tanimals = [{"id": "animals"}]\n\treturn jsonify({"animals": animals})\n\nif __name__ == \'__main__\':\n\tapp.run(host="0.0.0.0", port=5000)',
+        },
+        {
+          id: "schema_json",
+          name: "schema.json",
+          type: Type.FILE,
+          parentId: "src2",
+          depth: 2,
+          content:
+            '{"openapi": "3.0.3", "info": {"title": "Animal API", "description": "API for managing animals", "version": "1.0.0"}, "servers": [{"url": "http://localhost:5000/"}], "paths": {"/": {"get": {"summary": "Welcome message", "operationId": "pingServer", "responses": {"200": {"description": "Welcome to the world of animals", "content": {"text/plain": {"schema": {"type": "string", "example": "Welcome to the world of animals."}}}}}}}, "/animals": {"get": {"summary": "Get list of animals", "operationId": "getStoredAnimals", "responses": {"200": {"description": "List of animals", "content": {"application/json": {"schema": {"type": "object", "properties": {"animals": {"type": "array", "items": {"type": "object", "properties": {"id": {"type": "string", "example": "animals"}}}}}, "example": {"animals": [{"id": "animals"}]}}}}}}}}, "components": {"schemas": {"Error": {"type": "object", "properties": {"code": {"type": "integer", "format": "int32"}, "message": {"type": "string"}}}}}}',
+        },
+      ],
+    },
+    {
+      id: "src3",
+      name: "src",
+      parentId: "root",
+      type: Type.DIRECTORY,
+      depth: 1,
+      dirs: [],
+      files: [
+        {
+          id: "package_json",
+          name: "package.json",
+          type: Type.FILE,
+          parentId: "src3",
+          depth: 2,
+          content:
+            '{"name": "animal-app", "version": "1.0.0", "description": "Single page application for animal database", "main": "server.js", "scripts": {"start": "node server.js", "dev": "nodemon server.js"}, "author": "Your Name", "license": "MIT", "dependencies": {"express": "^4.17.1", "mongodb": "^4.0.5", "@keploy/sdk": "^2.0.4"}, "devDependencies": {"nodemon": "^2.0.13"}}',
+        },
+        {
+          id: "main_js",
+          name: "server.js",
+          type: Type.FILE,
+          parentId: "src3",
+          depth: 2,
+          content:
+            "const express = require('express');\n\nconst app = express();\n\nconst kMiddleware = require('@keploy/sdk/dist/v2/dedup/middleware.js');\n\napp.use(kMiddleware());\n\napp.get('/', (req, res) => {\n    res.send('Welcome to the world of animals.');\n});\n\napp.get('/animals', async (req, res) => {\n    try {\n        res.json({ animals: 'tiger' });\n    } catch (err) {\n        console.error(err);\n        res.sendStatus(500);\n    }\n});\n\napp.listen(5000, () => {\n    console.log('Server started on port 5000');\n});",
         },
       ],
     },
