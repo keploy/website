@@ -143,38 +143,40 @@ export const SetTestSets = async (
   ) => { data: any; loading: boolean; error: any }
 ) => {
   const { data, loading, error } = fetchTestSets();
-    if (!loading && data) {
-      const runCommandSets = data.runCommand;
-      const newTestSets = runCommandSets.split("\n");
-      newTestSets.pop();
+  console.log("data", data);
+  if (!loading && data) {
+    const runCommandSets = data.runCommand;
+    console.log("runcommandsets", runCommandSets);
+    const newTestSets = runCommandSets.split("\n");
+    newTestSets.pop();
 
-      const newDirs = newTestSets.map((TestSetName: string) => {
-        const newDir: Directory = {
-          id: generateUniqueId(),
-          name: TestSetName,
-          parentId: directory.id,
-          type: Type.DIRECTORY,
-          depth: 2,
-          dirs: [],
-          files: [],
-        };
-        if (TestSetName === "reports") {
-          ReportTestRuns(
-            newDir,
-            fetchTestRuns,
-            fetchReports,
-            fetchDetailedReports
-          );
-        } else {
-          SetTestList(newDir, fetchTestList, fetchMocks, fetchTests);
-        }
-        return newDir;
-      });
+    const newDirs = newTestSets.map((TestSetName: string) => {
+      const newDir: Directory = {
+        id: generateUniqueId(),
+        name: TestSetName,
+        parentId: directory.id,
+        type: Type.DIRECTORY,
+        depth: 2,
+        dirs: [],
+        files: [],
+      };
+      if (TestSetName === "reports") {
+        ReportTestRuns(
+          newDir,
+          fetchTestRuns,
+          fetchReports,
+          fetchDetailedReports
+        );
+      } else {
+        SetTestList(newDir, fetchTestList, fetchMocks, fetchTests);
+      }
+      return newDir;
+    });
 
-      directory.dirs.push(...newDirs);
-    } else if (error) {
-      console.error("Error fetching test sets:", error.message);
-    }
+    directory.dirs.push(...newDirs);
+  } else if (error) {
+    console.error("Error fetching test sets:", error.message);
+  }
 };
 
 export const SetTestList = async (
@@ -196,52 +198,50 @@ export const SetTestList = async (
 ) => {
   const { data, loading, error } = fetchTestList(directory.name);
 
-    if (!loading && data) {
-      const runCommandTestLists = data.runCommand;
-      const newTestLists = runCommandTestLists.split("\n");
-      newTestLists.pop();
+  if (!loading && data) {
+    const runCommandTestLists = data.runCommand;
+    const newTestLists = runCommandTestLists.split("\n");
+    newTestLists.pop();
 
-      const newFiles = newTestLists.map(
-        (TestSetName: string, index: number) => {
-          const { testDetails } = GetFileDetails(
-            directory.name,
-            TestSetName,
-            fetchTests
-          );
-          return {
-            id: `${directory.id}${index}`,
-            name: TestSetName,
-            parentId: directory.id,
-            type: Type.FILE,
-            depth: 3,
-            content: testDetails,
-          };
-        }
+    const newFiles = newTestLists.map((TestSetName: string, index: number) => {
+      const { testDetails } = GetFileDetails(
+        directory.name,
+        TestSetName,
+        fetchTests
       );
+      return {
+        id: `${directory.id}${index}`,
+        name: TestSetName,
+        parentId: directory.id,
+        type: Type.FILE,
+        depth: 3,
+        content: testDetails,
+      };
+    });
 
-      const {
-        data: mockData,
-        loading: mockLoading,
-        error: mockError,
-      } = fetchMocks(directory.name);
-      if (mockData && !mockLoading) {
-        const mockDetails = mockData.runCommand;
-        newFiles.push({
-          id: `${directory.id}mock`,
-          name: `mocks.yaml`,
-          parentId: directory.id,
-          type: Type.FILE,
-          depth: 3,
-          content: mockDetails,
-        });
-      } else if (mockError) {
-        console.error("Error in fetching mocks:", mockError.message);
-      }
-
-      directory.files.push(...newFiles);
-    } else if (error) {
-      console.error("Error fetching test-list:", error.message);
+    const {
+      data: mockData,
+      loading: mockLoading,
+      error: mockError,
+    } = fetchMocks(directory.name);
+    if (mockData && !mockLoading) {
+      const mockDetails = mockData.runCommand;
+      newFiles.push({
+        id: `${directory.id}mock`,
+        name: `mocks.yaml`,
+        parentId: directory.id,
+        type: Type.FILE,
+        depth: 3,
+        content: mockDetails,
+      });
+    } else if (mockError) {
+      console.error("Error in fetching mocks:", mockError.message);
     }
+
+    directory.files.push(...newFiles);
+  } else if (error) {
+    console.error("Error fetching test-list:", error.message);
+  }
 };
 
 export const ReportTestRuns = async (
@@ -259,29 +259,29 @@ export const ReportTestRuns = async (
 ) => {
   const { data, loading, error } = fetchTestRuns();
 
-    if (!loading && data) {
-      const runSet = data.runCommand;
-      const runSetList = runSet.split("\n");
-      runSetList.pop();
+  if (!loading && data) {
+    const runSet = data.runCommand;
+    const runSetList = runSet.split("\n");
+    runSetList.pop();
 
-      const runSets = runSetList.map((testRunName: string) => {
-        const newDir: Directory = {
-          id: generateUniqueId(),
-          name: testRunName,
-          parentId: directory.id,
-          type: Type.DIRECTORY,
-          depth: 3,
-          dirs: [],
-          files: [],
-        };
-        ReportFileNames(newDir, fetchReportFiles, fetchDetailedReports);
-        return newDir;
-      });
+    const runSets = runSetList.map((testRunName: string) => {
+      const newDir: Directory = {
+        id: generateUniqueId(),
+        name: testRunName,
+        parentId: directory.id,
+        type: Type.DIRECTORY,
+        depth: 3,
+        dirs: [],
+        files: [],
+      };
+      ReportFileNames(newDir, fetchReportFiles, fetchDetailedReports);
+      return newDir;
+    });
 
-      directory.dirs.push(...runSets);
-    } else if (error) {
-      console.error("Error fetching test-runs:", error.message);
-    }
+    directory.dirs.push(...runSets);
+  } else if (error) {
+    console.error("Error fetching test-runs:", error.message);
+  }
 };
 
 export const ReportFileNames = async (
@@ -298,34 +298,34 @@ export const ReportFileNames = async (
 ) => {
   const { data, loading, error } = fetchReportFiles(directory.name);
 
-    if (!loading && data) {
-      const runCommandReportLists = data.runCommand;
-      const reportLists = runCommandReportLists.split("\n");
-      reportLists.pop();
+  if (!loading && data) {
+    const runCommandReportLists = data.runCommand;
+    const reportLists = runCommandReportLists.split("\n");
+    reportLists.pop();
 
-      const ReportFiles = reportLists.map(
-        (TestRunName: string, index: number) => {
-          const firstName = TestRunName.split(".")[0];
-          const { reportDetails } = GetReportDetails(
-            directory.name,
-            firstName,
-            fetchDetailedReports
-          );
-          return {
-            id: `${directory.id}${index}`,
-            name: TestRunName,
-            parentId: directory.id,
-            type: Type.FILE,
-            depth: 4,
-            content: reportDetails,
-          };
-        }
-      );
+    const ReportFiles = reportLists.map(
+      (TestRunName: string, index: number) => {
+        const firstName = TestRunName.split(".")[0];
+        const { reportDetails } = GetReportDetails(
+          directory.name,
+          firstName,
+          fetchDetailedReports
+        );
+        return {
+          id: `${directory.id}${index}`,
+          name: TestRunName,
+          parentId: directory.id,
+          type: Type.FILE,
+          depth: 4,
+          content: reportDetails,
+        };
+      }
+    );
 
-      directory.files.push(...ReportFiles);
-    } else if (error) {
-      console.error("Error fetching report-list:", error.message);
-    }
+    directory.files.push(...ReportFiles);
+  } else if (error) {
+    console.error("Error fetching report-list:", error.message);
+  }
 };
 
 // Section 4: Main Function to Setup Directory Structure

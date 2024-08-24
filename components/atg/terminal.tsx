@@ -108,7 +108,6 @@ function CombinedTerminalPage({
     command: "TEST_GENERATE",
     completed() {
       setCompletedTrue(setDownloading);
-      console.log("Downloading is completed");
     },
   });
 
@@ -151,6 +150,18 @@ function CombinedTerminalPage({
       setCompletedTrue(setTestCompleted);
     },
   });
+
+  useEffect(()=>{
+    if(inputRef.current && loadingData){
+      inputRef.current.value = loadingData.runCommand;
+    }
+
+    if(Downloading){
+      setLoader(true);
+    }
+
+  },[loadingData , Downloading])
+
   //when the recording subscription has ended we execute this
   useEffect(() => {
     const executeCommands = async () => {
@@ -218,12 +229,10 @@ function CombinedTerminalPage({
   const commands = useMemo(
     () => ({
       record: async () => {
-        setLoader(true);
         loadinghandleSubmit();
         if (Downloading) {
           recordHandleSubmit();
         }
-        console.log("record executed");
       },
       dedup: async () => {
         if (commandsTrue) {

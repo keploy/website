@@ -30,7 +30,6 @@ export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
 
   const handleSubmit = () => {
     setSubmitted(true); // Trigger the subscription
-    console.log("fetch-test")
     return { data, loading, error };
   };
 
@@ -57,7 +56,6 @@ export const useFetchTestListSubscription = (codeSubmissionId: string) => {
   const handleSubmit = (newTestSetName: string) => {
     setTestSetName(newTestSetName);
     setSubmitted(true); // Trigger the subscription
-    console.log("fetch-test-list")
   
     return { data, loading, error };
   };
@@ -88,7 +86,6 @@ export const useFetchTestSubscription = (codeSubmissionId: string) => {
     setTestSetName(newTestSetName);
     setTestCaseName(newTestCaseName);
     setSubmitted(true); // Trigger the subscription
-    console.log("fetch-test details")
     return { data, loading, error };
   };
 
@@ -115,7 +112,6 @@ export const useFetchMockSubscription = (codeSubmissionId: string) => {
   const handleSubmit = (newTestSetName: string) => {
     setTestSetName(newTestSetName);
     setSubmitted(true); // Trigger the subscription
-    console.log("fetch-mock")
     return { data, loading, error };
   };
 
@@ -139,7 +135,6 @@ export const useFetchTestRunSubscription = (codeSubmissionId: string) => {
 
   const handleSubmit = () => {
     setSubmitted(true); // Trigger the subscription
-    console.log("fetch-test-runs")
     return { data, loading, error };
   };
 
@@ -166,7 +161,6 @@ export const useFetchReportSubscription = (codeSubmissionId: string) => {
   const handleSubmit = (newTestRunName: string) => {
     setTestRunName(newTestRunName);
     setSubmitted(true); // Trigger the subscription
-    console.log("fetch-report")
     return { data, loading, error };
   };
 
@@ -196,7 +190,6 @@ export const useFetchDetailedReportSubscription = (codeSubmissionId: string) => 
     setTestRunName(newTestRunName);
     setTestSetReportName(newTestSetReportName);
     setSubmitted(true); // Trigger the subscription
-    console.log("fetch-report-details")
     return { data, loading, error };
   };
 
@@ -259,7 +252,6 @@ export const useRemovingDuplicateSubscription = (codeSubmissionId: string) => {
   const handleSubmit = (newTestSetName: string) => {
     setTestSetName(newTestSetName);
     setSubmitted(true); // Trigger the subscription
-    console.log("removing duplicates")
     return { data, loading, error };
   };
 
@@ -301,7 +293,6 @@ export const useRunCommandSubscription = ({
 
   const handleSubmit = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    console.log("started: ",command)
     setSubmitted(true);
   };
 
