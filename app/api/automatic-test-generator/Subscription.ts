@@ -14,8 +14,9 @@ import {
   EDIT_TEST_SUBSCRIPTION,
 } from "./queries";
 
-// Hook for fetching test sets
 export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_SETS_SUBSCRIPTION),
     {
@@ -23,17 +24,23 @@ export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
         code_submission_id: codeSubmissionId,
         command: "FETCH_TEST_SETS",
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = () => {
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return {handleSubmit };
 };
 
 // Hook for fetching test list
-export const useFetchTestListSubscription = (
-  codeSubmissionId: string,
-  testSetName: string
-) => {
+export const useFetchTestListSubscription = (codeSubmissionId: string) => {
+  const [testSetName, setTestSetName] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_LIST_SUBSCRIPTION),
     {
@@ -42,18 +49,25 @@ export const useFetchTestListSubscription = (
         command: "FETCH_TESTS_LIST",
         test_set_name: testSetName,
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = (newTestSetName: string) => {
+    setTestSetName(newTestSetName);
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return { handleSubmit };
 };
 
 // Hook for fetching a specific test
-export const useFetchTestSubscription = (
-  codeSubmissionId: string,
-  testSetName: string,
-  testCaseName: string
-) => {
+export const useFetchTestSubscription = (codeSubmissionId: string) => {
+  const [testSetName, setTestSetName] = useState<string>("");
+  const [testCaseName, setTestCaseName] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_SUBSCRIPTION),
     {
@@ -63,17 +77,25 @@ export const useFetchTestSubscription = (
         test_set_name: testSetName,
         test_case_name: testCaseName,
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = (newTestSetName: string, newTestCaseName: string) => {
+    setTestSetName(newTestSetName);
+    setTestCaseName(newTestCaseName);
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return { handleSubmit };
 };
 
 // Hook for fetching mocks
-export const useFetchMockSubscription = (
-  codeSubmissionId: string,
-  testSetName: string
-) => {
+export const useFetchMockSubscription = (codeSubmissionId: string) => {
+  const [testSetName, setTestSetName] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(FETCH_MOCK_SUBSCRIPTION),
     {
@@ -82,14 +104,23 @@ export const useFetchMockSubscription = (
         command: "FETCH_MOCK",
         test_set_name: testSetName,
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = (newTestSetName: string) => {
+    setTestSetName(newTestSetName);
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return {handleSubmit };
 };
 
 // Hook for fetching test runs
 export const useFetchTestRunSubscription = (codeSubmissionId: string) => {
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_RUN_SUBSCRIPTION),
     {
@@ -97,17 +128,23 @@ export const useFetchTestRunSubscription = (codeSubmissionId: string) => {
         code_submission_id: codeSubmissionId,
         command: "FETCH_TEST_RUNS",
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = () => {
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return { handleSubmit };
 };
 
 // Hook for fetching report files inside the report folder
-export const useFetchReportSubscription = (
-  codeSubmissionId: string,
-  testRunName: string
-) => {
+export const useFetchReportSubscription = (codeSubmissionId: string) => {
+  const [testRunName, setTestRunName] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(FETCH_REPORT_SUBSCRIPTION),
     {
@@ -116,18 +153,25 @@ export const useFetchReportSubscription = (
         command: "FETCH_TEST_SET_REPORTS",
         test_run_name: testRunName,
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = (newTestRunName: string) => {
+    setTestRunName(newTestRunName);
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return { handleSubmit };
 };
 
 // Hook for fetching the contents of a detailed report
-export const useFetchDetailedReportSubscription = (
-  codeSubmissionId: string,
-  testRunName: string,
-  testSetReportName: string
-) => {
+export const useFetchDetailedReportSubscription = (codeSubmissionId: string) => {
+  const [testRunName, setTestRunName] = useState<string>("");
+  const [testSetReportName, setTestSetReportName] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(FETCH_DETAILED_REPORT_SUBSCRIPTION),
     {
@@ -137,39 +181,61 @@ export const useFetchDetailedReportSubscription = (
         test_run_name: testRunName,
         test_set_report_name: testSetReportName,
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = (newTestRunName: string, newTestSetReportName: string) => {
+    setTestRunName(newTestRunName);
+    setTestSetReportName(newTestSetReportName);
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return { handleSubmit };
 };
 
-export const useEditTestSubscription = (
-  codeSubmissionId: string,
-  CommandContent: string,
-  testSetName: string,
-  testCaseName: string
-) => {
+// Hook for editing a test
+export const useEditTestSubscription = (codeSubmissionId: string) => {
+  const [commandContent, setCommandContent] = useState<string>("");
+  const [testSetName, setTestSetName] = useState<string>("");
+  const [testCaseName, setTestCaseName] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(EDIT_TEST_SUBSCRIPTION),
     {
       variables: {
         code_submission_id: codeSubmissionId,
         command: "EDIT_TESTS",
-        command_content: CommandContent,
+        command_content: commandContent,
         test_set_name: testSetName,
         test_case_name: testCaseName,
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = (
+    newCommandContent: string,
+    newTestSetName: string,
+    newTestCaseName: string
+  ) => {
+    setCommandContent(newCommandContent);
+    setTestSetName(newTestSetName);
+    setTestCaseName(newTestCaseName);
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return {  handleSubmit };
 };
 
 // Hook for removing duplicates
-export const useRemovingDuplicateSubscription = (
-  codeSubmissionId: string,
-  testSetName: string
-) => {
+export const useRemovingDuplicateSubscription = (codeSubmissionId: string) => {
+  const [testSetName, setTestSetName] = useState<string>("");
+  const [submitted, setSubmitted] = useState(false);
+
   const { data, loading, error } = useSubscription(
     gql(REMOVE_DUPLICATES_SUBSCRIPTION),
     {
@@ -178,10 +244,17 @@ export const useRemovingDuplicateSubscription = (
         command: "REMOVE_DUPLICATES",
         test_set_name: testSetName,
       },
+      skip: !submitted, // Skip subscription until handleSubmit is called
     }
   );
 
-  return { data, loading, error };
+  const handleSubmit = (newTestSetName: string) => {
+    setTestSetName(newTestSetName);
+    setSubmitted(true); // Trigger the subscription
+    return { data, loading, error };
+  };
+
+  return { handleSubmit };
 };
 
 // Hook for running a command with handleSubmit
