@@ -1,19 +1,19 @@
 export enum Type {
-  FILE, 
+  FILE,
   DIRECTORY,
   DUMMY,
 }
 
 interface CommonProps {
-  id: string; 
-  type: Type; 
-  name: string; 
-  parentId: string | undefined; 
-  depth: number; 
+  id: string;
+  type: Type;
+  name: string;
+  parentId: string | undefined;
+  depth: number;
 }
 
 export interface File extends CommonProps {
-  content: string; 
+  content: string;
 }
 
 export interface Directory extends CommonProps {
@@ -22,57 +22,27 @@ export interface Directory extends CommonProps {
 }
 
 // Utility function to generate unique IDs
-function generateUniqueId(): string {
-  return 'id-' + Math.random().toString(36).substr(2, 9);
+export function  generateUniqueId(): string {
+  return "id-" + Math.random().toString(36).substr(2, 9);
 }
 
-// Fetch GitHub directory and files
-export async function fetchGitHubDirectoryContents(
-  path: string,
-  parentId: string | undefined = undefined,
-  depth: number = 1
-): Promise<Directory> {
-  const apiUrl = `https://api.github.com/repos/keploy/demo-projects/contents/${path}`;
-  const response = await fetch(apiUrl);
-  const items = await response.json();
 
-  const directory: Directory = {
-    id: generateUniqueId(),
-    type: Type.DIRECTORY,
-    name: path.split('/').pop() || '',
-    parentId,
-    depth,
-    files: [],
-    dirs: [],
-  };
+export async function fetchDirectoryStructure(projectKey: string): Promise<Directory> {
+  try {
+    const response = await fetch(`/api/createFileStructure?project=${projectKey}`);
 
-  for (const item of items) {
-    if (item.type === 'dir') {
-      const subdirectory = await fetchGitHubDirectoryContents(item.path, directory.id, depth + 1);
-      directory.dirs.push(subdirectory);
-    } else if (item.type === 'file' && item.download_url) {
-      const fileResponse = await fetch(item.download_url);
-      const content = await fileResponse.text();
-
-      const file: File = {
-        id: generateUniqueId(),
-        type: Type.FILE,
-        name: item.name,
-        parentId: directory.id,
-        depth: depth + 1,
-        content,
-      };
-
-      directory.files.push(file);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch directory structure: ${response.statusText}`);
     }
+
+    const data: Directory = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching directory structure:', error);
+    throw new Error('Failed to fetch directory structure');
   }
-
-  // Sort files and directories
-  directory.files.sort(sortFile);
-  directory.dirs.sort(sortDir);
-
-  return directory;
 }
+
 
 // Find a file by name in the directory structure
 export function findFileByName(

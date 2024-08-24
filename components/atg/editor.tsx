@@ -13,8 +13,7 @@ import { StepsForRecording, StepforTests, StepsforDedup } from "./utils/types";
 import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
 import useFullScreen from "./fullscreen"; // Import the hook
-import { fetchGitHubDirectoryContents } from "./Editor/utils/file-manager";
-
+import { fetchDirectoryStructure } from "./Editor/utils/file-manager";
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -77,11 +76,11 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
 
   const fetchDirectoryContents = async (lang: string) => {
     try {
-      let url = 'projects/javaScript';
-      if (lang === 'Golang') url = 'projects/goApp';
-      else if (lang === 'Python') url = 'projects/python';
+      let url = 'Javascript';
+      if (lang === 'Golang') url = 'Golang';
+      else if (lang === 'Python') url = 'Python';
 
-      const directory = await fetchGitHubDirectoryContents(url);
+      const directory = await fetchDirectoryStructure(url);
       setRootDir(directory);
       console.log(directory);
       setDataFetched(true);
@@ -107,11 +106,11 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
 
   useEffect(() => {
     let file;
-    if (rootDir.name === "goApp") {
+    if (rootDir.name === "goapp") {
       file = findFileByName(rootDir, "server.go");
     } else if (rootDir.name === "python") {
       file = findFileByName(rootDir, "main.py");
-    } else if (rootDir.name === "javascript") {
+    } else if (rootDir.name === "javaScript") {
       file = findFileByName(rootDir, "server.js");
     }
 
