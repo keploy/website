@@ -1,3 +1,3 @@
-[submodule "components/atg/components/atg/demo-projects"]
-	path = components/atg/components/atg/demo-projects
+[submodule "components/atg/demo-projects"]
+	path = components/atg/demo-projects
 	url = https://github.com/keploy/demo-projects.git
