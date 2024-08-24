@@ -76,13 +76,12 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
 
   const fetchDirectoryContents = async (lang: string) => {
     try {
-      let url = 'Javascript';
-      if (lang === 'Golang') url = 'Golang';
-      else if (lang === 'Python') url = 'Python';
+      let url = "Javascript";
+      if (lang === "Golang") url = "Golang";
+      else if (lang === "Python") url = "Python";
 
       const directory = await fetchDirectoryStructure(url);
       setRootDir(directory);
-      console.log(directory);
       setDataFetched(true);
     } catch (err) {
       console.error("Failed to fetch directory structure:", err);
@@ -300,27 +299,29 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
                         />
                         <Code
                           selectedFile={selectedFile}
-                          selectedFileName = {selectedFile?.name}
+                          selectedFileName={selectedFile?.name}
                           showSideBannerBool={showSideContent}
                           RemoveSideBanner={ShowSideContent}
                           settingCodeTheme={lighttheme}
                           isFullScreen={FullScreen} // Pass FullScreen state
                         />
-                        <div
-                          className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${TerminalHeight} overflow-hidden`}
-                        >
-                          <MainTerminal
-                            inputRef={inputRef}
-                            functionName={functionName}
-                            RootDir={rootDir}
-                            setRootDir={setRootDir}
-                            stepsForRecording={setStepsForRecording}
-                            stepsForTesting={setStepsForTests}
-                            stepsForDedup={setStepsForDedup}
-                            terminalTheme={lighttheme}
-                            setTerminalHeightStatus={settingTerminalStatus}
-                          />
-                        </div>
+                        {state > -1 && (
+                          <div
+                            className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${TerminalHeight} overflow-hidden`}
+                          >
+                            <MainTerminal
+                              inputRef={inputRef}
+                              functionName={functionName}
+                              RootDir={rootDir}
+                              setRootDir={setRootDir}
+                              stepsForRecording={setStepsForRecording}
+                              stepsForTesting={setStepsForTests}
+                              stepsForDedup={setStepsForDedup}
+                              terminalTheme={lighttheme}
+                              setTerminalHeightStatus={settingTerminalStatus}
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                   ) : (

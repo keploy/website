@@ -74,9 +74,15 @@ function CombinedTerminalPage({
 
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
-  const [codeSubmissionId] = useState<string>(storedCodeSubmissionId);
+  const [codeSubmissionId, setCodeSubmissionId] = useState<string>(
+    storedCodeSubmissionId
+  );
   const [commandsTrue, setCommandsTrue] = useState<boolean>(false);
-
+  const [Downloading, setDownloading] = useState<boolean>(false);
+  const [recordCompleted, setRecordCompleted] = useState<boolean>(false);
+  const [dedupCompleted, setDedupCompleted] = useState<boolean>(false);
+  const [testCompleted, setTestCompleted] = useState<boolean>(false);
+  const [loader, setLoader] = useState<boolean>(false);
   const { handleSubmit: fetchTestSets } =
     useFetchTestSetsSubscription(codeSubmissionId);
   const { handleSubmit: fetchTestList } =
@@ -93,6 +99,20 @@ function CombinedTerminalPage({
     useFetchDetailedReportSubscription(codeSubmissionId);
 
   const {
+    data: loadingData,
+    loading: DownloadLoader,
+    error: loadingError,
+    handleSubmit: loadinghandleSubmit,
+  } = useRunCommandSubscription({
+    codeSubmissionId,
+    command: "TEST_GENERATE",
+    completed() {
+      setCompletedTrue(setDownloading);
+      console.log("Downloading is completed");
+    },
+  });
+
+  const {
     data: recordData,
     loading: recordLoading,
     error: recordError,
@@ -100,6 +120,9 @@ function CombinedTerminalPage({
   } = useRunCommandSubscription({
     codeSubmissionId,
     command: "TEST_GENERATE",
+    completed() {
+      setCompletedTrue(setRecordCompleted);
+    },
   });
 
   const {
@@ -111,6 +134,9 @@ function CombinedTerminalPage({
     codeSubmissionId,
     command: "DEDUP",
     testSetName: "test-set-0",
+    completed() {
+      setCompletedTrue(setDedupCompleted);
+    },
   });
 
   const {
@@ -121,57 +147,99 @@ function CombinedTerminalPage({
   } = useRunCommandSubscription({
     codeSubmissionId,
     command: "TEST",
+    completed() {
+      setCompletedTrue(setTestCompleted);
+    },
   });
+  //when the recording subscription has ended we execute this
+  useEffect(() => {
+    const executeCommands = async () => {
+      if (commandsTrue) {
+        setCommandsTrue(false);
+        await makeKeployTestDir({
+          setRootDir,
+          fetchTestSets,
+          fetchTestList,
+          fetchMocks,
+          fetchTestRuns,
+          fetchReports,
+          fetchDetailedReports,
+          fetchTests,
+        });
+      }
+      stepsForRecording((prev) => ({ ...prev, GenerateTest: true }));
+      setLoader(false);
+    };
 
+    if (recordCompleted) {
+      executeCommands();
+    }
+  }, [recordCompleted]);
+
+
+  //when the dedup subscription has ended we execute this
+  useEffect(() => {
+    stepsForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
+    setCommandsTrue(true);
+  }, [dedupCompleted]);
+
+
+  //when the testing subscription has ended we execute this
+  useEffect(() => {
+    const executeCommands = async () => {
+      if (commandsTrue) {
+        setCommandsTrue(false);
+        await makeKeployTestDir({
+          setRootDir,
+          fetchTestSets,
+          fetchTestList,
+          fetchMocks,
+          fetchTestRuns,
+          fetchReports,
+          fetchDetailedReports,
+          fetchTests,
+        });
+      }
+      stepsForTesting((prev) => ({ ...prev, generate_report: true }));
+    };
+
+    if (testCompleted) {
+      executeCommands();
+    }
+    stepsForTesting((prev) => ({ ...prev, generate_report: true }));
+  }, [testCompleted]);
+
+  const setCompletedTrue = (
+    setCompleted: Dispatch<SetStateAction<boolean>>
+  ) => {
+    setCompleted(true);
+  };
   // Consolidated commands in a single useMemo
   const commands = useMemo(
     () => ({
-      'keploy record -c "npm run dev"': async () => {
-        recordHandleSubmit();
-        if (!commandsTrue) {
-          setCommandsTrue(true);
-          await makeKeployTestDir({
-            setRootDir,
-            fetchTestSets,
-            fetchTestList,
-            fetchMocks,
-            fetchTestRuns,
-            fetchReports,
-            fetchDetailedReports,
-            fetchTests,
-          });
-          stepsForRecording((prev) => ({ ...prev, GenerateTest: true }));
+      record: async () => {
+        setLoader(true);
+        loadinghandleSubmit();
+        if (Downloading) {
+          recordHandleSubmit();
         }
+        console.log("record executed");
       },
-      'keploy deduplicate -c "Deduplicate ababy"': async () => {
-        if (!commandsTrue) {
+      dedup: async () => {
+        if (commandsTrue) {
           const { handleSubmit } =
             useRemovingDuplicateSubscription(codeSubmissionId);
           const { data, loading, error } = handleSubmit("test-set-0");
           if (data && !loading) {
             stepsForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
-            setCommandsTrue(true);
+            setCommandsTrue(false);
           } else if (error) {
             console.error("Error removing duplicates:", error.message);
           }
         }
       },
-      'keploy testcoverage -c "test"': async () => {
-        if (!commandsTrue) {
-          testHandleSubmit();
-          setCommandsTrue(true);
-          await makeKeployTestDir({
-            setRootDir,
-            fetchTestSets,
-            fetchTestList,
-            fetchMocks,
-            fetchTestRuns,
-            fetchReports,
-            fetchDetailedReports,
-            fetchTests,
-          });
-          stepsForTesting((prev) => ({ ...prev, generate_report: true }));
-        }
+      test: async () => {
+        testHandleSubmit();
       },
       __notFound__: () => {
         const pushToHistory =
@@ -216,9 +284,6 @@ function CombinedTerminalPage({
     }),
     [
       commandsTrue,
-      codeSubmissionId,
-      recordHandleSubmit,
-      testHandleSubmit,
       setRootDir,
       stepsForRecording,
       stepsForDedup,
@@ -230,6 +295,7 @@ function CombinedTerminalPage({
       resetRecordTerminal,
       resetDedupTerminal,
       resetTestTerminal,
+      Downloading,
     ]
   );
 
@@ -237,24 +303,18 @@ function CombinedTerminalPage({
   useEffect(() => {
     if (functionName === "record") {
       setTimeout(() => {
-        commands['keploy record -c "npm run dev"']();
+        commands["record"]();
       }, 500);
     } else if (functionName === "deduplicate") {
       setTimeout(() => {
-        commands['keploy deduplicate -c "Deduplicate ababy"']();
+        commands["dedup"]();
       }, 500);
     } else if (functionName === "testcoverage") {
       setTimeout(() => {
-        commands['keploy testcoverage -c "test"']();
+        commands["test"]();
       }, 1000);
     }
-  }, [
-    functionName,
-    commands,
-    pushToRecordHistory,
-    pushToDedupHistory,
-    pushToTestHistory,
-  ]);
+  }, [functionName, commands]);
 
   // Handling output and errors for each terminal type
   useEffect(() => {
@@ -266,8 +326,12 @@ function CombinedTerminalPage({
         recordData.runCommand += "</span>";
       }
 
-      if (recordData.runCommand.includes("proxy stopped...")) {
-        setCommandsTrue(false);
+      if (
+        recordData.runCommand ===
+          "[GIN-debug] Listening and serving HTTP on :5000" ||
+        recordData.runCommand.includes("Server started on port 5000")
+      ) {
+        stepsForRecording((prev) => ({ ...prev, schemaValidation: true }));
       }
 
       pushToRecordHistory(
@@ -286,15 +350,6 @@ function CombinedTerminalPage({
         dedupDataFirst.runCommand += "</span>";
       }
 
-      if (
-        dedupDataFirst.runCommand.includes("proxy stopped...") ||
-        dedupDataFirst.runCommand.includes(
-          "eBPF resources released successfully..."
-        )
-      ) {
-        setCommandsTrue(false);
-      }
-
       pushToDedupHistory(
         <div>
           <p
@@ -309,10 +364,6 @@ function CombinedTerminalPage({
 
       if (testData.runCommand.match(/<span style="color: [^>]+;">/)) {
         testData.runCommand += "</span>";
-      }
-
-      if (testData.runCommand.includes("proxy stopped...")) {
-        setCommandsTrue(false);
       }
 
       pushToTestHistory(
@@ -363,7 +414,7 @@ function CombinedTerminalPage({
         SetTerminalHeight={setTerminalHeightStatus}
         Loading={
           functionName === "record"
-            ? recordLoading
+            ? loader
             : functionName === "deduplicate"
             ? dedupLoadingFirst
             : testLoading

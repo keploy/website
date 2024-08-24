@@ -1,5 +1,5 @@
 import { Directory, Type } from "./file-manager";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 // Section 1: Utility Functions
 // Utility function to generate unique IDs
@@ -143,8 +143,6 @@ export const SetTestSets = async (
   ) => { data: any; loading: boolean; error: any }
 ) => {
   const { data, loading, error } = fetchTestSets();
-
-  useEffect(() => {
     if (!loading && data) {
       const runCommandSets = data.runCommand;
       const newTestSets = runCommandSets.split("\n");
@@ -177,7 +175,6 @@ export const SetTestSets = async (
     } else if (error) {
       console.error("Error fetching test sets:", error.message);
     }
-  }, [loading, data, error]);
 };
 
 export const SetTestList = async (
@@ -199,7 +196,6 @@ export const SetTestList = async (
 ) => {
   const { data, loading, error } = fetchTestList(directory.name);
 
-  useEffect(() => {
     if (!loading && data) {
       const runCommandTestLists = data.runCommand;
       const newTestLists = runCommandTestLists.split("\n");
@@ -246,7 +242,6 @@ export const SetTestList = async (
     } else if (error) {
       console.error("Error fetching test-list:", error.message);
     }
-  }, [loading, data, error]);
 };
 
 export const ReportTestRuns = async (
@@ -264,7 +259,6 @@ export const ReportTestRuns = async (
 ) => {
   const { data, loading, error } = fetchTestRuns();
 
-  useEffect(() => {
     if (!loading && data) {
       const runSet = data.runCommand;
       const runSetList = runSet.split("\n");
@@ -288,7 +282,6 @@ export const ReportTestRuns = async (
     } else if (error) {
       console.error("Error fetching test-runs:", error.message);
     }
-  }, [loading, data, error]);
 };
 
 export const ReportFileNames = async (
@@ -305,7 +298,6 @@ export const ReportFileNames = async (
 ) => {
   const { data, loading, error } = fetchReportFiles(directory.name);
 
-  useEffect(() => {
     if (!loading && data) {
       const runCommandReportLists = data.runCommand;
       const reportLists = runCommandReportLists.split("\n");
@@ -334,7 +326,6 @@ export const ReportFileNames = async (
     } else if (error) {
       console.error("Error fetching report-list:", error.message);
     }
-  }, [loading, data, error]);
 };
 
 // Section 4: Main Function to Setup Directory Structure

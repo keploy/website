@@ -5,7 +5,7 @@ import { Directory, generateUniqueId, Type, File } from "./file-manager";
 
 export function createFileStructure(
   rootPath: string,
-  depth: number = 0,
+  depth: number = 1,
   parentId: string | undefined = undefined
 ): Directory {
   // Get the base name of the root path
