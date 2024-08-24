@@ -42,7 +42,9 @@ export const Code = ({
       // Check if the filename matches the pattern 'test-<number>.yaml'
       if (selectedFileName && testFileRegex.test(selectedFileName)) {
 
-        
+      const testSetName =
+      localStorage.getItem("selectedTestSetDir") || "";
+            //implement the api for the edit test.
 
       }
     }

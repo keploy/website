@@ -34,7 +34,7 @@ interface SubTreeProps {
 
 const SubTree = (props: SubTreeProps) => {
   const [emptyDirectory, setEmptyDirectory] = useState<boolean>(false);
-  return (
+  return (                              
     <div>
       {emptyDirectory ? (
         <div className="h-2 flex items-center "></div>

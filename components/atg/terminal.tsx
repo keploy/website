@@ -7,6 +7,16 @@ import React, {
   useMemo,
   useRef,
 } from "react";
+import {
+  useFetchTestSetsSubscription,
+  useFetchTestListSubscription,
+  useFetchMockSubscription,
+  useFetchTestRunSubscription,
+  useFetchReportSubscription,
+  useFetchDetailedReportSubscription,
+  useFetchTestSubscription,
+} from "@/app/api/automatic-test-generator/Subscription"; // Update import path accordingly
+
 import { Directory } from "./Editor/utils/file-manager";
 import { StepforTests, StepsForRecording, StepsforDedup } from "./utils/types";
 import {
@@ -67,6 +77,21 @@ function CombinedTerminalPage({
   const [codeSubmissionId] = useState<string>(storedCodeSubmissionId);
   const [commandsTrue, setCommandsTrue] = useState<boolean>(false);
 
+  const { handleSubmit: fetchTestSets } =
+    useFetchTestSetsSubscription(codeSubmissionId);
+  const { handleSubmit: fetchTestList } =
+    useFetchTestListSubscription(codeSubmissionId);
+  const { handleSubmit: fetchTests } =
+    useFetchTestSubscription(codeSubmissionId);
+  const { handleSubmit: fetchMocks } =
+    useFetchMockSubscription(codeSubmissionId);
+  const { handleSubmit: fetchTestRuns } =
+    useFetchTestRunSubscription(codeSubmissionId);
+  const { handleSubmit: fetchReports } =
+    useFetchReportSubscription(codeSubmissionId);
+  const { handleSubmit: fetchDetailedReports } =
+    useFetchDetailedReportSubscription(codeSubmissionId);
+
   const {
     data: recordData,
     loading: recordLoading,
@@ -105,16 +130,24 @@ function CombinedTerminalPage({
         recordHandleSubmit();
         if (!commandsTrue) {
           setCommandsTrue(true);
-          await makeKeployTestDir({ setRootDir });
+          await makeKeployTestDir({
+            setRootDir,
+            fetchTestSets,
+            fetchTestList,
+            fetchMocks,
+            fetchTestRuns,
+            fetchReports,
+            fetchDetailedReports,
+            fetchTests,
+          });
           stepsForRecording((prev) => ({ ...prev, GenerateTest: true }));
         }
       },
       'keploy deduplicate -c "Deduplicate ababy"': async () => {
         if (!commandsTrue) {
-          const { data, loading, error } = useRemovingDuplicateSubscription(
-            codeSubmissionId,
-            "test-set-0"
-          );
+          const { handleSubmit } =
+            useRemovingDuplicateSubscription(codeSubmissionId);
+          const { data, loading, error } = handleSubmit("test-set-0");
           if (data && !loading) {
             stepsForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
             setCommandsTrue(true);
@@ -127,7 +160,16 @@ function CombinedTerminalPage({
         if (!commandsTrue) {
           testHandleSubmit();
           setCommandsTrue(true);
-          await makeKeployTestDir({ setRootDir });
+          await makeKeployTestDir({
+            setRootDir,
+            fetchTestSets,
+            fetchTestList,
+            fetchMocks,
+            fetchTestRuns,
+            fetchReports,
+            fetchDetailedReports,
+            fetchTests,
+          });
           stepsForTesting((prev) => ({ ...prev, generate_report: true }));
         }
       },
