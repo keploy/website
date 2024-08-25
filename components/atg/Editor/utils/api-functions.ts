@@ -1,6 +1,6 @@
 import { Directory, Type } from "./file-manager";
 import { Dispatch, SetStateAction } from "react";
-
+import { useEffect } from "react";
 // Section 1: Utility Functions
 // Utility function to generate unique IDs
 const generateUniqueId = (): string => {
@@ -72,14 +72,18 @@ export const replaceAnsiColors = (str: string): string => {
 };
 
 // Section 2: API Data Fetch and Processing Functions
-export const GetFileDetails = (
-  testSetName: string,
-  testCaseName: string,
+export const getFileDetails = ({
+  testSetName,
+  testCaseName,
+  fetchTests,
+}: {
+  testSetName: string;
+  testCaseName: string;
   fetchTests: (
     newTestSetName: string,
     newTestCaseName: string
-  ) => { data: any; loading: boolean; error: any }
-): { testDetails: string } => {
+  ) => { data: any; loading: boolean; error: any };
+}): { testDetails: string } => {
   const { data, loading, error } = fetchTests(testSetName, testCaseName);
 
   if (data && !loading) {
@@ -91,14 +95,18 @@ export const GetFileDetails = (
   }
 };
 
-export const GetReportDetails = (
-  testRunName: string,
-  reportName: string,
+export const getReportDetails = ({
+  testRunName,
+  reportName,
+  fetchDetailedReports,
+}: {
+  testRunName: string;
+  reportName: string;
   fetchDetailedReports: (
     newTestRunName: string,
     newTestSetReportName: string
-  ) => { data: any; loading: boolean; error: any }
-): { reportDetails: string } => {
+  ) => { data: any; loading: boolean; error: any };
+}): { reportDetails: string } => {
   const { data, loading, error } = fetchDetailedReports(
     testRunName,
     reportName
@@ -113,111 +121,125 @@ export const GetReportDetails = (
   }
 };
 
-// Section 3: Directory Structure Setup Functions
-export const SetTestSets = async (
-  directory: Directory,
-  fetchTestSets: () => { data: any; loading: boolean; error: any },
-  fetchTestList: (testSetName: string) => {
-    data: any;
-    loading: boolean;
-    error: any;
-  },
-  fetchMocks: (testSetName: string) => {
-    data: any;
-    loading: boolean;
-    error: any;
-  },
-  fetchTestRuns: () => { data: any; loading: boolean; error: any },
-  fetchReports: (newTestRunName: string) => {
-    data: any;
-    loading: boolean;
-    error: any;
-  },
+export const setTestSets = async ({
+  directory,
+  fetchTestSets,
+  fetchTestList,
+  fetchMocks,
+  fetchTestRuns,
+  fetchReports,
+  fetchDetailedReports,
+  fetchTests,
+}: {
+  directory: Directory;
+  fetchTestSets: () => Promise<{ data: any; loading: boolean; error: any }>;
+  fetchTestList: (testSetName: string) => { data: any; loading: boolean; error: any };
+  fetchMocks: (testSetName: string) => { data: any; loading: boolean; error: any };
+  fetchTestRuns: () => { data: any; loading: boolean; error: any };
+  fetchReports: (newTestRunName: string) => { data: any; loading: boolean; error: any };
   fetchDetailedReports: (
     newTestRunName: string,
     newTestSetReportName: string
-  ) => { data: any; loading: boolean; error: any },
+  ) => { data: any; loading: boolean; error: any };
   fetchTests: (
     newTestSetName: string,
     newTestCaseName: string
-  ) => { data: any; loading: boolean; error: any }
-) => {
-  const { data, loading, error } = fetchTestSets();
-  console.log("data", data);
-  if (!loading && data) {
-    const runCommandSets = data.runCommand;
-    console.log("runcommandsets", runCommandSets);
-    const newTestSets = runCommandSets.split("\n");
-    newTestSets.pop();
-
-    const newDirs = newTestSets.map((TestSetName: string) => {
-      const newDir: Directory = {
-        id: generateUniqueId(),
-        name: TestSetName,
-        parentId: directory.id,
-        type: Type.DIRECTORY,
-        depth: 2,
-        dirs: [],
-        files: [],
-      };
-      if (TestSetName === "reports") {
-        ReportTestRuns(
-          newDir,
-          fetchTestRuns,
-          fetchReports,
-          fetchDetailedReports
-        );
-      } else {
-        SetTestList(newDir, fetchTestList, fetchMocks, fetchTests);
-      }
-      return newDir;
-    });
-
-    directory.dirs.push(...newDirs);
-  } else if (error) {
-    console.error("Error fetching test sets:", error.message);
+  ) => { data: any; loading: boolean; error: any };
+}) => {
+  try {
+    const { data, loading, error } = await fetchTestSets();
+  
+    if (error) {
+      console.error("Error fetching test sets:", error.message);
+      return;
+    }
+  
+    if (!loading && data) {
+      console.log(data);
+  
+      const runCommandSets = data.runCommand.split("\n").filter(Boolean);
+      const newDirs = runCommandSets.map((testSetName: string) => {
+        const newDir: Directory = {
+          id: generateUniqueId(),
+          name: testSetName,
+          parentId: directory.id,
+          type: Type.DIRECTORY,
+          depth: 2,
+          dirs: [],
+          files: [],
+        };
+  
+        if (testSetName === "reports") {
+          reportTestRuns({
+            directory: newDir,
+            fetchTestRuns,
+            fetchReportFiles: fetchReports,
+            fetchDetailedReports,
+          });
+        } else {
+          setTestList({
+            directory: newDir,
+            fetchTestList,
+            fetchMocks,
+            fetchTests,
+          });
+        }
+  
+        return newDir;
+      });
+  
+      directory.dirs.push(...newDirs);
+    }
+  } catch (error: any) {
+    console.error("Unexpected error during fetch:", error.message);
   }
+  
 };
 
-export const SetTestList = async (
-  directory: Directory,
+
+export const setTestList = async ({
+  directory,
+  fetchTestList,
+  fetchMocks,
+  fetchTests,
+}: {
+  directory: Directory;
   fetchTestList: (testSetName: string) => {
     data: any;
     loading: boolean;
     error: any;
-  },
+  };
   fetchMocks: (testSetName: string) => {
     data: any;
     loading: boolean;
     error: any;
-  },
+  };
   fetchTests: (
     newTestSetName: string,
     newTestCaseName: string
-  ) => { data: any; loading: boolean; error: any }
-) => {
+  ) => { data: any; loading: boolean; error: any };
+}) => {
   const { data, loading, error } = fetchTestList(directory.name);
 
   if (!loading && data) {
-    const runCommandTestLists = data.runCommand;
-    const newTestLists = runCommandTestLists.split("\n");
-    newTestLists.pop();
-
-    const newFiles = newTestLists.map((TestSetName: string, index: number) => {
-      const { testDetails } = GetFileDetails(
-        directory.name,
-        TestSetName,
-        fetchTests
-      );
-      return {
-        id: `${directory.id}${index}`,
-        name: TestSetName,
-        parentId: directory.id,
-        type: Type.FILE,
-        depth: 3,
-        content: testDetails,
-      };
-    });
+    const runCommandTestLists = data.runCommand.split("\n").filter(Boolean);
+    const newFiles = runCommandTestLists.map(
+      (testSetName: string, index: number) => {
+        const { testDetails } = getFileDetails({
+          testSetName: directory.name,
+          testCaseName: testSetName,
+          fetchTests,
+        });
+        return {
+          id: `${directory.id}${index}`,
+          name: testSetName,
+          parentId: directory.id,
+          type: Type.FILE,
+          depth: 3,
+          content: testDetails,
+        };
+      }
+    );
 
     const {
       data: mockData,
@@ -225,45 +247,46 @@ export const SetTestList = async (
       error: mockError,
     } = fetchMocks(directory.name);
     if (mockData && !mockLoading) {
-      const mockDetails = mockData.runCommand;
       newFiles.push({
         id: `${directory.id}mock`,
         name: `mocks.yaml`,
         parentId: directory.id,
         type: Type.FILE,
         depth: 3,
-        content: mockDetails,
+        content: mockData.runCommand,
       });
     } else if (mockError) {
-      console.error("Error in fetching mocks:", mockError.message);
+      console.error("Error fetching mocks:", mockError.message);
     }
 
     directory.files.push(...newFiles);
   } else if (error) {
-    console.error("Error fetching test-list:", error.message);
+    console.error("Error fetching test list:", error.message);
   }
 };
 
-export const ReportTestRuns = async (
-  directory: Directory,
-  fetchTestRuns: () => { data: any; loading: boolean; error: any },
+export const reportTestRuns = async ({
+  directory,
+  fetchTestRuns,
+  fetchReportFiles,
+  fetchDetailedReports,
+}: {
+  directory: Directory;
+  fetchTestRuns: () => { data: any; loading: boolean; error: any };
   fetchReportFiles: (testRunName: string) => {
     data: any;
     loading: boolean;
     error: any;
-  },
+  };
   fetchDetailedReports: (
     newTestRunName: string,
     newTestSetReportName: string
-  ) => { data: any; loading: boolean; error: any }
-) => {
+  ) => { data: any; loading: boolean; error: any };
+}) => {
   const { data, loading, error } = fetchTestRuns();
 
   if (!loading && data) {
-    const runSet = data.runCommand;
-    const runSetList = runSet.split("\n");
-    runSetList.pop();
-
+    const runSetList = data.runCommand.split("\n").filter(Boolean);
     const runSets = runSetList.map((testRunName: string) => {
       const newDir: Directory = {
         id: generateUniqueId(),
@@ -274,46 +297,51 @@ export const ReportTestRuns = async (
         dirs: [],
         files: [],
       };
-      ReportFileNames(newDir, fetchReportFiles, fetchDetailedReports);
+      reportFileNames({
+        directory: newDir,
+        fetchReportFiles,
+        fetchDetailedReports,
+      });
       return newDir;
     });
 
     directory.dirs.push(...runSets);
   } else if (error) {
-    console.error("Error fetching test-runs:", error.message);
+    console.error("Error fetching test runs:", error.message);
   }
 };
 
-export const ReportFileNames = async (
-  directory: Directory,
+export const reportFileNames = async ({
+  directory,
+  fetchReportFiles,
+  fetchDetailedReports,
+}: {
+  directory: Directory;
   fetchReportFiles: (testRunName: string) => {
     data: any;
     loading: boolean;
     error: any;
-  },
+  };
   fetchDetailedReports: (
     newTestRunName: string,
     newTestSetReportName: string
-  ) => { data: any; loading: boolean; error: any }
-) => {
+  ) => { data: any; loading: boolean; error: any };
+}) => {
   const { data, loading, error } = fetchReportFiles(directory.name);
 
   if (!loading && data) {
-    const runCommandReportLists = data.runCommand;
-    const reportLists = runCommandReportLists.split("\n");
-    reportLists.pop();
-
-    const ReportFiles = reportLists.map(
-      (TestRunName: string, index: number) => {
-        const firstName = TestRunName.split(".")[0];
-        const { reportDetails } = GetReportDetails(
-          directory.name,
-          firstName,
-          fetchDetailedReports
-        );
+    const reportLists = data.runCommand.split("\n").filter(Boolean);
+    const reportFiles = reportLists.map(
+      (testRunName: string, index: number) => {
+        const firstName = testRunName.split(".")[0];
+        const { reportDetails } = getReportDetails({
+          testRunName: directory.name,
+          reportName: firstName,
+          fetchDetailedReports,
+        });
         return {
           id: `${directory.id}${index}`,
-          name: TestRunName,
+          name: testRunName,
           parentId: directory.id,
           type: Type.FILE,
           depth: 4,
@@ -322,13 +350,13 @@ export const ReportFileNames = async (
       }
     );
 
-    directory.files.push(...ReportFiles);
+    directory.files.push(...reportFiles);
   } else if (error) {
-    console.error("Error fetching report-list:", error.message);
+    console.error("Error fetching report list:", error.message);
   }
 };
 
-// Section 4: Main Function to Setup Directory Structure
+// Section 3: Main Function to Setup Directory Structure
 export const makeKeployTestDir = async ({
   setRootDir,
   fetchTestSets,
@@ -340,7 +368,7 @@ export const makeKeployTestDir = async ({
   fetchTests,
 }: {
   setRootDir: Dispatch<SetStateAction<Directory>>;
-  fetchTestSets: () => { data: any; loading: boolean; error: any };
+  fetchTestSets: () => Promise<{ data: any; loading: boolean; error: any }>;
   fetchTestList: (testSetName: string) => {
     data: any;
     loading: boolean;
@@ -376,33 +404,28 @@ export const makeKeployTestDir = async ({
     files: [],
   };
 
-  // Perform asynchronous operation before updating state
-  await SetTestSets(
-    newDir,
+  await setTestSets({
+    directory: newDir,
     fetchTestSets,
     fetchTestList,
     fetchMocks,
     fetchTestRuns,
     fetchReports,
     fetchDetailedReports,
-    fetchTests
-  );
+    fetchTests,
+  });
 
   setRootDir((prevRootDir) => {
     const dirIndex = prevRootDir.dirs.findIndex((dir) => dir.name === "src");
 
-    let updatedDirs;
-    if (dirIndex !== -1) {
-      updatedDirs = [prevRootDir.dirs[dirIndex], newDir];
-      console.log("after adding new directory at dirIndex", updatedDirs);
-    } else {
-      updatedDirs = [...prevRootDir.dirs, newDir];
-    }
+    const updatedDirs =
+      dirIndex !== -1
+        ? [prevRootDir.dirs[dirIndex], newDir]
+        : [...prevRootDir.dirs, newDir];
 
     return {
       ...prevRootDir,
       dirs: updatedDirs,
     };
   });
-  console.log("after adding new directory:", newDir);
 };

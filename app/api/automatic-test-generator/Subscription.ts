@@ -1,6 +1,6 @@
 // subscriptions.ts
 import { gql, useSubscription } from "@apollo/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FETCH_TEST_SETS_SUBSCRIPTION,
   FETCH_TEST_LIST_SUBSCRIPTION,
@@ -16,6 +16,11 @@ import {
 
 export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
   const [submitted, setSubmitted] = useState(false);
+  const [testsets, setTestSets] = useState<any>(null);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_SETS_SUBSCRIPTION),
@@ -28,13 +33,31 @@ export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
     }
   );
 
-  const handleSubmit = () => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      setTestSets(data);
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null); // Clear the promise after it resolves
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null); // Clear the promise after it rejects
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (): Promise<{ data: any; loading: boolean; error: any }> => {
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
-  return {handleSubmit };
+  return { handleSubmit, testsets };
 };
+
+
+
 
 // Hook for fetching test list
 export const useFetchTestListSubscription = (codeSubmissionId: string) => {
@@ -276,7 +299,8 @@ export const useRunCommandSubscription = ({
   const [command, setCommand] = useState<string>(initialCommand);
   const [submitted, setSubmitted] = useState(false);
 
-  const { data, loading, error } = useSubscription(
+
+   const { data, loading, error } = useSubscription(
     gql(RUN_COMMAND_SUBSCRIPTION),
     {
       variables: {

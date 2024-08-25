@@ -19,11 +19,9 @@ import {
 
 import { Directory } from "./Editor/utils/file-manager";
 import { StepforTests, StepsForRecording, StepsforDedup } from "./utils/types";
-import {
-  makeKeployTestDir,
-  replaceAnsiColors,
+import { makeKeployTestDir ,  replaceAnsiColors,
   replaceDates,
-} from "./Editor/utils/api-functions";
+ } from "./Editor/utils/api-functions";
 import { useTerminal } from "./Terminal/hooks";
 import {
   useRunCommandSubscription,
