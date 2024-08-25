@@ -19,9 +19,11 @@ import {
 
 import { Directory } from "./Editor/utils/file-manager";
 import { StepforTests, StepsForRecording, StepsforDedup } from "./utils/types";
-import { makeKeployTestDir ,  replaceAnsiColors,
+import {
+  makeKeployTestDir,
+  replaceAnsiColors,
   replaceDates,
- } from "./Editor/utils/api-functions";
+} from "./Editor/utils/api-functions";
 import { useTerminal } from "./Terminal/hooks";
 import {
   useRunCommandSubscription,
@@ -149,34 +151,33 @@ function CombinedTerminalPage({
     },
   });
 
-  useEffect(()=>{
-    if(inputRef.current && loadingData){
+  useEffect(() => {
+    if (inputRef.current && loadingData) {
       inputRef.current.value = loadingData.runCommand;
     }
 
-    if(Downloading){
+    if (Downloading) {
       setLoader(true);
     }
-
-  },[loadingData , Downloading])
+  }, [loadingData, Downloading]);
 
   //when the recording subscription has ended we execute this
   useEffect(() => {
     const executeCommands = async () => {
-      if (commandsTrue) {
-        setCommandsTrue(false);
-        await makeKeployTestDir({
-          setRootDir,
-          fetchTestSets,
-          fetchTestList,
-          fetchMocks,
-          fetchTestRuns,
-          fetchReports,
-          fetchDetailedReports,
-          fetchTests,
-        });
-      }
-      stepsForRecording((prev) => ({ ...prev, GenerateTest: true }));
+      console.log("making keploy dir");
+      setCommandsTrue(false);
+      await makeKeployTestDir({
+        setRootDir,
+        fetchTestSets,
+        fetchTestList,
+        fetchMocks,
+        fetchTestRuns,
+        fetchReports,
+        fetchDetailedReports,
+        fetchTests,
+        recording: true,
+      });
+      stepsForRecording((prev) => ({ schemaValidation:true, GenerateTest: true }));
       setLoader(false);
     };
 
@@ -185,37 +186,51 @@ function CombinedTerminalPage({
     }
   }, [recordCompleted]);
 
-
   //when the dedup subscription has ended we execute this
   useEffect(() => {
-    stepsForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
-    setCommandsTrue(true);
-  }, [dedupCompleted]);
+    const executeCommands = async () => {
+      try {
+        const { handleSubmit } =
+          useRemovingDuplicateSubscription(codeSubmissionId);
+        const { data, loading, error } = await handleSubmit("test-set-0");
 
+        if (data && !loading) {
+        } else if (error) {
+          console.error("Error removing duplicates:", error.message);
+        }
+      } catch (err) {
+        console.error("Unexpected error during removing duplicates:", err);
+      }
+      setLoader(false);
+      stepsForDedup((prev) => ({ Dedup: true, Duplicates_removed: true }));
+    };
+
+    if (dedupCompleted) {
+      executeCommands();
+    }
+  }, [dedupCompleted]);
 
   //when the testing subscription has ended we execute this
   useEffect(() => {
     const executeCommands = async () => {
-      if (commandsTrue) {
-        setCommandsTrue(false);
-        await makeKeployTestDir({
-          setRootDir,
-          fetchTestSets,
-          fetchTestList,
-          fetchMocks,
-          fetchTestRuns,
-          fetchReports,
-          fetchDetailedReports,
-          fetchTests,
-        });
-      }
-      stepsForTesting((prev) => ({ ...prev, generate_report: true }));
+      await makeKeployTestDir({
+        setRootDir,
+        fetchTestSets,
+        fetchTestList,
+        fetchMocks,
+        fetchTestRuns,
+        fetchReports,
+        fetchDetailedReports,
+        fetchTests,
+        testing: true,
+      });
+      stepsForTesting((prev) => ({ Replaying_tests:true, generate_report: true }));
+      setLoader(false);
     };
 
     if (testCompleted) {
       executeCommands();
     }
-    stepsForTesting((prev) => ({ ...prev, generate_report: true }));
   }, [testCompleted]);
 
   const setCompletedTrue = (
@@ -233,19 +248,11 @@ function CombinedTerminalPage({
         }
       },
       dedup: async () => {
-        if (commandsTrue) {
-          const { handleSubmit } =
-            useRemovingDuplicateSubscription(codeSubmissionId);
-          const { data, loading, error } = handleSubmit("test-set-0");
-          if (data && !loading) {
-            stepsForDedup((prev) => ({ ...prev, Duplicates_removed: true }));
-            setCommandsTrue(false);
-          } else if (error) {
-            console.error("Error removing duplicates:", error.message);
-          }
-        }
+        setLoader(true);
+        DeduphandleSubmit();
       },
       test: async () => {
+        setLoader(true);
         testHandleSubmit();
       },
       __notFound__: () => {
@@ -353,6 +360,14 @@ function CombinedTerminalPage({
       dedupDataFirst.runCommand = replaceDates(dedupDataFirst.runCommand);
       dedupDataFirst.runCommand = replaceAnsiColors(dedupDataFirst.runCommand);
 
+      if (
+        dedupDataFirst.runCommand ===
+          "[GIN-debug] Listening and serving HTTP on :5000" ||
+        dedupDataFirst.runCommand.includes("Server started on port 5000")
+      ) {
+        stepsForDedup((prev) => ({ ...prev, Dedup: true }));
+      }
+
       if (dedupDataFirst.runCommand.match(/<span style="color: [^>]+;">/)) {
         dedupDataFirst.runCommand += "</span>";
       }
@@ -371,6 +386,14 @@ function CombinedTerminalPage({
 
       if (testData.runCommand.match(/<span style="color: [^>]+;">/)) {
         testData.runCommand += "</span>";
+      }
+
+      if (
+        testData.runCommand ===
+          "[GIN-debug] Listening and serving HTTP on :5000" ||
+        testData.runCommand.includes("Server started on port 5000")
+      ) {
+        stepsForTesting((prev) => ({ ...prev, Replaying_tests: true }));
       }
 
       pushToTestHistory(
@@ -423,8 +446,8 @@ function CombinedTerminalPage({
           functionName === "record"
             ? loader
             : functionName === "deduplicate"
-            ? dedupLoadingFirst
-            : testLoading
+            ? loader
+            : loader
         }
       />
     </div>

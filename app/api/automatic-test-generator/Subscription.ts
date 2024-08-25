@@ -63,6 +63,10 @@ export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
 export const useFetchTestListSubscription = (codeSubmissionId: string) => {
   const [testSetName, setTestSetName] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_LIST_SUBSCRIPTION),
@@ -76,21 +80,39 @@ export const useFetchTestListSubscription = (codeSubmissionId: string) => {
     }
   );
 
-  const handleSubmit = (newTestSetName: string) => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null); // Clear the promise after it resolves
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null); // Clear the promise after it rejects
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (newTestSetName: string): Promise<{ data: any; loading: boolean; error: any }> => {
     setTestSetName(newTestSetName);
     setSubmitted(true); // Trigger the subscription
-  
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
   return { handleSubmit };
 };
+
 
 // Hook for fetching a specific test
 export const useFetchTestSubscription = (codeSubmissionId: string) => {
   const [testSetName, setTestSetName] = useState<string>("");
   const [testCaseName, setTestCaseName] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_SUBSCRIPTION),
@@ -105,20 +127,39 @@ export const useFetchTestSubscription = (codeSubmissionId: string) => {
     }
   );
 
-  const handleSubmit = (newTestSetName: string, newTestCaseName: string) => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null);
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null);
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (newTestSetName: string, newTestCaseName: string): Promise<{ data: any; loading: boolean; error: any }> => {
     setTestSetName(newTestSetName);
     setTestCaseName(newTestCaseName);
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
   return { handleSubmit };
 };
 
+
 // Hook for fetching mocks
 export const useFetchMockSubscription = (codeSubmissionId: string) => {
   const [testSetName, setTestSetName] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(FETCH_MOCK_SUBSCRIPTION),
@@ -132,18 +173,37 @@ export const useFetchMockSubscription = (codeSubmissionId: string) => {
     }
   );
 
-  const handleSubmit = (newTestSetName: string) => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null);
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null);
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (newTestSetName: string): Promise<{ data: any; loading: boolean; error: any }> => {
     setTestSetName(newTestSetName);
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
-  return {handleSubmit };
+  return { handleSubmit };
 };
+
 
 // Hook for fetching test runs
 export const useFetchTestRunSubscription = (codeSubmissionId: string) => {
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(FETCH_TEST_RUN_SUBSCRIPTION),
@@ -156,18 +216,37 @@ export const useFetchTestRunSubscription = (codeSubmissionId: string) => {
     }
   );
 
-  const handleSubmit = () => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null);
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null);
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (): Promise<{ data: any; loading: boolean; error: any }> => {
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
   return { handleSubmit };
 };
 
+
 // Hook for fetching report files inside the report folder
 export const useFetchReportSubscription = (codeSubmissionId: string) => {
   const [testRunName, setTestRunName] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(FETCH_REPORT_SUBSCRIPTION),
@@ -181,20 +260,39 @@ export const useFetchReportSubscription = (codeSubmissionId: string) => {
     }
   );
 
-  const handleSubmit = (newTestRunName: string) => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null);
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null);
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (newTestRunName: string): Promise<{ data: any; loading: boolean; error: any }> => {
     setTestRunName(newTestRunName);
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
   return { handleSubmit };
 };
+
 
 // Hook for fetching the contents of a detailed report
 export const useFetchDetailedReportSubscription = (codeSubmissionId: string) => {
   const [testRunName, setTestRunName] = useState<string>("");
   const [testSetReportName, setTestSetReportName] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(FETCH_DETAILED_REPORT_SUBSCRIPTION),
@@ -209,11 +307,25 @@ export const useFetchDetailedReportSubscription = (codeSubmissionId: string) => 
     }
   );
 
-  const handleSubmit = (newTestRunName: string, newTestSetReportName: string) => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null);
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null);
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (newTestRunName: string, newTestSetReportName: string): Promise<{ data: any; loading: boolean; error: any }> => {
     setTestRunName(newTestRunName);
     setTestSetReportName(newTestSetReportName);
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
   return { handleSubmit };
@@ -225,6 +337,10 @@ export const useEditTestSubscription = (codeSubmissionId: string) => {
   const [testSetName, setTestSetName] = useState<string>("");
   const [testCaseName, setTestCaseName] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(EDIT_TEST_SUBSCRIPTION),
@@ -240,25 +356,44 @@ export const useEditTestSubscription = (codeSubmissionId: string) => {
     }
   );
 
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null);
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null);
+    }
+  }, [data, error, dataPromise]);
+
   const handleSubmit = (
     newCommandContent: string,
     newTestSetName: string,
     newTestCaseName: string
-  ) => {
+  ): Promise<{ data: any; loading: boolean; error: any }> => {
     setCommandContent(newCommandContent);
     setTestSetName(newTestSetName);
     setTestCaseName(newTestCaseName);
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
-  return {  handleSubmit };
+  return { handleSubmit };
 };
+
 
 // Hook for removing duplicates
 export const useRemovingDuplicateSubscription = (codeSubmissionId: string) => {
   const [testSetName, setTestSetName] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
+  const [dataPromise, setDataPromise] = useState<{
+    resolve: (value: { data: any; loading: boolean; error: any }) => void;
+    reject: (reason?: any) => void;
+  } | null>(null);
 
   const { data, loading, error } = useSubscription(
     gql(REMOVE_DUPLICATES_SUBSCRIPTION),
@@ -272,10 +407,24 @@ export const useRemovingDuplicateSubscription = (codeSubmissionId: string) => {
     }
   );
 
-  const handleSubmit = (newTestSetName: string) => {
+  useEffect(() => {
+    if (data && dataPromise) {
+      dataPromise.resolve({ data, loading, error });
+      setDataPromise(null); // Clear the promise after it resolves
+    }
+
+    if (error && dataPromise) {
+      dataPromise.reject(error);
+      setDataPromise(null); // Clear the promise after it rejects
+    }
+  }, [data, error, dataPromise]);
+
+  const handleSubmit = (newTestSetName: string): Promise<{ data: any; loading: boolean; error: any }> => {
     setTestSetName(newTestSetName);
     setSubmitted(true); // Trigger the subscription
-    return { data, loading, error };
+    return new Promise((resolve, reject) => {
+      setDataPromise({ resolve, reject });
+    });
   };
 
   return { handleSubmit };
