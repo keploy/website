@@ -75,9 +75,7 @@ export const EDIT_TEST_SUBSCRIPTION = `
       command_content: $command_content,
       test_set_name: $test_set_name,
       test_case_name: $test_case_name
-    ) {
-      # Your expected fields here
-    }
+    )
   }
 `;
 

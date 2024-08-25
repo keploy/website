@@ -88,7 +88,7 @@ export const getFileDetails = async ({
   console.log(
     `Fetching details for testSet: ${testSetName}, testCase: ${testCaseName}`
   );
-  const timeoutDuration = 10000; // Increase timeout duration to 30 seconds
+  const timeoutDuration = 5000; // Increase timeout duration to 30 seconds
 
   const fetchWithRetry = async (retries = 3): Promise<any> => {
     try {
@@ -146,16 +146,29 @@ export const getReportDetails = async ({
   console.log(
     `Fetching report details for testRun: ${testRunName}, report: ${reportName}`
   );
-  try {
-    const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error("fetchDetailedReports timeout")), 10000)
-    );
-    const fetchPromise = fetchDetailedReports(testRunName, reportName);
-    const { data, loading, error } = await Promise.race([
-      fetchPromise,
-      timeoutPromise,
-    ]);
 
+  const timeoutDuration = 5000; // Set timeout duration to 10 seconds
+
+  const fetchWithRetry = async (retries = 3): Promise<any> => {
+    try {
+      const fetchPromise = fetchDetailedReports(testRunName, reportName);
+      const timeoutPromise = new Promise<never>((_, reject) =>
+        setTimeout(
+          () => reject(new Error("fetchDetailedReports timeout")),
+          timeoutDuration
+        )
+      );
+      const result = await Promise.race([fetchPromise, timeoutPromise]);
+      return result;
+    } catch (err) {
+      if (retries === 0) throw err;
+      console.log(`Retrying fetchDetailedReports... attempts left: ${retries}`);
+      return fetchWithRetry(retries - 1);
+    }
+  };
+
+  try {
+    const { data, loading, error } = await fetchWithRetry();
     console.log(
       `Received response for testRun: ${testRunName}, report: ${reportName}`,
       { data, loading, error }
@@ -182,9 +195,6 @@ export const setTestSets = async ({
   fetchTestSets,
   fetchTestList,
   fetchMocks,
-  fetchTestRuns,
-  fetchReports,
-  fetchDetailedReports,
   fetchTests,
 }: {
   directory: Directory;
@@ -194,14 +204,6 @@ export const setTestSets = async ({
   ) => Promise<{ data: any; loading: boolean; error: any }>;
   fetchMocks: (
     testSetName: string
-  ) => Promise<{ data: any; loading: boolean; error: any }>;
-  fetchTestRuns: () => Promise<{ data: any; loading: boolean; error: any }>;
-  fetchReports: (
-    newTestRunName: string
-  ) => Promise<{ data: any; loading: boolean; error: any }>;
-  fetchDetailedReports: (
-    newTestRunName: string,
-    newTestSetReportName: string
   ) => Promise<{ data: any; loading: boolean; error: any }>;
   fetchTests: (
     newTestSetName: string,
@@ -221,7 +223,10 @@ export const setTestSets = async ({
     if (!loading && data) {
       console.log("Processing test sets data", data);
 
-      const runCommandSets = data.runCommand.split("\n").filter(Boolean);
+      const runCommandSets = data.runCommand
+        .split("\n")
+        .filter(Boolean)
+        .slice(-1);
       const newDirs = await Promise.all(
         runCommandSets.map(async (testSetName: string) => {
           const newDir: Directory = {
@@ -285,6 +290,7 @@ export const setTestList = async ({
       const runCommandTestLists = data.runCommand.split("\n").filter(Boolean);
       const newFiles = await Promise.all(
         runCommandTestLists.map(async (testSetName: string, index: number) => {
+          await new Promise((resolve) => setTimeout(resolve, 2000));
           const { testDetails } = await getFileDetails({
             testSetName: directory.name,
             testCaseName: testSetName,
@@ -357,7 +363,7 @@ export const reportTestRuns = async ({
     console.log("Fetched test runs", { data, loading, error });
 
     if (!loading && data) {
-      const runSetList = data.runCommand.split("\n").filter(Boolean);
+      const runSetList = data.runCommand.split("\n").filter(Boolean).slice(-1);
       const runSets = await Promise.all(
         runSetList.map(async (testRunName: string) => {
           const newDir: Directory = {
@@ -416,6 +422,7 @@ export const reportFileNames = async ({
       const reportFiles = await Promise.all(
         reportLists.map(async (testRunName: string, index: number) => {
           const firstName = testRunName.split(".")[0];
+          await new Promise((resolve) => setTimeout(resolve, 2000));
           const { reportDetails } = await getReportDetails({
             testRunName: directory.name,
             reportName: firstName,
@@ -482,73 +489,87 @@ export const makeKeployTestDir = async ({
 }) => {
   console.log("Starting makeKeployTestDir operation");
 
-  // Get the existing root directory
-  const currentRootDir = await new Promise<Directory>((resolve) => {
-    setRootDir((prevRootDir) => {
-      resolve(prevRootDir);
-      return prevRootDir;
+  try {
+    // Get the existing root directory
+    const currentRootDir = await new Promise<Directory>((resolve) => {
+      setRootDir((prevRootDir) => {
+        resolve(prevRootDir);
+        return prevRootDir;
+      });
     });
-  });
 
-  // Create a new Keploy directory (whether or not one exists)
-  const newKeployDir: Directory = {
-    id: generateUniqueId(),
-    name: "Keploy",
-    parentId: "root",
-    type: Type.DIRECTORY,
-    depth: 1,
-    dirs: [],
-    files: [],
-  };
+    // Find the existing Keploy directory if it exists
+    let keployDir = currentRootDir.dirs.find((dir) => dir.name === "Keploy");
 
-  console.log("Created new Keploy directory with ID:", newKeployDir.id);
+    if (!keployDir) {
+      // Create a new Keploy directory if it does not exist
+      console.log("Keploy directory not found. Creating a new one.");
+      keployDir = {
+        id: generateUniqueId(),
+        name: "Keploy",
+        parentId: "root",
+        type: Type.DIRECTORY,
+        depth: 1,
+        dirs: [],
+        files: [],
+      };
+      currentRootDir.dirs.push(keployDir); // Add the new directory to the root directory
+    } else {
+      console.log("Keploy directory found with ID:", keployDir.id);
+    }
 
-  // Populate the new Keploy directory with test sets, mocks, etc.
-  if (recording) {
-    await setTestSets({
-      directory: newKeployDir,
-      fetchTestSets,
-      fetchTestList,
-      fetchMocks,
-      fetchTestRuns,
-      fetchReports,
-      fetchDetailedReports,
-      fetchTests,
+    // Perform recording operation if recording is true
+    if (recording) {
+      console.log("Populating Keploy directory with test sets and mocks...");
+      await setTestSets({
+        directory: keployDir,
+        fetchTestSets,
+        fetchTestList,
+        fetchMocks,
+        fetchTests,
+      });
+      console.log("Completed population of test sets and mocks.");
+    }
+
+    // Perform testing operation if testing is true
+    if (testing) {
+      console.log("Starting testing process...");
+      const newReportDir: Directory = {
+        id: generateUniqueId(),
+        name: "Reports",
+        parentId: keployDir.id,
+        type: Type.DIRECTORY,
+        depth: 2,
+        dirs: [],
+        files: [],
+      };
+
+      await reportTestRuns({
+        directory: newReportDir,
+        fetchTestRuns,
+        fetchReportFiles: fetchReports,
+        fetchDetailedReports,
+      });
+
+      console.log("Testing process completed. Adding Reports directory.");
+      keployDir.dirs.push(newReportDir);
+    }
+
+    // Update the root directory with the updated Keploy directory
+    const updatedDirs = currentRootDir.dirs.map((dir) =>
+      dir.name === "Keploy" ? keployDir : dir
+    );
+
+    setRootDir({
+      ...currentRootDir,
+      dirs: updatedDirs,
     });
+
+    console.log(
+      "Completed makeKeployTestDir operation. Updated directory structure:",
+      updatedDirs
+    );
+  } catch (error) {
+    console.error("Error during makeKeployTestDir operation:", error);
   }
-
-  if (testing) {
-    const newReportDir: Directory = {
-      id: generateUniqueId(),
-      name: "Reports",
-      parentId: `${newKeployDir.id}`,
-      type: Type.DIRECTORY,
-      depth: 2,
-      dirs: [],
-      files: [],
-    };
-
-    await reportTestRuns({
-      directory: newReportDir,
-      fetchTestRuns,
-      fetchReportFiles: fetchReports,
-      fetchDetailedReports,
-    });
-    newKeployDir.dirs.push(newReportDir);
-  }
-
-  // Update the root directory, replacing the old Keploy directory if it exists
-  const updatedDirs = currentRootDir.dirs
-    .filter((dir) => dir.name !== "Keploy") // Remove the old Keploy directory if it exists
-    .concat(newKeployDir); // Add the new Keploy directory
-
-  setRootDir({
-    ...currentRootDir,
-    dirs: updatedDirs,
-  });
-
-  console.log(
-    "Completed makeKeployTestDir operation. Updated directory structure:",
-    updatedDirs
-  );
 };

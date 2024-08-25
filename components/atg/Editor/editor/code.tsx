@@ -4,7 +4,7 @@ import * as monaco from "monaco-editor";
 import { File } from "../utils/file-manager";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
+import { useEditTestSubscription } from "@/app/api/automatic-test-generator/Subscription";
 export const Code = ({
   selectedFile,
   showSideBannerBool,
@@ -18,7 +18,7 @@ export const Code = ({
   RemoveSideBanner: () => void;
   settingCodeTheme: boolean;
   isFullScreen: boolean;
-  selectedFileName:string | undefined;
+  selectedFileName: string | undefined;
 }) => {
   if (!selectedFile) return null;
 
@@ -26,30 +26,54 @@ export const Code = ({
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const [showText, setShowText] = useState<boolean>(false);
   const testFileRegex = /^test-\d+\.yaml$/; // Regular expression to match 'test-<number>.yaml'
+  const [codeSubmissionId, setSubmissionId] = useState("");
+  const { handleSubmit } = useEditTestSubscription(codeSubmissionId);
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
-
+  
   if (language === "js" || language === "jsx") language = "javascript";
   else if (language === "ts" || language === "tsx") language = "typescript";
   else if (language === "go") language = "go";
   else if (language === "py") language = "python";
+  
+  useEffect(()=>{   
+    const storedCodeSubmissionId = localStorage.getItem("code_submission_id") || "";
+    setSubmissionId(storedCodeSubmissionId)
+    console.log("new stored id: ", codeSubmissionId);
+  },[localStorage , selectedFile])
 
-
-  const handleFileChange = (newValue: string | undefined) => {
+  const handleFileChange = async (newValue: string | undefined) => {
     if (newValue !== undefined) {
       selectedFile.content = newValue;
-
+  
       // Check if the filename matches the pattern 'test-<number>.yaml'
       if (selectedFileName && testFileRegex.test(selectedFileName)) {
-
-      const testSetName =
-      localStorage.getItem("selectedTestSetDir") || "";
-            //implement the api for the edit test.
-
+        const testSetName = localStorage.getItem("selectedTestSetDir") || "";
+      
+        // Use the subscription
+        const { data, loading, error } = await handleSubmit(newValue, testSetName, selectedFileName);
+  
+        console.log("changed file.");
+  
+        try {
+  
+          console.log("Subscription result", { data, loading, error });
+  
+          if (!loading && data) {
+            // Handle successful subscription data here
+            console.log("Subscription successful:", data);
+          } else if (error) {
+            // Handle subscription error here
+            console.error("Subscription error:", error);
+          }
+        } catch (error) {
+          console.error("Promise rejected:", error);
+        }
+  
       }
     }
   };
-
+  
 
   useEffect(() => {
     if (monacoInstance && editorRef.current) {
@@ -197,9 +221,9 @@ export const Code = ({
 
   return (
     <div
-      className={`w-full ${
-        isFullScreen ? "h-full" : "h-[75vh]"
-      } ${settingCodeTheme ? "border border-gray-300" : ""}`}
+      className={`w-full ${isFullScreen ? "h-full" : "h-[75vh]"} ${
+        settingCodeTheme ? "border border-gray-300" : ""
+      }`}
     >
       <Editor
         language={language}
