@@ -4,7 +4,6 @@ import Sidebar from "./Editor/components/sidebar";
 import { Code } from "./Editor/editor/code";
 import Appbar from "./components/AppBar";
 import { Type, File, Directory } from "./Editor/utils/file-manager";
-import { FileData } from "./data/File";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
