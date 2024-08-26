@@ -1,6 +1,6 @@
 import { Directory, Type } from "./file-manager";
 import { Dispatch, SetStateAction } from "react";
-import { useEffect } from "react";
+import { fetchTest } from "@/app/api/automatic-test-generator/Subscription";
 // Section 1: Utility Functions
 // Utility function to generate unique IDs
 const generateUniqueId = (): string => {
@@ -71,66 +71,22 @@ export const replaceAnsiColors = (str: string): string => {
   });
 };
 
-
-
-
-
 // Section 2: API Data Fetch and Processing Functions
-export const getFileDetails = async ({
-  testSetName,
-  testCaseName,
-  fetchTests,
-}: {
-  testSetName: string;
-  testCaseName: string;
-  fetchTests: (
-    newTestSetName: string,
-    newTestCaseName: string
-  ) => Promise<{ data: any; loading: boolean; error: any }>;
-}): Promise<{ testDetails: string }> => {
-  console.log(
-    `Fetching details for testSet: ${testSetName}, testCase: ${testCaseName}`
-  );
-  const timeoutDuration = 5000; // Increase timeout duration to 30 seconds
-
-  const fetchWithRetry = async (retries = 3): Promise<any> => {
-    try {
-      const fetchPromise = fetchTests(testSetName, testCaseName);
-      const timeoutPromise = new Promise<never>((_, reject) =>
-        setTimeout(
-          () => reject(new Error("fetchTests timeout")),
-          timeoutDuration
-        )
-      );
-      const result = await Promise.race([fetchPromise, timeoutPromise]);
-      return result;
-    } catch (err) {
-      if (retries === 0) throw err;
-      console.log(`Retrying fetchTests... attempts left: ${retries}`);
-      return fetchWithRetry(retries - 1);
-    }
-  };
-
+export const GetFileDetails = async (
+  codeSubmissionId: string,
+  testSetName: string,
+  testCaseName: string
+): Promise<{ testDetails: string; mockDetails: string }> => {
   try {
-    const { data, loading, error } = await fetchWithRetry();
-    console.log(
-      `Received response for testSet: ${testSetName}, testCase: ${testCaseName}`,
-      { data, loading, error }
+    const testResponse = await fetchTest(
+      codeSubmissionId,
+      testSetName,
+      testCaseName
     );
-
-    if (data && !loading) {
-      return { testDetails: data.runCommand };
-    } else if (error) {
-      throw new Error(`Error fetching test details: ${error.message}`);
-    } else {
-      throw new Error("Test details not found");
-    }
-  } catch (err) {
-    console.error(
-      `Error in getFileDetails for testSet: ${testSetName}, testCase: ${testCaseName}`,
-      err
-    );
-    throw err;
+    const testDetails = testResponse.data.data.runCommand;
+    return { testDetails, mockDetails: "" };
+  } catch (err: any) {
+    throw new Error(`Content not found: ${err.message}`);
   }
 };
 
@@ -198,7 +154,6 @@ export const setTestSets = async ({
   fetchTestSets,
   fetchTestList,
   fetchMocks,
-  fetchTests,
 }: {
   directory: Directory;
   fetchTestSets: () => Promise<{ data: any; loading: boolean; error: any }>;
@@ -207,10 +162,6 @@ export const setTestSets = async ({
   ) => Promise<{ data: any; loading: boolean; error: any }>;
   fetchMocks: (
     testSetName: string
-  ) => Promise<{ data: any; loading: boolean; error: any }>;
-  fetchTests: (
-    newTestSetName: string,
-    newTestCaseName: string
   ) => Promise<{ data: any; loading: boolean; error: any }>;
 }) => {
   console.log("Starting setTestSets operation");
@@ -247,7 +198,6 @@ export const setTestSets = async ({
             directory: newDir,
             fetchTestList,
             fetchMocks,
-            fetchTests,
           });
 
           return newDir;
@@ -268,7 +218,6 @@ export const setTestList = async ({
   directory,
   fetchTestList,
   fetchMocks,
-  fetchTests,
 }: {
   directory: Directory;
   fetchTestList: (
@@ -277,10 +226,6 @@ export const setTestList = async ({
   fetchMocks: (
     testSetName: string
   ) => Promise<{ data: any; loading: boolean; error: any }>;
-  fetchTests: (
-    newTestSetName: string,
-    newTestCaseName: string
-  ) => Promise<{ data: any; loading: boolean; error: any }>;
 }) => {
   console.log(
     `Starting setTestList operation for directory: ${directory.name}`
@@ -288,48 +233,59 @@ export const setTestList = async ({
   try {
     const { data, loading, error } = await fetchTestList(directory.name);
     console.log("Fetched test list", { data, loading, error });
-
+    const storedCodeSubmissionId =
+      localStorage.getItem("code_submission_id") || "";
     if (!loading && data) {
       const runCommandTestLists = data.runCommand.split("\n").filter(Boolean);
-      const newFiles = await Promise.all(
-        runCommandTestLists.map(async (testSetName: string, index: number) => {
-          await new Promise((resolve) => setTimeout(resolve, 2000));
-          const { testDetails } = await getFileDetails({
-            testSetName: directory.name,
-            testCaseName: testSetName,
-            fetchTests,
-          });
-          return {
-            id: `${directory.id}${index}`,
-            name: testSetName,
-            parentId: directory.id,
-            type: Type.FILE,
-            depth: 3,
-            content: testDetails,
-          };
-        })
-      );
+      const newFiles = [];
 
-      const {
-        data: mockData,
-        loading: mockLoading,
-        error: mockError,
-      } = await fetchMocks(directory.name);
-      console.log("Fetched mocks", { mockData, mockLoading, mockError });
+      // Process each test case one at a time
+      for (const [index, testSetName] of runCommandTestLists.entries()) {
+        // Wait for 2 seconds before processing the next one
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      if (mockData && !mockLoading) {
+        // Fetch the details for the current test case
+        const { testDetails } = await GetFileDetails(
+          storedCodeSubmissionId,
+          directory.name,
+          testSetName
+        );
+
+        // Push the new file data into the array
         newFiles.push({
-          id: `${directory.id}mock`,
-          name: `mocks.yaml`,
+          id: `${directory.id}${index}`,
+          name: testSetName,
           parentId: directory.id,
           type: Type.FILE,
           depth: 3,
-          content: mockData.runCommand,
+          content: testDetails,
         });
-      } else if (mockError) {
-        console.error("Error fetching mocks:", mockError.message);
+
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       }
 
+      // Fetch mocks after all test cases are processed
+      // const {
+      //   data: mockData,
+      //   loading: mockLoading,
+      //   error: mockError,
+      // } = await fetchMocks(directory.name);
+      // console.log("Fetched mocks", { mockData, mockLoading, mockError });
+
+      // if (mockData && !mockLoading) {
+      //   newFiles.push({
+      //     id: `${directory.id}mock`,
+      //     name: `mocks.yaml`,
+      //     parentId: directory.id,
+      //     type: Type.FILE,
+      //     depth: 3,
+      //     content: mockData.runCommand,
+      //   });
+      // } else if (mockError) {
+      //   console.error("Error fetching mocks:", mockError.message);
+      // }
+
+      // Add all the new files to the directory
       directory.files.push(...newFiles);
     } else if (error) {
       console.error("Error fetching test list:", error.message);
@@ -463,7 +419,6 @@ export const makeKeployTestDir = async ({
   fetchTestRuns,
   fetchReports,
   fetchDetailedReports,
-  fetchTests,
   recording = false, // Optional prop with default value false
   testing = false, // Optional prop with default value false
 }: {
@@ -482,10 +437,6 @@ export const makeKeployTestDir = async ({
   fetchDetailedReports: (
     newTestRunName: string,
     newTestSetReportName: string
-  ) => Promise<{ data: any; loading: boolean; error: any }>;
-  fetchTests: (
-    newTestSetName: string,
-    newTestCaseName: string
   ) => Promise<{ data: any; loading: boolean; error: any }>;
   recording?: boolean; // Optional boolean prop
   testing?: boolean; // Optional boolean prop
@@ -529,7 +480,6 @@ export const makeKeployTestDir = async ({
         fetchTestSets,
         fetchTestList,
         fetchMocks,
-        fetchTests,
       });
       console.log("Completed population of test sets and mocks.");
     }

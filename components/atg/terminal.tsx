@@ -14,7 +14,6 @@ import {
   useFetchTestRunSubscription,
   useFetchReportSubscription,
   useFetchDetailedReportSubscription,
-  useFetchTestSubscription,
 } from "@/app/api/automatic-test-generator/Subscription"; // Update import path accordingly
 
 import { Directory } from "./Editor/utils/file-manager";
@@ -33,11 +32,11 @@ import { Terminal } from "./Terminal";
 const Emoji = "User@1231-Keploy:"; // 🐰
 
 
-export const processAndRenderRunCommand = (
+export const processAndRenderRunCommand = <T extends object>(
   data: any,
-  stepsUpdater: Dispatch<SetStateAction<any>>,
+  stepsUpdater: Dispatch<SetStateAction<T>>,
   pushToHistory: (content: JSX.Element) => void,
-  stepKey: string
+  stepKey: keyof T
 ) => {
   if (!data) return;
 
@@ -64,6 +63,7 @@ export const processAndRenderRunCommand = (
     </div>
   );
 };
+
 
 function CombinedTerminalPage({
   inputRef,
@@ -123,8 +123,6 @@ function CombinedTerminalPage({
     useFetchTestSetsSubscription(codeSubmissionId);
   const { handleSubmit: fetchTestList } =
     useFetchTestListSubscription(codeSubmissionId);
-  const { handleSubmit: fetchTests } =
-    useFetchTestSubscription(codeSubmissionId);
   const { handleSubmit: fetchMocks } =
     useFetchMockSubscription(codeSubmissionId);
   const { handleSubmit: fetchTestRuns } =
@@ -181,7 +179,7 @@ function CombinedTerminalPage({
 
   useEffect(() => {
     if (inputRef.current && loadingData) {
-      inputRef.current.value = loadingData.runCommand;
+      inputRef.current.value = "Updating Keploy...";
     }
 
     if (Downloading) {
@@ -202,13 +200,11 @@ function CombinedTerminalPage({
         fetchTestRuns,
         fetchReports,
         fetchDetailedReports,
-        fetchTests,
         recording: true,
       });
       stepsForRecording((prev) => ({ schemaValidation:true, GenerateTest: true }));
       setLoader(false);
     };
-
     if (recordCompleted) {
       executeCommands();
     }
@@ -249,7 +245,6 @@ function CombinedTerminalPage({
         fetchTestRuns,
         fetchReports,
         fetchDetailedReports,
-        fetchTests,
         testing: true,
       });
       stepsForTesting((prev) => ({ Replaying_tests:true, generate_report: true }));
@@ -270,6 +265,7 @@ function CombinedTerminalPage({
   const commands = useMemo(
     () => ({
       record: async () => {
+        setLoader(true);
         if(runningAgain == "true"){
           loadinghandleSubmit();
         }

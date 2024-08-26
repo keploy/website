@@ -51,5 +51,33 @@ export const submitCodeSnippet = async ({
   }
 };
 
+export type CommandResponse = {
+  success: boolean;
+  data?: any;
+  error?: string;
+};
 
+export async function postRequest(
+  endpoint: string,
+  query: string,
+  variables: any
+): Promise<CommandResponse> {
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    });
+
+    const data = await response.json();
+    return { success: response.ok, data };
+  } catch (error: any) {
+    return { success: false, error: error.message };
+  }
+}
 

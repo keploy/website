@@ -15,6 +15,7 @@ import {
   EDIT_TEST_SUBSCRIPTION,
 } from "./queries";
 import { processAndRenderRunCommand } from "@/components/atg/terminal";
+import { postRequest , CommandResponse } from "./Mutation";
 export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
   const [submitted, setSubmitted] = useState(false);
   const [testsets, setTestSets] = useState<any>(null);
@@ -108,54 +109,28 @@ export const useFetchTestListSubscription = (codeSubmissionId: string) => {
 };
 
 // Hook for fetching a specific test
-export const useFetchTestSubscription = (codeSubmissionId: string) => {
-  const [testSetName, setTestSetName] = useState<string>("");
-  const [testCaseName, setTestCaseName] = useState<string>("");
-  const [submitted, setSubmitted] = useState(false);
-  const [dataPromise, setDataPromise] = useState<{
-    resolve: (value: { data: any; loading: boolean; error: any }) => void;
-    reject: (reason?: any) => void;
-  } | null>(null);
-
-  const { data, loading, error } = useSubscription(
-    gql(FETCH_TEST_SUBSCRIPTION),
-    {
-      variables: {
-        code_submission_id: codeSubmissionId,
-        command: "FETCH_TEST",
-        test_set_name: testSetName,
-        test_case_name: testCaseName,
-      },
-      skip: !submitted, // Skip subscription until handleSubmit is called
+export async function fetchTest(
+  codeSubmissionId: string,
+  testSetName: string,
+  testCaseName: string
+): Promise<CommandResponse> {
+  const query = `
+    subscription FetchTest($code_submission_id: String!, $command: String!, $test_set_name: String!, $test_case_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_set_name: $test_set_name, test_case_name: $test_case_name)
     }
-  );
-
-  useEffect(() => {
-    if (data && dataPromise) {
-      dataPromise.resolve({ data, loading, error });
-      setDataPromise(null);
-    }
-
-    if (error && dataPromise) {
-      dataPromise.reject(error);
-      setDataPromise(null);
-    }
-  }, [data, error, dataPromise]);
-
-  const handleSubmit = (
-    newTestSetName: string,
-    newTestCaseName: string
-  ): Promise<{ data: any; loading: boolean; error: any }> => {
-    setTestSetName(newTestSetName);
-    setTestCaseName(newTestCaseName);
-    setSubmitted(true); // Trigger the subscription
-    return new Promise((resolve, reject) => {
-      setDataPromise({ resolve, reject });
-    });
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "FETCH_TEST",
+    test_set_name: testSetName,
+    test_case_name: testCaseName,
   };
-
-  return { handleSubmit };
-};
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
+}
 
 // Hook for fetching mocks
 export const useFetchMockSubscription = (codeSubmissionId: string) => {
@@ -473,7 +448,9 @@ export const useRunCommandSubscription = ({
   const [command, setCommand] = useState<string>(initialCommand);
   const [submitted, setSubmitted] = useState(false);
   const [subscriptionQueue, setSubscriptionQueue] = useState<any[]>([]);
-  const [latestData, setLatestData] = useState<any>("updating the latest keploy version");
+  const [latestData, setLatestData] = useState<any>(
+    "updating the latest keploy version"
+  );
   const [isProcessing, setIsProcessing] = useState(false);
 
   // Subscription to the GraphQL data
@@ -503,7 +480,6 @@ export const useRunCommandSubscription = ({
       } else {
         console.log("No stepsUpdater, pushToHistory, or stepKey provided");
       }
-
       // setSubscriptionQueue((prevQueue) => [...prevQueue, jsonData]); // Add new data to the queue
     },
   });
@@ -515,4 +491,3 @@ export const useRunCommandSubscription = ({
 
   return { latestData, handleSubmit }; // Return the latest data processed from the queue
 };
-
