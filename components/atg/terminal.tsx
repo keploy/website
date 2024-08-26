@@ -32,6 +32,39 @@ import {
 import { Terminal } from "./Terminal";
 const Emoji = "User@1231-Keploy:"; // 🐰
 
+
+export const processAndRenderRunCommand = (
+  data: any,
+  stepsUpdater: Dispatch<SetStateAction<any>>,
+  pushToHistory: (content: JSX.Element) => void,
+  stepKey: string
+) => {
+  if (!data) return;
+
+  data.runCommand = replaceDates(data.runCommand);
+  data.runCommand = replaceAnsiColors(data.runCommand);
+
+  // Close unclosed span tags if any
+  if (data.runCommand.match(/<span style="color: [^>]+;">/)) {
+    data.runCommand += "</span>";
+  }
+
+  // Update specific steps based on conditions
+  if (
+    data.runCommand === "[GIN-debug] Listening and serving HTTP on :5000" ||
+    data.runCommand.includes("Server started on port 5000")
+  ) {
+    stepsUpdater((prev) => ({ ...prev, [stepKey]: true }));
+  }
+
+  // Push the processed command output to the history
+  pushToHistory(
+    <div>
+      <p className="inline" dangerouslySetInnerHTML={{ __html: data.runCommand }}></p>
+    </div>
+  );
+};
+
 function CombinedTerminalPage({
   inputRef,
   functionName,
@@ -74,6 +107,9 @@ function CombinedTerminalPage({
 
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
+    const RunningAgain =
+    localStorage.getItem("one_time") || "true";
+  const [runningAgain,setrunningAgain] = useState<string>(RunningAgain);
   const [codeSubmissionId, setCodeSubmissionId] = useState<string>(
     storedCodeSubmissionId
   );
@@ -99,9 +135,7 @@ function CombinedTerminalPage({
     useFetchDetailedReportSubscription(codeSubmissionId);
 
   const {
-    data: loadingData,
-    loading: DownloadLoader,
-    error: loadingError,
+    latestData: loadingData,
     handleSubmit: loadinghandleSubmit,
   } = useRunCommandSubscription({
     codeSubmissionId,
@@ -111,44 +145,38 @@ function CombinedTerminalPage({
     },
   });
 
-  const {
-    data: recordData,
-    loading: recordLoading,
-    error: recordError,
-    handleSubmit: recordHandleSubmit,
-  } = useRunCommandSubscription({
+  const { handleSubmit: recordHandleSubmit } = useRunCommandSubscription({
     codeSubmissionId,
     command: "TEST_GENERATE",
     completed() {
       setCompletedTrue(setRecordCompleted);
     },
+    stepsUpdater: stepsForRecording,
+    pushToHistory: pushToRecordHistory,
+    stepKey: "schemaValidation",
   });
 
-  const {
-    data: dedupDataFirst,
-    loading: dedupLoadingFirst,
-    error: dedupErrorFirst,
-    handleSubmit: DeduphandleSubmit,
-  } = useRunCommandSubscription({
+  const { handleSubmit: DeduphandleSubmit } = useRunCommandSubscription({
     codeSubmissionId,
     command: "DEDUP",
     testSetName: "test-set-0",
     completed() {
       setCompletedTrue(setDedupCompleted);
     },
+    stepsUpdater: stepsForDedup,
+    pushToHistory: pushToDedupHistory,
+    stepKey: "Dedup",
   });
 
-  const {
-    data: testData,
-    loading: testLoading,
-    error: testError,
-    handleSubmit: testHandleSubmit,
-  } = useRunCommandSubscription({
+  const { handleSubmit: testHandleSubmit } = useRunCommandSubscription({
     codeSubmissionId,
     command: "TEST",
     completed() {
       setCompletedTrue(setTestCompleted);
     },
+    stepsUpdater: stepsForTesting,
+    pushToHistory: pushToTestHistory,
+    stepKey: "Replaying_tests",
   });
 
   useEffect(() => {
@@ -242,8 +270,10 @@ function CombinedTerminalPage({
   const commands = useMemo(
     () => ({
       record: async () => {
-        loadinghandleSubmit();
-        if (Downloading) {
+        if(runningAgain == "true"){
+          loadinghandleSubmit();
+        }
+        if (Downloading || runningAgain == "false" ) {
           recordHandleSubmit();
         }
       },
@@ -330,90 +360,88 @@ function CombinedTerminalPage({
     }
   }, [functionName, commands]);
 
-  // Handling output and errors for each terminal type
-  useEffect(() => {
-    if (functionName === "record" && recordData) {
-      recordData.runCommand = replaceDates(recordData.runCommand);
-      recordData.runCommand = replaceAnsiColors(recordData.runCommand);
+  //   if (functionName === "record" && recordData) {
+  //     recordData.runCommand = replaceDates(recordData.runCommand);
+  //     recordData.runCommand = replaceAnsiColors(recordData.runCommand);
 
-      if (recordData.runCommand.match(/<span style="color: [^>]+;">/)) {
-        recordData.runCommand += "</span>";
-      }
+  //     if (recordData.runCommand.match(/<span style="color: [^>]+;">/)) {
+  //       recordData.runCommand += "</span>";
+  //     }
 
-      if (
-        recordData.runCommand ===
-          "[GIN-debug] Listening and serving HTTP on :5000" ||
-        recordData.runCommand.includes("Server started on port 5000")
-      ) {
-        stepsForRecording((prev) => ({ ...prev, schemaValidation: true }));
-      }
+  //     if (
+  //       recordData.runCommand ===
+  //         "[GIN-debug] Listening and serving HTTP on :5000" ||
+  //       recordData.runCommand.includes("Server started on port 5000")
+  //     ) {
+  //       stepsForRecording((prev) => ({ ...prev, schemaValidation: true }));
+  //     }
 
-      pushToRecordHistory(
-        <div>
-          <p
-            className="inline"
-            dangerouslySetInnerHTML={{ __html: recordData.runCommand }}
-          ></p>
-        </div>
-      );
-    } else if (functionName === "deduplicate" && dedupDataFirst) {
-      dedupDataFirst.runCommand = replaceDates(dedupDataFirst.runCommand);
-      dedupDataFirst.runCommand = replaceAnsiColors(dedupDataFirst.runCommand);
+  //     pushToRecordHistory(
+  //       <div>
+  //         <p
+  //           className="inline"
+  //           dangerouslySetInnerHTML={{ __html: recordData.runCommand }}
+  //         ></p>
+  //       </div>
+  //     );
+  //   } else if (functionName === "deduplicate" && dedupDataFirst) {
+  //     dedupDataFirst.runCommand = replaceDates(dedupDataFirst.runCommand);
+  //     dedupDataFirst.runCommand = replaceAnsiColors(dedupDataFirst.runCommand);
 
-      if (
-        dedupDataFirst.runCommand ===
-          "[GIN-debug] Listening and serving HTTP on :5000" ||
-        dedupDataFirst.runCommand.includes("Server started on port 5000")
-      ) {
-        stepsForDedup((prev) => ({ ...prev, Dedup: true }));
-      }
+  //     if (
+  //       dedupDataFirst.runCommand ===
+  //         "[GIN-debug] Listening and serving HTTP on :5000" ||
+  //       dedupDataFirst.runCommand.includes("Server started on port 5000")
+  //     ) {
+  //       stepsForDedup((prev) => ({ ...prev, Dedup: true }));
+  //     }
 
-      if (dedupDataFirst.runCommand.match(/<span style="color: [^>]+;">/)) {
-        dedupDataFirst.runCommand += "</span>";
-      }
+  //     if (dedupDataFirst.runCommand.match(/<span style="color: [^>]+;">/)) {
+  //       dedupDataFirst.runCommand += "</span>";
+  //     }
 
-      pushToDedupHistory(
-        <div>
-          <p
-            className="inline"
-            dangerouslySetInnerHTML={{ __html: dedupDataFirst.runCommand }}
-          ></p>
-        </div>
-      );
-    } else if (functionName === "testcoverage" && testData) {
-      testData.runCommand = replaceDates(testData.runCommand);
-      testData.runCommand = replaceAnsiColors(testData.runCommand);
+  //     pushToDedupHistory(
+  //       <div>
+  //         <p
+  //           className="inline"
+  //           dangerouslySetInnerHTML={{ __html: dedupDataFirst.runCommand }}
+  //         ></p>
+  //       </div>
+  //     );
+  //   } else if (functionName === "testcoverage" && testData) {
+  //     testData.runCommand = replaceDates(testData.runCommand);
+  //     testData.runCommand = replaceAnsiColors(testData.runCommand);
 
-      if (testData.runCommand.match(/<span style="color: [^>]+;">/)) {
-        testData.runCommand += "</span>";
-      }
+  //     if (testData.runCommand.match(/<span style="color: [^>]+;">/)) {
+  //       testData.runCommand += "</span>";
+  //     }
 
-      if (
-        testData.runCommand ===
-          "[GIN-debug] Listening and serving HTTP on :5000" ||
-        testData.runCommand.includes("Server started on port 5000")
-      ) {
-        stepsForTesting((prev) => ({ ...prev, Replaying_tests: true }));
-      }
+  //     if (
+  //       testData.runCommand ===
+  //         "[GIN-debug] Listening and serving HTTP on :5000" ||
+  //       testData.runCommand.includes("Server started on port 5000")
+  //     ) {
+  //       stepsForTesting((prev) => ({ ...prev, Replaying_tests: true }));
+  //     }
 
-      pushToTestHistory(
-        <div>
-          <p
-            className="inline"
-            dangerouslySetInnerHTML={{ __html: testData.runCommand }}
-          ></p>
-        </div>
-      );
-    }
-  }, [
-    recordData,
-    dedupDataFirst,
-    testData,
-    functionName,
-    pushToRecordHistory,
-    pushToDedupHistory,
-    pushToTestHistory,
-  ]);
+  //     pushToTestHistory(
+  //       <div>
+  //         <p
+  //           className="inline"
+  //           dangerouslySetInnerHTML={{ __html: testData.runCommand }}
+  //         ></p>
+  //       </div>
+  //     );
+  //   }
+  // }, [
+  //   recordData,
+  //   dedupDataFirst,
+  //   testData,
+  //   functionName,
+  //   pushToRecordHistory,
+  //   pushToDedupHistory,
+  //   pushToTestHistory,
+  // ]);
 
   return (
     <div className="h-full">

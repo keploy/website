@@ -1,4 +1,4 @@
-import React, { useEffect, FC } from "react";
+import React, { useEffect, useState, FC } from "react";
 import SideBarNormal from "./SideBarContent/SideBarNormal";
 import { submitCodeSnippet } from "@/app/api/automatic-test-generator/Mutation"; // Ensure correct import path
 import { StepsForRecording, StepforTests, StepsforDedup } from "../utils/types";
@@ -65,6 +65,8 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
     onNext();
   };
 
+  const [hasRun, setHasRun] = useState(false);
+
   useEffect(() => {
     const storeSubmissionCode = async () => {
       try {
@@ -82,10 +84,12 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
       }
     };
 
-    if (functionName === "Start") {
+    if (functionName === "Start" && !hasRun) {
       storeSubmissionCode();
+      setHasRun(true); // Mark as run 
+      localStorage.setItem("one_time", "true");
     }
-  }, [CodeLanguage,functionName]);
+  }, [CodeLanguage, functionName, hasRun]);
   return (
     <div
       className={`h-full ${

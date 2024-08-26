@@ -1,7 +1,6 @@
 import { Directory, Type } from "./file-manager";
 import { Dispatch, SetStateAction } from "react";
 import { useEffect } from "react";
-
 // Section 1: Utility Functions
 // Utility function to generate unique IDs
 const generateUniqueId = (): string => {
@@ -71,6 +70,10 @@ export const replaceAnsiColors = (str: string): string => {
     return color ? `<span style="color: ${color};">` : "</span>";
   });
 };
+
+
+
+
 
 // Section 2: API Data Fetch and Processing Functions
 export const getFileDetails = async ({

@@ -5,12 +5,12 @@ import { createClient } from "graphql-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 
 const httpLink = new HttpLink({
-  uri: "https://landing-page.staging.keploy.io/",
+  uri: "https://landing-page.staging.keploy.io/query",
 });
 ``;
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "wss://landing-page.staging.keploy.io/query",  
+    url: "ws://landing-page.staging.keploy.io/query",  
   })
 );
 
