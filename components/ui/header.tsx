@@ -107,7 +107,7 @@ export default function Header() {
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
-          <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2 group">
+          <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
               {/* Sliding effect span */}
               <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-orange-500 opacity-10 transition-transform duration-1000 ease-out group-hover:translate-x-[-400%]" />
               
@@ -132,7 +132,9 @@ export default function Header() {
                   />
                 </svg>
                 <span className="text-gradient-500 opacity-30 hover:text-primary-500"> | </span>
-                <span className="text-base flex gap-1"><StarIcon className="size-4 text-gray-500 transition-all duration-300 group-hover:text-yellow-300" /></span>
+                <span className="text-base flex gap-1">
+                  <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
+                </span>
                 <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
               </Link>
             </div>
