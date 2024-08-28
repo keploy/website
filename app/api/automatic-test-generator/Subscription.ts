@@ -108,7 +108,7 @@ export const useFetchTestListSubscription = (codeSubmissionId: string) => {
   return { handleSubmit };
 };
 
-// Hook for fetching a specific test
+// Post Request for fetching a specific test
 export async function fetchTest(
   codeSubmissionId: string,
   testSetName: string,
@@ -131,6 +131,56 @@ export async function fetchTest(
     variables
   );
 }
+
+//Post Request for fetching ReportNames.
+
+export async function fetchReport(
+  codeSubmissionId: string,
+  testRunName: string // Changed variable name for clarity
+): Promise<CommandResponse> {
+  const query = `
+    subscription RunCommand($code_submission_id: String!, $command: String!, $test_run_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_run_name: $test_run_name)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "FETCH_TEST_SET_REPORTS",
+    test_run_name: testRunName, // Updated to match the query
+  };
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
+}
+
+
+//Post request for fetching report Details.
+export async function fetchDetailedReport(
+  codeSubmissionId: string,
+  testRunName: string,
+  testSetReportName: string // Added a new parameter for test_set_report_name
+): Promise<CommandResponse> {
+  const query = `
+    subscription RunCommand($code_submission_id: String!, $command: String!, $test_run_name: String!, $test_set_report_name: String!) {
+      runCommand(code_submission_id: $code_submission_id, command: $command, test_run_name: $test_run_name, test_set_report_name: $test_set_report_name)
+    }
+  `;
+  const variables = {
+    code_submission_id: codeSubmissionId,
+    command: "FETCH_REPORT",
+    test_run_name: testRunName,
+    test_set_report_name: testSetReportName // Updated to match the query
+  };
+  return await postRequest(
+    "https://landing-page.staging.keploy.io/query",
+    query,
+    variables
+  );
+}
+
+
 
 // Hook for fetching mocks
 export const useFetchMockSubscription = (codeSubmissionId: string) => {

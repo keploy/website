@@ -84,7 +84,7 @@ const FileDiv = ({
 
   return (
     <div
-      className={`flex items-center ${
+      className={`flex items-center my-0.5 ${
         isSelected
           ? `${
               themeFileDiv
@@ -102,7 +102,7 @@ const FileDiv = ({
           : "hover:bg-gray-600"
       } `}
       onClick={onClick}
-      style={{ paddingLeft: depth > 1 ? `${(depth + 1) * 10}px` : "8px" }}
+      style={{ paddingLeft: depth > 1 ? `${(depth + 1) * 10}px` : "10px" }}
     >
       {openParameter !== undefined &&
         (openParameter ? (
@@ -115,7 +115,7 @@ const FileDiv = ({
         extension={file?.name?.split(".").pop() || ""}
         themeIcons={themeFileDiv}
       />
-      <span className="ml-1">{file.name}</span>
+      <span className="ml-1 truncate max-w-full">{file.name}</span>
     </div>
   );
 };
@@ -149,7 +149,7 @@ const DirDiv = ({
       setOpen(true);
     }
 
-    // Store directory name in local storage if it matches the pattern 'test-set-<number>'
+    // Store directory name in local storage if it matches the pattern 11'test-set-<number>'
     if (testSetRegex.test(directory.name)) {
       localStorage.setItem("selectedTestSetDir", directory.name);
     }
@@ -183,7 +183,7 @@ const DirDiv = ({
           extension=""
           themeIcons={themeDir}
         />
-        <span className="ml-1">{directory.name}</span>
+        <span className="ml-1 truncate max-w-full">{directory.name}</span>
       </div>
       {open && (
         <div>

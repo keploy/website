@@ -227,9 +227,9 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
 
   useEffect(() => {
     if (TerminalStatus === "green") {
-      setTerminalHeight("max-h-full");
+      setTerminalHeight("h-[70vh]");
     } else if (TerminalStatus === "orange") {
-      setTerminalHeight("max-h-96");
+      setTerminalHeight("h-[30vh]");
     } else if (TerminalStatus === "red") {
       setTerminalHeight("max-h-0");
     }
@@ -267,7 +267,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
                 {/* Sidebar */}
                 <div
                   className={`flex flex-col transition-all duration-200 ${
-                    showSideContent ? "w-64" : "w-2/12"
+                    showSideContent ? "w-2/12" : "w-2/12"
                   } h-full`}
                 >
                   <Sidebar

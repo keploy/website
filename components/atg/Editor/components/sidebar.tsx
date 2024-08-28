@@ -16,15 +16,15 @@ export const Sidebar = ({
   currentSelectedFileName: string | undefined;
   theme: boolean;
 }) => {
-  const [expanded, setexpanded] = useState<boolean>(true);
+  const [expanded, setExpanded] = useState<boolean>(true);
 
   const ClickExpanded = () => {
-    setexpanded(!expanded);
+    setExpanded(!expanded);
   };
 
   return (
     <div
-      className={`flex flex-col h-full text-sm rounded-bl-md overflow-x-hidden whitespace-nowrap ${
+      className={`flex flex-col h-full text-sm rounded-bl-md overflow-x-auto whitespace-nowrap no-scrollbar ${
         theme
           ? "text-secondary-300 bg-neutral-200"
           : "text-white bg-[#21252b]"

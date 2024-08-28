@@ -124,9 +124,9 @@ export const Terminal = forwardRef(
     return (
       <div className="h-full">
         <div
-          className={` ${
+          className={` ${height == "green"?"h-[70vh]":"h-[30vh]"} ${
             terminalTheme
-              ? "terminal_light  bg-neutral-200 border border-y-gray-200 border-b-gray-200 "
+              ? `terminal_light   bg-neutral-200 border border-y-gray-200 border-b-gray-200 `
               : "terminal "
           } font-courier w-full h-full relative  `}
           ref={ref}

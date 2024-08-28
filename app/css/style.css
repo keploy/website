@@ -38,7 +38,6 @@ button {
 }
 
 .terminal {
-  height: 30vh;
   overflow-y: scroll; /* Enable vertical scrolling */
   overflow-x: scroll; /* Enable horizontal scrolling */
   background-color: #282c34; /* Dark background */
@@ -71,7 +70,6 @@ button {
 }
 
 .terminal_light {
-  height: 30vh;
   overflow-y: scroll; /* Enable vertical scrolling */
   overflow-x: scroll; /* Enable horizontal scrolling */
   color: #000000; /* Dark text color */
@@ -193,4 +191,12 @@ button {
   animation-delay: 0.9s;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
+/* Hide scrollbar for Firefox */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}

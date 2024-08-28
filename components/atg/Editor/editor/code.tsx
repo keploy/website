@@ -221,7 +221,7 @@ export const Code = ({
 
   return (
     <div
-      className={`w-full ${isFullScreen ? "h-full" : "h-[75vh]"} ${
+      className={`${showSideBannerBool ? "":""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
         settingCodeTheme ? "border border-gray-300" : ""
       }`}
     >

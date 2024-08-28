@@ -1,6 +1,7 @@
 import { Directory, Type } from "./file-manager";
 import { Dispatch, SetStateAction } from "react";
-import { fetchTest } from "@/app/api/automatic-test-generator/Subscription";
+import { fetchTest , fetchReport } from "@/app/api/automatic-test-generator/Subscription";
+import { fetchDetailedReport } from "@/app/api/automatic-test-generator/Subscription";
 // Section 1: Utility Functions
 // Utility function to generate unique IDs
 const generateUniqueId = (): string => {
@@ -90,65 +91,23 @@ export const GetFileDetails = async (
   }
 };
 
-export const getReportDetails = async ({
-  testRunName,
-  reportName,
-  fetchDetailedReports,
-}: {
-  testRunName: string;
-  reportName: string;
-  fetchDetailedReports: (
-    newTestRunName: string,
-    newTestSetReportName: string
-  ) => Promise<{ data: any; loading: boolean; error: any }>;
-}): Promise<{ reportDetails: string }> => {
-  console.log(
-    `Fetching report details for testRun: ${testRunName}, report: ${reportName}`
-  );
-
-  const timeoutDuration = 5000; // Set timeout duration to 10 seconds
-
-  const fetchWithRetry = async (retries = 3): Promise<any> => {
-    try {
-      const fetchPromise = fetchDetailedReports(testRunName, reportName);
-      const timeoutPromise = new Promise<never>((_, reject) =>
-        setTimeout(
-          () => reject(new Error("fetchDetailedReports timeout")),
-          timeoutDuration
-        )
-      );
-      const result = await Promise.race([fetchPromise, timeoutPromise]);
-      return result;
-    } catch (err) {
-      if (retries === 0) throw err;
-      console.log(`Retrying fetchDetailedReports... attempts left: ${retries}`);
-      return fetchWithRetry(retries - 1);
-    }
-  };
-
+export const GetReportDetails = async (
+  codeSubmissionId: string,
+  testRunName: string,
+  reportName: string
+): Promise<{ reportDetails: string }> => {
   try {
-    const { data, loading, error } = await fetchWithRetry();
-    console.log(
-      `Received response for testRun: ${testRunName}, report: ${reportName}`,
-      { data, loading, error }
+    const reportResponse = await fetchDetailedReport(
+      codeSubmissionId,
+      testRunName,
+      reportName
     );
-
-    if (data && !loading) {
-      return { reportDetails: data.runCommand };
-    } else if (error) {
-      throw new Error(`Error fetching report details: ${error.message}`);
-    } else {
-      throw new Error("Report details not found");
-    }
-  } catch (err) {
-    console.error(
-      `Error in getReportDetails for testRun: ${testRunName}, report: ${reportName}`,
-      err
-    );
-    throw err;
+    const reportDetails = reportResponse.data.data.runCommand;
+    return { reportDetails };
+  } catch (err: any) {
+    throw new Error(`content not found in reports: ${err.message}`);
   }
 };
-
 export const setTestSets = async ({
   directory,
   fetchTestSets,
@@ -241,7 +200,7 @@ export const setTestList = async ({
 
       // Process each test case one at a time
       for (const [index, testSetName] of runCommandTestLists.entries()) {
-        // Wait for 2 seconds before processing the next one
+        // Wait for 1 seconds before processing the next one
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
         // Fetch the details for the current test case
@@ -265,25 +224,25 @@ export const setTestList = async ({
       }
 
       // Fetch mocks after all test cases are processed
-      // const {
-      //   data: mockData,
-      //   loading: mockLoading,
-      //   error: mockError,
-      // } = await fetchMocks(directory.name);
-      // console.log("Fetched mocks", { mockData, mockLoading, mockError });
+      const {
+        data: mockData,
+        loading: mockLoading,
+        error: mockError,
+      } = await fetchMocks(directory.name);
+      console.log("Fetched mocks", { mockData, mockLoading, mockError });
 
-      // if (mockData && !mockLoading) {
-      //   newFiles.push({
-      //     id: `${directory.id}mock`,
-      //     name: `mocks.yaml`,
-      //     parentId: directory.id,
-      //     type: Type.FILE,
-      //     depth: 3,
-      //     content: mockData.runCommand,
-      //   });
-      // } else if (mockError) {
-      //   console.error("Error fetching mocks:", mockError.message);
-      // }
+      if (mockData && !mockLoading) {
+        newFiles.push({
+          id: `${directory.id}mock`,
+          name: `mocks.yaml`,
+          parentId: directory.id,
+          type: Type.FILE,
+          depth: 3,
+          content: mockData.runCommand,
+        });
+      } else if (mockError) {
+        console.error("Error fetching mocks:", mockError.message);
+      }
 
       // Add all the new files to the directory
       directory.files.push(...newFiles);
@@ -318,32 +277,36 @@ export const reportTestRuns = async ({
     `Starting reportTestRuns operation for directory: ${directory.name}`
   );
   try {
+
     const { data, loading, error } = await fetchTestRuns();
     console.log("Fetched test runs", { data, loading, error });
 
-    if (!loading && data) {
-      const runSetList = data.runCommand.split("\n").filter(Boolean).slice(-1);
-      const runSets = await Promise.all(
-        runSetList.map(async (testRunName: string) => {
-          const newDir: Directory = {
-            id: generateUniqueId(),
-            name: testRunName,
-            parentId: directory.id,
-            type: Type.DIRECTORY,
-            depth: 3,
-            dirs: [],
-            files: [],
-          };
-          await reportFileNames({
-            directory: newDir,
-            fetchReportFiles,
-            fetchDetailedReports,
-          });
-          return newDir;
-        })
-      );
+    if (!loading && data) { 
+      const runSetList = data.runCommand.split("\n").filter(Boolean);
 
-      directory.dirs.push(...runSets);
+      // Sequentially process each test run
+      for (const testRunName of runSetList) {
+        const newDir: Directory = {
+          id: generateUniqueId(),
+          name: testRunName,
+          parentId: directory.id,
+          type: Type.DIRECTORY,
+          depth: 3,
+          dirs: [],
+          files: [],
+        };
+
+        // Fetch report file names and details for this test run
+        await reportFileNames({
+          directory: newDir,
+          fetchReportFiles,
+          fetchDetailedReports,
+        });
+
+        // Add the new directory to the directory structure
+        directory.dirs.push(newDir);
+      }
+
     } else if (error) {
       console.error("Error fetching test runs:", error.message);
     }
@@ -354,6 +317,7 @@ export const reportTestRuns = async ({
     );
   }
 };
+
 
 export const reportFileNames = async ({
   directory,
@@ -373,34 +337,38 @@ export const reportFileNames = async ({
     `Starting reportFileNames operation for directory: ${directory.name}`
   );
   try {
-    const { data, loading, error } = await fetchReportFiles(directory.name);
-    console.log("Fetched report files", { data, loading, error });
 
-    if (!loading && data) {
-      const reportLists = data.runCommand.split("\n").filter(Boolean);
-      const reportFiles = await Promise.all(
-        reportLists.map(async (testRunName: string, index: number) => {
-          const firstName = testRunName.split(".")[0];
-          await new Promise((resolve) => setTimeout(resolve, 2000));
-          const { reportDetails } = await getReportDetails({
-            testRunName: directory.name,
-            reportName: firstName,
-            fetchDetailedReports,
-          });
-          return {
-            id: `${directory.id}${index}`,
-            name: testRunName,
-            parentId: directory.id,
-            type: Type.FILE,
-            depth: 4,
-            content: reportDetails,
-          };
-        })
-      );
+    
+    // const { data, loading, error } = await fetchReportFiles(directory.name);
+    // console.log("Fetched report files", { data, loading, error });
+    
+    const storedCodeSubmissionId =
+    localStorage.getItem("code_submission_id") || "";
+    
+    const response = await fetchReport(storedCodeSubmissionId, directory.name);
+    if (response) {
+      const reportLists = response.data.data.runCommand.split("\n").filter(Boolean);
+      const reportFiles = [];
+
+      // Sequentially process each report file
+      for (const [index, testRunName] of reportLists.entries()) {
+        const firstName = testRunName.split(".")[0];
+        const fileDetails = await GetReportDetails(
+          storedCodeSubmissionId,
+          directory.name,
+          firstName
+        );
+        reportFiles.push({
+          id: `${directory.id}${index}`,
+          name: testRunName,
+          parentId: directory.id,
+          type: Type.FILE,
+          depth: 4,
+          content: fileDetails.reportDetails,
+        });
+      }
 
       directory.files.push(...reportFiles);
-    } else if (error) {
-      console.error("Error fetching report list:", error.message);
     }
   } catch (error: any) {
     console.error(
@@ -409,6 +377,7 @@ export const reportFileNames = async ({
     );
   }
 };
+
 
 // Section 3: Main Function to Setup Directory Structure
 export const makeKeployTestDir = async ({
@@ -463,7 +432,7 @@ export const makeKeployTestDir = async ({
         name: "Keploy",
         parentId: "root",
         type: Type.DIRECTORY,
-        depth: 1,
+        depth: 0,
         dirs: [],
         files: [],
       };
@@ -487,16 +456,28 @@ export const makeKeployTestDir = async ({
     // Perform testing operation if testing is true
     if (testing) {
       console.log("Starting testing process...");
-      const newReportDir: Directory = {
-        id: generateUniqueId(),
-        name: "Reports",
-        parentId: keployDir.id,
-        type: Type.DIRECTORY,
-        depth: 2,
-        dirs: [],
-        files: [],
-      };
 
+      let reportDirs = keployDir.dirs.find((dir) => dir.name === "Reports");
+      let newReportDir: Directory;
+
+      if (!reportDirs) {
+        newReportDir = {
+          id: generateUniqueId(),
+          name: "Reports",
+          parentId: keployDir.id,
+          type: Type.DIRECTORY,
+          depth: 2,
+          dirs: [],
+          files: [],
+        };
+        console.log("Created new Reports directory.");
+        keployDir.dirs.push(newReportDir);
+      } else {
+        newReportDir = reportDirs;
+        console.log("Reports directory already exists.");
+      }
+
+      console.log("Running report tests...");
       await reportTestRuns({
         directory: newReportDir,
         fetchTestRuns,
@@ -504,8 +485,11 @@ export const makeKeployTestDir = async ({
         fetchDetailedReports,
       });
 
-      console.log("Testing process completed. Adding Reports directory.");
-      keployDir.dirs.push(newReportDir);
+      if (!reportDirs) {
+        console.log("Testing process completed. Reports directory added.");
+      } else {
+        console.log("Testing completed. Reports added to existing directory.");
+      }
     }
 
     // Update the root directory with the updated Keploy directory
