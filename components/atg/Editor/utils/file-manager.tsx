@@ -67,6 +67,26 @@ export function findFileByName(
   return targetFile;
 }
 
+
+export const isChildSelected = (directory: Directory, selectedFile?: File) => {
+  if (!selectedFile) return false;
+
+  let isSelected = false;
+
+  const checkChild = (dir: Directory) => {
+    if (dir.id === selectedFile.parentId) {
+      isSelected = true;
+      return;
+    }
+    dir.dirs.forEach(checkChild);
+  };
+
+  checkChild(directory);
+  return isSelected;
+};
+
+
+
 // Sort directories alphabetically by name
 export function sortDir(l: Directory, r: Directory) {
   return l.name.localeCompare(r.name);
