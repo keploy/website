@@ -10,8 +10,33 @@ interface SubTreeProps {
   themeSub: boolean;
 }
 
-export const SubTree = (props: SubTreeProps) => {
+export const SubTree: React.FC<SubTreeProps> = (props) => {
   const [emptyDirectory, setEmptyDirectory] = useState<boolean>(false);
+
+  // Process the directories and files outside of the return statement
+  const directoryComponents = props.directory.dirs
+    .sort(sortDir)
+    .map((dir) => (
+      <DirDiv
+        key={dir.id}
+        directory={dir}
+        selectedFile={props.selectedFile}
+        onSelect={props.onSelect}
+        themeDir={props.themeSub}
+      />
+    ));
+
+  const fileComponents = props.directory.files
+    .sort(sortFile)
+    .map((file) => (
+      <FileDiv
+        key={file.id}
+        file={file}
+        selectedFile={props.selectedFile}
+        onClick={() => props.onSelect(file)}
+        themeFileDiv={props.themeSub}
+      />
+    ));
 
   return (
     <div>
@@ -19,24 +44,8 @@ export const SubTree = (props: SubTreeProps) => {
         <div className="h-2 flex items-center "></div>
       ) : (
         <>
-          {props.directory.dirs.sort(sortDir).map((dir) => (
-            <DirDiv
-              key={dir.id}
-              directory={dir}
-              selectedFile={props.selectedFile}
-              onSelect={props.onSelect}
-              themeDir={props.themeSub}
-            />
-          ))}
-          {props.directory.files.sort(sortFile).map((file) => (
-            <FileDiv
-              key={file.id}
-              file={file}
-              selectedFile={props.selectedFile}
-              onClick={() => props.onSelect(file)}
-              themeFileDiv={props.themeSub}
-            />
-          ))}
+          {directoryComponents}
+          {fileComponents}
         </>
       )}
     </div>

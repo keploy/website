@@ -16,6 +16,23 @@ import {
 } from "./queries";
 import { processAndRenderRunCommand } from "@/components/atg/terminal";
 import { postRequest , CommandResponse } from "./Mutation";
+
+
+export enum Command {
+  FETCH_TEST_SETS = "FETCH_TEST_SETS",
+  FETCH_TESTS_LIST = "FETCH_TESTS_LIST",
+  FETCH_TEST = "FETCH_TEST",
+  FETCH_TEST_RUNS = "FETCH_TEST_RUNS",
+  FETCH_TEST_SET_REPORTS = "FETCH_TEST_SET_REPORTS",
+  FETCH_REPORT = "FETCH_REPORT",
+  FETCH_MOCK = "FETCH_MOCK",
+  REMOVE_DUPLICATES = "REMOVE_DUPLICATES",
+  EDIT_TESTS = "EDIT_TESTS",
+  RUN_COMMAND = "RUN_COMMAND",
+}
+
+
+
 export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
   const [submitted, setSubmitted] = useState(false);
   const [testsets, setTestSets] = useState<any>(null);
@@ -29,7 +46,7 @@ export const useFetchTestSetsSubscription = (codeSubmissionId: string) => {
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "FETCH_TEST_SETS",
+        command: Command.FETCH_TEST_SETS,
       },
       skip: !submitted, // Skip subscription until handleSubmit is called
     }
@@ -76,7 +93,7 @@ export const useFetchTestListSubscription = (codeSubmissionId: string) => {
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "FETCH_TESTS_LIST",
+        command: Command.FETCH_TESTS_LIST,
         test_set_name: testSetName,
       },
       skip: !submitted, // Skip subscription until handleSubmit is called
@@ -121,7 +138,7 @@ export async function fetchTest(
   `;
   const variables = {
     code_submission_id: codeSubmissionId,
-    command: "FETCH_TEST",
+    command: Command.FETCH_TEST,
     test_set_name: testSetName,
     test_case_name: testCaseName,
   };
@@ -145,7 +162,7 @@ export async function fetchReport(
   `;
   const variables = {
     code_submission_id: codeSubmissionId,
-    command: "FETCH_TEST_SET_REPORTS",
+    command: Command.FETCH_TEST_SET_REPORTS,
     test_run_name: testRunName, // Updated to match the query
   };
   return await postRequest(
@@ -169,7 +186,7 @@ export async function fetchDetailedReport(
   `;
   const variables = {
     code_submission_id: codeSubmissionId,
-    command: "FETCH_REPORT",
+    command: Command.FETCH_REPORT,
     test_run_name: testRunName,
     test_set_report_name: testSetReportName // Updated to match the query
   };
@@ -196,7 +213,7 @@ export const useFetchMockSubscription = (codeSubmissionId: string) => {
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "FETCH_MOCK",
+        command: Command.FETCH_MOCK,
         test_set_name: testSetName,
       },
       skip: !submitted, // Skip subscription until handleSubmit is called
@@ -241,7 +258,7 @@ export const useFetchTestRunSubscription = (codeSubmissionId: string) => {
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "FETCH_TEST_RUNS",
+        command: Command.FETCH_TEST_RUNS,
       },
       skip: !submitted, // Skip subscription until handleSubmit is called
     }
@@ -287,7 +304,7 @@ export const useFetchReportSubscription = (codeSubmissionId: string) => {
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "FETCH_TEST_SET_REPORTS",
+        command: Command.FETCH_TEST_SET_REPORTS,
         test_run_name: testRunName,
       },
       skip: !submitted, // Skip subscription until handleSubmit is called
@@ -336,7 +353,7 @@ export const useFetchDetailedReportSubscription = (
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "FETCH_REPORT",
+        command: Command.FETCH_REPORT,
         test_run_name: testRunName,
         test_set_report_name: testSetReportName,
       },
@@ -387,7 +404,7 @@ export const useEditTestSubscription = (codeSubmissionId: string) => {
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "EDIT_TESTS",
+        command: Command.EDIT_TESTS,
         command_content: commandContent,
         test_set_name: testSetName,
         test_case_name: testCaseName,
@@ -439,7 +456,7 @@ export const useRemovingDuplicateSubscription = (codeSubmissionId: string) => {
     {
       variables: {
         code_submission_id: codeSubmissionId,
-        command: "REMOVE_DUPLICATES",
+        command: Command.REMOVE_DUPLICATES,
         test_set_name: testSetName,
       },
       skip: !submitted, // Skip subscription until handleSubmit is called

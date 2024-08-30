@@ -18,7 +18,7 @@ export const FileDiv = ({
   openParameter,
   themeFileDiv,
 }: FileDivProps) => {
-  const isSelected = selectedFile && selectedFile.id === file.id;
+  const isSelected = Boolean(selectedFile && selectedFile.id === file.id);
   const depth = file.depth;
 
   return (
