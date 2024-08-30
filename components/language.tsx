@@ -333,10 +333,10 @@ export default function Language() {
             >
               <Image
                 src="/images/frameworks/rust.svg"
-                alt="C# Logo"
-                width={150}
-                height={80}
-                className="mb-5"
+                alt="Rust Logo"
+                width="90"
+                height="35"
+                className="mb-2"
               />
             </Link>
           </div>
