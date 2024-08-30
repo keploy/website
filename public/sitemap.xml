@@ -18,42 +18,42 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://keploy.io/blog/</loc>
+  <loc>https://keploy.io/blog</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://keploy.io/test-data-generator/</loc>
+  <loc>https://keploy.io/test-data-generator</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/test-case-generator/</loc>
+  <loc>https://keploy.io/test-case-generator</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/code-coverage/</loc>
+  <loc>https://keploy.io/code-coverage</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/continuous-integration-testing/</loc>
+  <loc>https://keploy.io/continuous-integration-testing</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/regression-testing/</loc>
+  <loc>https://keploy.io/regression-testing</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/api-testing/</loc>
+  <loc>https://keploy.io/api-testing</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://keploy.io/ai-code-generation/</loc>
+  <loc>https://keploy.io/ai-code-generation</loc>
   <lastmod>2024-06-18T06:59:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
@@ -854,11 +854,6 @@
 </url>
 <url>
   <loc>https://keploy.io/docs/quickstart/samples-flask/</loc>
-  <lastmod>2024-06-07T07:47:24+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://keploy.io/docs/quickstart/samples-flask-local/</loc>
   <lastmod>2024-06-07T07:47:24+00:00</lastmod>
   <priority>0.51</priority>
 </url>
@@ -1958,7 +1953,7 @@
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://keploy.io/docs/server/sdk-installation/typescript/</loc>
+  <loc>https://keploy.io/docs/server/sdk-installation/javascript/</loc>
   <lastmod>2024-06-07T07:47:25+00:00</lastmod>
   <priority>0.41</priority>
 </url>
