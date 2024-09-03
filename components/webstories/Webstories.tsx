@@ -24,7 +24,7 @@ type WebStoriesProps = {
   onStoryIndexChange: (index: number) => void;
 };
 
-const WebStories = ({ data, slug , onStoryIndexChange }: WebStoriesProps) => {
+const WebStories = ({ data, slug, onStoryIndexChange }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
   const [totalTime, setTotalTime] = useState<number>(0);
@@ -49,10 +49,8 @@ const WebStories = ({ data, slug , onStoryIndexChange }: WebStoriesProps) => {
     intervalRef.current = setTimeout(() => {
       if (currentStoryIndex === data.length - 1) {
         setTimer(true);
-        console.log("it  is true");
       } else {
         setTimer(false);
-        console.log("it  is false");
       }
       handleNext();
     }, duration);
@@ -124,10 +122,7 @@ const WebStories = ({ data, slug , onStoryIndexChange }: WebStoriesProps) => {
   };
 
   const handleReplay = () => {
-    //when at the last story.
-    // setCurrentStoryIndex(-1);
     setTimer(true);
-    
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -175,7 +170,7 @@ const WebStories = ({ data, slug , onStoryIndexChange }: WebStoriesProps) => {
         )}
         <div
           key={currentStoryIndex}
-          className="flex flex-col h-screen w-full md:my-10 lg:mt-8 xl:mt-8 md:basis-12/12 lg:basis-6/12 xl:basis-3/12 self-center cursor-pointer"
+          className="flex flex-col w-full my-4 lg:mt-8 xl:mt-8 md:basis-12/12 lg:basis-6/12 xl:basis-3/12 self-center cursor-pointer"
           style={{ height: "100%" }}
         >
           <Stories
@@ -196,7 +191,7 @@ const WebStories = ({ data, slug , onStoryIndexChange }: WebStoriesProps) => {
                 currentStoryIndex === data.length - 1
                   ? "opacity-100"
                   : "opacity-0"
-              } mt-5 content-end text-sm text-center text-slate-200`}
+              } mt-5 mb-10 text-sm text-center text-slate-200`}
             >
               If you like Keploy, give it a star on{" "}
               <span>

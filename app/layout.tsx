@@ -1,4 +1,5 @@
 import './css/style.css';
+import '@/app/(default)/webstories/css/styles.css'
 import { Inter } from 'next/font/google';
 import Header from '@/components/ui/header';
 import React, { ReactNode } from 'react';
@@ -24,11 +25,12 @@ export const defaultMetadata: Metadata = {
 };
 
 interface RootLayoutProps {
-    children: ReactNode;
-    metadata?: Metadata;
+  children: ReactNode;
+  metadata?: Metadata;
+  HeaderDisplayed?:boolean;
 }
 
-export default function RootLayout({ children, metadata }: RootLayoutProps) {
+export default function RootLayout({ children, metadata , HeaderDisplayed=true }: RootLayoutProps) {
   const finalMetadata = {
     title: metadata?.title || defaultMetadata.title,
     keywords: metadata?.keywords || defaultMetadata.keywords,
@@ -161,8 +163,8 @@ export default function RootLayout({ children, metadata }: RootLayoutProps) {
         </head>
         <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
         <div className="flex flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
-            <Header />
-            {children}
+         {HeaderDisplayed &&  <Header />}
+          {children}
         </div>
         </body>
         </html>
