@@ -34,7 +34,7 @@ const heroData = {
 const blocksData = [
   {
     title: "Manual Tests",
-    description: "Writing tests manually for code coverage is time-consuming and prone to errors.",
+    description: "Writing tests manually to achieve comprehensive code coverage is a time-consuming process and is often prone to errors, resulting in incomplete or ineffective testing.",
     SvgComponent: MdiLightningBolt,
   },
   {
@@ -44,28 +44,28 @@ const blocksData = [
   },
   {
     title: "Realistic Scenarios",
-    description: "Test scenarios may not accurately reflect real-world usage, affecting code coverage accuracy.",
+    description: "Test scenarios may fail to accurately reflect real-world usage, which can negatively impact the accuracy and effectiveness of code coverage in identifying potential issues.",
     SvgComponent: CollaborationIcon,
   },
   {
     title: "Setup Complexity",
-    description: "Setting up code coverage tools can be complex and require additional configuration.",
+    description: "Configuring and setting up code coverage tools can be complex, often requiring additional effort and specialized knowledge to ensure accurate results.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
     title: "Maintenance Challenges",
-    description: "Maintaining code coverage tests as code evolves can be challenging and time-consuming.",
+    description: "Keeping code coverage tests up to date as the codebase evolves is a continuous challenge, often demanding significant time and effort to ensure relevance and accuracy.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
     title: "Slow Feedback Loop",
-    description: "Waiting for code coverage results can slow down the development process and delay bug fixes.",
+    description: "The delay in receiving code coverage results can slow down the development process, hindering real-time feedback and delaying bug detection and resolution.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Code Coverage Challenges for Developers",
+  subtitle: "👋 Coverage Issues 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
