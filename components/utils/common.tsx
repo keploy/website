@@ -238,33 +238,33 @@ export const socialLinks: SocialLink[] = [
   );
   export const blocksData = [
     {
-      title: "Faster Development and Testing",
-      description: "Enables teams to validate components without waiting for the entire system to be implemented.",
+      title: "Inconsistent Quality",
+      description: "Automatically generated test cases may vary in quality, leading to tests that lack the depth and precision required to catch edge cases or subtle bugs.",
       SvgComponent: MdiLightningBolt,
     },
     {
-      title: "Isolation of Components",
-      description: "Ensure that each part of the system can be tested without relying on the complete system.",
+      title: "False Sense of Security",
+      description: "Relying heavily on test case generation tools may create a false sense of security, as generated tests might not cover all critical paths, resulting in missed defects.",
       SvgComponent: FluentPuzzleCubePiece20Filled,
     },
     {
-      title: "Improved Collaboration",
-      description: "Promotes collaboration between teams by allowing them to work independently on different components.",
+      title: "High Learning Curve",
+      description: "Developers often face a steep learning curve when integrating automated test case generation tools into their workflows, requiring additional training and time to adapt.",
       SvgComponent: CollaborationIcon,
     },
     {
-      title: "Comprehensive Testing Scenarios",
-      description: "Simulate various scenarios helping testers assess different system responses and identify potential issues before deployment.",
+      title: "Limited Customization",
+      description: "Generated test cases may not fully address the specific needs or intricacies of a project, requiring significant manual adjustments to align with complex scenarios.",
       SvgComponent: StreamlineBrowserCheck,
     },
     {
-      title: "Cost-Effectiveness",
-      description: "Less time and effort required to create and maintain compared to fully functional services.",
+      title: "Test Redundancy",
+      description: "Test case generation tools can create redundant or unnecessary tests, cluttering the test suite and increasing maintenance efforts without adding value to the testing process.",
       SvgComponent: PsPiggyBankCoins,
     },
     {
-      title: "Early Detection of Issues",
-      description: "Allows teams to identify and address problems in the early stages of development, reducing the likelihood of costly fixes later in the process.",
+      title: "Dependency on Tools",
+      description: "Over-reliance on automated test generation tools can make teams dependent on these tools, potentially leading to gaps in testing when the tools cannot handle certain scenarios effectively.",
       SvgComponent: MaterialSymbolsLightEarlyOnOutline,
     },
   ];

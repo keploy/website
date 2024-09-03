@@ -35,32 +35,32 @@ const heroData = {
 const blocksData = [
   {
     title: "Monitoring and Debugging",
-    description: "Identifying and resolving issues related to failed tests and effectively can be a tough task, affecting overall productivity.",
+    description: " Identifying and resolving issues from failed tests can be challenging, often consuming significant time and hampering overall productivity by delaying the development cycle.",
     SvgComponent: MdiLightningBolt,
   },
   {
     title: "Limited Scalability",
-    description: "Scaling CI pipelines to accommodate growing codebases and increased testing requirements requires additional resources and infrastructure",
+    description: "As codebases grow and testing demands increase, scaling CI pipelines requires additional resources and infrastructure, making it difficult to maintain efficiency without significant investment.",
     SvgComponent: FluentPuzzleCubePiece20Filled,
   },
   {
     title: "Maintaining Test Stability",
-    description: "Keeping tests stable and reliable across frequent code changes and updates can be difficult, impacting the accuracy of test results.",
+    description: "Frequent code changes and updates can destabilize tests, making it difficult to ensure reliable results and leading to potential inaccuracies in the CI pipeline.",
     SvgComponent: CollaborationIcon,
   },
   {
     title: "Complex Configuration",
-    description: "Setting up and configuring CI pipelines can be intricate and time-consuming, especially for large or complex projects.",
+    description: "Setting up and configuring CI pipelines, especially for large or complex projects, can be intricate and time-consuming, requiring careful planning and execution.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
     title: "Testing Bottlenecks",
-    description: "Testing bottlenecks can occur when tests take too long to execute, delaying feedback and slowing down the development process.",
+    description: "When tests take too long to execute, bottlenecks occur, delaying feedback and slowing down the entire development process, impacting overall project timelines.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
     title: "CI Integration",
-    description: "Ensuring seamless integration of various tools, environments, and dependencies within CI pipelines can be challenging and prone to errors.",
+    description: "Seamlessly integrating various tools, environments, and dependencies within CI pipelines is often challenging and prone to errors, complicating the development workflow and reducing efficiency.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
