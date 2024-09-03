@@ -12,7 +12,7 @@ import EdurekaTestimonial from "@/public/images/users/edureka_logo.png";
 
 export const TrustedBy =() =>{
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="py-12 md:py-10 overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)] ">
 
         {/* Section header */}

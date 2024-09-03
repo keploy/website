@@ -9,19 +9,7 @@ import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
 import APItext from "@/public/images/apiText.png"
-import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
-import Particles from './Particles';
-
-
 export default function Hero() {
-  const { theme } = useTheme();
-  const [color, setColor] = useState("#ffffff");
- 
-  useEffect(() => {
-    setColor(theme === "dark" ? "#ffffff" : "#BE2C1B");
-  }, [theme]);
-
   return (
     <section className="relative">
 
@@ -42,7 +30,7 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Hero content */}
         <div className="pt-32 pb-12 md:pt-40 md:pb-20 gap-16">
@@ -102,27 +90,15 @@ export default function Hero() {
               </div> */}
             </div>
           </div>
-          <div className='relative flex h-screen w-full flex-col items-center justify-center '>
-            <div className='z-10'>
-              <ModalVideo
+
+          <ModalVideo
               thumb={VideoThumb}
               thumbWidth={768}
               thumbHeight={432}
               thumbAlt="Keploy Demo video"
               video="https://www.youtube.com/embed/gvWvpqWM48s"
               videoWidth={768}
-              videoHeight={432}
-              />
-            </div>
-            <Particles
-              className="absolute inset-0 z-0"
-              quantity={150}
-              ease={80}
-              color={color}
-              refresh
-              />
-          </div>
-
+              videoHeight={432}/>
         </div>
 
       </div>

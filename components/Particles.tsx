@@ -116,7 +116,7 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   };
 
-  type Circle = {
+  interface Circle  {
     x: number;
     y: number;
     translateX: number;
