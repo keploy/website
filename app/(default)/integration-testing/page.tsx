@@ -13,71 +13,70 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
   CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
   MaterialSymbolsLightEarlyOnOutline
 } from "@/components/utils/common";
-import { featuresData,faqQuestions } from "@/components/utils/unit-test-generator";
+import { featuresData,faqQuestions } from "@/components/utils/integration-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
 
-const blocksData = [
-  {
-    title: "Time-Consuming",
-    description: "Manually writing unit tests is a process that can consume significant amounts of a developer's time, leading to delays in the development cycle.",
-    SvgComponent: MdiLightningBolt,
-  },
-  {
-    title: "Incomplete Coverage",
-    description: "Achieving higher test coverage is challenging, as it requires identifying and writing tests for all possible code paths and edge cases,leaving some part of codebase are untested and potentially prone to bugs.",
-    SvgComponent: FluentPuzzleCubePiece20Filled,
-  },
-  {
-    title: "High Maintenance",
-    description: "Keeping unit tests up to date with frequent code changes demands ongoing effort. As the code evolves, tests need to be reviewed and updated to ensure they remain relevant and effective, which can be a significant maintenance burden.",
-    SvgComponent: CollaborationIcon,
-  },
-  {
-    title: "Complex Scenarios",
-    description: "Writing effective unit tests for complex scenarios requires deep understanding and careful consideration of various interactions and edge cases. This makes it difficult to create accurate and meaningful tests, especially in large codebases.",
-    SvgComponent: StreamlineBrowserCheck,
-  },
-  {
-    title: "Domain Context",
-    description: "Tools like Co-pilot may generate tests that lack specific domain knowledge, leading to irrelevant or ineffective test cases, resulting in tests that do not accurately reflect the real-world use cases and requirements of the application.",
-    SvgComponent: PsPiggyBankCoins,
-  },
-  {
-    title: "Integration Issues",
-    description: "Integrating LLM-generated tests with existing testing frameworks can be problematic. Compatibility issues, differences in coding standards, and the need for additional configuration creates friction and slow down the adoption of automated solutions.",
-    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
-  },
-];
+const pageMetadata: Metadata = {
+  title: 'Keploy | Maximize Integration Testing Efficiency with Our Tools!',
+  description: 'Discover how Keploy’s integration testing tools streamline complex workflows. Achieve scalable, reliable, and automated testing with zero-code solutions. Start now.',
+  keywords: 'integration testing, test coverage tools, automated testing, zero-code testing, Python integration testing, Java integration testing, Jest, Go test',
+};
 
 const heroData = {
-  titleTop: "Accurate and Reliable ",
-  titleBottom: "AI unit tests",
-  subtitleTop: "Generate edge cases and keep only necessary ones",
-  subtitleBottom:
-    "AI-Powered Unit Tests for Precision and Reliability! 🚀",
-  animationSrc: testAndStubsGen,
+    titleTop: "Optimize Integration Testing",
+    titleBottom: "with Seamless Automation",
+    subtitleTop: "Automate your integration testing workflows for enhanced collaboration.",
+    subtitleBottom: "Achieve reliable and scalable testing for complex systems with zero-code solutions🚀",
+    animationSrc: testAndStubsGen,
 };
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Need Quick Mock Data? Try this reliable test data generator!',
-  description: 'Discover how quickly and efficiently you can generate test data by recording API calls with Keploy cutting-edge test data generation tool! Learn more now!',
-  keywords: 'dynamic test data, testing, automation, test data generation',
-};
-
+const blocksData = [
+    {
+      title: "Interdependent Components",
+      description: "Testing integrated systems can be challenging when components are highly interdependent, making it difficult to isolate and identify issues.",
+      SvgComponent: MdiLightningBolt,
+    },
+    {
+      title: "Complex Environment Setup",
+      description: "Setting up environments that mimic real-world systems can be complex and resource-intensive, often requiring additional infrastructure.",
+      SvgComponent: FluentPuzzleCubePiece20Filled,
+    },
+    {
+      title: "Test Data Inconsistencies",
+      description: "Ensuring consistent and relevant data across different integrated components can be difficult, leading to unreliable test results.",
+      SvgComponent: CollaborationIcon,
+    },
+    {
+      title: "Limited Test Coverage",
+      description: "Comprehensive coverage is hard to achieve in integration testing due to the complexity of testing all possible interactions between components.",
+      SvgComponent: StreamlineBrowserCheck,
+    },
+    {
+      title: "Maintenance Overhead",
+      description: "Frequent code changes often lead to increased maintenance of integration tests, which can be both time-consuming and resource-intensive.",
+      SvgComponent: PsPiggyBankCoins,
+    },
+    {
+      title: "Debugging Complexity",
+      description: "Identifying and resolving issues within integrated systems is often complex and time-consuming due to the interconnected nature of the components.",
+      SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+    },
+];
+  
 const ProblemBlocksData = {
-  title: "Manual Unit Testing",
-  subtitle: "👋 Challenges 👋",
+  title: "Smart generation - Enhanced development",
+  subtitle: "👋 Say Hi to 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
 const FeaturesData = {
-  title: "Keploy's ",
-  title2: "ensure ",
+  title: "Ensure ",
+  title2: "with",
   subtitle:
     "Transforming interactions into realistic, diverse, and customizable stubs for precise testing",
-  highlightTitle: "Unit Test Generation",
+  highlightTitle: "Code Coverage ",
   featuresData: featuresData,
 };
 const BannerData = {
@@ -89,10 +88,10 @@ const BannerData = {
   btnTextRight: "Try Locally",
   bannerImage: BannerBunny,
 };
-
 export default function Home() {
   return (
     <RootLayout metadata={pageMetadata}>
+
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -109,7 +108,7 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}        
+        highlightTitle={FeaturesData.highlightTitle}
         title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
@@ -128,11 +127,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-        content={testimonialData[2].content}
-        author={testimonialData[2].author}
-        company={testimonialData[2].company}
-        image={testimonialData[2].image}
-      />
+          content={testimonialData[2].content}
+          author={testimonialData[2].author}
+          company={testimonialData[2].company}
+          image={testimonialData[2].image}
+        />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}

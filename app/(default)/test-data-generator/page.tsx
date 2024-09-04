@@ -21,32 +21,32 @@ import RootLayout, { Metadata } from "@/app/layout";
 const blocksData = [
   {
     title: "Limited Data Variation",
-    description: "Difficulty in ensuring consistent mock data across different tests.",
+    description: "Ensuring consistent and varied mock data across different test cases is difficult, leading to tests that may not fully reflect diverse scenarios or edge cases.",
     SvgComponent: MdiLightningBolt,
   },
   {
     title: "Dependency on Real Data",
-    description: "Limited ability to simulate scenarios without real data dependencies.",
+    description: "Simulating scenarios without relying on real data is challenging, limiting the ability to test in isolated environments or account for data variability.",
     SvgComponent: FluentPuzzleCubePiece20Filled,
   },
   {
     title: "Manual Data Generation",
-    description: "A significant amout of time is spent in manually generating mock data.",
+    description: "A significant amount of time and effort is spent manually generating mock data, which slows down the testing process and reduces efficiency.",
     SvgComponent: CollaborationIcon,
   },
   {
     title: "Scalability Concerns",
-    description: "Difficulty in scaling mock data generation for large datasets or complex scenarios.",
+    description: "Generating mock data at scale for large datasets or complex scenarios proves difficult, making it hard to test comprehensive and realistic conditions.",
     SvgComponent: StreamlineBrowserCheck,
   },
   {
     title: "Data Inefficiencies",
-    description: "Usually Mock data does not accurately represent real-world scenarios.",
+    description: "Mock data often fails to accurately represent real-world scenarios, leading to tests that may not uncover critical issues present in production environments.",
     SvgComponent: PsPiggyBankCoins,
   },
   {
     title: "Maintenance Overhead",
-    description: "High maintenance effort due to frequent updates and changes in mock data.",
+    description: "Maintaining and updating mock data becomes a high-effort task, especially when the data needs to be frequently updated to reflect ongoing changes in the application.",
     SvgComponent: MaterialSymbolsLightEarlyOnOutline,
   },
 ];
