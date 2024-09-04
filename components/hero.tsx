@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+"use client"
 import VideoThumb from '@/public/images/demo-thumbnail.png'
 import ModalVideo from '@/components/modal-video'
 import Image from "next/image";
@@ -110,6 +112,7 @@ export default function Hero() {
       </div>
       <TrustedBy/>
       {/*Trusted by users section*/}
+     
 
     </section>
   )
