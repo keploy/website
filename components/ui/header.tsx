@@ -8,8 +8,10 @@ import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
+import Abc from "../nav/abc";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
+import Product from "../nav/productSection";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -69,41 +71,11 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
-            <ul className="flex grow justify-end flex items-center">
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/docs"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Docs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Tech Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/community"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Articles
-                </Link>
-              </li>
-              <div className="px-5">
+            <ul className="flex grow justify-end items-center">
+              <li className="px-5">
                 {" "}
-                <NavItemWithSmallDropdown
-                  heading="Resources"
-                  dropdownData={PillarPages}
-                />
-              </div>
+                <Product />
+              </li>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">

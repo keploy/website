@@ -41,4 +41,8 @@ export const PillarPages = [
       ]
     }
   ];
+
+  export const Products = [
+    
+  ];
   
