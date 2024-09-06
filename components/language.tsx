@@ -320,9 +320,9 @@ export default function Language() {
               <Image
                 src="/images/frameworks/csharp.svg"
                 alt="C# Logo"
-                width={150}
-                height={80}
-                className="mb-2"
+                width={100}
+                height={100}
+                className="mb-1"
               />
             </Link>
 
@@ -333,9 +333,9 @@ export default function Language() {
             >
               <Image
                 src="/images/frameworks/rust.svg"
-                alt="Rust Logo"
-                width="90"
-                height="35"
+                alt="C# Logo"
+                width={60}
+                height={60}
                 className="mb-2"
               />
             </Link>
