@@ -11,7 +11,7 @@ import GettingStarted from "@/public/images/navBarIcons/GettingStarted";
 export default function Product() {
   const [openDropdown, setShowDropdown] = useState(false);
   const [enterpriseHover, setEnterpriseHover] = useState(false);
-  const [openSourceHover, setOpenSourceHover] = useState(false);
+  const [openSourceHover, setOpenSourceHover] = useState(true);
 
   const showDropdown = () => {
     setShowDropdown(true);
@@ -46,12 +46,18 @@ export default function Product() {
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-[#F5F5F5] pb-8 z-10 shadow-xl top-[83px] left-[28px] w-[1058px] h-[260px] cursor-auto">
+        <div className="fixed bg-[#F5F5F5] pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[290px] cursor-auto">
           <div>
             <div className="flex items-center justify-between">
-              <div className="pt-[39px] pl-[19px] flex gap-[72px]">
-                <div>
-                  <div className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5">
+              <div className="pt-[39px] pl-[19px] flex gap-[80px] justify-between items-stretch w-full">
+                <div className="p-5">
+                  <div
+                    className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5"
+                    onMouseEnter={() => {
+                      setOpenSourceHover(true);
+                      setEnterpriseHover(false);
+                    }}
+                  >
                     <OpenSource />
                     <div>
                       <h1 className="text-[20px] font-bold cursor-pointer">
@@ -63,29 +69,16 @@ export default function Product() {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5">
+                  <div
+                    className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5"
+                    onMouseEnter={() => {
+                      setEnterpriseHover(true);
+                      setOpenSourceHover(false);
+                    }}
+                  >
                     <EnterpriseSolution />
-                    <div
-                      onClick={() => {
-                        if (openSourceHover) {
-                          setOpenSourceHover(false);
-                          setEnterpriseHover(true);
-                        } else {
-                          setEnterpriseHover(false);
-                          setOpenSourceHover(true);
-                        }
-                      }}
-                    >
-                      <h1
-                        className="text-[20px] font-bold cursor-pointer"
-                        onClick={() => {
-                          if (enterpriseHover) {
-                            setEnterpriseHover(false);
-                          } else {
-                            setEnterpriseHover(true);
-                          }
-                        }}
-                      >
+                    <div>
+                      <h1 className="text-[20px] font-bold cursor-pointer">
                         Enterprise Solution
                       </h1>
                       <p className="text-[14px] text-[#797C88] cursor-pointer">
@@ -94,6 +87,7 @@ export default function Product() {
                     </div>
                   </div>
                 </div>
+
                 <div>
                   <p className="text-[14px] text-[#677489] pb-5">
                     About Product
@@ -143,7 +137,9 @@ export default function Product() {
                     </ul>
                   </div>
                 </div>
+
                 <div>{enterpriseHover && <div>enterprise</div>}</div>
+                <div>{openSourceHover && <div>openSourceHover</div>}</div>
               </div>
             </div>
           </div>
