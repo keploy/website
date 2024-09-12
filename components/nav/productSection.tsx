@@ -46,13 +46,13 @@ export default function Product() {
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-[#F5F5F5] pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[290px] cursor-auto">
+        <div className="fixed bg-[#F5F5F5] pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[320px] cursor-auto rounded-3xl">
           <div>
             <div className="flex items-center justify-between">
               <div className="pt-[39px] pl-[19px] flex gap-[80px] justify-between items-stretch w-full">
                 <div className="p-5">
                   <div
-                    className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5"
+                    className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5 mb-6"
                     onMouseEnter={() => {
                       setOpenSourceHover(true);
                       setEnterpriseHover(false);
@@ -94,7 +94,7 @@ export default function Product() {
                   </p>
 
                   <div>
-                    <ul className="flex flex-col gap-4">
+                    <ul className="flex flex-col gap-6">
                       <li>
                         <a
                           href=""
@@ -138,8 +138,10 @@ export default function Product() {
                   </div>
                 </div>
 
-                <div>{enterpriseHover && <div>enterprise</div>}</div>
-                <div>{openSourceHover && <div>openSourceHover</div>}</div>
+                <div className="flex flex-row justify-start pr-28">
+                  <div>{enterpriseHover && <div>enterprise</div>}</div>
+                  <div>{openSourceHover && <div>openSourceHover</div>}</div>
+                </div>
               </div>
             </div>
           </div>
