@@ -32,7 +32,6 @@ export const Code = ({
   let language = selectedFile.name.split(".").pop();
   
   if (language === "js" || language === "jsx") language = "javascript";
-  else if (language === "ts" || language === "tsx") language = "typescript";
   else if (language === "go") language = "go";
   else if (language === "py") language = "python";
   

@@ -23,7 +23,7 @@ export const FileDiv = ({
 
   return (
     <div
-      className={`flex items-center my-0.5 ${
+      className={`flex items-center my-0.5 w-full ${
         isSelected
           ? themeFileDiv
             ? "bg-gray-200 border-y-1 border-y-gray-400"
@@ -52,7 +52,7 @@ export const FileDiv = ({
         extension={file?.name?.split(".").pop() || ""}
         themeIcons={themeFileDiv}
       />
-      <span className="ml-1 truncate max-w-full">{file.name}</span>
+      <span className="ml-1 truncate  max-w-full">{file.name}</span>
     </div>
   );
 };

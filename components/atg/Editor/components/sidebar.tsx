@@ -24,10 +24,8 @@ export const Sidebar = ({
 
   return (
     <div
-      className={`flex flex-col h-full text-sm rounded-bl-md overflow-x-auto whitespace-nowrap no-scrollbar ${
-        theme
-          ? "text-secondary-300 bg-neutral-200"
-          : "text-white bg-[#21252b]"
+      className={`flex flex-col h-full  text-sm rounded-bl-md${
+        theme ? "text-secondary-300 bg-neutral-200" : "text-white bg-[#21252b]"
       }`}
     >
       <div
@@ -37,17 +35,20 @@ export const Sidebar = ({
             : "bg-[#21252b] shadow-lg shadow-[#171a1e]"
         }`}
         onClick={ClickExpanded}
+        style={{ minWidth: "250px" }} // Ensure content has a minimum width
       >
         <ExpandMoreIcon className={`${expanded ? "" : "rotate-[-90deg]"}`} />
         Website
       </div>
       {expanded && (
-        <FileTree
-          rootDir={rootDir}
-          selectedFile={selectedFile}
-          onSelect={onSelect}
-          themeFile={theme}
-        />
+        <div className="w-full overflow-x-scroll no-scrollbar">
+          <FileTree
+            rootDir={rootDir}
+            selectedFile={selectedFile}
+            onSelect={onSelect}
+            themeFile={theme}
+          />
+        </div>
       )}
     </div>
   );

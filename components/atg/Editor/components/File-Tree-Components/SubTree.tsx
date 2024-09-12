@@ -41,7 +41,7 @@ export const SubTree: React.FC<SubTreeProps> = (props) => {
   return (
     <div>
       {emptyDirectory ? (
-        <div className="h-2 flex items-center "></div>
+        <div className="h-2 flex items-center"></div>
       ) : (
         <>
           {directoryComponents}
