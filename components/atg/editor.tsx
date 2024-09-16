@@ -39,6 +39,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   const [TerminalStatus, setTerminalStatus] = useState<string>("red");
   const [TerminalHeight, setTerminalHeight] = useState<string>("0");
   const [FullScreen, setFullScreen] = useState<boolean>(false);
+  const [mainFile , setmainFile] = useState<string>("");
   const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
     {
       schemaValidation: false,
@@ -90,8 +91,19 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   };
 
   useEffect(() => {
-    fetchDirectoryContents(language);
-  }, [language]);
+    const fetchData = async () => {
+      try {
+        // Call your async function here
+        await fetchDirectoryContents(language);
+      } catch (error) {
+        console.error("Error fetching directory contents:", error);
+      }
+    };
+  
+    fetchData(); // Call the async function
+  
+  }, [language]); // Dependency array
+  
 
   const { elementRef, enterFullScreen, exitFullScreen } = useFullScreen({
     onEnter: settingFullScreenTrue,
@@ -111,7 +123,12 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     } else if (rootDir.name === "javaScript") {
       file = findFileByName(rootDir, "server.js");
     }
-
+    console.log(file);
+    if(file){
+      setmainFile(file?.content);
+    }else{
+      setmainFile("file not found")
+    }
     setSelectedFile(file);
     setFiles(file ? [file] : []);
   }, [rootDir, language]);
@@ -145,6 +162,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
       testSubStepIndex: -1,
       expandedSteps: [0],
     });
+    setState(-1);
     setStepsForRecording({ schemaValidation: false, GenerateTest: false });
     setStepsForDedup({ Dedup: false, Duplicates_removed: false });
     setStepsForTests({ Replaying_tests: false, generate_report: false });
@@ -295,6 +313,9 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
                           onSelectLanguage={onLanguageSelect}
                           AppBarTheme={lighttheme}
                           languageApp={language}
+                          CodeContent={mainFile || ""}
+                          functionName={functionName}
+                   
                         />
                         <Code
                           selectedFile={selectedFile}
@@ -304,6 +325,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
                           settingCodeTheme={lighttheme}
                           isFullScreen={FullScreen} // Pass FullScreen state
                         />
+                        {/* revert the sign here */}
                         {state > -1 && (
                           <div
                             className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${TerminalHeight} overflow-hidden`}
@@ -351,8 +373,6 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
                       SideBarTheme={lighttheme}
                       sidebarState={sidebarState}
                       setSidebarState={setSidebarState}
-                      CodeLanguage={language.toUpperCase()}
-                      CodeContent={selectedFile?.content}
                     />
                   </div>
                 )}

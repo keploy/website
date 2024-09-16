@@ -8,7 +8,6 @@ import {
 } from "react";
 import { TerminalProps, TerminalCommands } from "./types"; // Assuming you have a types file where `TerminalCommands` is defined
 import CloseIcon from "@mui/icons-material/Close"; // Use CloseIcon to mimic the red button on Mac
-
 export interface AdditionalProps {
   inputRef: React.RefObject<HTMLInputElement>;
   terminalTheme: boolean;
@@ -208,11 +207,7 @@ export const Terminal = forwardRef(
                         onKeyDown={handleInputKeyDown}
                         onChange={handleInputChange}
                         ref={inputRef}
-                        className={`form-input  fat-cursor p-0 bg-inherit text-xs ml-2 border-none focus:outline-none appearance-none ${
-                          terminalTheme
-                            ? "text-secondary-300 caret-white "
-                            : "text-white caret-[#282c34]"
-                        } min-w-0`}
+                        className={`input-common ${terminalTheme ? 'input-light' : 'input-dark'}`}
                         style={{
                           width: inputRef.current
                             ? inputRef.current.value.length + "ch"
@@ -224,7 +219,7 @@ export const Terminal = forwardRef(
                       <span
                         className={`${
                           blinkingTrue ? "animate-blink" : ""
-                        } absolute text-sm scale-90 inset-y-0 -right-2 flex items-center  pr-2 ${
+                        } absolute text-sm scale-60 inset-y-0 scale-[80%] -right-2 flex items-center  pr-2 ${
                           terminalTheme
                             ? "bg-secondary-300 border-secondary-300"
                             : "bg-white border-white"

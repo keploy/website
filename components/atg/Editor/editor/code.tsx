@@ -38,7 +38,7 @@ export const Code = ({
   useEffect(()=>{   
     const storedCodeSubmissionId = localStorage.getItem("code_submission_id") || "";
     setSubmissionId(storedCodeSubmissionId)
-    console.log("new stored id: ", codeSubmissionId);
+    // console.log("new stored id: ", codeSubmissionId);
   },[localStorage , selectedFile])
 
   const handleFileChange = async (newValue: string | undefined) => {

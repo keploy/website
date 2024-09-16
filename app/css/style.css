@@ -59,6 +59,43 @@ button {
   border: none;
 }
 
+/* Specific input reset */
+/* Light theme input */
+.input-light {
+  color: #333 !important; /* Text color for light theme */
+ 
+}
+
+
+/* Dark theme input */
+.input-dark {
+  color: white !important; /* Text color for dark theme */
+}
+
+/* Common styles for input fields */
+.input-common {
+  border: none !important;
+  outline: none !important;
+  padding: 0 !important;
+  margin-left: 0.5rem !important;
+  font-size: 0.875rem !important; /* Equivalent to text-xs */
+  caret-color: transparent !important;
+  background-color: inherit !important; /* Light theme background */
+  margin-bottom: 1px;
+ 
+} 
+
+/* To customize focus border */
+.input-common:focus {
+  outline: none;
+  border: 1px solid #ccc; /* Optional: Add a custom border */
+  box-shadow: none !important; /* Removes the Tailwind box-shadow */
+  --tw-ring-shadow: none !important; /* Removes the Tailwind ring-shadow */
+  --tw-ring-color: transparent !important; /* Removes the ring color */
+}
+
+
+
 .terminal__prompt {
   display: flex;
   align-items: center;
@@ -88,6 +125,7 @@ button {
 .terminal__line_light input:focus {
   outline: none; /* Remove the blue border */
   border: none;
+  background-color: #000000;
 }
 
 .terminal__prompt_light {

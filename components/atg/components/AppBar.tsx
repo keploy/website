@@ -14,6 +14,8 @@ const Appbar = ({
   onSelectLanguage,
   AppBarTheme,
   languageApp,
+  CodeContent,
+  functionName
 }: {
   selectedFile: File | undefined;
   selectedFilesArray: File[];
@@ -22,6 +24,9 @@ const Appbar = ({
   onSelectLanguage: (language: string) => void;
   AppBarTheme: boolean;
   languageApp: string;
+  CodeContent:string;
+  functionName:string;
+                   
 }) => {
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -147,6 +152,8 @@ const Appbar = ({
             onSelectLanguageForCode={onSelectLanguage}
             language={languageApp}
             Selectortheme={AppBarTheme}
+            CodeContent={CodeContent}
+            functionName={functionName}
           />
         </div>
       </div>

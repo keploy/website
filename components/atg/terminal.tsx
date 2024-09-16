@@ -28,7 +28,7 @@ import {
   useRunCommandSubscription,
   useRemovingDuplicateSubscription,
 } from "@/app/api/automatic-test-generator/Subscription";
-import { Terminal } from "./Terminal";
+import { Terminal } from "./Terminal/index";
 const Emoji = "User@1231-Keploy:"; // 🐰
 
 
@@ -108,7 +108,7 @@ function CombinedTerminalPage({
   const storedCodeSubmissionId =
     localStorage.getItem("code_submission_id") || "";
     const RunningAgain =
-    localStorage.getItem("one_time") || "true";
+    localStorage.getItem("one_time") || "false";
   const [runningAgain,setrunningAgain] = useState<string>(RunningAgain);
   const [codeSubmissionId, setCodeSubmissionId] = useState<string>(
     storedCodeSubmissionId
@@ -141,6 +141,7 @@ function CombinedTerminalPage({
     completed() {
       setCompletedTrue(setDownloading);
     },
+    isDownloading:true,
   });
 
   const { handleSubmit: recordHandleSubmit } = useRunCommandSubscription({
@@ -152,6 +153,7 @@ function CombinedTerminalPage({
     stepsUpdater: stepsForRecording,
     pushToHistory: pushToRecordHistory,
     stepKey: "schemaValidation",
+    isDownloading:false,
   });
 
   const { handleSubmit: DeduphandleSubmit } = useRunCommandSubscription({
@@ -164,6 +166,7 @@ function CombinedTerminalPage({
     stepsUpdater: stepsForDedup,
     pushToHistory: pushToDedupHistory,
     stepKey: "Dedup",
+    isDownloading:false,
   });
 
   const { handleSubmit: testHandleSubmit } = useRunCommandSubscription({
@@ -175,6 +178,7 @@ function CombinedTerminalPage({
     stepsUpdater: stepsForTesting,
     pushToHistory: pushToTestHistory,
     stepKey: "Replaying_tests",
+    isDownloading:false,
   });
 
   useEffect(() => {

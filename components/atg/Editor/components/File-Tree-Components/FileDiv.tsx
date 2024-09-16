@@ -23,7 +23,7 @@ export const FileDiv = ({
 
   return (
     <div
-      className={`flex items-center my-0.5 w-full ${
+      className={`flex items-center my-0.5 w-full ${themeFileDiv?"text-black":"text-gray-300"} ${
         isSelected
           ? themeFileDiv
             ? "bg-gray-200 border-y-1 border-y-gray-400"

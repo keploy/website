@@ -5,23 +5,37 @@ import JAVASCRIPT from "@/components/atg/asset/icons/javascript.svg";
 import PYTHON from "@/components/atg/asset/icons/python.svg";
 import Image from "next/image";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
-
+import { GolangSchema , JavaScriptSchema , PythonSchema } from "../utils/schema";
+import { useState } from "react";
+import { submitCodeSnippet } from "@/app/api/automatic-test-generator/Mutation";
 const languages = [
   { name: "Golang", image: GO },
   { name: "Python", image: PYTHON },
   { name: "Javascript", image: JAVASCRIPT },
 ];
 
+const schemaMap: { [key: string]: string } = {
+  "GOLANG": GolangSchema,
+  "JAVASCRIPT": JavaScriptSchema,
+  "PYTHON": PythonSchema,
+};
+
+
 interface LanguageSelectorProps {
   onSelectLanguageForCode: (language: string) => void;
   language: string;
   Selectortheme: boolean;
+  CodeContent:string;
+  functionName:string;
 }
+
 
 export default function LanguageSelector({
   onSelectLanguageForCode,
   language,
   Selectortheme,
+  CodeContent,
+  functionName
 }: LanguageSelectorProps) {
   const [selectedLanguage, setSelectedLanguage] =
     React.useState<string>("Javascript");
@@ -29,11 +43,16 @@ export default function LanguageSelector({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 
   const handleSelect = (language: string) => {
     setSelectedLanguage(language);
     setIsExpanded(false);
     onSelectLanguageForCode(language);
+    localStorage.setItem("one_time", "false");
+    console.log("setItem in the language selector");
+    setHasRun(false);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -68,6 +87,57 @@ export default function LanguageSelector({
     }
     setIsExpanded(true);
   };
+
+
+  const [hasRun, setHasRun] = useState(false);
+
+  const storeSubmissionCode = async () => {
+    try {
+        const schema = schemaMap[selectedLanguage.toUpperCase()] || JavaScriptSchema;
+        // console.log("CodeLanguage in selector component" , selectedLanguage.toUpperCase());
+        // console.log("CodeSchema in selector component" , schema);
+        const response = await submitCodeSnippet({
+        language: selectedLanguage.toUpperCase(),
+        code: CodeContent || "",
+        schema: schema,
+      });
+      if (response) {
+        localStorage.setItem("code_submission_id", response);
+      }
+    } catch (error) {
+      console.error("Error storing code submission ID:", error);
+    }
+  };
+
+ 
+  useEffect(() => {
+    const runWithDelay = async () => {
+      await delay(1000); // 1 second delay
+  
+      const localHasValue = localStorage.getItem("one_time") || "false";
+  
+      if (localHasValue === "true") {
+        setHasRun(true);
+      } else {
+        setHasRun(false);
+      }
+  
+      console.log("has run has changed", hasRun);
+      console.log("function name is: ", functionName);
+  
+      if (!hasRun) {
+        console.log("has run inside the start thing.");
+        storeSubmissionCode();
+        setHasRun(true); // Mark as run
+        localStorage.setItem("one_time", "true");
+      }
+    };
+  
+    runWithDelay(); // Call the async function
+  
+  }, [selectedLanguage , CodeContent]); // Ensure necessary dependencies are included
+  
+
 
   return (
     <div className="relative text-left scale-75">

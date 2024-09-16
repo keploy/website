@@ -31,14 +31,14 @@ export const Sidebar = ({
       <div
         className={`flex hover:cursor-pointer py-2.5 mb-2 px-1 text-center font-medium ${
           theme
-            ? "bg-white border border-b-gray-100"
-            : "bg-[#21252b] shadow-lg shadow-[#171a1e]"
+            ? "bg-white border border-b-gray-100 text-black"
+            : "bg-[#21252b] shadow-lg shadow-[#171a1e] text-gray-300"
         }`}
         onClick={ClickExpanded}
         style={{ minWidth: "250px" }} // Ensure content has a minimum width
       >
         <ExpandMoreIcon className={`${expanded ? "" : "rotate-[-90deg]"}`} />
-        Website
+        <span className={`${theme?"text-black":" text-gray-300"}`}>Website</span>
       </div>
       {expanded && (
         <div className="w-full overflow-x-scroll no-scrollbar">

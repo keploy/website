@@ -496,6 +496,7 @@ export const useRunCommandSubscription = ({
   testSetName,
   completed,
   onData,
+  isDownloading,
   stepsUpdater,
   pushToHistory,
   stepKey,
@@ -505,6 +506,7 @@ export const useRunCommandSubscription = ({
   testSetName?: string;
   completed: () => void;
   onData?: (data: any) => void;
+  isDownloading?:boolean;
   stepsUpdater?: Dispatch<SetStateAction<any>>;
   pushToHistory?: (content: JSX.Element) => void;
   stepKey?: string;
@@ -514,12 +516,10 @@ export const useRunCommandSubscription = ({
   );
   const [command, setCommand] = useState<string>(initialCommand);
   const [submitted, setSubmitted] = useState(false);
-  const [subscriptionQueue, setSubscriptionQueue] = useState<any[]>([]);
   const [latestData, setLatestData] = useState<any>(
     "updating the latest keploy version"
   );
-  const [isProcessing, setIsProcessing] = useState(false);
-
+  
   // Subscription to the GraphQL data
   useSubscription(gql(RUN_COMMAND_SUBSCRIPTION), {
     variables: {
@@ -529,15 +529,13 @@ export const useRunCommandSubscription = ({
     },
     skip: !submitted,
     onComplete: () => {
-      console.log(subscriptionQueue);
       completed();
     },
     onSubscriptionData: ({ subscriptionData }) => {
       const jsonData = subscriptionData.data; // Store as a JSON object
-      // console.log("Received subscription data:", jsonData);
-
+    
       // Call processAndRenderRunCommand only if the optional props are provided
-      if (stepsUpdater && pushToHistory && stepKey) {
+      if (stepsUpdater && pushToHistory && stepKey && !isDownloading) {
         processAndRenderRunCommand(
           jsonData,
           stepsUpdater,
@@ -547,7 +545,6 @@ export const useRunCommandSubscription = ({
       } else {
         console.log("No stepsUpdater, pushToHistory, or stepKey provided");
       }
-      // setSubscriptionQueue((prevQueue) => [...prevQueue, jsonData]); // Add new data to the queue
     },
   });
 

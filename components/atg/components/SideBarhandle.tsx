@@ -15,8 +15,6 @@ interface SideBarHandleProps {
   stepsForTesting: StepforTests;
   stepsForDedup: StepsforDedup;
   SideBarTheme: boolean;
-  CodeLanguage: string;
-  CodeContent?: string;
   sidebarState: {
     activeStep: number;
     subStepIndex: number;
@@ -46,17 +44,10 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
   stepsForTesting,
   stepsForDedup,
   SideBarTheme,
-  CodeLanguage,
-  CodeContent,
   sidebarState,
   setSidebarState,
 }) => {
-  const schemaMap: Record<string, string> = {
-    Golang: GolangSchema,
-    Javascript: JavaScriptSchema,
-    Python: PythonSchema,
-  };
-
+ 
   const moveToNextStage = async () => {
     if (functionName === "Start") {
       await new Promise((resolve) => setTimeout(resolve, 4000)); // 4-second timeout
@@ -64,32 +55,8 @@ const SideBarHandle: FC<SideBarHandleProps> = ({
     showTerminal();
     onNext();
   };
-
-  const [hasRun, setHasRun] = useState(false);
-
-  useEffect(() => {
-    const storeSubmissionCode = async () => {
-      try {
-        const schema = schemaMap[CodeLanguage] || JavaScriptSchema;
-        const response = await submitCodeSnippet({
-          language: CodeLanguage,
-          code: CodeContent || "",
-          schema: schema,
-        });
-        if (response) {
-          localStorage.setItem("code_submission_id", response);
-        }
-      } catch (error) {
-        console.error("Error storing code submission ID:", error);
-      }
-    };
-
-    if (functionName === "Start" && !hasRun) {
-      storeSubmissionCode();
-      setHasRun(true); // Mark as run 
-      localStorage.setItem("one_time", "true");
-    }
-  }, [CodeLanguage, functionName, hasRun]);
+  
+  
   return (
     <div
       className={`h-full ${

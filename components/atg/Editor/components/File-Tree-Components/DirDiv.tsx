@@ -55,16 +55,16 @@ export const DirDiv = ({
         style={{ paddingLeft: `${depth * 13}px` }}
       >
         {open ? (
-          <MdOutlineKeyboardArrowDown />
+          <MdOutlineKeyboardArrowDown className={`${themeDir?"text-black":"text-white"}`} />
         ) : (
-          <MdOutlineKeyboardArrowRight />
+          <MdOutlineKeyboardArrowRight className={`${themeDir?"text-black":"text-white"}`} />
         )}
         <FileIcon
           name={open ? "openDirectory" : "closedDirectory"}
           extension=""
           themeIcons={themeDir}
         />
-        <span className="ml-1 truncate max-w-full">{directory.name}</span>
+        <span className={`ml-1 truncate max-w-full ${themeDir ? "text-black":"text-white"}`}>{directory.name}</span>
       </div>
       {open && (
         <div>
