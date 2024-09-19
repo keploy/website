@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { UpIcon } from "./UpIcon";
 import DownIcon from "./DownIcon";
@@ -7,6 +8,10 @@ import WhatIsKeploy from "@/public/images/navBarIcons/WhatIsKeploy";
 import WhyUseKeploy from "@/public/images/navBarIcons/WhyUseKeploy";
 import HowItWorks from "@/public/images/navBarIcons/HowItWorks";
 import GettingStarted from "@/public/images/navBarIcons/GettingStarted";
+import ApiCallRecording from "@/public/images/navBarIcons/ApiCallRecording";
+import AutomaticMocking from "@/public/images/navBarIcons/AutomaticMocking";
+import CICD from "@/public/images/navBarIcons/CICD";
+import MultiPurposeMocks from "@/public/images/navBarIcons/MultiPurposeMocks";
 
 export default function Product() {
   const [openDropdown, setShowDropdown] = useState(false);
@@ -29,7 +34,7 @@ export default function Product() {
       onMouseLeave={hideDropdown}
       className="relative flex items-center py-3 transition duration-150 ease-in-out cursor-pointer"
     >
-      <div className="flex align-center text-gray-600 hover:text-[#FF914D]">
+      <div className="flex align-center text-gray-600 hover:text-primary-100">
         <div className="flex">
           <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
             Products
@@ -46,10 +51,10 @@ export default function Product() {
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-[#F5F5F5] pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[320px] cursor-auto rounded-3xl">
+        <div className="fixed bg-[#F5F5F5] pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[320px] cursor-auto rounded-2xl">
           <div>
             <div className="flex items-center justify-between">
-              <div className="pt-[39px] pl-[19px] flex gap-[80px] justify-between items-stretch w-full">
+              <div className="pt-[39px] pl-[19px] flex justify-between items-stretch w-full">
                 <div className="p-5">
                   <div
                     className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5 mb-6"
@@ -89,7 +94,7 @@ export default function Product() {
                 </div>
 
                 <div>
-                  <p className="text-[14px] text-[#677489] pb-5">
+                  <p className="text-[14px] text-gray-500 pb-5">
                     About Product
                   </p>
 
@@ -138,9 +143,61 @@ export default function Product() {
                   </div>
                 </div>
 
-                <div className="flex flex-row justify-start pr-28">
-                  <div>{enterpriseHover && <div>enterprise</div>}</div>
-                  <div>{openSourceHover && <div>openSourceHover</div>}</div>
+                <div className="flex flex-row justify-start pr-36">
+                  <div>
+                    {openSourceHover && (
+                      <div>
+                        <p className="text-[14px] text-gray-500 pb-5">
+                          Features
+                        </p>
+
+                        <div>
+                          <ul className="flex flex-col gap-6">
+                            <li>
+                              <a
+                                href=""
+                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
+                              >
+                                <ApiCallRecording />
+                                API Call Recording and Replay
+                              </a>
+                            </li>
+
+                            <li>
+                              <a
+                                href=""
+                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
+                              >
+                                <AutomaticMocking />
+                                Automatic Mocking of Dependencies
+                              </a>
+                            </li>
+
+                            <li>
+                              <a
+                                href=""
+                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
+                              >
+                                <CICD />
+                                CI/CD Integration
+                              </a>
+                            </li>
+
+                            <li>
+                              <a
+                                href=""
+                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
+                              >
+                                <MultiPurposeMocks />
+                                Multi Purpose Mocks
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div>{enterpriseHover && <div>openSourceHover</div>}</div>
                 </div>
               </div>
             </div>
