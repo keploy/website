@@ -12,6 +12,7 @@ import ApiCallRecording from "@/public/images/navBarIcons/ApiCallRecording";
 import AutomaticMocking from "@/public/images/navBarIcons/AutomaticMocking";
 import CICD from "@/public/images/navBarIcons/CICD";
 import MultiPurposeMocks from "@/public/images/navBarIcons/MultiPurposeMocks";
+import Image from "next/image";
 
 export default function Product() {
   const [openDropdown, setShowDropdown] = useState(false);
@@ -197,7 +198,29 @@ export default function Product() {
                       </div>
                     )}
                   </div>
-                  <div>{enterpriseHover && <div>openSourceHover</div>}</div>
+                  <div>
+                    {enterpriseHover && (
+                      <div className="shadow-xl rounded-xl">
+                        <div className="p-5 text-center flex justify-center flex-col gap-3 items-center">
+                          <p className="text-[12px] font-inter font-[700]">
+                            Want to achieve achieving 95% coverage by making{" "}
+                            <br /> API calls of all possible permutations
+                          </p>
+
+                          <Image
+                            src="/images/navBarIcons/EnterpriseSolutionImg.png"
+                            alt="Enterprise Solution image"
+                            height={556}
+                            width={260}
+                          />
+
+                          <button className="cursor-pointer bg-primary-200 w-[50%] rounded-md font-bold shadow-lg hover:shadow-none p-1">
+                            Talk to us
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
