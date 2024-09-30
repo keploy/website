@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData , faqQuestions} from "@/components/utils/api-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -21,6 +24,39 @@ const pageMetadata: Metadata = {
   keywords: 'API test, FREE API Testing Tool, API Testing tool',
 };
 
+const blocksData = [
+  {
+    title: "Manual Test Script",
+    description: "Manually creating test scripts for API testing is a time-consuming and error-prone process, often leading to inefficiencies and inconsistencies in testing practices.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Limited Test Coverage",
+    description: "Traditional API testing methods may fail to cover all possible scenarios, leaving gaps in test coverage that can result in undetected bugs and vulnerabilities.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Difficulty in Test Maintenance",
+    description: "As APIs evolve, maintaining and updating test scripts becomes increasingly challenging and resource-intensive, making it difficult to keep tests current and effective.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Complex Setup Requirements",
+    description: "Setting up environments for API testing can be complex, requiring specialized knowledge and tools, which adds to the difficulty and time needed for comprehensive testing.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Lack of Real-time Feedback",
+    description: "Delays in receiving test results can slow down the development process, causing delays in identifying and fixing bugs, which hampers overall progress.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Pipeline Integration",
+    description: "Integrating API tests with CI/CD pipelines can be challenging, often requiring extensive configuration and expertise to ensure seamless operations within the development workflow.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const heroData = {
   titleTop: "API Testing ",
   titleBottom: "with Seamless Experience",
@@ -30,8 +66,8 @@ const heroData = {
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Traditional API Testing",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };
@@ -54,7 +90,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <>
+    <RootLayout metadata={pageMetadata}>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}
@@ -105,6 +141,6 @@ export default function Home() {
         bannerImage={BannerData.bannerImage}
       />
       <Footer />
-    </>
+    </RootLayout>
   );
 }

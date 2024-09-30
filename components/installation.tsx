@@ -37,7 +37,7 @@ const Installation = () => {
     switch (index) {
       case 0:
         codeToCopy =
-          "curl -O https://raw.githubusercontent.com/keploy/keploy/main/keploy.sh && source";
+          "curl --silent -O -L https://keploy.io/install.sh && source install.sh";
         break;
       case 1:
         codeToCopy = "keploy record -c CMD_TO_RUN_APP";
@@ -91,8 +91,8 @@ const Installation = () => {
             code-changes required.
           </p>
           <div className="flex flex-row gap-5">
-            <div className="bg-gray-900 p-4 rounded-lg flex flex-row items-center flex-grow overflow-clip">
-              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate">
+            <div className="bg-gray-900 p-4 rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
+              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate break-words">
                 {" "}
                 curl --silent -O -L https://keploy.io/install.sh && source install.sh
               </code>
@@ -118,8 +118,8 @@ const Installation = () => {
           </p>
 
           <div className="flex flex-row gap-5">
-            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-clip">
-              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate">
+            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
+              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate break-words">
                 {" "}
                 keploy record -c CMD_TO_RUN_APP
               </code>
@@ -163,8 +163,8 @@ const Installation = () => {
           </p>
 
           <div className="flex flex-row gap-5">
-            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-clip">
-              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate">
+            <div className="bg-gray-900 p-4  rounded-lg flex flex-row items-center flex-grow overflow-x-auto">
+              <code className=" text-green-300 flex-grow text-xs md:text-sm lg:text-base truncate break-words">
                 {" "}
                 keploy test -c CMD_TO_RUN_APP --delay 10
               </code>

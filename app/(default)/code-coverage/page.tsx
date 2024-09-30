@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/code-coverage";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -28,9 +31,41 @@ const heroData = {
     "Scale your automated test coverage with a zero-code platform that works out of the box🚀",
   animationSrc: testAndStubsGen,
 };
+const blocksData = [
+  {
+    title: "Manual Tests",
+    description: "Writing tests manually to achieve comprehensive code coverage is a time-consuming process and is often prone to errors, resulting in incomplete or ineffective testing.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Limited Coverage",
+    description: "Traditional code coverage methods may not cover all code paths, leading to gaps in coverage.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Realistic Scenarios",
+    description: "Test scenarios may fail to accurately reflect real-world usage, which can negatively impact the accuracy and effectiveness of code coverage in identifying potential issues.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Setup Complexity",
+    description: "Configuring and setting up code coverage tools can be complex, often requiring additional effort and specialized knowledge to ensure accurate results.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Maintenance Challenges",
+    description: "Keeping code coverage tests up to date as the codebase evolves is a continuous challenge, often demanding significant time and effort to ensure relevance and accuracy.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Slow Feedback Loop",
+    description: "The delay in receiving code coverage results can slow down the development process, hindering real-time feedback and delaying bug detection and resolution.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Code Coverage Challenges for Developers",
+  subtitle: "👋 Coverage Issues 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };

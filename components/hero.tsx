@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+"use client"
 import VideoThumb from '@/public/images/demo-thumbnail.png'
 import ModalVideo from '@/components/modal-video'
 import Image from "next/image";
@@ -35,48 +37,56 @@ export default function Hero() {
 
           {/* Section header */}
           <div className=" text-center pb-12 md:pb-16">
-            <p className="text-2xl text-accent-200 mb-4 " data-aos="zoom-y-out" data-aos-delay="150">
-              5 minutes to 90% test coverage!
+            <p   className="text-xl sm:text-2xl text-accent-200 mb-4 leading-snug sm:leading-normal"
+                 data-aos="zoom-y-out" data-aos-delay="150">
+              2 minutes to 90% test coverage!
             </p>
             <h1
-              className="lg:text-6xl text-5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 md:mt-16 lg:mt-24"
-              data-aos="zoom-y-out"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-secondary-300 font-extrabold leading-tight sm:leading-tight md:leading-tighter tracking-tighter mb-4 md:mt-4 lg:mt-5"
+                data-aos="zoom-y-out"
             >
-              {" "}
-              {"AI Generated "}
-              <span
-                className="absolute hidden md:inline font-pencil font-light pt-2 text-green-900"
-                style={{
-                  top: "0.8em",
-                  transform: "rotate(-10deg)",
-                }}
-              >
-                ^
-                <span
-                  className="absolute lg:bottom-44 bottom-28 -left-2 hidden md:inline font-pencil font-light text-3xl lg:text-5xl text-green-900"
-                  style={{
-                    transform: "rotate(-5deg)",
-                  }}
-                >
-                  API
-                </span>
-              </span> 
-              Tests
-              <br />
+              AI Generated Tests
+              {/*<span*/}
+              {/*  className="absolute hidden md:inline font-pencil font-light pt-2 text-green-900"*/}
+              {/*  style={{*/}
+              {/*    top: "0.8em",*/}
+              {/*    transform: "rotate(-10deg)",*/}
+              {/*  }}*/}
+              {/*>*/}
+              {/*  ^*/}
+              {/*  <span*/}
+              {/*    className="absolute lg:bottom-44 bottom-28 -left-2 hidden md:inline font-pencil font-light text-xl lg:text-4xl text-green-900"*/}
+              {/*    style={{*/}
+              {/*      transform: "rotate(-5deg)",*/}
+              {/*    }}*/}
+              {/*  >*/}
+              {/*    E2E*/}
+              {/*  </span>*/}
+              {/*</span> */}
+              <br/>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
                 that actually work!
               </span>
             </h1>
+
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl lg:text-center text-center text-accent-200 mb-8" data-aos="zoom-y-out" data-aos-delay="150">
+              <p
+                  className="text-lg sm:text-xl text-center text-accent-200 mb-8 leading-snug sm:leading-normal lg:text-center"
+                  data-aos="zoom-y-out"
+                  data-aos-delay="150"
+              >
                 <b>Open Source</b> Platform for converting API calls to Test Cases with Data Mocks
               </p>
-              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
+              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out"
+                   data-aos-delay="300">
                 <div>
-                  <Link className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full mb-4 sm:w-auto sm:mb-0" href="https://www.github.com/keploy/keploy">Try Open Source</Link>
+                  <Link
+                      className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full mb-4 sm:w-auto sm:mb-0"
+                      href="https://www.github.com/keploy/keploy">Try Open Source</Link>
                 </div>
                 <div>
-                  <Link className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:ml-4" href="https://forms.gle/waYcLSASm9dfE9tC9">Join Cloud Waitlist </Link>
+                  <Link className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:ml-4"
+                        href="https://forms.gle/waYcLSASm9dfE9tC9">Join Cloud Waitlist </Link>
                 </div>
               </div>
               {/* <div className="code">
@@ -90,18 +100,19 @@ export default function Hero() {
           </div>
 
           <ModalVideo
-            thumb={VideoThumb}
-            thumbWidth={768}
-            thumbHeight={432}
-            thumbAlt="Keploy Demo video"
-            video="https://www.youtube.com/embed/gvWvpqWM48s"
-            videoWidth={768}
-            videoHeight={432} />
+              thumb={VideoThumb}
+              thumbWidth={768}
+              thumbHeight={432}
+              thumbAlt="Keploy Demo video"
+              video="https://www.youtube.com/embed/gvWvpqWM48s"
+              videoWidth={768}
+              videoHeight={432}/>
         </div>
 
       </div>
       <TrustedBy/>
       {/*Trusted by users section*/}
+     
 
     </section>
   )

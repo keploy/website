@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/continuous-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -28,9 +31,43 @@ const heroData = {
     "Make testing in CI hassle-free with Keploy's seamless CI integration!🚀",
   animationSrc: testAndStubsGen,
 };
+
+const blocksData = [
+  {
+    title: "Monitoring and Debugging",
+    description: " Identifying and resolving issues from failed tests can be challenging, often consuming significant time and hampering overall productivity by delaying the development cycle.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Limited Scalability",
+    description: "As codebases grow and testing demands increase, scaling CI pipelines requires additional resources and infrastructure, making it difficult to maintain efficiency without significant investment.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Maintaining Test Stability",
+    description: "Frequent code changes and updates can destabilize tests, making it difficult to ensure reliable results and leading to potential inaccuracies in the CI pipeline.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Complex Configuration",
+    description: "Setting up and configuring CI pipelines, especially for large or complex projects, can be intricate and time-consuming, requiring careful planning and execution.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Testing Bottlenecks",
+    description: "When tests take too long to execute, bottlenecks occur, delaying feedback and slowing down the entire development process, impacting overall project timelines.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "CI Integration",
+    description: "Seamlessly integrating various tools, environments, and dependencies within CI pipelines is often challenging and prone to errors, complicating the development workflow and reducing efficiency.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Tackling Continuous Testing",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };

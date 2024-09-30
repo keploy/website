@@ -9,7 +9,10 @@ import SocialLinks from "@/components/pillar-page/community";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import { blocksData } from "@/components/utils/common";
+import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
+  CollaborationIcon, StreamlineBrowserCheck, PsPiggyBankCoins,
+  MaterialSymbolsLightEarlyOnOutline
+} from "@/components/utils/common";
 import { featuresData,faqQuestions } from "@/components/utils/regression-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
@@ -30,9 +33,42 @@ const pageMetadata: Metadata = {
   keywords: 'regression testing software, regression testing in software testing,automated regression testing',
 };
 
+const blocksData = [
+  {
+    title: "Slow Test Execution",
+    description: "Regression testing involves running a large suite of tests, which can be extremely time-consuming, often causing delays in the release cycle and slowing down the overall development process.",
+    SvgComponent: MdiLightningBolt,
+  },
+  {
+    title: "Manual Test Maintenance",
+    description: "As software evolves, manually updating and maintaining regression test cases becomes labor-intensive and error-prone, increasing the risk of outdated or inaccurate tests.",
+    SvgComponent: FluentPuzzleCubePiece20Filled,
+  },
+  {
+    title: "Difficulty in Prioritization",
+    description: " Amidst frequent code changes, determining which tests to prioritize for regression testing is challenging, often leading to inefficient testing and potential oversight of critical areas.",
+    SvgComponent: CollaborationIcon,
+  },
+  {
+    title: "Resource Intensive",
+    description: "Regression testing demands significant computational resources and robust infrastructure, which can be costly to maintain and scale, especially for large and complex applications.",
+    SvgComponent: StreamlineBrowserCheck,
+  },
+  {
+    title: "Test Data Management:",
+    description: "Managing consistent and relevant test data across different environments and scenarios is complex and prone to errors, impacting the reliability and effectiveness of regression tests.",
+    SvgComponent: PsPiggyBankCoins,
+  },
+  {
+    title: "Low Test Coverage",
+    description: "Despite extensive efforts, regression testing may still miss critical paths and edge cases, leaving subtle regressions undetected and potentially causing issues in the software.",
+    SvgComponent: MaterialSymbolsLightEarlyOnOutline,
+  },
+];
+
 const ProblemBlocksData = {
-  title: "Smart generation - Enhanced development",
-  subtitle: "👋 Say Hi to 👋",
+  title: "Navigating Regression Testing",
+  subtitle: "👋 Challenges 👋",
   btnText: "Join Waitlist",
   blocksData: blocksData,
 };

@@ -1,6 +1,9 @@
-import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import Marquee from "@/components/magicui/marquee";
+import Link from "next/link";
+import type { StaticImageData } from "next/image";
 import ApacheClient from "@/public/images/frameworks/apacheclient.png";
 import Chi from "@/public/images/frameworks/chi.png";
 import Dynamo from "@/public/images/frameworks/dynamo.png";
@@ -25,6 +28,49 @@ import SpringBoot from "@/public/images/frameworks/springboot.png";
 import Sql from "@/public/images/frameworks/sql.png";
 import WebGo from "@/public/images/frameworks/webgo.png";
 
+const frameworksGroup1 = [
+  ApacheClient,
+  Chi,
+  Dynamo,
+  Echo,
+  Elastic,
+  Express,
+  Gin,
+  GoogleMaps,
+  Gorilla,
+  Grpc,
+  H2db,
+];
+
+const frameworksGroup2 = [
+  MariaDB,
+  Mongo,
+  NetHttp,
+  Octokit,
+  OkHttp,
+  OracleDB,
+  Postgres,
+  Redis,
+  S3,
+  SpringBoot,
+  Sql,
+  WebGo,
+];
+
+const FrameworkCard = ({ src }: { src: StaticImageData }) => {
+  return (
+    <span className="flex-none mx-4 cursor-pointer">
+      <Image
+        className="relative transition-transform hover:scale-110"
+        src={src}
+        width={115}
+        height={110}
+        alt="Framework Logo"
+      />
+    </span>
+  );
+};
+
 export default function Language() {
   return (
     <section className="relative">
@@ -41,17 +87,18 @@ export default function Language() {
         >
           <defs>
             <linearGradient
+              id="illustration-03"
               x1="50%"
               y1="0%"
               x2="50%"
               y2="100%"
-              id="illustration-03"
             >
-              <stop stopColor="#FFF" offset="0%" />
-              <stop stopColor="#EAEAEA" offset="77.402%" />
-              <stop stopColor="#DFDFDF" offset="100%" />
+              <stop offset="0%" stopColor="#FFF" stopOpacity="1" />
+              <stop offset="50%" stopColor="#EAEAEA" stopOpacity="1" />
+              <stop offset="100%" stopColor="#DFDFDF" stopOpacity="1" />
             </linearGradient>
           </defs>
+
           <g
             transform="translate(0 0)"
             fill="url(#illustration-03)"
@@ -95,427 +142,19 @@ export default function Language() {
               </span>
             </h2>
           </div>
-          <div className="max-w-6xl px-4 mx-auto overflow-hidden sm:px-6  [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)] ">
-            <div className="relative inline-flex flex-nowrap no-scrollbar ">
-              <div className="flex items-center  py-12 animate-marquee whitespace-nowrap w-max">
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={ApacheClient}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Chi}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Dynamo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Echo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Elastic}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Express}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Gin}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={GoogleMaps}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Gorilla}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Grpc}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={H2db}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={MariaDB}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Mongo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={NetHttp}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Octokit}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={OkHttp}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={OracleDB}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Postgres}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Redis}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={S3}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={SpringBoot}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Sql}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={WebGo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-              </div>
-              <div className="flex items-center py-12 animate-marquee whitespace-nowrap w-max">
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={ApacheClient}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Chi}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Dynamo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Echo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Elastic}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Express}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Gin}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={GoogleMaps}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Gorilla}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Grpc}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4"> 
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={H2db}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={MariaDB}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Mongo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={NetHttp}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Octokit}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={OkHttp}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={OracleDB}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Postgres}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Redis}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={S3}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={SpringBoot}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={Sql}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-                <span className="flex-none mx-4">
-                  <Image
-                    className="relative transition-transform hover:scale-110 "
-                    src={WebGo}
-                    width={115}
-                    height={110}
-                    alt="Nutanix Testimonial"
-                  />
-                </span>
-              </div>
-            </div>
+          <div className="relative max-w-6xl px-4 mx-auto overflow-hidden sm:px-6 mt-10 [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {frameworksGroup1.map((framework, index) => (
+                <FrameworkCard key={index} src={framework} />
+              ))}
+            </Marquee>
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {frameworksGroup2.map((framework, index) => (
+                <FrameworkCard key={index} src={framework} />
+              ))}
+            </Marquee>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-white dark:from-background"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-white dark:from-background"></div>
           </div>
 
           {/* Section header */}
@@ -526,7 +165,10 @@ export default function Language() {
           {/* Items */}
           <div className="grid max-w-sm grid-cols-6 gap-4 mx-auto md:max-w-4xl md:grid-cols-6 place-content-center">
             {/* Item */}
-            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+            <Link
+              href="https://keploy.io/docs/quickstart/pet-clinic/"
+              className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
+            >
               <svg
                 className="max-w-full"
                 xmlns="http://www.w3.org/2000/svg"
@@ -547,10 +189,13 @@ export default function Language() {
                   fill="#4e7896"
                 />
               </svg>
-            </div>
+            </Link>
 
             {/* Item */}
-            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+            <Link
+              href="https://keploy.io/docs/quickstart/samples-nodejs/"
+              className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="max-w-full"
@@ -574,10 +219,13 @@ export default function Language() {
                   />
                 </g>
               </svg>
-            </div>
+            </Link>
 
             {/* Item */}
-            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+            <Link
+              href="https://keploy.io/docs/quickstart/samples-gin/"
+              className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
+            >
               <svg
                 className="max-w-full "
                 xmlns="http://www.w3.org/2000/svg"
@@ -592,10 +240,13 @@ export default function Language() {
                   d="M40.2,101.1c-.4,0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5,1.1-.5l35.7,0c.4,0,.5,.3,.3,.6l-1.7,2.6c-.2,.3-.7,.6-1,.6L40.2,101.1z M25.1,110.3c-.4,0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5,1.1-.5l45.6,0c.4,0,.6,.3,.5,.6l-.8,2.4c-.1,.4-.5,.6-.9,.6L25.1,110.3z M49.3,119.5c-.4,0-.5-.3-.3-.6l1.4-2.5c.2-.3,.6-.6,1-.6l20,0c.4,0,.6,.3,.6,.7l-.2,2.4c0,.4-.4,.7-.7,.7L49.3,119.5z M153.1,99.3c-6.3,1.6-10.6,2.8-16.8,4.4c-1.5,.4-1.6,.5-2.9-1c-1.5-1.7-2.6-2.8-4.7-3.8c-6.3-3.1-12.4-2.2-18.1,1.5c-6.8,4.4-10.3,10.9-10.2,19c.1,8,5.6,14.6,13.5,15.7c6.8,.9,12.5-1.5,17-6.6c.9-1.1,1.7-2.3,2.7-3.7c-3.6,0-8.1,0-19.3,0c-2.1,0-2.6-1.3-1.9-3c1.3-3.1,3.7-8.3,5.1-10.9c.3-.6,1-1.6,2.5-1.6c5.1,0,23.9,0,36.4,0c-.2,2.7-.2,5.4-.6,8.1c-1.1,7.2-3.8,13.8-8.2,19.6c-7.2,9.5-16.6,15.4-28.5,17c-9.8,1.3-18.9-.6-26.9-6.6c-7.4-5.6-11.6-13-12.7-22.2c-1.3-10.9,1.9-20.7,8.5-29.3c7.1-9.3,16.5-15.2,28-17.3c9.4-1.7,18.4-.6,26.5,4.9c5.3,3.5,9.1,8.3,11.6,14.1c.6,.9.2,1.4-1,1.7zM186.2,154.6c-9.1-.2-17.4-2.8-24.4-8.8c-5.9-5.1-9.6-11.6-10.8-19.3c-1.8-11.3,1.3-21.3,8.1-30.2c7.3-9.6,16.1-14.6,28-16.7c10.2-1.8,19.8-.8,28.5,5.1c7.9,5.4,12.8,12.7,14.1,22.3c1.7,13.5-2.2,24.5-11.5,33.9c-6.6,6.7-14.7,10.9-24,12.8c-2.7,.5-5.4,.6-8,.9zm23.8-40.4c-.1-1.3-.1-2.3-.3-3.3c-1.8-9.9-10.9-15.5-20.4-13.3c-9.3,2.1-15.3,8-17.5,17.4c-1.8,7.8,2,15.7,9.2,18.9c5.5,2.4,11,2.1,16.3-.6c7.9-4.1,12.2-10.5,12.7-19.1z"
                 />
               </svg>
-            </div>
+            </Link>
 
             {/* Item */}
-            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+            <Link
+              href="https://keploy.io/docs/quickstart/samples-django/"
+              className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="200"
@@ -659,8 +310,13 @@ export default function Language() {
                   fill="url(#c)"
                 />
               </svg>
-            </div>
-            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+            </Link>
+
+            {/* Item */}
+            <Link
+              href="https://keploy.io/docs/quickstart/samples-csharp/"
+              className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
+            >
               <Image
                 src="/images/frameworks/csharp.svg"
                 alt="C# Logo"
@@ -668,16 +324,21 @@ export default function Language() {
                 height={80}
                 className="mb-2"
               />
-            </div>
-            <div className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto">
+            </Link>
+
+            {/* Item */}
+            <Link
+              href="https://keploy.io/docs/quickstart/samples-rust/"
+              className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
+            >
               <Image
                 src="/images/frameworks/rust.svg"
-                alt="C# Logo"
-                width={150}
-                height={80}
-                className="mb-5"
+                alt="Rust Logo"
+                width="90"
+                height="35"
+                className="mb-2"
               />
-            </div>
+            </Link>
           </div>
           {/* Testimonials */}
           {/* <div className="max-w-3xl mx-auto mt-20 " data-aos="zoom-y-out">
