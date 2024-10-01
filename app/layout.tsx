@@ -126,40 +126,13 @@ export default function RootLayout({ children, metadata , HeaderDisplayed=true }
     `,
   }}
 />
-<script
+<script 
     dangerouslySetInnerHTML={{
-        __html: `
-            !function () {
-                var reb2b = window.reb2b = window.reb2b || [];
-                if (reb2b.invoked) return;
-                reb2b.invoked = true;
-                reb2b.methods = ["identify", "collect"];
-                reb2b.factory = function (method) {
-                    return function () {
-                        var args = Array.prototype.slice.call(arguments);
-                        args.unshift(method);
-                        reb2b.push(args);
-                        return reb2b;
-                    };
-                };
-                for (var i = 0; i < reb2b.methods.length; i++) {
-                    var key = reb2b.methods[i];
-                    reb2b[key] = reb2b.factory(key);
-                }
-                reb2b.load = function (key) {
-                    var script = document.createElement("script");
-                    script.type = "text/javascript";
-                    script.async = true;
-                    script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/reb2b.js.gz";
-                    var first = document.getElementsByTagName("script")[0];
-                    first.parentNode.insertBefore(script, first);
-                };
-                reb2b.SNIPPET_VERSION = "1.0.1";
-                reb2b.load("LNKLDHM9D0OJ");
-            }();
-        `,
-    }}
-/>
+    __html: `
+        !function(e,r){try{if(e.vector)return void console.log("Vector snippet included more than once.");var t={};t.q=t.q||[];for(var o=["load","identify","on"],n=function(e){return function(){var r=Array.prototype.slice.call(arguments);t.q.push([e,r])}},c=0;c<o.length;c++){var a=o[c];t[a]=n(a)}if(e.vector=t,!t.loaded){var i=r.createElement("script");i.type="text/javascript",i.async=!0,i.src="https://cdn.vector.co/pixel.js";var l=r.getElementsByTagName("script")[0];l.parentNode.insertBefore(i,l),t.loaded=!0}}catch(e){console.error("Error loading Vector:",e)}}(window,document);
+        vector.load("95211152-727d-4d43-9512-592ca65a1401");
+    `,
+}} />
         </head>
         <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
         <div className="flex flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
