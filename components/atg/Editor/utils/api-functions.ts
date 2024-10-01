@@ -510,3 +510,34 @@ export const makeKeployTestDir = async ({
     console.error("Error during makeKeployTestDir operation:", error);
   }
 };
+
+export const removeKeployTestDir = async (rootDir: Directory): Promise<Directory> => {
+  console.log("Starting removeKeployTestDir operation");
+
+  try {
+    // Find the existing Keploy directory
+    let keployDir = rootDir.dirs.find((dir) => dir.name === "Keploy");
+
+    if (keployDir) {
+      // Remove the Keploy directory
+      console.log("Keploy directory found. Removing it.");
+
+      const updatedDirs = rootDir.dirs.filter((dir) => dir.name !== "Keploy");
+
+      // Return the updated root directory
+      const updatedRootDir = {
+        ...rootDir,
+        dirs: updatedDirs,
+      };
+      
+      console.log("Keploy directory removed. Updated directory structure:", updatedRootDir);
+      return updatedRootDir;
+    } else {
+      console.log("Keploy directory not found. No action taken.");
+      return rootDir; // No change if Keploy directory doesn't exist
+    }
+  } catch (error) {
+    console.error("Error during removeKeployTestDir operation:", error);
+    throw error;
+  }
+};

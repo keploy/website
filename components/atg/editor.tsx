@@ -13,6 +13,7 @@ import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
 import useFullScreen from "./fullscreen"; // Import the hook
 import { fetchDirectoryStructure } from "./Editor/utils/file-manager";
+import { removeKeployTestDir } from "./Editor/utils/api-functions";
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -213,7 +214,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     }
   };
 
-  const resetEverything = () => {
+  const resetEverything = async () => {
     setShowTerminal(false);
     setState(-1);
     setSidebarState({
@@ -226,6 +227,8 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     setStepsForRecording({ schemaValidation: false, GenerateTest: false });
     setStepsForTests({ Replaying_tests: false, generate_report: false });
     setStepsForDedup({ Dedup: false, Duplicates_removed: false });
+    const updatedRootDir = await removeKeployTestDir(rootDir);
+    setRootDir(updatedRootDir); // Update the state with the modified directory structure
   };
 
   const ShowSideContent = () => {
