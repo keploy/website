@@ -86,7 +86,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <Link className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:ml-4"
-                        href="https://forms.gle/waYcLSASm9dfE9tC9">Join Cloud Waitlist </Link>
+                        href="https://app.keploy.io/signin">Sign Up Now </Link>
                 </div>
               </div>
               {/* <div className="code">
