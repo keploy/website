@@ -9,6 +9,7 @@ import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
 import APItext from "@/public/images/apiText.png"
+import { NeonGradientCard } from './magicui/NeonGradientCard';
 export default function Hero() {
   return (
     <section className="relative">
@@ -79,15 +80,18 @@ export default function Hero() {
               </p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out"
                    data-aos-delay="300">
-                <div>
-                  <Link
-                      className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full mb-4 sm:w-auto sm:mb-0"
-                      href="https://www.github.com/keploy/keploy">Try Open Source</Link>
-                </div>
-                <div>
-                  <Link className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:ml-4"
-                        href="https://forms.gle/waYcLSASm9dfE9tC9">Join Cloud Waitlist </Link>
-                </div>
+                <a href="https://www.github.com/keploy/keploy" className=' w-[200px] h-[47px]'>
+                  <NeonGradientCard borderSize={3}
+                      className="text-secondary-300  bg-primary-300 hover:text-gradient-500 mb-4 sm:w-auto sm:mb-0"
+                      >Try Open Source
+                      </NeonGradientCard>
+                </a>
+                <a href="https://forms.gle/waYcLSASm9dfE9tC9" className='w-[200px] h-[47px]'>
+                  <NeonGradientCard borderSize={3}
+                      className="text-white bg-green-900 hover:text-emerald-200 sm:w-auto sm:ml-6"
+                      >Join Cloud Waitlist 
+                      </NeonGradientCard>
+                </a>
               </div>
               {/* <div className="code">
                 <pre>

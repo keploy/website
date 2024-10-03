@@ -9,6 +9,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import { IconButton as MuiButton } from "@mui/material";
 import { red } from "@mui/material/colors";
 import Link from "next/link";
+import { NeonGradientCard } from "./magicui/NeonGradientCard";
 
 const Installation = () => {
   const [checkedIndex, setCheckedIndex] = useState<number | null>(null);
@@ -180,13 +181,13 @@ const Installation = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-center">
-          <Link
-            className="btn text-secondary-300 text-center bg-primary-300 text-xs md:text-sm lg:text-base hover:font-semibold w-full mb-4 sm:w-auto sm:mb-0"
-            href="https://www.github.com/keploy/keploy"
-          >
-            Explore on Github
-          </Link>
+        <div className="flex justify-center items-center">
+        <a href="https://www.github.com/keploy/keploy" className="h-[50px] justify-center">
+          <NeonGradientCard borderSize={3}
+              className=" text-secondary-300 text-center bg-primary-300 w-[200px] md:text-sm lg:text-base hover:font-semibold mb-4  sm:mb-0"
+            >Explore on Github
+          </NeonGradientCard>
+        </a>
         </div>
         <div className=" max-w-sm">
           <Snackbar
