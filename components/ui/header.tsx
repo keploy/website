@@ -14,6 +14,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import Product from "../nav/productSection";
 import Docs from "../nav/docsSection";
 import Solutions from "../nav/solutionsSection";
+import Resources from "../nav/resourcesSection";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -74,7 +75,11 @@ export default function Header() {
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end items-center">
-              <li>
+              <li className="px-5">
+                {" "}
+                <Product />
+              </li>
+              <li className="px-5">
                 {" "}
                 <Solutions />
               </li>
@@ -84,7 +89,7 @@ export default function Header() {
               </li>
               <li className="px-5">
                 {" "}
-                <Product />
+                <Resources />
               </li>
             </ul>
           </nav>
