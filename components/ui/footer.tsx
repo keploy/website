@@ -140,7 +140,7 @@ export default function Footer() {
               <Link target="_blank" href="https://twitter.com/Keployio" className="flex justify-center items-center text-secondary-300 hover:text-primary-300 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out" aria-label="Twitter">
                 <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >
                   <svg xmlns="http://www.w3.org/2000/svg" width="27px" height="22px" viewBox="0 -16 20 40" >
-                    <path d="M 20.476562 0.00390625 L 24.464844 0.00390625 L 15.753906 10.167969 L 26 23.996094 L 17.976562 23.996094 L 11.691406 15.609375 L 4.503906 23.996094 L 0.511719 23.996094 L 9.828125 13.125 L 0 0.00390625 L 8.226562 0.00390625 L 13.90625 7.671875 Z M 19.078125 21.558594 L 21.285156 21.558594 L 7.027344 2.3125 L 4.65625 2.3125 Z M 19.078125 21.558594 " />                  
+                    <path d="M 20.476562 0.00390625 L 24.464844 0.00390625 L 15.753906 10.167969 L 26 23.996094 L 17.976562 23.996094 L 11.691406 15.609375 L 4.503906 23.996094 L 0.511719 23.996094 L 9.828125 13.125 L 0 0.00390625 L 8.226562 0.00390625 L 13.90625 7.671875 Z M 19.078125 21.558594 L 21.285156 21.558594 L 7.027344 2.3125 L 4.65625 2.3125 Z M 19.078125 21.558594 " />
                   </svg>
                 </svg>
               </Link>
@@ -162,7 +162,9 @@ export default function Footer() {
           </ul>
 
           {/* Copyrights note */}
-          <div className="text-sm text-neutral-300 mr-4">&copy; Keploy Inc 2023. All rights reserved.</div>
+          <div className="text-sm text-neutral-300 mr-4">
+            &copy; Keploy Inc {new Date().getFullYear()}. All rights reserved.
+          </div>
 
         </div>
 
