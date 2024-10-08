@@ -39,20 +39,20 @@ export default function Product() {
         <div className="flex">
           <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
             Products
-            <span className="absolute text-[#666666] text-[3px] left-[.45rem] bottom-[.15rem] w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+            <span className="absolute text-gray-600 text-[3px] left-[.45rem] bottom-[.15rem] w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
           </div>
         </div>
         <div onClick={toggleDropdown} className="pt-4 -pl-6">
           {openDropdown ? (
-            <UpIcon className="text-[#666666]" />
+            <UpIcon className="text-gray-600" />
           ) : (
-            <DownIcon className="text-[#666666]" />
+            <DownIcon className="text-gray-600" />
           )}
         </div>
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-[#F5F5F5] pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[320px] cursor-auto rounded-2xl">
+        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[320px] cursor-auto rounded-2xl">
           <div>
             <div className="flex items-center justify-between">
               <div className="pt-[39px] pl-[19px] flex justify-between items-stretch w-full">

@@ -13,6 +13,7 @@ import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
 import Product from "../nav/productSection";
 import Docs from "../nav/docsSection";
+import Solutions from "../nav/solutionsSection";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -73,7 +74,10 @@ export default function Header() {
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end items-center">
-
+              <li>
+                {" "}
+                <Solutions />
+              </li>
               <li className="px-5">
                 {" "}
                 <Docs />
