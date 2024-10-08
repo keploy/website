@@ -73,7 +73,8 @@ export default function Header() {
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end items-center">
-              <li className="px-5 cursor-pointer">
+
+              <li className="px-5">
                 {" "}
                 <Docs />
               </li>
