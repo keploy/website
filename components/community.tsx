@@ -7,6 +7,7 @@ import TwitterSvg from "@/public/images/social/twitter.svg";
 import SlackSvg from "@/public/images/social/slack.svg";
 import YoutubeSvg from "@/public/images/social/youtube.svg";
 import LinkedinSvg from "@/public/images/social/linkedin.svg";
+import { OrbitingCircles } from "./magicui/orbitcircle";
 import Link from "next/link";
 
 type cardSurrondStyle = {
@@ -27,6 +28,9 @@ type CardData = {
   svgIcon: string;
   platformName: string;
   description: string;
+  radius: number;
+  duration: number;
+  delay: number;
 };
 
 const createCircleStyles = (
@@ -59,7 +63,7 @@ function SocialLinkCard({
       rel="noopener noreferrer"
       style={showExtraStyle ? { ...style } : {}}
       className={`${
-        showExtraStyle ? "circle" : "w-3/4 mx-auto mb-5"
+        showExtraStyle ? "circle" : "w-[280px] mx-auto mb-5"
       } z-10 bg-white shadow-md rounded-lg border border-accent-500 p-4 hover:shadow-xl flex items-center justify-start group transition duration-300`}
     >
       <div className="w-12 h-12 text-center sm:mr-2">
@@ -83,30 +87,45 @@ export default function Community() {
       svgIcon: TwitterSvg,
       platformName: "Twitter",
       description: "Let's talk about regression testing!",
+      radius: 300,
+      duration: 20,
+      delay: 1,
     },
     {
       link: "https://github.com/keploy/keploy",
       svgIcon: GithubSvg,
       platformName: "Github",
       description: "Contribute code to Keploy or report a bug",
+      radius: 300,
+      duration: 20,
+      delay: 5,
     },
     {
       link: "https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A",
       svgIcon: SlackSvg,
       platformName: "Slack",
       description: "Connect and chat with other Keploy users",
+      radius: 300,
+      duration: 20,
+      delay: 9,
     },
     {
       link: "https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg",
       svgIcon: YoutubeSvg,
       platformName: "Youtube",
       description: "Learn with Keploy team and community videos",
+      radius: 300,
+      duration: 20,
+      delay: 13,
     },
     {
       link: "https://www.linkedin.com/company/74471957",
       svgIcon: LinkedinSvg,
       platformName: "Linkedin",
       description: "Follow us and connect with other Keploy engineers!",
+      radius: 300,
+      duration: 20,
+      delay: 17,
     },
   ];
 
@@ -139,7 +158,7 @@ export default function Community() {
   ));
 
   return (
-    <section className="relative py-8 ">
+    <section className="relative py-8">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="h2 text-secondary-300">
           🐰 Join the Keploy community ✨
@@ -147,13 +166,28 @@ export default function Community() {
       </div>
 
       <div className="mx-auto w-fit">
-        <div className="ciclegraph hidden md:block relative w-[600px] h-[600px] mx-auto mt-24 mb-24">
-          {cardsSurround}
-          <Image
-            src={CommunityBunny}
-            alt="Image"
-            className="absolute -translate-x-1/2 -translate-y-1/2 bg-white top-1/2 left-1/2"
-          />
+        <div className="relative hidden md:block m-auto h-[600px] w-[600px] mt-24 mb-24 items-center justify-center bg-background">
+          <div>
+            <Image src={CommunityBunny} alt="Image" className="absolute pl-5 -translate-x-1/2 translate-y-1/5 left-1/2 bg-background max-w-2xl" />
+          </div>
+          <div className="flex justify-center items-center">
+            {cardsData.map((card, index) => (
+              <OrbitingCircles
+                key={index}
+                className="size-[60px] border-none bg-transparent top-72 z-10"
+                duration={card.duration}
+                delay={card.delay}
+                radius={card.radius}
+              >
+                <SocialLinkCard
+                  link={card.link}
+                  svgIcon={card.svgIcon}
+                  platformName={card.platformName}
+                  description={card.description}
+                />
+              </OrbitingCircles>
+            ))}
+          </div>
         </div>
         <div className="md:hidden">
           <Image src={CommunityBunny} alt="Image" className="w-3/4 mx-auto" />
