@@ -12,7 +12,7 @@ import ApiCallRecording from "@/public/images/navBarIcons/ApiCallRecording";
 import AutomaticMocking from "@/public/images/navBarIcons/AutomaticMocking";
 import CICD from "@/public/images/navBarIcons/CICD";
 import MultiPurposeMocks from "@/public/images/navBarIcons/MultiPurposeMocks";
-import Image from "next/image";
+import EnterpriseSolutionImg from "@/public/images/navBarIcons/EnterpriseSolutionImg";
 
 export default function Product() {
   const [openDropdown, setShowDropdown] = useState(false);
@@ -207,12 +207,12 @@ export default function Product() {
                             <br /> API calls of all possible permutations
                           </p>
 
-                          <Image
+                          {/* <Image
                             src="/images/navBarIcons/EnterpriseSolutionImg.png"
                             alt="Enterprise Solution image"
                             height={556}
                             width={260}
-                          />
+                          /> */}
 
                           <button className="cursor-pointer bg-primary-200 w-[50%] rounded-md font-bold shadow-lg hover:shadow-none p-1">
                             Talk to us

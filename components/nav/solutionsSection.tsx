@@ -100,6 +100,7 @@ export default function Solutions() {
                   </div>
                 </div>
                 <div className="p-5">
+                  <div className="pb-5"></div>
                   <div className="p-5">
                     <div>
                       <ul className="flex flex-col gap-5">
