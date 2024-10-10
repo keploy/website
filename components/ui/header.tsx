@@ -8,9 +8,13 @@ import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
+import Abc from "../nav/abc";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { NeonButton } from "../magicui/neonGradient";
+import Product from "../nav/productSection";
+import Docs from "../nav/docsSection";
+import Solutions from "../nav/solutionsSection";
+import Resources from "../nav/resourcesSection";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -70,41 +74,23 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
-            <ul className="flex grow justify-end flex items-center">
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/docs"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Docs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Tech Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/community"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Articles
-                </Link>
-              </li>
-              <div className="px-5">
+            <ul className="flex grow justify-end items-center">
+              <li className="px-5">
                 {" "}
-                <NavItemWithSmallDropdown
-                  heading="Resources"
-                  dropdownData={PillarPages}
-                />
-              </div>
+                <Product />
+              </li>
+              <li className="px-5">
+                {" "}
+                <Solutions />
+              </li>
+              <li className="px-5">
+                {" "}
+                <Docs />
+              </li>
+              <li className="px-5">
+                {" "}
+                <Resources />
+              </li>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
@@ -139,20 +125,17 @@ export default function Header() {
                 <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
               </Link>
             </div>
-          <div className="ml-3">
-          <NeonButton borderSize={4} borderRadius={8} >
+            
             <Link
               href="https://forms.gle/waYcLSASm9dfE9tC9"
               target="_blank"
-              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
+              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 ml-3"
             >
               <span>Join Waitlist</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
               {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
               {/*</svg>*/}
             </Link>
-            </NeonButton>
-          </div>
           </div>
 
           <MobileMenu starsCount={starsCount} />
