@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useRef, Fragment } from 'react'
+import { useState , useEffect, useRef, Fragment } from 'react'
 import type { StaticImageData } from 'next/image'
 import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
+import { useTheme } from "next-themes";
+import Particles from './Particles'
 
 interface ModalVideoProps {
   thumb: StaticImageData
@@ -28,13 +30,19 @@ export default function ModalVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
+ 
+  useEffect(() => {
+    setColor(theme === "dark" ? "#ffffff" : "#BE2C1B");
+  }, [theme]);
 
   return (
-    <div>
+    <div className='relative'>
 
       {/* Video thumbnail */}
       <div>
-        <div className="relative flex justify-center mb-8" data-aos="zoom-y-out" data-aos-delay="450">
+        <div className="relative flex justify-center z-10 mb-8" data-aos="zoom-y-out" data-aos-delay="450">
           <div className="flex flex-col justify-center">
             <Image className='mx-auto rounded-lg h-auto sm:w-auto md:w-9/12  ' src={thumb} width={thumbWidth} height={thumbHeight} alt={thumbAlt} />
             <svg
@@ -81,7 +89,14 @@ export default function ModalVideo({
             </svg>
             <span className="ml-3 hover:text-secondary-300">Watch demo (1 min)</span>
           </button>
-        </div>
+        </div> 
+        <Particles
+              className="absolute transition ease-out inset-0 z-0"
+              quantity={150}
+              ease={80}
+              color={color}
+              refresh
+              />
       </div>
       {/* End: Video thumbnail */}
 
@@ -132,7 +147,7 @@ export default function ModalVideo({
           {/*End: Modal dialog*/}
         </Dialog>
       </Transition>
-
+      
     </div>
   )
 }

@@ -1,14 +1,20 @@
+import card_1_thumbnailImage from "@/public/images/conf/webstories/card_1-thumbnail.png";
+import card_2_thumbnailImage from "@/public/images/conf/webstories/card_2-thumbnail.png";
+import card_3_thumbnailImage from "@/public/images/conf/webstories/card_3-thumbnail.png";
+import card_4_thumbnailImage from "@/public/images/conf/webstories/card_4-thumbnail.png";
+import card_5_thumbnailImage from "@/public/images/conf/webstories/card_5-thumbnail.png";
+import card_6_thumbnailImage from "@/public/images/conf/webstories/card_6-thumbnail.png";
+import card_7_thumbnailImage from "@/public/images/conf/webstories/card_7-thumbnail.png";
+
 export const DataFiles = [
   {
     // card-1
-    CardImage:
-      "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_1-thumbnail.png",
+    CardImage: card_1_thumbnailImage,
     CardDescription: "Balancing unit and e2e test cases !",
     Slug: "balancing-unit-and-e2e-test-cases",
     Story: [
       {
-        imageUrl:
-          "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_1-thumbnail.png",
+        imageUrl: card_1_thumbnailImage,
         Heading: "Importance of Testing",
         image: true,
       },
@@ -74,14 +80,12 @@ export const DataFiles = [
   },
   {
     // card-2
-    CardImage:
-      "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_2-thumbnail.png",
+    CardImage: card_2_thumbnailImage,
     CardDescription: "Best Guide for Performance Testing !",
     Slug: "best-guide-for-performance-testing",
     Story: [
       {
-        imageUrl:
-          "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_2-thumbnail.png",
+        imageUrl: card_2_thumbnailImage,
         Heading: "A Must for Modern Software",
         image: true,
       },
@@ -147,14 +151,12 @@ export const DataFiles = [
   },
   {
     // card-3
-    CardImage:
-      "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_3-thumbnail.png",
+    CardImage: card_3_thumbnailImage,
     CardDescription: "Building Trust with Code Integrity !",
     Slug: "building-trust-with-code-integrity",
     Story: [
       {
-        imageUrl:
-          "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_3-thumbnail.png",
+        imageUrl: card_3_thumbnailImage,
         Heading: "The Gatekeeper of Trust",
         image: true,
       },
@@ -227,14 +229,12 @@ export const DataFiles = [
   },
   {
     // card-4
-    CardImage:
-      "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_4-thumbnail.png",
+    CardImage: card_4_thumbnailImage,
     CardDescription: "Strategies for handling edge cases !",
     Slug: "stratergies-for-handling-edge-cases",
     Story: [
       {
-        imageUrl:
-          "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_4-thumbnail.png",
+        imageUrl: card_4_thumbnailImage,
         Heading: "The Achilles' Heel of E2E Tests",
         image: true,
       },
@@ -314,14 +314,12 @@ export const DataFiles = [
   },
   {
     // card-5
-    CardImage:
-      "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_5-thumbnail.png",
+    CardImage: card_5_thumbnailImage,
     CardDescription: "Which API architecture to use?",
     Slug: "which-api-architecture-to-use",
     Story: [
       {
-        imageUrl:
-          "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_5-thumbnail.png",
+        imageUrl: card_5_thumbnailImage,
         Heading: "A World of Data Exchange",
         image: true,
       },
@@ -388,13 +386,13 @@ export const DataFiles = [
   {
     // card-6
     CardImage:
-      "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_6-thumbnail.png",
+      card_6_thumbnailImage,
     CardDescription: "Understanding Continuous Testing",
     Slug: "understanding-continuous-testing",
     Story: [
       {
         imageUrl:
-          "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_6-thumbnail.png",
+          card_6_thumbnailImage,
         Heading: "Understanding Continuous Testing",
         image: true,
       },
@@ -447,13 +445,13 @@ export const DataFiles = [
   {
     // card-7
     CardImage:
-      "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_7-thumbnail.png",
+      card_7_thumbnailImage,
     CardDescription: "The Misconception of 100% Coverage",
     Slug: "the-misconception-of-100-coverage",
     Story: [
       {
         imageUrl:
-          "https://s3.ap-south-1.amazonaws.com/web-stories.keploy.io/images/card_7-thumbnail.png",
+          card_7_thumbnailImage,
         Heading: "The Misconception of 100% Coverage",
         image: true,
       },
