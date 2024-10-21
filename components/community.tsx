@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import "./community.css";
 import Image from "next/image";
