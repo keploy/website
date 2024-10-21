@@ -13,7 +13,7 @@ export default function Hero() {
             <stop offset="0%" stopColor="#015533"/>
             <stop offset="100%" stopColor="#191919"/>
           </radialGradient>
-            <filter id="ffflux-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <filter id="ffflux-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feTurbulence type="fractalNoise" baseFrequency="0.007 0.006" numOctaves="2" seed="307" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"/>
             <feGaussianBlur stdDeviation="74 77" x="0%" y="0%" width="100%" height="100%" in="turbulence" edgeMode="duplicate" result="blur"/>
             <feBlend mode="hard-light" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" in2="blur" result="blend"/>
@@ -81,7 +81,7 @@ export default function Hero() {
                   </Link>
                   <span className="text-lg font-semibold italic px-1.5"> at </span>
                   <Link className="text-lg font-semibold hover:underline text-primary-300 justify-center " href="https://maps.app.goo.gl/EaFxFcDvkBckeNxJ7" target="_blank" rel="noreferrer">
-                  Google Kyoto West Building, Bengaluru</Link>
+                  Google Kyoto West, Bengaluru</Link>
                 </div>
 
                 {/*<Link className="font-medium hover:underline text-slate-50" href="https://maps.app.goo.gl/jo9zKhjDAgMqE92m6" target="_blank" rel="noreferrer">*/}

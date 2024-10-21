@@ -19,7 +19,7 @@ export default function Footer() {
               <Logo />
             </div>
             <div className="text-sm text-neutral-300">
-              <Link href="https://keploy.io/docs/security/" className="text-neutral-300 hover:text-primary-300 hover:underline transition duration-150 ease-in-out">Security</Link> · <Link href="https://docs.keploy.io/privacy-policy/" className="text-neutral-300 hover:text-primary-300 hover:underline transition duration-150 ease-in-out">Privacy Policy</Link>
+              <Link href="https://keploy.io/docs/security/" className="text-neutral-300 hover:text-primary-300 hover:underline transition duration-150 ease-in-out">Security</Link> · <Link href="https://keploy.io/docs/privacy-policy/" className="text-neutral-300 hover:text-primary-300 hover:underline transition duration-150 ease-in-out">Privacy Policy</Link>
             </div>
           </div>
 
