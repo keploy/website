@@ -22,10 +22,10 @@ const emailValidation = (email: string) => {
 export const subscribeMutation = (formData: { email: string, message: string }) => {
   if (websiteContactUrl) {
     return fetch(websiteContactUrl, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Origin': 'https://keploy.io'
+        "Content-Type": "application/json",
+        Origin: "https://keploy.io",
       },
       body: JSON.stringify(formData),
     }).then(async (response) => {
@@ -38,7 +38,6 @@ export const subscribeMutation = (formData: { email: string, message: string }) 
     return Promise.reject("invalid website contact url");
   }
 };
-
 
 export default function Newsletter() {
   const [subscribed, setSubscribed] = useState(false);
@@ -55,15 +54,18 @@ export default function Newsletter() {
 
   const handleSubscribe = async () => {
     try {
-      const response = await subscribeMutation({ email: email, message:"$100" });
+      const response = await subscribeMutation({
+        email: email,
+        message: "$100",
+      });
       if (response.status == 201) {
         setSubscribeMessage("Thanks for subscribing!");
         setSubscribed(true);
       } else {
-        console.error('Subscribe request failed.');
+        console.error("Subscribe request failed.");
       }
     } catch (error) {
-      console.error('Error sending subscribe request:', error);
+      console.error("Error sending subscribe request:", error);
     }
   };
 
@@ -100,23 +102,33 @@ export default function Newsletter() {
                 </svg>
               </div>
 
-              <div className="relative flex flex-col lg:flex-row justify-between items-center">
-
-                {/* CTA content */}
-                <div className="text-center lg:text-left lg:max-w-xl">
-                  <h3 className="h3 text-primary-300 mb-2">Keploy test coverage Challenge! </h3>
-                  <h4 className="h4 text-accent-100 mb-2 underline">How it works?</h4>
-                  <p className="text-neutral-300 text-lg mb-3">
-                    -  Share Your Application Dependencies with us!
-                  </p>
-                  <p className="text-neutral-300 text-lg mb-3">
-                    - Choose any backend application with the <span  className="text-primary-300 text-lg mb-6 font-extrabold">LOWEST</span> Test Coverage!
-                  </p>
-                  <p className="text-neutral-300 text-lg mb-6">
-                    - Our team will determine if Keploy can generate your API tests. <br/>
-                    If we can!! you can keep the tests.
-                    If we can’t, you get <span className="text-primary-300 text-lg mb-6 font-extrabold">$100.</span>
-                  </p>
+            <div className="relative flex flex-col lg:flex-row justify-between items-center">
+              {/* CTA content */}
+              <div className="text-center lg:text-left lg:max-w-xl">
+                <h3 className="h3 text-primary-300 mb-2">
+                  Keploy test coverage Challenge!{" "}
+                </h3>
+                <h4 className="h4 text-accent-100 mb-2 underline">
+                  How it works?
+                </h4>
+                <p className="text-neutral-300 text-lg mb-3">
+                  - Share Your Application Dependencies with us!
+                </p>
+                <p className="text-neutral-300 text-lg mb-3">
+                  - Choose any backend application with the{" "}
+                  <span className="text-primary-300 text-lg mb-6 font-extrabold">
+                    LOWEST
+                  </span>{" "}
+                  Test Coverage!
+                </p>
+                <p className="text-neutral-300 text-lg mb-6">
+                  - Our team will determine if Keploy can generate your API
+                  tests. <br />
+                  If we can!! you can keep the tests. If we can’t, you get{" "}
+                  <span className="text-primary-300 text-lg mb-6 font-extrabold">
+                    $100.
+                  </span>
+                </p>
 
                   {/* CTA form */}
                   <form id="subscribeForm" className="w-full lg:w-auto">
