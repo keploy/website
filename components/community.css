@@ -15,3 +15,40 @@
   margin: calc(-100px / 2);
   width: 250px;
 }
+.social-cloud {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 0;
+}
+
+@media (max-width: 768px) {
+  .link-1,
+  .link-2,
+  .link-3,
+  .link-4,
+  .link-5 {
+    height: 60px;
+    width: 60px;
+    margin-left: 10px;
+  }
+  .social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+  .social-link p {
+    display: none;
+  }
+  .social-link:hover {
+    transform: scale(1.2);
+  }
+}

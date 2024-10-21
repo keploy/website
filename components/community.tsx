@@ -1,4 +1,6 @@
-import React from "react";
+'use client';
+
+import React, { useState } from "react";
 import "./community.css";
 import Image from "next/image";
 import CommunityBunny from "@/public/images/community-bunny.png";
@@ -38,9 +40,7 @@ const createCircleStyles = (
   const dangle = 360 / totalCircles;
   const currentAngle = angle + dangle * index;
   return {
-    transform: `rotate(${currentAngle}deg) translate(${
-      containerWidth / 2
-    }px) rotate(-${currentAngle}deg)`,
+    transform: `rotate(${currentAngle}deg) translate(${containerWidth / 2}px) rotate(-${currentAngle}deg)`,
   };
 };
 
@@ -77,6 +77,7 @@ function SocialLinkCard({
 }
 
 export default function Community() {
+  const [value, setValue] = useState("Where Code Meets Community!");
   const cardsData: CardData[] = [
     {
       link: "https://twitter.com/Keployio",
@@ -110,10 +111,7 @@ export default function Community() {
     },
   ];
 
-  // Define the number of circles you want to render
   const totalCircles = cardsData.length;
-
-  // You can adjust this width as per your requirement or dynamically based on the parent component's state
   const containerWidth = 600;
 
   const cardsSurround = Array.from({ length: totalCircles }, (_, index) => (
@@ -128,18 +126,8 @@ export default function Community() {
     />
   ));
 
-  const cardsList = Array.from({ length: totalCircles }, (_, index) => (
-    <SocialLinkCard
-      key={index}
-      link={cardsData[index].link}
-      svgIcon={cardsData[index].svgIcon}
-      platformName={cardsData[index].platformName}
-      description={cardsData[index].description}
-    />
-  ));
-
   return (
-    <section className="relative py-8 ">
+    <section className="relative py-8">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="h2 text-secondary-300">
           🐰 Join the Keploy community ✨
@@ -157,7 +145,23 @@ export default function Community() {
         </div>
         <div className="md:hidden">
           <Image src={CommunityBunny} alt="Image" className="w-3/4 mx-auto" />
-          {cardsList}
+          <div className="social-cloud md:gap-2 lg:gap-2 sm:gap-0">
+            {cardsData.map((link, index) => (
+              <a
+                key={index}
+                href={link.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`social-link link-${index + 1}`}
+                title={link.platformName}
+                onMouseEnter={() => setValue(link.description)}
+                onMouseLeave={() => setValue("Where Code Meets Community!")}
+              >
+                <Image src={link.svgIcon} alt={link.platformName} />
+              </a>
+            ))}
+          </div>
+          <p className='text-center text-xl text-gray-700'>{value}</p>
         </div>
       </div>
     </section>
