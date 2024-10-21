@@ -23,7 +23,7 @@ export default function CountingNumbers({
 }) {
 
   const [top, setTop] = useState<boolean>(true);
-  const [starsCount, setStarsCount] = useState<number>(3900);
+  const [starsCount, setStarsCount] = useState<number>(5000);
   const [number, setNumber] = useState(start);
 
 
