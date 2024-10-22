@@ -18,6 +18,14 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Check if demo projects are there
+        run: 
+          cd ..
+          cd ..
+          ls
+          cd components/atg/demo-projects
+          ls
+
       - name: Install dependencies
         run: npm install
 
