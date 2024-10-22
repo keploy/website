@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
-   
+  pull_request:  # Trigger on pull requests
+    branches:
+      - main  # Specify the target branch for the pull request
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
