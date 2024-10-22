@@ -21,7 +21,6 @@ jobs:
       - name: Check if demo projects are there
         run: |
           echo "Listing files in the parent directory:"
-          cd ..
           ls
           echo "Navigating to demo projects directory:"
           cd components/atg/demo-projects
