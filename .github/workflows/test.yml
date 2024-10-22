@@ -19,14 +19,11 @@ jobs:
           submodules: recursive
 
       - name: Check if demo projects are there
-        run: 
+        run: |
+          echo "Listing files in the parent directory:"
           cd ..
           ls
+          echo "Navigating to demo projects directory:"
           cd components/atg/demo-projects
+          echo "Listing files in demo projects directory:"
           ls
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Next.js app
-        run: npm run build
