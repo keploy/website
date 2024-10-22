@@ -10,7 +10,6 @@
   import _ScrollTrigger from "gsap/ScrollTrigger";
   import FeaturesMobileView from "./FeatureMoblieView";
   import dynamic from "next/dynamic";
-  import { NeonButton } from "./magicui/neonGradient";
   const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
@@ -70,14 +69,12 @@
         <div className="text-gray-600 md:text-lg">{description}</div>
         {btnDescription && (
           <div className="mt-8">
-            <NeonButton borderSize={4} borderRadius={8}>
             <Link
               className="btn  text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
               href={btnLink}
             >
               {btnDescription}
             </Link>
-            </NeonButton>
           </div>
         )}
       </div>

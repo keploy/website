@@ -10,7 +10,6 @@ import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { NeonButton } from "../magicui/neonGradient";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -140,7 +139,6 @@ export default function Header() {
               </Link>
             </div>
           <div className="ml-3">
-          <NeonButton borderSize={4} borderRadius={8} >
             <Link
               href="https://forms.gle/waYcLSASm9dfE9tC9"
               target="_blank"
@@ -151,7 +149,6 @@ export default function Header() {
               {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
               {/*</svg>*/}
             </Link>
-            </NeonButton>
           </div>
           </div>
 
