@@ -21,7 +21,6 @@ jobs:
       - name: Check if demo projects are there
         run: 
           cd ..
-          cd ..
           ls
           cd components/atg/demo-projects
           ls
