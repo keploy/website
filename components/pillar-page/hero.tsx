@@ -1,8 +1,6 @@
 import React from "react";
 import { TrustedBy } from "../trustedBy";
 import dynamic from "next/dynamic";
-import Editor from "../atg/editor";
-
 interface HeroProps {
   titleTop: string;
   titleBottom: string;
@@ -10,12 +8,9 @@ interface HeroProps {
   subtitleBottom: string;
   animationSrc?: object | string; // Can be either a Lottie animation object or a string URL
   showTrustedBy?: boolean; // Optional prop, defaulting to true
-  editor?: boolean;
-  extraClasses?: string; // New prop to accept extra class names
 }
 
 const LottiePlayer = dynamic(() => import("../LottiePlayer"), { ssr: false });
-
 const Hero: React.FC<HeroProps> = ({
   titleTop,
   titleBottom,
@@ -23,15 +18,11 @@ const Hero: React.FC<HeroProps> = ({
   subtitleBottom,
   animationSrc,
   showTrustedBy = true,
-  editor = false,
-  extraClasses = "", // Default to an empty string if no extra classes are provided
 }) => {
   return (
-    <section
-      className={`relative bg-neutral-100 text-gray-800 overflow-hidden ${extraClasses}`}
-    >
+    <section className="relative bg-neutral-100 text-gray-800 overflow-hidden">
       <div
-        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none"
+        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none "
         aria-hidden="true"
       >
         <svg
@@ -61,36 +52,33 @@ const Hero: React.FC<HeroProps> = ({
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-32 pb-5 md:pt-40 text-center">
+        <div className="pt-32 pb-5 md:pt-40">
           <div>
-            <p className="text-2xl text-center text-accent-200 mb-4 md:mb-20">
+            <p className="text-2xl text-center  text-accent-200 mb-4 md:mb-20">
               {subtitleTop}
             </p>
           </div>
-          <div className="flex flex-wrap justify-center items-center md:gap-8 md:flex-row">
-            <div className="md:flex-1 text-center">
-              <h1 className="text-4xl md:text-5.5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 md:mb-6">
-                {titleTop}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
-                  {titleBottom}
-                </span>
-              </h1>
+          <div className="flex flex-wrap justify-center items-start md:gap-8 md:flex-row ">
+            <div className="md:flex-1">
+              <div className="text-center md:text-left">
+                <h1 className="text-4xl md:text-5.5xl text-secondary-300 font-extrabold leading-tighter tracking-tighter mb-4 md:mb-6 ">
+                  {titleTop}
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
+                    {titleBottom}
+                  </span>
+                </h1>
 
-              <p className="text-xl text-accent-200 mb-8">{subtitleBottom}</p>
+                <p className="text-xl text-accent-200 mb-8">{subtitleBottom}</p>
+              </div>
             </div>
             {animationSrc && (
-              <div className="md:flex-1 flex justify-center">
+              <div className="md:flex-1 ">
                 <LottiePlayer VideoPath={animationSrc} />
               </div>
             )}
           </div>
         </div>
       </div>
-      {editor && (
-        <div className="relative z-10">
-          <Editor />
-        </div>
-      )}
       {showTrustedBy && <TrustedBy />}
     </section>
   );

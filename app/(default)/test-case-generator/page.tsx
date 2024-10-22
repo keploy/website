@@ -10,19 +10,15 @@ import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import { blocksData } from "@/components/utils/common";
-import {
-  featuresData,
-  faqQuestions,
-} from "@/components/utils/test-case-generator";
+import { featuresData,faqQuestions } from "@/components/utils/test-case-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
 import RootLayout, { Metadata } from "@/app/layout";
+
 const pageMetadata: Metadata = {
-  title:
-    "Keploy | Boost E2E Testing with Keploy Test Case Generator! Learn How",
-  description:
-    "Stop wasting time! Imagine waking up to ready-made test cases. Keploy.io test case generation makes it possible saving you hours. Click to learn how!",
-  keywords: "test case generation",
+  title: 'Keploy | Boost E2E Testing with Keploy Test Case Generator! Learn How',
+  description: 'Stop wasting time! Imagine waking up to ready-made test cases. Keploy.io test case generation makes it possible saving you hours. Click to learn how!',
+  keywords: 'test case generation',
 };
 
 const heroData = {
@@ -30,7 +26,7 @@ const heroData = {
   titleBottom: "E2E Test Generator",
   subtitleTop: "Avoid confusion and Duplication in Test Execution!",
   subtitleBottom:
-    "Remove the duplicate and redundant test cases in minutes. Try our new Automatic test Generator 🚀",
+    "Remove the duplicate and redundant test cases in minutes. 🚀",
   animationSrc: testAndStubsGen,
 };
 const ProblemBlocksData = {
@@ -64,10 +60,8 @@ export default function Home() {
         titleBottom={heroData.titleBottom}
         subtitleTop={heroData.subtitleTop}
         subtitleBottom={heroData.subtitleBottom}
-        editor={true}
-        extraClasses="text-center" // Pass this to ensure text is centered
+        animationSrc={heroData.animationSrc}
       />
-
       <ProblemBlocks
         title={ProblemBlocksData.title}
         subtitle={ProblemBlocksData.subtitle}
@@ -77,7 +71,7 @@ export default function Home() {
       <Features
         title={FeaturesData.title}
         subtitle={FeaturesData.subtitle}
-        highlightTitle={FeaturesData.highlightTitle}
+        highlightTitle={FeaturesData.highlightTitle}        
         title2={FeaturesData.title2}
         featuresData={FeaturesData.featuresData}
       />
@@ -96,11 +90,11 @@ export default function Home() {
       />
       <Language />
       <Testimonial
-        content={testimonialData[2].content}
-        author={testimonialData[2].author}
-        company={testimonialData[2].company}
-        image={testimonialData[2].image}
-      />
+          content={testimonialData[2].content}
+          author={testimonialData[2].author}
+          company={testimonialData[2].company}
+          image={testimonialData[2].image}
+        />
       <FAQ questions={faqQuestions} />
       <Banner
         title={BannerData.title}

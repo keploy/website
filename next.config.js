@@ -1,10 +1,7 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 
-module.exports = withBundleAnalyzer({
+module.exports = {
   async rewrites() {
     return [
       {
@@ -35,4 +32,4 @@ module.exports = withBundleAnalyzer({
     domains: ["web-stories.keploy.io.s3.amazonaws.com"],
     unoptimized: true,
   },
-});
+};

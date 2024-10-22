@@ -1,240 +1,38 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-
-/* Import Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 
 /* Additional styles */
-@import "additional-styles/utility-patterns.css";
-@import "additional-styles/range-slider.css";
-@import "additional-styles/toggle-switch.css";
-@import "additional-styles/theme.css";
+@import 'additional-styles/utility-patterns.css';
+@import 'additional-styles/range-slider.css';
+@import 'additional-styles/toggle-switch.css';
+@import 'additional-styles/theme.css';
 
-@import "tailwindcss/utilities";
-
-@font-face {
-  font-family: "Pencil";
-  src: local("Pencil"),
-    url(../../public/Poetirey-Regular.ttf) format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
-
-button {
-  cursor: pointer !important;
-}
-
-.not-allowed-button {
-  cursor: not-allowed !important;
-}
-
-.terminal {
-  overflow-y: scroll; /* Enable vertical scrolling */
-  overflow-x: scroll; /* Enable horizontal scrolling */
-  background-color: #282c34; /* Dark background */
-  color: #ffffff; /* Light text color */
-  font-size: 9pt; /* 11 point font size */
-  line-height: 1.42;
-  scrollbar-width: none; /* For Firefox to hide scrollbars */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.terminal__line {
-  line-height: 2;
-  white-space: pre-wrap; /* Wrap long lines */
-  word-wrap: break-word; /* Break long words */
-}
-
-.terminal__line input:focus {
-  outline: none; /* Remove the blue border */
-  border: none;
-}
-
-/* Specific input reset */
-/* Light theme input */
-.input-light {
-  color: #333 !important; /* Text color for light theme */
- 
-}
-
-
-/* Dark theme input */
-.input-dark {
-  color: white !important; /* Text color for dark theme */
-}
-
-/* Common styles for input fields */
-.input-common {
-  border: none !important;
-  outline: none !important;
-  padding: 0 !important;
-  margin-left: 0.5rem !important;
-  font-size: 0.875rem !important; /* Equivalent to text-xs */
-  caret-color: transparent !important;
-  background-color: inherit !important; /* Light theme background */
-  margin-bottom: 1px;
- 
-} 
-
-/* To customize focus border */
-.input-common:focus {
-  outline: none;
-  border: 1px solid #ccc; /* Optional: Add a custom border */
-  box-shadow: none !important; /* Removes the Tailwind box-shadow */
-  --tw-ring-shadow: none !important; /* Removes the Tailwind ring-shadow */
-  --tw-ring-color: transparent !important; /* Removes the ring color */
-}
-
-
-
-.terminal__prompt {
-  display: flex;
-  align-items: center;
-}
-
-.terminal__prompt__label {
-  flex: 0 0 auto;
-  color: #ffffff; /* Blue color similar to VS Code prompt */
-}
-
-.terminal_light {
-  overflow-y: scroll; /* Enable vertical scrolling */
-  overflow-x: scroll; /* Enable horizontal scrolling */
-  color: #000000; /* Dark text color */
-  font-size: 9pt; /* 11 point font size */
-  line-height: 1.42;
-  scrollbar-width: none; /* For Firefox to hide scrollbars */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.terminal__line_light {
-  line-height: 2;
-  white-space: pre-wrap; /* Wrap long lines */
-  word-wrap: break-word; /* Break long words */
-}
-
-.terminal__line_light input:focus {
-  outline: none; /* Remove the blue border */
-  border: none;
-  background-color: #000000;
-}
-
-.terminal__prompt_light {
-  display: flex;
-  align-items: center;
-}
-
-.terminal__prompt__label_light {
-  flex: 0 0 auto;
-  color: #000000; /* Dark color for prompt label */
-}
-
-.block-class {
-  display: inline-block;
-  background-color: #007acc; /* Block color similar to VS Code prompt */
-  width: 10px;
-  height: 10px;
-  margin-left: 0.4rem;
-}
-
-/* WebKit-based browsers */
-.terminal::-webkit-scrollbar {
-  display: none; /* Hide scrollbars */
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.animate-blink {
-  animation: blink 1s step-start infinite;
-}
-
-.MuiExpansionPanelSummary-expandIcon.Mui-expanded {
-  transform: rotate(0deg);
-}
+@import 'tailwindcss/utilities';
 
 /* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
 @layer utilities {
-  .rtl {
-    direction: rtl;
-  }
-
-  .courier-prime-regular {
-    font-family: "Courier Prime", monospace;
-    font-weight: 400;
+    .rtl {
+        direction: rtl;
+    }
+}
+@font-face {
+    font-family: 'Pencil';
+    src: local('Pencil'), url(../../public/Poetirey-Regular.ttf) format('truetype');
+    font-weight: normal;
     font-style: normal;
   }
-
-  .courier-prime-bold {
-    font-family: "Courier Prime", monospace;
-    font-weight: 700;
-    font-style: normal;
-  }
-
-  .courier-prime-regular-italic {
-    font-family: "Courier Prime", monospace;
-    font-weight: 400;
-    font-style: italic;
-  }
-
-  .courier-prime-bold-italic {
-    font-family: "Courier Prime", monospace;
-    font-weight: 700;
-    font-style: italic;
-  }
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-.delay-300 {
-  animation-delay: 0.3s;
-}
-
-.delay-400 {
-  animation-delay: 0.4s;
-}
-
-.delay-500 {
-  animation-delay: 0.5s;
-}
-.delay-600 {
-  animation-delay: 0.6s;
-}
-.delay-700 {
-  animation-delay: 0.7s;
-}
-.delay-800 {
-  animation-delay: 0.8s;
-}
-.delay-900 {
-  animation-delay: 0.9s;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for Firefox */
 .no-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+button{
+    cursor: pointer !important;
+}
+
+.not-allowed-button {
+    cursor: not-allowed !important;
 }
