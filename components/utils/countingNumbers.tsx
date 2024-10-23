@@ -3,7 +3,7 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const formatStars = (num:number)=>Intl.NumberFormat('en-US', {
+const formatStars = (num: number) => Intl.NumberFormat('en-US', {
   notation: "compact",
   maximumFractionDigits: 1
 }).format(num);
@@ -47,7 +47,7 @@ export default function CountingNumbers({
           "https://api.github.com/repos/keploy/keploy"
         );
         if (response.ok) {
-          const data = await response.json();
+          const data = await response.json() as { stargazers_count: number };
           // Use setStarsCount to update the state
           setStarsCount(data.stargazers_count);
         } else {
@@ -58,7 +58,7 @@ export default function CountingNumbers({
       }
     };
 
-    fetchStarsCount();
+    void fetchStarsCount();
   }, [starsCount]); // Include starsCount as a dependency
 
 
