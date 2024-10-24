@@ -74,7 +74,7 @@ export default function Hero() {
             <div className=" mt-3 mb-5 md:bottom-8 md:left-12 z-60 sm:max-w-none sm:flex sm:justify-center">
               <div className="text-slate-50 text-sm p-3 md:rounded ">
                 <div className='text-slate-500 inline-flex'>
-                  <Link className="text-lg font-semibold hover:underline text-slate-50" href="https://forms.gle/9ABV4QosARLBB8Vc7" target="_blank" rel="noreferrer">
+                  <Link className="text-lg font-semibold hover:underline text-slate-50" href="https://forms.gle/X1XQkbZy9AaARHeZ9" target="_blank" rel="noreferrer">
                     {/*<span className="hidden sm:inline"> */}
                       22 November 2024
                     {/*</span>*/}

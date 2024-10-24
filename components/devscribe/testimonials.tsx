@@ -137,7 +137,7 @@ export default function Testimonials() {
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <Link href="" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="https://www.lambdatest.com/" title="Go to Google" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={LTSponsor}

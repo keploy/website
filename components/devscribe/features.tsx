@@ -99,14 +99,9 @@ export default function Features() {
       <div className="py-1 md:py-1 border-t border-gray-800">
         <div className=" grid grid-cols-1 gap-1 items-start lg:max-w-none py-5 md:py-12 text-center">
           <div className="flex flex-col h-full p-6 w-full " data-aos="fade-up">
-            <div className="relative inline-flex flex-col mb-4 w-full  items-center">
-              <Image
-                  decoding="async"
-                  src={Schedule}
-                  className="logo w-3/9"
-                  alt="DevSeribe Schedule"
-              />
-            </div>
+            <h2 className="h2 mb-2">SCHEDULE</h2>
+            <br/>
+            <h3 className="h3 mb-2">TBA</h3>
           </div>
         </div>
       </div>
