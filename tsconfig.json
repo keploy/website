@@ -33,3 +33,5 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/atg/Editor/utils/api-functions.ts"],
   "exclude": ["node_modules"]
 }
+
+

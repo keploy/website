@@ -217,8 +217,17 @@ module.exports = {
         float: "float 3s ease-in-out infinite",
         marquee: "marquee 25s linear infinite",
         marquee2: "marquee2 25s linear infinite ",
+        shimmer: "shimmer 2s linear infinite"
       },
       keyframes: {
+        shimmer: {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-5%)" },

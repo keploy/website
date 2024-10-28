@@ -3,6 +3,7 @@ import '@/app/(default)/webstories/css/styles.css'
 import { Inter } from 'next/font/google';
 import Header from '@/components/ui/header';
 import React, { ReactNode } from 'react';
+import Banner from '@/components/ui/banner'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -137,6 +138,7 @@ export default function RootLayout({ children, metadata , HeaderDisplayed=true }
         <body className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}>
         <div className="flex flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
          {HeaderDisplayed &&  <Header />}
+         <Banner/>
           {children}
         </div>
         </body>
