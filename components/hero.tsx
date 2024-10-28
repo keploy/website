@@ -9,7 +9,6 @@ import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
 import APItext from "@/public/images/apiText.png";
-import { NeonButton } from './magicui/neonGradient';  // Import NeonButton component
 
 export default function Hero() {
   return (
@@ -65,7 +64,8 @@ export default function Hero() {
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center space-x-4" data-aos="zoom-y-out"
                    data-aos-delay="300">
                 <div className="mb-4">
-                  <Link
+                  {/* Wrapping Link with NeonButton */}
+                    <Link
                       className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full  sm:w-auto sm:mb-0"
                       href="https://www.github.com/keploy/keploy"
                     >
@@ -73,12 +73,13 @@ export default function Hero() {
                     </Link>
                 </div>
                 <div className='mb-4'>
-                  <Link
+                  {/* Wrapping Link with NeonButton */}
+                    <Link
                       className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:mb-0"
                       href="https://forms.gle/waYcLSASm9dfE9tC9"
                     >
                       Join Cloud Waitlist
-                  </Link>
+                    </Link>
                 </div>
               </div>
             </div>

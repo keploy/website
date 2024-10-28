@@ -10,7 +10,6 @@
   import _ScrollTrigger from "gsap/ScrollTrigger";
   import FeaturesMobileView from "./FeatureMoblieView";
   import dynamic from "next/dynamic";
-  import { NeonButton } from "./magicui/neonGradient";
   const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);

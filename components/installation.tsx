@@ -8,7 +8,6 @@ import CopyButton from "@/public/images/icons8-copy-96.png";
 import SvgIcon from "@mui/material/SvgIcon";
 import { IconButton as MuiButton } from "@mui/material";
 import { red } from "@mui/material/colors";
-import { NeonButton } from "./magicui/neonGradient";
 import Link from "next/link";
 
 const Installation = () => {
