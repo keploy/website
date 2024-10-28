@@ -10,7 +10,6 @@ import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { NeonButton } from "../magicui/neonGradient";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -71,6 +70,15 @@ export default function Header() {
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end flex items-center">
+            <li>
+                <Link
+                  target="_blank"
+                  href="https://keploy.io/devscribe"
+                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  DevScribe
+                </Link>
+              </li>
               <li>
                 <Link
                   target="_blank"
@@ -86,7 +94,7 @@ export default function Header() {
                   href="https://keploy.io/blog/technology"
                   className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Tech Blog
+                  TechBlog
                 </Link>
               </li>
               <li>
@@ -140,7 +148,6 @@ export default function Header() {
               </Link>
             </div>
           <div className="ml-3">
-          <NeonButton borderSize={4} borderRadius={8} >
             <Link
               href="https://forms.gle/waYcLSASm9dfE9tC9"
               target="_blank"
@@ -151,7 +158,6 @@ export default function Header() {
               {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
               {/*</svg>*/}
             </Link>
-            </NeonButton>
           </div>
           </div>
 
