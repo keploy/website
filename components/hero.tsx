@@ -16,6 +16,7 @@ export default function Hero() {
 
       {/* Illustration behind hero content */}
       <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1 " aria-hidden="true">
+      <div className='mb-24'>
         <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="illustration-01">
@@ -30,6 +31,7 @@ export default function Hero() {
           </g>
         </svg>
       </div>
+      </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
@@ -38,6 +40,16 @@ export default function Hero() {
 
           {/* Section header */}
           <div className=" text-center pb-12 md:pb-16">
+
+            <div className='flex flex-row text-sm  justify-center items-center my-4'>
+              <div className=' z-40 shadow-lg '>
+              Automate your integration tests now!
+              <button className='bg-primary-300 rounded-full p-2 mx-2'>
+                  <p>Join Cloud Waitlist</p>
+              </button>
+              </div>
+            </div>
+
             <p className="text-xl sm:text-2xl text-accent-200 mb-4 leading-snug sm:leading-normal"
                data-aos="zoom-y-out" data-aos-delay="150">
               2 minutes to 90% test coverage!

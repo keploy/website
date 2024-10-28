@@ -9,6 +9,10 @@ import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
 import LambdaTestTestimonial from "@/public/images/users/LambdaTest-320-180.png";
 import LeadsquareTestimonial from "@/public/images/users/leadsquare.png";
 import EdurekaTestimonial from "@/public/images/users/edureka_logo.png";
+import G2Reviews from "@/public/images/users/g2review.svg";
+import Google_For_Startups from "@/public/images/users/GoogleStartupsSvgs.svg";
+import CNCF from "@/public/images/users/cncfSvg.svg";
+import GSOC from "@/public/images/users/gsocSvg.svg";
 import Marquee from "@/components/magicui/marquee";
 
 const images = [
@@ -24,6 +28,12 @@ const images = [
   { src: EdurekaTestimonial, alt: "Edureka Testimonial" },
 ];
 
+const images_2 = [
+  {src:G2Reviews,alt:"G2 Reviews"},
+  {src:GSOC,alt:"Google Summer of Code"},
+  {src:Google_For_Startups,alt:"Google for Startups"},
+  {src:CNCF,alt:"Cloud Native Computing Foundation"},
+]
 export const TrustedBy = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -36,6 +46,19 @@ export const TrustedBy = () => {
         {/* Marquee Component */}
         <Marquee className="py-4 md:py-12" repeat={3} pauseOnHover>
           {images.map(({ src, alt }) => (
+            <span key={alt} className="mx-4 flex-none flex items-center justify-center">
+              <Image
+                className="relative w-32 md:w-40 h-auto" // Ensure consistent height
+                src={src}
+                alt={alt}
+                style={{ objectFit: "contain" }} // Maintain aspect ratio
+              />
+            </span>
+          ))}
+        </Marquee>
+
+        <Marquee className="pb-4 md:py-12" repeat={3} pauseOnHover>
+          {images_2.map(({ src, alt }) => (
             <span key={alt} className="mx-4 flex-none flex items-center justify-center">
               <Image
                 className="relative w-32 md:w-40 h-auto" // Ensure consistent height
