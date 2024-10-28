@@ -131,6 +131,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
               {/*<Link href="/privacy-policy" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Github</Link>*/}
             </li>
             <li>
+                <Link
+                  target="_blank"
+                  href="https://keploy.io/devscribe"
+                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  DevScribe
+                </Link>
+              </li>
+            <li>
               <Link
                 href="https://keploy.io/docs"
                 className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
