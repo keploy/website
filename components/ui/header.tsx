@@ -106,6 +106,15 @@ export default function Header() {
                   Articles
                 </Link>
               </li>
+              <li>
+                <Link
+                  target="_blank"
+                  href="/careers"
+                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  Careers
+                </Link>
+              </li>
               <div className="px-5">
                 {" "}
                 <NavItemWithSmallDropdown
@@ -159,6 +168,7 @@ export default function Header() {
               {/*</svg>*/}
             </Link>
           </div>
+          
           </div>
 
           <MobileMenu starsCount={starsCount} />
