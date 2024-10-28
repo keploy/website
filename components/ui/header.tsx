@@ -70,6 +70,15 @@ export default function Header() {
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end flex items-center">
+            <li>
+                <Link
+                  target="_blank"
+                  href="https://keploy.io/devscribe"
+                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  DevScribe
+                </Link>
+              </li>
               <li>
                 <Link
                   target="_blank"
@@ -85,7 +94,7 @@ export default function Header() {
                   href="https://keploy.io/blog/technology"
                   className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Tech Blog
+                  TechBlog
                 </Link>
               </li>
               <li>
