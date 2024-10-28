@@ -6,7 +6,7 @@ import React from "react";
 import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
-import { NeonButton } from './magicui/neonGradient';  // Import NeonButton component
+import APItext from "@/public/images/apiText.png";
 
 export default function Hero() {
   return (
@@ -63,25 +63,21 @@ export default function Hero() {
                    data-aos-delay="300">
                 <div className="mb-4">
                   {/* Wrapping Link with NeonButton */}
-                  <NeonButton borderSize={4} borderRadius={8}>
                     <Link
                       className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
                       href="https://www.github.com/keploy/keploy"
                     >
                       Try Open Source
                     </Link>
-                  </NeonButton>
                 </div>
                 <div className='mb-4'>
                   {/* Wrapping Link with NeonButton */}
-                  <NeonButton borderSize={4} borderRadius={8}>
                     <Link
                       className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:mb-0"
                       href="https://app.keploy.io/signin"
                     >
                       Sign Up Now
                     </Link>
-                  </NeonButton>
                 </div>
               </div>
             </div>
