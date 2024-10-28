@@ -13,7 +13,7 @@ export default function Page() {
             <br className="hidden lg:flex" /> from user traffic.
           </h1>
           <p key="logo" className="text-md basiersquare-medium lg:text-xl">
-            Come join us and make the web better.
+            Come join us.
           </p>
           <a
             href="#jobs"
@@ -63,7 +63,7 @@ export default function Page() {
               { title: "Senior Software Engineer, Security", location: "United Kingdom, Remote", salary: "£85k+" },
               { title: "Senior Software Engineer, Web", location: "United Kingdom, Remote", salary: "£85k+" }
             ].map((job) => (
-              <a
+              <span
                 key={job.title}
                 href="/"
                 className="flex w-full flex-col rounded-lg bg-[#e2e8f0] py-6 px-6 lg:flex-row lg:items-center"
@@ -75,9 +75,9 @@ export default function Page() {
                   <span className="plain-regular text-md text-[#93928e] lg:text-lg">{job.location}</span>
                 </div>
                 <div>
-                  <a href="/" className="text-md lg:text-lg">{job.salary}</a>
+                  <span href="/" className="text-md lg:text-lg">{job.salary}</span>
                 </div>
-              </a>
+              </span>
             ))}
           </div>
         </section>
