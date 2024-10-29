@@ -7,18 +7,21 @@ export default function Page() {
     <>
       <Header />
       <main>
-        <section className="max-md:p-10 mx-auto mt-20 mb-[7rem] justify-center space-y-3 pt-4 text-center md:px-6 lg:mt-[11rem] lg:mb-[14.5rem] lg:space-y-6">
-          <h1 key="logo" className="text-4xl lg:text-7xl">
+        <section  className="max-sm:w-[100vw]   flex flex-col items-center mt-[6rem] gap-10 justify-center relative text-center h-[60vh] w-[70vw] m-auto ">
+          <img  src="https://www.adecco.com/en-us/-/media/project/adecco/adeccous/resources/benefits-for-workers-and-employers-who-return-to-work-header.jpg?h=800&iar=0&w=1920&hash=C26F834AF70384665C47049C19FEBFF8" className='z-[0] absolute  left-0  rounded-lg   opacity-70 h-[100%] w-[100%]'></img>
+          <div className='absolute  left-0 h-[100%] w-[100%] z-[0] bg-black opacity-70'></div>
+          <h1 key="logo" className="text-4xl text-white relative opacity-85 lg:text-5xl  max-sm:text-xl z-[100]">
             API tests faster than unit tests,
-            <br className="hidden lg:flex" /> from user traffic.
+            <br className="hidden lg:flex  text-white  z-[100] opacity-85" /> from user traffic.
           </h1>
-          <p key="logo" className="text-md basiersquare-medium lg:text-xl">
+          <p key="logo" className="text-white  z-[100] opacity-85 text-md basiersquare-medium lg:text-xl">
             Come join us.
           </p>
           <a
             href="#jobs"
             key="logo"
-            className="bg-[#FF914D]  inline-flex items-center rounded-lg  py-3 px-4 text-white"
+            className="bg-[#FF914D] w-[300px] flex justify-center z-[100]  rounded-lg  py-3 px-4 text-white"
+
           >
             See open positions{" "}
             <svg
@@ -36,13 +39,9 @@ export default function Page() {
           </a>
         </section>
 
-        <section className="mx-auto mt-[3rem] mb-[3rem] flex max-w-7xl lg:mb-[8rem] lg:mt-[8rem]">
-          <p className="w-[90rem] text-xl lg:text-3xl max-md:justify-center justify-center">
-            Keploy is a developer-centric API testing tool that creates tests along with built-in mocks, faster than unit tests. Keploy not only records API calls but also records database calls and replays them during testing, making it easy to use, powerful, and extensible.
-          </p>
-        </section>
+     
 
-        <section className="mx-auto mt-[3rem] mb-[3rem] max-w-7xl lg:mb-[8rem] lg:mt-[8rem]">
+        <section className="mx-auto mt-[3rem]  mb-[3rem] max-w-7xl  lg:mb-[8rem] lg:mt-[8rem]">
           <h2 className="text-3xl lg:text-5xl max-md:text-center">Perks & Benefits</h2>
           <div className="mt-12 grid grid-cols-1 justify-start gap-4 md:grid-cols-2 lg:grid-cols-4">
             {["Unlimited Holiday", "Competitive Salary", "Stock Options", "In-house Bar", "Growth", "Private Healthcare", "Work from Home", "Retirement"].map((perk) => (
