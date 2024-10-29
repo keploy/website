@@ -18,7 +18,7 @@ export default function Page() {
           <a
             href="#jobs"
             key="logo"
-            className="inline-flex items-center rounded-lg bg-[#332b54] py-3 px-4 text-white"
+            className="bg-[#FF914D]  inline-flex items-center rounded-lg  py-3 px-4 text-white"
           >
             See open positions{" "}
             <svg
