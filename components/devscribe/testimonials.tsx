@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import GoogleImage from '@/public/images/conf/GoogleForDevelopers_logo_lockup.png'
+import GoogleImage from '@/public/images/conf/GoogleForDevelopers_logo_lockup_KO.png'
 import MoTImage from '@/public/images/conf/ministry-of-testing.svg'
 import CNCFImage from '@/public/images/conf/cncf-white.svg'
 import Keploy from '@/public/images/conf/keploy.svg'
@@ -28,7 +28,7 @@ export default function Testimonials() {
               <div>
                 <div className="relative inline-flex flex-col mb-4">
 
-                  <Link href="https://opensource.google/" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="https://developers.google.com/" title="Go to Google" target="_blank" rel="noopener">
                 <Image decoding="async" width="393"
                    height="129"
                    src={GoogleImage}
