@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "chmod +x prebuild.sh && ./prebuild.sh",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
