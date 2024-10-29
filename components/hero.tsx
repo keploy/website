@@ -65,9 +65,9 @@ export default function Hero() {
                   {/* Wrapping Link with NeonButton */}
                     <Link
                       className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
-                      href="https://www.github.com/keploy/keploy"
+                      href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
                     >
-                      Try Open Source
+                      Try VS Code Extension
                     </Link>
                 </div>
                 <div className='mb-4'>
@@ -76,7 +76,7 @@ export default function Hero() {
                       className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:mb-0"
                       href="https://app.keploy.io/signin"
                     >
-                      Sign Up Now
+                      Sign In to Keploy Console
                     </Link>
                 </div>
               </div>
