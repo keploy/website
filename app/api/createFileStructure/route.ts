@@ -3,8 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Directory } from '@/components/atg/Editor/utils/file-manager';
 import { createFileStructure } from '@/components/atg/Editor/utils/File-Structure';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import path from 'path';
 
 interface ErrorResponse {
   message: string;
@@ -27,29 +26,13 @@ export async function GET(
     return NextResponse.json({ message: 'Invalid or missing project key' }, { status: 400 });
   }
 
-  const basePath = process.cwd();
-  const projectPath = join(basePath, 'components', 'atg', 'demo-projects', 'projects', 'javaScript');
-  
-  // Check if path exists before proceeding
-  if (!existsSync(projectPath)) {
-    console.error(`Path does not exist: ${projectPath}`);
-    return new NextResponse(JSON.stringify({ 
-      error: 'Project path not found',
-      path: projectPath 
-    }), {
-      status: 404,
-      headers: { 'Content-Type': 'application/json' }
-    });
-  }
+  const projectPath = path.join(process.cwd(), pathsMap[projectKey]);
   
   try {
     const rootDir = createFileStructure(projectPath);
     return NextResponse.json(rootDir);
   } catch (error) {
-    console.error('Error in createFileStructure:', error);
-    return new NextResponse(JSON.stringify({ error: 'Error in Generating Path' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    console.error('Error generating file structure:', error);
+    return NextResponse.json({ message: 'Error generating file structure' }, { status: 500 });
   }
 }
