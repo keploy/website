@@ -89,22 +89,24 @@ export default function Hero() {
               </p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center space-x-4" data-aos="zoom-y-out"
                    data-aos-delay="300">
-                <div className="mb-4">
+        <div className="mb-4">
                   {/* Wrapping Link with NeonButton */}
                     <Link
-                      className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full  sm:w-auto sm:mb-0"
-                      href="https://www.github.com/keploy/keploy"
+                      target="_blank"
+                      rel="noopener noreferrer"          
+                      className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
+                      href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
                     >
-                      Try Open Source
+                      Try VS Code Extension
                     </Link>
                 </div>
                 <div className='mb-4'>
                   {/* Wrapping Link with NeonButton */}
                     <Link
                       className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:mb-0"
-                      href="https://forms.gle/waYcLSASm9dfE9tC9"
+                      href="https://app.keploy.io/signin"
                     >
-                      Join Cloud Waitlist
+                      Sign In to Keploy Console
                     </Link>
                 </div>
               </div>
