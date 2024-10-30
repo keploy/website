@@ -7,9 +7,13 @@ import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
-import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
+import NavItemWithSmallDropdown, {
+  DropdowndataInterface,
+  LinkDatainterface,
+} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
+import Banner from "./banner";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -60,6 +64,7 @@ export default function Header() {
         !top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""
       }`}
     >
+      <Banner />
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
@@ -70,7 +75,7 @@ export default function Header() {
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end flex items-center">
-            <li>
+              <li>
                 <Link
                   target="_blank"
                   href="https://keploy.io/devscribe"
@@ -116,10 +121,10 @@ export default function Header() {
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
-          <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
+            <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
               {/* Sliding effect span */}
               <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-orange-500 opacity-10 transition-transform duration-1000 ease-out group-hover:translate-x-[-400%]" />
-              
+
               <Link
                 className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"
                 target="_blank"
@@ -140,27 +145,33 @@ export default function Header() {
                     fillRule="evenodd"
                   />
                 </svg>
-                <span className="text-gradient-500 opacity-30 hover:text-primary-500"> | </span>
+                <span className="text-gradient-500 opacity-30 hover:text-primary-500">
+                  {" "}
+                  |{" "}
+                </span>
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
+                <span className="text-base flex gap-1">
+                  {" "}
+                  <CountingNumbers className="" />
+                </span>
               </Link>
             </div>
-          <div className="ml-3">
-            <Link
-              href="https://forms.gle/waYcLSASm9dfE9tC9"
-              target="_blank"
-              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
-            >
-              <span>Join Waitlist</span>
-              {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
-              {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
-              {/*</svg>*/}
-            </Link>
+            <div className="ml-3">
+              <Link
+                href="https://forms.gle/waYcLSASm9dfE9tC9"
+                target="_blank"
+                className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
+              >
+                <span>Join Waitlist</span>
+                {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
+                {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
+                {/*</svg>*/}
+              </Link>
+            </div>
           </div>
-          </div>
-
+          <div className=" lg:hidden"></div>
           <MobileMenu starsCount={starsCount} />
         </div>
       </div>

@@ -156,7 +156,6 @@ export default function RootLayout({
       >
         <div className="flex flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           {HeaderDisplayed && <Header />}
-          <Banner />
           {children}
         </div>
       </body>
