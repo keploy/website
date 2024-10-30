@@ -64,6 +64,8 @@ export default function Hero() {
                 <div className="mb-4">
                   {/* Wrapping Link with NeonButton */}
                     <Link
+                      target="_blank"
+                      rel="noopener noreferrer"          
                       className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
                       href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
                     >
