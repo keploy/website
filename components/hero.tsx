@@ -41,11 +41,25 @@ export default function Hero() {
           {/* Section header */}
           <div className=" text-center pb-12 md:pb-16">
 
-            <div className='flex flex-row text-sm  justify-center items-center my-4'>
-              <div className=' z-40 shadow-lg '>
-              Automate your integration tests now!
-              <button className='bg-primary-300 rounded-full p-2 mx-2'>
-                  <p>Join Cloud Waitlist</p>
+            <div className='flex flex-row text-xs md:text-sm lg:text-sm bg-inherit justify-center  items-center my-4 gap-2 mb-5' data-aos="zoom-y-out" data-aos-delay="150">
+              <div className='z-40 shadow-[4px_10px_15px_rgba(0,0,0,0.25)] rounded-full bg-neutral-100  '>
+              <span className=" text-secondary-300 mx-1 pl-2">
+              Automate
+              </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200 mr-1">
+              your integration tests now!
+              </span>
+              <button className='bg-[#fcaf7f] rounded-full ml-2 p-2'>
+                  <p>   <span className=" text-secondary-300 mx-1">
+                  Join</span> 
+                  <Link
+                      href="https://forms.gle/waYcLSASm9dfE9tC9"
+                    >
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200 mr-1">
+                   Cloud Waitlist
+                   </span>
+                    </Link>
+                   </p>
               </button>
               </div>
             </div>
