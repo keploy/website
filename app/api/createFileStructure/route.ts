@@ -22,14 +22,13 @@ export async function GET(
 ): Promise<NextResponse<Directory | ErrorResponse>> {
   const url = new URL(req.url);
   const projectKey = url.searchParams.get('project');
-  
+    
   if (!projectKey || !pathsMap[projectKey]) {
     return NextResponse.json({ message: 'Invalid or missing project key' }, { status: 400 });
   }
 
   const basePath = process.cwd();
-  const projectPath = join(basePath, 'components', 'atg', 'demo-projects', 'projects', 'javaScript');
-  
+  const projectPath = join(basePath, pathsMap[projectKey]);
   // Check if path exists before proceeding
   if (!existsSync(projectPath)) {
     console.error(`Path does not exist: ${projectPath}`);
