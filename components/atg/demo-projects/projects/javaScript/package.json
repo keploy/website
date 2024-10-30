@@ -10,9 +10,10 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "@keploy/sdk": "^2.0.4",
+    "animal-app": "file:",
     "express": "^4.17.1",
-    "mongodb": "^4.0.5",
-    "@keploy/sdk": "^2.0.4"
+    "mongodb": "^4.0.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
