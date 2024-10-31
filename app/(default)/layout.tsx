@@ -5,9 +5,9 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import Footer from "@/components/ui/footer";
 import { ApolloProvider } from "@apollo/client";
 import client from "../lib/apollo-client";
+import KeployStickyBanner from "@/components/ui/bottom-sticky-banner";
 
 export default function DefaultLayout({
   children,
@@ -27,7 +27,7 @@ export default function DefaultLayout({
     <>
       <ApolloProvider client={client}>
         <main className="grow bg-neutral-100 z-10">{children}</main>
-
+        <KeployStickyBanner />
         {/*<Footer />*/}
       </ApolloProvider>
     </>
