@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import Tweet from "./tweets";
+import Marquee from "./magicui/marquee";
 const tweets = [
   {
     avatar:
@@ -126,13 +127,14 @@ const TwitterTestimonials = () => {
   return (
     <>
       <div className="relative mt-20 mb-20">
-        <div className=" relative mt-2 mb-8 z-10 max-w-5xl mx-auto flex flex-col justify-center">
+        <div className=" relative mt-2 mb-8 z-10 max-w-6xl mx-auto flex flex-col justify-center [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
           <h3 className=" text-center h2 px-10 text-secondary-300">
           We love when users talk about Keploy..
           </h3>
           {isMobile ? (
-             <div className="flex flex-row max-lg:flex-col mt-10">
-             <div className="flex flex-col">
+             <div className="flex flex-col max-lg:flex-col mt-10">
+             <div className="flex flex-row">
+             <Marquee pauseOnHover className="[--duration:20s]" fit={true}>
                {tweets.slice(0, 4).map((tweet, index) => (
                  <Tweet
                    key={index}
@@ -143,8 +145,10 @@ const TwitterTestimonials = () => {
                    content={tweet.content}
                  />
                ))}
+             </Marquee>
              </div>
-             <div className="flex flex-col">
+             <div className="flex flex-row">
+             <Marquee reverse pauseOnHover className="[--duration:20s]" fit={true}>
                {tweets.slice(4, 8).map((tweet, index) => (
                  <Tweet
                    key={index}
@@ -155,8 +159,10 @@ const TwitterTestimonials = () => {
                    content={tweet.content}
                  />
                ))}
+               </Marquee>
              </div>
-             <div className="flex flex-col">
+             <div className="flex flex-row">
+             <Marquee pauseOnHover className="[--duration:20s]" fit={true}>
                {tweets.slice(8, 12).map((tweet, index) => (
                  <Tweet
                    key={index}
@@ -167,11 +173,13 @@ const TwitterTestimonials = () => {
                    content={tweet.content}
                  />
                ))}
+               </Marquee> 
              </div>
            </div>
           ):(
-            <div className="flex flex-row max-lg:flex-col mt-10 mx-10">
-             <div className="flex flex-col">
+            <div className="flex flex-col max-lg:flex-col mt-10 mx-10">
+             <div className="flex flex-row">
+             <Marquee pauseOnHover className="[--duration:20s]" fit={true}>
                {tweets.slice(0, 4).map((tweet, index) => (
                  <Tweet
                    key={index}
@@ -182,9 +190,11 @@ const TwitterTestimonials = () => {
                    content={tweet.content}
                  />
                ))}
+               </Marquee>
              </div>
-             <div className="flex flex-col">
-               {tweets.slice(4, 6).map((tweet, index) => (
+             <div className="flex flex-row">
+             <Marquee reverse pauseOnHover className="[--duration:20s]" fit={true}>
+               {tweets.slice(4, 8).map((tweet, index) => (
                  <Tweet
                    key={index}
                    avatar={tweet.avatar}
@@ -194,6 +204,7 @@ const TwitterTestimonials = () => {
                    content={tweet.content}
                  />
                ))}
+               </Marquee>
              </div>
    
            </div>

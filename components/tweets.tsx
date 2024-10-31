@@ -21,6 +21,7 @@ const Tweets = ({
         className="bg-gray-100 border p-6 rounded-md lg:hover:shadow-md transition m-1 hover:scale-101"
         href={post}
         target="_blank"
+        style={{ border: "2px solid rgb(140, 140, 140)" }}
       >
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row gap-2 items-center">
@@ -43,7 +44,7 @@ const Tweets = ({
             alt="twitter icon"
           />
         </div>
-        <div className="pt-2">{content}</div>
+        <div className="pt-2 sm">{content}</div>
       </Link>
     </>
   );

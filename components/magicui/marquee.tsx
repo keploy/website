@@ -17,6 +17,7 @@ export default function Marquee({
   children,
   vertical = false,
   repeat = 4,
+  fit=false,
   ...props
 }: MarqueeProps) {
   return (
@@ -41,7 +42,9 @@ export default function Marquee({
               "animate-marquee-vertical flex-col": vertical,
               "group-hover:[animation-play-state:paused]": pauseOnHover,
               "[animation-direction:reverse]": reverse,
+              "w-fit":fit
             })}
+            // style={{ width: "fit-content", height: "fit-content", padding: "0 1rem" }}
           >
             {children}
           </div>
