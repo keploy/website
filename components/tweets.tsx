@@ -18,7 +18,7 @@ const Tweets = ({
   return (
     <>
       <Link
-        className="bg-gray-100 border p-6 rounded-md lg:hover:shadow-md transition m-1 hover:scale-101"
+        className="flex-none  cursor-pointer hover:bg-primary-300 hover:text-gray-100 w-72 sm:w-96 bg-gray-100 border-2 border-secondary-300 p-3 sm:p-6 rounded-md  shadow-md transition"
         href={post}
         target="_blank"
       >
@@ -29,11 +29,11 @@ const Tweets = ({
               width={48}
               height={48}
               alt="profile_image"
-              className="rounded-full h-12 aspect-square"
+              className="rounded-full w-8 h-8 sm:w-12 sm:h-12 aspect-square"
             />
             <div className="flex flex-col justify-center">
-              <div className="font-bold">{name}</div>
-              <div className="">@{id}</div>
+              <h2 className="font-bold text-base sm:text-lg">{name}</h2>
+              <p className="text-sm sm:text-base">@{id}</p>
             </div>
           </div>
           <Image
@@ -43,7 +43,7 @@ const Tweets = ({
             alt="twitter icon"
           />
         </div>
-        <div className="pt-2">{content}</div>
+        <p className="mt-2 text-sm sm:text-base pt-2 break-words line-clamp-3">{content}</p>
       </Link>
     </>
   );
