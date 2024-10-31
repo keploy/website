@@ -23,7 +23,6 @@ const Banner = () => {
       <div className="flex flex-col sm:flex-row items-center gap-4 lg:gap-6 w-full lg:w-auto text-center lg:text-left">
         {/* Logo and title */}
         <div className="flex items-center gap-3">
-          {/* VS Code logo */}
           <div className="relative flex items-center p-1 sm:p-2">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
