@@ -1,7 +1,10 @@
+"use client";
 import RootLayout from "@/app/layout";
 import CaseStudyCard from "@/components/caseStudyCard";
 import Footer from "@/components/ui/footer";
 import Image from "next/image";
+import CaseStudySearch from "@/components/caseStudySearch";
+import { useState } from "react";
 
 const pageMetadata = {
   title:
@@ -17,38 +20,47 @@ const sampleCaseStudies = [
     title: "Read how Maruti Suzuki Managed to reduce their TAT by 50%",
     text: "Read how Maruti Suzuki Managed to reduce their TAT by 50%",
     imageUrl: "/images/gradient.png",
+    tags: ["Maruti Suzuki", "TAT", "Reduction"],
   },
   {
     title:
       "Read how Company X Increased productivity by 20% using Keploy API tests",
     text: "Read how Company X Increased productivity by 20%",
     imageUrl: "/images/gradient.png",
+    tags: ["Company X", "Productivity", "Keploy API tests"],
   },
   {
     title: "Read how Company Y Reduced their testing time by 30% using Keploy",
     text: "Read how Company Y Reduced their testing time by 30%",
     imageUrl: "/images/gradient.png",
+    tags: ["Company Y", "Testing", "Keploy"],
   },
   {
     title:
       "Read how Company Z Improved their code coverage by 40% using Keploy",
     text: "Read how Company Z Improved their code coverage by 40%",
     imageUrl: "/images/gradient.png",
+    tags: ["Company Z", "Code Coverage", "Keploy"],
   },
   {
     title: "Read how Company A Reduced their testing time by 30% using Keploy",
     text: "Read how Company A Reduced their testing time by 30%",
     imageUrl: "/images/gradient.png",
+    tags: ["Company A", "Testing", "Keploy"],
   },
   {
     title:
       "Read how Company B Improved their code coverage by 40% using Keploy",
     text: "Read how Company B Improved their code coverage by 40%",
     imageUrl: "/images/gradient.png",
+    tags: ["Company B", "Code Coverage", "Keploy"],
   },
 ];
 
 export default function Home() {
+  const [search, setSearch] = useState("");
+  const [tags, setTags] = useState([]);
+    
   return (
     <RootLayout metadata={pageMetadata}>
       <div className="overflow-x-clip relative flex flex-col items-center">
@@ -114,13 +126,15 @@ export default function Home() {
             />
           </div>
         </div>
+        <CaseStudySearch setSearch={setSearch} />
         <div className="grid lg:grid-cols-2 lg:gap-y-16 gap-10 md:max-w-[70vw] max-w-[80vw] w-full mb-10">
-          {sampleCaseStudies.map((caseStudy, index) => (
+          {sampleCaseStudies.filter(e => e.text.toLowerCase().includes(search.toLowerCase())).map((caseStudy, index) => (
             <CaseStudyCard
               key={index}
               title={caseStudy.title}
               text={caseStudy.text}
               imageUrl={caseStudy.imageUrl}
+              tags={caseStudy.tags}
             />
           ))}
         </div>

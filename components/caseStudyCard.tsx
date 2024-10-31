@@ -2,12 +2,14 @@ interface CaseStudyCardProps {
   title: string;
   text: string;
   imageUrl: string;
+  tags: string[];
 }
 
 export default function CaseStudyCard({
   title,
   text,
   imageUrl,
+  tags,
 }: CaseStudyCardProps) {
   return (
     <a
@@ -15,14 +17,23 @@ export default function CaseStudyCard({
       href="#"
     >
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
-        <div className="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">
+        <div className="shrink-0 relative flex flex-col gap-5 rounded-xl overflow-hidden w-full sm:w-56 h-56">
           <img
-            className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out size-full absolute top-0 start-0 object-cover rounded-xl"
+            className="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out w-full h-[80%] top-0 start-0 object-cover rounded-xl"
             src={imageUrl}
             alt="Blog Image"
           />
+          <div className="gap-2 flex">
+          {
+        tags.map((tag) => (
+          <span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 text-nowrap text-ellipsis">{tag}</span>
+        ))
+      }
+          </div>
+
         </div>
         <div className="grow">
+          
           <h3 className="text-xl font-extrabold text-primary-400 group-hover:text-primary-300">
             {title}
           </h3>
