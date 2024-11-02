@@ -80,28 +80,26 @@ const Appbar = ({
               <div
                 key={file.id}
                 className={`flex flex-row flex-grow items-center cursor-pointer ${
-                  file?.id === selectedFile?.id
+                  file.id === selectedFile?.id
                     ? ` ${
                         AppBarTheme
                           ? "bg-white border-t-4 border-t-gray-700"
                           : "bg-[#30363e] shadow-inner shadow-[#21252b] border-r-2 border-r-black text-white"
                       }`  
-                    : `${
-                        AppBarTheme
+                    : AppBarTheme
                           ? "border-r-2 border-r-gray-900 bg-gray-100"
                           : "bg-[#21252b] border-r-2 border-r-black text-gray-600"
-                      }`
                 } ${key === 0 ? "" : ""}`}
-                onMouseEnter={() => handleMouseEnter(file.id)}
+                onMouseEnter={() => { handleMouseEnter(file.id); }}
                 onMouseLeave={handleMouseLeave}
               >
                 <button
-                  onClick={() => onSelect(file)}
+                  onClick={() => { onSelect(file); }}
                   className=""
                 >
                   <FileIcon
                     name={file.name}
-                    extension={file?.name?.split(".").pop() || ""}
+                    extension={file.name.split(".").pop() || ""}
                     IconsTheme={AppBarTheme}
                   />
                 </button>
@@ -110,14 +108,14 @@ const Appbar = ({
                   className={`text-xs mx-1 italic ${
                     AppBarTheme ? "text-slate-900" : "text-white"
                   }  h-full `}
-                  onClick={() => onSelect(file)}
+                  onClick={() => { onSelect(file); }}
                 >
                   {file.name}
                 </button>
 
                 {selectedFile?.id != file.id && (
                   <button
-                    onClick={() => onCancel(file)}
+                    onClick={() => { onCancel(file); }}
                     className={`${
                       hoveredTab == file.id && selectedFile?.id != file.id
                         ? "visible"
@@ -125,20 +123,16 @@ const Appbar = ({
                     } mx-2`}
                   >
                     <CloseIcon
-                      className={`${
-                        AppBarTheme ? "text-gray-600" : "text-gray-50"
-                      }`}
+                      className={AppBarTheme ? "text-gray-600" : "text-gray-50"}
                       sx={{ fontSize: 15 }}
                     />
                   </button>
                 )}
 
-                {selectedFile?.id == file?.id && (
-                  <button onClick={() => onCancel(file)} className={`mx-2`}>
+                {selectedFile?.id == file.id && (
+                  <button onClick={() => { onCancel(file); }} className={`mx-2`}>
                     <CloseIcon
-                      className={`${
-                        AppBarTheme ? "text-gray-600" : "text-white"
-                      }`}
+                      className={AppBarTheme ? "text-gray-600" : "text-white"}
                       sx={{ fontSize: 15 }}
                     />
                   </button>
@@ -172,7 +166,7 @@ const FileIcon = ({
   extension?: string;
   IconsTheme: boolean;
 }) => {
-  let icon = getIcon(extension || "", name || "", IconsTheme);
+  const icon = getIcon(extension || "", name || "", IconsTheme);
   return <Span>{icon}</Span>;
 };
 

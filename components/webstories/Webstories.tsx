@@ -9,34 +9,34 @@ import Stories from "./Stories";
 import Link from "next/link";
 import { StaticImageData } from "next/image";
 
-type WebStoryItem = {
+interface WebStoryItem {
   imageUrl?: string | StaticImageData;
   Heading?: string;
   text?: string;
   swipeText?: string;
   swipeLink?: string;
-  image: Boolean;
-};
+  image: boolean;
+}
 
-type WebStoriesProps = {
+interface WebStoriesProps {
   data: WebStoryItem[];
   slug: string | string[];
   onStoryIndexChange: (index: number) => void;
-};
+}
 
 const WebStories = ({ data, slug, onStoryIndexChange }: WebStoriesProps) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [next, setNext] = useState(false);
   const [totalTime, setTotalTime] = useState<number>(0);
   const [animatingDuration, setAnimatingDuration] = useState<string>("");
-  const [timer, setTimer] = useState<Boolean>(false);
+  const [timer, setTimer] = useState<boolean>(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const remainingTimeRef = useRef<number>(totalTime);
   const startTimestampRef = useRef<number | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
   const mainDivRef = useRef<HTMLDivElement | null>(null);
 
-  const Pausing = (pause: Boolean) => {
+  const Pausing = (pause: boolean) => {
     if (pause) {
       stopTimer();
     } else {
@@ -72,9 +72,9 @@ const WebStories = ({ data, slug, onStoryIndexChange }: WebStoriesProps) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
-      const handleResize = () => setWindowWidth(window.innerWidth);
+      const handleResize = () => { setWindowWidth(window.innerWidth); };
       window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
+      return () => { window.removeEventListener("resize", handleResize); };
     }
   }, []);
 
@@ -87,7 +87,7 @@ const WebStories = ({ data, slug, onStoryIndexChange }: WebStoriesProps) => {
   useEffect(() => {
     const currentStory = data[currentStoryIndex];
     let time = 5;
-    if (currentStory?.text) {
+    if (currentStory.text) {
       time = TimeAccToContent(currentStory.text);
     }
     setTotalTime(time * 1000);

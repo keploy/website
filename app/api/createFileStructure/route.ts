@@ -10,7 +10,7 @@ interface ErrorResponse {
   message: string;
 }
 
-const pathsMap: { [key: string]: string } = {
+const pathsMap: Record<string, string> = {
   Golang: 'components/atg/demo-projects/projects/goapp',
   Javascript: 'components/atg/demo-projects/projects/javaScript',
   Python: 'components/atg/demo-projects/projects/python',

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Transition } from '@headlessui/react'
 import Link from 'next/link'
 
-type DropdownProps = {
+interface DropdownProps {
   children: React.ReactNode
   title: string
 }
@@ -19,16 +19,16 @@ export default function Dropdown({
   return (
     <li
       className="relative"
-      onMouseEnter={() => setDropdownOpen(true)}
-      onMouseLeave={() => setDropdownOpen(false)}
-      onFocus={() => setDropdownOpen(true)}
-      onBlur={() => setDropdownOpen(false)}
+      onMouseEnter={() => { setDropdownOpen(true); }}
+      onMouseLeave={() => { setDropdownOpen(false); }}
+      onFocus={() => { setDropdownOpen(true); }}
+      onBlur={() => { setDropdownOpen(false); }}
     >
       <Link
         className="text-gray-600 hover:text-gray-900 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out"
         href="#0"
         aria-expanded={dropdownOpen}
-        onClick={(e) => e.preventDefault()}
+        onClick={(e) => { e.preventDefault(); }}
       >
         {title}
         <svg className="w-3 h-3 fill-current text-gray-500 cursor-pointer ml-1 shrink-0" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">

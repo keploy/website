@@ -127,7 +127,7 @@ const Particles: React.FC<ParticlesProps> = ({
     dx: number;
     dy: number;
     magnetism: number;
-  };
+  }
 
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {

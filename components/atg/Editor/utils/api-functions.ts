@@ -457,7 +457,7 @@ export const makeKeployTestDir = async ({
     if (testing) {
       console.log("Starting testing process...");
 
-      let reportDirs = keployDir.dirs.find((dir) => dir.name === "Reports");
+      const reportDirs = keployDir.dirs.find((dir) => dir.name === "Reports");
       let newReportDir: Directory;
 
       if (!reportDirs) {
@@ -516,7 +516,7 @@ export const removeKeployTestDir = async (rootDir: Directory): Promise<Directory
 
   try {
     // Find the existing Keploy directory
-    let keployDir = rootDir.dirs.find((dir) => dir.name === "Keploy");
+    const keployDir = rootDir.dirs.find((dir) => dir.name === "Keploy");
 
     if (keployDir) {
       // Remove the Keploy directory

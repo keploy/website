@@ -37,8 +37,8 @@ export const Sidebar = ({
         onClick={ClickExpanded}
         style={{ minWidth: "250px" }} // Ensure content has a minimum width
       >
-        <ExpandMoreIcon className={`${expanded ? "" : "rotate-[-90deg]"}`} />
-        <span className={`${theme?"text-black":" text-gray-300"}`}>Website</span>
+        <ExpandMoreIcon className={expanded ? "" : "rotate-[-90deg]"} />
+        <span className={theme?"text-black":" text-gray-300"}>Website</span>
       </div>
       {expanded && (
         <div className="w-full overflow-x-scroll no-scrollbar">

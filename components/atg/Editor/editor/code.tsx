@@ -14,7 +14,7 @@ export const Code = ({
   selectedFileName,
 }: {
   selectedFile: File | undefined;
-  showSideBannerBool: Boolean;
+  showSideBannerBool: boolean;
   RemoveSideBanner: () => void;
   settingCodeTheme: boolean;
   isFullScreen: boolean;
@@ -83,23 +83,23 @@ export const Code = ({
 
       // Add event listener to window resize to handle screen transition
       window.addEventListener("resize", layoutEditor);
-      return () => window.removeEventListener("resize", layoutEditor);
+      return () => { window.removeEventListener("resize", layoutEditor); };
     }
   }, [isFullScreen, monacoInstance]);
 
   const validateCode = (code: string) => {
     const diagnostics: monaco.editor.IMarkerData[] = [];
-    let stack: { char: string; position: number }[] = [];
+    const stack: { char: string; position: number }[] = [];
     const openBrackets = "{[(";
     const closeBrackets = "}])";
-    const matchingBracket: { [key: string]: string } = {
+    const matchingBracket: Record<string, string> = {
       "}": "{",
       "]": "[",
       ")": "(",
     };
 
     const stringDelimiters = ['"', "'", "`"];
-    let stringStack: { char: string; position: number }[] = [];
+    const stringStack: { char: string; position: number }[] = [];
 
     for (let i = 0; i < code.length; i++) {
       const char = code[i];
@@ -181,8 +181,8 @@ export const Code = ({
         };
 
         validate(); // Initial validation
-        const subscription = model.onDidChangeContent(() => validate());
-        return () => subscription.dispose();
+        const subscription = model.onDidChangeContent(() => { validate(); });
+        return () => { subscription.dispose(); };
       }
     }
   }, [monacoInstance]);
@@ -237,8 +237,8 @@ export const Code = ({
       />
       {!showSideBannerBool && (
         <div
-          onMouseEnter={() => setShowText(true)}
-          onMouseLeave={() => setShowText(false)}
+          onMouseEnter={() => { setShowText(true); }}
+          onMouseLeave={() => { setShowText(false); }}
           className={`p-2 absolute z-10 hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
           style={{
             transform: "translateY(-50%)",

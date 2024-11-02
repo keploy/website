@@ -51,11 +51,11 @@ export const submitCodeSnippet = async ({
   }
 };
 
-export type CommandResponse = {
+export interface CommandResponse {
   success: boolean;
   data?: any;
   error?: string;
-};
+}
 
 export async function postRequest(
   endpoint: string,

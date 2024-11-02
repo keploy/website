@@ -55,9 +55,9 @@ export const DirDiv = ({
         style={{ paddingLeft: `${depth * 13}px` }}
       >
         {open ? (
-          <MdOutlineKeyboardArrowDown className={`${themeDir?"text-black":"text-white"}`} />
+          <MdOutlineKeyboardArrowDown className={themeDir?"text-black":"text-white"} />
         ) : (
-          <MdOutlineKeyboardArrowRight className={`${themeDir?"text-black":"text-white"}`} />
+          <MdOutlineKeyboardArrowRight className={themeDir?"text-black":"text-white"} />
         )}
         <FileIcon
           name={open ? "openDirectory" : "closedDirectory"}

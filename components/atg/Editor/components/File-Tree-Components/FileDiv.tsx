@@ -48,8 +48,8 @@ export const FileDiv = ({
           <MdOutlineKeyboardArrowRight />
         ))}
       <FileIcon
-        name={file.name?.split(".").pop() || ""}
-        extension={file?.name?.split(".").pop() || ""}
+        name={file.name.split(".").pop() || ""}
+        extension={file.name.split(".").pop() || ""}
         themeIcons={themeFileDiv}
       />
       <span className="ml-1 truncate  max-w-full">{file.name}</span>

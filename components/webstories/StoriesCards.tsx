@@ -10,16 +10,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-type StoriesCardProps = {
+interface StoriesCardProps {
   CardImage: string | StaticImageData;
   CardDescription: string;
   Slug: string;
   Category: string[];
-};
+}
 
-type StoriesCardsProps = {
+interface StoriesCardsProps {
   data: StoriesCardProps[];
-};
+}
 
 const StoriesCards = ({ data }: StoriesCardsProps) => {
   const [searchValue, setSearchValue] = useState("");

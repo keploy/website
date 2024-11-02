@@ -32,7 +32,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
       setMobileNavOpen(false);
     };
     document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    return () => { document.removeEventListener("click", clickHandler); };
   });
 
   // close the mobile menu if the esc key is pressed
@@ -42,7 +42,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
       setMobileNavOpen(false);
     };
     document.addEventListener("keydown", keyHandler);
-    return () => document.removeEventListener("keydown", keyHandler);
+    return () => { document.removeEventListener("keydown", keyHandler); };
   });
 
   return (
@@ -53,7 +53,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
         className={`hamburger ${mobileNavOpen && "active"}`}
         aria-controls="mobile-nav"
         aria-expanded={mobileNavOpen}
-        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        onClick={() => { setMobileNavOpen(!mobileNavOpen); }}
       >
         <span className="sr-only">Menu</span>
         <svg
@@ -164,7 +164,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
               </Link>
             </li>
             <div
-              onClick={() => setShowResourcesDropdown(!showResourcesDropdown)}
+              onClick={() => { setShowResourcesDropdown(!showResourcesDropdown); }}
               className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
             >
               Resources

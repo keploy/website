@@ -8,7 +8,7 @@ import {
 export const useTerminal = () => {
   const [terminalRef, setDomNode] = useState<HTMLDivElement>();
   const setTerminalRef = useCallback(
-    (node: HTMLDivElement) => setDomNode(node),
+    (node: HTMLDivElement) => { setDomNode(node); },
     []
   );
 
@@ -19,7 +19,7 @@ export const useTerminal = () => {
   useEffect(() => {
     const windowResizeEvent = () => {
       terminalRef?.scrollTo({
-        top: terminalRef?.scrollHeight ?? 99999,
+        top: terminalRef.scrollHeight ?? 99999,
         behavior: "smooth",
       });
     };
@@ -35,7 +35,7 @@ export const useTerminal = () => {
    */
   useEffect(() => {
     terminalRef?.scrollTo({
-      top: terminalRef?.scrollHeight ?? 99999,
+      top: terminalRef.scrollHeight ?? 99999,
       behavior: "smooth",
     });
   }, [history, terminalRef]);
@@ -56,7 +56,7 @@ export const useTerminal = () => {
       new Promise((resolve) => {
         setTimeout(() => {
           pushToHistory(content);
-          return resolve(content);
+          resolve(content);
         }, delay);
       }),
     [pushToHistory]
