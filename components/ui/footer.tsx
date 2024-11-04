@@ -59,6 +59,9 @@ export default function Footer() {
                 <Link href="https://keploy.io/blog/community" className="text-neutral-300 hover:text-primary-300 transition duration-150 ease-in-out">Community Blog</Link>
               </li>
               <li className="mb-2">
+                <Link href="/careers" className="text-neutral-300 hover:text-primary-300 transition duration-150 ease-in-out">Careers</Link>
+              </li>
+              <li className="mb-2">
                 <Link href="https://keploy.io/sitemap.xml" className="text-neutral-300 hover:text-primary-300 transition duration-150 ease-in-out">Sitemap</Link>
               </li>
               {/*<li className="mb-2">*/}
