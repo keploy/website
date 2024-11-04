@@ -87,7 +87,7 @@ export default function Hero() {
               >
                 <b>Open Source</b> Platform for converting API calls to Test Cases with Data Mocks
               </p>
-              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center space-x-4" data-aos="zoom-y-out"
+              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center  md:space-x-4 lg:space-x-4 " data-aos="zoom-y-out"
                    data-aos-delay="300">
         <div className="mb-4">
                   {/* Wrapping Link with NeonButton */}
@@ -103,7 +103,7 @@ export default function Hero() {
                 <div className='mb-4'>
                   {/* Wrapping Link with NeonButton */}
                     <Link
-                      className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:mb-0"
+                      className="btn text-white bg-green-900 hover:text-emerald-200 w-full  sm:mb-0"
                       href="https://app.keploy.io/signin"
                     >
                       Sign In to Keploy Console

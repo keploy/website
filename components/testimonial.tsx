@@ -48,7 +48,7 @@ const Testimonial = ({
   );
 
   return (
-    <div ref={container} className="max-w-6xl px-4 mt-56 lg:mt-32 md:mt-40   mx-auto my-16">
+    <div ref={container} className="max-w-6xl px-4 mx-auto my-16">
       <p className="text-lg md:text-2xl quote-container text-secondary-300">
         <span className="quote-character opacity-[0.2]">"</span>
         {content.split("").map((character, index) => {
