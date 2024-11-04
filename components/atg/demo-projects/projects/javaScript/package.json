@@ -1,0 +1,20 @@
+{
+  "name": "animal-app",
+  "version": "1.0.0",
+  "description": "Single page application for animal database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.0.5",
+    "@keploy/sdk": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
