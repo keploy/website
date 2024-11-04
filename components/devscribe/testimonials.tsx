@@ -23,9 +23,6 @@ export default function Testimonials() {
               Please reach out to if you need to register as a Sponsor, email us - devrel[at]keploy[dot]io
             </p>
           </div>
-
-
-
           <div className="max-w-sm mx-auto grid grid-cols-1 gap-1 items-start lg:max-w-none py-12 md:py-20 text-center">
             <div className="flex flex-col h-full p-6 " data-aos="fade-up">
               <div>
@@ -107,20 +104,6 @@ export default function Testimonials() {
               </div>
             </div> */}
             {/* <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
-              <div className="text-center">
-                <div className="relative inline-flex flex-col mb-4 max-h-fit text-center ">
-                  <Link href="" title="Go to MoT" target="_blank" rel="noopener">
-                    <Image decoding="async" width="393"
-                           height="129"
-                           src={FU}
-                           className="logo w-auto  max-h-fit"
-                           alt="MoT logo"
-                           loading="lazy"/>
-                  </Link>
-                </div>
-              </div>
-            </div> */}
-            {/* <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
                   <Link href="" title="Go to Google" target="_blank" rel="noopener">
@@ -148,35 +131,6 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-            {/*<div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">*/}
-            {/*  <div>*/}
-            {/*    <div className="relative inline-flex flex-col mb-4 ">*/}
-
-            {/*      <Link href="https://keploy.io" title="Go to Keploy" target="_blank" rel="noopener">*/}
-            {/*        <Image decoding="async" width="393"*/}
-            {/*               height="129"*/}
-            {/*               src={Keploy}*/}
-            {/*               className="logo text-center h-4/5"*/}
-            {/*               alt="Keploy logo"*/}
-            {/*               loading="lazy"/>*/}
-            {/*      </Link>*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</div>*/}
-            {/*<div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">*/}
-            {/*  <div>*/}
-            {/*    <div className="relative inline-flex flex-col mb-4  justify-center">*/}
-            {/*      <Link href="https://community.cncf.io/noida/" title="Go to Google" target="_blank" rel="noopener">*/}
-            {/*        <Image decoding="async" width="393"*/}
-            {/*               height="129"*/}
-            {/*               src={CNCFImage}*/}
-            {/*               className="logo text-center"*/}
-            {/*               alt="CNCF logo"*/}
-            {/*               loading="lazy"/>*/}
-            {/*      </Link>*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</div>*/}
           </div>
 
 
