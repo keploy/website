@@ -32,14 +32,14 @@ export default function Solutions() {
       onMouseLeave={hideDropdown}
       className="relative flex items-center py-3 transition duration-150 ease-in-out cursor-pointer"
     >
-      <div className="flex align-center text-gray-600 hover:text-primary-100">
+      <div className="flex items-center text-gray-600 hover:text-primary-100">
         <div className="flex">
           <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
             Solutions
             <span className="absolute text-gray-600 text-[3px] left-[.45rem] bottom-[.15rem] w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
           </div>
         </div>
-        <div onClick={toggleDropdown} className="pt-4 -pl-6">
+        <div onClick={toggleDropdown} className="pt-1">
           {openDropdown ? (
             <UpIcon className="text-gray-600" />
           ) : (
@@ -49,141 +49,157 @@ export default function Solutions() {
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-[182px] w-[925px] h-[280px] cursor-auto rounded-2xl">
-          <div>
-            <div className="flex items-center justify-evenly">
-              <div className="pt-[20px] px-[19px] flex justify-between items-stretch w-full">
-                <div className="p-5">
-                  <div className="pb-5 text-gray-600">Solutions</div>
-                  <div>
-                    <ul className="flex flex-col gap-5">
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <TestDataGeneration />
-                          Test Data Generation
-                        </a>
-                      </li>
-
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <TestCaseGeneration />
-                          Test Case Generation
-                        </a>
-                      </li>
-
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <UnitTestGeneration />
-                          Unit Test Generation
-                        </a>
-                      </li>
-
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <CodeCoverage />
-                          Code Coverage
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="pb-5"></div>
-                  <div className="p-5">
-                    <div>
-                      <ul className="flex flex-col gap-5">
-                        <li>
-                          <a
-                            href=""
-                            className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                          >
-                            <CITesting />
-                            CI Testing
-                          </a>
-                        </li>
-
-                        <li>
-                          <a
-                            href=""
-                            className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                          >
-                            <RegressionTesting />
-                            Regression Testing
-                          </a>
-                        </li>
-
-                        <li>
-                          <a
-                            href=""
-                            className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                          >
-                            <APITesting />
-                            API Testing
-                          </a>
-                        </li>
-
-                        <li>
-                          <a
-                            href=""
-                            className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                          >
-                            <ContractTesting />
-                            Contract Testing
-                          </a>
-                        </li>
-                      </ul>
+        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-0 right-0 mx-auto w-full max-w-6xl h-auto cursor-auto rounded-2xl p-4 sm:p-6">
+          {/* Responsive Flex Layout */}
+          <div className="flex flex-col md:flex-row items-start justify-between">
+            {/* Solutions Section */}
+            <div className="p-5 flex-1">
+              <div className="pb-5 text-gray-600">Solutions</div>
+              <ul className="flex flex-col gap-4">
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <TestDataGeneration />
                     </div>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="pb-5 text-gray-600">Integrations</div>
-                  <div>
-                    <ul className="flex flex-col gap-5">
-                      <li className="flex gap-2 font-[700] hover:text-primary-500 duration-200">
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <Git />
-                          Git
-                        </a>
-                      </li>
+                    <span>Test Data Generation</span>
+                  </a>
+                </li>
 
-                      <li className="flex gap-2 font-[700] hover:text-primary-500 duration-200">
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <Jenkins />
-                          Jenkins
-                        </a>
-                      </li>
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <TestCaseGeneration />
+                    </div>
+                    <span>Test Case Generation</span>
+                  </a>
+                </li>
 
-                      <li className="flex gap-2 font-[700] hover:text-primary-500 duration-200">
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <Gitlab />
-                          Gitlab
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <UnitTestGeneration />
+                    </div>
+                    <span>Unit Test Generation</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <CodeCoverage />
+                    </div>
+                    <span>Code Coverage</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* More Solutions Section */}
+            <div className="p-5 flex-1">
+              <div className="pb-5 text-gray-600">More Solutions</div>
+              <ul className="flex flex-col gap-4">
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <CITesting />
+                    </div>
+                    <span>CI Testing</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <RegressionTesting />
+                    </div>
+                    <span>Regression Testing</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <APITesting />
+                    </div>
+                    <span>API Testing</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <ContractTesting />
+                    </div>
+                    <span>Contract Testing</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Integrations Section */}
+            <div className="p-5 flex-1">
+              <div className="pb-5 text-gray-600">Integrations</div>
+              <ul className="flex flex-col gap-4">
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <Git />
+                    </div>
+                    <span>Git</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <Jenkins />
+                    </div>
+                    <span>Jenkins</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
+                  >
+                    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                      <Gitlab />
+                    </div>
+                    <span>Gitlab</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

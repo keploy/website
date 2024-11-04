@@ -35,14 +35,14 @@ export default function Product() {
       onMouseLeave={hideDropdown}
       className="relative flex items-center py-3 transition duration-150 ease-in-out cursor-pointer"
     >
-      <div className="flex align-center text-gray-600 hover:text-primary-100">
+      <div className="flex items-center text-gray-600 hover:text-primary-100">
         <div className="flex">
           <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
             Products
             <span className="absolute text-gray-600 text-[3px] left-[.45rem] bottom-[.15rem] w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
           </div>
         </div>
-        <div onClick={toggleDropdown} className="pt-4 -pl-6">
+        <div onClick={toggleDropdown} >
           {openDropdown ? (
             <UpIcon className="text-gray-600" />
           ) : (
@@ -52,176 +52,164 @@ export default function Product() {
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-[28px] w-[1300px] h-[320px] cursor-auto rounded-2xl">
-          <div>
-            <div className="flex items-center justify-between">
-              <div className="pt-[39px] pl-[19px] flex justify-between items-stretch w-full">
-                <div className="p-5">
-                  <div
-                    className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5 mb-6"
-                    onMouseEnter={() => {
-                      setOpenSourceHover(true);
-                      setEnterpriseHover(false);
-                    }}
-                  >
-                    <OpenSource />
-                    <div>
-                      <h1 className="text-[20px] font-bold cursor-pointer">
-                        Open Source
-                      </h1>
-                      <p className="text-[14px] text-[#797C88] cursor-pointer">
-                        Open Source testing solution
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-[135px] p-5"
-                    onMouseEnter={() => {
-                      setEnterpriseHover(true);
-                      setOpenSourceHover(false);
-                    }}
-                  >
-                    <EnterpriseSolution />
-                    <div>
-                      <h1 className="text-[20px] font-bold cursor-pointer">
-                        Enterprise Solution
-                      </h1>
-                      <p className="text-[14px] text-[#797C88] cursor-pointer">
-                        Open Source testing solution
-                      </p>
-                    </div>
+        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-0 right-0 mx-auto w-full max-w-6xl h-auto cursor-auto rounded-2xl p-4 sm:p-6">
+          {/* Changed positioning to left-0 right-0 with mx-auto and max-w for responsiveness */}
+          <div className="flex flex-col md:flex-row items-start justify-between">
+            {/* Use flex-col on small screens and flex-row on medium and above */}
+            <div className="flex flex-col md:flex-row w-full">
+              <div className="p-5 flex-1">
+                <div
+                  className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-full p-5 mb-6"
+                  onMouseEnter={() => {
+                    setOpenSourceHover(true);
+                    setEnterpriseHover(false);
+                  }}
+                >
+                  <OpenSource />
+                  <div>
+                    <h1 className="text-lg font-bold cursor-pointer">Open Source</h1>
+                    <p className="text-sm text-[#797C88] cursor-pointer">
+                      Open Source testing solution
+                    </p>
                   </div>
                 </div>
+
+                <div
+                  className="flex gap-3 justify-center items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-full p-5"
+                  onMouseEnter={() => {
+                    setEnterpriseHover(true);
+                    setOpenSourceHover(false);
+                  }}
+                >
+                  <EnterpriseSolution />
+                  <div>
+                    <h1 className="text-lg font-bold cursor-pointer">Enterprise Solution</h1>
+                    <p className="text-sm text-[#797C88] cursor-pointer">
+                      Comprehensive enterprise testing
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full md:w-1/3 p-5">
+                <p className="text-sm text-gray-500 pb-5">About Product</p>
 
                 <div>
-                  <p className="text-[14px] text-gray-500 pb-5">
-                    About Product
-                  </p>
+                  <ul className="flex flex-col gap-4">
+                    <li>
+                      <a
+                        href="https://keploy.io/docs/concepts/what-is-keploy/#heading"
+                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                      >
+                        <WhatIsKeploy />
+                        What is Keploy?
+                      </a>
+                    </li>
 
-                  <div>
-                    <ul className="flex flex-col gap-6">
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <WhatIsKeploy />
-                          What is Keploy?
-                        </a>
-                      </li>
+                    <li>
+                      <a
+                        href="https://keploy.io/docs/keploy-explained/why-keploy/#heading"
+                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                      >
+                        <WhyUseKeploy />
+                        Why use Keploy?
+                      </a>
+                    </li>
 
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <WhyUseKeploy />
-                          Why use Keploy?
-                        </a>
-                      </li>
+                    <li>
+                      <a
+                        href="https://keploy.io/docs/keploy-explained/how-keploy-works/#heading"
+                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                      >
+                        <HowItWorks />
+                        How it works?
+                      </a>
+                    </li>
 
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <HowItWorks />
-                          How it works?
-                        </a>
-                      </li>
-
-                      <li>
-                        <a
-                          href=""
-                          className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                        >
-                          <GettingStarted />
-                          Getting started guide
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                    <li>
+                      <a
+                        href="https://keploy.io/docs/running-keploy/configuration-file/#getting-started"
+                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                      >
+                        <GettingStarted />
+                        Getting started guide
+                      </a>
+                    </li>
+                  </ul>
                 </div>
+              </div>
 
-                <div className="flex flex-row justify-start pr-36">
+              <div className="w-full md:w-1/3 p-5">
+                {openSourceHover && (
                   <div>
-                    {openSourceHover && (
-                      <div>
-                        <p className="text-[14px] text-gray-500 pb-5">
-                          Features
-                        </p>
+                    <p className="text-sm text-gray-500 pb-5">Features</p>
 
-                        <div>
-                          <ul className="flex flex-col gap-6">
-                            <li>
-                              <a
-                                href=""
-                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                              >
-                                <ApiCallRecording />
-                                API Call Recording and Replay
-                              </a>
-                            </li>
+                    <div>
+                      <ul className="flex flex-col gap-4">
+                        <li>
+                          <a
+                            href=""
+                            className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                          >
+                            <ApiCallRecording />
+                            API Call Recording and Replay
+                          </a>
+                        </li>
 
-                            <li>
-                              <a
-                                href=""
-                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                              >
-                                <AutomaticMocking />
-                                Automatic Mocking of Dependencies
-                              </a>
-                            </li>
+                        <li>
+                          <a
+                            href=""
+                            className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                          >
+                            <AutomaticMocking />
+                            Automatic Mocking of Dependencies
+                          </a>
+                        </li>
 
-                            <li>
-                              <a
-                                href=""
-                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                              >
-                                <CICD />
-                                CI/CD Integration
-                              </a>
-                            </li>
+                        <li>
+                          <a
+                            href=""
+                            className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                          >
+                            <CICD />
+                            CI/CD Integration
+                          </a>
+                        </li>
 
-                            <li>
-                              <a
-                                href=""
-                                className="flex gap-2 font-[700] hover:text-primary-500 duration-200"
-                              >
-                                <MultiPurposeMocks />
-                                Multi Purpose Mocks
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    )}
+                        <li>
+                          <a
+                            href=""
+                            className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                          >
+                            <MultiPurposeMocks />
+                            Multi Purpose Mocks
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div>
-                    {enterpriseHover && (
-                      <div className="shadow-xl rounded-xl">
-                        <div className="p-5 text-center flex justify-center flex-col gap-3 items-center">
-                          <p className="text-[12px] font-inter font-[700]">
-                            Want to achieve achieving 95% coverage by making{" "}
-                            <br /> API calls of all possible permutations
-                          </p>
+                )}
 
-                          {/* <Image
-                            src="/images/navBarIcons/EnterpriseSolutionImg.png"
-                            alt="Enterprise Solution image"
-                            height={556}
-                            width={260}
-                          /> */}
+                {enterpriseHover && (
+                  <div className="shadow-xl rounded-xl p-5 mt-6">
+                    <div className="text-center flex flex-col gap-3 items-center">
+                      <p className="text-xs font-semibold">
+                        Want to achieve 95% coverage by making API calls of all possible permutations
+                      </p>
 
-                          <button className="cursor-pointer bg-primary-200 w-[50%] rounded-md font-bold shadow-lg hover:shadow-none p-1">
-                            Talk to us
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                      {/* Uncomment and use responsive image if needed */}
+                      {/* <Image
+                        src="/images/navBarIcons/EnterpriseSolutionImg.png"
+                        alt="Enterprise Solution image"
+                        className="w-full h-auto"
+                      /> */}
+
+                      <button className="mt-4 bg-primary-200 w-1/2 rounded-md font-bold shadow-lg hover:shadow-none p-2">
+                        Talk to us
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
