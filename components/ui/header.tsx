@@ -56,10 +56,16 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed w-full z-30 bg-neutral-100 transition duration-300 ease-in-out ${
-        !top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""
+      className={`fixed place-self-center z-30 bg-neutral-100 transition duration-300 ease-in-out ${
+        !top ? "bg-neutral-100 place-self-center backdrop-blur-sm my-5 shadow-lg rounded-full w-fit ease-in-out" : "w-full"
       }`}
     >
+{/* 
+<header
+      className={`fixed w-fit place-self-center shadow-lg my-5 z-30 bg-neutral-100 rounded-full transition duration-300 ease-in-out ${
+        !top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""
+      }`}
+    > */}
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
@@ -151,7 +157,7 @@ export default function Header() {
             <Link
               href="https://app.keploy.io/signin"
               target="_blank"
-              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
+              className="btn-sm text-gray-200 bg-secondary-300 h-12 hover:text-primary-300 "
             >
               <span>Sign In</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
