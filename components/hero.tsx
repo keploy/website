@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 "use client";
 import VideoThumb from '@/public/images/demo-thumbnail.png';
 import ModalVideo from '@/components/modal-video';
 import Image from "next/image";
+import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg";
 import React from "react";
 import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
@@ -13,7 +15,8 @@ export default function Hero() {
     <section className="relative">
 
       {/* Illustration behind hero content */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none z-0" aria-hidden="true">
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1 " aria-hidden="true">
+      <div className='mb-24'>
         <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="illustration-01">
@@ -28,6 +31,7 @@ export default function Hero() {
           </g>
         </svg>
       </div>
+      </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
@@ -35,7 +39,31 @@ export default function Hero() {
         <div className="pt-32 pb-12 md:pt-40 md:pb-20 gap-16">
 
           {/* Section header */}
-          <div className="text-center pb-12 md:pb-16">
+          <div className=" text-center pb-12 md:pb-16">
+
+            <div className='flex flex-row text-xs md:text-sm lg:text-sm bg-inherit justify-center  items-center my-4 gap-2 mb-5' data-aos="zoom-y-out" data-aos-delay="150">
+              <div className='z-40 shadow-[4px_10px_15px_rgba(0,0,0,0.25)] rounded-full bg-neutral-100  '>
+              <span className=" text-secondary-300 mx-1 pl-2">
+              Automate
+              </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200 mr-1">
+              your integration tests now!
+              </span>
+              <button className='bg-[#fcaf7f] rounded-full ml-2 p-2'>
+                  <p>   <span className=" text-secondary-300 mx-1">
+                  Join</span> 
+                  <Link
+                      href="https://forms.gle/waYcLSASm9dfE9tC9"
+                    >
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200 mr-1">
+                   Cloud Waitlist
+                   </span>
+                    </Link>
+                   </p>
+              </button>
+              </div>
+            </div>
+
             <p className="text-xl sm:text-2xl text-accent-200 mb-4 leading-snug sm:leading-normal"
                data-aos="zoom-y-out" data-aos-delay="150">
               2 minutes to 90% test coverage!
@@ -59,9 +87,9 @@ export default function Hero() {
               >
                 <b>Open Source</b> Platform for converting API calls to Test Cases with Data Mocks
               </p>
-              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center space-x-4" data-aos="zoom-y-out"
+              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center  md:space-x-4 lg:space-x-4 " data-aos="zoom-y-out"
                    data-aos-delay="300">
-                <div className="mb-4">
+        <div className="mb-4">
                   {/* Wrapping Link with NeonButton */}
                     <Link
                       target="_blank"
@@ -75,7 +103,7 @@ export default function Hero() {
                 <div className='mb-4'>
                   {/* Wrapping Link with NeonButton */}
                     <Link
-                      className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:w-auto sm:mb-0"
+                      className="btn text-white bg-green-900 hover:text-emerald-200 w-full  sm:mb-0"
                       href="https://app.keploy.io/signin"
                     >
                       Sign In to Keploy Console
