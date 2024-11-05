@@ -33,7 +33,7 @@ const sampleCaseStudies = [
     title: "Read how Company Y Reduced their testing time by 30% using Keploy",
     text: "Read how Company Y Reduced their testing time by 30%",
     imageUrl: "/images/gradient.png",
-    tags: ["Company Y", "Testing", "Keploy"],
+    tags: ["Company Y", "Testing", "Keploy Testing"],
   },
   {
     title:
@@ -64,11 +64,36 @@ export default function Home() {
   return (
     <RootLayout metadata={pageMetadata}>
       <div className="overflow-x-clip relative flex flex-col items-center">
-        <div className=" flex flex-col h-[80svh] justify-center items-start min-w-[60vw] mx-10 md:mx-auto overflow-x-clip max-w-[100vw]">
+      <Image
+            src="/images/gradient-star.png"
+            alt=""
+            width={300}
+            height={300}
+            className="absolute left-[0%] top-[10svh] -z-10 max-w-[300px] max-h-[300px] w-[30vw] h-[30vw] animate-float"
+          />
+          <div className="absolute right-[90%] md:right-[-10%] md:top-[35svh] top-[50svh] rounded-full overflow-clip aspect-square max-w-[300px] max-h-[300px] w-[30vw] h-[30vw] -z-10 drop-shadow-[0px_0px_50px_rgba(254,66,41,1)] animate-float">
+            <Image
+              src="/images/gradient.png"
+              alt=""
+              width={700}
+              height={400}
+              className="-z-10 w-full h-full object-fill"
+            />
+          </div>
+          <div className="absolute right-[5%] top-[15svh] md:left-[-5%] md:top-[60svh]  rounded-full overflow-clip aspect-square max-w-[200px] max-h-[200px] w-[20vw] h-[20vw] -z-10 drop-shadow-[0px_0px_50px_rgba(254,66,41,1)] animate-float">
+            <Image
+              src="/images/gradient.png"
+              alt=""
+              width={700}
+              height={400}
+              className="-z-10 w-full h-full object-fill"
+            />
+        </div>
+        <div className=" flex flex-col h-[50svh] justify-end mb-10 items-start min-w-[60vw] mx-10 md:mx-auto overflow-x-clip max-w-[100vw]">
           <div className="max-w-[80vw] px-4 sm:px-6 lg:px-8 mx-auto mb-10 flex-nowrap text-nowrap">
             <a
               href="/newcasestudy"
-              className="bg-blue-600 bg-[url('/images/gradient.png')] bg-no-repeat bg-cover bg-center px-4 py-4 rounded-lg text-center"
+              className="bg-[length:280%] bg-[url('/images/gradient.png')] bg-no-repeat bg-[100%] px-4 py-4 rounded-lg text-center"
             >
               <p className="me-2 inline-block text-white font-bold flex-shrink">
                 Latest Case Study by Keploy
@@ -100,43 +125,26 @@ export default function Home() {
             keploy API Tools. Learn how Keploy helps you automate API testing
             and improve code coverage.
           </p>
-          <Image
-            src="/images/gradient-star.png"
-            alt=""
-            width={300}
-            height={300}
-            className="absolute left-[0%] top-[10svh] -z-10 max-w-[300px] max-h-[300px] w-[30vw] h-[30vw] animate-float"
-          />
-          <div className="absolute right-[90%] md:right-[-10%] md:top-[35svh] top-[50svh] rounded-full overflow-clip aspect-square max-w-[300px] max-h-[300px] w-[30vw] h-[30vw] -z-10 drop-shadow-[0px_0px_50px_rgba(254,66,41,1)] animate-float">
-            <Image
-              src="/images/gradient.png"
-              alt=""
-              width={700}
-              height={400}
-              className="-z-10 w-full h-full object-fill"
-            />
-          </div>
-          <div className="absolute right-[5%] top-[15svh] md:left-[-5%] md:top-[60svh]  rounded-full overflow-clip aspect-square max-w-[200px] max-h-[200px] w-[20vw] h-[20vw] -z-10 drop-shadow-[0px_0px_50px_rgba(254,66,41,1)] animate-float">
-            <Image
-              src="/images/gradient.png"
-              alt=""
-              width={700}
-              height={400}
-              className="-z-10 w-full h-full object-fill"
-            />
-          </div>
         </div>
         <CaseStudySearch setSearch={setSearch} />
         <div className="grid lg:grid-cols-2 lg:gap-y-16 gap-10 md:max-w-[70vw] max-w-[80vw] w-full mb-10">
-          {sampleCaseStudies.filter(e => e.text.toLowerCase().includes(search.toLowerCase())).map((caseStudy, index) => (
-            <CaseStudyCard
+            {sampleCaseStudies
+            .filter(
+              (e) =>
+              e.text.toLowerCase().includes(search.toLowerCase()) ||
+              e.tags.some((tag) =>
+                tag.toLowerCase().includes(search.toLowerCase())
+              )
+            )
+            .map((caseStudy, index) => (
+              <CaseStudyCard
               key={index}
               title={caseStudy.title}
               text={caseStudy.text}
               imageUrl={caseStudy.imageUrl}
               tags={caseStudy.tags}
-            />
-          ))}
+              />
+            ))}
         </div>
       </div>
       <Footer />

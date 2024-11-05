@@ -6,8 +6,7 @@ export default function CaseStudySearch({setSearch}: caseStudySearchProps) {
   return (
     <>
       <div className="md:max-w-[70vw] max-w-[80vw] w-full mt-7 sm:mt-12 flex relative mb-7 md:flex-nowrap overflow-scroll">
-        <form>
-          <div className="relative w-[70vw] min-w-48 z-10 flex justify-center items-center gap-x-3 px-3 py-1 bg-white border rounded-lg shadow-lg shadow-gray-100 ">
+          <div className="relative w-full min-w-48 z-10 flex justify-center items-center gap-x-3 px-3 py-1 bg-white border rounded-xl shadow-lg ">
             <div className="w-full">
               <label
                 className="block text-sm text-gray-700 font-medium"
@@ -19,13 +18,13 @@ export default function CaseStudySearch({setSearch}: caseStudySearchProps) {
                 type="email"
                 name="hs-search-article-1"
                 id="hs-search-article-1"
-                className="py-2.5 px-4 block w-full border-none rounded-xl mt-1"
+                className="py-2.5 px-4 block w-full border-none rounded-xl mt-1 !outline-none !ring-0"
                 placeholder="Search article"
               />
             </div>
             <div>
               <a
-                className="size-[32px] inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-secondary-200 text-white hover:bg-secondary-300 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                className="size-[32px] inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary-300 text-white hover:bg-primary-400 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
                 href="#"
               >
                 <svg
@@ -46,7 +45,6 @@ export default function CaseStudySearch({setSearch}: caseStudySearchProps) {
               </a>
             </div>
           </div>
-</form>
       </div>
 
     </>
