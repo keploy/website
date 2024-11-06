@@ -9,7 +9,7 @@ const Banner = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed top-20 left-0 right-0 z-50 flex flex-col lg:flex-row items-center justify-between bg-gradient-to-r from-secondary-300 to-secondary-100 py-0 px-4 sm:px-6 lg:py-0 shadow-lg">
+    <div className="fixed top-20 left-0 right-0 z-50 flex flex-col lg:flex-row items-center justify-between bg-gradient-to-r from-secondary-300 to-secondary-100 py-0 px-4 sm:px-6 lg:py-0 shadow-lg shadow-gray-400">
 
       {/* Banner Content */}
       <div className="flex flex-col sm:flex-row items-center gap-4 lg:gap-6 w-full lg:w-auto text-center lg:text-left">
