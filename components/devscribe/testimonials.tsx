@@ -7,6 +7,7 @@ import Keploy from '@/public/images/conf/keploy.svg'
 import ReactPlay from '@/public/images/conf/ReactPlay Logo.svg'
 import LTSponsor from '@/public/images/conf/LambdaTest.f1670267318.png'
 import LL from '@/public/images/conf/Loft.svg'
+import HOP from '@/public/images/conf/Logotype white 3.2 trn.png'
 
 import Comingsoon from '@/public/images/conf/coming-soon-mystery-retail-concept-vector-13969461.jpg'
 import React from "react";
@@ -128,6 +129,20 @@ export default function Testimonials() {
                            src={LTSponsor}
                            className="logo text-center"
                            alt="Lambdatest Logo"
+                           loading="lazy"/>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
+              <div>
+                <div className="relative inline-flex flex-col mb-4  justify-center">
+                  <Link href="https://hoppscotch.com/" title="Go to Hoppscotch" target="_blank" rel="noopener">
+                    <Image decoding="async" width="8000"
+                           height="309"
+                           src={HOP}
+                           className="logo text-center"
+                           alt="Hoppscotch logo"
                            loading="lazy"/>
                   </Link>
                 </div>
