@@ -9,6 +9,7 @@ import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
 import APItext from "@/public/images/apiText.png";
+import Banner from './ui/banner';
 
 export default function Hero() {
   return (
@@ -112,7 +113,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-
+<Banner />
           <ModalVideo
             thumb={VideoThumb}
             thumbWidth={768}
