@@ -3,42 +3,24 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const formatStars = (num:number)=>Intl.NumberFormat('en-US', {
-  notation: "compact",
-  maximumFractionDigits: 1
-}).format(num);
+function formatStarsCount(number: number) {
+  if (number < 1000) {
+    return (number / 1000).toFixed(1) + 'K';
+  } else {
+    return (number / 1000).toFixed(1) + 'K';
+  }
+}
 
 export default function CountingNumbers({
-  className,
-  reverse = false,
-  start = reverse ? 1000 : 0,
   interval = 10,
-  duration = 800,
+  increment = 100
 }: {
-  className: string;
-  reverse?: boolean;
-  start?: number;
   interval?: number;
-  duration?: number;
+  increment?: number;
 }) {
 
-  const [top, setTop] = useState<boolean>(true);
-  const [starsCount, setStarsCount] = useState<number>(5000);
-  const [number, setNumber] = useState(start);
-
-
-  // detect whether user has scrolled the page down by 10px
-  const scrollHandler = () => {
-    window.pageYOffset > 10 ? setTop(false) : setTop(true);
-  };
-
-  useEffect(() => {
-    scrollHandler();
-    window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
-  }, [top]);
-
-  let value: number;
+  const [starsCount, setStarsCount] = useState<number>(0);
+  const [number, setNumber] = useState<number>(0)
 
   useEffect(() => {
     const fetchStarsCount = async () => {
@@ -62,52 +44,43 @@ export default function CountingNumbers({
   }, [starsCount]); // Include starsCount as a dependency
 
 
-  let increment = Math.floor(Math.abs(start - starsCount) / (duration / interval));
-  if (increment === 0) {
-    increment = 1;
-  }
   const ref = useRef(null);
   const isInView = useInView(ref);
 
   useEffect(() => {
-    if (isInView) {
-      let timer = setInterval(() => {
-        if (reverse) {
-          if (number > starsCount) {
-            setNumber((num) => {
-              let newstarsCount = num - increment;
-              if (newstarsCount < starsCount) {
-                newstarsCount = starsCount;
-                if (timer) clearInterval(timer);
-              }
-              return newstarsCount;
-            });
-          } else if (timer) {
-            clearInterval(timer);
-          }
+    if (isInView && starsCount != 0) {
+      const starsInterval = setInterval(() => {
+        if (number < starsCount) {
+          setNumber((prev) => {
+
+            let newCount = prev + increment;
+            if (newCount > starsCount) {
+              newCount = starsCount
+              if (starsInterval) clearInterval(starsInterval)
+            }
+
+            return newCount;
+          })
         } else {
-          if (number < starsCount) {
-            setNumber((num) => {
-              let newstarsCount = num + increment;
-              if (newstarsCount > starsCount) {
-                newstarsCount = starsCount;
-                if (timer) clearInterval(timer);
-              }
-              return newstarsCount;
-            });
-          } else if (timer) {
-            clearInterval(timer);
-          }
+
+          clearInterval(starsInterval)
         }
-      }, interval);
+
+      }, interval)
+
     }
-  }, [isInView]);
-
-
+  }, [isInView, starsCount]);
 
   return (
-    <p className={className} ref={ref}>
-      {formatStars(number)}
-    </p>
+    <div className="relative text-base flex gap-1 w-9 items-center" ref={ref}>
+
+      {number === 0 ? <>
+        <svg className="ms-2 h-5 w-5 animate-spin absolute" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+        </svg>
+      </> :
+        formatStarsCount(number)}
+    </div>
   );
 }
