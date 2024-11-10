@@ -69,7 +69,7 @@ export default function Resources() {
 
                   <li>
                     <a
-                      href=""
+                      href="https://keploy.io/docs/concepts/support/#heading"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <Contact />
@@ -95,7 +95,7 @@ export default function Resources() {
                 <ul className="flex flex-col gap-4">
                   <li>
                     <a
-                      href=""
+                      href="https://www.youtube.com/@keploy"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <Tutorial />
@@ -105,7 +105,7 @@ export default function Resources() {
 
                   <li>
                     <a
-                      href=""
+                      href="https://keploy.io/blog/technology"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <Blogs />
@@ -115,7 +115,7 @@ export default function Resources() {
 
                   <li>
                     <a
-                      href=""
+                      href="https://keploy.io/blog/community"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <CommunityArticles />
@@ -141,7 +141,7 @@ export default function Resources() {
                 <ul className="flex flex-col gap-4">
                   <li>
                     <a
-                      href=""
+                      href="https://github.com/keploy"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <Github />
@@ -151,7 +151,7 @@ export default function Resources() {
 
                   <li>
                     <a
-                      href=""
+                      href="https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <Community />
@@ -171,11 +171,11 @@ export default function Resources() {
 
                   <li>
                     <a
-                      href=""
+                      href="https://keploy.io/devscribe"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <KRoc />
-                      kRoc
+                      Events
                     </a>
                   </li>
                 </ul>

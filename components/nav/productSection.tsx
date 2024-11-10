@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { UpIcon } from "./UpIcon";
 import DownIcon from "./DownIcon";
 import OpenSource from "@/public/images/navBarIcons/OpenSource";
@@ -13,7 +13,9 @@ import AutomaticMocking from "@/public/images/navBarIcons/AutomaticMocking";
 import CICD from "@/public/images/navBarIcons/CICD";
 import MultiPurposeMocks from "@/public/images/navBarIcons/MultiPurposeMocks";
 import EnterpriseSolutionImg from "@/public/images/navBarIcons/EnterpriseSolutionImg";
-
+import EnterPrice from "@/public/images/navBarIcons/EnterPrice.svg"
+import Image from "next/image";
+import MemoizedImage from "@/public/images/navBarIcons/EnterPrice";
 export default function Product() {
   const [openDropdown, setShowDropdown] = useState(false);
   const [enterpriseHover, setEnterpriseHover] = useState(false);
@@ -28,6 +30,13 @@ export default function Product() {
   const toggleDropdown = () => {
     setShowDropdown(!openDropdown);
   };
+
+  useEffect(() => {
+    const img: HTMLImageElement = document.createElement('img'); // Create an HTMLImageElement
+    img.src = "/images/navBarIcons/EnterPrice.svg"; // Set the source to preload
+  }, []);
+  
+  
 
   return (
     <div
@@ -139,8 +148,8 @@ export default function Product() {
                 </div>
               </div>
 
-              <div className="w-full md:w-1/3 p-5">
-                {openSourceHover && (
+              <div className="w-full md:w-1/3 p-5" style={{ minHeight: '300px' }}> {/* Set a minimum height for stability */}
+              {openSourceHover && (
                   <div>
                     <p className="text-sm text-gray-500 pb-5">Features</p>
 
@@ -148,7 +157,7 @@ export default function Product() {
                       <ul className="flex flex-col gap-4">
                         <li>
                           <a
-                            href=""
+                            href="https://keploy.io/docs/concepts/what-is-keploy/#step-1--record-unique-network-interactions-as-test-case"
                             className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                           >
                             <ApiCallRecording />
@@ -158,7 +167,7 @@ export default function Product() {
 
                         <li>
                           <a
-                            href=""
+                            href="https://keploy.io/docs/concepts/reference/glossary/mocks/#overcoming-the-challenges"
                             className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                           >
                             <AutomaticMocking />
@@ -168,7 +177,7 @@ export default function Product() {
 
                         <li>
                           <a
-                            href=""
+                            href="https://keploy.io/docs/concepts/what-are-keploy-features/#-combined-test-coverage-in-cicd"
                             className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                           >
                             <CICD />
@@ -178,7 +187,7 @@ export default function Product() {
 
                         <li>
                           <a
-                            href=""
+                            href="https://keploy.io/docs/concepts/what-are-keploy-features/#%EF%B8%8F-multi-purpose-mocks"
                             className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                           >
                             <MultiPurposeMocks />
@@ -196,20 +205,16 @@ export default function Product() {
                       <p className="text-xs font-semibold">
                         Want to achieve 95% coverage by making API calls of all possible permutations
                       </p>
-
-                      {/* Uncomment and use responsive image if needed */}
-                      {/* <Image
-                        src="/images/navBarIcons/EnterpriseSolutionImg.png"
-                        alt="Enterprise Solution image"
-                        className="w-full h-auto"
-                      /> */}
-
+                    <MemoizedImage/>
                       <button className="mt-4 bg-primary-200 w-1/2 rounded-md font-bold shadow-lg hover:shadow-none p-2">
-                        Talk to us
+                        <a href="https://calendar.app.google/CmnbjuDnK8J2Xuge8" target="_blank">
+                          Talk to us
+                        </a>
                       </button>
                     </div>
                   </div>
                 )}
+
               </div>
             </div>
           </div>

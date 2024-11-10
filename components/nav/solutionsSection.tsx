@@ -58,7 +58,7 @@ export default function Solutions() {
               <ul className="flex flex-col gap-4">
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/test-data-generator"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -70,7 +70,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/test-case-generator"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -82,7 +82,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/unit-test-generator"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -94,7 +94,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/code-coverage"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -112,7 +112,7 @@ export default function Solutions() {
               <ul className="flex flex-col gap-4">
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/continuous-integration-testing"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -124,7 +124,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/docs/concepts/reference/glossary/regression-testing/#heading"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -136,7 +136,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/api-testing"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -148,7 +148,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href=""
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -166,7 +166,7 @@ export default function Solutions() {
               <ul className="flex flex-col gap-4">
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/docs/ci-cd/github/#heading"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -178,7 +178,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/docs/ci-cd/jenkins/#heading"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
@@ -190,7 +190,7 @@ export default function Solutions() {
 
                 <li>
                   <a
-                    href="#"
+                    href="https://keploy.io/docs/ci-cd/gitlab/#heading"
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
