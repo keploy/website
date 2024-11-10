@@ -11,6 +11,8 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
+import NavItemsContainer from "../nav/nav_items_container";
+import { usePathname } from "next/navigation";
 
 
 
@@ -44,53 +46,40 @@ export default function Header() {
     }
   })
 
+  const avoid_routes = ["/devscribe", "/gittogether"]
+  const pathname = usePathname();
+
+  if (avoid_routes?.includes(pathname)) {
+    return null
+  }
+
   if (isDesktop) {
 
-
-
     return (
-      <motion.div
-        animate={isHeaderHidden ? "hidden" : "visible"}
-        variants={{
-          hidden: {
-            y: "-110%"
-          },
-          visible: {
-            y: "0%"
-          }
-        }}
-        transition={{ duration: 0.2 }}
-        className="fixed top-5 inset-x-0 max-w-6xl w-fit mx-auto px-6 z-50">
+      <header className="relative">
+        <motion.div
+          animate={isHeaderHidden ? "hidden" : "visible"}
+          variants={{
+            hidden: {
+              y: "-110%",
+            },
+            visible: {
+              y: "0%",
+            }
+          }}
+          transition={{ duration: 0.4, ease: "circInOut" }}
+          className="fixed top-5 inset-x-0 max-w-6xl w-fit mx-auto px-6 z-50">
 
-        <header >
-          <div className="w-fit mx-auto px-5 py-4 border-2 border-secondary-300/10 bg-white shadow-lg rounded-full flex items-center justify-between gap-9 xl:gap-20">
+          <div className="w-fit mx-auto px-5 py-4 border-4 border-secondary-300/15 bg-white shadow-lg rounded-full flex items-center justify-between gap-9 xl:gap-20">
             <div className="shrink-0 flex-grow-0 w-[110px] overflow-hidden ms-2">
               <Logo height="45" width="240" />
             </div>
-            <div className="relative flex items-center justify-between text-gray-600 font-medium">
-              <Link target="_blank" href="https://keploy.io/devscribe">
-                <div className="px-4 py-2 rounded-full hover:bg-neutral-100 hover:text-secondary-300/80 border border-transparent hover:shadow-md hover:border-secondary-300/5 cursor-pointer transition-all" >
-                  DevScribe
-                </div>
-              </Link>
-              <div className="px-4 py-2 rounded-full hover:bg-neutral-100 hover:text-secondary-300/80 border border-transparent hover:shadow-md hover:border-secondary-300/5 cursor-pointer transition-all" >
-                Products
-              </div>
-              <div className="px-4 py-2 rounded-full hover:bg-neutral-100 hover:text-secondary-300/80 border border-transparent hover:shadow-md hover:border-secondary-300/5 cursor-pointer transition-all" >
-                Solutions
-              </div>
-              <div className="px-4 py-2 rounded-full hover:bg-neutral-100 hover:text-secondary-300/80 border border-transparent hover:shadow-md hover:border-secondary-300/5 cursor-pointer transition-all" >
-                Resources
-              </div>
-              <Link target="_blank" href="https://keploy.io/docs">
-                <div className="px-4 py-2 rounded-full hover:bg-neutral-100 hover:text-secondary-300/80 border border-transparent hover:shadow-md hover:border-secondary-300/5 cursor-pointer transition-all" >
-                  Docs
-                </div>
-              </Link>
-            </div>
+
+            <NavItemsContainer />
+
             <div className="flex items-center gap-2">
               <Link
-                className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500 px-4 py-2 rounded-full border border-secondary-400/20"
+                className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500 px-4 py-2 rounded-full border border-secondary-400/15"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Keploy Github Repo"
@@ -126,16 +115,15 @@ export default function Header() {
               </Link>
             </div>
           </div>
-        </header>
-      </motion.div>
-
+        </motion.div>
+      </header>
     );
   } else {
     return (
-      <header className={`fixed w-full z-30 bg-neutral-100 transition duration-300 ease-in-out ${!top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""}`}>
+      <header className={`lg:hidden fixed w-full z-30 bg-neutral-100 transition duration-300 ease-in-out ${!top ? "bg-neutral-100 backdrop-blur-sm shadow-lg" : ""}`}>
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
-            <div className="shrink-0 mr-4 flex-grow-0 w-2/12 lg:hidden">
+            <div className="shrink-0 mr-4 flex-grow-0 w-2/12">
               <Logo />
             </div>
             <MobileMenu />
