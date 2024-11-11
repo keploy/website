@@ -8,11 +8,13 @@ import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
-import { PillarPages } from "../utils/resources";
+import { PillarPages,PillarPages1,PillarPages2 } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null); // State for active dropdown
+
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
     window.pageYOffset > 10 ? setTop(false) : setTop(true);
@@ -53,6 +55,9 @@ export default function Header() {
 
     fetchStarsCount();
   }, []);
+  const handleDropdownToggle = (dropdownName: string) => {
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+  };
 
   return (
     <header
@@ -67,54 +72,70 @@ export default function Header() {
             <Logo />
           </div>
           {/* Desktop navigation */}
-          <nav className="hidden lg:flex  flex-grow-0 w-6/12">
-            {/* Desktop privacy-policy in links */}
-            <ul className="flex grow justify-end flex items-center">
-            <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/devscribe"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  DevScribe
-                </Link>
+          <nav className="hidden lg:flex flex-grow-0 w-6/12">
+            <ul className="flex grow justify-end items-center">
+              {/* Products Dropdown */}
+              <li
+                className="relative"
+                onMouseEnter={() => handleDropdownToggle("products")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <div className="px-5">
+                  <NavItemWithSmallDropdown
+                    heading="Products"
+                    dropdownData={PillarPages1}
+                    openDropdown={activeDropdown === "products" ? "products" : null}
+                    handleDropdownToggle={handleDropdownToggle}
+                  />
+                </div>
               </li>
+
+              {/* Solutions Dropdown */}
+              <li
+                className="relative"
+                onMouseEnter={() => handleDropdownToggle("solutions")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <div className="px-5">
+                  <NavItemWithSmallDropdown
+                    heading="Solutions"
+                    dropdownData={PillarPages}
+                    openDropdown={activeDropdown === "solutions" ? "solutions" : null}
+                    handleDropdownToggle={handleDropdownToggle}
+                  />
+                </div>
+              </li>
+
+              {/* Docs Link */}
               <li>
                 <Link
                   target="_blank"
                   href="https://keploy.io/docs"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  className="font-medium text-gray-600 hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Docs
                 </Link>
               </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  TechBlog
-                </Link>
+
+              {/* Resources Dropdown */}
+              <li
+                className="relative"
+                onMouseEnter={() => handleDropdownToggle("resources")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <div className="px-5">
+                  <NavItemWithSmallDropdown
+                    heading="Resources"
+                    dropdownData={PillarPages2}
+                    openDropdown={activeDropdown === "resources" ? "resources" : null}
+                    handleDropdownToggle={handleDropdownToggle}
+                  />
+                </div>
               </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/community"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Articles
-                </Link>
-              </li>
-              <div className="px-5">
-                {" "}
-                <NavItemWithSmallDropdown
-                  heading="Resources"
-                  dropdownData={PillarPages}
-                />
-              </div>
             </ul>
           </nav>
+
+
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
           <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
               {/* Sliding effect span */}
