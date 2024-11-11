@@ -4,7 +4,10 @@ import GoogleImage from '@/public/images/conf/GoogleForDevelopers_logo_lockup_KO
 import MoTImage from '@/public/images/conf/ministry-of-testing.svg'
 import CNCFImage from '@/public/images/conf/cncf-white.svg'
 import Keploy from '@/public/images/conf/keploy.svg'
+import ReactPlay from '@/public/images/conf/ReactPlay Logo.svg'
 import LTSponsor from '@/public/images/conf/LambdaTest.f1670267318.png'
+import LL from '@/public/images/conf/Loft.svg'
+import HOP from '@/public/images/conf/Logotype white 3.2 trn.png'
 
 import Comingsoon from '@/public/images/conf/coming-soon-mystery-retail-concept-vector-13969461.jpg'
 import React from "react";
@@ -78,7 +81,7 @@ export default function Testimonials() {
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <Link href="https://community.cncf.io/noida/" title="Go to Google" target="_blank" rel="noopener">
+                  <Link href="https://community.cncf.io/noida/" title="Go to CNCG Noida" target="_blank" rel="noopener">
                     <Image decoding="async" width="393"
                            height="129"
                            src={CNCFImage}
@@ -89,12 +92,12 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-            {/* <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
+            <div className="flex flex-col h-full p-12 justify-center " data-aos="fade-up">
               <div>
-                <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <Link href="" title="Go to Google" target="_blank" rel="noopener">
-                    <Image decoding="async" width="393"
-                           height="129"
+                <div className="relative inline-flex flex-col mb-5  justify-center">
+                  <Link href="https://reactplay.io/" title="Go to ReactPlay" target="_blank" rel="noopener">
+                    <Image decoding="async" width="160"
+                           height="110"
                            src={ReactPlay}
                            className="logo text-center"
                            alt="ReactPlay logo"
@@ -102,21 +105,21 @@ export default function Testimonials() {
                   </Link>
                 </div>
               </div>
-            </div> */}
-            {/* <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
+            </div>
+            <div className="flex flex-col h-full p-12 justify-center " data-aos="fade-up">
               <div>
-                <div className="relative inline-flex flex-col mb-4  justify-center">
-                  <Link href="" title="Go to Google" target="_blank" rel="noopener">
-                    <Image decoding="async" width="393"
-                           height="129"
-                           src={Docker}
+                <div className="relative inline-flex flex-col mb-5  justify-center">
+                  <Link href="https://www.loft.sh/" title="Go to Loft" target="_blank" rel="noopener">
+                    <Image decoding="async" width="160"
+                           height="90"
+                           src={LL}
                            className="logo text-center"
-                           alt="Docker"
+                           alt="LoftLabs logo"
                            loading="lazy"/>
                   </Link>
                 </div>
               </div>
-            </div> */}
+            </div>
             <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
@@ -125,7 +128,21 @@ export default function Testimonials() {
                            height="129"
                            src={LTSponsor}
                            className="logo text-center"
-                           alt="Lambdatest"
+                           alt="Lambdatest Logo"
+                           loading="lazy"/>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
+              <div>
+                <div className="relative inline-flex flex-col mb-4  justify-center">
+                  <Link href="https://hoppscotch.com/" title="Go to Hoppscotch" target="_blank" rel="noopener">
+                    <Image decoding="async" width="8000"
+                           height="309"
+                           src={HOP}
+                           className="logo text-center"
+                           alt="Hoppscotch logo"
                            loading="lazy"/>
                   </Link>
                 </div>
