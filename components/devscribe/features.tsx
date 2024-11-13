@@ -1,4 +1,4 @@
-import Schedule from '@/public/images/conf/coming-soon-mystery-retail-concept-vector-13969461.jpg'
+import Schedule from '@/public/images/conf/devscribe-schedule.png'
 import GT from '@/public/images/conf/gittogether-event.jpg'
 import Image from 'next/image'
 
@@ -102,7 +102,15 @@ export default function Features() {
           <div className="flex flex-col h-full p-6 w-full " data-aos="fade-up">
             <h2 className="h2 mb-2">SCHEDULE</h2>
             <br/>
-            <h3 className="h3 mb-2">TBA</h3>
+            <div className="relative inline-flex flex-col mb-4 w-full  items-center">
+              <Image
+                  decoding="async"
+                  src={Schedule}
+                  className="logo"
+                  width={1550}
+                  alt="Past Event"
+              />
+            </div>
           </div>
         </div>
       </div>
