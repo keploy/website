@@ -47,7 +47,7 @@ export const GlossarySection = [
       heading: "Use Cases",
       links: [
         {
-          pagelink: "#",
+          pagelink: "https://www.linkedin.com/company/keploy/posts/?feedView=all",
           pageName: "About Us",
           Icon: About,
         },
@@ -57,7 +57,7 @@ export const GlossarySection = [
           Icon: Contact,
         },
         {
-          pagelink: "#",
+          pagelink: "/coming-soon",
           pageName: "Careers",
           Icon: About,
         },
@@ -77,7 +77,7 @@ export const GlossarySection = [
             Icon: CommunityArticles,
         },
         {
-            pagelink: "#",
+            pagelink: "/coming-soon",
             pageName: "Case Studies",
             Icon: CaseStudies,
         },
@@ -92,7 +92,7 @@ export const GlossarySection = [
             Icon: Community,
         },
         {
-            pagelink: "#",
+            pagelink: "https://keploy.io/docs/",
             pageName: "Resources",
             Icon: Resource,
         },

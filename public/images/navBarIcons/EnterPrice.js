@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import Image from "next/image";
-import EnterPrice from "@/public/images/navBarIcons/EnterPrice.svg";
+import Image from "next/image"; 
+import EnterPrice from "@/public/images/navBarIcons/Enterprice.png";
 
 const MemoizedImage = memo(() => (
   <Image
@@ -9,6 +9,7 @@ const MemoizedImage = memo(() => (
     width={100}
     height={100}
     className="mt-4"
+    placeholder={"blur"}
   />
 ));
 

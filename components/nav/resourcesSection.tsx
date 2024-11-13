@@ -11,6 +11,8 @@ import Github from "@/public/images/navBarIcons/Github";
 import Community from "@/public/images/navBarIcons/Community";
 import KRoc from "@/public/images/navBarIcons/kRoc";
 import Resource from "@/public/images/navBarIcons/Resource";
+import Link from "next/link";
+import Pricing from "@/public/images/navBarIcons/Pricing";
 
 export default function Resources() {
   const [openDropdown, setShowDropdown] = useState(false);
@@ -57,36 +59,47 @@ export default function Resources() {
               <div className="p-5 flex-1">
                 <div className="pb-5 text-gray-600">Company</div>
                 <ul className="flex flex-col gap-4">
-                  <li>
-                    <a
-                      href=""
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <About />
-                      About Us
-                    </a>
-                  </li>
+  <li>
+    <a
+      href="https://www.linkedin.com/company/keploy/posts/?feedView=all"
+      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+    >
+      <About />
+      About Us
+    </a>
+  </li>
 
-                  <li>
-                    <a
-                      href="https://keploy.io/docs/concepts/support/#heading"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Contact />
-                      Contact Us
-                    </a>
-                  </li>
+  <li>
+    <a
+      href="https://keploy.io/docs/concepts/support/#heading"
+      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+    >
+      <Contact />
+      Contact Us
+    </a>
+  </li>
 
-                  <li>
-                    <a
-                      href=""
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <About />
-                      Careers
-                    </a>
-                  </li>
-                </ul>
+  <li>
+    <Link
+      href={"/coming-soon"}
+      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+    >
+      <About />
+      Careers
+    </Link>
+  </li>
+
+  <li>
+    <Link
+      href={"/coming-soon"}
+      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+    >
+      <Pricing />
+      Pricing
+    </Link>
+  </li>
+</ul>
+
               </div>
 
               {/* References Section */}
@@ -161,7 +174,7 @@ export default function Resources() {
 
                   <li>
                     <a
-                      href=""
+                      href="https://keploy.io/docs/"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <Resource />
