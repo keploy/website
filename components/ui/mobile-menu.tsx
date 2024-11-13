@@ -9,11 +9,9 @@ import { UpIcon } from "../nav/UpIcon";
 import DownIcon from "../nav/DownIcon";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
-interface MobileMenuProps {
-  starsCount: number;
-}
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
+
+const MobileMenu: React.FC = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   const [showResourcesDropdown,setShowResourcesDropdown] =useState<boolean>(false)
   const trigger = useRef<HTMLButtonElement>(null);
@@ -125,7 +123,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
+                <span className="text-base flex gap-1"> <CountingNumbers /></span>
               </Link>
             </div>
               {/*<Link href="/privacy-policy" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Github</Link>*/}

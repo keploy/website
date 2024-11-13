@@ -129,7 +129,7 @@ export default function Header() {
                   {" "}
                   |
                 </span>
-                <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
+                <span className="text-base flex gap-1"> ⭐️ <CountingNumbers /></span>
               </Link>
             </div>
             <Link
@@ -143,7 +143,7 @@ export default function Header() {
               {/*</svg>*/}
             </Link>
           </div>
-          <MobileMenu starsCount={starsCount} />
+          <MobileMenu />
         </div>
       </div>
     </header>

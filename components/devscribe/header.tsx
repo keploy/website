@@ -69,7 +69,7 @@ export default function Header() {
 
           <div className="header-btn-container flex-1 justify-end hidden lg:flex">
             <div data-aos="fade-up " data-aos-delay="400">
-              <Link className="ml-3 btn rounded-lg border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0" target="_blank" href="https://forms.gle/1GapWjqvTr82NHbr5">Submit CFP
+              <Link className="ml-3 btn border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 hover:text-primary-300 w-full mb-4 sm:w-auto sm:mb-0" target="_blank" href="https://forms.gle/1GapWjqvTr82NHbr5">Submit CFP
                 <svg className=" ml-3 w-3 h-3 shrink-0 fill-current" viewBox="0 0 23 23">
                   <path d=  "M6.23 20.23 8 22l10-10L8 2 6.23 3.77 14.46 12z" />
                 </svg>
@@ -81,7 +81,7 @@ export default function Header() {
 
           </div>
 
-          <MobileMenu starsCount={starsCount} />
+          <MobileMenu />
         </div>
       </div>
     </header>
