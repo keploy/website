@@ -50,56 +50,54 @@ export default function Resources() {
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-0 right-0 mx-auto w-full max-w-6xl h-auto cursor-auto rounded-2xl p-4 sm:p-6">
+        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-0 right-0 mx-auto w-full max-w-6xl h-auto cursor-auto rounded-b-2xl p-4 sm:p-6">
           {/* Changed positioning to left-0 right-0 with mx-auto and max-w for responsiveness */}
-          <div className="flex flex-col md:flex-row items-start justify-between">
+          <div className="flex flex-col md:flex-row items-start justify-between ml-20">
             {/* Use flex-col on small screens and flex-row on medium and above */}
-            <div className="flex flex-col md:flex-row w-full">
+            <div className="flex flex-col md:flex-row  w-full">
               {/* Company Section */}
-              <div className="p-5 flex-1">
+              <div className="p-5 flex-1 ">
                 <div className="pb-5 text-gray-600">Company</div>
                 <ul className="flex flex-col gap-4">
-  <li>
-    <a
-      href="https://www.linkedin.com/company/keploy/posts/?feedView=all"
-      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-    >
-      <About />
-      About Us
-    </a>
-  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/company/keploy/posts/?feedView=all"
+                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                    >
+                      <About />
+                      About Us
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://keploy.io/docs/concepts/support/#heading"
+                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                    >
+                      <Contact />
+                      Contact Us
+                    </a>
+                  </li>
 
-  <li>
-    <a
-      href="https://keploy.io/docs/concepts/support/#heading"
-      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-    >
-      <Contact />
-      Contact Us
-    </a>
-  </li>
+                  <li>
+                    <Link
+                      href={"/coming-soon"}
+                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                    >
+                      <About />
+                      Careers
+                    </Link>
+                  </li>
 
-  <li>
-    <Link
-      href={"/coming-soon"}
-      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-    >
-      <About />
-      Careers
-    </Link>
-  </li>
-
-  <li>
-    <Link
-      href={"/coming-soon"}
-      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-    >
-      <Pricing />
-      Pricing
-    </Link>
-  </li>
-</ul>
-
+                  <li>
+                    <Link
+                      href={"/coming-soon"}
+                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                    >
+                      <Pricing />
+                      Pricing
+                    </Link>
+                  </li>
+                </ul>
               </div>
 
               {/* References Section */}

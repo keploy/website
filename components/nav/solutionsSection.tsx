@@ -49,9 +49,9 @@ export default function Solutions() {
       </div>
 
       {openDropdown && (
-        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-0 right-0 mx-auto w-full max-w-6xl h-auto cursor-auto rounded-2xl p-4 sm:p-6">
+        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-0 right-0 mx-auto w-full max-w-6xl h-auto cursor-auto rounded-b-2xl p-4 sm:p-6">
           {/* Responsive Flex Layout */}
-          <div className="flex flex-col md:flex-row items-start justify-between">
+          <div className="flex flex-col md:flex-row items-start justify-between ml-20">
             {/* Solutions Section */}
             <div className="p-5 flex-1">
               <div className="pb-5 text-gray-600">Solutions</div>
