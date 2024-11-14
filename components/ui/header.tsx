@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -10,6 +11,11 @@ import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
+import Product from "../nav/productSection";
+import Docs from "../nav/docsSection";
+import Solutions from "../nav/solutionsSection";
+import Resources from "../nav/resourcesSection";
+
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
   const [starsCount, setStarsCount] = useState<number>(1000);
@@ -79,40 +85,20 @@ export default function Header() {
                   DevScribe
                 </Link>
               </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/docs"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Docs
-                </Link>
+              <li className="px-5">
+               <Product/>
               </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/technology"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  TechBlog
-                </Link>
+              <li className="px-5">
+               <Solutions/>
               </li>
-              <li>
-                <Link
-                  target="_blank"
-                  href="https://keploy.io/blog/community"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Articles
-                </Link>
-              </li>
-              <div className="px-5">
+              <li className="px-5">
                 {" "}
-                <NavItemWithSmallDropdown
-                  heading="Resources"
-                  dropdownData={PillarPages}
-                />
-              </div>
+                <Docs />
+              </li>
+              <li className="px-5">
+                {" "}
+                <Resources />
+              </li>
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
@@ -148,7 +134,7 @@ export default function Header() {
               </Link>
             </div>
           <div className="ml-3">
-            <Link
+          <Link
               href="https://app.keploy.io/signin"
               target="_blank"
               className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
