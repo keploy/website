@@ -94,7 +94,7 @@ export default function Product() {
               <div className="w-full md:w-1/3 p-5 relative">
                 {/* Open Source hover content */}
                 <div
-                  className={`absolute top-0 left-0 w-full transition-opacity duration-300`}
+                  className={`transition-opacity duration-300`}
                 >
                   <p className="text-sm text-gray-500 pb-5">Features</p>
                   <ul className="flex flex-col gap-4">
@@ -188,7 +188,7 @@ export default function Product() {
                 </ul>
               </div>
               <div
-                  className={`absolute  right-5  md:w-[400px] transition-opacity duration-300 ${
+                  className={`absolute  right-5  md:w-[350px] transition-opacity duration-300 ${
                     !openSourceHover ? "opacity-100" : "opacity-0 pointer-events-none"
                   }`}
                 >
