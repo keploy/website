@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 import Image from 'next/image';
-import NativeIntegration from '@/public/images/replay-tc31305e1d2286fe485b27.gif';
+import KeployVSCode from "@/public/images/main.svg"
 import testAndStubsGen from '@/public/images/TestGenHighlighted.json';
 import deDuplication from '@/public/images/CaptureAndReplayV2.json';
 import Link from 'next/link';
@@ -254,7 +254,7 @@ export default function FeaturesMobileView() {
                                         <div className="relative inline-flex flex-col">
                                             <Image
                                                 className="mx-auto rounded md:max-w-none"
-                                                src={NativeIntegration}
+                                                src={KeployVSCode}
                                                 width={300}
                                                 height="462"
                                                 alt="Features bg"
