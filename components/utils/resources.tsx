@@ -9,7 +9,7 @@ import ContractTesting from "@/public/images/navBarIcons/ContractTesting";
 import Git from "@/public/images/navBarIcons/Git";
 import Jenkins from "@/public/images/navBarIcons/Jenkins";
 import Gitlab from "@/public/images/navBarIcons/Gitlab";
-
+import Github from "@/public/images/navBarIcons/Github";
 export const PillarPages = [
     {
       heading: "Use Cases",
@@ -56,8 +56,8 @@ export const PillarPages = [
         },
         {
           pagelink: "https://keploy.io/docs/ci-cd/github/#heading",
-          pageName: "Git",
-          Icon: Git,
+          pageName: "Github",
+          Icon: Github,
         },
         {
           pagelink: "https://keploy.io/docs/ci-cd/jenkins/#heading",

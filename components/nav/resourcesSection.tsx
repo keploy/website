@@ -25,7 +25,7 @@ export default function Resources() {
   };
   const toggleDropdown = () => {
     setShowDropdown(!openDropdown);
-  };
+};
 
   return (
     <div
@@ -172,11 +172,11 @@ export default function Resources() {
 
                   <li>
                     <a
-                      href="https://keploy.io/docs/"
+                      href="https://writers.keploy.io/"
                       className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
                     >
                       <Resource />
-                      Resources
+                      Writer's Program
                     </a>
                   </li>
 

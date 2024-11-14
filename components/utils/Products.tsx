@@ -92,8 +92,8 @@ export const GlossarySection = [
             Icon: Community,
         },
         {
-            pagelink: "https://keploy.io/docs/",
-            pageName: "Resources",
+            pagelink: "https://writers.keploy.io/",
+            pageName: "Writer's Program",
             Icon: Resource,
         },
         {

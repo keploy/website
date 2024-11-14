@@ -12,6 +12,7 @@ import ContractTesting from "@/public/images/navBarIcons/ContractTesting";
 import Git from "@/public/images/navBarIcons/Git";
 import Jenkins from "@/public/images/navBarIcons/Jenkins";
 import Gitlab from "@/public/images/navBarIcons/Gitlab";
+import Github from "@/public/images/navBarIcons/Github";
 
 export default function Solutions() {
   const [openDropdown, setShowDropdown] = useState(false);
@@ -170,9 +171,9 @@ export default function Solutions() {
                     className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200"
                   >
                     <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
-                      <Git />
+                      <Github />
                     </div>
-                    <span>Git</span>
+                    <span>Github</span>
                   </a>
                 </li>
 
