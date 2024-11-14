@@ -2,14 +2,15 @@
 "use client";
 import Link from 'next/link';
 import Image from "next/image";
-import GoodByePic from "@/public/images/main.svg"
+import GoodByePic from "@/public/images/main.svg";
+import Demo from "@/public/images/demovscode.gif";
 
 export default function Hero() {
     return (
         <section className="relative">
 
             {/* Illustration behind hero content */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1 " aria-hidden="true">
+            <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1" aria-hidden="true">
                 <div className='mb-24'>
                     <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
                         <defs>
@@ -33,64 +34,51 @@ export default function Hero() {
                 <div className="pt-32 pb-12 md:pt-40 md:pb-20 gap-16">
 
                     {/* Section header */}
-                    <div className=" text-center pb-12 md:pb-16">
-
-
-                        <p className="text-xl sm:text-2xl text-accent-200 mb-4 leading-snug sm:leading-normal"
-                           data-aos="zoom-y-out" data-aos-delay="150">
+                    <div className="text-center pb-12 md:pb-16">
+                        <p className="text-xl sm:text-2xl text-accent-200 mb-4 leading-snug sm:leading-normal" data-aos="zoom-y-out" data-aos-delay="150">
                             2 minutes to 90% test coverage!
                         </p>
-                        <h1
-                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-secondary-300 font-extrabold leading-tight sm:leading-tight md:leading-tighter tracking-tighter mb-4 md:mt-4 lg:mt-5"
-                            data-aos="zoom-y-out"
-                        >
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-secondary-300 font-extrabold leading-tight sm:leading-tight md:leading-tighter tracking-tighter mb-4 md:mt-4 lg:mt-5" data-aos="zoom-y-out">
                             AI Generated Unit and Integration Tests
-                            <br/>
+                            <br />
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-gradient-500 to-gradient-200">
-                that actually work!
-              </span>
+                                that actually work!
+                            </span>
                         </h1>
 
                         <div className="max-w-3xl mx-auto">
-                            <p
-                                className="text-lg sm:text-xl text-center text-accent-200 mb-8 leading-snug sm:leading-normal lg:text-center"
-                                data-aos="zoom-y-out"
-                                data-aos-delay="150"
-                            >
+                            <p className="text-lg sm:text-xl text-center text-accent-200 mb-8 leading-snug sm:leading-normal lg:text-center" data-aos="zoom-y-out" data-aos-delay="150">
                                 VS Code Extension to Generate Unit Tests in One Click
                             </p>
-                            <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center  md:space-x-4 lg:space-x-4 " data-aos="zoom-y-out"
-                                 data-aos-delay="300">
+                            <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center md:space-x-4 lg:space-x-4" data-aos="zoom-y-out" data-aos-delay="300">
                                 <div className="mb-4">
-                                    {/* Wrapping Link with NeonButton */}
-                                    <Link
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
-                                        href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
-                                    >
+                                    <Link target="_blank" rel="noopener noreferrer" className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0" href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio">
                                         Try Now
                                     </Link>
                                 </div>
                                 <div className='mb-4'>
-                                    {/* Wrapping Link with NeonButton */}
-                                    <Link
-                                        className="btn text-white bg-green-900 hover:text-emerald-200 w-full  sm:mb-0"
-                                        href="https://app.keploy.io/signin"
-                                    >
+                                    <Link className="btn text-white bg-green-900 hover:text-emerald-200 w-full sm:mb-0" href="https://app.keploy.io/signin">
                                         See Demo
                                     </Link>
                                 </div>
                             </div>
                         </div>
+
                         <div className="my-6 px-8">
                             <h2 className="text-3xl py-6"><b>Say goodbye to endless hours spent manually writing test cases</b></h2>
                             <p>Keploy generates comprehensive test cases generated in seconds, you’ll reduce back-and-forth discussions and minimize missed edge cases. No more follow-up questions on coverage or gaps—just high-quality code and faster feedback for the entire team.</p>
-                            <Image src={GoodByePic} alt="googbye"/>
+                            {/* Center GoodByePic image */}
+                            <div className="flex justify-center my-8">
+                                <Image src={GoodByePic} alt="Goodbye" className="rounded-lg" width={500} height={500} />
+                            </div>
                         </div>
 
                         <div className="my-16">
                             <h2 className="text-3xl py-6"><b>Keploy Interactive Demo: How It Works!</b></h2>
+                            {/* Center Demo GIF */}
+                            <div className="flex justify-center">
+                                <Image src={Demo} alt="Demo" className="rounded-lg" width={600} height={400} />
+                            </div>
                         </div>
                     </div>
                 </div>

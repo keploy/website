@@ -5,7 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import FeaturesMobileView from "../FeatureMoblieView";
+import FeaturesMobileView from "./features-mobileview";
 import Pic1 from "@/public/images/pic1.svg";
 import Pic3 from "@/public/images/pic3.svg";
 import Pic4 from "@/public/images/pic4.svg";
@@ -13,35 +13,29 @@ import Pic4 from "@/public/images/pic4.svg";
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
-const GenerateTestsImage: FC = () => {
-    return (
-        <div className="inline-flex flex-col w-full imageToShow" id="img-1">
-            <div className="mb-2 h-[50%] py-2">
-                <img src={Pic1.src} alt="Image 1" className="w-full h-full object-cover rounded" />
-            </div>
+const GenerateTestsImage: FC = () => (
+    <div className="inline-flex flex-col w-full imageToShow" id="img-1">
+        <div className="mb-2 h-[50%]">
+            <img src={Pic1.src} alt="Image 1" className="w-full h-full object-cover rounded" />
         </div>
-    );
-};
+    </div>
+);
 
-const ReplayValidateImage: FC = () => {
-    return (
-        <div className="inline-flex flex-col w-full imageToShow" id="img-2">
-            <div className="mb-2 h-[50%] py-2">
-                <img src={Pic4.src} alt="Image 2" className="w-full h-full object-cover rounded" />
-            </div>
+const ReplayValidateImage: FC = () => (
+    <div className="inline-flex flex-col w-full imageToShow" id="img-2">
+        <div className="mb-2 h-[50%]">
+            <img src={Pic4.src} alt="Image 2" className="w-full h-full object-cover rounded" />
         </div>
-    );
-};
+    </div>
+);
 
-const RealTimeImage: FC = () => {
-    return (
-        <div className="inline-flex flex-col w-full imageToShow" id="img-3">
-            <div className="mb-2 h-[50%] py-2">
-                <img src={Pic3.src} alt="Image 3" className="w-full h-full object-cover rounded" />
-            </div>
+const RealTimeImage: FC = () => (
+    <div className="inline-flex flex-col w-full imageToShow" id="img-3">
+        <div className="mb-2 h-[50%]">
+            <img src={Pic3.src} alt="Image 3" className="w-full h-full object-cover rounded" />
         </div>
-    );
-};
+    </div>
+);
 
 interface TextSectionProps {
     svg: React.ReactNode;
@@ -57,29 +51,27 @@ const TextSection: FC<TextSectionProps> = ({
                                                description,
                                                btnDescription,
                                                btnLink,
-                                           }) => {
-    return (
-        <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0 text-details">
-            <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mb-4 bg-white rounded-full ">
-                {svg}
-            </div>
-            <div className="mb-1 text-2xl font-bold leading-snug tracking-tight md:text-4xl text-secondary-300">
-                {heading}
-            </div>
-            <div className="text-gray-600 md:text-lg">{description}</div>
-            {btnDescription && btnLink && (
-                <div>
-                    <Link
-                        className="btn mt-8 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
-                        href={btnLink}
-                    >
-                        {btnDescription}
-                    </Link>
-                </div>
-            )}
+                                           }) => (
+    <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0 text-details">
+        <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mb-4 bg-white rounded-full ">
+            {svg}
         </div>
-    );
-};
+        <div className="mb-1 text-2xl font-bold leading-snug tracking-tight md:text-4xl text-secondary-300">
+            {heading}
+        </div>
+        <div className="text-gray-600 md:text-lg">{description}</div>
+        {btnDescription && btnLink && (
+            <div>
+                <Link
+                    className="btn mt-8 text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
+                    href={btnLink}
+                >
+                    {btnDescription}
+                </Link>
+            </div>
+        )}
+    </div>
+);
 
 const Features: FC = () => {
     const container = useRef<HTMLDivElement | null>(null);
@@ -89,71 +81,28 @@ const Features: FC = () => {
             const details = gsap.utils.toArray<HTMLDivElement>(".detail");
             const images = gsap.utils.toArray<HTMLDivElement>(".imageToShow");
 
-            gsap.set(images[1], { opacity: 0 });
-            gsap.set(images[2], { opacity: 0 });
+            // Set initial opacity for images
+            gsap.set(images, { opacity: 0 });
 
+            // Pin the container for scrolling effect
             ScrollTrigger.create({
                 trigger: ".content-container",
                 start: "top top",
                 end: "bottom bottom",
                 pin: ".right-content",
+                scrub: 1,
             });
 
-            ScrollTrigger.create({
-                trigger: ".content-container",
-                start: "top top",
-                end: "bottom bottom",
-                pin: ".heading-text",
-            });
-
-            details.forEach((detail) => {
-                gsap.set(detail, { opacity: 1 });
-
+            // Synchronize text and image animations
+            details.forEach((detail, i) => {
                 ScrollTrigger.create({
                     trigger: detail,
-                    start: "top 20%",
-                    end: "center center",
-                    onEnter: () => gsap.set(detail, { opacity: 0 }),
-                    onLeaveBack: () => gsap.set(detail, { opacity: 1 }),
+                    start: "top center",
+                    end: "top center",
+                    onEnter: () => gsap.to(images[i], { opacity: 1, duration: 0.5 }),
+                    onLeaveBack: () => gsap.to(images[i], { opacity: 0, duration: 0.5 }),
                     scrub: 1,
                 });
-            });
-
-            gsap.to(images[0], {
-                scrollTrigger: {
-                    trigger: details[1],
-                    start: "center center",
-                    end: "center center",
-                    scrub: 1,
-                },
-                opacity: 0,
-            });
-            gsap.to(images[1], {
-                scrollTrigger: {
-                    trigger: details[1],
-                    start: "center center",
-                    end: "center center",
-                    scrub: 1,
-                },
-                opacity: 1,
-            });
-            gsap.to(images[1], {
-                scrollTrigger: {
-                    trigger: details[2],
-                    start: "center center",
-                    end: "center center",
-                    scrub: 1,
-                },
-                opacity: 0,
-            });
-            gsap.to(images[2], {
-                scrollTrigger: {
-                    trigger: details[2],
-                    start: "center center",
-                    end: "center center",
-                    scrub: 1,
-                },
-                opacity: 1,
             });
         },
         { scope: container }
@@ -177,9 +126,9 @@ const Features: FC = () => {
                             <TextSection
                                 svg={<svg className="w-6 h-6 fill-primary-300" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" /></svg>}
                                 heading="Generate Tests with a Click"
-                                description=" With one click, Keploy’s VS Code extension automatically analyzes code functions and generates well-structured unit tests. Save time on test creation and ensure code is covered effectively."
+                                description="With one click, Keploy’s VS Code extension automatically analyzes code functions and generates well-structured unit tests. Save time on test creation and ensure code is covered effectively."
                                 btnDescription="Explore More"
-                                btnLink="/vscode-extension"
+                                btnLink="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
                             />
                         </div>
                         <div className="flex items-center detail">
@@ -188,7 +137,7 @@ const Features: FC = () => {
                                 heading="Replay and Validate Code Changes Instantly"
                                 description="Keploy enables developers to replay tests with each code change to ensure stability. Quickly verify that new updates don’t introduce regressions or break existing functionality."
                                 btnDescription="Explore VS Code Extension"
-                                btnLink="/vscode-extension"
+                                btnLink="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
                             />
                         </div>
                         <div className="flex items-center detail">
@@ -197,7 +146,7 @@ const Features: FC = () => {
                                 heading="Real-Time Code Coverage Insights"
                                 description="Keploy’s extension highlights untested code in real-time, helping developers keep track of their coverage metrics and identify gaps while they code."
                                 btnDescription="Explore VS Code Extension"
-                                btnLink="/vscode-extension"
+                                btnLink="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
                             />
                         </div>
                     </div>
