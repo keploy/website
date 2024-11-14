@@ -46,8 +46,8 @@ export default function ModalVideo({
           <div className="flex flex-col justify-center">
             <Image className='mx-auto rounded-lg h-auto sm:w-auto md:w-9/12  ' src={thumb} width={thumbWidth} height={thumbHeight} alt={thumbAlt} />
             <svg
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                onMouseEnter={() => { setIsHovered(true); }}
+                onMouseLeave={() => { setIsHovered(false); }}
                 className="absolute inset-0 max-w-full mx-auto md:max-w-none h-auto cursor-pointer "
                 onClick={() => { setModalOpen(true) }}
                 width="768" height="432" viewBox="0 0 768 432" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -101,7 +101,7 @@ export default function ModalVideo({
       {/* End: Video thumbnail */}
 
       <Transition show={modalOpen} as={Fragment} afterEnter={() => videoRef.current?.play()}>
-        <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
+        <Dialog initialFocus={videoRef} onClose={() => { setModalOpen(false); }}>
 
           {/* Modal backdrop */}
           <Transition.Child

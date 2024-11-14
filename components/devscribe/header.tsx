@@ -19,7 +19,7 @@ export default function Header() {
   useEffect(() => {
     scrollHandler();
     window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
+    return () => { window.removeEventListener("scroll", scrollHandler); };
   }, [top]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Header() {
         if (response.ok) {
           const data = await response.json();
           // Convert starsCount to 1-digit decimal with 'K'
-          let stars = data.stargazers_count;
+          const stars = data.stargazers_count;
           console.log(stars);
           // let roundedStars = Math.round(data.stargazers_count / 50) * 50;
           // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";

@@ -54,7 +54,7 @@ export default function Newsletter() {
             {/* CTA form */}
             <form id="newsletterForm" className="w-full lg:w-1/2">
               {!subscribed &&  <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
-                <input value={email}  onChange={(e) => setEmail(e.target.value)}
+                <input value={email}  onChange={(e) => { setEmail(e.target.value); }}
                        type="email" className="w-full appearance-none bg-gray-900  border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-primary-300 placeholder-purple-400" placeholder="Email…" aria-label="Email…" />
                 <Link className="btn text-purple-600 border border-purple-500 focus:border-purple-300 bg-gray-900 hover:text-primary-300 shadow" href="#0"  onClick={handleSubscribe}>Subscribe</Link>
               </div>}

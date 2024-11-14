@@ -126,7 +126,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     }
     console.log(file);
     if(file){
-      setmainFile(file?.content);
+      setmainFile(file.content);
     }else{
       setmainFile("file not found")
     }

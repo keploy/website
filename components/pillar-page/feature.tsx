@@ -5,13 +5,13 @@ export default function Features(props: {
   subtitle: string;
   highlightTitle: string;
   title2: string;
-  featuresData: Array<{
+  featuresData: {
     title: string;
     description: string;
     icon: ReactElement;
     additionalCta?:string;
     additionalCtaLink?:string;
-  }>;
+  }[];
 }) {
   return (
     <section className="bg-neutral-100 text-gray-900 pt-12 px-4 mb-20 sm:px-6">

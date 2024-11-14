@@ -9,25 +9,25 @@ import YoutubeSvg from "@/public/images/social/youtube.svg";
 import LinkedinSvg from "@/public/images/social/linkedin.svg";
 import Link from "next/link";
 
-type cardSurrondStyle = {
+interface cardSurrondStyle {
   transform: string;
-};
+}
 
-type CardProps = {
+interface CardProps {
   link: string;
   svgIcon: string;
   platformName: string;
   description: string;
   style?: cardSurrondStyle;
   showExtraStyle?: boolean;
-};
+}
 
-type CardData = {
+interface CardData {
   link: string;
   svgIcon: string;
   platformName: string;
   description: string;
-};
+}
 
 const createCircleStyles = (
   totalCircles: number,

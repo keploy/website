@@ -20,8 +20,8 @@ const SocialCloud: React.FC = () => {
             rel="noopener noreferrer"
             className={`social-link link-${index + 1}`}
             title={link.title}
-            onMouseEnter={() => setValue(link.description)}
-            onMouseLeave={() => setValue(" Where Code Meets Community!")}
+            onMouseEnter={() => { setValue(link.description); }}
+            onMouseLeave={() => { setValue(" Where Code Meets Community!"); }}
           >
             {link.icon}
           </a>

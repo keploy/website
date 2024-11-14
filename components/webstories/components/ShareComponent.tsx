@@ -37,7 +37,7 @@ export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingP
   };
 
   const handleClick = () => {
-    navigator.clipboard.writeText(`${window.location.href}`).catch((error) => {
+    navigator.clipboard.writeText(window.location.href).catch((error) => {
       alert(`Not able to copy the code due to ${error}`);
     });
     setOpenSnackBar(true);
@@ -84,9 +84,9 @@ export default function CustomizedDialogs({handlingPauseBehindScenes}:{handlingP
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
-      const handleResize = () => setWindowWidth(window.innerWidth);
+      const handleResize = () => { setWindowWidth(window.innerWidth); };
       window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
+      return () => { window.removeEventListener("resize", handleResize); };
     }
   }, []);
 

@@ -7,7 +7,10 @@ import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
 import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
-import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
+import NavItemWithSmallDropdown, {
+  DropdowndataInterface,
+  LinkDatainterface,
+} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
 export default function Header() {
@@ -21,7 +24,7 @@ export default function Header() {
   useEffect(() => {
     scrollHandler();
     window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
+    return () => { window.removeEventListener("scroll", scrollHandler); };
   }, [top]);
 
   useEffect(() => {
@@ -33,7 +36,7 @@ export default function Header() {
         if (response.ok) {
           const data = await response.json();
           // Convert starsCount to 1-digit decimal with 'K'
-          let stars = data.stargazers_count;
+          const stars = data.stargazers_count;
           // let roundedStars = Math.round(data.stargazers_count / 50) * 50;
           // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
           setStarsCount(stars);
@@ -69,8 +72,8 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="hidden lg:flex  flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
-            <ul className="flex grow justify-end flex items-center">
-            <li>
+            <ul className="flex grow justify-end  items-center">
+              <li>
                 <Link
                   target="_blank"
                   href="https://keploy.io/devscribe"
@@ -116,10 +119,10 @@ export default function Header() {
             </ul>
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
-          <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
+            <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
               {/* Sliding effect span */}
               <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-orange-500 opacity-10 transition-transform duration-1000 ease-out group-hover:translate-x-[-400%]" />
-              
+
               <Link
                 className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"
                 target="_blank"
@@ -140,25 +143,31 @@ export default function Header() {
                     fillRule="evenodd"
                   />
                 </svg>
-                <span className="text-gradient-500 opacity-30 hover:text-primary-500"> | </span>
+                <span className="text-gradient-500 opacity-30 hover:text-primary-500">
+                  {" "}
+                  |{" "}
+                </span>
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
+                <span className="text-base flex gap-1">
+                  {" "}
+                  <CountingNumbers className="" />
+                </span>
               </Link>
             </div>
-          <div className="ml-3">
-            <Link
-              href="https://app.keploy.io/signin"
-              target="_blank"
-              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
-            >
-              <span>Sign In</span>
-              {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
-              {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
-              {/*</svg>*/}
-            </Link>
-          </div>
+            <div className="ml-3">
+              <Link
+                href="https://app.keploy.io/signin"
+                target="_blank"
+                className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
+              >
+                <span>Sign In</span>
+                {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
+                {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
+                {/*</svg>*/}
+              </Link>
+            </div>
           </div>
 
           <MobileMenu starsCount={starsCount} />

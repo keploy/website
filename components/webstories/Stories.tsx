@@ -18,27 +18,27 @@ const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
   ssr: false,
 });
 
-type StoriesProps = {
+interface StoriesProps {
   imageUrl?: string | StaticImageData;
   Heading?: string;
   text?: string;
   swipeText?: string;
   swipeLink?: string;
-  image: Boolean; // Use boolean instead of Boolean
-};
+  image: boolean; // Use boolean instead of Boolean
+}
 
-type StoriesComponentProps = {
+interface StoriesComponentProps {
   Story: StoriesProps;
   totalLen: number;
   currentIndex: number;
-  Next: Boolean;
-  paused: (pause: Boolean) => void;
+  Next: boolean;
+  paused: (pause: boolean) => void;
   animationDuration: string;
-  timerScreen: Boolean;
+  timerScreen: boolean;
   handleNextStory: () => void;
   handlePrevStory: () => void;
   slug: string | string[];
-};
+}
 
 const Stories = ({
   Story,
@@ -103,9 +103,9 @@ const Stories = ({
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowWidth(window.innerWidth);
-      const handleResize = () => setWindowWidth(window.innerWidth);
+      const handleResize = () => { setWindowWidth(window.innerWidth); };
       window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
+      return () => { window.removeEventListener("resize", handleResize); };
     }
   }, []);
 

@@ -75,9 +75,9 @@ export const Terminal = forwardRef(
     const handleInputKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-          const commandToExecute = commands?.[input];
+          const commandToExecute = commands[input];
           if (commandToExecute) {
-            commandToExecute?.();
+            commandToExecute();
           } else {
             handleCommandNotFound();
           }
@@ -184,9 +184,7 @@ export const Terminal = forwardRef(
               </div>
             ))}
             <div
-              className={`${
-                terminalTheme ? "terminal__prompt_light" : "terminal__prompt"
-              }`}
+              className={terminalTheme ? "terminal__prompt_light" : "terminal__prompt"}
             >
               {!Loading ? (
                 <>

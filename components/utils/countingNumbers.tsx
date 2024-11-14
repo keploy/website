@@ -35,7 +35,7 @@ export default function CountingNumbers({
   useEffect(() => {
     scrollHandler();
     window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
+    return () => { window.removeEventListener("scroll", scrollHandler); };
   }, [top]);
 
   let value: number;
@@ -71,7 +71,7 @@ export default function CountingNumbers({
 
   useEffect(() => {
     if (isInView) {
-      let timer = setInterval(() => {
+      const timer = setInterval(() => {
         if (reverse) {
           if (number > starsCount) {
             setNumber((num) => {

@@ -208,7 +208,7 @@ export default function FeaturesMobileView() {
                     leave="transition ease-in-out duration-300 transform absolute"
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 -translate-y-16"
-                    beforeEnter={() => heightFix()}
+                    beforeEnter={() => { heightFix(); }}
                     unmount={false}
                   >
                     <div className="relative inline-flex flex-col ">
@@ -229,7 +229,7 @@ export default function FeaturesMobileView() {
                     leave="transition ease-in-out duration-300 transform absolute"
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 -translate-y-16"
-                    beforeEnter={() => heightFix()}
+                    beforeEnter={() => { heightFix(); }}
                     unmount={false}
                   >
                     <div className="flex flex-col justify-between">
@@ -250,7 +250,7 @@ export default function FeaturesMobileView() {
                     leave="transition ease-in-out duration-300 transform absolute"
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 -translate-y-16"
-                    beforeEnter={() => heightFix()}
+                    beforeEnter={() => { heightFix(); }}
                     unmount={false}
                   >
                     <div className="relative inline-flex flex-col">

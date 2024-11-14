@@ -101,7 +101,7 @@ const Installation = () => {
                 src={checkedIndex === 0 ? "/images/tick.svg" : CopyButton}
                 height={25}
                 width={25}
-                onClick={() => handleclick(0)}
+                onClick={() => { handleclick(0); }}
                 alt="copy icon"
                 className="cursor-pointer ml-2"
               />
@@ -128,7 +128,7 @@ const Installation = () => {
                 src={checkedIndex === 1 ? "/images/tick.svg" : CopyButton}
                 height={25}
                 width={25}
-                onClick={() => handleclick(1)}
+                onClick={() => { handleclick(1); }}
                 alt="Copy Icon"
                 className="cursor-pointer ml-2"
               />
@@ -173,7 +173,7 @@ const Installation = () => {
                 src={checkedIndex === 2 ? "/images/tick.svg" : CopyButton}
                 height={25}
                 width={25}
-                onClick={() => handleclick(2)}
+                onClick={() => { handleclick(2); }}
                 alt="Copy Icon"
                 className="cursor-pointer ml-2"
               />

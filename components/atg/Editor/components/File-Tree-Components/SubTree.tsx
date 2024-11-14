@@ -33,7 +33,7 @@ export const SubTree: React.FC<SubTreeProps> = (props) => {
         key={file.id}
         file={file}
         selectedFile={props.selectedFile}
-        onClick={() => props.onSelect(file)}
+        onClick={() => { props.onSelect(file); }}
         themeFileDiv={props.themeSub}
       />
     ));

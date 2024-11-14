@@ -14,7 +14,7 @@ interface FormData {
   dependencies: string;
 }
 interface FormProps {
-  isOpen: Boolean;
+  isOpen: boolean;
   onClose: () => void;
 }
 export default function CustomForm({ isOpen, onClose }: FormProps) {
@@ -63,7 +63,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
       setEmailError("Please enter a valid email address.");
 
       setTimeout(() => {
-        return setEmailError("");
+        setEmailError("");
       }, 2000);
       return;
     }
@@ -84,7 +84,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
         setLoading(false);
         setSuccess(true)
       })
-      .catch((err) => console.log(err));
+      .catch((err) => { console.log(err); });
   };
 
   const isSubmitDisabled = (): boolean => {
@@ -109,7 +109,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
             {!success ? (
               <form
                 className="flex flex-col gap-y-4 text-sm py-8 px-1 text-white overflow-auto no-scrollbar"
-                onSubmit={(e) => handleSubmit(e)}
+                onSubmit={(e) => { handleSubmit(e); }}
                 ref={formRef}
               >
                 <h1
@@ -248,7 +248,7 @@ export default function CustomForm({ isOpen, onClose }: FormProps) {
                     className="rounded text-black  px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     style={{resize: "none" }}
                     value={formData.dependencies}
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => { handleChange(e); }}
                     placeholder="List all the dependencies of your application"
                     disabled={loading}
                   />

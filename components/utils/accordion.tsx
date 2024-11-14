@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 
-type AccordionpProps = {
+interface AccordionpProps {
   children: React.ReactNode
   tag?: string
   title: string

@@ -5,12 +5,12 @@ import { StaticImageData } from "next/image";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type StoryCardProps = {
+interface StoryCardProps {
   imagesrc: string | StaticImageData;
   CardDescription: string;
   slug: string;
   categories: string[];
-};
+}
 
 const StoryCard = ({
   imagesrc,

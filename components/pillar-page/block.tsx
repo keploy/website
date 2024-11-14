@@ -22,11 +22,11 @@ export default function ProblemBlocks(props: {
   title: string;
   subtitle: string;
   btnText: string;
-  blocksData: Array<{
+  blocksData: {
     title: string;
     description: string;
     SvgComponent: Function;
-  }>;
+  }[];
 }) {
   const [isFormOpen, setFormOpen] = useState(false);
   return (
@@ -78,7 +78,7 @@ export default function ProblemBlocks(props: {
           )}
         </div>   
       </div>
-      <FormModal isOpen={isFormOpen} onClose={() => setFormOpen(false)} />
+      <FormModal isOpen={isFormOpen} onClose={() => { setFormOpen(false); }} />
     </section>
   );
 }

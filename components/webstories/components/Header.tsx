@@ -22,7 +22,7 @@ export default function Header() {
   useEffect(() => {
     scrollHandler();
     window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
+    return () => { window.removeEventListener("scroll", scrollHandler); };
   }, [top]);
 
   useEffect(() => {
@@ -148,6 +148,6 @@ export default function Header() {
       </div>
     </header>
   );
-};
+}
 
 

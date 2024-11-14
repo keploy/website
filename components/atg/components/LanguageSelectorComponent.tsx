@@ -14,7 +14,7 @@ const languages = [
   { name: "Javascript", image: JAVASCRIPT },
 ];
 
-const schemaMap: { [key: string]: string } = {
+const schemaMap: Record<string, string> = {
   "GOLANG": GolangSchema,
   "JAVASCRIPT": JavaScriptSchema,
   "PYTHON": PythonSchema,
@@ -146,7 +146,7 @@ export default function LanguageSelector({
           ref={buttonRef}
           type="button"
           className={`inline-flex justify-between w-full rounded-md shadow-sm px-4 py-2 ${Selectortheme ? "bg-white text-gray-700 border border-gray-200" : "bg-[#1a1e22] border border-gray-700 text-gray-200"} text-sm font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-200`}
-          onClick={() => setIsExpanded(!isExpanded)}
+          onClick={() => { setIsExpanded(!isExpanded); }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -187,7 +187,7 @@ export default function LanguageSelector({
                 <button
                   key={lang.name}
                   className={`w-full text-left px-10 py-2 text-sm ${Selectortheme ? "text-gray-700 hover:bg-gray-300 hover:text-gray-900 border-b-2 border-gray-200" : "bg-[#1a1e22] text-gray-200 hover:text-gray-100 hover:bg-neutral-700 border border-gray-700"} flex items-center transition duration-200 ease-in-out`}
-                  onClick={() => handleSelect(lang.name)}
+                  onClick={() => { handleSelect(lang.name); }}
                   role="menuitem"
                 >
                   <Image

@@ -40,7 +40,7 @@ const CircularLoader = ({ slug }: { slug: string | string[] }) => {
       }
     }, intervalDuration);
 
-    return () => clearInterval(interval);
+    return () => { clearInterval(interval); };
   }, []);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const CircularLoader = ({ slug }: { slug: string | string[] }) => {
         window.location.href = `/webstories/${nextIndexSlug}`;
       }, 1000);
 
-      return () => clearTimeout(redirectTimeout);
+      return () => { clearTimeout(redirectTimeout); };
     }
   }, [completed, nextIndexSlug]);
 

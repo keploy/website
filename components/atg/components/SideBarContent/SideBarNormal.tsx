@@ -114,7 +114,7 @@ export default function SideBarNormal({
           }
         }, 1000);
 
-        return () => clearTimeout(timer);
+        return () => { clearTimeout(timer); };
       }
     } else if (activeStep === 1) {
       if (
@@ -150,7 +150,7 @@ export default function SideBarNormal({
           }
         }, 1000);
 
-        return () => clearTimeout(timer);
+        return () => { clearTimeout(timer); };
       }
     } else if (activeStep === 2) {
       if (
@@ -186,7 +186,7 @@ export default function SideBarNormal({
           }
         }, 1000);
         localStorage.setItem("one_time", "false");
-        return () => clearTimeout(timer);
+        return () => { clearTimeout(timer); };
       }
     }
   }, [
@@ -274,7 +274,7 @@ export default function SideBarNormal({
         <Accordion
           expanded={expandedSteps.includes(index)}
           key={step.label}
-          onChange={() => handleAccordionChange(index)}
+          onChange={() => { handleAccordionChange(index); }}
           sx={{
             backgroundColor: "#f5f5f5",
             boxShadow: "none",
@@ -285,11 +285,9 @@ export default function SideBarNormal({
               borderBottom: "none",
             },
           }}
-          className={`${
-            SideBartheme
+          className={SideBartheme
               ? "border border-b-1 bg-neutral-200 border-gray-200"
-              : "bg-[#171a1e]"
-          }`}
+              : "bg-[#171a1e]"}
           disableGutters={true}
           TransitionProps={{ timeout: { appear: 1, enter: 1, exit: 4 } }}
         >
@@ -301,9 +299,7 @@ export default function SideBarNormal({
                 <ExpandMoreIcon className="text-gray-700" />
               ) : (
                 <LockIcon
-                  className={`${
-                    SideBartheme ? "text-secondary-300" : "text-white"
-                  }`}
+                  className={SideBartheme ? "text-secondary-300" : "text-white"}
                 />
               )
             }
@@ -351,14 +347,12 @@ export default function SideBarNormal({
                     component="li"
                     key={subIndex}
                     sx={{ display: "flex", mb: 1 }}
-                    className={`${
-                      (activeStep === 0 && subStepIndex > subIndex) ||
+                    className={(activeStep === 0 && subStepIndex > subIndex) ||
                       (activeStep === 1 && dedupStepIndex > subIndex) ||
                       (activeStep === 2 && testSubStepIndex > subIndex) ||
                       index < activeStep
                         ? "items-center"
-                        : "items-center"
-                    }`}
+                        : "items-center"}
                   >
                     <Box
                       sx={{
@@ -397,8 +391,7 @@ export default function SideBarNormal({
                       <Box
                         component="span"
                         sx={{ fontSize: "0.875rem", fontWeight: "normal" }}
-                        className={`${
-                          ((activeStep === 0 && subStepIndex === subIndex) ||
+                        className={((activeStep === 0 && subStepIndex === subIndex) ||
                             (activeStep === 1 && dedupStepIndex === subIndex) ||
                             (activeStep === 2 &&
                               testSubStepIndex === subIndex)) &&
@@ -420,10 +413,9 @@ export default function SideBarNormal({
                               : "text-gray-300"
                             : SideBartheme
                             ? "text-secondary-300"
-                            : "text-gray-300"
-                        }`}
+                            : "text-gray-300"}
                       >
-                        {`${subStep.stepName}`}
+                        {subStep.stepName}
                       </Box>
                     </Box>
                   </Box>
@@ -460,7 +452,7 @@ export default function SideBarNormal({
           square
           elevation={0}
           sx={{ p: 2 }}
-          className={`${SideBartheme ? "bg-white" : "bg-neutral-800"}`}
+          className={SideBartheme ? "bg-white" : "bg-neutral-800"}
         >
           <Typography
             className={`text-base text-center font-semibold ${
