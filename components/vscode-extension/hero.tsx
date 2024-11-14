@@ -69,7 +69,7 @@ export default function Hero() {
                             <p className="text-xl text-gray-600">Keploy generates comprehensive test cases generated in seconds, you’ll reduce back-and-forth discussions and minimize missed edge cases. No more follow-up questions on coverage or gaps—just high-quality code and faster feedback for the entire team.</p>
                             {/* Center GoodByePic image */}
                             <div className="flex justify-center my-8">
-                                <Image src={GoodByePic} alt="Goodbye" className="rounded-lg" width={500} height={500} />
+                                <Image src={GoodByePic} alt="Goodbye" className="rounded-lg w-full h-full"  />
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@ export default function Hero() {
                             <p className="text-3xl py-6"><b>Keploy Interactive Demo: How It Works!</b></p>
                             {/* Center Demo GIF */}
                             <div className="flex justify-center">
-                                <Image src={Demo} alt="Demo" className="rounded-lg" width={600} height={400} />
+                                <Image src={Demo} alt="Demo" className="rounded-lg w-full h-full" />
                             </div>
                         </div>
                     </div>
