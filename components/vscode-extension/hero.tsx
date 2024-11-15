@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from "next/image";
 import GoodByePic from "@/public/images/main.svg";
 import Demo from "@/public/images/demovscode.gif";
+import StorylaneEmbed from "@/components/vscode-extension/demo";
 
 export default function Hero() {
     return (
@@ -69,15 +70,17 @@ export default function Hero() {
                             <p className="text-xl text-gray-600">Keploy generates comprehensive test cases generated in seconds, you’ll reduce back-and-forth discussions and minimize missed edge cases. No more follow-up questions on coverage or gaps—just high-quality code and faster feedback for the entire team.</p>
                             {/* Center GoodByePic image */}
                             <div className="flex justify-center my-8">
-                                <Image src={GoodByePic} alt="Goodbye" className="rounded-lg w-full h-full"  />
+                                <Image src={Demo} alt="Goodbye" className="rounded-lg w-full h-full"  />
                             </div>
                         </div>
 
                         <div className="my-16">
-                            <p className="text-3xl py-6"><b>Keploy Interactive Demo: How It Works!</b></p>
+                            <p className="text-3xl py-6 text-center">
+                                <b>Keploy Interactive Demo: How It Works!</b>
+                            </p>
                             {/* Center Demo GIF */}
-                            <div className="flex justify-center">
-                                <Image src={Demo} alt="Demo" className="rounded-lg w-full h-full" />
+                            <div className="flex justify-center items-center" style={{height: "80vh"}}>
+                                <StorylaneEmbed/>
                             </div>
                         </div>
                     </div>
