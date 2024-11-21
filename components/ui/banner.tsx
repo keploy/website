@@ -38,7 +38,7 @@ const Banner = () => {
       </div>
 
       {/* Action buttons and close button */}
-<div className="flex flex-row sm:flex-row sm:items-center justify-center ml-1 md:mt-3 gap-1 sm:gap-3 lg:gap-4 ">
+<div className="flex flex-row sm:flex-row sm:items-center justify-center gap-1 sm:gap-3 lg:gap-4 ">
   <a
     href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
     target="_blank"
@@ -48,7 +48,7 @@ const Banner = () => {
     Get Started for Free
   </a>
   <button
-    onClick={() => setShowBanner(false)}
+    onClick={() => {setShowBanner(false)}}
     className="text-gray-300 hover:text-white font-semibold text-lg sm:text-xl lg:text-2xl cursor-pointer transition-transform transform hover:scale-110"
     aria-label="Close Banner"
   >

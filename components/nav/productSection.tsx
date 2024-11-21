@@ -15,7 +15,6 @@ import MemoizedImage from "@/public/images/navBarIcons/EnterPrice";
 
 export default function Product() {
   const [openDropdown, setShowDropdown] = useState(false);
-  const [enterpriseHover, setEnterpriseHover] = useState(false);
   const [openSourceHover, setOpenSourceHover] = useState(true);
   
   const showDropdown = () => {
@@ -32,6 +31,51 @@ export default function Product() {
     const img = new Image();
     img.src = "/images/navBarIcons/EnterPrice.svg";
   }, []);
+  // Features list for Open Source
+  const openSourceFeatures = [
+    {
+      icon: <ApiCallRecording />,
+      title: "API Call Recording and Replay",
+      url: "https://keploy.io/docs/concepts/what-is-keploy/#step-1--record-unique-network-interactions-as-test-case",
+    },
+    {
+      icon: <AutomaticMocking />,
+      title: "Automatic Mocking of Dependencies",
+      url: "https://keploy.io/docs/concepts/reference/glossary/mocks/#overcoming-the-challenges",
+    },
+    {
+      icon: <CICD />,
+      title: "CI/CD Integration",
+      url: "https://keploy.io/docs/concepts/what-are-keploy-features/#-combined-test-coverage-in-cicd",
+    },
+    {
+      icon: <MultiPurposeMocks />,
+      title: "Multi Purpose Mocks",
+      url: "https://keploy.io/docs/concepts/what-are-keploy-features/#%EF%B8%8F-multi-purpose-mocks",
+    },
+  ];
+  const aboutProductLinks = [
+    {
+      icon: <WhatIsKeploy />,
+      title: "What is Keploy?",
+      url: "https://keploy.io/docs/concepts/what-is-keploy/#heading",
+    },
+    {
+      icon: <WhyUseKeploy />,
+      title: "Why use Keploy?",
+      url: "https://keploy.io/docs/keploy-explained/why-keploy/#heading",
+    },
+    {
+      icon: <HowItWorks />,
+      title: "How it works?",
+      url: "https://keploy.io/docs/keploy-explained/how-keploy-works/#heading",
+    },
+    {
+      icon: <GettingStarted />,
+      title: "Getting started guide",
+      url: "https://keploy.io/docs/running-keploy/configuration-file/#getting-started",
+    },
+  ];
 
   return (
     <div
@@ -98,42 +142,17 @@ export default function Product() {
                 >
                   <p className="text-sm text-gray-500 pb-5">Features</p>
                   <ul className="flex flex-col gap-4">
-                    <li>
-                      <a
-                        href="https://keploy.io/docs/concepts/what-is-keploy/#step-1--record-unique-network-interactions-as-test-case"
-                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                      >
-                        <ApiCallRecording />
-                        API Call Recording and Replay
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://keploy.io/docs/concepts/reference/glossary/mocks/#overcoming-the-challenges"
-                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                      >
-                        <AutomaticMocking />
-                        Automatic Mocking of Dependencies
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://keploy.io/docs/concepts/what-are-keploy-features/#-combined-test-coverage-in-cicd"
-                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                      >
-                        <CICD />
-                        CI/CD Integration
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://keploy.io/docs/concepts/what-are-keploy-features/#%EF%B8%8F-multi-purpose-mocks"
-                        className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                      >
-                        <MultiPurposeMocks />
-                        Multi Purpose Mocks
-                      </a>
-                    </li>
+                    {openSourceFeatures.map((feature, index) => (
+                      <li key={index}>
+                        <a
+                          href={feature.url}
+                          className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200 h-[24px] items-center"
+                        >
+                          {feature.icon}
+                          {feature.title}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -149,43 +168,18 @@ export default function Product() {
               >
                 <p className="text-sm text-gray-500 pb-5">About Product</p>
                 <ul className="flex flex-col gap-4">
-                  <li>
-                    <a
-                      href="https://keploy.io/docs/concepts/what-is-keploy/#heading"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <WhatIsKeploy />
-                      What is Keploy?
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://keploy.io/docs/keploy-explained/why-keploy/#heading"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <WhyUseKeploy />
-                      Why use Keploy?
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://keploy.io/docs/keploy-explained/how-keploy-works/#heading"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <HowItWorks />
-                      How it works?
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://keploy.io/docs/running-keploy/configuration-file/#getting-started"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <GettingStarted />
-                      Getting started guide
-                    </a>
-                  </li>
-                </ul>
+                    {aboutProductLinks.map((link, index) => (
+                      <li key={index}>
+                        <a
+                          href={link.url}
+                          className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200 h-[24px] items-center"
+                        >
+                          {link.icon}
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
               </div>
               <div
                   className={`absolute  right-5  md:w-[350px] transition-opacity duration-300 ${
