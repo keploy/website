@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { UpIcon } from "./UpIcon";
 import DownIcon from "./DownIcon";
 import OpenSource from "@/public/images/navBarIcons/OpenSource";
@@ -27,10 +27,6 @@ export default function Product() {
     setShowDropdown(!openDropdown);
   };
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = "/images/navBarIcons/EnterPrice.svg";
-  }, []);
   // Features list for Open Source
   const openSourceFeatures = [
     {
