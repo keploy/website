@@ -18,7 +18,7 @@ const PricingPage: React.FC = () => {
             <div className="bg-white shadow rounded-3xl p-14 h-[700px]">
               <h2 className="text-2xl font-bold text-gray-900">Basic Plan</h2>
               <p className="mt-2 text-gray-600">
-                Perfect for individuals exploring Keploy.
+                Perfect for individuals exploring Keploy
               </p>
               <div className="mt-14">
                 <span className="text-4xl font-bold text-gray-900">$0</span>
