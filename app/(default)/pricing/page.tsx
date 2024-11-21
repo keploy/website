@@ -56,7 +56,7 @@ const PricingPage: React.FC = () => {
                 Ideal for small teams and startups.
               </p>
               <div className="mt-14">
-                <span className="text-4xl font-bold text-white">$49</span>
+                <span className="text-4xl font-bold text-white">$48</span>
                 <span className="text-gray-300">/month</span>
               </div>
               <ul className="mt-10 space-y-4">
