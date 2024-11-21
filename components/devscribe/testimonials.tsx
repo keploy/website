@@ -8,7 +8,7 @@ import ReactPlay from '@/public/images/conf/ReactPlay Logo.svg'
 import LTSponsor from '@/public/images/conf/LambdaTest.f1670267318.png'
 import LL from '@/public/images/conf/Loft.svg'
 import HOP from '@/public/images/conf/Logotype white 3.2 trn.png'
-import N4J from '@/public/images/conf/Logotype white 3.2 trn.png'
+import N4J from '@/public/images/conf/Official logo - White.png'
 import STSpeaker from '@/public/images/conf/Siddhant Agarwal.png'
 import KVSpeaker from '@/public/images/conf/Khushboo Verma.jpg'
 import HRSpeaker from '@/public/images/conf/Hrittik Roy speaker.jpg'
@@ -161,8 +161,8 @@ export default function Testimonials() {
               <div>
                 <div className="relative inline-flex flex-col mb-4  justify-center">
                   <Link href="https://neo4j.com/" title="Go to Neo4j" target="_blank" rel="noopener">
-                    <Image decoding="async" width="8000"
-                           height="309"
+                    <Image decoding="async" width="160"
+                           height="110"
                            src={N4J}
                            className="logo text-center"
                            alt="Neo4j logo"
