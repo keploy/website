@@ -8,8 +8,17 @@ import ReactPlay from '@/public/images/conf/ReactPlay Logo.svg'
 import LTSponsor from '@/public/images/conf/LambdaTest.f1670267318.png'
 import LL from '@/public/images/conf/Loft.svg'
 import HOP from '@/public/images/conf/Logotype white 3.2 trn.png'
+import N4J from '@/public/images/conf/Official logo - White.png'
+import STSpeaker from '@/public/images/conf/Siddhant Agarwal.png'
+import KVSpeaker from '@/public/images/conf/Khushboo Verma.jpg'
+import HRSpeaker from '@/public/images/conf/Hrittik Roy speaker.jpg'
+import SKSpeaker from '@/public/images/conf/Sparsh Kesari.jpg'
+import ABSpeaker from '@/public/images/conf/1517489127951.jpeg'
+import BASpeaker from '@/public/images/conf/bala.png'
+import NGSpeaker from '@/public/images/conf/neha.jpeg'
+import GKSpeaker from '@/public/images/conf/gourav.jpeg'
 
-import Comingsoon from '@/public/images/conf/coming-soon-mystery-retail-concept-vector-13969461.jpg'
+
 import React from "react";
 import Link from 'next/link'
 
@@ -148,6 +157,20 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
+            <div className="flex flex-col h-full p-3 justify-center " data-aos="fade-up">
+              <div>
+                <div className="relative inline-flex flex-col mb-4  justify-center">
+                  <Link href="https://neo4j.com/" title="Go to Neo4j" target="_blank" rel="noopener">
+                    <Image decoding="async" width="160"
+                           height="110"
+                           src={N4J}
+                           className="logo text-center"
+                           alt="Neo4j logo"
+                           loading="lazy"/>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
 
 
@@ -160,7 +183,21 @@ export default function Testimonials() {
           <div className="max-w-sm mx-auto grid gap-8 lg:grid-cols-3 lg:gap-6 items-start lg:max-w-none">
 
             {/* 1st testimonial */}
-            {/* <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
+            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
+              <div>
+                <div className="flex ">
+                  <Image
+                      quality={100}
+                      className="rounded-full flex-grow" src={NGSpeaker} width={108} height={108} alt="Speaker 01" />
+                </div>
+              </div>
+              <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
+                <cite className="text-gray-200 not-italic">Neha Gupta</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/neha-gup/"> Co-Founder, Keploy</Link>
+              </div>
+            </div>
+
+            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
                   <Image
@@ -169,153 +206,97 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <cite className="text-gray-200 not-italic">Stephanie Taylor</cite> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/stephaniertaylor/"> Program Manager at Google for (GSoC)</Link>
-              </div>
-            </div>
-            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
-              <div>
-                <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={KDspeaker} width={108} height={108} alt="Speaker 02" />
-                </div>
-              </div>
-              <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/kunal-deo-2893806"  className="text-gray-200 not-italic">Kunal Deo</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/kunal-deo-2893806"> Lead Customer Engineer - AI, Google</Link>
-              </div>
-            </div>
-            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
-              <div>
-                <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={ShubhamSpeaker} width={108} height={108} alt="Speaker 02" />
-                </div>
-              </div>
-              <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/slayerjain/"  className="text-gray-200 not-italic">Shubham Jain</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/slayerjain/"> Co-Founder, Keploy</Link>
+                <cite className="text-gray-200 not-italic">Siddhant Agrawal</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/sidagarwal04/"> Developer Relations Lead APAC (Neo4j)</Link>
               </div>
             </div>
 
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={RGspeaker} width={108} height={108} alt="Speaker 05" />
+                  <Image
+                      quality={100}
+                      className="rounded-full flex-grow" src={KVSpeaker} width={108} height={108} alt="Speaker 02" />
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/polymorphicrobin/"  className="text-gray-200 not-italic">Robin Gupta</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/polymorphicrobin/">Vice President - Engineering/AppliedAI, Provar</Link>
+                <cite className="text-gray-200 not-italic">Khushboo Verma</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/verma-khushboo"> Platform Engineer at Appwrite</Link>
               </div>
             </div>
 
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={AOspeaker} width={108} height={108} alt="Speaker 02" />
+                  <Image
+                      quality={100}
+                      className="rounded-full flex-grow" src={HRSpeaker} width={108} height={108} alt="Speaker 03" />
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/adityaoberai1/"  className="text-gray-200 not-italic">Aditya Oberai</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/adityaoberai1/"> Developer Advocate, Appwrite</Link>
+                <cite className="text-gray-200 not-italic">Hrittik Roy</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/hrittikhere"> Platform Advocate at LoftLabs</Link>
               </div>
             </div>
 
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={HMSpeaker} width={108} height={108} alt="Speaker 04" />
+                  <Image
+                      quality={100}
+                      className="rounded-full flex-grow" src={SKSpeaker} width={108} height={108} alt="Speaker 04" />
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/haimantika-mitra/"  className="text-gray-200 not-italic">Haimantika Mitra</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/haimantika-mitra/">Developer Advocate, Hashnode</Link>
+                <cite className="text-gray-200 not-italic">Sparsh Kesari</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/sparshk98/"> Senior DevRel, LambdaTest</Link>
               </div>
             </div>
 
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={TAspeaker} width={108} height={108} alt="Speaker 06" />
+                  <Image
+                      quality={100}
+                      className="rounded-full flex-grow" src={ABSpeaker} width={108} height={108} alt="Speaker 05" />
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/tapasadhikary/"  className="text-gray-200 not-italic">Tapas Adhikary</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/tapasadhikary/">Co-Founder, CreoWis Technologies</Link>
+                <cite className="text-gray-200 not-italic">Ashutosh S. Bhakare</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/abhakare/"> Google Developer Expert</Link>
               </div>
             </div>
 
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={GPspeaker} width={108} height={108} alt="Speaker 07" />
+                  <Image
+                      quality={100}
+                      className="rounded-full flex-grow" src={BASpeaker} width={108} height={108} alt="Speaker 05" />
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/guneshpatil/"  className="text-gray-200 not-italic">Gunesh Patil</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/guneshpatil/">Senior Tech Lead, Ushur Inc</Link>
+                <cite className="text-gray-200 not-italic">Balasundaram</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://x.com/balaintwt">Kubernetes Enthusiasts</Link>
               </div>
             </div>
+
 
             <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={SBspeaker} width={108} height={108} alt="Speaker 08" />
+                  <Image
+                      quality={100}
+                      className="rounded-full flex-grow" src={GKSpeaker} width={108} height={108} alt="Speaker 05" />
                 </div>
               </div>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/sangambiradar/"  className="text-gray-200 not-italic">Sangam Biradar</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/sangambiradar/">Open Source Contributor</Link>
+                <cite className="text-gray-200 not-italic">Gourav Kumar</cite> <br/>
+                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/gourav-kumar-b20108173/">Senior Software Engineer, Keploy</Link>
               </div>
             </div>
 
-            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
-              <div>
-                <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={KMspeaker} width={108} height={108} alt="Speaker 09" />
-                </div>
-              </div>
-              <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/mvkaran"  className="text-gray-200 not-italic">Karan M.V.</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/mvkaran/">Sr DevRel Manager, GitHub</Link>
-              </div>
-            </div>
-
-            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
-              <div>
-                <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={HRspeaker} width={108} height={108} alt="Speaker 09" />
-                </div>
-              </div>
-              <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/hrittikhere"  className="text-gray-200 not-italic">Hrittik Roy</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/hrittikhere">Platform Advocate, Loft Labs</Link>
-              </div>
-            </div>
-
-            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
-              <div>
-                <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={MKspeaker} width={108} height={108} alt="Speaker 09" />
-                </div>
-              </div>
-              <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://www.linkedin.com/in/megha-kadur/"  className="text-gray-200 not-italic">Megha Kadur</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://www.linkedin.com/in/megha-kadur/">Senior Software Engineer, Barracuda Networks</Link>
-              </div>
-            </div>
-
-            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
-              <div>
-                <div className="flex ">
-                  <Image className="rounded-full flex-grow" src={LNspeaker} width={108} height={108} alt="Speaker 09" />
-                </div>
-              </div>
-              <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700 text-center">
-                <Link target="_blank" href="https://linkedin.com/in/leon-nunes"  className="text-gray-200 not-italic">Leon Nunes</Link> <br/>
-                <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://linkedin.com/in/leon-nunes">Customer Success Engineer, Solo.io</Link>
-              </div>
-            </div> */}
-            <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
+            {/* <div className="flex flex-col flex flex-grow h-full p-6 " data-aos="fade-up">
               <div>
                 <div className="flex ">
                   <Image className="rounded-full flex-grow" src={Comingsoon} width={108} height={108} alt="Speaker 10" />
@@ -325,7 +306,7 @@ export default function Testimonials() {
                 <Link target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSc_zbty8au-SRSHqklhFIEXr3suxXEg66l6beB3vHP9Rm0u4w/viewform"  className="text-gray-200 not-italic">Talk about your Open-source Journey</Link> <br/>
                 <Link className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSc_zbty8au-SRSHqklhFIEXr3suxXEg66l6beB3vHP9Rm0u4w/viewform"> Submit CFP Now</Link>
               </div>
-            </div>
+            </div> */}
 
             {/* 2nd testimonial */}
             {/* <div className="flex flex-col h-full p-6 bg-gray-800" data-aos="fade-up" data-aos-delay="200">
