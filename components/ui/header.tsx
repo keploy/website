@@ -137,7 +137,7 @@ export default function Header() {
           <Link
               href="https://app.keploy.io/signin"
               target="_blank"
-              className="btn-sm text-gray-200 bg-secondary-300  hover:text-primary-300 "
+              className="btn-sm py-3 text-gray-200 bg-secondary-300  hover:text-primary-300 "
             >
               <span>Sign In</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
