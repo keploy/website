@@ -42,7 +42,7 @@ export default function Hero() {
           {/* Section header */}
           <div className=" text-center pb-12 md:pb-16">
 
-            <div className='flex flex-row text-xs md:text-sm lg:text-sm bg-inherit justify-center  items-center my-4 gap-2 mb-5' data-aos="zoom-y-out" data-aos-delay="150">
+            {/* <div className='flex flex-row text-xs md:text-sm lg:text-sm bg-inherit justify-center  items-center my-4 gap-2 mb-5' data-aos="zoom-y-out" data-aos-delay="150">
               <div className='z-40 shadow-[4px_10px_15px_rgba(0,0,0,0.25)] rounded-full bg-neutral-100  '>
               <span className=" text-secondary-300 mx-1 pl-2">
               Automate
@@ -63,9 +63,9 @@ export default function Hero() {
                    </p>
               </button>
               </div>
-            </div>
+            </div> */}
 
-            <p className="text-xl sm:text-2xl text-accent-200 mb-4 leading-snug sm:leading-normal"
+            <p className="text-xl sm:text-2xl text-accent-200 mb-4 leading-snug sm:leading-normal my-4"
                data-aos="zoom-y-out" data-aos-delay="150">
               2 minutes to 90% test coverage!
             </p>
