@@ -3,7 +3,7 @@ import { UpIcon } from "./UpIcon";
 import DownIcon from "./DownIcon";
 import OpenSource from "@/public/images/navBarIcons/OpenSource";
 import EnterpriseSolution from "@/public/images/navBarIcons/EnterpriseSolution";
-import WhatIsKeploy from "@/public/images/navBarIcons/WhatIsKeploy";
+// import WhatIsKeploy from "@/public/images/keploy_logo.png
 import WhyUseKeploy from "@/public/images/navBarIcons/WhyUseKeploy";
 import HowItWorks from "@/public/images/navBarIcons/HowItWorks";
 import GettingStarted from "@/public/images/navBarIcons/GettingStarted";
@@ -52,7 +52,11 @@ export default function Product() {
   ];
   const aboutProductLinks = [
     {
-      icon: <WhatIsKeploy />,
+      icon: <img
+      src={"/images/keploylogo.png"}
+      alt="What is Keploy Icon"
+      style={{ height: "24px", width: "24px" }}
+    />,
       title: "What is Keploy?",
       url: "https://keploy.io/docs/concepts/what-is-keploy/#heading",
     },
