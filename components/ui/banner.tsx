@@ -31,7 +31,8 @@ const Banner = () => {
         <div className="hidden lg:block border-l border-accent-500 h-10 opacity-80" />
 
         {/* Description */}
-        <p className="text-white opacity-90 text-xs sm:text-sm lg:text-sm max-w-full sm:mt-2 text-start lg:max-w-lg leading-snug sm:leading-tight">
+
+        <p className="text-white opacity-90 text-xs sm:text-sm lg:text-sm max-w-full sm:mt-2  lg:max-w-lg leading-snug sm:leading-tight text-start">
           Discover how the Keploy VS Code extension lets you easily record and
           replay test cases within your IDE.
         </p>
