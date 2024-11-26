@@ -31,6 +31,7 @@ const Banner = () => {
         <div className="hidden lg:block border-l border-accent-500 h-10 opacity-80" />
 
         {/* Description */}
+
         <p className="text-white opacity-90 text-xs sm:text-sm lg:text-sm max-w-full sm:mt-2  lg:max-w-lg leading-snug sm:leading-tight text-start">
           Discover how the Keploy VS Code extension lets you easily record and
           replay test cases within your IDE.
@@ -38,7 +39,7 @@ const Banner = () => {
       </div>
 
       {/* Action buttons and close button */}
-<div className="flex flex-row sm:flex-row sm:items-center justify-center ml-1 md:mt-3 gap-1 sm:gap-3 lg:gap-4 ">
+<div className="flex flex-row sm:flex-row sm:items-center justify-center gap-1 sm:gap-3 lg:gap-4 ">
   <a
     href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
     target="_blank"
@@ -48,7 +49,7 @@ const Banner = () => {
     Get Started for Free
   </a>
   <button
-    onClick={() => setShowBanner(false)}
+    onClick={() => {setShowBanner(false)}}
     className="text-gray-300 hover:text-white font-semibold text-lg sm:text-xl lg:text-2xl cursor-pointer transition-transform transform hover:scale-110"
     aria-label="Close Banner"
   >

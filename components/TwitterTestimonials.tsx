@@ -127,16 +127,15 @@ const TwitterTestimonials = () => {
             {
               tweets?.slice(0,6).map((tweet, index) => {
                 return (
-                  <>
+                  <React.Fragment key={index}>
                     <Tweet
-                      key={index}
                       avatar={tweet.avatar}
                       name={tweet.name}
                       id={tweet.id}
                       post={tweet.post}
                       content={tweet.content}
                     />
-                  </>
+                  </React.Fragment>
                 )
               })
             }
@@ -147,16 +146,15 @@ const TwitterTestimonials = () => {
             {
               tweets?.map((tweet, index) => {
                 return (
-                  <>
+                  <React.Fragment key={index}>
                     <Tweet
-                      key={index}
                       avatar={tweet.avatar}
                       name={tweet.name}
                       id={tweet.id}
                       post={tweet.post}
                       content={tweet.content}
                     />
-                  </>
+                  </React.Fragment>
                 )
               })
             }

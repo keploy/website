@@ -1,8 +1,8 @@
 const APITesting = () => (
   <svg
     width="33"
-    height="30"
-    viewBox="0 0 33 30"
+    height="24"
+    viewBox="0 0 33 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
