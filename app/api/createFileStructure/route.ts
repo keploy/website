@@ -29,6 +29,10 @@ export async function GET(
 
   const basePath = process.cwd();
   const projectPath = join(basePath, pathsMap[projectKey]);
+
+  console.log("basePath", basePath);
+  console.log("projectPath", projectPath);
+
   // Check if path exists before proceeding
   if (!existsSync(projectPath)) {
     console.error(`Path does not exist: ${projectPath}`);
