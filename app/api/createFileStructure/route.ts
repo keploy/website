@@ -31,6 +31,7 @@ export async function GET(
   // const projectPath = join(basePath, pathsMap[projectKey]); // find the project map 
   const projectPath = join(basePath, 'components/atg/demo-projects/projects', projectKey); // find the project map
 
+  console.log("projectInMap", pathsMap[projectKey]);
   console.log("basePath", basePath);
   console.log("projectPath", projectPath); // check the path
 
