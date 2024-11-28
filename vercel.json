@@ -8,5 +8,14 @@
       "source": "/blog/:slug*",
       "destination": "https://blog-website-phi-eight.vercel.app/blog/:slug*"
     }
+  ],
+  "git": {
+    "submodules": true
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
   ]
 }
