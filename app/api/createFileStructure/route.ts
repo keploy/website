@@ -28,10 +28,12 @@ export async function GET(
   }
 
   const basePath = process.cwd();
-  const projectPath = join(basePath, pathsMap[projectKey]); // find the project map 
+  // const projectPath = join(basePath, pathsMap[projectKey]); // find the project map 
+  const projectPath = join(basePath, 'components/atg/demo-projects/projects', projectKey); // find the project map
 
   console.log("basePath", basePath);
   console.log("projectPath", projectPath); // check the path
+
   
   console.log('Available directories(basepath):', readdirSync(basePath));
   console.log('Available directories(components):', readdirSync(join(basePath, 'components')));
