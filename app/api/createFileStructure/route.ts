@@ -33,7 +33,6 @@ export async function GET(
   console.log("basePath", basePath);
   console.log("projectPath", projectPath); // check the path
   
-  console.log('Available directories:', readdirSync("basePath"));
   console.log('Available directories(basepath):', readdirSync(basePath));
   console.log('Available directories(components):', readdirSync(join(basePath, 'components')));
   console.log('Available directories(atg):', readdirSync(join(basePath, 'components/atg')));
