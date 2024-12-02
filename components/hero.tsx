@@ -94,7 +94,7 @@ export default function Hero() {
                   {/* Wrapping Link with NeonButton */}
                     <Link
                       className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
-                      href="vscode://Keploy.keployio/keploy.handleUri"
+                      href="vscode:extension/Keploy.keployio" target="_blank"
                     >
                       Try VS Code Extension
                     </Link>
