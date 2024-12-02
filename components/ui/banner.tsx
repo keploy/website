@@ -41,7 +41,7 @@ const Banner = () => {
       {/* Action buttons and close button */}
 <div className="flex flex-row sm:flex-row sm:items-center justify-center gap-1 sm:gap-3 lg:gap-4 ">
   <a
-    href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
+    href="vscode:extension/Keploy.keployio"
     target="_blank"
     rel="noopener noreferrer"
     className="bg-primary-400 hover:bg-primary-500 text-neutral-100 font-inter rounded px-2 sm:px-4 lg:px-6 py-2 lg:py-2 text-xs sm:text-sm lg:text-base text-center transition-all duration-200 shadow-md whitespace-nowrap"
