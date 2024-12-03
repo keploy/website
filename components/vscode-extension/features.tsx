@@ -93,14 +93,13 @@ const Features: FC = () => {
                 scrub: 1,
             });
 
-            // Synchronize text and image animations
             details.forEach((detail, i) => {
                 ScrollTrigger.create({
                     trigger: detail,
                     start: "top center",
                     end: "top center",
-                    onEnter: () => gsap.to(images[i], { opacity: 1, duration: 0.5 }),
-                    onLeaveBack: () => gsap.to(images[i], { opacity: 0, duration: 0.5 }),
+                    onEnter: () => gsap.to(images[i], { opacity: 1, duration: 0.45 }),
+                    onLeaveBack: () => gsap.to(images[i], { opacity: 0, duration: 0.45 }),
                     scrub: 1,
                 });
             });
@@ -112,7 +111,7 @@ const Features: FC = () => {
         <>
             <FeaturesMobileView />
             <section ref={container} className="relative hidden lg:block">
-                <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
+                <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto text-center heading-text">
                     <h1 className="mb-2 text-5xl font-bold text-secondary-300">
                         Here's What Keploy Does
                     </h1>
@@ -120,7 +119,7 @@ const Features: FC = () => {
                         Keploy takes the hassle out of writing unit and integration tests. With test cases generated in seconds, you can focus more on development and less on manual test creation. It ensures complete coverage, catches edge cases early
                     </p>
                 </div>
-                <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[45vh] pb-[50vh] mx-auto content-container">
+                <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[35vh] pb-[50vh] mx-auto content-container">
                     <div className="mt-20 space-y-[50vh]">
                         <div className="flex items-center detail" data-marker-content="img-1">
                             <TextSection
