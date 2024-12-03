@@ -27,6 +27,85 @@ export default function Resources() {
     setShowDropdown(!openDropdown);
 };
 
+const resourcesData = [
+  {
+    title: "Company",
+    items: [
+      {
+        icon: <About />,
+        name: "About Us",
+        url: "https://www.linkedin.com/company/keploy/posts/?feedView=all",
+      },
+      {
+        icon: <Contact />,
+        name: "Contact Us",
+        url: "https://keploy.io/docs/concepts/support/#heading",
+      },
+      {
+        icon: <About />,
+        name: "Careers",
+        url: "/coming-soon",
+        isInternal: true,
+      },
+      {
+        icon: <Pricing />,
+        name: "Pricing",
+        url: "/coming-soon",
+        isInternal: true,
+      },
+    ],
+  },
+  {
+    title: "References",
+    items: [
+      {
+        icon: <Tutorial />,
+        name: "Tutorials",
+        url: "https://www.youtube.com/@keploy",
+      },
+      {
+        icon: <Blogs />,
+        name: "Blogs",
+        url: "https://keploy.io/blog/technology",
+      },
+      {
+        icon: <CommunityArticles />,
+        name: "Community Articles",
+        url: "https://keploy.io/blog/community",
+      },
+      {
+        icon: <CaseStudies />,
+        name: "Case Studies",
+        url: "",
+      },
+    ],
+  },
+  {
+    title: "Contribute",
+    items: [
+      {
+        icon: <Github />,
+        name: "Github",
+        url: "https://github.com/keploy",
+      },
+      {
+        icon: <Community />,
+        name: "Community",
+        url: "https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A",
+      },
+      {
+        icon: <Resource />,
+        name: "Writer's Program",
+        url: "https://writers.keploy.io/",
+      },
+      {
+        icon: <KRoc />,
+        name: "Events",
+        url: "https://keploy.io/devscribe",
+      },
+    ],
+  },
+];
   return (
     <div
       onMouseEnter={showDropdown}
@@ -55,142 +134,36 @@ export default function Resources() {
           <div className="flex flex-col md:flex-row items-start justify-between ml-20">
             {/* Use flex-col on small screens and flex-row on medium and above */}
             <div className="flex flex-col md:flex-row  w-full">
-              {/* Company Section */}
-              <div className="p-5 flex-1 ">
-                <div className="pb-5 text-gray-600">Company</div>
+            {resourcesData.map((section, index) => (
+              <div className="p-5 flex-1" key={index}>
+                <div className="pb-5 text-gray-600">{section.title}</div>
                 <ul className="flex flex-col gap-4">
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/company/keploy/posts/?feedView=all"
-                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <About />
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://keploy.io/docs/concepts/support/#heading"
-                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Contact />
-                      Contact Us
-                    </a>
-                  </li>
-
-                  <li>
-                    <Link
-                      href={"/coming-soon"}
-                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <About />
-                      Careers
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      href={"/coming-soon"}
-                      className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Pricing />
-                      Pricing
-                    </Link>
-                  </li>
+                  {section.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>
+                      {item.isInternal ? (
+                        <Link
+                          href={item.url}
+                          className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
+                        >
+                          {item.icon}
+                          {item.name}
+                        </Link>
+                      ) : (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 font-semibold hover:text-primary-500 transition-colors duration-200 h-[24px]"
+                        >
+                          {item.icon}
+                          {item.name}
+                        </a>
+                      )}
+                    </li>
+                  ))}
                 </ul>
               </div>
-
-              {/* References Section */}
-              <div className="p-5 flex-1">
-                <div className="pb-5 text-gray-600">References</div>
-                <ul className="flex flex-col gap-4">
-                  <li>
-                    <a
-                      href="https://www.youtube.com/@keploy"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Tutorial />
-                      Tutorials
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="https://keploy.io/blog/technology"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Blogs />
-                      Blogs
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="https://keploy.io/blog/community"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <CommunityArticles />
-                      Community Articles
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href=""
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <CaseStudies />
-                      Case Studies
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Contribute Section */}
-              <div className="p-5 flex-1">
-                <div className="pb-5 text-gray-600">Contribute</div>
-                <ul className="flex flex-col gap-4">
-                  <li>
-                    <a
-                      href="https://github.com/keploy"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Github />
-                      Github
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Community />
-                      Community
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="https://writers.keploy.io/"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <Resource />
-                      Writer's Program
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="https://keploy.io/devscribe"
-                      className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200"
-                    >
-                      <KRoc />
-                      Events
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            ))}
             </div>
           </div>
         </div>

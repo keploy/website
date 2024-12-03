@@ -69,17 +69,17 @@ export default function RootLayout({ children, metadata , HeaderDisplayed=true }
             `,
                 }}
             />
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a.q=c[a.q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "iu0391ggta");
-            `,
-                }}
-            />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "iu0391ggta");
+    `,
+          }}
+        />
             <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/43912677.js"></script>
 
             <script
