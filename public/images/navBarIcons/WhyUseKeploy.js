@@ -1,8 +1,8 @@
 const WhyUseKeploy = () => (
   <svg
     width="29"
-    height="28"
-    viewBox="0 0 29 28"
+    height="24"
+    viewBox="0 0 29 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
