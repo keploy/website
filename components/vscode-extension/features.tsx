@@ -119,7 +119,7 @@ const Features: FC = () => {
                         Keploy takes the hassle out of writing unit and integration tests. With test cases generated in seconds, you can focus more on development and less on manual test creation. It ensures complete coverage, catches edge cases early
                     </p>
                 </div>
-                <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[35vh] pb-[50vh] mx-auto content-container">
+                <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[25vh] pb-[40vh] mx-auto content-container">
                     <div className="mt-20 space-y-[50vh]">
                         <div className="flex items-center detail" data-marker-content="img-1">
                             <TextSection
