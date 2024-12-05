@@ -103,9 +103,9 @@ export default function Hero() {
                   {/* Wrapping Link with NeonButton */}
                     <Link
                       className="btn text-white bg-green-900 hover:text-emerald-200 w-full  sm:mb-0"
-                      href="https://app.keploy.io/signin"
+                      href="https://github.com/Keploy/keploy"
                     >
-                      Sign In to Keploy Console
+                      Explore Open Source Now 
                     </Link>
                 </div>
               </div>

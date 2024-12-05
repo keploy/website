@@ -322,10 +322,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
             {/*</li>*/}
             <li>
               <Link
-                href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
+                href="app.keploy.io"
                 className="btn-sm text-gray-200 bg-secondary-300 mt-3  hover:text-primary-300 ml-3"
               >
-                <span>Book Cloud Demo</span>
+                <span>Try now for free</span>
                 <svg
                   className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1"
                   viewBox="0 0 12 12"
