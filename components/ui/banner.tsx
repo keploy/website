@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FiX } from "react-icons/fi"; 
 
 const Banner = () => {
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(false);
 
   if (!showBanner) return null;
 
