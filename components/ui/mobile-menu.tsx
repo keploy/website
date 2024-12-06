@@ -322,7 +322,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
             {/*</li>*/}
             <li>
               <Link
-                href="app.keploy.io"
+                href="https://app.keploy.io"
                 className="btn-sm text-gray-200 bg-secondary-300 mt-3  hover:text-primary-300 ml-3"
               >
                 <span>Try now for free</span>
