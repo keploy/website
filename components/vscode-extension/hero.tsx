@@ -2,15 +2,12 @@
 "use client";
 import Link from 'next/link';
 import Image from "next/image";
-import GoodByePic from "@/public/images/main.svg";
 import Demo from "@/public/images/demovscode.gif";
 import StorylaneEmbed from "@/components/vscode-extension/demo";
 
 export default function Hero() {
     return (
         <section className="relative">
-
-            {/* Illustration behind hero content */}
             <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1" aria-hidden="true">
                 <div className='mb-24'>
                     <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
@@ -74,12 +71,11 @@ export default function Hero() {
                             </div>
                         </div>
 
-                        <div className="my-16">
-                            <p className="text-3xl py-6 text-center">
+                        <div className="my-12">
+                            <p className="flex justify-center text-3xl py-6 text-center">
                                 <b>Keploy Interactive Demo: How It Works!</b>
                             </p>
-                            {/* Center Demo GIF */}
-                            <div className="flex justify-center items-center" style={{height: "80vh"}}>
+                            <div className=" justify-center items-center" style={{height: "80vh"}}>
                                 <StorylaneEmbed/>
                             </div>
                         </div>
