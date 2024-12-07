@@ -50,9 +50,9 @@ export default function Hero() {
           {/* Section header */}
           <div className="max-w-6xl mx-auto text-center pb-12 md:pb-16">
 
-            <h3 className="h3 mt-16 mb-4 font-semibold " data-aos="fade-up">Event where Open Source meets Practical Productivity</h3>
+            <h3 className="h3 mt-16 mb-4 font-semibold " data-aos="fade-up">Conference where Open Source connects Productivity</h3>
 
-            <h3 className="h3 mb-16 whitespace-pre font-architects-daughter text-primary-400" data-aos="fade-up">Share, Learn, Innovate</h3>
+            <h3 className="h3 mb-16 whitespace-pre font-architects-daughter text-primary-400" data-aos="fade-up">&#9679 Share  &#9679 Learn  &#9679 Innovate</h3>
 
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
 
