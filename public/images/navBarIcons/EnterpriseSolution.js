@@ -6,7 +6,7 @@ const EnterpriseSolution = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_2022_1977)">
+    <g clipPath="url(#clip0_2022_1977)">
       <path d="M8.4375 6.5H6.75V9.75H8.4375V6.5Z" fill="black" />
       <path d="M8.4375 11.375H6.75V14.625H8.4375V11.375Z" fill="black" />
       <path d="M13.5 6.5H11.8125V9.75H13.5V6.5Z" fill="black" />

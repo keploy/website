@@ -74,7 +74,7 @@ const Stories = ({
   };
 
   const handleSwipeUp = () => {
-    window.location.href = "/webstories";
+    router.push("/webstories");
   };
 
   const handleLongPress = () => {

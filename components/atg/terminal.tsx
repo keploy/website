@@ -463,7 +463,7 @@ function CombinedTerminalPage({
         promptLabel={
           <p className="font-bold flex">
             {Emoji}
-            <p className="text-accent-100">~/$</p>
+            <span className="text-accent-100">~/$</span>
           </p>
         }
         commands={commands}

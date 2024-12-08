@@ -7,11 +7,8 @@ interface MousePosition {
   y: number;
 }
 
-function MousePosition(): MousePosition {
-  const [mousePosition, setMousePosition] = useState<MousePosition>({
-    x: 0,
-    y: 0,
-  });
+function useMousePosition(): MousePosition {
+  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -71,10 +68,15 @@ const Particles: React.FC<ParticlesProps> = ({
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const context = useRef<CanvasRenderingContext2D | null>(null);
   const circles = useRef<any[]>([]);
-  const mousePosition = MousePosition();
+  const mousePosition = useMousePosition();
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
-  const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+
+  // Defer devicePixelRatio calculation to client
+  const [dpr, setDpr] = useState(1);
+  useEffect(() => {
+    setDpr(window.devicePixelRatio);
+  }, []);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -87,7 +89,7 @@ const Particles: React.FC<ParticlesProps> = ({
     return () => {
       window.removeEventListener("resize", initCanvas);
     };
-  }, [color]);
+  }, [color, dpr]);
 
   useEffect(() => {
     onMouseMove();
@@ -116,7 +118,7 @@ const Particles: React.FC<ParticlesProps> = ({
     }
   };
 
-  interface Circle  {
+  interface Circle {
     x: number;
     y: number;
     translateX: number;
@@ -127,7 +129,7 @@ const Particles: React.FC<ParticlesProps> = ({
     dx: number;
     dy: number;
     magnetism: number;
-  };
+  }
 
   const resizeCanvas = () => {
     if (canvasContainerRef.current && canvasRef.current && context.current) {
