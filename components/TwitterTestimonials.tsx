@@ -1,6 +1,13 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay, Navigation, FreeMode } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/free-mode';
 import Tweet from "./tweets";
+
 const tweets = [
   {
     avatar:
@@ -114,55 +121,54 @@ const tweets = [
 
 
 const TwitterTestimonials = () => {
+  const swiperRef = useRef(null);
 
   return (
-    <>
-      <div className="relative mt-20 mb-20">
-        <div className=" relative mt-2 mb-8 z-10 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col justify-center">
-          <h3 className=" text-center h2 px-10 text-secondary-300">
-            We love when users talk about Keploy..
-          </h3>
-          {/* for mobile view */}
-          <div className="space-y-5 mt-10 sm:hidden block">
-            {
-              tweets?.slice(0,6).map((tweet, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    <Tweet
-                      avatar={tweet.avatar}
-                      name={tweet.name}
-                      id={tweet.id}
-                      post={tweet.post}
-                      content={tweet.content}
-                    />
-                  </React.Fragment>
-                )
-              })
-            }
-          </div>
+    <div className="relative mt-20 mb-20">
+      <div className="relative mt-2 mb-8 z-10 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col justify-center">
+        <h3 className="text-center h2 px-10 text-secondary-300">
+          We love when users talk about Keploy..
+        </h3>
 
-          {/* sizes above sm(640px) */}
-          <div className="sm:columns-2 lg:columns-3 sm:gap-5 space-y-5 mt-10 hidden sm:block">
-            {
-              tweets?.map((tweet, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    <Tweet
-                      avatar={tweet.avatar}
-                      name={tweet.name}
-                      id={tweet.id}
-                      post={tweet.post}
-                      content={tweet.content}
-                    />
-                  </React.Fragment>
-                )
-              })
-            }
-          </div>
-
+        <div className="mt-10 relative">
+          <Swiper
+            ref={swiperRef}
+            modules={[Pagination, Autoplay, Navigation, FreeMode]}
+            spaceBetween={20}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            navigation={true}
+            freeMode={true}
+            mousewheel={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="tweet-carousel"
+          >
+            {tweets.map((tweet, index) => (
+              <SwiperSlide key={index}>
+                <Tweet
+                  avatar={tweet.avatar}
+                  name={tweet.name}
+                  id={tweet.id}
+                  post={tweet.post}
+                  content={tweet.content}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
