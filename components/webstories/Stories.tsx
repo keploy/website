@@ -1,6 +1,11 @@
 import React, { memo, useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faArrowUp, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLink,
+  faArrowUp,
+  faPause,
+  faPlay,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import CustomizedDialogs from "./components/ShareComponent";
 import Image, { StaticImageData } from "next/image";
@@ -9,10 +14,8 @@ import CircularLoader from "./components/circularLoader";
 import { useSwipeable } from "react-swipeable";
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
-
 const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
   ssr: false,
-  loading: () => <div className="loading-placeholder">Loading animation...</div>,
 });
 
 type StoriesProps = {
@@ -21,17 +24,17 @@ type StoriesProps = {
   text?: string;
   swipeText?: string;
   swipeLink?: string;
-  image: boolean; // Use `boolean` for the primitive type
+  image: Boolean; // Use boolean instead of Boolean
 };
 
 type StoriesComponentProps = {
   Story: StoriesProps;
   totalLen: number;
   currentIndex: number;
-  Next: boolean;
-  paused: (pause: boolean) => void;
+  Next: Boolean;
+  paused: (pause: Boolean) => void;
   animationDuration: string;
-  timerScreen: boolean;
+  timerScreen: Boolean;
   handleNextStory: () => void;
   handlePrevStory: () => void;
   slug: string | string[];
@@ -53,7 +56,7 @@ const Stories = ({
   const [isPaused, setIsPaused] = useState(false);
   const [isLongPress, setIsLongPress] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const [windowWidth, setWindowWidth] = useState<number | null>(null); // Ensure SSR safety
+  const [windowWidth, setWindowWidth] = React.useState(0);
   const router = useRouter();
   const lines = Array.from({ length: totalLen }, (_, i) => i);
 
@@ -65,24 +68,13 @@ const Stories = ({
     }
   }, [Story]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleResize = () => setWindowWidth(window.innerWidth);
-      setWindowWidth(window.innerWidth);
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, []);
-
   const handlePauseResume = () => {
     paused(!isPaused);
     setIsPaused(!isPaused);
   };
 
   const handleSwipeUp = () => {
-    if (typeof window !== "undefined") {
-      window.location.href = "/webstories";
-    }
+    router.push("/webstories");
   };
 
   const handleLongPress = () => {
@@ -108,6 +100,15 @@ const Stories = ({
     },
   });
 
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
   return (
     <div className="relative h-full lg:mt-10 xl:mt-10 md:rounded-xl lg:rounded-xl xl:rounded-xl z-30 border border-gray-500">
       {timerScreen && (
@@ -120,13 +121,16 @@ const Stories = ({
           className="inset-0 w-full h-full justify-center"
           onClick={handlePrevStory}
         ></div>
-        <div {...handlers} className="inset-0 w-full h-full justify-center"></div>
+        <div
+          {...handlers}
+          className="inset-0 w-full h-full justify-center"
+        ></div>
         <div
           className="inset-0 w-full h-full justify-center"
           onClick={handleNextStory}
         ></div>
       </div>
-      <div className="absolute flex flex-row w-full z-30">
+      <div className={`absolute flex flex-row w-full z-30`}>
         <div className="absolute z-10 w-full flex flex-row h-5 gap-1">
           {lines.map((line, key) => {
             const isCurrentLine = line === currentIndex;
@@ -135,17 +139,25 @@ const Stories = ({
             let lineClass = "";
 
             if (Next) {
-              lineClass = line <= currentIndex
-                ? isPaused
-                  ? "loader paused bg-slate-100"
-                  : "loader bg-slate-100"
-                : "bg-primary-300";
+              if (line <= currentIndex) {
+                lineClass = isCurrentLine
+                  ? isPaused
+                    ? "loader paused bg-slate-100"
+                    : "loader bg-slate-100"
+                  : "bg-primary-300";
+              } else {
+                lineClass = "bg-slate-100";
+              }
             } else {
-              lineClass = line <= currentIndex
-                ? isPaused
-                  ? "loaderBack paused bg-slate-100"
-                  : "loaderBack notPaused bg-slate-100"
-                : "bg-primary-300";
+              if (line <= currentIndex) {
+                lineClass = isCurrentLine
+                  ? isPaused
+                    ? "loaderBack paused bg-slate-100"
+                    : "loaderBack notPaused bg-slate-100"
+                  : "bg-primary-300";
+              } else {
+                lineClass = "bg-slate-100";
+              }
             }
 
             const loaderClassApplied = lineClass.includes("loader");
@@ -168,14 +180,16 @@ const Stories = ({
           })}
         </div>
         <div className="flex flex-row mx-5 pt-3 mt-5 z-10 w-full items-center justify-end">
-          {windowWidth && windowWidth > 1024 ? (
+          {windowWidth > 1024 ? (
             <div className="cursor-pointer scale-125 flex flex-row gap-5">
               <FontAwesomeIcon
                 icon={isPaused ? faPlay : faPause}
                 onClick={handlePauseResume}
                 className="scale-125 text-slate-200 cursor-pointer"
               />
-              <CustomizedDialogs handlingPauseBehindScenes={handlePauseResume} />
+              <CustomizedDialogs
+                handlingPauseBehindScenes={handlePauseResume}
+              />
             </div>
           ) : (
             <div className="flex flex-row w-full justify-between">
@@ -186,12 +200,15 @@ const Stories = ({
                 }}
               />
               <div className="scale-[1.5]">
-                <CustomizedDialogs handlingPauseBehindScenes={handlePauseResume} />
+                <CustomizedDialogs
+                  handlingPauseBehindScenes={handlePauseResume}
+                />
               </div>
             </div>
           )}
         </div>
       </div>
+
       {Story.image &&
       (typeof Story.imageUrl === "string" ||
         (typeof Story.imageUrl === "object" && "height" in Story.imageUrl)) ? (
@@ -210,9 +227,10 @@ const Stories = ({
           className="flex flex-col h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
         />
       )}
+
       {currentIndex < totalLen - 1 && (
         <div className="absolute w-full z-30 bottom-0 animate-grow cursor-text">
-          <div className="bg-secondary-300 opacity-80 p-8 md:rounded-b-xl lg:rounded-b-xl xl:rounded-b-xl">
+          <div className="bg-secondary-300 opacity-80 p-8 md:rounded-b-xl md:rounded-t-sm lg:rounded-b-xl lg:rounded-t-sm xl:rounded-t-sm xl:rounded-b-xl">
             {Story.Heading && (
               <h1 className="text-2xl text-slate-50 font-bold mb-3">
                 {Story.Heading}
@@ -222,6 +240,7 @@ const Stories = ({
           </div>
         </div>
       )}
+
       {Story.swipeLink && Story.swipeText && (
         <Link href={Story.swipeLink}>
           <div
@@ -233,7 +252,7 @@ const Stories = ({
               icon={faArrowUp}
               className="text-orange-400 mr-1 animate-bounce"
             />
-            <p className="bg-gradient-300 p-2 rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
+            <p className="bg-gradient-300 p-2 rounded-3xl md:rounded-3xl lg:rounded-3xl xl:rounded-3xl text-center text-secondary-300 flex items-center hover:scale-105 duration-300">
               <FontAwesomeIcon
                 icon={faLink}
                 className="mx-1 text-secondary-300 bg-gradient-300 p-1 rounded-full"

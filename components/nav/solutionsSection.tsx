@@ -135,9 +135,9 @@ export default function Solutions() {
                         href={item.url}
                         className="flex items-center gap-3 font-semibold hover:text-primary-500 transition-colors duration-200 h-[24px]"
                       >
-                        <span className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                        <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
                           {item.icon}
-                        </span>
+                        </div>
                         <span>{item.name}</span>
                       </a>
                     </li>
