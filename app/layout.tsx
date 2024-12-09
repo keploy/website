@@ -48,7 +48,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <title>{finalMetadata.title}</title>
         <meta name="keywords" content={finalMetadata.keywords} />
@@ -168,7 +168,6 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}
-        suppressHydrationWarning
       >
         <div className="flex flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           {HeaderDisplayed && <Header />}
