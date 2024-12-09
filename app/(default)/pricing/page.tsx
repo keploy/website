@@ -66,18 +66,32 @@ const Pricing: React.FC = () => {
         <div className={styles.card}>
           <h2 className={styles["card-title"]}>Pricing Calculator</h2>
           <div className="relative w-full">
-            <div className="absolute w-full flex justify-between text-xs text-gray-500 -top-6">
-              {checkpoints.map((point, index) => (
+          <div className="absolute w-full flex justify-between text-xs text-gray-500 -top-6">
+            {checkpoints.map((point, index) => {
+                let position;
+                if (index === 0) {
+                position = 0; 
+                } else if (index === 1) {
+                position = 20; 
+                } else if (index === 2) {
+                position = 40; 
+                } else if (index === 3) {
+                position = 75; 
+                } else {
+                position = 100; 
+                }
+                return (
                 <span
-                  key={index}
-                  className="absolute transform -translate-x-1/2"
-                  style={{
-                    left: `${(index / (checkpoints.length - 1)) * 100}%`,
-                  }}
+                    key={index}
+                    className="absolute transform -translate-x-1/2"
+                    style={{
+                    left: `${position}%`,
+                    }}
                 >
-                  {formatNumber(point)}
+                    {formatNumber(point)}
                 </span>
-              ))}
+                );
+            })}
             </div>
             <input
               type="range"
