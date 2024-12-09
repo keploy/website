@@ -69,33 +69,33 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
-          <div className="shrink-0 mr-4 flex-grow-0 w-2/12 ">
+          <div className="shrink-0 mr-4 flex-grow-0 w-2/12 mt-[-15px] ">
             <Logo />
           </div>
           {/* Desktop navigation */}
-          <nav className="hidden lg:flex  flex-grow-0 w-6/12">
+          <nav className="hidden lg:flex justify-start flex-grow-0 w-6/12">
             {/* Desktop privacy-policy in links */}
             <ul className="flex grow justify-end flex items-center">
             <li>
                 <Link
                   target="_blank"
                   href="https://keploy.io/devscribe"
-                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  className="font-medium text-gray-600  hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   DevScribe
                 </Link>
               </li>
-              <li className="px-5">
+              <li className="px-4">
                <Product/>
               </li>
-              <li className="px-5">
+              <li className="px-4">
                <Solutions/>
               </li>
-              <li className="px-5">
+              <li className="px-4">
                 {" "}
                 <Docs />
               </li>
-              <li className="px-5">
+              <li className="px-4">
                 {" "}
                 <Resources />
               </li>
@@ -139,7 +139,7 @@ export default function Header() {
               target="_blank"
               className="btn-sm py-3 text-gray-200 bg-secondary-300  hover:text-primary-300 "
             >
-              <span>Sign In</span>
+              <span>Sign In Now</span>
               {/*<svg className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">*/}
               {/*  <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z" fillRule="nonzero" />*/}
               {/*</svg>*/}
