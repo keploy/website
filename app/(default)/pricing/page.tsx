@@ -52,66 +52,81 @@ const Pricing: React.FC = () => {
 
   return (
     <div>
-      <div className={styles.header}>
-        <div>
-          <h1>Transparent Pricing for Every Team Size</h1>
-          <p>
-            Easily calculate your costs based on your lines of code and get a tailored plan for
-            your needs.
-          </p>
-        </div>
-      </div>
-      <div className="flex flex-col md:flex-row gap-8 items-center justify-center bg-gray-100 px-6 py-6 mt-16">
-        <div className={styles.card}>
-          <h2 className={styles["card-title"]}>Pricing Calculator</h2>
-          <div className="relative w-full">
-          <div className="absolute w-full flex justify-between text-xs text-gray-500 -top-6">
-          {checkpoints.map((point, index) => (
-                <span
-                  key={index}
-                  className="absolute transform -translate-x-1/2"
-                  style={{
-                    left: `${(index / (checkpoints.length - 1)) * 100}%`,
-                  }}
-                >
-                  {formatNumber(point)}
-                </span>
-              ))}
+        <div className={styles.header}>
+            <div>
+            <h1>Transparent Pricing for Every Team Size</h1>
+            <p>
+                Easily calculate your costs based on your lines of code and get a tailored plan for
+                your needs.
+            </p>
             </div>
-            <input
-              type="range"
-              min="0"
-              max={checkpoints.length - 1}
-              step="0.01"
-              value={sliderValue}
-              onChange={handleSliderChange}
-              className={styles.slider}
-            />
-          </div>
-          <div className="mt-8 text-center">
-            <p className={styles["card-text"]}>
-              Total Price (based on{" "}
-              <span className="font-bold text-gray-700">{formatNumber(currentCheckpoint)}</span>{" "}
-              lines):
-            </p>
-            <p className="text-2xl font-bold text-orange-500 mt-2">${totalPrice.toLocaleString()}</p>
-          </div>
         </div>
+        <div className="flex flex-col gap-12 items-center justify-center bg-gray-100 px-6 py-6">
+            <div className="flex flex-col md:flex-row gap-6 w-full max-w-6xl">
+            <div className={styles.card}>
+                <h2 className={styles["card-title"]}>Pricing Calculator</h2>
+                <div className="relative w-full">
+                <div className="absolute w-full flex justify-between text-xs text-gray-500 -top-6">
+                    {checkpoints.map((point, index) => {
+                    let position;
+                    if (index === 0) position = 0;
+                    else if (index === 1) position = 20;
+                    else if (index === 2) position = 40;
+                    else if (index === 3) position = 75;
+                    else position = 100;
 
-        <div className={styles.card}>
-          <div className="text-center">
-            <p className={styles["card-text"]}>
-              If your lines of code exceed{" "}
-              <span className="font-semibold">5 million</span>, we’d love to help with a custom
-              pricing plan!
-            </p>
-            <a href="mailto:hello@keploy.io" className={styles.button}>
-              Let’s Talk
-            </a>
-          </div>
+                    return (
+                        <span
+                        key={index}
+                        className="absolute transform -translate-x-1/2"
+                        style={{
+                            left: `${position}%`,
+                        }}
+                        >
+                        {formatNumber(point)}
+                        </span>
+                    );
+                    })}
+                </div>
+                <input
+                    type="range"
+                    min="0"
+                    max={checkpoints.length - 1}
+                    step="0.01"
+                    value={sliderValue}
+                    onChange={handleSliderChange}
+                    className={styles.slider}
+                />
+                </div>
+            </div>
+
+            <div className={styles.card}>
+                <div className="text-center">
+                <h2 className="text-lg font-semibold">Final Price</h2>
+                <p className="text-3xl font-bold text-orange-500 mt-4">
+                    ${totalPrice.toLocaleString()}
+                </p>
+                <p className="text-sm text-gray-600 mt-2">
+                    Based on {formatNumber(currentCheckpoint)} lines of code
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <div className={styles.card + " mt-6"}>
+            <div className="text-center">
+                <p className={styles["card-text"]}>
+                If your lines of code exceed{" "}
+                <span className="font-semibold">5 million</span>, we’d love to help with a custom
+                pricing plan!
+                </p>
+                <a href="mailto:hello@keploy.io" className={styles.button}>
+                Let’s Talk
+                </a>
+            </div>
+            </div>
         </div>
-      </div>
-      <Footer />
+        <Footer />
     </div>
   );
 };
