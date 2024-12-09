@@ -34,7 +34,6 @@ const Pricing: React.FC = () => {
   };
 
   const sendUpdatedCheckpointValue = (value: number):number => {
-    // Send updated value to the server
     var updatedCheckPointValue:number=100000
     if(value >100000 && value <= 200000){
         updatedCheckPointValue = 200000;
@@ -48,7 +47,7 @@ const Pricing: React.FC = () => {
     return updatedCheckPointValue;
   }
 
-  const currentCheckpoint = interpolateValue(sliderValue); // Interpolate value for smooth movement
+  const currentCheckpoint = interpolateValue(sliderValue); 
   const totalPrice = currentCheckpoint * costPerLine;
 
   return (
@@ -62,36 +61,22 @@ const Pricing: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-12 items-center justify-center min-h-screen bg-gray-100 px-6 py-12">
+      <div className="flex flex-col md:flex-row gap-8 items-center justify-center bg-gray-100 px-6 py-6 mt-16">
         <div className={styles.card}>
           <h2 className={styles["card-title"]}>Pricing Calculator</h2>
           <div className="relative w-full">
           <div className="absolute w-full flex justify-between text-xs text-gray-500 -top-6">
-            {checkpoints.map((point, index) => {
-                let position;
-                if (index === 0) {
-                position = 0; 
-                } else if (index === 1) {
-                position = 20; 
-                } else if (index === 2) {
-                position = 40; 
-                } else if (index === 3) {
-                position = 75; 
-                } else {
-                position = 100; 
-                }
-                return (
+          {checkpoints.map((point, index) => (
                 <span
-                    key={index}
-                    className="absolute transform -translate-x-1/2"
-                    style={{
-                    left: `${position}%`,
-                    }}
+                  key={index}
+                  className="absolute transform -translate-x-1/2"
+                  style={{
+                    left: `${(index / (checkpoints.length - 1)) * 100}%`,
+                  }}
                 >
-                    {formatNumber(point)}
+                  {formatNumber(point)}
                 </span>
-                );
-            })}
+              ))}
             </div>
             <input
               type="range"
