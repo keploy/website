@@ -4,7 +4,7 @@ import VideoThumb from '@/public/images/demo-thumbnail.png';
 import ModalVideo from '@/components/modal-video';
 import Image from "next/image";
 import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CopyButton from './utils/copyButton';
 import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
@@ -12,6 +12,21 @@ import APItext from "@/public/images/apiText.png";
 import Banner from './ui/banner';
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size on component mount and update state
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1038); // Adjust this breakpoint as needed
+    };
+    
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <section className="relative">
 
@@ -92,9 +107,10 @@ export default function Hero() {
                    data-aos-delay="300">
         <div className="mb-4">
                   {/* Wrapping Link with NeonButton */}
-                    <Link
+                  <Link
                       className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
-                      href="vscode:extension/Keploy.keployio" target="_blank"
+                      href={isMobile ? "https://marketplace.visualstudio.com/items?itemName=Keploy.keployio" : "vscode:extension/Keploy.keployio"} // Conditionally change the href
+                      target="_blank"
                     >
                       Try VS Code Extension
                     </Link>
@@ -103,9 +119,9 @@ export default function Hero() {
                   {/* Wrapping Link with NeonButton */}
                     <Link
                       className="btn text-white bg-green-900 hover:text-emerald-200 w-full  sm:mb-0"
-                      href="https://app.keploy.io/signin"
+                      href="https://github.com/Keploy/keploy"
                     >
-                      Sign In to Keploy Console
+                      Explore Open Source Now 
                     </Link>
                 </div>
               </div>
