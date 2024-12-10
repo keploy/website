@@ -64,30 +64,30 @@ const Pricing: React.FC = () => {
         <div className="flex flex-col gap-12 items-center justify-center bg-gray-100 px-6 py-6">
             <div className="flex flex-col md:flex-row gap-6 w-full max-w-6xl">
             <div className={styles.card}>
-                <h2 className={styles["card-title"]}>Pricing Calculator</h2>
-                <div className="relative w-full">
-                <div className="absolute w-full flex justify-between text-xs text-gray-500 -top-6">
-                    {checkpoints.map((point, index) => {
-                    let position;
-                    if (index === 0) position = 0;
-                    else if (index === 1) position = 20;
-                    else if (index === 2) position = 40;
-                    else if (index === 3) position = 75;
-                    else position = 100;
+    <h2 className={styles["card-title"]}>Pricing Calculator</h2>
+    <div className="relative w-full">
+        <div className="absolute w-full flex justify-between text-xs text-gray-500 -top-6">
+            {checkpoints.map((point, index) => {
+                let position;
+                if (index === 0) position = 0;
+                else if (index === 1) position = 20;
+                else if (index === 2) position = 40;
+                else if (index === 3) position = 75;
+                else position = 100;
 
-                    return (
-                        <span
+                return (
+                    <span
                         key={index}
                         className="absolute transform -translate-x-1/2"
                         style={{
                             left: `${position}%`,
                         }}
-                        >
+                    >
                         {formatNumber(point)}
-                        </span>
-                    );
-                    })}
-                </div>
+                    </span>
+                );
+            })}
+                    </div>
                 <input
                     type="range"
                     min="0"
@@ -97,8 +97,11 @@ const Pricing: React.FC = () => {
                     onChange={handleSliderChange}
                     className={styles.slider}
                 />
-                </div>
             </div>
+            <div className="text-center text-sm text-gray-500 mt-2">
+                Lines of Code
+            </div>
+        </div>
 
             <div className={styles.card}>
                 <div className="text-center">

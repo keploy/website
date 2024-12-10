@@ -50,7 +50,7 @@ const resourcesData = [
       {
         icon: <Pricing />,
         name: "Pricing",
-        url: "/coming-soon",
+        url: "/pricing",
         isInternal: true,
       },
     ],
