@@ -1,6 +1,6 @@
 name: CI
 on: 
-  push: # Triggers on every push
+  pull_request: # Triggers on every push
     branches: # Matches all branches
       - "**"
 jobs:
