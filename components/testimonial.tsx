@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/all";
-import _ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger);
+// import gsap from "gsap";
+// import { useGSAP } from "@gsap/react";
+// import { ScrollTrigger } from "gsap/all";
+// import _ScrollTrigger from "gsap/ScrollTrigger";
+// gsap.registerPlugin(useGSAP);
+// gsap.registerPlugin(ScrollTrigger);
 
 const Testimonial = ({
   content,
@@ -20,32 +20,32 @@ const Testimonial = ({
   image: any;
 }) => {
   const container = useRef(null);
-  useGSAP(
-    () => {
-      gsap.to(".quote-character", {
-        scrollTrigger: {
-          trigger: ".quote-container",
-          scrub: 1,
-          start: "top+=200 bottom",
-          end: "bottom+=300 bottom",
-        },
-        opacity: 1,
-        stagger: 1,
-        duration: 3,
-      });
-      gsap.to(".gradient-container", {
-        scrollTrigger: {
-          trigger: ".gradient-container",
-          scrub: 1,
-          start: "bottom+=20 bottom",
-          end: "bottom+=300 bottom",
-        },
-        width: "100%",
-        duration: 4,
-      });
-    },
-    { scope: container }
-  );
+  // useGSAP(
+  //   () => {
+  //     gsap.to(".quote-character", {
+  //       scrollTrigger: {
+  //         trigger: ".quote-container",
+  //         scrub: 1,
+  //         start: "top+=200 bottom",
+  //         end: "bottom+=300 bottom",
+  //       },
+  //       opacity: 1,
+  //       stagger: 1,
+  //       duration: 3,
+  //     });
+  //     gsap.to(".gradient-container", {
+  //       scrollTrigger: {
+  //         trigger: ".gradient-container",
+  //         scrub: 1,
+  //         start: "bottom+=20 bottom",
+  //         end: "bottom+=300 bottom",
+  //       },
+  //       width: "100%",
+  //       duration: 4,
+  //     });
+  //   },
+  //   { scope: container }
+  // );
 
   return (
     <div ref={container} className="max-w-6xl px-4 mx-auto my-16">

@@ -1,5 +1,5 @@
 import React from "react";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+// import { Player, Controls } from "@lottiefiles/react-lottie-player";
 const LottiePlayer = ({
   VideoPath,
   className,
@@ -9,7 +9,7 @@ const LottiePlayer = ({
 }) => {
   return (
     <div className={`${className}`}>
-      <Player
+      {/* <Player
         autoplay
         loop
         src={VideoPath}
@@ -21,7 +21,7 @@ const LottiePlayer = ({
           visible={false}
           buttons={["play", "repeat", "frame", "debug"]}
         />
-      </Player>
+      </Player> */}
       
     </div>
   );
