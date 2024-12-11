@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "../../ui/logo";
 import MobileMenu from "../../ui/mobile-menu";
-import CountingNumbers from "../../utils/countingNumbers";
+// import CountingNumbers from "../../utils/countingNumbers";
 import NavItemWithSmallDropdown from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "@/components/utils/resources";
 
@@ -129,7 +129,7 @@ export default function Header() {
                   {" "}
                   |
                 </span>
-                <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
+                {/* <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span> */}
               </Link>
             </div>
             <Link

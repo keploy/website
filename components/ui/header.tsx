@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
-import CountingNumbers from "../utils/countingNumbers";
+// import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
@@ -130,7 +130,7 @@ export default function Header() {
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
+                {/* <span className="text-base flex gap-1"> <CountingNumbers className="" /></span> */}
               </Link>
             </div>
           <div className="ml-3">
