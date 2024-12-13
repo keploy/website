@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
-// import CountingNumbers from "../utils/countingNumbers";
+import CountingNumbers from "../utils/countingNumbers";
 import { isTypeOfExpression } from "typescript";
 import NavItemWithSmallDropdown, {DropdowndataInterface,LinkDatainterface} from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "../utils/resources";
@@ -18,8 +18,7 @@ import Resources from "../nav/resourcesSection";
 
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
-  const starsCount = 5200
-  // const [starsCount, setStarsCount] = useState<number>(1000);
+  const [starsCount, setStarsCount] = useState<number>(1000);
   // detect whether user has scrolled the page down by 10px
   const scrollHandler = () => {
     window.pageYOffset > 10 ? setTop(false) : setTop(true);
@@ -31,35 +30,35 @@ export default function Header() {
     return () => window.removeEventListener("scroll", scrollHandler);
   }, [top]);
 
-  // useEffect(() => {
-    // const fetchStarsCount = async () => {
-    //   try {
-    //     const response = await fetch(
-    //       "https://api.github.com/repos/keploy/keploy"
-    //     );
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       // Convert starsCount to 1-digit decimal with 'K'
-    //       let stars = data.stargazers_count;
-    //       // let roundedStars = Math.round(data.stargazers_count / 50) * 50;
-    //       // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-    //       setStarsCount(stars);
-    //     } else {
-    //       // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
-    //       // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-    //       // setStarsCount(formattedStars);
-    //       console.error("Failed to fetch stars count", response.statusText);
-    //     }
-    //   } catch (error) {
-    //     // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
-    //     // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
-    //     // setStarsCount(formattedStars);
-    //     console.error("Error fetching stars count:", error);
-    //   }
-    // };
+  useEffect(() => {
+    const fetchStarsCount = async () => {
+      try {
+        const response = await fetch(
+          "https://api.github.com/repos/keploy/keploy"
+        );
+        if (response.ok) {
+          const data = await response.json();
+          // Convert starsCount to 1-digit decimal with 'K'
+          let stars = data.stargazers_count;
+          // let roundedStars = Math.round(data.stargazers_count / 50) * 50;
+          // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
+          setStarsCount(stars);
+        } else {
+          // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
+          // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
+          // setStarsCount(formattedStars);
+          console.error("Failed to fetch stars count", response.statusText);
+        }
+      } catch (error) {
+        // let roundedStars = Math.round(parseInt(starsCount) / 50) * 50;
+        // let formattedStars = (roundedStars / 1000).toFixed(1) + "K";
+        // setStarsCount(formattedStars);
+        console.error("Error fetching stars count:", error);
+      }
+    };
 
-    // fetchStarsCount();
-  // }, []);
+    fetchStarsCount();
+  }, []);
 
   return (
     <header
@@ -105,7 +104,7 @@ export default function Header() {
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
           <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
               {/* Sliding effect span */}
-              {/* <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-orange-500 opacity-10 transition-transform duration-1000 ease-out group-hover:translate-x-[-400%]" /> */}
+              <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-orange-500 opacity-10 transition-transform duration-1000 ease-out group-hover:translate-x-[-400%]" />
               
               <Link
                 className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"
@@ -131,7 +130,7 @@ export default function Header() {
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                {/* <span className="text-base flex gap-1"> <CountingNumbers className="" /></span> */}
+                <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
               </Link>
             </div>
           <div className="ml-3">

@@ -9,16 +9,20 @@ import FeaturesMobileView from "./FeatureMoblieView";
 import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
 import deDuplication from "@/public/images/CaptureAndReplayV2.json";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import f from "@/public/images/f.gif"
+import d from "@/public/images/d.gif"
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
+// const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
 
 const TestAndStubGenerationImage = ({ isActive }: { isActive: boolean }) => {
   return (
     <div className="flex flex-col w-full imageToShow relative" id="img-1">
       <div className="mb-2 h-[75%]">
-        {isActive && <LottiePlayer VideoPath={testAndStubsGen} />}
+        {/* {isActive && <LottiePlayer VideoPath={testAndStubsGen} />} */}
+        {isActive && <Image src={d} alt="fjkhkgfh"/> }
       </div>
     </div>
   );
@@ -28,7 +32,8 @@ const TestDuplicationImage = ({ isActive }: { isActive: boolean }) => {
   return (
     <div className="flex flex-col w-full imageToShow relative" id="img-2">
       <div className="mb-2 h-[75%]">
-        {isActive && <LottiePlayer VideoPath={deDuplication} />}
+        {/* {isActive && <LottiePlayer VideoPath={deDuplication} />} */}
+        {isActive && <Image src={f} alt="fjkhkgfh"/>}
       </div>
     </div>
   );
