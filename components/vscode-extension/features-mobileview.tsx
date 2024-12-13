@@ -8,7 +8,7 @@ import testAndStubsGen from '@/public/images/TestGenHighlighted.json';
 import deDuplication from '@/public/images/CaptureAndReplayV2.json';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-const LottiePlayer = dynamic(()=>import("../LottiePlayer"),{ssr:false})
+// const LottiePlayer = dynamic(()=>import("../LottiePlayer"),{ssr:false})
 export default function FeaturesMobileView() {
     const [tab, setTab] = useState<number>(1);
 
@@ -212,7 +212,7 @@ export default function FeaturesMobileView() {
                                         <div className="relative inline-flex flex-col ">
                                             {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                                             <div className=" mb-14">
-                                                <LottiePlayer VideoPath={testAndStubsGen}/>
+                                                {/* <LottiePlayer VideoPath={testAndStubsGen}/> */}
                                             </div>
                                         </div>
                                     </Transition>
@@ -234,7 +234,7 @@ export default function FeaturesMobileView() {
                                             {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
                                             {/*<Image className="absolute left-0 w-full transform md:max-w-none animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />*/}
 
-                                            <LottiePlayer VideoPath={deDuplication}/>
+                                            {/* <LottiePlayer VideoPath={deDuplication}/> */}
                                         </div>
                                     </Transition>
                                     {/* Item 3 */}

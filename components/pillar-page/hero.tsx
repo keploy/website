@@ -14,7 +14,7 @@ interface HeroProps {
   extraClasses?: string; // New prop to accept extra class names
 }
 
-const LottiePlayer = dynamic(() => import("../LottiePlayer"), { ssr: false });
+const LottiePlayer = dynamic(() => import("../LottiePlayer"));
 
 const Hero: React.FC<HeroProps> = ({
   titleTop,
