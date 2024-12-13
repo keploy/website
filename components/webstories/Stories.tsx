@@ -14,9 +14,9 @@ import CircularLoader from "./components/circularLoader";
 import { useSwipeable } from "react-swipeable";
 import { KeyboardArrowLeft } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
-// const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
-//   ssr: false,
-// });
+const LottiePlayer = dynamic(() => import("./LottiePlayerWebStories"), {
+  ssr: false,
+});
 
 type StoriesProps = {
   imageUrl?: string | StaticImageData;
@@ -222,11 +222,10 @@ const Stories = ({
           height={100}
         />
       ) : (
-        <div></div>
-        // <LottiePlayer
-        //   VideoPath={Story.imageUrl}
-        //   className="flex flex-col h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
-        // />
+        <LottiePlayer
+          VideoPath={Story.imageUrl}
+          className="flex flex-col h-full w-full md:rounded-xl lg:rounded-xl xl:rounded-xl"
+        />
       )}
 
       {currentIndex < totalLen - 1 && (

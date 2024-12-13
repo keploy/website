@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 "use client";
-import VideoThumb from '@/public/images/demo-thumbnail.webp';
+import VideoThumb from '@/public/images/demo-thumbnail.png';
 import ModalVideo from '@/components/modal-video';
 import Image from "next/image";
 import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg";
@@ -127,7 +127,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-{/* <Banner /> */}
+<Banner />
           <ModalVideo
             thumb={VideoThumb}
             thumbWidth={768}
