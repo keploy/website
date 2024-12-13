@@ -6,12 +6,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import FeaturesMobileView from "./FeatureMoblieView";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import deDuplication from "@/public/images/CaptureAndReplayV2.json";
-import dynamic from "next/dynamic";
 import Image from "next/image";
-import f from "@/public/images/f.gif"
-import d from "@/public/images/d.gif"
+import testAndStubsGen from "@/public/images/testAndStubsGen.webp";
+import deDuplication from "@/public/images/deDuplication.webp"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +19,7 @@ const TestAndStubGenerationImage = ({ isActive }: { isActive: boolean }) => {
     <div className="flex flex-col w-full imageToShow relative" id="img-1">
       <div className="mb-2 h-[75%]">
         {/* {isActive && <LottiePlayer VideoPath={testAndStubsGen} />} */}
-        {isActive && <Image src={d} alt="fjkhkgfh"/> }
+        {isActive && <Image src={testAndStubsGen} alt="tests and stub gen gif"/> }
       </div>
     </div>
   );
@@ -33,7 +30,7 @@ const TestDuplicationImage = ({ isActive }: { isActive: boolean }) => {
     <div className="flex flex-col w-full imageToShow relative" id="img-2">
       <div className="mb-2 h-[75%]">
         {/* {isActive && <LottiePlayer VideoPath={deDuplication} />} */}
-        {isActive && <Image src={f} alt="fjkhkgfh"/>}
+        {isActive && <Image src={deDuplication} alt="dedup image gif"/>}
       </div>
     </div>
   );

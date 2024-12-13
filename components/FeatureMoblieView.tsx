@@ -4,12 +4,11 @@ import React, { useState, useRef, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
 import NativeIntegration from "@/public/images/replay-tc31305e1d2286fe485b27.gif";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import deDuplication from "@/public/images/CaptureAndReplayV2.json";
+import testAndStubsGen from "@/public/images/testAndStubsGen.webp";
 import Link from "next/link";
-import dynamic from "next/dynamic";
+import deDuplication from "@/public/images/deDuplication.webp"
 
-const LottiePlayer = dynamic(() => import("./LottiePlayer"));
+// const LottiePlayer = dynamic(() => import("./LottiePlayer"));
 
 export default function FeaturesMobileView() {
   const [tab, setTab] = useState<number>(1);
@@ -214,7 +213,7 @@ export default function FeaturesMobileView() {
                     leaveTo="opacity-0 -translate-y-16"
                     beforeEnter={() => heightFix()}
                   >
-                    <LottiePlayer VideoPath={testAndStubsGen} />
+                    <Image src={testAndStubsGen} alt="tests and stub gen gif"/>
                   </Transition>
                   <Transition
                     show={tab === 2}
@@ -227,7 +226,7 @@ export default function FeaturesMobileView() {
                     leaveTo="opacity-0 -translate-y-16"
                     beforeEnter={() => heightFix()}
                   >
-                    <LottiePlayer VideoPath={deDuplication} />
+                    <Image src={deDuplication} alt="dedup image gif"/>
                   </Transition>
                   <Transition
                     show={tab === 3}
