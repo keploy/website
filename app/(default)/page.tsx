@@ -1,9 +1,9 @@
-'use client'
+"use client";
+
 import Footer from "@/components/ui/footer";
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import Hero from "@/components/hero";
-import Features from "@/components/features";
 import ProblemBlocks from "@/components/problem-blocks";
 import Newsletter from "@/components/newsletter";
 import Language from "@/components/language";
@@ -12,26 +12,42 @@ import Installation from "@/components/installation";
 import { Testimonial } from "@/components/testimonial";
 import { testimonialData } from "@/components/utils/testimonial";
 import TwitterTestimonials from "@/components/TwitterTestimonials";
-const Home: React.FC = () => {
-  const [loadFeatures, setLoadFeatures] = useState<boolean>(false);
+import Features from "@/components/features";
 
-  const { ref: sentinelRef, inView: sentinelInView } = useInView({
-    triggerOnce: true, 
+const Home: React.FC = () => {
+  const [showFeatures, setShowFeatures] = useState<boolean>(false);
+
+  // Top sentinel: when visible (and bottom not visible) => show Features
+  const { ref: topSentinelRef, inView: topInView } = useInView({
     threshold: 0.1,
+    triggerOnce: false, 
+  });
+
+  // Bottom sentinel: when visible => hide Features
+  const { ref: bottomSentinelRef, inView: bottomInView } = useInView({
+    threshold: 0.1,
+    triggerOnce: false,
   });
 
   useEffect(() => {
-    if (sentinelInView) {
-      setLoadFeatures(true);
+    // If bottom is in view, you've scrolled past Features, unmount it
+    if (bottomInView) {
+      setShowFeatures(false);
+    } else if (topInView && !bottomInView) {
+      // If top is in view and bottom isn't, show Features
+      setShowFeatures(true);
     }
-  }, [sentinelInView]);
+  }, [topInView, bottomInView]);
 
   return (
     <>
       <Hero />
-      <div ref={sentinelRef} style={{ height: "1px", background: "transparent" }} />
       
-      {loadFeatures && <Features />}
+      <div ref={topSentinelRef} style={{ height: "50px", background: "transparent" }} />
+
+      {showFeatures && <Features />}
+
+      <div ref={bottomSentinelRef} style={{ height: "50px", background: "transparent" }} />
 
       <Testimonial
         content={testimonialData[0].content}

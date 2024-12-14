@@ -7,7 +7,7 @@ const LottiePlayer = ({VideoPath , className}:{VideoPath:any , className?:string
     <div>
        <LottieLight
         useSubframes={false}
-        speed={3}
+        speed={2.5}
         play
         animationData={VideoPath}
         className={className ? className : "w-full max-w-xs md:max-w-sm lg:max-w-md"} // Adjust width for different screen sizes
