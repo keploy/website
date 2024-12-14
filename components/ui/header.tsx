@@ -103,8 +103,6 @@ export default function Header() {
           </nav>
           <div className="header-btn-container flex-grow-0 w-4/12 justify-end hidden lg:flex">
           <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all  group">
-              {/* Sliding effect span */}
-              <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-orange-500 opacity-10 transition-transform duration-1000 ease-out group-hover:translate-x-[-400%]" />
               
               <Link
                 className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"
