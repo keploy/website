@@ -14,7 +14,7 @@ import { testimonialData } from "@/components/utils/testimonial";
 import TwitterTestimonials from "@/components/TwitterTestimonials";
 import Features from "@/components/features";
 
-const Home: React.FC = () => {
+export default function Home() {
   const [showFeatures, setShowFeatures] = useState<boolean>(false);
 
   // Top sentinel: when visible (and bottom not visible) => show Features
@@ -30,11 +30,9 @@ const Home: React.FC = () => {
   });
 
   useEffect(() => {
-    // If bottom is in view, you've scrolled past Features, unmount it
     if (bottomInView) {
       setShowFeatures(false);
     } else if (topInView && !bottomInView) {
-      // If top is in view and bottom isn't, show Features
       setShowFeatures(true);
     }
   }, [topInView, bottomInView]);
@@ -79,5 +77,3 @@ const Home: React.FC = () => {
     </>
   );
 };
-
-export default Home;
