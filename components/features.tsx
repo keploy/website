@@ -80,11 +80,12 @@ export default function Features() {
       setImage2Visible(false);
       return;
     }
-
+  
     const details = gsap.utils.toArray<HTMLElement>(".detail");
     const images = gsap.utils.toArray<HTMLElement>(".imageToShow");
-
+  
     gsap.set(images, { opacity: 0, y: 50 });
+  
     ScrollTrigger.create({
       trigger: details[0],
       start: "top 80%", 
@@ -109,7 +110,7 @@ export default function Features() {
       },
       scrub: true,
     });
-
+  
     ScrollTrigger.create({
       trigger: details[2],
       start: "top 80%", 
@@ -138,7 +139,7 @@ export default function Features() {
           ease: "power2.out",
         });
         setImage2Visible(false);
-
+  
         gsap.to(images[0], {
           opacity: 1,
           y: 0,
@@ -149,21 +150,36 @@ export default function Features() {
       },
       scrub: true,
     });
-
+  
+    // Fade out the "Keploy for Developers" heading after the last section
+    ScrollTrigger.create({
+      trigger: ".content-container",
+      start: "bottom bottom", // Start fade when the container ends
+      end: "+=200", // Adjust this value for the fade duration
+      onUpdate: (self) => {
+        gsap.to(".heading-text", {
+          opacity: 1 - self.progress, // Fade out based on progress
+          duration: 0.2,
+          ease: "power2.out",
+        });
+      },
+      scrub: true,
+    });
+  
     ScrollTrigger.create({
       trigger: ".content-container",
       start: "top top",
       end: "bottom bottom",
       pin: ".right-content",
     });
-
+  
     ScrollTrigger.create({
       trigger: ".content-container",
       start: "top top",
       end: "bottom bottom",
       pin: ".heading-text",
     });
-
+  
     details.forEach((detail: HTMLElement) => {
       gsap.set(detail, { opacity: 1 });
       ScrollTrigger.create({
@@ -177,16 +193,18 @@ export default function Features() {
         scrub: 1,
       });
     });
-
+  
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [inView]);
+  
+  
 
   return (
     <>
       <FeaturesMobileView />
-      <section className="relative hidden lg:block">
+      <section className="relative hidden lg:block" ref={inViewRef}>
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
             Keploy for Developers
@@ -196,7 +214,7 @@ export default function Features() {
           </p>
         </div>
         <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh] mx-auto content-container">
-          <div className="mt-20 space-y-[60vh]" ref={inViewRef}>
+          <div className="mt-20 space-y-[60vh]">
             <div className="flex items-center detail" data-marker-content="img-1">
               <TextSection
                 svg={
