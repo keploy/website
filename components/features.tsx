@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,29 +12,21 @@ import deDuplication from "@/public/images/deDuplication.webp"
 
 gsap.registerPlugin(ScrollTrigger);
 
-// const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
-
-const TestAndStubGenerationImage = ({ isActive }: { isActive: boolean }) => {
-  return (
-    <div className="flex flex-col w-full imageToShow relative" id="img-1">
-      <div className="mb-2 h-[75%]">
-        {/* {isActive && <LottiePlayer VideoPath={testAndStubsGen} />} */}
-        {isActive && <Image src={testAndStubsGen} alt="tests and stub gen gif"/> }
-      </div>
+const TestAndStubGenerationImage = ({ isVisible }: { isVisible: boolean }) => (
+  <div className="flex flex-col w-full imageToShow relative" id="img-1">
+    <div className="mb-2 h-[75%]">
+      {isVisible && <Image src={testAndStubsGen} alt="tests and stub gen gif" />}
     </div>
-  );
-};
+  </div>
+);
 
-const TestDuplicationImage = ({ isActive }: { isActive: boolean }) => {
-  return (
-    <div className="flex flex-col w-full imageToShow relative" id="img-2">
-      <div className="mb-2 h-[75%]">
-        {/* {isActive && <LottiePlayer VideoPath={deDuplication} />} */}
-        {isActive && <Image src={deDuplication} alt="dedup image gif"/>}
-      </div>
+const TestDuplicationImage = ({ isVisible }: { isVisible: boolean }) => (
+  <div className="flex flex-col w-full imageToShow relative" id="img-2">
+    <div className="mb-2 h-[75%] mt-8">
+      {isVisible && <Image src={deDuplication} alt="dedup image gif" />}
     </div>
-  );
-};
+  </div>
+);
 
 const TextSection = ({
   svg,
@@ -61,7 +53,7 @@ const TextSection = ({
       {btnDescription && (
         <div className="mt-8">
           <Link
-            className="btn  text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
+            className="btn text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
             href={btnLink}
           >
             {btnDescription}
@@ -73,11 +65,9 @@ const TextSection = ({
 };
 
 export default function Features() {
-  // const container = useRef<HTMLDivElement | null>(null);
+  const [image1Visible, setImage1Visible] = useState(false);
+  const [image2Visible, setImage2Visible] = useState(false);
 
-  const [activeImages, setActiveImages] = useState<boolean[]>([false, false]);
-
-  // Use Intersection Observer to detect when the container is in view
   const { ref: inViewRef, inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -85,116 +75,135 @@ export default function Features() {
 
   useEffect(() => {
     if (!inView) {
-      // Container is out of view, kill all ScrollTriggers and reset state
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      setActiveImages([false, false]);
+      setImage1Visible(false);
+      setImage2Visible(false);
       return;
     }
-
-    // Container is in view, set up GSAP animations
+  
     const details = gsap.utils.toArray<HTMLElement>(".detail");
     const images = gsap.utils.toArray<HTMLElement>(".imageToShow");
-
+  
     gsap.set(images, { opacity: 0, y: 50 });
-
-    const detailImageMapping = [
-      { detail: details[0], image: images[0] }, 
-      { detail: details[1], image: images[1] }, 
-    ];
-
-    detailImageMapping.forEach((mapping, index) => {
-      ScrollTrigger.create({
-        trigger: mapping.detail,
-        start: "top 75%",
-        end: "bottom 25%",
-        onEnter: () => {
-          gsap.to(mapping.image, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-          });
-          setActiveImages((prev) => {
-            const newState = [...prev];
-            newState[index] = true;
-            return newState;
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(mapping.image, {
-            opacity: 0,
-            y: 50, 
-            duration: 0.8,
-            ease: "power2.out",
-          });
-          setActiveImages((prev) => {
-            const newState = [...prev];
-            newState[index] = false;
-            return newState;
-          });
-        },
-        scrub: true,
-      });
+  
+    ScrollTrigger.create({
+      trigger: details[0],
+      start: "top 80%", 
+      end: "bottom 25%",
+      onEnter: () => {
+        gsap.to(images[0], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(true);
+      },
+      onLeaveBack: () => {
+        gsap.to(images[0], {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(false);
+      },
+      scrub: true,
     });
-
+  
+    ScrollTrigger.create({
+      trigger: details[2],
+      start: "top 80%", 
+      end: "bottom 25%",
+      onEnter: () => {
+        gsap.to(images[0], {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(false);
+        gsap.to(images[1], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage2Visible(true);
+      },
+      onLeaveBack: () => {
+        gsap.to(images[1], {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage2Visible(false);
+  
+        gsap.to(images[0], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(true);
+      },
+      scrub: true,
+    });
+  
+    ScrollTrigger.create({
+      trigger: ".content-container",
+      start: "bottom bottom", 
+      end: "+=200", 
+      onUpdate: (self) => {
+        gsap.to(".heading-text", {
+          opacity: 1 - self.progress, 
+          duration: 0.2,
+          ease: "power2.out",
+        });
+      },
+      scrub: true,
+    });
+  
     ScrollTrigger.create({
       trigger: ".content-container",
       start: "top top",
       end: "bottom bottom",
       pin: ".right-content",
     });
-
+  
     ScrollTrigger.create({
       trigger: ".content-container",
       start: "top top",
       end: "bottom bottom",
       pin: ".heading-text",
     });
-
-    if (detailImageMapping.length > 1 && images.length > 1) {
-      gsap.to(images[0], {
-        scrollTrigger: {
-          trigger: detailImageMapping[1].detail,
-          start: "center center",
-          end: "center center",
-          scrub: 1,
-        },
-        opacity: 0,
-      });
-      gsap.to(images[1], {
-        scrollTrigger: {
-          trigger: detailImageMapping[1].detail,
-          start: "center center",
-          end: "center center",
-          scrub: 1,
-        },
-        opacity: 1,
-      });
-    }
-
-    // Make each detail disappear as soon as it hits the top boundary
+  
     details.forEach((detail: HTMLElement) => {
       gsap.set(detail, { opacity: 1 });
       ScrollTrigger.create({
         trigger: detail,
-        start: "top 20%", // When the detail hits the top 20% of the viewport
+        start: "top 20%",
         end: "center center",
-        onEnter: () => gsap.to(detail, { opacity: 0, duration: 0.5, ease: "power2.out" }),
-        onLeaveBack: () => gsap.to(detail, { opacity: 1, duration: 0.5, ease: "power2.out" }),
+        onEnter: () =>
+          gsap.to(detail, { opacity: 0, duration: 0.5, ease: "power2.out" }),
+        onLeaveBack: () =>
+          gsap.to(detail, { opacity: 1, duration: 0.5, ease: "power2.out" }),
         scrub: 1,
       });
     });
-
-    // Cleanup function
+  
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [inView]);
+  
+  
 
   return (
     <>
       <FeaturesMobileView />
-      <section className="relative hidden lg:block">
+      <section className="relative hidden lg:block" ref={inViewRef}>
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
             Keploy for Developers
@@ -203,8 +212,8 @@ export default function Features() {
             smart API testing, capture network calls and generate tests with stubs
           </p>
         </div>
-        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh]  mx-auto  content-container">
-          <div className="mt-20 space-y-[60vh]" ref={inViewRef}>
+        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh] mx-auto content-container">
+          <div className="mt-20 space-y-[60vh]">
             <div className="flex items-center detail" data-marker-content="img-1">
               <TextSection
                 svg={
@@ -263,9 +272,9 @@ export default function Features() {
               />
             </div>
           </div>
-          <div className="flex flex-col items-center relative justify-center h-min right-content space-y-8 mt-[20vh]">
-            <TestAndStubGenerationImage isActive={activeImages[0]} />
-            <TestDuplicationImage isActive={activeImages[1]} />
+          <div className="flex flex-col items-center relative justify-center h-min right-content space-y-8 mt-[35vh]">
+            <TestAndStubGenerationImage isVisible={image1Visible} />
+            <TestDuplicationImage isVisible={image2Visible} />
           </div>
         </div>
       </section>
