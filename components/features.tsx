@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -151,14 +151,13 @@ export default function Features() {
       scrub: true,
     });
   
-    // Fade out the "Keploy for Developers" heading after the last section
     ScrollTrigger.create({
       trigger: ".content-container",
-      start: "bottom bottom", // Start fade when the container ends
-      end: "+=200", // Adjust this value for the fade duration
+      start: "bottom bottom", 
+      end: "+=200", 
       onUpdate: (self) => {
         gsap.to(".heading-text", {
-          opacity: 1 - self.progress, // Fade out based on progress
+          opacity: 1 - self.progress, 
           duration: 0.2,
           ease: "power2.out",
         });
