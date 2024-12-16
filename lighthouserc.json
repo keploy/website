@@ -4,7 +4,7 @@
       "target": "temporary-public-storage"
     },
     "collect": {
-      "startServerCommand": "npm run dev",
+      "startServerCommand": "npm run start",
       "url": [
         "http://localhost:3000/"
       ]
