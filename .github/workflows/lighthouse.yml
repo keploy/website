@@ -27,7 +27,7 @@ jobs:
       #     lhci autorun --config=lighthouserckeploy.json || echo "LHCI failed!"
       - name: Compare Lighthouse Reports
         run: |
-          pwd
+          ls
           cd ..
-          pwd
+          ls
           node compare-lhci-reports.js
