@@ -1,51 +1,32 @@
 "use client";
 
-import React, {useRef} from "react";
-import testAndStubsGen from "@/public/images/TestGenHighlighted.json";
-import deDuplication from "@/public/images/CaptureAndReplayV2.json";
+import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import gsap from "gsap"; // <-- import GSAP
-import { useGSAP } from "@gsap/react"; // <-- import the hook
-import { ScrollTrigger } from "gsap/all";
-import _ScrollTrigger from "gsap/ScrollTrigger";
 import FeaturesMobileView from "./FeatureMoblieView";
-import dynamic from "next/dynamic";
-const LottiePlayer = dynamic(() => import("./LottiePlayer"), { ssr: false });
-gsap.registerPlugin(useGSAP);
+import Image from "next/image";
+import testAndStubsGen from "@/public/images/testAndStubsGen.webp";
+import deDuplication from "@/public/images/deDuplication.webp"
+
 gsap.registerPlugin(ScrollTrigger);
 
-const TestAndStubGenerationImage = () => {
-  return (
-    <div className="inline-flex flex-col w-full imageToShow " id="img-1">
-      {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
-      <div className=" mb-2 h-[50%]">
-        <LottiePlayer VideoPath={testAndStubsGen} />
-      </div>
-      
+const TestAndStubGenerationImage = ({ isVisible }: { isVisible: boolean }) => (
+  <div className="flex flex-col w-full imageToShow relative" id="img-1">
+    <div className="mb-2 h-[75%]">
+      {isVisible && <Image src={testAndStubsGen} alt="tests and stub gen gif" />}
     </div>
-  );
-};
+  </div>
+);
 
-const TestDuplicationImage = () => {
-  return (
-    <div className="inline-flex flex-col w-full imageToShow " id="img-1">
-      {/* <Image className="mx-auto rounded md:max-w-none" src={FeaturesBg} width={500} height="462" alt="Features bg" /> */}
-      <div className=" mb-2 h-[50%]">
-        <LottiePlayer VideoPath={deDuplication} />
-      </div>
-      
+const TestDuplicationImage = ({ isVisible }: { isVisible: boolean }) => (
+  <div className="flex flex-col w-full imageToShow relative" id="img-2">
+    <div className="mb-2 h-[75%] mt-8">
+      {isVisible && <Image src={deDuplication} alt="dedup image gif" />}
     </div>
-  );
-};
-
-
-
-  
-  // const heightFix = () => {
-  //   if (tabs.current && tabs.current.parentElement)
-  //     tabs.current.parentElement.style.height = `${tabs.current.clientHeight}px`;
-  // };
-  
+  </div>
+);
 
 const TextSection = ({
   svg,
@@ -72,7 +53,7 @@ const TextSection = ({
       {btnDescription && (
         <div className="mt-8">
           <Link
-            className="btn  text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
+            className="btn text-secondary-300 bg-primary-300 hover:text-white w-full mb-4 sm:w-auto sm:mb-0"
             href={btnLink}
           >
             {btnDescription}
@@ -84,69 +65,145 @@ const TextSection = ({
 };
 
 export default function Features() {
-  const container = useRef(null);
+  const [image1Visible, setImage1Visible] = useState(false);
+  const [image2Visible, setImage2Visible] = useState(false);
 
-useGSAP(
-  () => {
-    const details: any = gsap.utils.toArray(".detail");
+  const { ref: inViewRef, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
 
-    const images: any = gsap.utils.toArray(".imageToShow");
-
-    gsap.set(images[1], { opacity: 0 });
-
+  useEffect(() => {
+    if (!inView) {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      setImage1Visible(false);
+      setImage2Visible(false);
+      return;
+    }
+  
+    const details = gsap.utils.toArray<HTMLElement>(".detail");
+    const images = gsap.utils.toArray<HTMLElement>(".imageToShow");
+  
+    gsap.set(images, { opacity: 0, y: 50 });
+  
+    ScrollTrigger.create({
+      trigger: details[0],
+      start: "top 80%", 
+      end: "bottom 25%",
+      onEnter: () => {
+        gsap.to(images[0], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(true);
+      },
+      onLeaveBack: () => {
+        gsap.to(images[0], {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(false);
+      },
+      scrub: true,
+    });
+  
+    ScrollTrigger.create({
+      trigger: details[2],
+      start: "top 80%", 
+      end: "bottom 25%",
+      onEnter: () => {
+        gsap.to(images[0], {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(false);
+        gsap.to(images[1], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage2Visible(true);
+      },
+      onLeaveBack: () => {
+        gsap.to(images[1], {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage2Visible(false);
+  
+        gsap.to(images[0], {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage1Visible(true);
+      },
+      scrub: true,
+    });
+  
+    ScrollTrigger.create({
+      trigger: ".content-container",
+      start: "bottom bottom", 
+      end: "+=200", 
+      onUpdate: (self) => {
+        gsap.to(".heading-text", {
+          opacity: 1 - self.progress, 
+          duration: 0.2,
+          ease: "power2.out",
+        });
+      },
+      scrub: true,
+    });
+  
     ScrollTrigger.create({
       trigger: ".content-container",
       start: "top top",
       end: "bottom bottom",
       pin: ".right-content",
     });
-
+  
     ScrollTrigger.create({
       trigger: ".content-container",
       start: "top top",
       end: "bottom bottom",
       pin: ".heading-text",
     });
-
-    details.forEach((detail: any) => {
-      gsap.set(detail, { opacity: 1 }); 
-
+  
+    details.forEach((detail: HTMLElement) => {
+      gsap.set(detail, { opacity: 1 });
       ScrollTrigger.create({
         trigger: detail,
-        start: "top 20%", 
+        start: "top 20%",
         end: "center center",
-        onEnter: () => gsap.set(detail, { opacity: 0 }),
-        onLeaveBack: () => gsap.set(detail, { opacity: 1 }),
-        scrub: 1, 
+        onEnter: () =>
+          gsap.to(detail, { opacity: 0, duration: 0.5, ease: "power2.out" }),
+        onLeaveBack: () =>
+          gsap.to(detail, { opacity: 1, duration: 0.5, ease: "power2.out" }),
+        scrub: 1,
       });
     });
-
-    gsap.to(images[0], {
-      scrollTrigger: {
-        trigger: details[1],
-        start: "center center",
-        end: "center center",
-        scrub: 1,
-      },
-      opacity: 0,
-    });
-    gsap.to(images[1], {
-      scrollTrigger: {
-        trigger: details[1],
-        start: "center center",
-        end: "center center",
-        scrub: 1,
-      },
-      opacity: 1,
-    });
-  },
-  { scope: container }
-);
+  
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [inView]);
+  
+  
 
   return (
     <>
       <FeaturesMobileView />
-      <section ref={container} className="relative hidden lg:block">
+      <section className="relative hidden lg:block" ref={inViewRef}>
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
             Keploy for Developers
@@ -155,12 +212,9 @@ useGSAP(
             smart API testing, capture network calls and generate tests with stubs
           </p>
         </div>
-        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh]  mx-auto  content-container">
-          <div className="mt-20 space-y-[50vh]  ">
-            <div
-              className="flex items-center detail"
-              data-marker-content="img-1"
-            >
+        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh] mx-auto content-container">
+          <div className="mt-20 space-y-[60vh]">
+            <div className="flex items-center detail" data-marker-content="img-1">
               <TextSection
                 svg={
                   <svg
@@ -177,7 +231,7 @@ useGSAP(
                 btnLink="https://keploy.io/docs/keploy-explained/introduction/"
               />
             </div>
-            <div className="flex items-center detail">
+            <div className="flex items-center detail" data-marker-content="img-2">
               <TextSection
                 svg={
                   <svg
@@ -218,9 +272,9 @@ useGSAP(
               />
             </div>
           </div>
-          <div className="flex items-center [&>*]:absolute relative  justify-center h-min [&>*]:top-0 right-content">
-            <TestAndStubGenerationImage />
-            <TestDuplicationImage />
+          <div className="flex flex-col items-center relative justify-center h-min right-content space-y-8 mt-[35vh]">
+            <TestAndStubGenerationImage isVisible={image1Visible} />
+            <TestDuplicationImage isVisible={image2Visible} />
           </div>
         </div>
       </section>
