@@ -20,11 +20,11 @@ jobs:
       - name: run Lighthouse CI for the Application
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --upload.target=temporary-public-storage --config=lighthouserc.json || echo "LHCI failed!"
+          lhci autorun --config=lighthouserc.json || echo "LHCI failed!"
       - name: run Lighthouse CI for Keploy.io Deployed Website
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --upload.target=temporary-public-storage --config=lighthouserckeploy.json || echo "LHCI failed!"
+          lhci autorun --config=lighthouserckeploy.json || echo "LHCI failed!"
       - name: Compare Lighthouse Reports
         run: |
-          node scripts/compare-lhci-reports.js
+          node compare-lhci-reports.js
