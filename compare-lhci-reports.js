@@ -9,8 +9,8 @@ function loadReport(path) {
   return JSON.parse(data);
 }
 
-const appReportPath = './lhci-reports/app/latest-run/report.json';
-const keployReportPath = './lhci-reports/keploy.io/latest-run/report.json';
+const appReportPath = './lhci-reports/app/report.json';
+const keployReportPath = './lhci-reports/keploy.io/report.json';
 
 const appReport = loadReport(appReportPath);
 const keployReport = loadReport(keployReportPath);

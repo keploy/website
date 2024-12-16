@@ -28,16 +28,30 @@ jobs:
       - name: List Application Reports
         run: |
           pwd
-          ls -la /home/runner/work/website/website/lhci-reports/app/latest-run/
+          ls
+          echo "Listing Application Reports"
+          cd lhci-reports
+          ls
+          echo "Listing Application Reports1223"
+          cd app
+          ls
+          echo "Listing Application Report343"
+          cd ..
+          cd keploy.io
+          ls
+          echo "Listing Application Report78"
+          cd ..
+          cd ..
+          ls -la ./lhci-reports/app
 
       - name: List Keploy.io Reports
-        run: ls -la /home/runner/work/website/website/lhci-reports/keploy.io/latest-run/
-      # - name: Compare Lighthouse Reports
-      #   run: |
-      #     pwd
-      #     ls
-      #     echo "Comparing Lighthouse Reports"
-      #     node compare-lhci-reports.js
+        run: ls -la ./lhci-reports/keploy.io/
+      - name: Compare Lighthouse Reports
+        run: |
+          pwd
+          ls
+          echo "Comparing Lighthouse Reports"
+          node compare-lhci-reports.js
       # - name: Upload Lighthouse Reports
       #   uses: actions/upload-artifact@v3
       #   with:
