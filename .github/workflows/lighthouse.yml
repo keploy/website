@@ -41,7 +41,9 @@ jobs:
           ls
           pwd
           echo "check 2"
-          node scripts/compare-lhci-reports.js
+          cd ..
+          pwd
+          node compare-lhci-reports.js
       - name: Upload Lighthouse Reports
         uses: actions/upload-artifact@v3
         with:
