@@ -1,4 +1,20 @@
 const fs = require('fs');
+const path = require('path');
+
+// Helper function to find a report file in a directory
+function findReportFile(directory) {
+  if (!fs.existsSync(directory)) {
+    console.error(`Directory not found: ${directory}`);
+    process.exit(1);
+  }
+  const files = fs.readdirSync(directory);
+  const reportFile = files.find(file => file.endsWith('.report.json'));
+  if (!reportFile) {
+    console.error(`No report file found in directory: ${directory}`);
+    process.exit(1);
+  }
+  return path.join(directory, reportFile);
+}
 
 function loadReport(path) {
   if (!fs.existsSync(path)) {
@@ -9,12 +25,19 @@ function loadReport(path) {
   return JSON.parse(data);
 }
 
-const appReportPath = './lhci-reports/app/report.json';
-const keployReportPath = './lhci-reports/keploy.io/report.json';
+// Define directories where the reports are located
+const appReportDirectory = './lhci-reports/app';
+const keployReportDirectory = './lhci-reports/keploy.io';
 
+// Find the report files dynamically
+const appReportPath = findReportFile(appReportDirectory);
+const keployReportPath = findReportFile(keployReportDirectory);
+
+// Load the report JSON files
 const appReport = loadReport(appReportPath);
 const keployReport = loadReport(keployReportPath);
 
+// Categories to compare
 const categories = ['performance', 'accessibility', 'best-practices', 'seo'];
 
 let allPass = true;
