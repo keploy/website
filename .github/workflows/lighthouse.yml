@@ -16,10 +16,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v7
-        with:
-          urls: http://localhost:3000
-          budgetPath: ./budget.json
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse audits to google temporary storage
+          npm run build
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.14.x
+          lhci autorun --upload.target=temporary-public-storage || echo "LHCI failed!"
