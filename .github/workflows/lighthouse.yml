@@ -20,11 +20,23 @@ jobs:
       - name: run Lighthouse CI for the Application
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --config=lighthouserc.json || echo "LHCI failed!"
+          lhci autorun --config=lighthouserc.json 
       - name: run Lighthouse CI for Keploy.io Deployed Website
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --config=lighthouserckeploy.json || echo "LHCI failed!"
+          lhci autorun --config=lighthouserckeploy.json 
       - name: Compare Lighthouse Reports
         run: |
           node scripts/compare-lhci-reports.js
+      - name: Upload Lighthouse Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: lhci-reports
+          path: ./lhci-reports
+      # After running LHCI for the Application
+      - name: List Application Reports
+        run: ls -la ./lhci-reports/app/latest-run/
+
+      # After running LHCI for Keploy.io
+      - name: List Keploy.io Reports
+        run: ls -la ./lhci-reports/keploy.io/latest-run/
