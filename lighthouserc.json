@@ -9,7 +9,7 @@
       "url": [
         "http://localhost:3000/"
       ],
-      "numberOfRuns": 5
+      "numberOfRuns": 10
     },
     "assert": {
       "assertions": {
