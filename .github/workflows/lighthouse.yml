@@ -21,7 +21,7 @@ jobs:
         run: |
           npm install -g @lhci/cli@0.14.x
           lhci autorun --upload.target=temporary-public-storage --config=lighthouserc.json || echo "LHCI failed!"
-      - name: run Lighthouse CI for Deploy Keploy
+      - name: run Lighthouse CI for Keploy.io Deployed Website
         run: |
           npm install -g @lhci/cli@0.14.x
           lhci autorun --upload.target=temporary-public-storage --config=lighthouserckeploy.json || echo "LHCI failed!"

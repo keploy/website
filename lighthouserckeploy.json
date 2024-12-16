@@ -6,7 +6,8 @@
     "collect": {
       "url": [
         "https://www.keploy.io"
-      ]
+      ],
+      "numberOfRuns": 5
     },
     "assert": {
       "assertions": {
