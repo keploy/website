@@ -34,10 +34,12 @@ jobs:
       #   run: ls -la ./lhci-reports/keploy.io/latest-run/
       - name: Compare Lighthouse Reports
         run: |
+          pwd
           ls
           echo "Comparing Lighthouse Reports"
           cd scripts
           ls
+          pwd
           echo "check 2"
           node scripts/compare-lhci-reports.js
       - name: Upload Lighthouse Reports
