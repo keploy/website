@@ -1,8 +1,7 @@
 {
   "ci": {
     "upload": {
-      "target": "filesystem",
-      "outputDir": "./lhci-reports/app" 
+      "target": "filesystem"
     },
     "collect": {
       "startServerCommand": "npm run start",

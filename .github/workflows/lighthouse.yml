@@ -20,11 +20,11 @@ jobs:
       - name: run Lighthouse CI for the Application
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --config=lighthouserc.json 
+          lhci autorun --config=lighthouserc.json --collect.url="http://localhost:3000" --collect.startServerCommand="npm run start" --upload.outputDir="./lhci-reports/app"
       - name: run Lighthouse CI for Keploy.io Deployed Website
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --config=lighthouserckeploy.json 
+          lhci autorun --config=lighthouserc.json --collect.url="https://www.keploy.io" --upload.outputDir="./lhci-reports/keploy.io"
       - name: Compare Lighthouse Reports
         run: |
-          node compare-lhci-reports.js
+          node scripts/compare-lhci-reports.js
