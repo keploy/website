@@ -27,4 +27,4 @@ jobs:
           lhci autorun --config=lighthouserc.json --collect.url="https://www.keploy.io" --upload.outputDir="./lhci-reports/keploy.io"
       - name: Compare Lighthouse Reports
         run: |
-          node scripts/compare-lhci-reports.js
+          node compare-lhci-reports.js

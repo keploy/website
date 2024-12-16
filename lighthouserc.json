@@ -4,10 +4,6 @@
       "target": "filesystem"
     },
     "collect": {
-      "startServerCommand": "npm run start",
-      "url": [
-        "http://localhost:3000/"
-      ],
       "numberOfRuns": 10
     },
     "assert": {
