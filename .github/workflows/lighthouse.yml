@@ -26,7 +26,10 @@ jobs:
           npm install -g @lhci/cli@0.14.x
           lhci autorun --config=lighthouserckeploy.json 
       - name: List Application Reports
-        run: ls -la ./lhci-reports/app/latest-run/
+        run: |
+          pwd
+          ls
+          ls -la ./lhci-reports/app/latest-run/
 
       - name: List Keploy.io Reports
         run: ls -la ./lhci-reports/keploy.io/latest-run/
