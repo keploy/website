@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-// Helper function to find a report file in a directory
 function findReportFile(directory) {
   if (!fs.existsSync(directory)) {
     console.error(`Directory not found: ${directory}`);
@@ -25,32 +24,25 @@ function loadReport(path) {
   return JSON.parse(data);
 }
 
-// Define directories where the reports are located
 const appReportDirectory = './lhci-reports/app';
 const keployReportDirectory = './lhci-reports/keploy.io';
 
-// Find the report files dynamically
 const appReportPath = findReportFile(appReportDirectory);
 const keployReportPath = findReportFile(keployReportDirectory);
 
-// Load the report JSON files
 const appReport = loadReport(appReportPath);
 const keployReport = loadReport(keployReportPath);
 
-// Categories to compare
-const categories = ['performance', 'accessibility', 'best-practices', 'seo'];
+const categories = ['performance', 'accessibility', 'seo'];
 
 let allPass = true;
 
 categories.forEach(category => {
-  if (category != "best-practices"){
-    const appScore = appReport.categories[category].score;
-    const keployScore = keployReport.categories[category].score;
-    console.log(`Comparing ${category}: App=${appScore} vs Keploy.io=${keployScore}`);
-    if (appScore < keployScore) {
-      console.error(`Score for ${category} is lower in the application (${appScore}) than Keploy.io (${keployScore})`);
-      allPass = false;
-    }
+  const appScore = appReport.categories[category].score;
+  const keployScore = keployReport.categories[category].score;
+  if (appScore < keployScore) {
+    console.error(`Score for ${category} is lower in the application (${appScore}) than Keploy.io (${keployScore})`);
+    allPass = false;
   }
 });
 
