@@ -8,7 +8,7 @@
       "url": [
         "https://www.keploy.io"
       ],
-      "numberOfRuns": 1
+      "numberOfRuns": 5
     },
     "assert": {
       "assertions": {
