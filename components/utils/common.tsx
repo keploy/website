@@ -118,13 +118,13 @@ export const socialLinks: SocialLink[] = [
         },
         {
           href: 'https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg',
-          icon: <YouTubeIcon/>,
+          icon: <YoutubeIcon/>,
           title: 'YouTube',
           description:'Learn with Keploy team and its community videos'
         },
         {
           href: 'https://github.com/keploy/keploy',
-          icon: <GitHubIcon/>,
+          icon: <GithubIcon/>,
           title: 'GitHub',
           description:'Contribute code to Keploy or report a bug'
   
