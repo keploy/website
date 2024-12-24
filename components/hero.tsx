@@ -10,6 +10,7 @@ import { TrustedBy } from './trustedBy';
 import Link from 'next/link';
 import APItext from "@/public/images/apiText.png";
 import Banner from './ui/banner';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'; 
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
@@ -108,12 +109,14 @@ export default function Hero() {
         <div className="mb-4">
                   {/* Wrapping Link with NeonButton */}
                   <Link
-                      className="btn text-secondary-300 bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0"
-                      href={isMobile ? "https://marketplace.visualstudio.com/items?itemName=Keploy.keployio" : "vscode:extension/Keploy.keployio"} // Conditionally change the href
-                      target="_blank"
-                    >
-                      Try VS Code Extension
-                    </Link>
+                  className="btn text-secondary-300  bg-primary-300 hover:text-gradient-500 w-full sm:w-auto sm:mb-0 group flex items-center justify-center gap-2"
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSdj9q7dyRh3D7ZzRExHLWRRkNPOnLnFfrbKqSwqH3Ur4HzP4g/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Join Cloud Waiting List 
+                  <OpenInNewIcon className="transition-all duration-500 ease-out group-hover:scale-110 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 h-5 w-5" />
+                  </Link>
                 </div>
                 <div className='mb-4'>
                   {/* Wrapping Link with NeonButton */}
