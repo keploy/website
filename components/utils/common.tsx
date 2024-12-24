@@ -114,18 +114,18 @@ export const socialLinks: SocialLink[] = [
           href: 'https://twitter.com/Keployio',
           icon: <TwitterIcon/>,
           title: 'Twitter',
-          description:`Let's talk about regression testing!`
+          description:`Follow every update Keploy shares!`
         },
         {
           href: 'https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg',
           icon: <YoutubeIcon/>,
-          title: 'Youtube',
-          description:'Learn with Keploy team and community videos'
+          title: 'YouTube',
+          description:'Learn with Keploy team and its community videos'
         },
         {
           href: 'https://github.com/keploy/keploy',
           icon: <GithubIcon/>,
-          title: 'Github',
+          title: 'GitHub',
           description:'Contribute code to Keploy or report a bug'
   
         },
@@ -133,7 +133,7 @@ export const socialLinks: SocialLink[] = [
           href: 'https://join.slack.com/t/keploy/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw',
           icon: <SlackIcon/>,
           title: 'Slack',
-          description:'Connect and chat with other Keploy users'
+          description:'Connect and chat with a community of Keploy users'
   
         },
         {
