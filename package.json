@@ -47,6 +47,7 @@
     "react-lottie-player": "^2.1.0",
     "react-responsive-carousel": "^3.2.23",
     "react-swipeable": "^7.0.1",
+    "swiper": "^11.1.15",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
