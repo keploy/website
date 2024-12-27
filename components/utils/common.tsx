@@ -130,7 +130,7 @@ export const socialLinks: SocialLink[] = [
   
         },
         {
-          href: 'https://join.slack.com/t/keploy/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw',
+          href: 'https://keploy.slack.com/join/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw',
           icon: <SlackIcon/>,
           title: 'Slack',
           description:'Connect and chat with a community of Keploy users'

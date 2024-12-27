@@ -91,7 +91,7 @@ export default function Community() {
       description: "Contribute code to Keploy or report a bug",
     },
     {
-      link: "https://join.slack.com/t/keploy/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw",
+      link: "https://keploy.slack.com/join/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw",
       svgIcon: SlackSvg,
       platformName: "Slack",
       description: "Connect and chat with other Keploy users",
