@@ -50,7 +50,7 @@ const resourcesData = [
       {
         icon: <Pricing />,
         name: "Pricing",
-        url: "/pricing",
+        url: "/coming-soon",
         isInternal: true,
       },
     ],
@@ -91,7 +91,7 @@ const resourcesData = [
       {
         icon: <Community />,
         name: "Community",
-        url: "https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A",
+        url: "https://keploy.slack.com/join/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw",
       },
       {
         icon: <Resource />,
