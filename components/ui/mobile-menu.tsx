@@ -129,7 +129,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                {/* <span className="text-base flex gap-1"> <CountingNumbers className="" /></span> */}
+                <span className="text-base flex gap-1"> {starsCount}</span>
               </Link>
             </div>
               {/*<Link href="/privacy-policy" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Github</Link>*/}
