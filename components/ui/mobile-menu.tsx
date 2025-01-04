@@ -23,6 +23,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
   const trigger = useRef<HTMLButtonElement>(null);
   const mobileNav = useRef<HTMLDivElement>(null);
 
+  const formatStars = (num: number) =>
+    Intl.NumberFormat('en-US', {
+      notation: "compact",
+      maximumFractionDigits: 1,
+    }).format(num);
+
   // close the mobile menu on click outside
   useEffect(() => {
     const clickHandler = ({ target }: { target: EventTarget | null }): void => {
@@ -129,7 +135,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                {/* <span className="text-base flex gap-1"> <CountingNumbers className="" /></span> */}
+                <span className="text-base flex gap-1"> {formatStars(starsCount)}</span>
               </Link>
             </div>
               {/*<Link href="/privacy-policy" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Github</Link>*/}
