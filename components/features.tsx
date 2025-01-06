@@ -22,7 +22,7 @@ const TestAndStubGenerationImage = ({ isVisible }: { isVisible: boolean }) => (
 
 const TestDuplicationImage = ({ isVisible }: { isVisible: boolean }) => (
   <div className="flex flex-col w-full imageToShow relative" id="img-2">
-    <div className="mt-[200px]">
+    <div className="mt-[400px]">
       {isVisible && <Image src={deDuplication} alt="dedup image gif" className="h-5/6 w-5/6" />}
     </div>
   </div>
@@ -114,7 +114,7 @@ export default function Features() {
     ScrollTrigger.create({
       trigger: details[2],
       start: "top 80%",
-      end: "top 100%",
+      end: "top 70%",
       onEnter: () => {
         gsap.to(images[0], {
           opacity: 0,
@@ -217,79 +217,81 @@ export default function Features() {
 
   return (
     <>
-      <div className="max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
-        <h1 className="mb-4 text-5xl font-bold text-secondary-300">
-          Keploy for Developers
-        </h1>
-        <p className="text-xl text-gray-600">
-          smart API testing, capture network calls and generate tests with stubs
-        </p>
-      </div>
       <FeaturesMobileView />
-      <section className="relative hidden lg:block" ref={inViewRef}>
-        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[10vh] mb-[40vh] mx-auto content-container">
-          <div className="mt-20 space-y-[35vh]">
-            <div className="flex items-center detail" data-marker-content="img-1">
-              <TextSection
-                svg={
-                  <svg
-                    className="w-6 h-6 fill-primary-300 "
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
-                  </svg>
-                }
-                heading={"Record Replay API Flows"}
-                description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
-                btnDescription="Explore More"
-                btnLink="https://keploy.io/docs/keploy-explained/introduction/"
-              />
+      <section className="hidden lg:block">
+        <div className="max-w-3xl pt-2 mx-auto mt-10 text-center heading-text">
+          <h1 className="mb-4 text-5xl font-bold text-secondary-300">
+            Keploy for Developers
+          </h1>
+          <p className="text-xl text-gray-600">
+            smart API testing, capture network calls and generate tests with stubs
+          </p>
+        </div>
+        <div className="relative hidden lg:block" ref={inViewRef}>
+          <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[10vh] mb-[40vh] mx-auto content-container">
+            <div className="mt-20 space-y-[35vh]">
+              <div className="flex items-center detail" data-marker-content="img-1">
+                <TextSection
+                  svg={
+                    <svg
+                      className="w-6 h-6 fill-primary-300 "
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M11.953 4.29a.5.5 0 00-.454-.292H6.14L6.984.62A.5.5 0 006.12.173l-6 7a.5.5 0 00.379.825h5.359l-.844 3.38a.5.5 0 00.864.445l6-7a.5.5 0 00.075-.534z" />
+                    </svg>
+                  }
+                  heading={"Record Replay API Flows"}
+                  description=" Record and replay complex, distributed API flows as mocks and stubs. It's like time machine for tests!"
+                  btnDescription="Explore More"
+                  btnLink="https://keploy.io/docs/keploy-explained/introduction/"
+                />
+              </div>
+              <div className="flex items-center detail" data-marker-content="img-2">
+                <TextSection
+                  svg={
+                    <svg
+                      className="w-6 h-6 fill-primary-300"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z"
+                        fillRule="nonzero"
+                      />
+                    </svg>
+                  }
+                  heading={"Find Duplicate Tests"}
+                  description="Find redundant tests that doesn't add to the test coverage. Automatically detect and remove duplicate tests, ideal for big-teams crowd-sourcing tests."
+                  btnDescription="Explore More"
+                  btnLink="https://keploy.io/docs/keploy-cloud/deduplication/"
+                />
+              </div>
+              <div className="flex items-center detail">
+                <TextSection
+                  svg={
+                    <svg
+                      className="w-6 h-6 fill-primary-300"
+                      viewBox="0 0 12 12"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.334 8.06a.5.5 0 00-.421-.237 6.023 6.023 0 01-5.905-6c0-.41.042-.82.125-1.221a.5.5 0 00-.614-.586 6 6 0 106.832 8.529.5.5 0 00-.017-.485z"
+                        fillRule="nonzero"
+                      />
+                    </svg>
+                  }
+                  heading={"Works with JUnit, PyTest, Jest, Go-Test in CI/CD"}
+                  description="Merge Keploy tests coverage with unit testing libraries for combined test coverage gating in CI/CD pipelines like Jenkins, Github Actions."
+                  btnDescription="Explore More"
+                  btnLink=" https://keploy.io/docs/server/sdk-installation/go/"
+                />
+              </div>
             </div>
-            <div className="flex items-center detail" data-marker-content="img-2">
-              <TextSection
-                svg={
-                  <svg
-                    className="w-6 h-6 fill-primary-300"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M11.854.146a.5.5 0 00-.525-.116l-11 4a.5.5 0 00-.015.934l4.8 1.921 1.921 4.8A.5.5 0 007.5 12h.008a.5.5 0 00.462-.329l4-11a.5.5 0 00-.116-.525z"
-                      fillRule="nonzero"
-                    />
-                  </svg>
-                }
-                heading={"Find Duplicate Tests"}
-                description="Find redundant tests that doesn't add to the test coverage. Automatically detect and remove duplicate tests, ideal for big-teams crowd-sourcing tests."
-                btnDescription="Explore More"
-                btnLink="https://keploy.io/docs/keploy-cloud/deduplication/"
-              />
+            <div className="flex flex-col items-center relative justify-center h-min right-content mt-[25vh]">
+              <TestAndStubGenerationImage isVisible={image1Visible} />
+              <TestDuplicationImage isVisible={image2Visible} />
             </div>
-            <div className="flex items-center detail">
-              <TextSection
-                svg={
-                  <svg
-                    className="w-6 h-6 fill-primary-300"
-                    viewBox="0 0 12 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M11.334 8.06a.5.5 0 00-.421-.237 6.023 6.023 0 01-5.905-6c0-.41.042-.82.125-1.221a.5.5 0 00-.614-.586 6 6 0 106.832 8.529.5.5 0 00-.017-.485z"
-                      fillRule="nonzero"
-                    />
-                  </svg>
-                }
-                heading={"Works with JUnit, PyTest, Jest, Go-Test in CI/CD"}
-                description="Merge Keploy tests coverage with unit testing libraries for combined test coverage gating in CI/CD pipelines like Jenkins, Github Actions."
-                btnDescription="Explore More"
-                btnLink=" https://keploy.io/docs/server/sdk-installation/go/"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col items-center relative justify-center h-min right-content mt-[25vh]">
-            <TestAndStubGenerationImage isVisible={image1Visible} />
-            <TestDuplicationImage isVisible={image2Visible} />
           </div>
         </div>
       </section>
