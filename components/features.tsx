@@ -35,11 +35,11 @@ const TextSection = ({
   btnDescription,
   btnLink,
 }: {
-  svg: any;
+  svg: React.ReactNode;
   heading: string;
   description: string;
   btnDescription?: string;
-  btnLink?: any;
+  btnLink: string;
 }) => {
   return (
     <div className="flex flex-col items-center pl-4 mt-6 mb-8 text-center md:block md:mb-0 h-min md:text-left md:mt-0 text-details">
@@ -75,7 +75,7 @@ export default function Features() {
 
   useEffect(() => {
     if (!inView) {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => {trigger.kill()});
       setImage1Visible(false);
       setImage2Visible(false);
       return;
@@ -209,7 +209,7 @@ export default function Features() {
     });
   
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => {trigger.kill()});
     };
   }, [inView]);
   
