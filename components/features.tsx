@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TestAndStubGenerationImage = ({ isVisible }: { isVisible: boolean }) => (
   <div className="flex flex-col w-full imageToShow relative" id="img-1">
-    <div className="mb-2 h-[75%]">
+    <div className="mb-2 h-[75%] mt-[20vh]">
       {isVisible && <Image src={testAndStubsGen} alt="tests and stub gen gif" />}
     </div>
   </div>
@@ -22,8 +22,8 @@ const TestAndStubGenerationImage = ({ isVisible }: { isVisible: boolean }) => (
 
 const TestDuplicationImage = ({ isVisible }: { isVisible: boolean }) => (
   <div className="flex flex-col w-full imageToShow relative" id="img-2">
-    <div className="mb-2 h-[75%] mt-8">
-      {isVisible && <Image src={deDuplication} alt="dedup image gif" />}
+    <div className="mt-[200px]">
+      {isVisible && <Image src={deDuplication} alt="dedup image gif" className="h-5/6 w-5/6" />}
     </div>
   </div>
 );
@@ -113,8 +113,8 @@ export default function Features() {
   
     ScrollTrigger.create({
       trigger: details[2],
-      start: "top 80%", 
-      end: "bottom 25%",
+      start: "top 80%",
+      end: "top 100%",
       onEnter: () => {
         gsap.to(images[0], {
           opacity: 0,
@@ -131,6 +131,22 @@ export default function Features() {
         });
         setImage2Visible(true);
       },
+      onLeave: () => {
+        gsap.to(images[1], {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+        setImage2Visible(false);
+        gsap.to(images[1], {  // Add this to show image1 again
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+        setImage2Visible(true);
+      },
       onLeaveBack: () => {
         gsap.to(images[1], {
           opacity: 0,
@@ -139,7 +155,6 @@ export default function Features() {
           ease: "power2.out",
         });
         setImage2Visible(false);
-  
         gsap.to(images[0], {
           opacity: 1,
           y: 0,
@@ -176,7 +191,7 @@ export default function Features() {
       trigger: ".content-container",
       start: "top top",
       end: "bottom bottom",
-      pin: ".heading-text",
+      pin: "top",
     });
   
     details.forEach((detail: HTMLElement) => {
@@ -202,18 +217,18 @@ export default function Features() {
 
   return (
     <>
+      <div className="max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
+        <h1 className="mb-4 text-5xl font-bold text-secondary-300">
+          Keploy for Developers
+        </h1>
+        <p className="text-xl text-gray-600">
+          smart API testing, capture network calls and generate tests with stubs
+        </p>
+      </div>
       <FeaturesMobileView />
       <section className="relative hidden lg:block" ref={inViewRef}>
-        <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
-          <h1 className="mb-2 text-5xl font-bold text-secondary-300">
-            Keploy for Developers
-          </h1>
-          <p className="text-xl text-gray-600">
-            smart API testing, capture network calls and generate tests with stubs
-          </p>
-        </div>
-        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[30vh] pb-[50vh] mx-auto content-container">
-          <div className="mt-20 space-y-[60vh]">
+        <div className="relative grid max-w-6xl grid-cols-2 gap-16 pt-[10vh] mb-[40vh] mx-auto content-container">
+          <div className="mt-20 space-y-[35vh]">
             <div className="flex items-center detail" data-marker-content="img-1">
               <TextSection
                 svg={
@@ -272,7 +287,7 @@ export default function Features() {
               />
             </div>
           </div>
-          <div className="flex flex-col items-center relative justify-center h-min right-content space-y-8 mt-[35vh]">
+          <div className="flex flex-col items-center relative justify-center h-min right-content mt-[25vh]">
             <TestAndStubGenerationImage isVisible={image1Visible} />
             <TestDuplicationImage isVisible={image2Visible} />
           </div>
