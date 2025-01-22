@@ -81,6 +81,7 @@ export default function Features() {
       return;
     }
   
+    // console.log("############ gsap", gsap);
     const details = gsap.utils.toArray<HTMLElement>(".detail");
     const images = gsap.utils.toArray<HTMLElement>(".imageToShow");
   

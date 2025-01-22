@@ -1,0 +1,477 @@
+  console.log
+    ############ gsap {
+      registerPlugin: [Function: mockConstructor] {
+        _isMockFunction: true,
+        getMockImplementation: [Function (anonymous)],
+        mock: [Getter/Setter],
+        mockClear: [Function (anonymous)],
+        mockReset: [Function (anonymous)],
+        mockRestore: [Function (anonymous)],
+        mockReturnValueOnce: [Function (anonymous)],
+        mockResolvedValueOnce: [Function (anonymous)],
+        mockRejectedValueOnce: [Function (anonymous)],
+        mockReturnValue: [Function (anonymous)],
+        mockResolvedValue: [Function (anonymous)],
+        mockRejectedValue: [Function (anonymous)],
+        mockImplementationOnce: [Function (anonymous)],
+        withImplementation: [Function: bound withImplementation],
+        mockImplementation: [Function (anonymous)],
+        mockReturnThis: [Function (anonymous)],
+        mockName: [Function (anonymous)],
+        getMockName: [Function (anonymous)]
+      }
+    }
+
+      at log (components/features.tsx:84:13)
+
+  console.error
+    Error: Uncaught [TypeError: Cannot read properties of undefined (reading 'toArray')]
+        at reportException (/Users/gouravkumar/Desktop/Keploy/website/node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:66:24)
+        at innerInvokeEventListeners (/Users/gouravkumar/Desktop/Keploy/website/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:353:9)
+        at invokeEventListeners (/Users/gouravkumar/Desktop/Keploy/website/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+        at HTMLUnknownElementImpl._dispatch (/Users/gouravkumar/Desktop/Keploy/website/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+        at HTMLUnknownElementImpl.dispatchEvent (/Users/gouravkumar/Desktop/Keploy/website/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+        at HTMLUnknownElement.dispatchEvent (/Users/gouravkumar/Desktop/Keploy/website/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:241:34)
+        at Object.invokeGuardedCallbackDev (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+        at invokeGuardedCallback (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+        at reportUncaughtErrorInDEV (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:22877:5)
+        at captureCommitPhaseError (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:27165:5)
+        at commitPassiveMountEffects_complete (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:24932:9)
+        at commitPassiveMountEffects_begin (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+        at commitPassiveMountEffects (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+        at flushPassiveEffectsImpl (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+        at flushPassiveEffects (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+        at /Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:26808:9
+        at flushActQueue (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react/cjs/react.development.js:2667:24)
+        at act (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react/cjs/react.development.js:2582:11)
+        at /Users/gouravkumar/Desktop/Keploy/website/node_modules/@testing-library/react/dist/act-compat.js:47:25
+        at renderRoot (/Users/gouravkumar/Desktop/Keploy/website/node_modules/@testing-library/react/dist/pure.js:188:26)
+        at render (/Users/gouravkumar/Desktop/Keploy/website/node_modules/@testing-library/react/dist/pure.js:287:10)
+        at Object.<anonymous> (/Users/gouravkumar/Desktop/Keploy/website/test/features.test.tsx:23:9)
+        at Promise.then.completed (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/utils.js:298:28)
+        at new Promise (<anonymous>)
+        at callAsyncCircusFn (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/utils.js:231:10)
+        at _callCircusTest (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:316:40)
+        at processTicksAndRejections (node:internal/process/task_queues:95:5)
+        at _runTest (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:252:3)
+        at _runTestsForDescribeBlock (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:126:9)
+        at run (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:71:3)
+        at runAndTransformResultsToJestFormat (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+        at jestAdapter (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+        at runTestInternal (/opt/homebrew/lib/node_modules/jest/node_modules/jest-runner/build/runTest.js:367:16)
+        at runTest (/opt/homebrew/lib/node_modules/jest/node_modules/jest-runner/build/runTest.js:444:34) {
+      detail: TypeError: Cannot read properties of undefined (reading 'toArray')
+          at toArray (/Users/gouravkumar/Desktop/Keploy/website/components/features.tsx:85:32)
+          at commitHookEffectListMount (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+          at commitPassiveMountOnFiber (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+          at commitPassiveMountEffects_complete (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+          at commitPassiveMountEffects_begin (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+          at commitPassiveMountEffects (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+          at flushPassiveEffectsImpl (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+          at flushPassiveEffects (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+          at /Users/gouravkumar/Desktop/Keploy/website/node_modules/react-dom/cjs/react-dom.development.js:26808:9
+          at flushActQueue (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react/cjs/react.development.js:2667:24)
+          at act (/Users/gouravkumar/Desktop/Keploy/website/node_modules/react/cjs/react.development.js:2582:11)
+          at /Users/gouravkumar/Desktop/Keploy/website/node_modules/@testing-library/react/dist/act-compat.js:47:25
+          at renderRoot (/Users/gouravkumar/Desktop/Keploy/website/node_modules/@testing-library/react/dist/pure.js:188:26)
+          at render (/Users/gouravkumar/Desktop/Keploy/website/node_modules/@testing-library/react/dist/pure.js:287:10)
+          at Object.<anonymous> (/Users/gouravkumar/Desktop/Keploy/website/test/features.test.tsx:23:9)
+          at Promise.then.completed (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/utils.js:298:28)
+          at new Promise (<anonymous>)
+          at callAsyncCircusFn (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/utils.js:231:10)
+          at _callCircusTest (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:316:40)
+          at processTicksAndRejections (node:internal/process/task_queues:95:5)
+          at _runTest (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:252:3)
+          at _runTestsForDescribeBlock (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:126:9)
+          at run (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/run.js:71:3)
+          at runAndTransformResultsToJestFormat (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+          at jestAdapter (/opt/homebrew/lib/node_modules/jest/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+          at runTestInternal (/opt/homebrew/lib/node_modules/jest/node_modules/jest-runner/build/runTest.js:367:16)
+          at runTest (/opt/homebrew/lib/node_modules/jest/node_modules/jest-runner/build/runTest.js:444:34),
+      type: 'unhandled exception'
+    }
+
+      21 | test("Features component initializes ScrollTrigger when inView is true", () => {
+      22 |   (useInView as jest.Mock).mockReturnValue({ ref: jest.fn(), inView: true });
+    > 23 |   render(<Features />);
+         |         ^
+      24 |   expect(ScrollTrigger.create).toHaveBeenCalled();
+      25 | });
+
+      at VirtualConsole.<anonymous> (node_modules/jest-environment-jsdom/build/index.js:63:23)
+      at reportException (node_modules/jsdom/lib/jsdom/living/helpers/runtime-script-errors.js:70:28)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:353:9)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:286:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:233:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:104:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:241:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at reportUncaughtErrorInDEV (node_modules/react-dom/cjs/react-dom.development.js:22877:5)
+      at captureCommitPhaseError (node_modules/react-dom/cjs/react-dom.development.js:27165:5)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24932:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:188:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:287:10)
+      at Object.<anonymous> (test/features.test.tsx:23:9)
+
+  console.error
+    The above error occurred in the <Features> component:
+    
+        at Features (/Users/gouravkumar/Desktop/Keploy/website/components/features.tsx:68:53)
+    
+    Consider adding an error boundary to your tree to customize error handling behavior.
+    Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+      21 | test("Features component initializes ScrollTrigger when inView is true", () => {
+      22 |   (useInView as jest.Mock).mockReturnValue({ ref: jest.fn(), inView: true });
+    > 23 |   render(<Features />);
+         |         ^
+      24 |   expect(ScrollTrigger.create).toHaveBeenCalled();
+      25 | });
+
+      at logCapturedError (node_modules/react-dom/cjs/react-dom.development.js:18704:23)
+      at update.callback (node_modules/react-dom/cjs/react-dom.development.js:18737:5)
+      at callCallback (node_modules/react-dom/cjs/react-dom.development.js:15036:12)
+      at commitUpdateQueue (node_modules/react-dom/cjs/react-dom.development.js:15057:9)
+      at commitLayoutEffectOnFiber (node_modules/react-dom/cjs/react-dom.development.js:23430:13)
+      at commitLayoutMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24727:9)
+      at commitLayoutEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24713:7)
+      at commitLayoutEffects (node_modules/react-dom/cjs/react-dom.development.js:24651:3)
+      at commitRootImpl (node_modules/react-dom/cjs/react-dom.development.js:26862:5)
+      at commitRoot (node_modules/react-dom/cjs/react-dom.development.js:26721:5)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:26156:3)
+      at flushSyncCallbacks (node_modules/react-dom/cjs/react-dom.development.js:12042:22)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27099:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:188:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:287:10)
+      at Object.<anonymous> (test/features.test.tsx:23:9)
+
+FAIL test/features.test.tsx
+  ✕ Features component initializes ScrollTrigger when inView is true (60 ms)
+
+  ● Features component initializes ScrollTrigger when inView is true
+
+    TypeError: Cannot read properties of undefined (reading 'toArray')
+
+      83 |   
+      84 |     console.log("############ gsap", gsap);
+    > 85 |     const details = gsap.utils.toArray<HTMLElement>(".detail");
+         |                                ^
+      86 |     const images = gsap.utils.toArray<HTMLElement>(".imageToShow");
+      87 |   
+      88 |     gsap.set(images, { opacity: 0, y: 50 });
+
+      at toArray (components/features.tsx:85:32)
+      at commitHookEffectListMount (node_modules/react-dom/cjs/react-dom.development.js:23189:26)
+      at commitPassiveMountOnFiber (node_modules/react-dom/cjs/react-dom.development.js:24970:11)
+      at commitPassiveMountEffects_complete (node_modules/react-dom/cjs/react-dom.development.js:24930:9)
+      at commitPassiveMountEffects_begin (node_modules/react-dom/cjs/react-dom.development.js:24917:7)
+      at commitPassiveMountEffects (node_modules/react-dom/cjs/react-dom.development.js:24905:3)
+      at flushPassiveEffectsImpl (node_modules/react-dom/cjs/react-dom.development.js:27078:3)
+      at flushPassiveEffects (node_modules/react-dom/cjs/react-dom.development.js:27023:14)
+      at node_modules/react-dom/cjs/react-dom.development.js:26808:9
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at node_modules/@testing-library/react/dist/act-compat.js:47:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:188:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:287:10)
+      at Object.<anonymous> (test/features.test.tsx:23:9)
+
+-----------------------------------------------------------------------|---------|----------|---------|---------|----------------------------------------------------------
+File                                                                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                        
+-----------------------------------------------------------------------|---------|----------|---------|---------|----------------------------------------------------------
+All files                                                              |    2.24 |     3.55 |    2.63 |    2.24 |                                                          
+ website                                                               |       0 |        0 |       0 |       0 |                                                          
+  eslint.config.js                                                     |       0 |        0 |       0 |       0 | 1-19                                                     
+  jest.config.js                                                       |       0 |        0 |       0 |       0 | 1-49                                                     
+  next.config.js                                                       |       0 |        0 |       0 |       0 | 1-51                                                     
+  postcss.config.js                                                    |       0 |        0 |       0 |       0 | 1-7                                                      
+  redirect.ts                                                          |       0 |        0 |       0 |       0 | 1-10                                                     
+  tailwind.config.js                                                   |       0 |        0 |       0 |       0 | 1-245                                                    
+ website/.next/server                                                  |       0 |        0 |       0 |       0 |                                                          
+  interception-route-rewrite-manifest.js                               |       0 |        0 |       0 |       0 | 1                                                        
+  middleware-build-manifest.js                                         |       0 |        0 |       0 |       0 | 1-18                                                     
+  middleware-react-loadable-manifest.js                                |       0 |        0 |       0 |       0 | 1                                                        
+  next-font-manifest.js                                                |       0 |        0 |       0 |       0 | 1                                                        
+  server-reference-manifest.js                                         |       0 |        0 |       0 |       0 | 1                                                        
+ website/.next/static/chunks                                           |       0 |        0 |       0 |       0 |                                                          
+  polyfills.js                                                         |       0 |        0 |       0 |       0 | 1                                                        
+ website/.next/static/development                                      |       0 |        0 |       0 |       0 |                                                          
+  _buildManifest.js                                                    |       0 |        0 |       0 |       0 | 1                                                        
+  _ssgManifest.js                                                      |       0 |        0 |       0 |       0 | 1                                                        
+ website/app                                                           |       0 |        0 |       0 |       0 |                                                          
+  layout.tsx                                                           |       0 |        0 |       0 |       0 | 1-179                                                    
+ website/app/(auth)                                                    |       0 |        0 |       0 |       0 |                                                          
+  layout.tsx                                                           |       0 |        0 |       0 |       0 | 1-13                                                     
+ website/app/(default)                                                 |       0 |        0 |       0 |       0 |                                                          
+  layout.tsx                                                           |       0 |        0 |       0 |       0 | 1-35                                                     
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-67                                                     
+ website/app/(default)/.well-known/microsoft-identity-association.json |       0 |        0 |       0 |       0 |                                                          
+  route.js                                                             |       0 |        0 |       0 |       0 | 1-15                                                     
+ website/app/(default)/about                                           |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-147                                                    
+ website/app/(default)/ai-code-generation                              |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-146                                                    
+ website/app/(default)/api-testing                                     |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-146                                                    
+ website/app/(default)/case-studies                                    |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-153                                                    
+ website/app/(default)/code-coverage                                   |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-145                                                    
+ website/app/(default)/coming-soon                                     |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-35                                                     
+ website/app/(default)/contact                                         |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-146                                                    
+ website/app/(default)/continuous-integration-testing                  |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-146                                                    
+ website/app/(default)/contract-testing                                |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-146                                                    
+ website/app/(default)/devscribe                                       |       0 |        0 |       0 |       0 |                                                          
+  layout.tsx                                                           |       0 |        0 |       0 |       0 | 1-33                                                     
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-21                                                     
+ website/app/(default)/faq                                             |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-146                                                    
+ website/app/(default)/gittogether                                     |       0 |        0 |       0 |       0 |                                                          
+  layout.tsx                                                           |       0 |        0 |       0 |       0 | 1-33                                                     
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-25                                                     
+ website/app/(default)/integration-testing                             |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-147                                                    
+ website/app/(default)/playground                                      |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-11                                                     
+ website/app/(default)/plugins                                         |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-15                                                     
+ website/app/(default)/privacy-policy                                  |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-77                                                     
+ website/app/(default)/regression-testing                              |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-148                                                    
+ website/app/(default)/security                                        |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-146                                                    
+ website/app/(default)/test-case-generator                             |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-116                                                    
+ website/app/(default)/test-data-generator                             |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-148                                                    
+ website/app/(default)/unit-test-generator                             |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-148                                                    
+ website/app/(default)/webstories                                      |       0 |        0 |       0 |       0 |                                                          
+  layout.tsx                                                           |       0 |        0 |       0 |       0 | 1-23                                                     
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-31                                                     
+ website/app/(default)/webstories/[slug]                               |       0 |        0 |       0 |       0 |                                                          
+  page.tsx                                                             |       0 |        0 |       0 |       0 | 1-79                                                     
+ website/app/api/automatic-test-generator                              |       0 |        0 |       0 |       0 |                                                          
+  Mutation.ts                                                          |       0 |        0 |       0 |       0 | 1-82                                                     
+  Subscription.ts                                                      |       0 |        0 |       0 |       0 | 1-557                                                    
+  queries.ts                                                           |       0 |        0 |       0 |       0 | 1-145                                                    
+ website/app/api/createFileStructure                                   |       0 |        0 |       0 |       0 |                                                          
+  route.ts                                                             |       0 |        0 |       0 |       0 | 1-68                                                     
+ website/app/api/hello                                                 |       0 |        0 |       0 |       0 |                                                          
+  route.ts                                                             |       0 |        0 |       0 |       0 | 1-3                                                      
+ website/app/lib                                                       |       0 |        0 |       0 |       0 |                                                          
+  apollo-client.ts                                                     |       0 |        0 |       0 |       0 | 1-34                                                     
+ website/components                                                    |   16.09 |       25 |   17.14 |   16.09 |                                                          
+  FeatureMoblieView.tsx                                                |   98.91 |       50 |      25 |   98.91 | 72,112,155                                               
+  LottiePlayer.tsx                                                     |       0 |        0 |       0 |       0 | 1-21                                                     
+  Particles.tsx                                                        |       0 |        0 |       0 |       0 | 1-280                                                    
+  TwitterTestimonials.tsx                                              |       0 |        0 |       0 |       0 | 1-169                                                    
+  banner.tsx                                                           |       0 |        0 |       0 |       0 | 1-27                                                     
+  caseStudyCard.tsx                                                    |       0 |        0 |       0 |       0 | 1-63                                                     
+  caseStudySearch.tsx                                                  |       0 |        0 |       0 |       0 | 1-52                                                     
+  community.tsx                                                        |       0 |        0 |       0 |       0 | 1-165                                                    
+  features.tsx                                                         |   77.11 |     62.5 |   44.44 |   77.11 | 78-82,95-101,104-110,120-133,136-150,160-164,184-194,198 
+  hero.tsx                                                             |       0 |        0 |       0 |       0 | 1-170                                                    
+  installation.tsx                                                     |       0 |        0 |       0 |       0 | 1-212                                                    
+  language.tsx                                                         |       0 |        0 |       0 |       0 | 1-367                                                    
+  modal-video.tsx                                                      |       0 |        0 |       0 |       0 | 1-153                                                    
+  newsletter.tsx                                                       |       0 |        0 |       0 |       0 | 1-152                                                    
+  problem-blocks.tsx                                                   |       0 |        0 |       0 |       0 | 1-140                                                    
+  success.tsx                                                          |       0 |        0 |       0 |       0 | 1-28                                                     
+  testimonial.tsx                                                      |       0 |        0 |       0 |       0 | 1-77                                                     
+  trustedBy.tsx                                                        |       0 |        0 |       0 |       0 | 1-75                                                     
+  tweets.tsx                                                           |       0 |        0 |       0 |       0 | 1-57                                                     
+  waitlistForm.tsx                                                     |       0 |        0 |       0 |       0 | 1-288                                                    
+ website/components/atg                                                |       0 |        0 |       0 |       0 |                                                          
+  editor.tsx                                                           |       0 |        0 |       0 |       0 | 1-405                                                    
+  fullscreen.tsx                                                       |       0 |        0 |       0 |       0 | 1-73                                                     
+  terminal.tsx                                                         |       0 |        0 |       0 |       0 | 1-485                                                    
+ website/components/atg/Editor/components                              |       0 |        0 |       0 |       0 |                                                          
+  file-tree.tsx                                                        |       0 |        0 |       0 |       0 | 1-16                                                     
+  icon.tsx                                                             |       0 |        0 |       0 |       0 | 1-60                                                     
+  sidebar.tsx                                                          |       0 |        0 |       0 |       0 | 1-57                                                     
+ website/components/atg/Editor/components/File-Tree-Components         |       0 |        0 |       0 |       0 |                                                          
+  DirDiv.tsx                                                           |       0 |        0 |       0 |       0 | 1-81                                                     
+  FileDiv.tsx                                                          |       0 |        0 |       0 |       0 | 1-58                                                     
+  FileIcon.tsx                                                         |       0 |        0 |       0 |       0 | 1-15                                                     
+  SubTree.tsx                                                          |       0 |        0 |       0 |       0 | 1-53                                                     
+ website/components/atg/Editor/editor                                  |       0 |        0 |       0 |       0 |                                                          
+  code.tsx                                                             |       0 |        0 |       0 |       0 | 1-267                                                    
+ website/components/atg/Editor/utils                                   |       0 |        0 |       0 |       0 |                                                          
+  File-Structure.ts                                                    |       0 |        0 |       0 |       0 | 1-58                                                     
+  api-functions.ts                                                     |       0 |        0 |       0 |       0 | 1-543                                                    
+  file-manager.tsx                                                     |       0 |        0 |       0 |       0 | 1-98                                                     
+ website/components/atg/Terminal                                       |       0 |        0 |       0 |       0 |                                                          
+  hooks.tsx                                                            |       0 |        0 |       0 |       0 | 1-88                                                     
+  index.tsx                                                            |       0 |        0 |       0 |       0 | 1-272                                                    
+  types.ts                                                             |       0 |        0 |       0 |       0 | 1-20                                                     
+ website/components/atg/components                                     |       0 |        0 |       0 |       0 |                                                          
+  AppBar.tsx                                                           |       0 |        0 |       0 |       0 | 1-185                                                    
+  DefaultEditorPage.tsx                                                |       0 |        0 |       0 |       0 | 1-19                                                     
+  LanguageSelectorComponent.tsx                                        |       0 |        0 |       0 |       0 | 1-207                                                    
+  SideBarhandle.tsx                                                    |       0 |        0 |       0 |       0 | 1-85                                                     
+  TopHeader.tsx                                                        |       0 |        0 |       0 |       0 | 1-151                                                    
+ website/components/atg/components/SideBarContent                      |       0 |        0 |       0 |       0 |                                                          
+  SideBarNormal.tsx                                                    |       0 |        0 |       0 |       0 | 1-482                                                    
+ website/components/atg/demo-projects/projects/javaScript              |       0 |        0 |       0 |       0 |                                                          
+  server.js                                                            |       0 |        0 |       0 |       0 | 1-23                                                     
+ website/components/atg/demo-projects/projects/mongo                   |       0 |        0 |       0 |       0 |                                                          
+  init-db.js                                                           |       0 |        0 |       0 |       0 | 1-20                                                     
+ website/components/atg/utils                                          |       0 |        0 |       0 |       0 |                                                          
+  schema.ts                                                            |       0 |        0 |       0 |       0 | 1-257                                                    
+  types.ts                                                             |       0 |        0 |       0 |       0 | 1-14                                                     
+ website/components/conf                                               |       0 |        0 |       0 |       0 |                                                          
+  banner.tsx                                                           |       0 |        0 |       0 |       0 | 1-39                                                     
+  blocks.tsx                                                           |       0 |        0 |       0 |       0 | 1-98                                                     
+  features.tsx                                                         |       0 |        0 |       0 |       0 | 1-117                                                    
+  footer.tsx                                                           |       0 |        0 |       0 |       0 | 1-172                                                    
+  header.tsx                                                           |       0 |        0 |       0 |       0 | 1-176                                                    
+  hero.tsx                                                             |       0 |        0 |       0 |       0 | 1-105                                                    
+  modal-video.tsx                                                      |       0 |        0 |       0 |       0 | 1-95                                                     
+  newsletter.tsx                                                       |       0 |        0 |       0 |       0 | 1-73                                                     
+  page-illustration.tsx                                                |       0 |        0 |       0 |       0 | 1-18                                                     
+  testimonials.tsx                                                     |       0 |        0 |       0 |       0 | 1-413                                                    
+  zigzag.tsx                                                           |       0 |        0 |       0 |       0 | 1-137                                                    
+ website/components/devscribe                                          |       0 |        0 |       0 |       0 |                                                          
+  banner.tsx                                                           |       0 |        0 |       0 |       0 | 1-39                                                     
+  features.tsx                                                         |       0 |        0 |       0 |       0 | 1-136                                                    
+  footer.tsx                                                           |       0 |        0 |       0 |       0 | 1-172                                                    
+  header.tsx                                                           |       0 |        0 |       0 |       0 | 1-89                                                     
+  hero.tsx                                                             |       0 |        0 |       0 |       0 | 1-105                                                    
+  modal-video.tsx                                                      |       0 |        0 |       0 |       0 | 1-43                                                     
+  page-illustration.tsx                                                |       0 |        0 |       0 |       0 | 1-18                                                     
+  testimonials.tsx                                                     |       0 |        0 |       0 |       0 | 1-349                                                    
+ website/components/magicui                                            |       0 |        0 |       0 |       0 |                                                          
+  marquee.tsx                                                          |       0 |        0 |       0 |       0 | 1-51                                                     
+  neonGradient.tsx                                                     |       0 |        0 |       0 |       0 | 1-95                                                     
+ website/components/nav                                                |       0 |        0 |       0 |       0 |                                                          
+  DownIcon.js                                                          |       0 |        0 |       0 |       0 | 1-7                                                      
+  UpIcon.js                                                            |       0 |        0 |       0 |       0 | 1-5                                                      
+  docsSection.tsx                                                      |       0 |        0 |       0 |       0 | 1-10                                                     
+  navItemWithSmallDropdown.tsx                                         |       0 |        0 |       0 |       0 | 1-79                                                     
+  productSection.tsx                                                   |       0 |        0 |       0 |       0 | 1-209                                                    
+  resourcesSection.tsx                                                 |       0 |        0 |       0 |       0 | 1-173                                                    
+  solutionsSection.tsx                                                 |       0 |        0 |       0 |       0 | 1-153                                                    
+ website/components/pillar-page                                        |       0 |        0 |       0 |       0 |                                                          
+  banner.tsx                                                           |       0 |        0 |       0 |       0 | 1-67                                                     
+  block.tsx                                                            |       0 |        0 |       0 |       0 | 1-84                                                     
+  community.tsx                                                        |       0 |        0 |       0 |       0 | 1-39                                                     
+  faq.tsx                                                              |       0 |        0 |       0 |       0 | 1-28                                                     
+  feature.tsx                                                          |       0 |        0 |       0 |       0 | 1-104                                                    
+  hero.tsx                                                             |       0 |        0 |       0 |       0 | 1-99                                                     
+ website/components/ui                                                 |       0 |        0 |       0 |       0 |                                                          
+  banner.tsx                                                           |       0 |        0 |       0 |       0 | 1-64                                                     
+  footer.tsx                                                           |       0 |        0 |       0 |       0 | 1-174                                                    
+  header.tsx                                                           |       0 |        0 |       0 |       0 | 1-155                                                    
+  logo.tsx                                                             |       0 |        0 |       0 |       0 | 1-39                                                     
+  mobile-menu.tsx                                                      |       0 |        0 |       0 |       0 | 1-348                                                    
+ website/components/utils                                              |       0 |        0 |       0 |       0 |                                                          
+  Products.tsx                                                         |       0 |        0 |       0 |       0 | 1-107                                                    
+  accordion.tsx                                                        |       0 |        0 |       0 |       0 | 1-49                                                     
+  ai-code-generation.tsx                                               |       0 |        0 |       0 |       0 | 1-109                                                    
+  api-testing.tsx                                                      |       0 |        0 |       0 |       0 | 1-189                                                    
+  code-coverage.tsx                                                    |       0 |        0 |       0 |       0 | 1-98                                                     
+  common.tsx                                                           |       0 |        0 |       0 |       0 | 1-270                                                    
+  continuous-testing.tsx                                               |       0 |        0 |       0 |       0 | 1-119                                                    
+  contract-testing.tsx                                                 |       0 |        0 |       0 |       0 | 1-104                                                    
+  copyButton.tsx                                                       |       0 |        0 |       0 |       0 | 1-46                                                     
+  countingNumbers.tsx                                                  |       0 |        0 |       0 |       0 | 1-45                                                     
+  data.ts                                                              |       0 |        0 |       0 |       0 | 1-504                                                    
+  dropdown.tsx                                                         |       0 |        0 |       0 |       0 | 1-53                                                     
+  integration-testing.tsx                                              |       0 |        0 |       0 |       0 | 1-119                                                    
+  loader.tsx                                                           |       0 |        0 |       0 |       0 | 1-7                                                      
+  regression-testing.tsx                                               |       0 |        0 |       0 |       0 | 1-104                                                    
+  resources.tsx                                                        |       0 |        0 |       0 |       0 | 1-78                                                     
+  test-case-generator.tsx                                              |       0 |        0 |       0 |       0 | 1-191                                                    
+  test-data-generator.tsx                                              |       0 |        0 |       0 |       0 | 1-188                                                    
+  testimonial.tsx                                                      |       0 |        0 |       0 |       0 | 1-28                                                     
+  unit-test-generator.tsx                                              |       0 |        0 |       0 |       0 | 1-97                                                     
+ website/components/vscode-extension                                   |       0 |        0 |       0 |       0 |                                                          
+  demo.tsx                                                             |       0 |        0 |       0 |       0 | 1-38                                                     
+  features-mobileview.tsx                                              |       0 |        0 |       0 |       0 | 1-280                                                    
+  features.tsx                                                         |       0 |        0 |       0 |       0 | 1-163                                                    
+  hero.tsx                                                             |       0 |        0 |       0 |       0 | 1-88                                                     
+ website/components/webstories                                         |       0 |        0 |       0 |       0 |                                                          
+  LottiePlayerWebStories.tsx                                           |       0 |        0 |       0 |       0 | 1-30                                                     
+  Stories.tsx                                                          |       0 |        0 |       0 |       0 | 1-270                                                    
+  StoriesCards.tsx                                                     |       0 |        0 |       0 |       0 | 1-114                                                    
+  StoryCard.tsx                                                        |       0 |        0 |       0 |       0 | 1-62                                                     
+  Webstories.tsx                                                       |       0 |        0 |       0 |       0 | 1-246                                                    
+ website/components/webstories/components                              |       0 |        0 |       0 |       0 |                                                          
+  CloseIcon.tsx                                                        |       0 |        0 |       0 |       0 | 1-22                                                     
+  Header.tsx                                                           |       0 |        0 |       0 |       0 | 1-151                                                    
+  SearchBar.tsx                                                        |       0 |        0 |       0 |       0 | 1-38                                                     
+  ShareComponent.tsx                                                   |       0 |        0 |       0 |       0 | 1-171                                                    
+  circularLoader.tsx                                                   |       0 |        0 |       0 |       0 | 1-83                                                     
+  container.tsx                                                        |       0 |        0 |       0 |       0 | 1-4                                                      
+ website/coverage/lcov-report                                          |       0 |        0 |       0 |       0 |                                                          
+  block-navigation.js                                                  |       0 |        0 |       0 |       0 | 1-87                                                     
+  prettify.js                                                          |       0 |        0 |       0 |       0 | 1-2                                                      
+  sorter.js                                                            |       0 |        0 |       0 |       0 | 1-196                                                    
+ website/lib                                                           |       0 |        0 |       0 |       0 |                                                          
+  utils.ts                                                             |       0 |        0 |       0 |       0 | 1-7                                                      
+ website/public/images/navBarIcons                                     |       0 |        0 |       0 |       0 |                                                          
+  APITesting.js                                                        |       0 |        0 |       0 |       0 | 1-24                                                     
+  About.js                                                             |       0 |        0 |       0 |       0 | 1-72                                                     
+  ApiCallRecording.js                                                  |       0 |        0 |       0 |       0 | 1-25                                                     
+  AutomaticMocking.js                                                  |       0 |        0 |       0 |       0 | 1-16                                                     
+  Blogs.js                                                             |       0 |        0 |       0 |       0 | 1-44                                                     
+  CICD.js                                                              |       0 |        0 |       0 |       0 | 1-32                                                     
+  CITesting.js                                                         |       0 |        0 |       0 |       0 | 1-16                                                     
+  CaseStudies.js                                                       |       0 |        0 |       0 |       0 | 1-22                                                     
+  CodeCoverage.js                                                      |       0 |        0 |       0 |       0 | 1-25                                                     
+  Community.js                                                         |       0 |        0 |       0 |       0 | 1-36                                                     
+  CommunityArticles.js                                                 |       0 |        0 |       0 |       0 | 1-36                                                     
+  Contact.js                                                           |       0 |        0 |       0 |       0 | 1-28                                                     
+  ContractTesting.js                                                   |       0 |        0 |       0 |       0 | 1-20                                                     
+  EnterPrice.js                                                        |       0 |        0 |       0 |       0 | 1-16                                                     
+  EnterpriseSolution.js                                                |       0 |        0 |       0 |       0 | 1-29                                                     
+  EnterpriseSolutionImg.js                                             |       0 |        0 |       0 |       0 | 1-624                                                    
+  GettingStarted.js                                                    |       0 |        0 |       0 |       0 | 1-22                                                     
+  Git.js                                                               |       0 |        0 |       0 |       0 | 1-16                                                     
+  Github.js                                                            |       0 |        0 |       0 |       0 | 1-18                                                     
+  Gitlab.js                                                            |       0 |        0 |       0 |       0 | 1-16                                                     
+  HowItWorks.js                                                        |       0 |        0 |       0 |       0 | 1-20                                                     
+  Jenkins.js                                                           |       0 |        0 |       0 |       0 | 1-227                                                    
+  MultiPurposeMocks.js                                                 |       0 |        0 |       0 |       0 | 1-23                                                     
+  OpenSource.js                                                        |       0 |        0 |       0 |       0 | 1-43                                                     
+  Pricing.js                                                           |       0 |        0 |       0 |       0 | 1-9                                                      
+  RegressionTesting.js                                                 |       0 |        0 |       0 |       0 | 1-16                                                     
+  Resource.js                                                          |       0 |        0 |       0 |       0 | 1-16                                                     
+  TestCaseGeneration.js                                                |       0 |        0 |       0 |       0 | 1-15                                                     
+  TestDataGeneration.js                                                |       0 |        0 |       0 |       0 | 1-18                                                     
+  Tutorial.js                                                          |       0 |        0 |       0 |       0 | 1-32                                                     
+  UnitTestGeneration.js                                                |       0 |        0 |       0 |       0 | 1-20                                                     
+  WhatIsKeploy.js                                                      |       0 |        0 |       0 |       0 | 1-29                                                     
+  WhyUseKeploy.js                                                      |       0 |        0 |       0 |       0 | 1-16                                                     
+  kRoc.js                                                              |       0 |        0 |       0 |       0 | 1-16                                                     
+ website/scripts/why-did-you-render                                    |       0 |        0 |       0 |       0 |                                                          
+  index.js                                                             |       0 |        0 |       0 |       0 | 1-25                                                     
+  injection.ts                                                         |       0 |        0 |       0 |       0 | 1-18                                                     
+ website/services                                                      |       0 |        0 |       0 |       0 |                                                          
+  constants.ts                                                         |       0 |        0 |       0 |       0 | 1                                                        
+-----------------------------------------------------------------------|---------|----------|---------|---------|----------------------------------------------------------
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.673 s
+Ran all test suites.
