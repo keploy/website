@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/",
-      "destination": "https://keploy-agent.vercel.app"
-    },
-    {
       "source": "/blog",
       "destination": "https://blog-website-phi-eight.vercel.app/blog"
     },
