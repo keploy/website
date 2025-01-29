@@ -16,7 +16,7 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData,faqQuestions } from "@/components/utils/test-data-generator";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
 const blocksData = [
   {
@@ -60,11 +60,11 @@ const heroData = {
   animationSrc: testAndStubsGen,
 };
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Need Quick Mock Data? Try this reliable test data generator!',
-  description: 'Discover how quickly and efficiently you can generate test data by recording API calls with Keploy cutting-edge test data generation tool! Learn more now!',
-  keywords: 'dynamic test data, testing, automation, test data generation',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | Need Quick Mock Data? Try this reliable test data generator!',
+//   description: 'Discover how quickly and efficiently you can generate test data by recording API calls with Keploy cutting-edge test data generation tool! Learn more now!',
+//   keywords: 'dynamic test data, testing, automation, test data generation',
+// };
 
 const ProblemBlocksData = {
   title: "Mock Data Challenges for Developers",
@@ -92,7 +92,7 @@ const BannerData = {
 
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 "use client"
 import VideoThumb from "@/public/images/demo-thumbnail.webp"
-import ModalVideo from "@/components/modal-video"
 import Image from "next/image"
 import TestimonialImage from "@/public/images/users/Nutanix_Logo.svg"
 import React, { useEffect, useState } from "react"
@@ -153,7 +152,7 @@ export default function Hero() {
             </div>
           </div>
           {/* <Banner /> */}
-          <ModalVideo
+          {/* <ModalVideo
             thumb={VideoThumb}
             thumbWidth={768}
             thumbHeight={432}
@@ -161,7 +160,7 @@ export default function Hero() {
             video="https://www.youtube.com/embed/gvWvpqWM48s"
             videoWidth={768}
             videoHeight={432}
-          />
+          /> */}
         </div>
       </div>
       <TrustedBy />

@@ -16,7 +16,7 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData,faqQuestions } from "@/components/utils/regression-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
 const heroData = {
   titleTop: "Automate Regression Testing ",
@@ -27,11 +27,11 @@ const heroData = {
   animationSrc: testAndStubsGen,
 };
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Automate Regression Testing with Keploy AI Test Generator!',
-  description: 'Try Keploy.io automated regression testing software that records API calls to test cases and mocks, designed for efficiency and accuracy! Learn more!',
-  keywords: 'regression testing software, regression testing in software testing,automated regression testing',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | Automate Regression Testing with Keploy AI Test Generator!',
+//   description: 'Try Keploy.io automated regression testing software that records API calls to test cases and mocks, designed for efficiency and accuracy! Learn more!',
+//   keywords: 'regression testing software, regression testing in software testing,automated regression testing',
+// };
 
 const blocksData = [
   {
@@ -92,7 +92,7 @@ const BannerData = {
 
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}

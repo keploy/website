@@ -16,13 +16,14 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData,faqQuestions } from "@/components/utils/continuous-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Speed Up Testing in CI/CD with secret Virtual Environments!',
-  description: "Virtualise Services and Dependencies during Continuous Integration Testing. Accelerate your software releases with Keploy's CI testing tool. Know How?",
-  keywords: 'CI testing, cicd testing, gitlab, github, jenkins',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | Speed Up Testing in CI/CD with secret Virtual Environments!',
+//   description: "Virtualise Services and Dependencies during Continuous Integration Testing. Accelerate your software releases with Keploy's CI testing tool. Know How?",
+//   keywords: 'CI testing, cicd testing, gitlab, github, jenkins',
+// };
+
 const heroData = {
   titleTop: "Speed Up Testing ",
   titleBottom: "in CI/CD pipeline",
@@ -90,7 +91,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}

@@ -16,13 +16,13 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData,faqQuestions } from "@/components/utils/code-coverage";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Need Complete Code Coverage? Check this Test Coverage Tool!',
-  description: 'Explore how Keploy test coverage tools help you cover every scenario. 100% unit test coverage, Python code coverage, Java, Gotest, Jest Test Coverage. Start now',
-  keywords: 'test coverage tools, python code coverage, python coverage, Junit, Jest, Go test, code coverage, test coverage',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | Need Complete Code Coverage? Check this Test Coverage Tool!',
+//   description: 'Explore how Keploy test coverage tools help you cover every scenario. 100% unit test coverage, Python code coverage, Java, Gotest, Jest Test Coverage. Start now',
+//   keywords: 'test coverage tools, python code coverage, python coverage, Junit, Jest, Go test, code coverage, test coverage',
+// };
 const heroData = {
   titleTop: "Improve Code Coverage ",
   titleBottom: "with Confidence",
@@ -88,7 +88,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
 
       <Hero
         titleTop={heroData.titleTop}

@@ -16,13 +16,13 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData,faqQuestions } from "@/components/utils/contract-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Consumer Driven Contract Testing without Code Changes!',
-  description: "Discover how Keploy automates contract tests more effectively than Pact, with no code changes required. Effective, efficient, and reliable!",
-  keywords: 'contract testing, contract tests, pact.io alternative',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | Consumer Driven Contract Testing without Code Changes!',
+//   description: "Discover how Keploy automates contract tests more effectively than Pact, with no code changes required. Effective, efficient, and reliable!",
+//   keywords: 'contract testing, contract tests, pact.io alternative',
+// };
 
 const blocksData = [
   {
@@ -90,7 +90,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}

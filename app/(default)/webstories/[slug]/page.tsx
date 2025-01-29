@@ -39,7 +39,7 @@ const Index: React.FC = () => {
   };
 
   return (
-    <RootLayout metadata={metadata} HeaderDisplayed={false}>
+    <RootLayout>
       <div className="fixed w-full h-full top-0 z-50 flex items-center justify-center" data-aos="fade-up">
         <div className="absolute w-full h-full top-0 opacity-95 bg-black">
           <Image

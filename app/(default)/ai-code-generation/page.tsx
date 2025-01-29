@@ -16,13 +16,13 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData,faqQuestions } from "@/components/utils/ai-code-generation";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Transform Testing with AI that actually works! Explore Now!',
-  description: "Unlock the power of AI generated tests and mocks with Keploy's coding assistance. Transform your testing with AI code generation that actually works. Check Now!",
-  keywords: 'test generation, ai generated test, automated unit testing',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | Transform Testing with AI that actually works! Explore Now!',
+//   description: "Unlock the power of AI generated tests and mocks with Keploy's coding assistance. Transform your testing with AI code generation that actually works. Check Now!",
+//   keywords: 'test generation, ai generated test, automated unit testing',
+// };
 
 const heroData = {
   titleTop: "Integration Test Generator ",
@@ -90,7 +90,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}

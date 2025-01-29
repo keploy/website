@@ -16,13 +16,13 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData , faqQuestions} from "@/components/utils/api-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | One-click API test with OpenSource and Free API Testing Tool',
-  description: "Discover how Keploy's free API testing tools can drastically transform your e2e api testing process and why developers love it! Get the free tool now!",
-  keywords: 'API test, FREE API Testing Tool, API Testing tool',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | One-click API test with OpenSource and Free API Testing Tool',
+//   description: "Discover how Keploy's free API testing tools can drastically transform your e2e api testing process and why developers love it! Get the free tool now!",
+//   keywords: 'API test, FREE API Testing Tool, API Testing tool',
+// };
 
 const blocksData = [
   {
@@ -90,7 +90,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
       <Hero
         titleTop={heroData.titleTop}
         titleBottom={heroData.titleBottom}

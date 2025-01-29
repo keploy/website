@@ -13,14 +13,14 @@ const Data = DataFiles.map((item) => ({
 }));
   
 const Page = () => {
-  const metadata = {
-    title: "WebStories - Explore and Enjoy",
-    description: "Discover amazing stories with our WebStories collection.",
-    keywords: "webstories, stories, entertainment, reading",
-  };
+  // const metadata = {
+  //   title: "WebStories - Explore and Enjoy",
+  //   description: "Discover amazing stories with our WebStories collection.",
+  //   keywords: "webstories, stories, entertainment, reading",
+  // };
 
   return (
-    <RootLayout metadata={metadata}>
+    <RootLayout>
       <div className="flex flex-row justify-end my-2 mt-10 border bg-neutral-100 min-h-screen overflow-hidden">
         <StoriesCards data={Data.reverse()} />
       </div>

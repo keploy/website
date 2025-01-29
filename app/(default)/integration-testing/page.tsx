@@ -16,13 +16,13 @@ import {MdiLightningBolt,FluentPuzzleCubePiece20Filled,
 import { featuresData,faqQuestions } from "@/components/utils/integration-testing";
 import BannerBunny from "@/public/images/banner-bunny.png";
 import FAQ from "@/components/pillar-page/faq";
-import RootLayout, { Metadata } from "@/app/layout";
+import RootLayout from "@/app/layout";
 
-const pageMetadata: Metadata = {
-  title: 'Keploy | Maximize Integration Testing Efficiency with Our Tools!',
-  description: 'Discover how Keploy’s integration testing tools streamline complex workflows. Achieve scalable, reliable, and automated testing with zero-code solutions. Start now.',
-  keywords: 'integration testing, test coverage tools, automated testing, zero-code testing, Python integration testing, Java integration testing, Jest, Go test',
-};
+// const pageMetadata: Metadata = {
+//   title: 'Keploy | Maximize Integration Testing Efficiency with Our Tools!',
+//   description: 'Discover how Keploy’s integration testing tools streamline complex workflows. Achieve scalable, reliable, and automated testing with zero-code solutions. Start now.',
+//   keywords: 'integration testing, test coverage tools, automated testing, zero-code testing, Python integration testing, Java integration testing, Jest, Go test',
+// };
 
 const heroData = {
     titleTop: "Optimize Integration Testing",
@@ -90,7 +90,7 @@ const BannerData = {
 };
 export default function Home() {
   return (
-    <RootLayout metadata={pageMetadata}>
+    <RootLayout>
 
       <Hero
         titleTop={heroData.titleTop}

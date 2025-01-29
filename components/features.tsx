@@ -5,7 +5,6 @@ import { useInView } from "react-intersection-observer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import FeaturesMobileView from "./FeatureMoblieView";
 import Image from "next/image";
 import testAndStubsGen from "@/public/images/testAndStubsGen.webp";
 import deDuplication from "@/public/images/deDuplication.webp"
@@ -202,7 +201,6 @@ export default function Features() {
 
   return (
     <>
-      <FeaturesMobileView />
       <section className="relative hidden lg:block" ref={inViewRef}>
         <div className="absolute left-0 right-0 max-w-3xl pt-2 mx-auto mt-16 text-center top-6 heading-text">
           <h1 className="mb-2 text-5xl font-bold text-secondary-300">
