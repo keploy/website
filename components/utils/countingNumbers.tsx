@@ -1,44 +1,25 @@
 "use client";
 
-import { useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-const formatStars = (num:number)=>Intl.NumberFormat('en-US', {
-  notation: "compact",
-  maximumFractionDigits: 1
-}).format(num);
+const formatStars = (num: number) =>
+  Intl.NumberFormat('en-US', {
+    notation: "compact",
+    maximumFractionDigits: 1,
+  }).format(num);
 
-export default function CountingNumbers({
-  className,
-  reverse = false,
-  start = reverse ? 1000 : 0,
-  interval = 10,
-  duration = 800,
-}: {
+interface CountingNumbersProps {
   className: string;
   reverse?: boolean;
   start?: number;
   interval?: number;
   duration?: number;
-}) {
+}
 
-  const [top, setTop] = useState<boolean>(true);
-  const [starsCount, setStarsCount] = useState<number>(3900);
-  const [number, setNumber] = useState(start);
-
-
-  // detect whether user has scrolled the page down by 10px
-  const scrollHandler = () => {
-    window.pageYOffset > 10 ? setTop(false) : setTop(true);
-  };
-
-  useEffect(() => {
-    scrollHandler();
-    window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
-  }, [top]);
-
-  let value: number;
+export default function CountingNumbers({
+  className,
+}: CountingNumbersProps) {
+  const [starsCount, setStarsCount] = useState<number>(0);
 
   useEffect(() => {
     const fetchStarsCount = async () => {
@@ -48,7 +29,6 @@ export default function CountingNumbers({
         );
         if (response.ok) {
           const data = await response.json();
-          // Use setStarsCount to update the state
           setStarsCount(data.stargazers_count);
         } else {
           console.error("Failed to fetch stars count", response.statusText);
@@ -59,55 +39,7 @@ export default function CountingNumbers({
     };
 
     fetchStarsCount();
-  }, [starsCount]); // Include starsCount as a dependency
+  }, []);
 
-
-  let increment = Math.floor(Math.abs(start - starsCount) / (duration / interval));
-  if (increment === 0) {
-    increment = 1;
-  }
-  const ref = useRef(null);
-  const isInView = useInView(ref);
-
-  useEffect(() => {
-    if (isInView) {
-      let timer = setInterval(() => {
-        if (reverse) {
-          if (number > starsCount) {
-            setNumber((num) => {
-              let newstarsCount = num - increment;
-              if (newstarsCount < starsCount) {
-                newstarsCount = starsCount;
-                if (timer) clearInterval(timer);
-              }
-              return newstarsCount;
-            });
-          } else if (timer) {
-            clearInterval(timer);
-          }
-        } else {
-          if (number < starsCount) {
-            setNumber((num) => {
-              let newstarsCount = num + increment;
-              if (newstarsCount > starsCount) {
-                newstarsCount = starsCount;
-                if (timer) clearInterval(timer);
-              }
-              return newstarsCount;
-            });
-          } else if (timer) {
-            clearInterval(timer);
-          }
-        }
-      }, interval);
-    }
-  }, [isInView]);
-
-
-
-  return (
-    <p className={className} ref={ref}>
-      {formatStars(number)}
-    </p>
-  );
+  return <p className={className}>{formatStars(starsCount)}</p>;
 }

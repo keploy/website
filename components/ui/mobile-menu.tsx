@@ -3,19 +3,23 @@
 import { useState, useRef, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
-import CountingNumbers from "../utils/countingNumbers";
+// import CountingNumbers from "../utils/countingNumbers";
 import Image from "next/image";
 import { UpIcon } from "../nav/UpIcon";
 import DownIcon from "../nav/DownIcon";
 import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
+import { ProductsSection } from "../utils/Products";
+import { GlossarySection } from "../utils/Products";
 interface MobileMenuProps {
   starsCount: number;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
-  const [showResourcesDropdown,setShowResourcesDropdown] =useState<boolean>(false)
+  const [showResourcesDropdown,setShowResourcesDropdown] =useState<boolean>(false);
+  const [showProductsDropdown,setShowProductsDropdown] =useState<boolean>(false);
+  const [showGlossaryDropdown,setShowGlossaryDropdown] =useState<boolean>(false);
   const trigger = useRef<HTMLButtonElement>(null);
   const mobileNav = useRef<HTMLDivElement>(null);
 
@@ -125,12 +129,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                <span className="text-base flex gap-1"> <CountingNumbers className="" /></span>
+                {/* <span className="text-base flex gap-1"> <CountingNumbers className="" /></span> */}
               </Link>
             </div>
               {/*<Link href="/privacy-policy" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Github</Link>*/}
             </li>
             <li>
+                <Link
+                  target="_blank"
+                  href="https://keploy.io/devscribe"
+                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  DevScribe
+                </Link>
+              </li>
+            {/* <li>
               <Link
                 href="https://keploy.io/docs"
                 className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
@@ -153,12 +166,59 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
               >
                 Community
               </Link>
-            </li>
-            <div
+            </li> */}
+             <div
+              onClick={() => setShowProductsDropdown(!showProductsDropdown)}
+              className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+            >
+              Products
+              <div className="pl-2">
+                {showProductsDropdown ? (
+                  <UpIcon className="text-current" />
+                ) : (
+                  <DownIcon className="text-current" />
+                )}
+              </div>
+            </div>
+            {showProductsDropdown &&
+            ProductsSection.map((lists) => (
+              <div key={lists.heading} className="pl-4">
+                {/* <span className="font-bold text-secondary-300 uppercase px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                  {lists.heading}
+                </span> */}
+                <ul className="px-4">
+                  {lists.links.map((link) => (
+                    <li key={link.pageName} className="flex items-center py-2">
+                      {link.Icon &&    <div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                        <link.Icon  /> </div>} {/* Render Icon if available */}
+                      {link.pagelink.startsWith("/") ? (
+                        <Link
+                          target="_blank"
+                          href={link.pagelink}
+                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap"
+                        >
+                          {link.pageName}
+                        </Link>
+                      ) : (
+                        <a
+                          target="_blank"
+                          href={link.pagelink}
+                          rel="noopener noreferrer"
+                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap"
+                        >
+                          {link.pageName}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+              <div
               onClick={() => setShowResourcesDropdown(!showResourcesDropdown)}
               className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
             >
-              Resources
+              Solutions
               <div className="pl-2">
                 {showResourcesDropdown ? (
                   <UpIcon className="text-current" />
@@ -168,38 +228,104 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
               </div>
             </div>
             {showResourcesDropdown &&
-              PillarPages.map((lists) => (
-                <div key={lists.heading} className="pl-4">
-                  {" "}
-                  <span className="font-bold text-secondary-300 uppercase px-4 py-3 flex items-center transition duration-150 ease-in-out">
-                    {lists.heading}
-                  </span>
-                  <ul className="px-4 ">
-                    {lists.links.map((link) => (
-                      <li key={link.pageName}>
-                        {" "}
-                        {/* Ensure to add a key for list items when mapping */}
+            PillarPages.map((lists) => (
+              <div key={lists.heading} className="pl-4">
+                {/* <span className="font-bold text-secondary-300 uppercase px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                  {lists.heading}
+                </span> */}
+                <ul className="px-4">
+                  {lists.links.map((link) => (
+                    <li key={link.pageName} className="flex items-center py-2">
+                      {link.Icon &&<div className="h-6 w-6 flex-shrink-0 flex items-center justify-center">
+                        <link.Icon  /> </div>} {/* Render Icon if available */}
+                      {link.pagelink.startsWith("/") ? (
                         <Link
                           target="_blank"
                           href={link.pagelink}
-                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap	"
+                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap"
                         >
                           {link.pageName}
                         </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                      ) : (
+                        <a
+                          target="_blank"
+                          href={link.pagelink}
+                          rel="noopener noreferrer"
+                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap"
+                        >
+                          {link.pageName}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+             <li>
+              <Link
+                href="https://keploy.io/docs"
+                className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+              >
+                Docs
+              </Link>
+            </li>
+            <div
+              onClick={() => setShowGlossaryDropdown(!showGlossaryDropdown)}
+              className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+            >
+              Resources
+              <div className="pl-2">
+                {showGlossaryDropdown ? (
+                  <UpIcon className="text-current" />
+                ) : (
+                  <DownIcon className="text-current" />
+                )}
+              </div>
+            </div>
+            {showGlossaryDropdown &&
+            GlossarySection.map((lists) => (
+              <div key={lists.heading} className="pl-4">
+                {/* <span className="font-bold text-secondary-300 uppercase px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                  {lists.heading}
+                </span> */}
+                <ul className="px-4">
+                  {lists.links.map((link) => (
+                    <li key={link.pageName} className="flex items-center py-2">
+                      {link.Icon && <link.Icon  />} {/* Render Icon if available */}
+                      {link.pagelink.startsWith("/") ? (
+                        <Link
+                          target="_blank"
+                          href={link.pagelink}
+                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap"
+                        >
+                          {link.pageName}
+                        </Link>
+                      ) : (
+                        <a
+                          target="_blank"
+                          href={link.pagelink}
+                          rel="noopener noreferrer"
+                          className="font-medium text-gray-600 hover:text-primary-300 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap"
+                        >
+                          {link.pageName}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          
+
             {/*<li>*/}
             {/*  <Link href="/program" className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out">Program</Link>*/}
             {/*</li>*/}
             <li>
               <Link
-                href="https://calendar.app.google/8Ncpff4QnAhpVnYd8"
+                href="https://app.keploy.io"
                 className="btn-sm text-gray-200 bg-secondary-300 mt-3  hover:text-primary-300 ml-3"
               >
-                <span>Book Cloud Demo</span>
+                <span>Try now for free</span>
                 <svg
                   className="w-3 h-3 fill-current   hover:text-primary-300 shrink-0 ml-2 -mr-1"
                   viewBox="0 0 12 12"

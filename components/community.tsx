@@ -102,7 +102,7 @@ export default function Community() {
       delay: 5,
     },
     {
-      link: "https://join.slack.com/t/keploy/shared_invite/zt-2dno1yetd-Ec3el~tTwHYIHgGI0jPe7A",
+      link: "https://keploy.slack.com/join/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw",
       svgIcon: SlackSvg,
       platformName: "Slack",
       description: "Connect and chat with other Keploy users",

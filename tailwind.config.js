@@ -152,6 +152,7 @@ module.exports = {
         inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.04)",
         outline: "0 0 0 3px rgba(66, 153, 225, 0.5)",
         none: "none",
+        custom: "0px 4px 8px rgba(0, 0, 0, 0.1)",
       },
       spacing: {
         "9/16": "56.25%",
@@ -165,6 +166,7 @@ module.exports = {
           "sans-serif",
         ],
         pencil: ["Pencil", "sans-serif"],
+        courier: ["Courier Prime", "monospace"],
       },
       fontSize: {
         xs: "0.75rem",
@@ -208,6 +210,9 @@ module.exports = {
         9: "2.25rem",
         10: "2.5rem",
       },
+      height:{
+        "70v":"70vh",
+      },
       minWidth: {
         10: "2.5rem",
         48: "12rem",
@@ -219,25 +224,25 @@ module.exports = {
         98: ".98",
         101: "1.01",
       },
-      //   animation: {
-      //     float: "float 3s ease-in-out infinite",
-      //     marquee: "marquee 25s linear infinite",
-      //     marquee2: "marquee2 25s linear infinite ",
-      //   },
-      //   keyframes: {
-      //     float: {
-      //       "0%, 100%": { transform: "translateY(0)" },
-      //       "50%": { transform: "translateY(-5%)" },
-      //     },
-      //     marquee: {
-      //       "0%": { transform: "translateX(0%)" },
-      //       "100%": { transform: "translateX(-100%)" },
-      //     },
-      //     marquee2: {
-      //       "0%": { transform: "translateX(0%)" },
-      //       "100%": { transform: "translateX(-90%)" },
-      //     },
-      //   },
+      animation: {
+        float: "float 3s ease-in-out infinite",
+        marquee: "marquee 25s linear infinite",
+        marquee2: "marquee2 25s linear infinite ",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5%)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-90%)" },
+        },
+      },
       zIndex: {
         "-1": "-1",
         99999: "99999",

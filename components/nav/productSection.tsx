@@ -1,0 +1,209 @@
+import React, { useState } from "react";
+import { UpIcon } from "./UpIcon";
+import DownIcon from "./DownIcon";
+import OpenSource from "@/public/images/navBarIcons/OpenSource";
+import EnterpriseSolution from "@/public/images/navBarIcons/EnterpriseSolution";
+// import WhatIsKeploy from "@/public/images/keploy_logo.png
+import WhyUseKeploy from "@/public/images/navBarIcons/WhyUseKeploy";
+import HowItWorks from "@/public/images/navBarIcons/HowItWorks";
+import GettingStarted from "@/public/images/navBarIcons/GettingStarted";
+import ApiCallRecording from "@/public/images/navBarIcons/ApiCallRecording";
+import AutomaticMocking from "@/public/images/navBarIcons/AutomaticMocking";
+import CICD from "@/public/images/navBarIcons/CICD";
+import MultiPurposeMocks from "@/public/images/navBarIcons/MultiPurposeMocks";
+import MemoizedImage from "@/public/images/navBarIcons/EnterPrice";
+
+export default function Product() {
+  const [openDropdown, setShowDropdown] = useState(false);
+  const [openSourceHover, setOpenSourceHover] = useState(true);
+  
+  const showDropdown = () => {
+    setShowDropdown(true);
+  };
+  const hideDropdown = () => {
+    setShowDropdown(false);
+  };
+  const toggleDropdown = () => {
+    setShowDropdown(!openDropdown);
+  };
+
+  // Features list for Open Source
+  const openSourceFeatures = [
+    {
+      icon: <ApiCallRecording />,
+      title: "API Call Recording and Replay",
+      url: "https://keploy.io/docs/concepts/what-is-keploy/#step-1--record-unique-network-interactions-as-test-case",
+    },
+    {
+      icon: <AutomaticMocking />,
+      title: "Automatic Mocking of Dependencies",
+      url: "https://keploy.io/docs/concepts/reference/glossary/mocks/#overcoming-the-challenges",
+    },
+    {
+      icon: <CICD />,
+      title: "CI/CD Integration",
+      url: "https://keploy.io/docs/concepts/what-are-keploy-features/#-combined-test-coverage-in-cicd",
+    },
+    {
+      icon: <MultiPurposeMocks />,
+      title: "Multi Purpose Mocks",
+      url: "https://keploy.io/docs/concepts/what-are-keploy-features/#%EF%B8%8F-multi-purpose-mocks",
+    },
+  ];
+  const aboutProductLinks = [
+    {
+      icon: <img
+      src={"/images/keploylogo.png"}
+      alt="What is Keploy Icon"
+      style={{ height: "24px", width: "24px" }}
+    />,
+      title: "What is Keploy?",
+      url: "https://keploy.io/docs/concepts/what-is-keploy/#heading",
+    },
+    {
+      icon: <WhyUseKeploy />,
+      title: "Why use Keploy?",
+      url: "https://keploy.io/docs/keploy-explained/why-keploy/#heading",
+    },
+    {
+      icon: <HowItWorks />,
+      title: "How it works?",
+      url: "https://keploy.io/docs/keploy-explained/how-keploy-works/#heading",
+    },
+    {
+      icon: <GettingStarted />,
+      title: "Getting started guide",
+      url: "https://keploy.io/docs/running-keploy/configuration-file/#getting-started",
+    },
+  ];
+
+  return (
+    <div
+      onMouseEnter={showDropdown}
+      onMouseLeave={hideDropdown}
+      className="relative flex items-center py-3 transition duration-150 ease-in-out cursor-pointer"
+    >
+      <div className="flex items-center text-gray-600 hover:text-primary-100">
+        <div className="flex">
+          <div className="font-medium text-gray-600 px-3 py-3 flex items-center transition duration-150 ease-in-out whitespace-nowrap relative group">
+            Products
+            <span className="absolute text-gray-600 text-[3px] left-[.45rem] bottom-[.15rem] w-full h-[.195rem] bg-current transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+          </div>
+        </div>
+        <div onClick={toggleDropdown}>
+          {openDropdown ? (
+            <UpIcon className="text-gray-600" />
+          ) : (
+            <DownIcon className="text-gray-600" />
+          )}
+        </div>
+      </div>
+
+      {openDropdown && (
+        <div className="fixed bg-gradient-100 pb-8 z-10 shadow-xl top-[80px] left-0 right-0 mx-auto w-full max-w-6xl cursor-auto rounded-b-2xl p-4 sm:p-6">
+          <div className="flex flex-col md:flex-row items-start justify-between">
+            <div className="flex flex-col md:flex-row w-full">
+              <div className="p-5 flex-1">
+                <div
+                  className="flex gap-3 justify-start items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-full p-5 mb-6"
+                  onMouseEnter={() => {
+                    setOpenSourceHover(true);
+                  }}
+                >
+                  <OpenSource />
+                  <div className="flex flex-col w-full justify-center">
+                    <h1 className="text-lg font-bold cursor-pointer">Open Source</h1>
+                    <p className="text-sm text-[#797C88] cursor-pointer">
+                      Open Source testing solution
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="flex gap-3 justify-start items-center hover:bg-primary-100 hover:bg-opacity-20 duration-300 rounded-full p-5"
+                  onMouseEnter={() => {
+                    setOpenSourceHover(false);
+                  }}
+                >
+                  <EnterpriseSolution />
+                  <div>
+                    <h1 className="text-lg font-bold cursor-pointer">Enterprise Solution</h1>
+                    <p className="text-sm text-[#797C88] cursor-pointer">
+                      Comprehensive enterprise testing
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full md:w-1/3 p-5 relative">
+                {/* Open Source hover content */}
+                <div
+                  className={`transition-opacity duration-300`}
+                >
+                  <p className="text-sm text-gray-500 pb-5">Features</p>
+                  <ul className="flex flex-col gap-4">
+                    {openSourceFeatures.map((feature, index) => (
+                      <li key={index}>
+                        <a
+                          href={feature.url}
+                          className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200 h-[24px] items-center"
+                        >
+                          {feature.icon}
+                          {feature.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Enterprise hover content */}
+              
+              </div>
+
+              {/* About Product section with hover functionality */}
+              <div
+                 className={`w-full md:w-1/3 p-5 transition-opacity duration-300 ${
+                  !openSourceHover ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}
+              >
+                <p className="text-sm text-gray-500 pb-5">About Product</p>
+                <ul className="flex flex-col gap-4">
+                    {aboutProductLinks.map((link, index) => (
+                      <li key={index}>
+                        <a
+                          href={link.url}
+                          className="flex gap-2 font-semibold hover:text-primary-500 transition-colors duration-200 h-[24px] items-center"
+                        >
+                          {link.icon}
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+              </div>
+              <div
+                  className={`absolute  right-5  md:w-[350px] transition-opacity duration-300 ${
+                    !openSourceHover ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <div className="shadow-xl rounded-xl p-5 mt-6">
+                    <div className="text-center flex flex-col gap-3 items-center">
+                      <p className="text-xs font-semibold">
+                        Want to achieve 95% coverage by making API calls of all possible permutations
+                      </p>
+                      <MemoizedImage />
+                      <button className="mt-4 bg-primary-200 w-1/2 rounded-md font-bold shadow-lg hover:shadow-none p-2">
+                        <a href="https://calendar.app.google/CmnbjuDnK8J2Xuge8" target="_blank">
+                          Talk to us
+                        </a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

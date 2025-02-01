@@ -1,7 +1,23 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+const injectWhyDidYouRender = require('./scripts/why-did-you-render');
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+/** @type {import('next').NextConfig} */
+module.exports = withBundleAnalyzer({
+  webpack: (config, context) => {
+    // only run in dev mode and client build
+    if (context.dev && !context.isServer) {
+      console.log('Injecting why-did-you-render...');
+      // inject the why-did-you-render script
+      config.optimization.minimize = false;
+
+      injectWhyDidYouRender(config, context);
+    }
+
+		return config;
+	},
+  // swcMinify: false,
   async rewrites() {
     return [
       {
@@ -32,4 +48,4 @@ module.exports = {
     domains: ["web-stories.keploy.io.s3.amazonaws.com"],
     unoptimized: true,
   },
-};
+});

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "../../ui/logo";
 import MobileMenu from "../../ui/mobile-menu";
-import CountingNumbers from "../../utils/countingNumbers";
+// import CountingNumbers from "../../utils/countingNumbers";
 import NavItemWithSmallDropdown from "@/components/nav/navItemWithSmallDropdown";
 import { PillarPages } from "@/components/utils/resources";
 
@@ -58,6 +58,15 @@ export default function Header() {
           </div>
           <nav className="hidden lg:flex flex-grow-0 w-7/12">
             <ul className="flex grow justify-end  items-center">
+            <li>
+                <Link
+                  target="_blank"
+                  href="https://keploy.io/devscribe"
+                  className="font-medium text-gray-600  hover:text-primary-300 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  DevScribe
+                </Link>
+              </li>
               <li>
                 <Link
                   target="_blank"
@@ -120,7 +129,7 @@ export default function Header() {
                   {" "}
                   |
                 </span>
-                <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span>
+                {/* <span className="text-base flex gap-1"> ⭐️ <CountingNumbers className="" /></span> */}
               </Link>
             </div>
             <Link
