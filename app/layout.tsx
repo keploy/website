@@ -50,6 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <base href="https://keploy-websites.vercel.app/">
         <title>{finalMetadata.title}</title>
         <meta name="keywords" content={finalMetadata.keywords} />
         <meta name="description" content={finalMetadata.description} />
