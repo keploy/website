@@ -1,25 +1,5 @@
 {
   "rewrites": [
-     {
-        "source":"/devscribe",
-        "destination": "https://keploy-websites.vercel.app/devscribe"
-      },
-      {
-        "source":"/code-coverage",
-        "destination": "https://keploy-websites.vercel.app/code-coverage"
-      },
-      {
-        "source":"/unit-test-generator",
-        "destination": "https://keploy-websites.vercel.app/unit-test-generator"
-      },
-      {
-        "source":"/test-case-generator",
-        "destination": "https://keploy-websites.vercel.app/test-case-generator"
-      },
-      {
-        "source":"/test-data-generator",
-        "destination": "https://keploy-websites.vercel.app/test-data-generator"
-      },
     {
       "source": "/blog",
       "destination": "https://blog-website-phi-eight.vercel.app/blog"

@@ -30,6 +30,9 @@ module.exports = withBundleAnalyzer({
       //   },
     ];
   },
+  
+  // Add assetPrefix to ensure the correct loading of assets
+  assetPrefix: 'https://keploy-websites.vercel.app', 
   images: {
     remotePatterns: [
       {
