@@ -33,22 +33,22 @@ export default function Solutions() {
         {
           icon: <TestDataGeneration />,
           name: "Test Data Generation",
-          url: "https://keploy-websites.vercel.app/test-data-generator",
+          url: "/test-data-generator",
         },
         {
           icon: <TestCaseGeneration />,
           name: "Test Case Generation",
-          url: "https://keploy-websites.vercel.app/test-case-generator",
+          url: "/test-case-generator",
         },
         {
           icon: <UnitTestGeneration />,
           name: "Unit Test Generation",
-          url: "https://keploy-websites.vercel.app/unit-test-generator",
+          url: "/unit-test-generator",
         },
         {
           icon: <CodeCoverage />,
           name: "Code Coverage",
-          url: "https://keploy-websites.vercel.app/code-coverage",
+          url: "/code-coverage",
         },
       ],
     },
@@ -58,22 +58,22 @@ export default function Solutions() {
         {
           icon: <CITesting />,
           name: "CI Testing",
-          url: "https://keploy-websites.vercel.app/continuous-integration-testing",
+          url: "/continuous-integration-testing",
         },
         {
           icon: <RegressionTesting />,
           name: "Regression Testing",
-          url: "https://keploy-websites.vercel.app/docs/concepts/reference/glossary/regression-testing/#heading",
+          url: "/docs/concepts/reference/glossary/regression-testing/#heading",
         },
         {
           icon: <APITesting />,
           name: "API Testing",
-          url: "https://keploy-websites.vercel.app/api-testing",
+          url: "/api-testing",
         },
         {
           icon: <ContractTesting />,
           name: "Contract Testing",
-          url: "https://keploy-websites.vercel.app/contract-testing",
+          url: "/contract-testing",
         },
       ],
     },
