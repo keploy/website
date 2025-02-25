@@ -223,6 +223,7 @@ export const Code = ({
       className={`${showSideBannerBool ? "":""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
         settingCodeTheme ? "border border-gray-300" : ""
       }`}
+      } relative`}
     >
       <Editor
         language={language}
