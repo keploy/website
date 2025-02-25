@@ -31,7 +31,9 @@ module.exports = withBundleAnalyzer({
     ];
   },
   
-  // Add assetPrefix to ensure the correct loading of assets
+  // `assetPrefix` ensures correct asset loading for old pages when redirected from the new production landing page.  
+
+  // Comment out the line below during local development to load assets locally. 
   assetPrefix: 'https://keploy-websites.vercel.app', 
   images: {
     remotePatterns: [

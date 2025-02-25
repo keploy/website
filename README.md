@@ -1,3 +1,38 @@
+### Getting Started
+
+1. **Ensure Node.js 18.x.x is installed** on your machine.
+2. **Install the ESLint extension** for VS Code:
+   - You can install the [ESLint extension by Microsoft](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+   
+3. **Configure asset prefix for local developement**:
+   - **For local development**, comment out the below line to load assets locally.
+     - In `next.config.js`, the assetPrefix ensures proper asset loading from the new landing page.
+       ```js
+       assetPrefix: 'https://keploy-websites.vercel.app'
+       ```
+
+4. **Running the development server**:
+   - Use one of the following commands based on your package manager:
+     ```bash
+     npm run dev
+     # or
+     yarn dev
+     # or
+     pnpm dev
+     ```
+     
+5. **Run ESLint**:
+   - To identify and fix linting issues, run:
+     ```bash
+     npx eslint .
+     ```
+     Make sure to resolve any linting issues before raising a PR.
+
+6. **Access the app**:
+   - Open [http://localhost:3000](http://localhost:3000) in your browser to view the result.
+
+> **Note:** This template is inspired by the [Cruip Tailwind Landing Page Template](https://github.com/cruip/tailwind-landing-page-template).
+
 # Brand color Palette
 
 ---
@@ -23,21 +58,3 @@ Feel free to discuss and customize the README guide further based on your projec
 
 Created and maintained with ❤️ by [Keploy.io](https://keploy.io/).
 
-### Getting Started
-
-- Please make sure you have Node.js 18.x.x installed on your machine.
-- Please install the ESLint extension by microsoft - https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-- Run `npx eslint .` to identify the linting issues and fix them before raising the PR. 
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-Note: this template is inspired from cruip/tailwind-landing-page-template 
