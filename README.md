@@ -1,4 +1,4 @@
-### Getting Started
+# Getting Started
 
 1. **Ensure Node.js 18.x.x is installed** on your machine.
 2. **Install the ESLint extension** for VS Code:
@@ -33,7 +33,7 @@
 
 > **Note:** This template is inspired by the [Cruip Tailwind Landing Page Template](https://github.com/cruip/tailwind-landing-page-template).
 
-# Brand color Palette
+## Brand color Palette
 
 ---
 
