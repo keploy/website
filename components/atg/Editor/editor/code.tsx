@@ -219,7 +219,7 @@ export const Code = ({
     <div
       className={`${showSideBannerBool ? "" : ""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
         settingCodeTheme ? "border border-gray-300" : ""
-      } relative`} // Ensure relative positioning for the absolute side banner
+      } relative`}
     >
       <Editor
         language={language}
