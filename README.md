@@ -34,7 +34,7 @@ npm i
 # or
 npm install
 ```
-```bashgi
+```bash
 npm run dev
 # or
 yarn dev
