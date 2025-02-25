@@ -5,6 +5,7 @@ import { File } from "../utils/file-manager";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useEditTestSubscription } from "@/app/api/automatic-test-generator/Subscription";
+
 export const Code = ({
   selectedFile,
   showSideBannerBool,
@@ -30,34 +31,32 @@ export const Code = ({
   const { handleSubmit } = useEditTestSubscription(codeSubmissionId);
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
-  
+
   if (language === "js" || language === "jsx") language = "javascript";
   else if (language === "go") language = "go";
   else if (language === "py") language = "python";
-  
-  useEffect(()=>{   
+
+  useEffect(() => {
     const storedCodeSubmissionId = localStorage.getItem("code_submission_id") || "";
-    setSubmissionId(storedCodeSubmissionId)
-    // console.log("new stored id: ", codeSubmissionId);
-  },[localStorage , selectedFile])
+    setSubmissionId(storedCodeSubmissionId);
+  }, [selectedFile]);
 
   const handleFileChange = async (newValue: string | undefined) => {
     if (newValue !== undefined) {
       selectedFile.content = newValue;
-  
+
       // Check if the filename matches the pattern 'test-<number>.yaml'
       if (selectedFileName && testFileRegex.test(selectedFileName)) {
         const testSetName = localStorage.getItem("selectedTestSetDir") || "";
-      
+
         // Use the subscription
         const { data, loading, error } = await handleSubmit(newValue, testSetName, selectedFileName);
-  
+
         console.log("changed file.");
-  
+
         try {
-  
           console.log("Subscription result", { data, loading, error });
-  
+
           if (!loading && data) {
             // Handle successful subscription data here
             console.log("Subscription successful:", data);
@@ -68,11 +67,9 @@ export const Code = ({
         } catch (error) {
           console.error("Promise rejected:", error);
         }
-  
       }
     }
   };
-  
 
   useEffect(() => {
     if (monacoInstance && editorRef.current) {
@@ -220,9 +217,9 @@ export const Code = ({
 
   return (
     <div
-      className={`${showSideBannerBool ? "":""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
+      className={`${showSideBannerBool ? "" : ""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
         settingCodeTheme ? "border border-gray-300" : ""
-      }`}
+      } relative`} // Ensure relative positioning for the absolute side banner
     >
       <Editor
         language={language}
@@ -233,18 +230,18 @@ export const Code = ({
           fontSize: 15,
         }}
         onChange={handleFileChange}
-        onMount={(editor) => (editorRef.current = editor)} // Store editor instance
+        onMount={(editor) => (editorRef.current = editor)}
       />
       {!showSideBannerBool && (
         <div
           onMouseEnter={() => setShowText(true)}
           onMouseLeave={() => setShowText(false)}
-          className={`p-2 absolute z-10 hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
+          className="p-2 absolute z-10 hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex flex-row items-center justify-center shadow-lg transition-all duration-500"
           style={{
             transform: "translateY(-50%)",
             height: "3rem",
             width: showText ? "200px" : "40px",
-          }} // Adjust width values as needed
+          }}
           onClick={() => {
             RemoveSideBanner();
             setShowText(false);
@@ -252,13 +249,11 @@ export const Code = ({
         >
           <ChevronLeftIcon className="text-gray-50" />
           <div
-            className={`overflow-hidden transition-width duration-500 ${
+            className={`overflow-hidden whitespace-nowrap transition-all duration-500 ${
               showText ? "w-full" : "w-0"
             }`}
           >
-            <p className={`text-gray-50 font-bold ml-2 text-sm`}>
-              Side Content
-            </p>
+            <p className="text-gray-50 font-bold ml-2 text-sm">Side Content</p>
           </div>
         </div>
       )}
