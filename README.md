@@ -30,6 +30,11 @@ Created and maintained with ❤️ by [Keploy.io](https://keploy.io/).
 First, run the development server:
 
 ```bash
+npm i
+# or
+npm install
+```
+```bashgi
 npm run dev
 # or
 yarn dev
