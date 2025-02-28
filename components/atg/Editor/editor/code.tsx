@@ -2,13 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import { File } from "../utils/file-manager";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useEditTestSubscription } from "@/app/api/automatic-test-generator/Subscription";
 export const Code = ({
   selectedFile,
-  showSideBannerBool,
-  RemoveSideBanner,
   settingCodeTheme,
   isFullScreen,
   selectedFileName,
@@ -220,7 +216,7 @@ export const Code = ({
 
   return (
     <div
-      className={`${showSideBannerBool ? "":""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
+      className={`${isFullScreen ? "h-full" : "h-[75vh]"} ${
         settingCodeTheme ? "border border-gray-300" : ""
       }`}
     >
@@ -235,33 +231,6 @@ export const Code = ({
         onChange={handleFileChange}
         onMount={(editor) => (editorRef.current = editor)} // Store editor instance
       />
-      {!showSideBannerBool && (
-        <div
-          onMouseEnter={() => setShowText(true)}
-          onMouseLeave={() => setShowText(false)}
-          className={`p-2 absolute z-10 hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
-          style={{
-            transform: "translateY(-50%)",
-            height: "3rem",
-            width: showText ? "200px" : "40px",
-          }} // Adjust width values as needed
-          onClick={() => {
-            RemoveSideBanner();
-            setShowText(false);
-          }}
-        >
-          <ChevronLeftIcon className="text-gray-50" />
-          <div
-            className={`overflow-hidden transition-width duration-500 ${
-              showText ? "w-full" : "w-0"
-            }`}
-          >
-            <p className={`text-gray-50 font-bold ml-2 text-sm`}>
-              Side Content
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
