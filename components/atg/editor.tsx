@@ -7,13 +7,13 @@ import { Type, File, Directory } from "./Editor/utils/file-manager";
 import DefaultEditorPage from "./components/DefaultEditorPage";
 import MainTerminal from "./terminal";
 import { Skeleton } from "@mui/material";
-import SideBarHandle from "./components/SideBarhandle";
 import { StepsForRecording, StepforTests, StepsforDedup } from "./utils/types";
 import TopHeader from "./components/TopHeader";
 import { findFileByName } from "./Editor/utils/file-manager";
 import useFullScreen from "./fullscreen"; // Import the hook
 import { fetchDirectoryStructure } from "./Editor/utils/file-manager";
 import { removeKeployTestDir } from "./Editor/utils/api-functions";
+import SideBarNormal from "./components/SideBarContent/SideBarNormal";
 const dummyDir: Directory = {
   id: "1",
   name: "loading...",
@@ -36,11 +36,12 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   const [functionName, setFunctionName] = useState<string>("Start");
   const inputRef = useRef<HTMLInputElement>(null);
   const [language, setSelectedLanguage] = useState<string>("Javascript");
-  const [showSideContent, setShowSideContent] = useState<boolean>(false);
+  const [showSideContent, setShowSideContent] = useState<boolean>(true);
   const [TerminalStatus, setTerminalStatus] = useState<string>("red");
   const [TerminalHeight, setTerminalHeight] = useState<string>("0");
   const [FullScreen, setFullScreen] = useState<boolean>(false);
-  const [mainFile , setmainFile] = useState<string>("");
+  const [mainFile, setmainFile] = useState<string>("");
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const [stepsForRecording, setStepsForRecording] = useState<StepsForRecording>(
     {
       schemaValidation: false,
@@ -62,6 +63,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
     testSubStepIndex: -1,
     expandedSteps: [0],
   });
+
   const settingFullScreenTrue = () => {
     setFullScreen(true);
   };
@@ -100,11 +102,9 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
         console.error("Error fetching directory contents:", error);
       }
     };
-  
+
     fetchData(); // Call the async function
-  
   }, [language]); // Dependency array
-  
 
   const { elementRef, enterFullScreen, exitFullScreen } = useFullScreen({
     onEnter: settingFullScreenTrue,
@@ -125,10 +125,10 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
       file = findFileByName(rootDir, "server.js");
     }
     console.log(file);
-    if(file){
+    if (file) {
       setmainFile(file?.content);
-    }else{
-      setmainFile("file not found")
+    } else {
+      setmainFile("file not found");
     }
     setSelectedFile(file);
     setFiles(file ? [file] : []);
@@ -281,104 +281,116 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
               />
 
               <div
-                className={`flex flex-row ${
-                  FullScreen ? "h-[100vh]" : "h-[80vh]"
-                } ${lighttheme ? "bg-white" : "bg-[#282c34]"}  w-full`}
+                className={`flex  ${FullScreen ? "h-[100vh]" : ""} ${
+                  lighttheme ? "bg-white" : "bg-[#282c34]"
+                }  w-full relative`}
               >
                 {/* Sidebar */}
+                {/* <div
+                  className={`flex flex-col transition-all duration-200 w-2/12 h-full`}
+                > */}
+                <Sidebar
+                  rootDir={rootDir}
+                  selectedFile={selectedFile}
+                  onSelect={onSelect}
+                  currentSelectedFileName={selectedFile?.name}
+                  theme={lighttheme}
+                />
+
+                {/* Code and Terminal */}
                 <div
-                  className={`flex flex-col transition-all duration-200 ${
-                    showSideContent ? "w-2/12" : "w-2/12"
-                  } h-full`}
+                  className={`
+                    ${
+                      isCollapsed
+                        ? "w-full"
+                        : "w-7/12 transition-all duration-300"
+                    }
+                    ${FullScreen ? "h-[100vh]" : ""}`}
                 >
-                  <Sidebar
-                    rootDir={rootDir}
-                    selectedFile={selectedFile}
-                    onSelect={onSelect}
-                    currentSelectedFileName={selectedFile?.name}
-                    theme={lighttheme}
+                  <div className="relative h-full flex flex-col flex-1">
+                    {files.length !== 0 ? (
+                      <div className="flex flex-row w-full h-full">
+                        <div className="relative w-full h-full flex flex-col">
+                          <Appbar
+                            selectedFile={selectedFile}
+                            selectedFilesArray={files}
+                            onSelect={onSelectAppBar}
+                            onCancel={CancelButtonAppBar}
+                            onSelectLanguage={onLanguageSelect}
+                            AppBarTheme={lighttheme}
+                            languageApp={language}
+                            CodeContent={mainFile || ""}
+                            functionName={functionName}
+                          />
+                          <Code
+                            selectedFile={selectedFile}
+                            selectedFileName={selectedFile?.name}
+                            showSideBannerBool={showSideContent}
+                            RemoveSideBanner={ShowSideContent}
+                            settingCodeTheme={lighttheme}
+                            isFullScreen={FullScreen} // Pass FullScreen state
+                          />
+                          {/* revert the sign here */}
+                          {state > -1 && (
+                            <div
+                              className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${TerminalHeight} overflow-hidden`}
+                            >
+                              <MainTerminal
+                                inputRef={inputRef}
+                                functionName={functionName}
+                                RootDir={rootDir}
+                                setRootDir={setRootDir}
+                                stepsForRecording={setStepsForRecording}
+                                stepsForTesting={setStepsForTests}
+                                stepsForDedup={setStepsForDedup}
+                                terminalTheme={lighttheme}
+                                setTerminalHeightStatus={settingTerminalStatus}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="h-full w-full top-0">
+                        <DefaultEditorPage lightTheme={lighttheme} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Side Content */}
+
+                <div
+                  className={`transition-all duration-300 ${
+                    isCollapsed
+                      ? "translate-x-full w-0"
+                      : "translate-x-0 w-3/12"
+                  }`}
+                >
+                  <SideBarNormal
+                    // Stage={state}
+                    isColl={isCollapsed}
+                    setIsColl={setIsCollapsed}
+                    onNext={nextState}
+                    showTerminal={() => {
+                      setShowTerminal(true);
+                      setTerminalHeight("max-h-96");
+                      setTerminalStatus("orange");
+                    }}
+                    functionName={functionName}
+                    onReset={resetEverything}
+                    stepsForRecording={stepsForRecording}
+                    stepsForTesting={stepsForTest}
+                    stepsForDedup={stepsForDedup}
+                    SideBarTheme={lighttheme}
+                    activeStep={sidebarState.activeStep}
+                    subStepIndex={sidebarState.subStepIndex}
+                    dedupStepIndex={sidebarState.dedupStepIndex}
+                    testSubStepIndex={sidebarState.testSubStepIndex}
+                    expandedSteps={sidebarState.expandedSteps}
+                    setSidebarState={setSidebarState}
                   />
                 </div>
-                <div
-                  className={`relative flex flex-col ${
-                    showSideContent ? "w-8/12" : "w-full"
-                  } h-full transition-all mt- duration-300`}
-                >
-                  {/* Code and Terminal */}
-                  {files.length !== 0 ? (
-                    <div className="flex flex-row w-full h-full">
-                      <div className="relative w-full h-full  flex flex-col">
-                        <Appbar
-                          selectedFile={selectedFile}
-                          selectedFilesArray={files}
-                          onSelect={onSelectAppBar}
-                          onCancel={CancelButtonAppBar}
-                          onSelectLanguage={onLanguageSelect}
-                          AppBarTheme={lighttheme}
-                          languageApp={language}
-                          CodeContent={mainFile || ""}
-                          functionName={functionName}
-                   
-                        />
-                        <Code
-                          selectedFile={selectedFile}
-                          selectedFileName={selectedFile?.name}
-                          showSideBannerBool={showSideContent}
-                          RemoveSideBanner={ShowSideContent}
-                          settingCodeTheme={lighttheme}
-                          isFullScreen={FullScreen} // Pass FullScreen state
-                        />
-                        {/* revert the sign here */}
-                        {state > -1 && (
-                          <div
-                            className={`absolute bottom-0 z-0 w-full transition-all duration-500 ${TerminalHeight} overflow-hidden`}
-                          >
-                            <MainTerminal
-                              inputRef={inputRef}
-                              functionName={functionName}
-                              RootDir={rootDir}
-                              setRootDir={setRootDir}
-                              stepsForRecording={setStepsForRecording}
-                              stepsForTesting={setStepsForTests}
-                              stepsForDedup={setStepsForDedup}
-                              terminalTheme={lighttheme}
-                              setTerminalHeightStatus={settingTerminalStatus}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="h-full w-full top-0">
-                      <DefaultEditorPage lightTheme={lighttheme} />
-                    </div>
-                  )}
-                </div>
-                {/* Side Content */}
-                {showSideContent && (
-                  <div
-                    className={`w-3/12 grow h-full bg-white rounded-br-md transition-all duration-300`}
-                  >
-                    <SideBarHandle
-                      Stage={state}
-                      onNext={nextState}
-                      showTerminal={() => {
-                        setShowTerminal(true);
-                        setTerminalHeight("max-h-96");
-                        setTerminalStatus("orange");
-                      }}
-                      functionName={functionName}
-                      onReset={resetEverything}
-                      stepsForRecording={stepsForRecording}
-                      stepsForTesting={stepsForTest}
-                      stepsForDedup={stepsForDedup}
-                      removeSideContent={RemoveSideContent}
-                      SideBarTheme={lighttheme}
-                      sidebarState={sidebarState}
-                      setSidebarState={setSidebarState}
-                    />
-                  </div>
-                )}
               </div>
             </div>
           </>
