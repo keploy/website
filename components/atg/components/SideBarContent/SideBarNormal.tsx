@@ -130,7 +130,7 @@ export default function SideBarNormal({
           }
         }, 1000);
 
-        return () => clearTimeout(timer);
+        return () => {clearTimeout(timer)};
       }
     } else if (activeStep === 1) {
       if (
@@ -166,7 +166,7 @@ export default function SideBarNormal({
           }
         }, 1000);
 
-        return () => clearTimeout(timer);
+        return () => {clearTimeout(timer)};
       }
     } else if (activeStep === 2) {
       if (
@@ -202,7 +202,7 @@ export default function SideBarNormal({
           }
         }, 1000);
         localStorage.setItem("one_time", "false");
-        return () => clearTimeout(timer);
+        return () => {clearTimeout(timer)};
       }
     }
   }, [
@@ -217,7 +217,7 @@ export default function SideBarNormal({
   ]);
 
   const handleNext = () => {
-    moveToNextStage()
+    void moveToNextStage()
     if (activeStep === 0) {
       setSidebarState((prevState) => ({
         ...prevState,
@@ -253,7 +253,7 @@ export default function SideBarNormal({
       <Accordion
         expanded={expandedSteps.includes(index)}
         key={step.label}
-        onChange={() => handleAccordionChange(index)}
+        onChange={() => {handleAccordionChange(index)}}
         sx={{
           backgroundColor: "#f5f5f5",
           boxShadow: "none",
@@ -284,8 +284,8 @@ export default function SideBarNormal({
               />
             )
           }
-          aria-controls={`panel${index}-content`}
-          id={`panel${index}-header`}
+          aria-controls={`panel${String(index)}-content`}
+          id={`panel${String(index)}-header`}
           sx={{
             color: "#ffffff",
             fontWeight: "bold",
