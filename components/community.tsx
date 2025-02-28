@@ -3,7 +3,7 @@ import "./community.css";
 import Image from "next/image";
 import CommunityBunny from "@/public/images/community-bunny.png";
 import GithubSvg from "@/public/images/social/github.svg";
-import TwitterSvg from "@/public/images/social/twitter.svg";
+import XImage from "@/public/images/x-twitter.svg"
 import SlackSvg from "@/public/images/social/slack.svg";
 import YoutubeSvg from "@/public/images/social/youtube.svg";
 import LinkedinSvg from "@/public/images/social/linkedin.svg";
@@ -79,9 +79,9 @@ function SocialLinkCard({
 export default function Community() {
   const cardsData: CardData[] = [
     {
-      link: "https://twitter.com/Keployio",
-      svgIcon: TwitterSvg,
-      platformName: "Twitter",
+      link: "https://x.com/Keployio?mx=2",
+      svgIcon: XImage,
+      platformName: "X",
       description: "Let's talk about regression testing!",
     },
     {
