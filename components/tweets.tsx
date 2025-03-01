@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import XImage from "@/public/images/x-twitter.svg"
+import XImage from "@/public/images/social/x-twitter.svg"
 
 const Tweets = ({
   avatar,
