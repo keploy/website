@@ -3,7 +3,7 @@ import "./community.css";
 import Image from "next/image";
 import CommunityBunny from "@/public/images/community-bunny.png";
 import GithubSvg from "@/public/images/social/github.svg";
-import TwitterSvg from "@/public/images/social/twitter.svg";
+import TwitterSvg from "@/public/images/social/x-twitter.svg";
 import SlackSvg from "@/public/images/social/slack.svg";
 import YoutubeSvg from "@/public/images/social/youtube.svg";
 import LinkedinSvg from "@/public/images/social/linkedin.svg";
@@ -81,7 +81,7 @@ export default function Community() {
     {
       link: "https://twitter.com/Keployio",
       svgIcon: TwitterSvg,
-      platformName: "Twitter",
+      platformName: "X-Twitter",
       description: "Let's talk about regression testing!",
     },
     {
