@@ -30,12 +30,12 @@ export const Code = ({
   const { handleSubmit } = useEditTestSubscription(codeSubmissionId);
   const code = selectedFile.content;
   let language = selectedFile.name.split(".").pop();
-  
+
   if (language === "js" || language === "jsx") language = "javascript";
   else if (language === "go") language = "go";
   else if (language === "py") language = "python";
-  
-  useEffect(()=>{   
+
+  useEffect(() => {
     const storedCodeSubmissionId = localStorage.getItem("code_submission_id") || "";
     setSubmissionId(storedCodeSubmissionId)
     // console.log("new stored id: ", codeSubmissionId);
@@ -223,6 +223,7 @@ export const Code = ({
       className={`${showSideBannerBool ? "":""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
         settingCodeTheme ? "border border-gray-300" : ""
       }`}
+      } relative`}
     >
       <Editor
         language={language}
@@ -244,7 +245,7 @@ export const Code = ({
             transform: "translateY(-50%)",
             height: "3rem",
             width: showText ? "200px" : "40px",
-          }} // Adjust width values as needed
+          }}
           onClick={() => {
             RemoveSideBanner();
             setShowText(false);
@@ -252,7 +253,7 @@ export const Code = ({
         >
           <ChevronLeftIcon className="text-gray-50" />
           <div
-            className={`overflow-hidden transition-width duration-500 ${
+            className={`overflow-hidden whitespace-nowrap transition-all duration-500 ${
               showText ? "w-full" : "w-0"
             }`}
           >
