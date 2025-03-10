@@ -11,6 +11,8 @@ import Link from "next/link";
 
 type cardSurrondStyle = {
   transform: string;
+  animation?: string;
+  animationDelay?: string; 
 };
 
 type CardProps = {
@@ -27,20 +29,22 @@ type CardData = {
   svgIcon: string;
   platformName: string;
   description: string;
+  radius: number;
+  duration: number;
 };
 
 const createCircleStyles = (
   totalCircles: number,
   index: number,
-  containerWidth: number
+  radius: number,
 ): cardSurrondStyle => {
-  const angle = 360 - 90;
-  const dangle = 360 / totalCircles;
-  const currentAngle = angle + dangle * index;
+  const angle = 360 / totalCircles;
+  const currentAngle = angle * index;
+
   return {
-    transform: `rotate(${currentAngle}deg) translate(${
-      containerWidth / 2
-    }px) rotate(-${currentAngle}deg)`,
+    transform: `rotate(${currentAngle}deg) translate(${radius}px) rotate(-${currentAngle}deg)`,
+    animation: `orbit 20s linear infinite`,
+    animationDelay: `-${(index * 20) / totalCircles}s`,
   };
 };
 
@@ -83,38 +87,44 @@ export default function Community() {
       svgIcon: TwitterSvg,
       platformName: "Twitter",
       description: "Let's talk about regression testing!",
+      radius: 300,
+      duration: 20,
     },
     {
       link: "https://github.com/keploy/keploy",
       svgIcon: GithubSvg,
       platformName: "Github",
       description: "Contribute code to Keploy or report a bug",
+      radius: 300,
+      duration: 20,
     },
     {
       link: "https://keploy.slack.com/join/shared_invite/zt-2poflru6f-_VAuvQfCBT8fDWv1WwSbkw",
       svgIcon: SlackSvg,
       platformName: "Slack",
       description: "Connect and chat with other Keploy users",
+      radius: 300,
+      duration: 20,
     },
     {
       link: "https://www.youtube.com/channel/UC6OTg7F4o0WkmNtSoob34lg",
       svgIcon: YoutubeSvg,
       platformName: "Youtube",
       description: "Learn with Keploy team and community videos",
+      radius: 300,
+      duration: 20,
     },
     {
       link: "https://www.linkedin.com/company/74471957",
       svgIcon: LinkedinSvg,
       platformName: "Linkedin",
       description: "Follow us and connect with other Keploy engineers!",
+      radius: 300,
+      duration: 20,
     },
   ];
 
-  // Define the number of circles you want to render
   const totalCircles = cardsData.length;
-
-  // You can adjust this width as per your requirement or dynamically based on the parent component's state
-  const containerWidth = 600;
 
   const cardsSurround = Array.from({ length: totalCircles }, (_, index) => (
     <SocialLinkCard
@@ -123,7 +133,7 @@ export default function Community() {
       svgIcon={cardsData[index].svgIcon}
       platformName={cardsData[index].platformName}
       description={cardsData[index].description}
-      style={createCircleStyles(totalCircles, index, containerWidth)}
+      style={createCircleStyles(totalCircles, index, cardsData[index].radius)}
       showExtraStyle={true}
     />
   ));
@@ -139,7 +149,7 @@ export default function Community() {
   ));
 
   return (
-    <section className="relative py-8 ">
+    <section className="relative py-8">
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="h2 text-secondary-300">
           🐰 Join the Keploy community ✨
@@ -163,3 +173,4 @@ export default function Community() {
     </section>
   );
 }
+
