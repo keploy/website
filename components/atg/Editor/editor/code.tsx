@@ -256,7 +256,7 @@ export const Code = ({
               showText ? "w-full" : "w-0"
             }`}
           >
-            <p className={`text-gray-50 font-bold ml-2 text-sm`}>
+            <p className={`text-gray-50 font-bold ml-2 text-sm whitespace-nowrap`}>
               Side Content
             </p>
           </div>

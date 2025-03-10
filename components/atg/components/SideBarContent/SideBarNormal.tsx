@@ -328,6 +328,7 @@ export default function SideBarNormal({
               className={`${
                 SideBartheme ? "text-secondary-300" : "text-gray-300"
               } font-semibold`}
+              sx={{whiteSpace:"nowrap"}}
             >
               {step.label}
             </Typography>
@@ -342,6 +343,7 @@ export default function SideBarNormal({
               "&::-webkit-scrollbar": {
                 display: "none",
               },
+              height:"auto",
             }}
           >
             <Box sx={{ mt: 2 }}>
