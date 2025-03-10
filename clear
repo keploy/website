@@ -1,0 +1,557 @@
+[33mcommit e5f03c687965918cb65280ef5e5b349598c5da5e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mvivekbhandari[m[33m)[m
+Author: viv1coder <viv13handari@gmail.com>
+Date:   Wed Jan 22 16:19:37 2025 +0530
+
+    i replaced the old twitter icon from new twitter icon in community section
+
+[33mcommit 42eef0be694d3131c2d86cc741cbe8b01637c781[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: manasmanohar <21006907+manasmanohar@users.noreply.github.com>
+Date:   Thu Jan 16 14:30:20 2025 +0530
+
+    chore: update hero CTA button
+    
+    Signed-off-by: manasmanohar <21006907+manasmanohar@users.noreply.github.com>
+
+[33mcommit 0fd3e6c03062d3e4862cad55b72d9087f2709ab4[m
+Author: Manas Manohar <21006907+manasmanohar@users.noreply.github.com>
+Date:   Fri Dec 27 22:29:04 2024 +0530
+
+    chore: update Slack links and enhance navigation   (#165)
+    
+    Signed-off-by: manasmanohar <21006907+manasmanohar@users.noreply.github.com>
+
+[33mcommit 122e82d883ac0b1eae88f456863c448df6f54d4e[m
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Wed Dec 25 13:52:03 2024 +0530
+
+    fix: pricing page (#163)
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit 13848a53e6af90baa8fb9b3d071d276e441a1247[m
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Tue Dec 24 18:00:15 2024 +0530
+
+    fix: npm run build with pipeline (#162)
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit 2dbad274d75858015c4b4e7e0eef66a2dfc9b64c[m
+Author: Manas Manohar <21006907+manasmanohar@users.noreply.github.com>
+Date:   Tue Dec 24 17:19:10 2024 +0530
+
+    chore: update CTA link to join cloud waiting list (#161)
+
+[33mcommit f60178fc375f6ea43810aa534a49e889cedf19e6[m
+Author: Khushi Trivedi <76205733+trivedi-khushi@users.noreply.github.com>
+Date:   Mon Dec 23 11:19:17 2024 +0530
+
+    Update hero.tsx (#130)
+    
+    Signed-off-by: Khushi Trivedi <76205733+trivedi-khushi@users.noreply.github.com>
+
+[33mcommit 352d8a2a28da923ee97386610f2f4f390e350ddd[m
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Sun Dec 15 22:18:02 2024 +0530
+
+    fix: hero page video player (#160)
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit 5556b542ae4144e7344b026b50a185d51fd1a96d[m
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Sun Dec 15 20:08:35 2024 +0530
+
+    fix: features section animations (#158)
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit 40a2ccc7cddecbb5aa74fa717b58d0ab39fdae6a[m
+Author: Shubham Jain <shubhamkjain@outlook.com>
+Date:   Fri Dec 13 18:28:45 2024 +0530
+
+    fix: remove components that were causing high cpu usage and memory leaks (#157)
+    
+    Signed-off-by: Shubham Jain <shubhamkjain@outlook.com>
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    Co-authored-by: Yash Khare <khareyash05@gmail.com>
+    Co-authored-by: Yash Khare <yash2010118@akgec.ac.in>
+
+[33mcommit d5a5e3de21d85ba453b67e1dbeea98ac40ffe1ed[m
+Merge: b83c98c 94a40cc
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Tue Dec 10 12:41:44 2024 +0530
+
+    Merge pull request #154 from khareyash05/pricing-page
+    
+    feat: Pricing page
+
+[33mcommit 94a40cce17e9ee8c5384a212948030cd1ec29834[m
+Author: Yash Khare <khareyash05@gmail.com>
+Date:   Tue Dec 10 11:24:37 2024 +0530
+
+    add lines of code section and pricing link added
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit 89c042fda5eabf52266bc67e5b08be3d8b785d15[m
+Author: Yash Khare <khareyash05@gmail.com>
+Date:   Mon Dec 9 18:23:54 2024 +0530
+
+    update pricing page
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit de74aa0d7c86511f73fb27c4ead80df74b6fdf38[m
+Author: Yash Khare <khareyash05@gmail.com>
+Date:   Mon Dec 9 17:43:04 2024 +0530
+
+    equal distance between sliders
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit f2a387bf8ded667fa3f04ff5e645fa51bc03e89d[m
+Author: Yash Khare <khareyash05@gmail.com>
+Date:   Mon Dec 9 16:59:54 2024 +0530
+
+    increase distance between sliders
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit a4e324ceb7a569cd1b82e6843682a937ce8a1799[m
+Merge: 928cff5 b83c98c
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Mon Dec 9 16:50:13 2024 +0530
+
+    Merge branch 'main' into pricing-page
+
+[33mcommit 928cff533debedb650f92f86d1b2321ba8379c42[m
+Author: Yash Khare <khareyash05@gmail.com>
+Date:   Mon Dec 9 16:49:41 2024 +0530
+
+    feat: pricing page
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit b83c98c9b703b01a6dcc7775bec35ec24498ee0f[m
+Merge: 938db9b dc1bd72
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Mon Dec 9 16:03:19 2024 +0530
+
+    Merge pull request #153 from keploy/fix-hydration-issue
+    
+    fix: hydration issues
+
+[33mcommit dc1bd72ffa6cf866719546349fc70d1a762fa8fe[m
+Author: gouravkrosx <gouravgreatkr@gmail.com>
+Date:   Mon Dec 9 13:37:22 2024 +0530
+
+    chore: remove SuppressWarnings
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+
+[33mcommit d4bda4446754fecffb2ac65284e2c9a6c2e04ec7[m
+Author: gouravkrosx <gouravgreatkr@gmail.com>
+Date:   Sun Dec 8 18:23:17 2024 +0530
+
+    chore: revert css classes
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+
+[33mcommit 29701a3e4a588daedb615d850b7d55c2c5022c3e[m
+Author: gouravkrosx <gouravgreatkr@gmail.com>
+Date:   Sun Dec 8 18:19:50 2024 +0530
+
+    chore: addressed PR comments
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+
+[33mcommit 92e9f51f47cef0a6b2ba57468868e7ae39c9e79e[m
+Author: gouravkrosx <gouravgreatkr@gmail.com>
+Date:   Sat Dec 7 23:09:32 2024 +0530
+
+    chore: added removed scipts
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+
+[33mcommit f0afa5f35402f0c77cd73a215bb1129d1c8850f6[m
+Author: gouravkrosx <gouravgreatkr@gmail.com>
+Date:   Sat Dec 7 22:47:55 2024 +0530
+
+    fix: hydration issues
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+
+[33mcommit 938db9bc7852a548ea6a2aecb6678672040b786a[m
+Author: Tvisha <tvisha.raji@keploy.io>
+Date:   Fri Dec 6 18:08:07 2024 +0530
+
+    cta changes plus alignment (#152)
+    
+    * cta changes plus alignment
+    
+    * few fixes
+    
+    ---------
+    
+    Co-authored-by: Tvisha Raji <tvisharaji@Tvishas-MacBook-Pro.local>
+    Co-authored-by: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+
+[33mcommit e968cadbb714ff6d3a5c3cac16400555c088092d[m
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Fri Dec 6 13:27:39 2024 +0530
+
+    fix: responsive page for VSCode Extension (#151)
+    
+    * fix: responsive page
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * reduce spacing
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    ---------
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit dec804de19c19ffbd1bf9f4c087deba06d53b324[m
+Author: Yash Khare <khareyash05@gmail.com>
+Date:   Tue Dec 3 19:13:50 2024 +0530
+
+    reduce spacing
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit 3c8819af0e3197e8ee6dd70ed6d5f696b9faf697[m
+Author: Yash Khare <khareyash05@gmail.com>
+Date:   Tue Dec 3 18:04:43 2024 +0530
+
+    fix: responsive page
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+
+[33mcommit c74f06e44084048d8aadbbfbb1d98305a34d0218[m
+Author: Yash Khare <yash2010118@akgec.ac.in>
+Date:   Tue Dec 3 16:42:04 2024 +0530
+
+    feat: vscode extension page (#134)
+    
+    * feat:vscode extension page
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * feat:vscode extension page
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * feat:vscode extension page
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * image centering and animation checks
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * image centering and animation checks
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * image centering and animation checks
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * add keploy embed
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    
+    * move to plugins
+    
+    ---------
+    
+    Signed-off-by: Yash Khare <khareyash05@gmail.com>
+    Co-Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+
+[33mcommit 7507dbc4ecb9fe9856416fd8bf18f85bc231d616[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Mon Dec 2 15:19:17 2024 +0530
+
+    fix: update the Link Format of vscode extension (#149)
+    
+    Signed-off-by: Hermione Dadheech <hermionedadheech@gmail.com>
+
+[33mcommit dd85725ecf9ee8fb9de1f8156110ca7484e7acd1[m
+Author: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+Date:   Thu Nov 28 17:35:20 2024 +0530
+
+    feat: update ws to wss to allow cors (#148)
+    
+    Signed-off-by: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+
+[33mcommit e5257e8bbc0679b3acc07a1096c1e4bf86721572[m
+Author: Gourav kumar <44055698+gouravkrosx@users.noreply.github.com>
+Date:   Thu Nov 28 16:04:55 2024 +0530
+
+    fix: api playground (#147)
+    
+    * fix: add submodules recursive
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 1
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 2
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 4
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 5
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 6
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 7
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 8
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 9
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    * fix: add submodules recursive 10
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    
+    ---------
+    
+    Signed-off-by: gouravkrosx <gouravgreatkr@gmail.com>
+    Co-Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+
+[33mcommit ba79aa4c20231c844063f948da01dec094ba13c0[m
+Merge: 4bf3099 efcc1ce
+Author: Tvisha <tvisha.raji@keploy.io>
+Date:   Tue Nov 26 16:39:35 2024 +0530
+
+    Merge pull request #137 from keploy/fix-extensionlink
+    
+    fix: added vscode extension link
+
+[33mcommit 4bf3099161a5b097a68c715827803fe8eb15b5c3[m
+Merge: 59f6924 e314429
+Author: Tvisha <tvisha.raji@keploy.io>
+Date:   Tue Nov 26 13:31:03 2024 +0530
+
+    Merge pull request #138 from keploy/fix-navbar
+    
+    fix: Alignment and optimize navbar components
+
+[33mcommit e314429e64a98a1775e993b5e49d5c6b72ce9132[m
+Merge: adbf404 59f6924
+Author: Tvisha <tvisha.raji@keploy.io>
+Date:   Tue Nov 26 13:30:54 2024 +0530
+
+    Merge branch 'main' into fix-navbar
+    
+    Signed-off-by: Tvisha  <tvisha.raji@keploy.io>
+
+[33mcommit 59f6924e66abfa687ad1f177bc05913f517ea656[m
+Merge: 720e3cb ad39597
+Author: Tvisha <tvisha.raji@keploy.io>
+Date:   Tue Nov 26 13:30:12 2024 +0530
+
+    Merge pull request #143 from keploy/fix-alignment
+    
+    fix: commented banner code and aligned text
+
+[33mcommit adbf404e0ac0643239a1d86ec05e6f64a8b529ce[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Mon Nov 25 19:12:05 2024 +0530
+
+    fix: button padding
+    
+    Signed-off-by: Hermione Dadheech <hermionedadheech@gmail.com>
+
+[33mcommit 8ea87b6a6a1abc988d0f7ff01745f03c0b140d67[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Mon Nov 25 18:02:47 2024 +0530
+
+    fix: logo
+    
+    Signed-off-by: Hermione Dadheech <hermionedadheech@gmail.com>
+
+[33mcommit ad39597ef40c79526a6f051c97bca32aa5bc8749[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Mon Nov 25 12:10:08 2024 +0530
+
+    fix: commented banner code and aligned text
+    
+    Signed-off-by: Hermione Dadheech <hermionedadheech@gmail.com>
+
+[33mcommit a9217454297c083b777f7f5f5278496c1553f928[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Sun Nov 24 00:34:44 2024 +0530
+
+    feat:commented banner code and aligned text
+    
+    Signed-off-by: Hermione Dadheech <hermionedadheech@gmail.com>
+
+[33mcommit 720e3cb6a98613cee672141d78c7ccbd1ae1bd8a[m
+Author: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+Date:   Thu Nov 21 15:58:52 2024 +0530
+
+    feat: update event agenda (#139)
+    
+    * feat: updated event agenda
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    ---------
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    Signed-off-by: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+
+[33mcommit cb922854aa277a88f584464211b12468e4da8c37[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Thu Nov 21 13:22:36 2024 +0530
+
+    fix: console error
+    
+    Signed-off-by: Hermione Dadheech <hermionedadheech@gmail.com>
+
+[33mcommit 48a18b62e667da1823eec1eae268b2d3bcbc4ee3[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Thu Nov 21 12:49:07 2024 +0530
+
+    fix: navbar and optimize the navbar files-s
+
+[33mcommit efcc1ced3a355d2ae0fd0292fecf4810cd614611[m
+Author: Hermione Dadheech <hermionedadheech@gmail.com>
+Date:   Wed Nov 20 12:15:27 2024 +0530
+
+    fix: added vscode extension link
+    
+    Signed-off-by: Hermione Dadheech <hermionedadheech@gmail.com>
+
+[33mcommit 4de2311fc370f2c50b4d4ef79fab5c60b3f075c5[m
+Author: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+Date:   Tue Nov 19 17:49:46 2024 +0530
+
+    feat: add event speaker (#136)
+    
+    * feat: add devscribe to website as CTA
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * fix: google devs url
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * feat: add new community partners
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * fix: slack urls updation
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * feat: added event schedule
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * feat: added event speakers
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    ---------
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+
+[33mcommit e8b9294260e2bbdab0b093ed440b73b4837906bb[m
+Author: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+Date:   Fri Nov 15 20:11:03 2024 +0530
+
+    fix: docs section url in nav (#135)
+    
+    Signed-off-by: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+
+[33mcommit 9c71c616c94b4b4b224b08c632380f9de6ca9b8e[m
+Merge: 8ad7ab0 e1adebc
+Author: Aditya Sharma <70089590+Aditya-eddy@users.noreply.github.com>
+Date:   Thu Nov 14 18:18:54 2024 +0530
+
+    Merge pull request #131 from keploy/staging
+    
+    New Navbar
+
+[33mcommit e1adebc825554ca1e341c254794cb2e4d89d7cf3[m
+Author: Aditya-eddy <aditya282003@gmail.com>
+Date:   Thu Nov 14 18:18:21 2024 +0530
+
+    chore:adding writer's program
+    
+    Signed-off-by: Aditya-eddy <aditya282003@gmail.com>
+
+[33mcommit 2423d498c2eec006538a78543f300750d2256452[m
+Author: Aditya-eddy <aditya282003@gmail.com>
+Date:   Thu Nov 14 17:50:19 2024 +0530
+
+    chore:adding price tag and correcting features
+    
+    Signed-off-by: Aditya-eddy <aditya282003@gmail.com>
+
+[33mcommit d534dd5c91aed64b492ef8f8dc715f5938aea729[m
+Author: Aditya-eddy <aditya282003@gmail.com>
+Date:   Wed Nov 13 19:41:39 2024 +0530
+
+    chore:correting banner
+    
+    Signed-off-by: Aditya-eddy <aditya282003@gmail.com>
+
+[33mcommit 2de728f6e63451b57df97d20283c41dc3dbcb6e6[m
+Merge: b7fb930 8ad7ab0
+Author: Aditya Sharma <70089590+Aditya-eddy@users.noreply.github.com>
+Date:   Wed Nov 13 14:50:01 2024 +0530
+
+    Merge branch 'main' into staging
+
+[33mcommit 8ad7ab02e141cbe7e3dac68ecd27495126899812[m
+Author: Animesh Pathak <53110238+Sonichigo@users.noreply.github.com>
+Date:   Wed Nov 13 14:28:10 2024 +0530
+
+    feat: added devscribe event schedule (#132)
+    
+    * feat: add devscribe to website as CTA
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * fix: google devs url
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * feat: add new community partners
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * fix: slack urls updation
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    * feat: added event schedule
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
+    
+    ---------
+    
+    Signed-off-by: Animesh Pathak <kurosakiichigo.songoku@gmail.com>
