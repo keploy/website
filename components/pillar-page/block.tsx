@@ -70,7 +70,7 @@ export default function ProblemBlocks(props: {
               }}
              className="flex justify-center md:justify-center gap-4 mt-8">
               <a
-                className="btn text-secondary-300 bg-primary-300 hover:text-white"
+                className="btn text-secondary-300 bg-primary-300 hover:text-white cursor-pointer"
               > 
                 {props.btnText}
               </a>
