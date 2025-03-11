@@ -76,7 +76,6 @@ export const Code = ({
       };
       layoutEditor();
 
-      // Add event listener to window resize to handle screen transition
       window.addEventListener("resize", layoutEditor);
       return () => { window.removeEventListener("resize", layoutEditor); };
     }
@@ -100,12 +99,9 @@ export const Code = ({
       const char = code[i];
       const prevChar = code[i - 1];
 
-      // Handle opening brackets
       if (openBrackets.includes(char)) {
         stack.push({ char, position: i });
-      }
-      // Handle closing brackets
-      else if (closeBrackets.includes(char)) {
+      }else if (closeBrackets.includes(char)) {
         if (
           stack.length === 0 ||
           stack[stack.length - 1].char !== matchingBracket[char]
@@ -123,7 +119,6 @@ export const Code = ({
         }
       }
 
-      // Handle string delimiters
       if (stringDelimiters.includes(char) && prevChar !== "\\") {
         if (
           stringStack.length === 0 ||
@@ -136,7 +131,6 @@ export const Code = ({
       }
     }
 
-    // Add unmatched opening brackets to diagnostics
     stack.forEach(({ char, position }) => {
       diagnostics.push({
         severity: 8,
@@ -149,7 +143,6 @@ export const Code = ({
       });
     });
 
-    // Add unmatched string delimiters to diagnostics
     stringStack.forEach(({ char, position }) => {
       diagnostics.push({
         severity: 8,
@@ -174,7 +167,7 @@ export const Code = ({
         monacoInstance.editor.setModelMarkers(model, "owner", diagnostics);
       };
 
-      validate(); // Initial validation
+      validate();
       const subscription = model.onDidChangeContent(() => { validate(); });
       return () => { subscription.dispose(); };
     }
@@ -226,7 +219,7 @@ export const Code = ({
           fontSize: 15,
         }}
         onChange={(newValue) => { void handleFileChange(newValue); }}
-        onMount={(editor) => (editorRef.current = editor)} // Store editor instance
+        onMount={(editor) => (editorRef.current = editor)}
       />
       {
         <div
