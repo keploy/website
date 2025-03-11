@@ -1,7 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import Editor, { useMonaco } from "@monaco-editor/react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as monaco from "monaco-editor";
+import { duration } from "@mui/material";
 import { File } from "../utils/file-manager";
+import { useEffect, useState, useRef } from "react";
+import Editor, { useMonaco } from "@monaco-editor/react";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useEditTestSubscription } from "@/app/api/automatic-test-generator/Subscription";
@@ -14,7 +18,7 @@ export const Code = ({
   selectedFileName,
 }: {
   selectedFile: File | undefined;
-  showSideBannerBool: Boolean;
+  showSideBannerBool: boolean;
   RemoveSideBanner: () => void;
   settingCodeTheme: boolean;
   isFullScreen: boolean;
@@ -22,14 +26,14 @@ export const Code = ({
 }) => {
   if (!selectedFile) return null;
 
+  const code = selectedFile.content;
   const monacoInstance = useMonaco();
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+  const testFileRegex = /^test-\d+\.yaml$/;
+  let language = selectedFile.name.split(".").pop();
   const [showText, setShowText] = useState<boolean>(false);
-  const testFileRegex = /^test-\d+\.yaml$/; // Regular expression to match 'test-<number>.yaml'
   const [codeSubmissionId, setSubmissionId] = useState("");
   const { handleSubmit } = useEditTestSubscription(codeSubmissionId);
-  const code = selectedFile.content;
-  let language = selectedFile.name.split(".").pop();
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
 
   if (language === "js" || language === "jsx") language = "javascript";
   else if (language === "go") language = "go";
@@ -44,25 +48,16 @@ export const Code = ({
   const handleFileChange = async (newValue: string | undefined) => {
     if (newValue !== undefined) {
       selectedFile.content = newValue;
-  
-      // Check if the filename matches the pattern 'test-<number>.yaml'
+
       if (selectedFileName && testFileRegex.test(selectedFileName)) {
         const testSetName = localStorage.getItem("selectedTestSetDir") || "";
-      
-        // Use the subscription
+
         const { data, loading, error } = await handleSubmit(newValue, testSetName, selectedFileName);
-  
-        console.log("changed file.");
-  
+
         try {
-  
-          console.log("Subscription result", { data, loading, error });
-  
           if (!loading && data) {
-            // Handle successful subscription data here
             console.log("Subscription successful:", data);
           } else if (error) {
-            // Handle subscription error here
             console.error("Subscription error:", error);
           }
         } catch (error) {
@@ -83,23 +78,23 @@ export const Code = ({
 
       // Add event listener to window resize to handle screen transition
       window.addEventListener("resize", layoutEditor);
-      return () => window.removeEventListener("resize", layoutEditor);
+      return () => { window.removeEventListener("resize", layoutEditor); };
     }
   }, [isFullScreen, monacoInstance]);
 
   const validateCode = (code: string) => {
     const diagnostics: monaco.editor.IMarkerData[] = [];
-    let stack: { char: string; position: number }[] = [];
+    const stack: { char: string; position: number }[] = [];
     const openBrackets = "{[(";
     const closeBrackets = "}])";
-    const matchingBracket: { [key: string]: string } = {
+    const matchingBracket: Record<string, string> = {
       "}": "{",
       "]": "[",
       ")": "(",
     };
 
     const stringDelimiters = ['"', "'", "`"];
-    let stringStack: { char: string; position: number }[] = [];
+    const stringStack: { char: string; position: number }[] = [];
 
     for (let i = 0; i < code.length; i++) {
       const char = code[i];
@@ -173,17 +168,15 @@ export const Code = ({
   useEffect(() => {
     if (monacoInstance) {
       const model = monacoInstance.editor.getModels()[0];
-      if (model) {
-        const validate = () => {
-          const code = model.getValue();
-          const diagnostics = validateCode(code);
-          monacoInstance.editor.setModelMarkers(model, "owner", diagnostics);
-        };
+      const validate = () => {
+        const code = model.getValue();
+        const diagnostics = validateCode(code);
+        monacoInstance.editor.setModelMarkers(model, "owner", diagnostics);
+      };
 
-        validate(); // Initial validation
-        const subscription = model.onDidChangeContent(() => validate());
-        return () => subscription.dispose();
-      }
+      validate(); // Initial validation
+      const subscription = model.onDidChangeContent(() => { validate(); });
+      return () => { subscription.dispose(); };
     }
   }, [monacoInstance]);
 
@@ -220,9 +213,8 @@ export const Code = ({
 
   return (
     <div
-      className={`${showSideBannerBool ? "":""} ${isFullScreen ? "h-full" : "h-[75vh]"} ${
+      className={`${isFullScreen ? "h-full" : "h-[75vh]"} ${
         settingCodeTheme ? "border border-gray-300" : ""
-      }`}
       } relative`}
     >
       <Editor
@@ -233,13 +225,13 @@ export const Code = ({
           scrollBeyondLastLine: false,
           fontSize: 15,
         }}
-        onChange={handleFileChange}
+        onChange={(newValue) => { void handleFileChange(newValue); }}
         onMount={(editor) => (editorRef.current = editor)} // Store editor instance
       />
-      {!showSideBannerBool && (
+      {
         <div
-          onMouseEnter={() => setShowText(true)}
-          onMouseLeave={() => setShowText(false)}
+          onMouseEnter={() => { setShowText(true); }}
+          onMouseLeave={() => { setShowText(false); }}
           className={`p-2 absolute z-10 hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500`}
           style={{
             transform: "translateY(-50%)",
@@ -257,12 +249,12 @@ export const Code = ({
               showText ? "w-full" : "w-0"
             }`}
           >
-            <p className={`text-gray-50 font-bold ml-2 text-sm`}>
+            <p className="text-gray-50 font-bold ml-2 text-sm">
               Side Content
             </p>
           </div>
         </div>
-      )}
+      }
     </div>
   );
 };
