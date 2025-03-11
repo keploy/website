@@ -38,6 +38,7 @@
     "graphql": "^16.8.1",
     "graphql-ws": "^5.16.0",
     "gsap": "^3.12.5",
+    "monaco-editor": "^0.52.2",
     "next": "^14.2.3",
     "next-themes": "^0.3.0",
     "react": "^18.2.0",
