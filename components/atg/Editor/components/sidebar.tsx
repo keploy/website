@@ -24,7 +24,7 @@ export const Sidebar = ({
 
   return (
     <div
-      className={`flex flex-col h-full  text-sm rounded-bl-md${
+      className={`w-2/12 flex flex-col h-full text-sm rounded-bl-md${
         theme ? "text-secondary-300 bg-neutral-200" : "text-white bg-[#21252b]"
       }`}
     >
