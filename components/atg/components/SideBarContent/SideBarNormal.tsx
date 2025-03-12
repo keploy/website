@@ -507,12 +507,12 @@ export default function SideBarNormal({
       <div
         onMouseEnter={() => setShowText(true)}
         onMouseLeave={() => setShowText(false)}
-        className={`p-2 absolute hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg transition-all duration-500 opacity-1 ${
-          isColl ? "opacity-100" : "opacity-0"
-        }`}
+        className={`p-2 absolute hover:cursor-pointer border border-gray-500 border-b-0 right-0 top-1/2 bg-secondary-300 flex items-center justify-center shadow-lg  opacity-1`}
         style={{
           height: "3rem",
           width: showText ? "200px" : "40px ",
+          transition: "width 0.4s ease-in-out",
+          opacity: isColl ? "1" : "0",
         }} // Adjust width values as needed
         onClick={() => {
           setIsColl();
