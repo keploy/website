@@ -303,6 +303,7 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
                   className={`relative flex flex-col ${
                     showSideContent ? "w-8/12" : "w-full"
                   } h-full transition-all mt- duration-300`}
+                  style={{ minWidth: "775px" }}
                 >
                   {/* Code and Terminal */}
                   {files.length !== 0 ? (
