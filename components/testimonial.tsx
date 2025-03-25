@@ -7,18 +7,14 @@ import { useRef } from "react";
 // import _ScrollTrigger from "gsap/ScrollTrigger";
 // gsap.registerPlugin(useGSAP);
 // gsap.registerPlugin(ScrollTrigger);
-
-const Testimonial = ({
-  content,
-  author,
-  company,
-  image,
-}: {
+interface TestimonialProps {
   content: string;
   author: string;
   company: string;
-  image: any;
-}) => {
+  image: string;
+}
+
+const Testimonial = ({ content, author, company, image }: TestimonialProps) => {
   const container = useRef(null);
   // useGSAP(
   //   () => {
@@ -75,3 +71,4 @@ const Testimonial = ({
   );
 };
 export { Testimonial };
+
