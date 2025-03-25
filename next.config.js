@@ -1,23 +1,27 @@
 const injectWhyDidYouRender = require('./scripts/why-did-you-render');
-
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
+
 /** @type {import('next').NextConfig} */
 module.exports = withBundleAnalyzer({
   webpack: (config, context) => {
-    // only run in dev mode and client build
+    // Only run in dev mode and client build
     if (context.dev && !context.isServer) {
       console.log('Injecting why-did-you-render...');
-      // inject the why-did-you-render script
       config.optimization.minimize = false;
-
       injectWhyDidYouRender(config, context);
     }
 
-		return config;
-	},
-  // swcMinify: false,
+    // Add support for importing SVG files as React components
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
+    return config;
+  },
+
   async rewrites() {
     return [
       {
@@ -25,16 +29,16 @@ module.exports = withBundleAnalyzer({
         destination: "/",
       },
       // {
-      //     source: '/blog/:slug*', // Match any path after /blog
-      //     destination: 'https://blog-website-phi-eight.vercel.app/blog/:slug*', // Replace with your actual blog deployment URL
-      //   },
+      //   source: '/blog/:slug*',
+      //   destination: 'https://blog-website-phi-eight.vercel.app/blog/:slug*',
+      // },
     ];
   },
-  
-  // `assetPrefix` ensures correct asset loading for old pages when redirected from the new production landing page.  
 
-  // Comment out the line below during local development to load assets locally. 
-  assetPrefix: 'https://keploy-websites.vercel.app', 
+  // `assetPrefix` ensures correct asset loading for old pages when redirected from the new production landing page.  
+  // Comment out the line below during local development to load assets locally.
+  assetPrefix: 'https://keploy-websites.vercel.app',
+
   images: {
     remotePatterns: [
       {
@@ -43,12 +47,6 @@ module.exports = withBundleAnalyzer({
         port: "",
         pathname: "**",
       },
-      // {
-      //   protocol: "https",
-      //   hostname: "web-stories.keploy.io.s3.amazonaws.com",
-      //   port: "",
-      //   pathname: "**",
-      // },
     ],
     domains: ["web-stories.keploy.io.s3.amazonaws.com"],
     unoptimized: true,
