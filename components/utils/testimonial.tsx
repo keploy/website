@@ -2,25 +2,29 @@ import MarutiLogo from "@/public/images/users/Logo_for_Maruti_Suzuki.svg";
 import NutanixLogo from "@/public/images/users/Nutanix_Logo.svg";
 import WednesdayLogo from "@/public/images/users/Wednesday_logo.svg";
 
-export const testimonialData = [
+interface TestimonialData {
+  image: string;
+  content: string;
+  author: string;
+  company: string;
+}
+
+export const testimonialData: TestimonialData[] = [
   {
-    image: MarutiLogo,
-    content:
-      "Our recent collaboration with Keploy was truly remarkable. Keploy team provided exceptional support and remained highly proactive throughout the entire experience. Keploy platform has added business value to Maruti Suzuki.",
+    image: MarutiLogo as string,
+    content: "Our recent collaboration with Keploy was truly remarkable. Keploy team provided exceptional support and remained highly proactive throughout the entire experience. Keploy platform has added business value to Maruti Suzuki.",
     author: "Executive Member",
     company: "@Maruti Suzuki",
   },
   {
-    image: NutanixLogo,
-    content:
-      "Makes it easy to unit test my complex systems with realistic test data.",
+    image: NutanixLogo as string,
+    content: "Makes it easy to unit test my complex systems with realistic test data.",
     author: "Staff Engineer",
     company: "@Nutanix",
   },
   {
-    image: WednesdayLogo,
-    content:
-      "We've had a great experience with Keploy—it's significantly improved our testing process. Using it for our Golang projects with Postgres and Redis, Keploy helps us quickly identify and fix issues by replaying real user interactions. This has saved us time and enhanced our test thoroughness. We're pleased with the results.",
+    image: WednesdayLogo as string,
+    content: "We've had a great experience with Keploy—it's significantly improved our testing process. Using it for our Golang projects with Postgres and Redis, Keploy helps us quickly identify and fix issues by replaying real user interactions. This has saved us time and enhanced our test thoroughness. We're pleased with the results.",
     author: "Senior Software Engineer",
     company: "@Wednesday",
   },
