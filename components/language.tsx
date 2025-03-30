@@ -318,7 +318,7 @@ export default function Language() {
               className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
             >
               <Image
-                src="/images/frameworks/csharp.svg"
+                src="/images/frameworks/csharp.png"
                 alt="C# Logo"
                 width={150}
                 height={80}
@@ -332,7 +332,7 @@ export default function Language() {
               className="flex items-center justify-center col-span-2 py-2 transition-transform hover:scale-110 md:col-auto"
             >
               <Image
-                src="/images/frameworks/rust.svg"
+                src="/images/frameworks/rust.png"
                 alt="Rust Logo"
                 width="90"
                 height="35"
