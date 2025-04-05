@@ -68,12 +68,16 @@ const TopHeader = ({
   enterSmallScreen:()=>void;
   fullscreen:boolean;
 }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // Initialize isDarkMode from localStorage to match Editor's theme
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('editor-theme');
+    return savedTheme ? savedTheme === 'dark' : false;
+  });
  
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
     settingTheme();
-    document.body.classList.toggle("dark-mode", !isDarkMode); // Add a class to the body element
+    document.body.classList.toggle("dark-mode", !isDarkMode);
   };
 
   const toggleScreen = ()=>{

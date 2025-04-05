@@ -28,7 +28,10 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   const [rootDir, setRootDir] = useState<Directory>(dummyDir);
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined);
   const [dataFetched, setDataFetched] = useState(true);
-  const [lighttheme, setTheme] = useState<boolean>(true);
+  const [lighttheme, setTheme] = useState<boolean>(() => {
+    const savedTheme = localStorage.getItem('editor-theme');
+    return savedTheme ? savedTheme === 'light' : true;
+  });
   const [error, setError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [showTerminal, setShowTerminal] = useState<boolean>(false);
@@ -239,7 +242,9 @@ const Editor = ({ goFullScreen = false }: { goFullScreen?: boolean }) => {
   };
 
   const settingTheme = () => {
-    setTheme(!lighttheme);
+    const newTheme = !lighttheme;
+    setTheme(newTheme);
+    localStorage.setItem('editor-theme', newTheme ? 'light' : 'dark');
   };
 
   const settingTerminalStatus = (val: string) => {
