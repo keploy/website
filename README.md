@@ -1,3 +1,8 @@
+> Contributor Notice:
+This repository is now dedicated exclusively to the Keploy API Playground. As part of an ongoing migration, the Keploy Playground will remain in this repository for now, but it will be moved to a new repository in the future.
+
+> GSoC Qualification Task: As this playground forms a part of our GSoC qualification tasks, we welcome contributions only for enhancing and maintaining the playground features.
+
 # Getting Started
 
 1. **Ensure Node.js 18.x.x is installed** on your machine.

@@ -1,4 +1,8 @@
 # Contributing to Keploy
+> Contributor Notice:
+This repository is now dedicated exclusively to the Keploy API Playground. As part of an ongoing migration, the Keploy Playground will remain in this repository for now, but it will be moved to a new repository in the future.
+
+> GSoC Qualification Task: As this playground forms a part of our GSoC qualification tasks, we welcome contributions only for enhancing and maintaining the playground features.
 
 Thank you for your interest in Keploy and for taking the time to contribute to this project. 🙌 Keploy is a project by developers for developers and there are a lot of ways you can contribute.
 
