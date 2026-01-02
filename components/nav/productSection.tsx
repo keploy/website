@@ -12,6 +12,7 @@ import AutomaticMocking from "@/public/images/navBarIcons/AutomaticMocking";
 import CICD from "@/public/images/navBarIcons/CICD";
 import MultiPurposeMocks from "@/public/images/navBarIcons/MultiPurposeMocks";
 import MemoizedImage from "@/public/images/navBarIcons/EnterPrice";
+import Image from "next/image";
 
 export default function Product() {
   const [openDropdown, setShowDropdown] = useState(false);
@@ -50,16 +51,21 @@ export default function Product() {
       url: "https://keploy.io/docs/concepts/what-are-keploy-features/#%EF%B8%8F-multi-purpose-mocks",
     },
   ];
-  const aboutProductLinks = [
-    {
-      icon: <img
-      src={"/images/keploylogo.png"}
-      alt="What is Keploy Icon"
-      style={{ height: "24px", width: "24px" }}
-    />,
-      title: "What is Keploy?",
-      url: "https://keploy.io/docs/concepts/what-is-keploy/#heading",
-    },
+
+ const aboutProductLinks = [
+  {
+    icon: (
+      <Image
+        src={`${process.env.NEXT_PUBLIC_ASSET_PREFIX || ""}/images/keploylogo.png`}
+        alt="What is Keploy Icon"
+        width={24}
+        height={24}
+        priority
+      />
+    ),
+    title: "What is Keploy?",
+    url: "https://keploy.io/docs/concepts/what-is-keploy/#heading",
+  },
     {
       icon: <WhyUseKeploy />,
       title: "Why use Keploy?",
