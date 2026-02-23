@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
-// import CountingNumbers from "../utils/countingNumbers";
+import CountingNumbers from "../utils/countingNumbers";
 import Image from "next/image";
 import { UpIcon } from "../nav/UpIcon";
 import DownIcon from "../nav/DownIcon";
@@ -11,15 +11,58 @@ import { PillarPages } from "../utils/resources";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { ProductsSection } from "../utils/Products";
 import { GlossarySection } from "../utils/Products";
+
 interface MobileMenuProps {
   starsCount: number;
+  vsCodeInstalls?: string;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount, vsCodeInstalls }) => {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
   const [showResourcesDropdown,setShowResourcesDropdown] =useState<boolean>(false);
   const [showProductsDropdown,setShowProductsDropdown] =useState<boolean>(false);
   const [showGlossaryDropdown,setShowGlossaryDropdown] =useState<boolean>(false);
+  const [vscodeInstallCount, setVscodeInstallCount] = useState<string>(vsCodeInstalls || "1M+");
+
+  useEffect(() => {
+    // Fetch VS Code extension install count from the marketplace
+    const fetchVSCodeStats = async () => {
+      try {
+        const response = await fetch(
+          "https://marketplace.visualstudio.com/_apis/public/gallery/extensionquery",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json;api-version=7.1-preview.1",
+            },
+            body: JSON.stringify({
+              filters: [{ criteria: [{ filterType: 7, value: "Keploy.keployio" }] }],
+              flags: 914,
+            }),
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const stats = data?.results?.[0]?.extensions?.[0]?.statistics;
+          const installStat = stats?.find(
+            (s: { statisticName: string; value: number }) => s.statisticName === "install"
+          );
+          if (installStat) {
+            const count = installStat.value as number;
+            const formatted = Intl.NumberFormat("en-US", {
+              notation: "compact",
+              maximumFractionDigits: 1,
+            }).format(count);
+            setVscodeInstallCount(formatted);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching VS Code stats:", error);
+      }
+    };
+    fetchVSCodeStats();
+  }, []);
   const trigger = useRef<HTMLButtonElement>(null);
   const mobileNav = useRef<HTMLDivElement>(null);
 
@@ -129,10 +172,43 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ starsCount }) => {
                 <span className="text-base flex gap-1">
                   <StarIcon className="size-4 text-yellow-300 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_2px_#FFD700]" />
                 </span>
-                {/* <span className="text-base flex gap-1"> <CountingNumbers className="" /></span> */}
+                <span className="text-base flex gap-1"><CountingNumbers className="" /></span>
               </Link>
             </div>
-              {/*<Link href="/privacy-policy" className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out">Github</Link>*/}
+            </li>
+            {/* VS Code Extension Stats */}
+            <li>
+            <div className="border border-primary-400 rounded-md overflow-hidden p-2.5 border-opacity-40 relative transition-all group mt-2">
+              {/* Sliding effect span */}
+              <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-orange-500 opacity-10 transition-transform duration-1000 ease-out group-hover:translate-x-[-400%]" />
+              <Link
+                className="flex items-center gap-2 text-sm text-primary-400 font-extrabold transition-colors hover:text-primary-500"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Keploy VS Code Extension"
+                href="https://marketplace.visualstudio.com/items?itemName=Keploy.keployio"
+              >
+                {/* VS Code Icon */}
+                <svg className="h-5 w-5" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <title>VS Code Logo</title>
+                  <clipPath id="clip-mobile-vscode">
+                    <path d="M70.912 2.898L38.17 31.128 15.32 16.042 2.074 22.408l22.238 27.582L2.074 77.59 15.32 83.958l22.848-15.09 32.744 28.228 14.888-5.952V8.85L70.912 2.9zm.82 66.064L50.26 50l21.47-18.96v37.92z" />
+                  </clipPath>
+                  <linearGradient id="gradient-mobile-vscode" x1="50" y1="2.898" x2="50" y2="97.094" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stopColor="#1a9ed4" />
+                    <stop offset="1" stopColor="#1163b5" />
+                  </linearGradient>
+                  <path fill="url(#gradient-mobile-vscode)" clipPath="url(#clip-mobile-vscode)" d="M85.8 2.898L2.074 35.362v29.276l83.726 32.456 12.2-6.276V9.174L85.8 2.898zm-14.068 66.064L50.26 50l21.47-18.96v37.92z" />
+                </svg>
+                <span className="text-gradient-500 opacity-30 hover:text-primary-500"> | </span>
+                <span className="text-base flex gap-1">
+                  <svg className="size-4 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <span className="text-base flex gap-1">{vscodeInstallCount}</span>
+              </Link>
+            </div>
             </li>
             <li>
                 <Link
