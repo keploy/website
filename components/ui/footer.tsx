@@ -75,7 +75,7 @@ export default function Footer() {
             <h6 className="text-primary-300 font-medium mb-2">Company</h6>
             <ul className="text-sm">
               <li className="mb-2">
-                <Link href="#0" className="text-neutral-300 hover:text-primary-300 transition duration-150 ease-in-out">Home</Link>
+                <Link href="/" className="text-neutral-300 hover:text-primary-300 transition duration-150 ease-in-out">Home</Link>
               </li>
               {/*<li className="mb-2">*/}
               {/*  <Link href="#0" className="text-neutral-300 hover:text-primary-300 transition duration-150 ease-in-out">About us</Link>*/}
