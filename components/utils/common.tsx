@@ -111,7 +111,7 @@ interface SocialLink {
     
 export const socialLinks: SocialLink[] = [
       {
-          href: 'https://twitter.com/Keployio',
+          href: 'https://x.com/Keployio',
           icon: <TwitterIcon/>,
           title: 'Twitter',
           description:`Follow every update Keploy shares!`

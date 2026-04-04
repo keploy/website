@@ -79,7 +79,7 @@ function SocialLinkCard({
 export default function Community() {
   const cardsData: CardData[] = [
     {
-      link: "https://twitter.com/Keployio",
+      link: "https://x.com/Keployio",
       svgIcon: TwitterSvg,
       platformName: "Twitter",
       description: "Let's talk about regression testing!",
